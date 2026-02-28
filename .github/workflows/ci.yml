@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
+
+jobs:
+  validate:
+    name: Build, Lint, Typecheck & Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Test
+        run: pnpm vitest run
+
+      - name: Check internal deps not exposed
+        run: pnpm check-internal-deps
+
+      - name: Validate exports (publint)
+        run: pnpm check-exports
+
+      - name: Validate pack (dry-run)
+        run: pnpm check-pack
+
+      - name: Validate Changeset (if needed)
+        run: |
+          CHANGED_PUBLIC=$(git diff --name-only origin/main...HEAD | grep '^packages/' || true)
+
+          if [ -n "$CHANGED_PUBLIC" ]; then
+            if ! git diff --name-only origin/main...HEAD | grep '.changeset/'; then
+              echo "Public package changed but no changeset found."
+              exit 1
+            fi
+          fi

@@ -1,0 +1,14 @@
+/* TEAM */
+Name: Ninna UI Team
+Site: https://github.com/ninna-ui/ninna-ui
+Contact: https://github.com/ninna-ui/ninna-ui/issues
+
+/* TECHNOLOGY */
+Framework: React 19
+Styling: Tailwind CSS v4
+Bundler: Vite 7
+Language: TypeScript 5
+Testing: Vitest 4
+Documentation: Storybook 10, React Router v7
+Package Manager: pnpm 9
+Monorepo: Turborepo

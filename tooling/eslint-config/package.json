@@ -1,0 +1,28 @@
+{
+  "name": "@ninna-ui/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Shared ESLint configurations for Ninna-UI",
+  "license": "MIT",
+  "exports": {
+    ".": "./index.js",
+    "./base": "./base.js",
+    "./react": "./react.js",
+    "./boundaries": "./boundaries.js"
+  },
+  "files": [
+    "*.js"
+  ],
+  "dependencies": {
+    "typescript-eslint": "^8.0.0",
+    "eslint-plugin-import-x": "^4.0.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "eslint-plugin-jsx-a11y": "^6.10.0",
+    "globals": "^15.0.0"
+  },
+  "peerDependencies": {
+    "eslint": "^9.0.0"
+  }
+}

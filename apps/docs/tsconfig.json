@@ -1,0 +1,8 @@
+{
+  "extends": "@ninna-ui/tsconfig/react.json",
+  "compilerOptions": {
+    "outDir": "./dist"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", ".storybook/**/*.ts"],
+  "exclude": ["node_modules", "dist", "storybook-static"]
+}

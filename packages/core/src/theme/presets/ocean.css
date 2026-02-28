@@ -1,0 +1,190 @@
+/**
+ * Ninna-UI Theme System - Ocean Preset
+ *
+ * Deep, professional blue theme with bright cyan and purple accents.
+ * Uses dark-content strategy for vibrant secondary/accent/status colors.
+ * All semantic colors guarantee WCAG AA 4.5:1 contrast with their -content color.
+ * Perfect for fintech, SaaS, and productivity apps.
+ *
+ * Palette: Deep Blue primary, Bright Cyan secondary, Electric Purple accent.
+ *
+ * Dark mode: Add class="dark" to <html> element.
+ * System auto: Omit class — follows prefers-color-scheme automatically.
+ *
+ * Usage:
+ * @import "tailwindcss";
+ * @import "@ninna-ui/core/theme/presets/ocean.css";
+ *
+ * HTML: <html data-theme="ocean">                    (light)
+ *       <html data-theme="ocean" class="dark">       (forced dark)
+ *       <html data-theme="ocean" class="light">      (forced light)
+ */
+
+@import "../tailwind.css";
+
+/* ============================================
+   Light Theme - Ocean
+   Applies when data-theme="ocean" is set.
+   ============================================ */
+[data-theme="ocean"] {
+  color-scheme: light;
+
+  /* Primary — Deep Ocean Blue (bold CTA — light text) */
+  /* Blue has low sRGB luminance (0.0722), L=0.40 required for WCAG AA 4.5:1 */
+  --color-primary: oklch(0.40 0.26 240);
+  --color-primary-content: oklch(0.98 0.02 240);
+
+  /* Secondary — Deep Cyan (bold — white text) */
+  /* Cyan has higher luminance than blue — L=0.37 required for WCAG AA 4.5:1 */
+  --color-secondary: oklch(0.37 0.14 195);
+  --color-secondary-content: oklch(0.98 0.02 195);
+
+  /* Accent — Electric Purple (vibrant — light text) */
+  /* Purple at L=0.62 C=0.28: dark text fails (purple has low luminance), use light content */
+  --color-accent: oklch(0.55 0.28 285);
+  --color-accent-content: oklch(0.95 0.04 285);
+
+  /* Neutral — Deep Navy */
+  --color-neutral: oklch(0.21 0.04 248);
+  --color-neutral-content: oklch(0.93 0.01 248);
+
+  /* Success — Bright Emerald (light — dark text) */
+  --color-success: oklch(0.72 0.22 155);
+  --color-success-content: oklch(0.14 0.04 155);
+
+  /* Danger — Bright Coral (light — dark text) */
+  --color-danger: oklch(0.71 0.22 25);
+  --color-danger-content: oklch(0.14 0.04 25);
+
+  /* Warning — Vivid Amber (bright — dark text) */
+  --color-warning: oklch(0.84 0.20 84);
+  --color-warning-content: oklch(0.20 0.05 84);
+
+  /* Info — Sky Blue (light — dark text) */
+  --color-info: oklch(0.72 0.19 232);
+  --color-info-content: oklch(0.14 0.04 232);
+
+  /* Base surfaces — Cool Blue-Gray (50=lightest → 900=darkest) */
+  --color-base-50: oklch(0.985 0.006 235);
+  --color-base-100: oklch(0.970 0.008 235);
+  --color-base-200: oklch(0.940 0.010 235);
+  --color-base-300: oklch(0.900 0.014 235);
+  --color-base-400: oklch(0.810 0.016 235);
+  --color-base-500: oklch(0.690 0.018 235);
+  --color-base-600: oklch(0.550 0.020 235);
+  --color-base-700: oklch(0.430 0.020 235);
+  --color-base-800: oklch(0.310 0.018 235);
+  --color-base-900: oklch(0.200 0.016 235);
+  --color-base-content: oklch(0.200 0.016 235);
+
+  /* Border colors */
+  --color-border: oklch(0.880 0.012 235);
+  --color-border-hover: oklch(0.690 0.018 235);
+  --color-border-active: oklch(0.550 0.020 235);
+  --color-border-disabled: oklch(0.900 0.014 235);
+}
+
+/* ============================================
+   Dark Theme - Ocean (explicit .dark class)
+   Applies when <html class="dark" data-theme="ocean">
+   ============================================ */
+.dark [data-theme="ocean"],
+[data-theme="ocean"].dark {
+  color-scheme: dark;
+
+  /* Primary — Bright Blue */
+  --color-primary: oklch(0.74 0.24 240);
+  --color-primary-content: oklch(0.15 0.03 240);
+
+  /* Secondary — Bright Cyan (dark text for WCAG AA contrast on L=0.58 bg) */
+  --color-secondary: oklch(0.58 0.13 195);
+  --color-secondary-content: oklch(0.15 0.03 195);
+
+  /* Accent — Bright Purple (dark text for WCAG AA contrast on L=0.72 bg) */
+  --color-accent: oklch(0.72 0.24 285);
+  --color-accent-content: oklch(0.15 0.04 285);
+
+  /* Neutral — Light Navy (flipped for dark bg readability) */
+  --color-neutral: oklch(0.70 0.04 248);
+  --color-neutral-content: oklch(0.15 0.01 248);
+
+  /* Success — Bright Emerald */
+  --color-success: oklch(0.72 0.20 155);
+  --color-success-content: oklch(0.15 0.04 155);
+
+  /* Danger — Bright Coral */
+  --color-danger: oklch(0.70 0.24 25);
+  --color-danger-content: oklch(0.15 0.03 25);
+
+  /* Warning — Bright Amber (dark text) */
+  --color-warning: oklch(0.86 0.20 84);
+  --color-warning-content: oklch(0.20 0.05 84);
+
+  /* Info — Bright Sky Blue */
+  --color-info: oklch(0.74 0.18 232);
+  --color-info-content: oklch(0.15 0.03 232);
+
+  /* Base surfaces — Deep Ocean Blue-Gray */
+  --color-base-50: oklch(0.140 0.014 235);
+  --color-base-100: oklch(0.180 0.016 235);
+  --color-base-200: oklch(0.230 0.018 235);
+  --color-base-300: oklch(0.310 0.020 235);
+  --color-base-400: oklch(0.400 0.020 235);
+  --color-base-500: oklch(0.500 0.020 235);
+  --color-base-600: oklch(0.580 0.020 235);
+  --color-base-700: oklch(0.700 0.018 235);
+  --color-base-800: oklch(0.820 0.016 235);
+  --color-base-900: oklch(0.930 0.012 235);
+  --color-base-content: oklch(0.930 0.012 235);
+
+  /* Border colors (dark) */
+  --color-border: oklch(0.310 0.020 235);
+  --color-border-hover: oklch(0.400 0.020 235);
+  --color-border-active: oklch(0.500 0.020 235);
+  --color-border-disabled: oklch(0.230 0.018 235);
+}
+
+/* ============================================
+   Dark Theme - Ocean (system preference)
+   Applies when no .dark/.light class is set and
+   the OS prefers dark mode.
+   SYNC: Values must match the .dark block above.
+   Pure CSS requires duplication — no mixin support.
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  [data-theme="ocean"]:not(.light):not(.dark) {
+    color-scheme: dark;
+
+    --color-primary: oklch(0.74 0.24 240);
+    --color-primary-content: oklch(0.15 0.03 240);
+    --color-secondary: oklch(0.58 0.13 195);
+    --color-secondary-content: oklch(0.15 0.03 195);
+    --color-accent: oklch(0.72 0.24 285);
+    --color-accent-content: oklch(0.15 0.04 285);
+    --color-neutral: oklch(0.70 0.04 248);
+    --color-neutral-content: oklch(0.15 0.01 248);
+    --color-success: oklch(0.72 0.20 155);
+    --color-success-content: oklch(0.15 0.04 155);
+    --color-danger: oklch(0.70 0.24 25);
+    --color-danger-content: oklch(0.15 0.03 25);
+    --color-warning: oklch(0.86 0.20 84);
+    --color-warning-content: oklch(0.20 0.05 84);
+    --color-info: oklch(0.74 0.18 232);
+    --color-info-content: oklch(0.15 0.03 232);
+    --color-base-50: oklch(0.140 0.014 235);
+    --color-base-100: oklch(0.180 0.016 235);
+    --color-base-200: oklch(0.230 0.018 235);
+    --color-base-300: oklch(0.310 0.020 235);
+    --color-base-400: oklch(0.400 0.020 235);
+    --color-base-500: oklch(0.500 0.020 235);
+    --color-base-600: oklch(0.580 0.020 235);
+    --color-base-700: oklch(0.700 0.018 235);
+    --color-base-800: oklch(0.820 0.016 235);
+    --color-base-900: oklch(0.930 0.012 235);
+    --color-base-content: oklch(0.930 0.012 235);
+    --color-border: oklch(0.310 0.020 235);
+    --color-border-hover: oklch(0.400 0.020 235);
+    --color-border-active: oklch(0.500 0.020 235);
+    --color-border-disabled: oklch(0.230 0.018 235);
+  }
+}

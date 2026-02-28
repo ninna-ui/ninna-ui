@@ -1,0 +1,42 @@
+{
+    "name": "@ninna-ui/test-config",
+    "version": "0.1.0",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        },
+        "./setup": {
+            "types": "./dist/setup.d.ts",
+            "import": "./dist/setup.js",
+            "default": "./dist/setup.js"
+        },
+        "./vitest.d.ts": "./vitest.d.ts"
+    },
+    "files": [
+        "dist",
+        "vitest.d.ts"
+    ],
+    "scripts": {
+        "build": "tsup",
+        "dev": "tsup --watch",
+        "typecheck": "tsc --noEmit"
+    },
+    "peerDependencies": {
+        "@testing-library/jest-dom": ">=6.0.0",
+        "@testing-library/react": ">=16.0.0",
+        "@testing-library/user-event": ">=14.0.0",
+        "@vitejs/plugin-react": ">=4.0.0 || >=5.0.0",
+        "jsdom": ">=25.0.0",
+        "vitest": "^4.0.0",
+        "vitest-axe": ">=1.0.0-pre.1"
+    },
+    "devDependencies": {
+        "@types/node": "^22.0.0",
+        "tsup": "^8.0.0",
+        "typescript": "^5.4.0"
+    }
+}

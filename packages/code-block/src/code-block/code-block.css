@@ -1,0 +1,101 @@
+/**
+ * CodeBlock syntax token CSS custom properties.
+ * Prefixed with --ninna-cb- to avoid collisions.
+ *
+ * Light mode defaults on [data-slot="code-block"].
+ * Dark mode overrides via .dark ancestor or data-color-scheme="dark" on the element.
+ * Force light mode: data-color-scheme="light" on the element.
+ * Force dark mode:  data-color-scheme="dark"  on the element.
+ *
+ * Import in your app CSS entry point:
+ *   @import "@ninna-ui/code-block/styles";
+ *
+ * Override individual token colors:
+ *   [data-slot="code-block"] { --ninna-cb-keyword: oklch(0.50 0.22 250); }
+ */
+
+/* ── Light mode (default) ──────────────────────────────── */
+[data-slot="code-block"] {
+  /* Surface */
+  --ninna-cb-bg:          oklch(0.985 0.002 264);
+  --ninna-cb-border:      oklch(0.90 0.01 264);
+  --ninna-cb-text:        oklch(0.20 0.01 264);
+  --ninna-cb-line-num:    oklch(0.65 0.01 264);
+  --ninna-cb-copy-bg:     oklch(0.96 0.002 264 / 0.85);
+  --ninna-cb-copy-border: oklch(0.88 0.01 264);
+  /* Tokens */
+  --ninna-cb-comment:     oklch(0.40 0.02 264);
+  --ninna-cb-string:      oklch(0.45 0.14 155);
+  --ninna-cb-keyword:     oklch(0.45 0.16 295);
+  --ninna-cb-boolean:     oklch(0.45 0.14 250);
+  --ninna-cb-number:      oklch(0.45 0.16 70);
+  --ninna-cb-punctuation: oklch(0.40 0.02 264);
+  --ninna-cb-tag:         oklch(0.45 0.18 350);
+  --ninna-cb-attr:        oklch(0.45 0.14 50);
+  --ninna-cb-component:   oklch(0.45 0.14 255);
+}
+
+/* ── Dark mode (theme-driven) ──────────────────────────── */
+:is(.dark [data-slot="code-block"]) {
+  /* Surface */
+  --ninna-cb-bg:          oklch(0.20 0.01 264);
+  --ninna-cb-border:      oklch(0.28 0.015 264);
+  --ninna-cb-text:        oklch(0.92 0.005 264);
+  --ninna-cb-line-num:    oklch(0.55 0.01 264);
+  --ninna-cb-copy-bg:     oklch(0.25 0.01 264 / 0.85);
+  --ninna-cb-copy-border: oklch(0.32 0.015 264);
+  /* Tokens */
+  --ninna-cb-comment:     oklch(0.85 0.02 264);
+  --ninna-cb-string:      oklch(0.90 0.16 155);
+  --ninna-cb-keyword:     oklch(0.90 0.18 300);
+  --ninna-cb-boolean:     oklch(0.90 0.16 255);
+  --ninna-cb-number:      oklch(0.92 0.16 80);
+  --ninna-cb-punctuation: oklch(0.85 0.02 264);
+  --ninna-cb-tag:         oklch(0.90 0.20 350);
+  --ninna-cb-attr:        oklch(0.92 0.16 55);
+  --ninna-cb-component:   oklch(0.90 0.16 255);
+}
+
+/* ── Forced dark mode via prop (data-color-scheme="dark") ─ */
+[data-slot="code-block"][data-color-scheme="dark"] {
+  /* Surface */
+  --ninna-cb-bg:          oklch(0.20 0.01 264);
+  --ninna-cb-border:      oklch(0.28 0.015 264);
+  --ninna-cb-text:        oklch(0.92 0.005 264);
+  --ninna-cb-line-num:    oklch(0.55 0.01 264);
+  --ninna-cb-copy-bg:     oklch(0.25 0.01 264 / 0.85);
+  --ninna-cb-copy-border: oklch(0.32 0.015 264);
+  /* Tokens */
+  --ninna-cb-comment:     oklch(0.85 0.02 264);
+  --ninna-cb-string:      oklch(0.90 0.16 155);
+  --ninna-cb-keyword:     oklch(0.90 0.18 300);
+  --ninna-cb-boolean:     oklch(0.90 0.16 255);
+  --ninna-cb-number:      oklch(0.92 0.16 80);
+  --ninna-cb-punctuation: oklch(0.85 0.02 264);
+  --ninna-cb-tag:         oklch(0.90 0.20 350);
+  --ninna-cb-attr:        oklch(0.92 0.16 55);
+  --ninna-cb-component:   oklch(0.90 0.16 255);
+}
+
+/* ── Forced light mode via prop (data-color-scheme="light") */
+/* Overrides dark-mode ancestor so the block always shows light syntax */
+:is(.dark [data-slot="code-block"][data-color-scheme="light"]),
+[data-slot="code-block"][data-color-scheme="light"] {
+  /* Surface */
+  --ninna-cb-bg:          oklch(0.985 0.002 264);
+  --ninna-cb-border:      oklch(0.90 0.01 264);
+  --ninna-cb-text:        oklch(0.20 0.01 264);
+  --ninna-cb-line-num:    oklch(0.65 0.01 264);
+  --ninna-cb-copy-bg:     oklch(0.96 0.002 264 / 0.85);
+  --ninna-cb-copy-border: oklch(0.88 0.01 264);
+  /* Tokens */
+  --ninna-cb-comment:     oklch(0.40 0.02 264);
+  --ninna-cb-string:      oklch(0.45 0.14 155);
+  --ninna-cb-keyword:     oklch(0.45 0.16 295);
+  --ninna-cb-boolean:     oklch(0.45 0.14 250);
+  --ninna-cb-number:      oklch(0.45 0.16 70);
+  --ninna-cb-punctuation: oklch(0.40 0.02 264);
+  --ninna-cb-tag:         oklch(0.45 0.18 350);
+  --ninna-cb-attr:        oklch(0.45 0.14 50);
+  --ninna-cb-component:   oklch(0.45 0.14 255);
+}

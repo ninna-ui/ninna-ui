@@ -1,0 +1,23 @@
+name: PR Title Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+
+jobs:
+  pr-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check PR title
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = context.payload.pull_request.title;
+
+            const regex = /^(feat|fix|refactor|docs|chore|perf|test|style): .+/;
+
+            if (!regex.test(title)) {
+              core.setFailed(
+                "PR title must start with feat:, fix:, refactor:, docs:, chore:, perf:, test:, or style:"
+              );
+            }

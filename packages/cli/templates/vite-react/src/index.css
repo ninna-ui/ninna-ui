@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@import "@ninna-ui/core/theme/presets/default.css";
+
+/* Enable dark mode support */
+@variant dark (&:is(.dark *));
+
+/* Configure content sources for tree-shaking */
+@source "../node_modules/@ninna-ui/**/*.{js,ts,jsx,tsx}";

@@ -1,0 +1,67 @@
+{
+  "name": "@ninna-ui/core",
+  "version": "0.1.0",
+  "description": "Core types, design tokens, and CSS themes for Ninna UI",
+  "license": "MIT",
+  "author": "Ninna-UI Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninna-ui/ninna-ui.git",
+    "directory": "packages/core"
+  },
+  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/core#readme",
+  "bugs": {
+    "url": "https://github.com/ninna-ui/ninna-ui/issues"
+  },
+  "keywords": [
+    "ninna-ui",
+    "design-tokens",
+    "tailwindcss",
+    "theme",
+    "oklch",
+    "css-variables"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./theme/*.css": "./dist/theme/*.css",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "tsup && node -e \"const fs=require('fs');const p=require('path');function cpCss(s,d){fs.mkdirSync(d,{recursive:true});for(const f of fs.readdirSync(s,{withFileTypes:true})){const sp=p.join(s,f.name),dp=p.join(d,f.name);f.isDirectory()?cpCss(sp,dp):f.name.endsWith('.css')&&fs.copyFileSync(sp,dp)}}cpCss('src/theme','dist/theme')\"",
+    "dev": "tsup --watch",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.ts\"",
+    "clean": "rimraf dist"
+  },
+  "peerDependencies": {
+    "tailwindcss": ">=4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependenciesMeta": {
+    "tailwindcss": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@ninna-ui/tsconfig": "workspace:*",
+    "@ninna-ui/test-config": "workspace:*",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^4.0.0"
+  }
+}

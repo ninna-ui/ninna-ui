@@ -1,0 +1,14 @@
+{
+  "extends": "@ninna-ui/tsconfig/app.json",
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": false,
+    "exactOptionalPropertyTypes": false,
+    "baseUrl": ".",
+    "rootDirs": [".", ".react-router/types"],
+    "paths": {
+      "~/*": ["./app/*"]
+    }
+  },
+  "include": [".react-router/types/**/*", "app"]
+}

@@ -1,0 +1,187 @@
+/**
+ * Ninna-UI Theme System - Sunset Preset
+ *
+ * Warm, energetic palette with bright orange, vivid rose, and hot fuchsia.
+ * Uses dark-content strategy for vibrant colors.
+ * All semantic colors guarantee WCAG AA 4.5:1 contrast with their -content color.
+ * Perfect for creative apps, social platforms, or lifestyle brands.
+ *
+ * Palette: Warm Orange primary, Vivid Rose secondary, Hot Fuchsia accent.
+ *
+ * Dark mode: Add class="dark" to <html> element.
+ * System auto: Omit class — follows prefers-color-scheme automatically.
+ *
+ * Usage:
+ * @import "tailwindcss";
+ * @import "@ninna-ui/core/theme/presets/sunset.css";
+ *
+ * HTML: <html data-theme="sunset">                    (light)
+ *       <html data-theme="sunset" class="dark">       (forced dark)
+ *       <html data-theme="sunset" class="light">      (forced light)
+ */
+
+@import "../tailwind.css";
+
+/* ============================================
+   Light Theme - Sunset
+   Applies when data-theme="sunset" is set.
+   ============================================ */
+[data-theme="sunset"] {
+  color-scheme: light;
+
+  /* Primary — Deep Orange (bold CTA — white text) */
+  --color-primary: oklch(0.52 0.20 40);
+  --color-primary-content: oklch(0.93 0.03 40);
+
+  /* Secondary — Deep Rose (bold — white text, consistent with primary) */
+  --color-secondary: oklch(0.50 0.24 350);
+  --color-secondary-content: oklch(0.93 0.03 350);
+
+  /* Accent — Hot Fuchsia (vibrant — dark text) */
+  --color-accent: oklch(0.66 0.28 330);
+  --color-accent-content: oklch(0.15 0.04 330);
+
+  /* Neutral — Dark Warm Stone */
+  --color-neutral: oklch(0.22 0.04 50);
+  --color-neutral-content: oklch(0.93 0.01 50);
+
+  /* Success — Bright Emerald (light — dark text) */
+  --color-success: oklch(0.72 0.22 155);
+  --color-success-content: oklch(0.14 0.04 155);
+
+  /* Danger — Bright Coral (light — dark text) */
+  --color-danger: oklch(0.71 0.22 25);
+  --color-danger-content: oklch(0.14 0.04 25);
+
+  /* Warning — Vivid Amber (bright — dark text) */
+  --color-warning: oklch(0.84 0.20 84);
+  --color-warning-content: oklch(0.20 0.05 84);
+
+  /* Info — Sky Blue (light — dark text) */
+  --color-info: oklch(0.72 0.19 232);
+  --color-info-content: oklch(0.14 0.04 232);
+
+  /* Base surfaces — Warm Stone (50=lightest → 900=darkest) */
+  --color-base-50: oklch(0.985 0.006 45);
+  --color-base-100: oklch(0.970 0.008 45);
+  --color-base-200: oklch(0.940 0.010 45);
+  --color-base-300: oklch(0.900 0.014 45);
+  --color-base-400: oklch(0.810 0.016 45);
+  --color-base-500: oklch(0.690 0.016 45);
+  --color-base-600: oklch(0.550 0.016 45);
+  --color-base-700: oklch(0.430 0.014 45);
+  --color-base-800: oklch(0.310 0.012 45);
+  --color-base-900: oklch(0.200 0.010 45);
+  --color-base-content: oklch(0.200 0.010 45);
+
+  /* Border colors */
+  --color-border: oklch(0.880 0.010 45);
+  --color-border-hover: oklch(0.690 0.016 45);
+  --color-border-active: oklch(0.550 0.016 45);
+  --color-border-disabled: oklch(0.900 0.014 45);
+}
+
+/* ============================================
+   Dark Theme - Sunset (explicit .dark class)
+   Applies when <html class="dark" data-theme="sunset">
+   ============================================ */
+.dark [data-theme="sunset"],
+[data-theme="sunset"].dark {
+  color-scheme: dark;
+
+  /* Primary — Bright Orange */
+  --color-primary: oklch(0.68 0.20 40);
+  --color-primary-content: oklch(0.15 0.03 40);
+
+  /* Secondary — Deep Rose (light text for WCAG AA contrast on dark bg) */
+  --color-secondary: oklch(0.50 0.22 350);
+  --color-secondary-content: oklch(0.95 0.03 350);
+
+  /* Accent — Bright Fuchsia */
+  --color-accent: oklch(0.74 0.26 330);
+  --color-accent-content: oklch(0.15 0.03 330);
+
+  /* Neutral — Light Warm Stone (flipped for dark bg readability) */
+  --color-neutral: oklch(0.70 0.04 50);
+  --color-neutral-content: oklch(0.15 0.01 50);
+
+  /* Success — Bright Emerald */
+  --color-success: oklch(0.72 0.20 155);
+  --color-success-content: oklch(0.15 0.04 155);
+
+  /* Danger — Bright Coral */
+  --color-danger: oklch(0.70 0.24 25);
+  --color-danger-content: oklch(0.15 0.03 25);
+
+  /* Warning — Bright Amber (dark text) */
+  --color-warning: oklch(0.86 0.20 84);
+  --color-warning-content: oklch(0.20 0.05 84);
+
+  /* Info — Bright Sky Blue */
+  --color-info: oklch(0.74 0.18 232);
+  --color-info-content: oklch(0.15 0.03 232);
+
+  /* Base surfaces — Deep Warm Stone */
+  --color-base-50: oklch(0.140 0.010 45);
+  --color-base-100: oklch(0.180 0.012 45);
+  --color-base-200: oklch(0.230 0.014 45);
+  --color-base-300: oklch(0.310 0.014 45);
+  --color-base-400: oklch(0.400 0.014 45);
+  --color-base-500: oklch(0.500 0.014 45);
+  --color-base-600: oklch(0.580 0.016 45);
+  --color-base-700: oklch(0.700 0.016 45);
+  --color-base-800: oklch(0.820 0.014 45);
+  --color-base-900: oklch(0.930 0.010 45);
+  --color-base-content: oklch(0.930 0.010 45);
+
+  /* Border colors (dark) */
+  --color-border: oklch(0.310 0.014 45);
+  --color-border-hover: oklch(0.400 0.014 45);
+  --color-border-active: oklch(0.500 0.014 45);
+  --color-border-disabled: oklch(0.230 0.014 45);
+}
+
+/* ============================================
+   Dark Theme - Sunset (system preference)
+   Applies when no .dark/.light class is set and
+   the OS prefers dark mode.
+   SYNC: Values must match the .dark block above.
+   Pure CSS requires duplication — no mixin support.
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  [data-theme="sunset"]:not(.light):not(.dark) {
+    color-scheme: dark;
+
+    --color-primary: oklch(0.68 0.20 40);
+    --color-primary-content: oklch(0.15 0.03 40);
+    --color-secondary: oklch(0.50 0.22 350);
+    --color-secondary-content: oklch(0.95 0.03 350);
+    --color-accent: oklch(0.74 0.26 330);
+    --color-accent-content: oklch(0.15 0.03 330);
+    --color-neutral: oklch(0.70 0.04 50);
+    --color-neutral-content: oklch(0.15 0.01 50);
+    --color-success: oklch(0.72 0.20 155);
+    --color-success-content: oklch(0.15 0.04 155);
+    --color-danger: oklch(0.70 0.24 25);
+    --color-danger-content: oklch(0.15 0.03 25);
+    --color-warning: oklch(0.86 0.20 84);
+    --color-warning-content: oklch(0.20 0.05 84);
+    --color-info: oklch(0.74 0.18 232);
+    --color-info-content: oklch(0.15 0.03 232);
+    --color-base-50: oklch(0.140 0.010 45);
+    --color-base-100: oklch(0.180 0.012 45);
+    --color-base-200: oklch(0.230 0.014 45);
+    --color-base-300: oklch(0.310 0.014 45);
+    --color-base-400: oklch(0.400 0.014 45);
+    --color-base-500: oklch(0.500 0.014 45);
+    --color-base-600: oklch(0.580 0.016 45);
+    --color-base-700: oklch(0.700 0.016 45);
+    --color-base-800: oklch(0.820 0.014 45);
+    --color-base-900: oklch(0.930 0.010 45);
+    --color-base-content: oklch(0.930 0.010 45);
+    --color-border: oklch(0.310 0.014 45);
+    --color-border-hover: oklch(0.400 0.014 45);
+    --color-border-active: oklch(0.500 0.014 45);
+    --color-border-disabled: oklch(0.230 0.014 45);
+  }
+}

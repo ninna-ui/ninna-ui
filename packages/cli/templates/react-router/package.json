@@ -1,0 +1,34 @@
+{
+  "name": "ninna-ui-react-router-starter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "react-router dev",
+    "build": "react-router build",
+    "start": "react-router-serve ./build/server/index.js"
+  },
+  "dependencies": {
+    "@ninna-ui/core": "^0.1.0",
+    "@ninna-ui/primitives": "^0.1.0",
+    "@ninna-ui/feedback": "^0.1.0",
+    "@ninna-ui/forms": "^0.1.0",
+    "@ninna-ui/layout": "^0.1.0",
+    "@react-router/node": "^7.6.0",
+    "react-router": "^7.6.0",
+    "isbot": "^5.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@react-router/dev": "^7.6.0",
+    "@react-router/fs-routes": "^7.6.0",
+    "@react-router/serve": "^7.6.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.6.0",
+    "vite": "^7.0.0"
+  }
+}

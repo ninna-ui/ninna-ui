@@ -1,0 +1,62 @@
+{
+  "name": "ninna-ui",
+  "version": "0.0.0",
+  "private": true,
+  "description": "A React-first, framework-agnostic UI system with design tokens, primitives, and layouts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninna-ui/ninna-ui.git"
+  },
+  "type": "module",
+  "license": "MIT",
+  "author": "Ninna-UI Team",
+  "workspaces": [
+    "packages/*",
+    "apps/*",
+    "tooling/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint typecheck",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "clean": "turbo run clean",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build && changeset publish",
+    "check-exports": "publint packages/core && publint packages/primitives && publint packages/feedback && publint packages/layout && publint packages/forms && publint packages/overlays && publint packages/navigation && publint packages/data-display && publint packages/code-block && publint packages/cli",
+    "check-pack": "node scripts/check-pack.js",
+    "check-internal-deps": "node scripts/check-internal-deps.js"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.0",
+    "@changesets/changelog-github": "^0.2.0",
+    "@changesets/cli": "^2.29.8",
+    "@ninna-ui/eslint-config": "workspace:*",
+    "@ninna-ui/test-config": "workspace:*",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "eslint": "^9.0.0",
+    "jsdom": "^28.0.0",
+    "prettier": "^3.8.0",
+    "publint": "^0.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "rimraf": "^6.1.2",
+    "turbo": "^2.8.10",
+    "typescript": "^5.4.0",
+    "vitest": "^4.0.0",
+    "vitest-axe": "1.0.0-pre.5"
+  },
+  "packageManager": "pnpm@9.15.4",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}

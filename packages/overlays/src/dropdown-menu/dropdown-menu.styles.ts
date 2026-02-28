@@ -1,0 +1,48 @@
+export const dropdownMenuStyles = {
+  content: [
+    'z-50 min-w-[8rem] overflow-hidden rounded-lg',
+    'border border-base-200 bg-base-100 shadow-lg',
+    'p-1',
+    'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
+    'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+    'data-[side=top]:slide-in-from-bottom-2',
+    'data-[side=bottom]:slide-in-from-top-2',
+    'data-[side=left]:slide-in-from-right-2',
+    'data-[side=right]:slide-in-from-left-2',
+  ],
+  item: [
+    'relative flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5',
+    'text-sm text-base-content outline-none transition-colors',
+    'focus:bg-base-200 focus:text-base-content focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary',
+    'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+  ],
+  itemDestructive: 'text-danger focus:bg-danger/10 focus:text-danger',
+  checkboxItem: [
+    'relative flex cursor-pointer select-none items-center gap-2 rounded-md py-1.5 pl-8 pr-2',
+    'text-sm text-base-content outline-none transition-colors',
+    'focus:bg-base-200 focus:text-base-content',
+    'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+  ],
+  radioItem: [
+    'relative flex cursor-pointer select-none items-center gap-2 rounded-md py-1.5 pl-8 pr-2',
+    'text-sm text-base-content outline-none transition-colors',
+    'focus:bg-base-200 focus:text-base-content',
+    'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+  ],
+  itemIndicator: 'absolute left-2 flex h-3.5 w-3.5 items-center justify-center',
+  label: 'px-2 py-1.5 text-xs font-semibold text-base-content/70 uppercase tracking-wide',
+  labelInset: 'pl-8',
+  separator: '-mx-1 my-1 h-px bg-base-200',
+  subTrigger: [
+    'relative flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5',
+    'text-sm text-base-content outline-none transition-colors',
+    'focus:bg-base-200 data-[state=open]:bg-base-200',
+  ],
+  subContent: [
+    'z-50 min-w-[8rem] overflow-hidden rounded-lg',
+    'border border-base-200 bg-base-100 shadow-lg',
+    'p-1',
+    'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
+    'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
+  ],
+};

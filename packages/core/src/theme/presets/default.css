@@ -1,0 +1,196 @@
+/**
+ * Ninna-UI Theme System - Default Preset
+ *
+ * Vibrant electric purple theme inspired by DaisyUI, Linear, and 2026 trends.
+ * Uses dark-content strategy: primary/neutral are dark (white text),
+ * secondary/accent/status colors are bright (dark text) for maximum vibrancy.
+ * All semantic colors guarantee WCAG AA 4.5:1 contrast with their -content color.
+ *
+ * Palette: Electric Purple primary, Hot Magenta secondary, Bright Teal accent.
+ *
+ * Dark mode: Add class="dark" to <html> element.
+ * System auto: Omit class — follows prefers-color-scheme automatically.
+ *
+ * Usage:
+ * @import "tailwindcss";
+ * @import "@ninna-ui/core/theme/presets/default.css";
+ *
+ * HTML: <html data-theme="default">                    (light)
+ *       <html data-theme="default" class="dark">       (forced dark)
+ *       <html data-theme="default" class="light">      (forced light)
+ */
+
+@import "../tailwind.css";
+
+/* ============================================
+   Light Theme - Default
+   Applies when data-theme="default" is set.
+   ============================================ */
+[data-theme="default"] {
+  color-scheme: light;
+
+  /* Primary — Electric Purple (deep, bold CTA — white text) */
+  --color-primary: oklch(0.49 0.31 275);
+  --color-primary-content: oklch(0.90 0.06 275);
+
+  /* Secondary — Deep Magenta (bold — white text, consistent with primary) */
+  --color-secondary: oklch(0.50 0.28 342);
+  --color-secondary-content: oklch(0.92 0.04 342);
+
+  /* Accent — Bright Teal (2026 eco-digital trend — dark text) */
+  --color-accent: oklch(0.75 0.18 183);
+  --color-accent-content: oklch(0.16 0.04 183);
+
+  /* Neutral — Deep Ink */
+  --color-neutral: oklch(0.21 0.03 265);
+  --color-neutral-content: oklch(0.93 0.01 265);
+
+  /* Success — Bright Emerald (light — dark text) */
+  --color-success: oklch(0.72 0.22 155);
+  --color-success-content: oklch(0.14 0.04 155);
+
+  /* Danger — Bright Coral (light — dark text) */
+  --color-danger: oklch(0.71 0.22 25);
+  --color-danger-content: oklch(0.14 0.04 25);
+
+  /* Warning — Vivid Amber (bright — dark text) */
+  --color-warning: oklch(0.84 0.20 84);
+  --color-warning-content: oklch(0.20 0.05 84);
+
+  /* Info — Sky Blue (light — dark text) */
+  --color-info: oklch(0.72 0.19 232);
+  --color-info-content: oklch(0.14 0.04 232);
+
+  /* Base surfaces — Cool Slate (50=lightest → 900=darkest) */
+  --color-base-50: oklch(0.985 0.006 270);
+  --color-base-100: oklch(0.970 0.008 270);
+  --color-base-200: oklch(0.940 0.010 270);
+  --color-base-300: oklch(0.900 0.014 270);
+  --color-base-400: oklch(0.810 0.016 270);
+  --color-base-500: oklch(0.690 0.018 270);
+  --color-base-600: oklch(0.550 0.020 270);
+  --color-base-700: oklch(0.430 0.018 270);
+  --color-base-800: oklch(0.310 0.016 270);
+  --color-base-900: oklch(0.200 0.014 270);
+  --color-base-content: oklch(0.200 0.014 270);
+
+  /* Border colors */
+  --color-border: oklch(0.880 0.012 270);
+  --color-border-hover: oklch(0.690 0.018 270);
+  --color-border-active: oklch(0.550 0.020 270);
+  --color-border-disabled: oklch(0.900 0.014 270);
+}
+
+/* ============================================
+   Dark Theme - Default (explicit .dark class)
+   Applies when <html class="dark" data-theme="default">
+   ============================================ */
+.dark [data-theme="default"],
+[data-theme="default"].dark {
+  color-scheme: dark;
+
+  /* Primary — Bright Purple (lighter for dark bg) */
+  --color-primary: oklch(0.74 0.28 275);
+  --color-primary-content: oklch(0.15 0.03 275);
+
+  /* Secondary — Deep Magenta (light text for WCAG AA contrast on dark bg) */
+  --color-secondary: oklch(0.50 0.26 342);
+  --color-secondary-content: oklch(0.95 0.03 342);
+
+  /* Accent — Bright Teal */
+  --color-accent: oklch(0.78 0.16 183);
+  --color-accent-content: oklch(0.15 0.03 183);
+
+  /* Neutral — Light Slate (flipped for dark bg readability) */
+  --color-neutral: oklch(0.70 0.03 265);
+  --color-neutral-content: oklch(0.15 0.01 265);
+
+  /* Success — Bright Emerald */
+  --color-success: oklch(0.72 0.20 155);
+  --color-success-content: oklch(0.15 0.04 155);
+
+  /* Danger — Bright Coral */
+  --color-danger: oklch(0.70 0.24 25);
+  --color-danger-content: oklch(0.15 0.03 25);
+
+  /* Warning — Bright Amber (dark text) */
+  --color-warning: oklch(0.86 0.20 84);
+  --color-warning-content: oklch(0.20 0.05 84);
+
+  /* Info — Bright Sky Blue */
+  --color-info: oklch(0.74 0.18 232);
+  --color-info-content: oklch(0.15 0.03 232);
+
+  /* Base surfaces — Dark Slate (inverted for dark mode) */
+  --color-base-50: oklch(0.140 0.012 270);
+  --color-base-100: oklch(0.180 0.014 270);
+  --color-base-200: oklch(0.230 0.016 270);
+  --color-base-300: oklch(0.310 0.018 270);
+  --color-base-400: oklch(0.400 0.018 270);
+  --color-base-500: oklch(0.500 0.018 270);
+  --color-base-600: oklch(0.580 0.020 270);
+  --color-base-700: oklch(0.700 0.018 270);
+  --color-base-800: oklch(0.820 0.016 270);
+  --color-base-900: oklch(0.930 0.012 270);
+  --color-base-content: oklch(0.930 0.012 270);
+
+  /* Border colors (dark) */
+  --color-border: oklch(0.310 0.018 270);
+  --color-border-hover: oklch(0.400 0.018 270);
+  --color-border-active: oklch(0.500 0.018 270);
+  --color-border-disabled: oklch(0.230 0.016 270);
+}
+
+/* ============================================
+   Dark Theme - Default (system preference)
+   Applies when no .dark/.light class is set and
+   the OS prefers dark mode.
+   SYNC: Values must match the .dark block above.
+   Pure CSS requires duplication — no mixin support.
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  [data-theme="default"]:not(.light):not(.dark) {
+    color-scheme: dark;
+
+    --color-primary: oklch(0.74 0.28 275);
+    --color-primary-content: oklch(0.15 0.03 275);
+
+    --color-secondary: oklch(0.50 0.26 342);
+    --color-secondary-content: oklch(0.95 0.03 342);
+
+    --color-accent: oklch(0.78 0.16 183);
+    --color-accent-content: oklch(0.15 0.03 183);
+
+    --color-neutral: oklch(0.70 0.03 265);
+    --color-neutral-content: oklch(0.15 0.01 265);
+
+    --color-success: oklch(0.72 0.20 155);
+    --color-success-content: oklch(0.15 0.04 155);
+
+    --color-danger: oklch(0.70 0.24 25);
+    --color-danger-content: oklch(0.15 0.03 25);
+
+    --color-warning: oklch(0.86 0.20 84);
+    --color-warning-content: oklch(0.20 0.05 84);
+
+    --color-info: oklch(0.74 0.18 232);
+    --color-info-content: oklch(0.15 0.03 232);
+
+    --color-base-50: oklch(0.140 0.012 270);
+    --color-base-100: oklch(0.180 0.014 270);
+    --color-base-200: oklch(0.230 0.016 270);
+    --color-base-300: oklch(0.310 0.018 270);
+    --color-base-400: oklch(0.400 0.018 270);
+    --color-base-500: oklch(0.500 0.018 270);
+    --color-base-600: oklch(0.580 0.020 270);
+    --color-base-700: oklch(0.700 0.018 270);
+    --color-base-800: oklch(0.820 0.016 270);
+    --color-base-900: oklch(0.930 0.012 270);
+    --color-base-content: oklch(0.930 0.012 270);
+
+    --color-border: oklch(0.310 0.018 270);
+    --color-border-hover: oklch(0.400 0.018 270);
+    --color-border-active: oklch(0.500 0.018 270);
+    --color-border-disabled: oklch(0.230 0.016 270);
+  }
+}

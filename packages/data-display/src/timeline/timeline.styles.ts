@@ -1,0 +1,29 @@
+export const timelineStyles = {
+  root: 'relative flex flex-col gap-0',
+  rootHorizontal: 'flex-row',
+  item: 'relative flex gap-4 pb-8 last:pb-0',
+  itemHorizontal: 'flex-col items-center',
+  indicator: {
+    base: 'relative z-10 flex h-3 w-3 shrink-0 items-center justify-center rounded-full mt-1.5',
+    withIcon: 'h-8 w-8 mt-0',
+    default: 'bg-base-300',
+    primary: 'bg-primary',
+    success: 'bg-success',
+    danger: 'bg-danger',
+    warning: 'bg-warning',
+  },
+  connector: 'absolute left-[5px] top-4 bottom-0 w-0.5 bg-base-200',
+  connectorHorizontal: 'static h-0.5 w-full',
+  content: 'flex-1 min-w-0 pt-0',
+  heading: 'text-sm font-semibold text-base-content',
+  description: 'text-sm text-base-content/70 mt-1',
+  time: 'text-xs text-base-content/70 mt-1',
+};
+
+export const TIMELINE_INDICATOR_STATUS: Record<string, string> = {
+  default: timelineStyles.indicator.default,
+  primary: timelineStyles.indicator.primary,
+  success: timelineStyles.indicator.success,
+  danger: timelineStyles.indicator.danger,
+  warning: timelineStyles.indicator.warning,
+};

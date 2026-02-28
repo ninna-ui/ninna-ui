@@ -1,0 +1,70 @@
+{
+  "name": "@ninna-ui/primitives",
+  "version": "0.1.0",
+  "description": "Primitive UI components for Ninna-UI - Button, Badge, Avatar, and more",
+  "license": "MIT",
+  "author": "Ninna-UI Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninna-ui/ninna-ui.git",
+    "directory": "packages/primitives"
+  },
+  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/primitives#readme",
+  "bugs": {
+    "url": "https://github.com/ninna-ui/ninna-ui/issues"
+  },
+  "keywords": [
+    "ninna-ui",
+    "react",
+    "components",
+    "button",
+    "badge",
+    "avatar",
+    "ui",
+    "tailwindcss"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run --passWithNoTests",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "@ninna-ui/core": "workspace:*"
+  },
+  "peerDependencies": {
+    "react": ">=19.0.0",
+    "react-dom": ">=19.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@ninna-ui/tsconfig": "workspace:*",
+    "@ninna-ui/test-config": "workspace:*",
+    "@ninna-ui/utils": "workspace:*",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^4.0.0"
+  }
+}

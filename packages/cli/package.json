@@ -1,0 +1,64 @@
+{
+  "name": "@ninna-ui/cli",
+  "version": "0.1.0",
+  "description": "CLI tool for scaffolding Ninna UI projects",
+  "license": "MIT",
+  "author": "Ninna-UI Team",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninna-ui/ninna-ui.git",
+    "directory": "packages/cli"
+  },
+  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/cli#readme",
+  "bugs": {
+    "url": "https://github.com/ninna-ui/ninna-ui/issues"
+  },
+  "keywords": [
+    "ninna-ui",
+    "cli",
+    "scaffolding",
+    "react",
+    "tailwindcss",
+    "starter-template"
+  ],
+  "type": "module",
+  "bin": {
+    "ninna-ui": "./dist/index.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup src/index.ts --format esm --watch",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint \"src/**/*.ts\"",
+    "clean": "rimraf dist"
+  },
+  "dependencies": {
+    "commander": "^12.0.0",
+    "prompts": "^2.4.2",
+    "picocolors": "^1.1.0",
+    "fs-extra": "^11.2.0"
+  },
+  "devDependencies": {
+    "@ninna-ui/tsconfig": "workspace:*",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.0.0",
+    "@types/prompts": "^2.4.9",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0"
+  }
+}

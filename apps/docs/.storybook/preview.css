@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Import all theme presets for theme switching */
+@import "@ninna-ui/core/theme/presets/default.css";
+@import "@ninna-ui/core/theme/presets/ocean.css";
+@import "@ninna-ui/core/theme/presets/sunset.css";
+@import "@ninna-ui/core/theme/presets/forest.css";
+@import "@ninna-ui/core/theme/presets/minimal.css";
+
+@variant dark (&:is(.dark *));
+
+/* Code block syntax token colors (static — no runtime style injection) */
+@import "@ninna-ui/code-block/styles";
+
+/* Content sources for Tailwind CSS v4 tree-shaking */
+@source "../node_modules/@ninna-ui/**/*.{js,ts,jsx,tsx}";
+@source "./**/*.{ts,tsx}";

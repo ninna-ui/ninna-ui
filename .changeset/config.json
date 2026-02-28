@@ -1,0 +1,30 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config@3.0.0/schema.json",
+  "changelog": [
+    "@changesets/changelog-github",
+    { "repo": "ninna-ui/ninna-ui" }
+  ],
+  "commit": false,
+  "fixed": [
+    [
+      "@ninna-ui/core",
+      "@ninna-ui/primitives",
+      "@ninna-ui/feedback",
+      "@ninna-ui/layout",
+      "@ninna-ui/forms",
+      "@ninna-ui/overlays",
+      "@ninna-ui/navigation",
+      "@ninna-ui/data-display",
+      "@ninna-ui/code-block",
+      "@ninna-ui/cli"
+    ]
+  ],
+  "linked": [],
+  "access": "public",
+  "baseBranch": "main",
+  "updateInternalDependencies": "patch",
+  "ignore": [
+    "@ninna-ui/docs",
+    "@ninna-ui/playground"
+  ]
+}

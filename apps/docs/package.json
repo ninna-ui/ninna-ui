@@ -1,0 +1,45 @@
+{
+  "name": "@ninna-ui/docs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Documentation and Storybook for Ninna-UI",
+  "license": "MIT",
+  "author": "Ninna-UI Team",
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build",
+    "preview": "npx serve storybook-static",
+    "lint": "eslint \"src/**/*.{ts,tsx}\"",
+    "typecheck": "tsc --noEmit",
+    "clean": "rimraf storybook-static"
+  },
+  "dependencies": {
+    "@ninna-ui/code-block": "workspace:*",
+    "@ninna-ui/core": "workspace:*",
+    "@ninna-ui/feedback": "workspace:*",
+    "@ninna-ui/layout": "workspace:*",
+    "@ninna-ui/primitives": "workspace:*",
+    "@ninna-ui/forms": "workspace:*",
+    "@ninna-ui/overlays": "workspace:*",
+    "@ninna-ui/navigation": "workspace:*",
+    "@ninna-ui/data-display": "workspace:*",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-themes": "^10.0.0",
+    "@storybook/react": "^10.0.0",
+    "@storybook/react-vite": "^10.0.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "@ninna-ui/tsconfig": "workspace:*",
+    "storybook": "^10.0.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.4.0",
+    "vite": "^7.0.0"
+  }
+}

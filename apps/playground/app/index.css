@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+/* Import all theme presets for dynamic switching */
+@import "@ninna-ui/core/theme/presets/default.css";
+@import "@ninna-ui/core/theme/presets/ocean.css";
+@import "@ninna-ui/core/theme/presets/sunset.css";
+@import "@ninna-ui/core/theme/presets/forest.css";
+@import "@ninna-ui/core/theme/presets/minimal.css";
+
+/* Code block syntax token colors (static — no runtime style injection) */
+@import "@ninna-ui/code-block/styles";
+
+/* Content sources for tree-shaking */
+@source "../node_modules/@ninna-ui/**/*.{js,ts,jsx,tsx}";
+@source "./**/*.{ts,tsx}";
+
+/* Dark mode variant — matches .dark class on <html> (set by ThemeContext) */
+@variant dark (&:is(.dark *)); 
+
+/* ============================================
+   Global Base Styles
+   ============================================ */
+
+/* Smooth scroll — respects prefers-reduced-motion via core CSS */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Consistent box-sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Global focus-visible ring — WCAG 2.4.7 Focus Visible
+   Uses primary color with offset for all interactive elements.
+   Components can override with their own focus-visible styles. */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Remove focus ring for mouse users (only show for keyboard) */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Text selection color — uses primary with opacity */
+::selection {
+  background-color: color-mix(in oklch, var(--color-primary) 25%, transparent);
+  color: var(--color-base-content);
+}
+
+/* Skip link — visible only on focus (defined in root.tsx) */
+.sr-only:focus {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 9999;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 1rem;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* ============================================
+   Print Styles — Lighthouse Best Practices
+   ============================================ */
+@media print {
+  /* Hide navigation and interactive elements */
+  header, aside, footer, [role="navigation"] {
+    display: none !important;
+  }
+
+  /* Ensure content is readable */
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Show link URLs */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.75em;
+    color: #666;
+  }
+
+  /* Avoid page breaks inside cards */
+  .card, article, section {
+    break-inside: avoid;
+  }
+}
+
+/* Custom scrollbar — sidebar (uses theme CSS variables, adapts to any theme + dark mode) */
+[data-sidebar-scroll]::-webkit-scrollbar {
+  width: 4px;
+}
+[data-sidebar-scroll]::-webkit-scrollbar-track {
+  background: transparent;
+}
+[data-sidebar-scroll]::-webkit-scrollbar-thumb {
+  background: var(--color-base-400);
+  border-radius: 9999px;
+}
+[data-sidebar-scroll]::-webkit-scrollbar-thumb:hover {
+  background: var(--color-base-500);
+}
+[data-sidebar-scroll] {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-base-400) transparent;
+}
