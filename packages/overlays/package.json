@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/overlays",
   "version": "0.1.0",
-  "description": "Overlay components for Ninna-UI - Modal, Drawer, Popover, Tooltip, DropdownMenu",
+  "description": "5 overlay React components for Ninna UI — Modal, Drawer, Popover, Tooltip, DropdownMenu. Radix-powered accessibility, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -20,8 +20,15 @@
     "drawer",
     "popover",
     "tooltip",
-    "dropdown",
-    "overlay"
+    "dropdown-menu",
+    "overlay",
+    "dialog",
+    "accessible",
+    "radix-ui",
+    "data-slot",
+    "tailwindcss",
+    "tailwindcss-v4",
+    "ui"
   ],
   "type": "module",
   "exports": {

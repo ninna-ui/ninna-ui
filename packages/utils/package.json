@@ -2,7 +2,7 @@
   "name": "@ninna-ui/utils",
   "version": "0.0.0",
   "private": true,
-  "description": "Utility functions for Ninna-UI",
+  "description": "Shared utility functions for Ninna UI — cn (class merging), composeRefs, createContext, keyboard constants, and SSR helpers.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -19,7 +19,12 @@
     "utilities",
     "cn",
     "tailwind-merge",
-    "clsx"
+    "clsx",
+    "compose-refs",
+    "create-context",
+    "keyboard",
+    "ssr",
+    "react"
   ],
   "type": "module",
   "exports": {

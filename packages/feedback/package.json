@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/feedback",
   "version": "0.1.0",
-  "description": "Feedback UI components for Ninna-UI - Alert, Toast, Progress, Loading",
+  "description": "8 feedback React components for Ninna UI — Alert, Toast, Progress, CircularProgress, Loading, Skeleton, Status, EmptyState. Accessible, themeable, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -19,8 +19,16 @@
     "alert",
     "toast",
     "progress",
+    "circular-progress",
     "loading",
+    "skeleton",
+    "status",
+    "empty-state",
     "feedback",
+    "accessible",
+    "data-slot",
+    "tailwindcss",
+    "tailwindcss-v4",
     "ui"
   ],
   "type": "module",

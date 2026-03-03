@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/layout",
   "version": "0.1.0",
-  "description": "Layout components for Ninna-UI",
+  "description": "10 layout React components for Ninna UI — Box, Stack, Flex, Grid, Container, Center, Wrap, SimpleGrid, AspectRatio, Separator. Responsive, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -18,9 +18,19 @@
     "react",
     "layout",
     "stack",
+    "flex",
     "grid",
     "box",
     "container",
+    "center",
+    "wrap",
+    "simple-grid",
+    "aspect-ratio",
+    "separator",
+    "responsive",
+    "data-slot",
+    "tailwindcss",
+    "tailwindcss-v4",
     "ui"
   ],
   "type": "module",

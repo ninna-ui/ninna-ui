@@ -2,7 +2,7 @@
   "name": "@ninna-ui/react-internal",
   "version": "0.0.0",
   "private": true,
-  "description": "Internal React primitives and Radix-based engines for Ninna UI",
+  "description": "Internal Radix UI adapters and engine wrappers for Ninna UI — isolates Radix dependencies, prevents type leakage. Not published to npm.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -30,6 +30,14 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "clean": "rimraf dist"
   },
+  "keywords": [
+    "ninna-ui",
+    "internal",
+    "radix-ui",
+    "react",
+    "adapters",
+    "engines"
+  ],
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-checkbox": "^1.3.0",

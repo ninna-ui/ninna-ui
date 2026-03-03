@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/code-block",
   "version": "0.1.0",
-  "description": "Syntax-highlighted code block component for Ninna UI",
+  "description": "Syntax-highlighted code block React component for Ninna UI — copy-to-clipboard, line numbers, automatic dark mode, zero external dependencies. Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -18,6 +18,13 @@
     "react",
     "code-block",
     "syntax-highlighting",
+    "copy-to-clipboard",
+    "line-numbers",
+    "dark-mode",
+    "accessible",
+    "data-slot",
+    "tailwindcss",
+    "tailwindcss-v4",
     "ui"
   ],
   "type": "module",

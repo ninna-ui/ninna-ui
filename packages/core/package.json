@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/core",
   "version": "0.1.0",
-  "description": "Core types, design tokens, and CSS themes for Ninna UI",
+  "description": "Design tokens, Tailwind CSS v4 class mappings, and 5 oklch CSS theme presets with automatic dark mode for Ninna UI",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -15,11 +15,16 @@
   },
   "keywords": [
     "ninna-ui",
+    "design-system",
     "design-tokens",
     "tailwindcss",
+    "tailwindcss-v4",
     "theme",
     "oklch",
-    "css-variables"
+    "css-variables",
+    "dark-mode",
+    "color-tokens",
+    "react"
   ],
   "type": "module",
   "exports": {
