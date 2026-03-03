@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/primitives.svg)](https://www.npmjs.com/package/@ninna-ui/primitives)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/primitives)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/primitives)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/primitives)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/primitives)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/primitives)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/primitives)**
 
 The foundational component set of [Ninna UI](../../README.md) — simple, accessible, and composable. Every component supports `forwardRef`, `className`, `data-slot` targeting, and `focus-visible` accessibility out of the box.
 

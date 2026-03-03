@@ -9,7 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/core"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/core#readme",
+  "homepage": "https://ninna-ui.dev/getting-started/theming",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },

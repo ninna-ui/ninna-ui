@@ -10,7 +10,7 @@ A modern React component library with **69 accessible components**, **5 built-in
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
 [![npm](https://img.shields.io/npm/v/@ninna-ui/core.svg)](https://www.npmjs.com/org/ninna-ui)
 
-**[Documentation Website →](https://ninna-ui.dev)** · **[npm →](https://www.npmjs.com/org/ninna-ui)** · **[GitHub →](https://github.com/ninna-ui/ninna-ui)**
+**[Documentation Website →](https://www.ninna-ui.dev)** · **[npm →](https://www.npmjs.com/org/ninna-ui)** · **[GitHub →](https://github.com/ninna-ui/ninna-ui)**
 
 ---
 
@@ -149,7 +149,7 @@ pnpm --filter @ninna-ui/playground dev   # Developer sandbox at localhost:3000 (
 pnpm --filter @ninna-ui/docs dev         # Storybook at localhost:6006
 ```
 
-> **Public documentation:** [ninna-ui.dev](https://ninna-ui.dev) — the full docs website lives in the separate `ninna-ui-web` project.
+> **Public documentation:** [ninna-ui.dev](https://www.ninna-ui.dev) — the full docs website lives in the separate `ninna-ui-web` project.
 
 ## Project Structure
 
@@ -179,7 +179,7 @@ ninna-ui/
 
 ## Documentation
 
-- **[Documentation Website](https://ninna-ui.dev)** — Full public docs with live component demos
+- **[Documentation Website](https://www.ninna-ui.dev)** — Full public docs with live component demos
 - **[Architecture Guide](./docs/architecture/ARCHITECTURE.md)** — Monorepo structure, dependency graph, theme system, canonical component pattern
 - **[Contributing Guide](./docs/guides/CONTRIBUTING.md)** — Development workflow, package boundaries, PR process, component checklist
 - **[Component Standards](./docs/standards/COMPONENT_STANDARD.md)** — File structure, props, accessibility, testing requirements

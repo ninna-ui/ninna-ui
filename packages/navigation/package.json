@@ -9,7 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/navigation"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/navigation#readme",
+  "homepage": "https://ninna-ui.dev/navigation",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },

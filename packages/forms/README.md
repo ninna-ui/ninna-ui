@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/forms.svg)](https://www.npmjs.com/package/@ninna-ui/forms)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/forms)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/forms)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/forms)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/forms)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/forms)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/forms)**
 
 Comprehensive form components for [Ninna UI](../../README.md). Complex controls (Switch, Radio, Select, Slider) are powered by [Radix UI](https://www.radix-ui.com/) under the hood for bulletproof accessibility — but Radix types never leak into the public API.
 

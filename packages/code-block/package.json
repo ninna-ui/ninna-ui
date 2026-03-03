@@ -9,7 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/code-block"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/code-block#readme",
+  "homepage": "https://ninna-ui.dev/code-block",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },

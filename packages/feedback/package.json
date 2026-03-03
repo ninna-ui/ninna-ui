@@ -9,7 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/feedback"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/feedback#readme",
+  "homepage": "https://ninna-ui.dev/feedback",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },

@@ -9,7 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/forms"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/forms#readme",
+  "homepage": "https://ninna-ui.dev/forms",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },

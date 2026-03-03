@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/feedback.svg)](https://www.npmjs.com/package/@ninna-ui/feedback)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/feedback)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/feedback)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/feedback)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/feedback)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/feedback)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/feedback)**
 
 User feedback components for [Ninna UI](../../README.md) — everything you need to communicate state, progress, and notifications to users. All components are accessible, themeable, and support `data-slot` CSS targeting.
 

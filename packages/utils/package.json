@@ -10,7 +10,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/utils"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/utils#readme",
+  "homepage": "https://ninna-ui.dev",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },
