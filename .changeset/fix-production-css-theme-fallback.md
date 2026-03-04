@@ -7,9 +7,11 @@ fix: production CSS purge & theme fallback
 
 ### @ninna-ui/core (minor)
 
-- **`@source inline()` safelist in `tailwind.css`**: All Tailwind utility classes used by @ninna-ui component packages are now automatically safelisted via `@source inline()` directives built into the theme CSS. Consumers no longer need `@source "../node_modules/@ninna-ui/**"` in their CSS — importing a theme preset is sufficient.
+- **Filesystem `@source` scanning in `tailwind.css`**: Added `@source` directives that point to all sibling `@ninna-ui` package dist files using relative paths. When a consumer imports a theme preset, Tailwind automatically scans every `@ninna-ui` component's JS output — no manual `@source` directive needed in the consumer's CSS.
 
-- **`:root` fallback on all 5 theme presets**: Theme CSS variables now apply to `:root` in addition to `[data-theme="..."]`, so themes work out-of-the-box without requiring a `data-theme` attribute on the HTML element. When importing multiple presets, use `data-theme` to scope each section (last imported wins via CSS cascade otherwise).
+- **`@source inline()` safelist**: Added `@source inline()` directives for computed/dynamic classes (color maps, size maps, animation utilities) that cannot be detected by scanning JS files alone.
+
+- **`:root` fallback on `default.css` only**: The default theme preset applies to `:root` so it works without a `data-theme` attribute. Other presets (ocean, sunset, forest, minimal) require `data-theme="..."` to activate, preventing cascade conflicts when multiple presets are imported.
 
 - **Missing toast animation utilities**: Added `slide-in-from-{top,bottom,left}-full` and `slide-out-to-{top,bottom,left}-full` `@utility` definitions for full directional toast slide animations.
 

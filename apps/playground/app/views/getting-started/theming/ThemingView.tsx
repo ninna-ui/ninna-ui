@@ -16,8 +16,7 @@ const THEME_SWITCH_CODE = `/* Switch to ocean theme — one line change */
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/ocean.css";
 
-@variant dark (&:is(.dark *));
-@source "../node_modules/@ninna-ui/**/*.{js,ts,jsx,tsx}";`;
+@variant dark (&:is(.dark *));`;
 
 const DARK_MODE_CLASS_CODE = `<!-- Forced dark mode -->
 <html data-theme="default" class="dark">
@@ -380,7 +379,7 @@ export function ThemingView() {
                 <strong>CSS Import:</strong> Add{" "}
                 <Code>@import "@ninna-ui/code-block/styles";</Code>{" "}
                 to your CSS entry point (or it is picked up automatically via{" "}
-                <Code>@source</Code> if you already source <Code>@ninna-ui/**</Code>).
+                <Code>@source</Code> scanning built into the theme preset).
               </Text>
             </div>
           </div>

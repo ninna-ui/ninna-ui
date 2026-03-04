@@ -28,7 +28,7 @@ Add one of the 5 theme presets to your app's CSS entry point:
 @variant dark (&:is(.dark *));
 ```
 
-> **No `@source` needed** — the theme preset automatically includes all utility classes used by Ninna UI components via built-in `@source inline()` directives.
+> **No `@source` needed** — each theme preset automatically scans all `@ninna-ui` package dist files via built-in `@source` directives. The `default.css` preset also applies to `:root`, so it works without a `data-theme` attribute. Other presets require `data-theme="ocean"` etc.
 
 | Preset | Colors | Character |
 |--------|--------|-----------|

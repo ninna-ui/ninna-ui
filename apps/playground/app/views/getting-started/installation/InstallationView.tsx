@@ -36,8 +36,7 @@ const CSS_CODE = (entryFile: string) => `/* ${entryFile} */
 /* Optional: only needed if you use @ninna-ui/code-block */
 /* @import "@ninna-ui/code-block/styles"; */
 
-@variant dark (&:is(.dark *));
-@source "../node_modules/@ninna-ui/**/*.{js,ts,jsx,tsx}";`;
+@variant dark (&:is(.dark *));`;
 
 export function InstallationView() {
   return (

@@ -9,11 +9,25 @@
  */
 
 /* ============================================
+   Filesystem source — scan sibling @ninna-ui packages
+   From dist/theme/tailwind.css → ../../../ = @ninna-ui/
+   This ensures Tailwind detects ALL utility classes in
+   every @ninna-ui component package automatically.
+   ============================================ */
+@source "../../../primitives/dist/index.js";
+@source "../../../feedback/dist/index.js";
+@source "../../../forms/dist/index.js";
+@source "../../../overlays/dist/index.js";
+@source "../../../navigation/dist/index.js";
+@source "../../../layout/dist/index.js";
+@source "../../../data-display/dist/index.js";
+@source "../../../code-block/dist/index.js";
+
+/* ============================================
    Safelist — @source inline()
-   Ensures Tailwind generates all utility classes
-   used by @ninna-ui component packages, even when
-   the consumer's build tool cannot scan node_modules
-   (e.g. pnpm symlinks with @tailwindcss/vite ≥4.0.8).
+   Covers computed / dynamic classes that cannot be
+   detected by scanning JS files (e.g. classes built
+   from color maps, size maps, or string interpolation).
    ============================================ */
 
 /* --- Semantic color utilities (8 colors) --- */
