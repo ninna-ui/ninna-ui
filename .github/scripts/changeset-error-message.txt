@@ -1,0 +1,15 @@
+To fix this:
+1. Run: pnpm changeset
+2. Select the affected public packages (exclude private packages)
+3. Choose version type: patch | minor | major
+4. Add a summary of your changes
+5. Commit the changeset file: git add .changeset/*.md
+
+Public packages requiring changeset:
+- @ninna-ui/core, @ninna-ui/primitives, @ninna-ui/cli, @ninna-ui/code-block
+- @ninna-ui/data-display, @ninna-ui/feedback, @ninna-ui/forms, @ninna-ui/layout
+- @ninna-ui/navigation, @ninna-ui/overlays
+
+Private packages (no changeset needed):
+- @ninna-ui/utils, @ninna-ui/react-internal, @ninna-ui/eslint-config
+- @ninna-ui/test-config, @ninna-ui/tsconfig

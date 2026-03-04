@@ -30,6 +30,8 @@ We have a fully automated release system using GitHub Actions and Changesets:
 
 #### 1. Create Changeset (Required for PR)
 
+**🚨 MANDATORY**: Any PR that modifies public packages **must** include a changeset file.
+
 ```bash
 pnpm changeset
 ```
@@ -54,6 +56,17 @@ pnpm changeset
 - @ninna-ui/eslint-config
 - @ninna-ui/test-config
 - @ninna-ui/tsconfig
+
+**What happens if you skip changeset?**
+- ❌ CI will **automatically fail** with "Public package changed but no changeset found"
+- ❌ PR **cannot be merged** until changeset is added
+- ❌ Release process will be blocked
+
+**Exceptions (no changeset needed):**
+- Only private packages modified
+- Only documentation changes
+- Only test files updated
+- Only README/MD files updated
 
 #### 2. Automated Process
 

@@ -46,12 +46,31 @@
 - [ ] Tests added/updated for changes (`pnpm vitest run`)
 - [ ] TypeScript compiles without errors (`pnpm typecheck`)
 - [ ] ESLint passes (`pnpm lint`)
-- [ ] Changeset added for public package changes (`pnpm changeset`)
+- [ ] **Changeset added for public package changes** (`pnpm changeset`) ⚠️ **REQUIRED**
 - [ ] Accessibility: WCAG 2.1 AA, keyboard navigation, ARIA attributes
 - [ ] `data-slot` attributes added for new components
 - [ ] All 8 semantic colors supported (if applicable)
 - [ ] Dark mode verified (if applicable)
 - [ ] Documentation updated (if applicable)
+
+## 🚨 Changeset Requirement
+
+**If you modified any public packages**, you **must** create a changeset:
+
+```bash
+pnpm changeset
+```
+
+**Public Packages (require changeset):**
+- `@ninna-ui/core`, `@ninna-ui/primitives`, `@ninna-ui/cli`, `@ninna-ui/code-block`
+- `@ninna-ui/data-display`, `@ninna-ui/feedback`, `@ninna-ui/forms`, `@ninna-ui/layout`
+- `@ninna-ui/navigation`, `@ninna-ui/overlays`
+
+**Private Packages (no changeset needed):**
+- `@ninna-ui/utils`, `@ninna-ui/react-internal`, `@ninna-ui/eslint-config`
+- `@ninna-ui/test-config`, `@ninna-ui/tsconfig`
+
+> **CI will automatically fail** if public packages are changed but no changeset is found.
 
 ## Screenshots / Videos
 
