@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/layout.svg)](https://www.npmjs.com/package/@ninna-ui/layout)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/layout)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/layout)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/layout)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/layout)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/layout)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/layout)**
 
 Structural layout components for [Ninna UI](../../README.md) — the building blocks for responsive page layouts. All components are pure React with no Radix dependency, support `forwardRef`, `className`, and `data-slot` CSS targeting.
 

@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/data-display.svg)](https://www.npmjs.com/package/@ninna-ui/data-display)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/data-display)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/data-display)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/data-display)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/data-display)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/data-display)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/data-display)**
 
 Data display components for [Ninna UI](../../README.md). All are custom implementations (no Radix dependency) with semantic HTML — `<table>`, `<th scope>`, `<caption>`, `role="grid"`, `role="tree"`, and proper `aria-expanded` attributes.
 

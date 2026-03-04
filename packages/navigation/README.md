@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/navigation.svg)](https://www.npmjs.com/package/@ninna-ui/navigation)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/navigation)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/navigation)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/navigation)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/navigation)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/navigation)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/navigation)**
 
 Navigation components for [Ninna UI](../../README.md). Tabs and Accordion are powered by [Radix UI](https://www.radix-ui.com/) for WAI-ARIA compliance and keyboard navigation. Breadcrumbs, Pagination, and Stepper are custom implementations with semantic HTML (`<nav>`, `<ol>`, `aria-current`).
 

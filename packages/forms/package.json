@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/forms",
   "version": "0.1.0",
-  "description": "Accessible form components for Ninna-UI",
+  "description": "17 accessible form React components for Ninna UI — Input, Select, Checkbox, Switch, Radio, Slider, FileUpload, PinInput, NumberInput, and more. Radix-powered, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/forms"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/forms#readme",
+  "homepage": "https://ninna-ui.dev/forms",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },
@@ -20,7 +20,18 @@
     "input",
     "select",
     "checkbox",
+    "switch",
     "radio",
+    "slider",
+    "textarea",
+    "file-upload",
+    "pin-input",
+    "number-input",
+    "accessible",
+    "radix-ui",
+    "data-slot",
+    "tailwindcss",
+    "tailwindcss-v4",
     "ui"
   ],
   "type": "module",

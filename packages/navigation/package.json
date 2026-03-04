@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/navigation",
   "version": "0.1.0",
-  "description": "Navigation components for Ninna-UI",
+  "description": "5 navigation React components for Ninna UI — Tabs, Accordion, Breadcrumbs, Pagination, Stepper. Radix-powered, accessible, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/navigation"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/navigation#readme",
+  "homepage": "https://ninna-ui.dev/navigation",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },
@@ -21,6 +21,12 @@
     "accordion",
     "breadcrumbs",
     "pagination",
+    "stepper",
+    "accessible",
+    "radix-ui",
+    "data-slot",
+    "tailwindcss",
+    "tailwindcss-v4",
     "ui"
   ],
   "type": "module",

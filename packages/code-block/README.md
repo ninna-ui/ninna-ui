@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/code-block.svg)](https://www.npmjs.com/package/@ninna-ui/code-block)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/code-block/code-block)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/code-block)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/code-block)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/code-block)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/code-block)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/code-block)**
 
 A standalone code display component for [Ninna UI](../../README.md) — built-in syntax highlighting for TSX/JSX/CSS/HTML and more, copy-to-clipboard button, optional line numbers, and automatic light/dark mode theming via oklch colors.
 
