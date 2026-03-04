@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/core.svg)](https://www.npmjs.com/package/@ninna-ui/core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/getting-started/theming)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/core)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/core)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/getting-started/theming)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/core)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/core)**
 
 `@ninna-ui/core` is the zero-dependency foundation of [Ninna UI](../../README.md). It contains **no React code, no JSX, and no component logic** — only the shared design language that every component package consumes.
 

@@ -10,7 +10,7 @@ A modern React component library with **69 accessible components**, **5 built-in
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
 [![npm](https://img.shields.io/npm/v/@ninna-ui/core.svg)](https://www.npmjs.com/org/ninna-ui)
 
-**[Documentation Website →](https://ninna-ui.dev)** · **[npm →](https://www.npmjs.com/org/ninna-ui)** · **[GitHub →](https://github.com/ninna-ui/ninna-ui)**
+**[Documentation Website →](https://www.ninna-ui.dev)** · **[npm →](https://www.npmjs.com/org/ninna-ui)** · **[GitHub →](https://github.com/ninna-ui/ninna-ui)**
 
 ---
 
@@ -149,50 +149,7 @@ pnpm --filter @ninna-ui/playground dev   # Developer sandbox at localhost:3000 (
 pnpm --filter @ninna-ui/docs dev         # Storybook at localhost:6006
 ```
 
-## Contributing & Changesets
-
-**Changesets are required** for any PR that modifies public packages. This ensures proper versioning and changelog generation.
-
-### Quick PR Workflow
-
-```bash
-# 1. Make your changes
-git checkout -b feat/your-feature
-# ...make changes...
-
-# 2. Create a changeset (REQUIRED for public package changes)
-pnpm changeset
-
-# 3. Select affected packages (exclude private packages like @ninna-ui/utils)
-# Choose version type: patch | minor | major
-# Add a summary of changes
-
-# 4. Commit and push
-git add .changeset/*.md
-git commit -m "feat: add your changes"
-git push origin feat/your-feature
-```
-
-### Changeset Rules
-
-- **Public packages changed?** → Changeset **required**
-- **Private packages only?** → Changeset **optional**
-- **Documentation only?** → Changeset **optional**
-
-**Public Packages (require changeset):**
-- `@ninna-ui/core`, `@ninna-ui/primitives`, `@ninna-ui/cli`, `@ninna-ui/code-block`
-- `@ninna-ui/data-display`, `@ninna-ui/feedback`, `@ninna-ui/forms`, `@ninna-ui/layout`
-- `@ninna-ui/navigation`, `@ninna-ui/overlays`
-
-**Private Packages (no changeset needed):**
-- `@ninna-ui/utils`, `@ninna-ui/react-internal`, `@ninna-ui/eslint-config`
-- `@ninna-ui/test-config`, `@ninna-ui/tsconfig`
-
-> **CI Enforcement:** GitHub Actions will automatically fail PRs that modify public packages without a changeset file.
-
-For detailed contributing guidelines, see [Contributing Guide](./docs/guides/CONTRIBUTING.md).
-
-> **Public documentation:** [ninna-ui.dev](https://ninna-ui.dev) — the full docs website lives in the separate `ninna-ui-web` project.
+> **Public documentation:** [ninna-ui.dev](https://www.ninna-ui.dev) — the full docs website lives in the separate `ninna-ui-web` project.
 
 ## Project Structure
 
@@ -222,7 +179,7 @@ ninna-ui/
 
 ## Documentation
 
-- **[Documentation Website](https://ninna-ui.dev)** — Full public docs with live component demos
+- **[Documentation Website](https://www.ninna-ui.dev)** — Full public docs with live component demos
 - **[Architecture Guide](./docs/architecture/ARCHITECTURE.md)** — Monorepo structure, dependency graph, theme system, canonical component pattern
 - **[Contributing Guide](./docs/guides/CONTRIBUTING.md)** — Development workflow, package boundaries, PR process, component checklist
 - **[Component Standards](./docs/standards/COMPONENT_STANDARD.md)** — File structure, props, accessibility, testing requirements

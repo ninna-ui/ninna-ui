@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/cli.svg)](https://www.npmjs.com/package/@ninna-ui/cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/getting-started/installation)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/cli)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/cli)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/getting-started/installation)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/cli)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/cli)**
 
 The official CLI for [Ninna UI](../../README.md). Scaffold a new project with your preferred framework and theme preset — fully configured with Tailwind CSS v4, TypeScript, and all Ninna UI packages.
 

@@ -5,7 +5,7 @@
 [![npm](https://img.shields.io/npm/v/@ninna-ui/overlays.svg)](https://www.npmjs.com/package/@ninna-ui/overlays)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-📖 **[Full Documentation →](https://ninna-ui.dev/overlays)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/overlays)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/overlays)**
+📖 **[Full Documentation →](https://www.ninna-ui.dev/overlays)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/overlays)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/overlays)**
 
 Overlay and portal components for [Ninna UI](../../README.md). All powered by [Radix UI](https://www.radix-ui.com/) under the hood for bulletproof accessibility — focus trapping, scroll locking, escape-to-close, and click-outside dismissal are all handled automatically. Radix types never leak into the public API.
 

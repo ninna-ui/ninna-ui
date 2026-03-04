@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/primitives",
   "version": "0.1.0",
-  "description": "Primitive UI components for Ninna-UI - Button, Badge, Avatar, and more",
+  "description": "14 primitive React UI components for Ninna UI — Button, Badge, Avatar, Text, Heading, Link, Code, Kbd, Divider, and more. Accessible, themeable, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/primitives"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/primitives#readme",
+  "homepage": "https://ninna-ui.dev/primitives",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },
@@ -20,8 +20,18 @@
     "button",
     "badge",
     "avatar",
-    "ui",
-    "tailwindcss"
+    "heading",
+    "text",
+    "link",
+    "divider",
+    "code",
+    "kbd",
+    "typography",
+    "accessible",
+    "data-slot",
+    "tailwindcss",
+    "tailwindcss-v4",
+    "ui"
   ],
   "type": "module",
   "exports": {

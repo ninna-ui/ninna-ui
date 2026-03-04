@@ -2,7 +2,6 @@
 
 > Shared utility functions for the Ninna-UI design system — class merging, ref composition, type-safe context, and SSR helpers.
 
-[![npm](https://img.shields.io/npm/v/@ninna-ui/utils.svg)](https://www.npmjs.com/package/@ninna-ui/utils)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 Shared utility functions used across all [Ninna UI](../../README.md) component packages. Core utilities (`cn`, `KEYS`, `canUseDOM`) are pure functions with **no React dependency**. React-aware utilities (`createContext`, `composeRefs`) use React as an **optional peer dependency**.
@@ -75,16 +74,18 @@ KEYS.ARROW_DOWN // "ArrowDown"
 KEYS.TAB        // "Tab"
 ```
 
-### `canUseDOM` / `isBrowser` — SSR Safety
+### `canUseDOM` / `getOwnerWindow` — SSR Safety
 
 Runtime checks for safe DOM access in server-side rendering contexts:
 
 ```typescript
-import { canUseDOM, isBrowser } from '@ninna-ui/utils';
+import { canUseDOM, getOwnerWindow } from '@ninna-ui/utils';
 
 if (canUseDOM) {
   // Safe to access window, document
 }
+
+const win = getOwnerWindow(element); // Get the owner window of a DOM element
 ```
 
 ## Architecture Rules

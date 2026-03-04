@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/data-display",
   "version": "0.1.0",
-  "description": "Data display components for Ninna-UI",
+  "description": "7 data display React components for Ninna UI — Card, Stat, Table, DataTable, Timeline, Tree, Calendar. Semantic HTML, accessible, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -9,7 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/data-display"
   },
-  "homepage": "https://github.com/ninna-ui/ninna-ui/tree/main/packages/data-display#readme",
+  "homepage": "https://ninna-ui.dev/data-display",
   "bugs": {
     "url": "https://github.com/ninna-ui/ninna-ui/issues"
   },
@@ -18,9 +18,16 @@
     "react",
     "data-display",
     "card",
+    "stat",
     "table",
-    "calendar",
+    "data-table",
     "timeline",
+    "tree",
+    "calendar",
+    "accessible",
+    "data-slot",
+    "tailwindcss",
+    "tailwindcss-v4",
     "ui"
   ],
   "type": "module",
