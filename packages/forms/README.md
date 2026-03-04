@@ -22,7 +22,8 @@ pnpm add @ninna-ui/forms @ninna-ui/core
 ```css
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
-@source "../node_modules/@ninna-ui/*";
+
+@variant dark (&:is(.dark *));
 ```
 
 ## Components

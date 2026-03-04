@@ -24,8 +24,11 @@ Add one of the 5 theme presets to your app's CSS entry point:
 ```css
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
-@source "../node_modules/@ninna-ui/*";
+
+@variant dark (&:is(.dark *));
 ```
+
+> **No `@source` needed** — each theme preset automatically scans all `@ninna-ui` package dist files via built-in `@source` directives. The `default.css` preset also applies to `:root`, so it works without a `data-theme` attribute. Other presets require `data-theme="ocean"` etc.
 
 | Preset | Colors | Character |
 |--------|--------|-----------|
