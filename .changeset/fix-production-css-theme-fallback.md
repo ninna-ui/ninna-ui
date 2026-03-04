@@ -3,17 +3,17 @@
 "@ninna-ui/cli": patch
 ---
 
-fix: production CSS purge & theme fallback
+fix: production CSS purge, theme fallback, safelist hardening
 
 ### @ninna-ui/core (minor)
 
-- **Filesystem `@source` scanning in `tailwind.css`**: Added `@source` directives that point to all sibling `@ninna-ui` package dist files using relative paths. When a consumer imports a theme preset, Tailwind automatically scans every `@ninna-ui` component's JS output — no manual `@source` directive needed in the consumer's CSS.
+- **Filesystem `@source` scanning in `tailwind.css`**: Added `@source` directives pointing to core's own dist and all 8 sibling `@ninna-ui` package dist files. Tailwind now automatically scans every component's JS output when a consumer imports any theme preset — no manual `@source` directive needed.
 
-- **`@source inline()` safelist**: Added `@source inline()` directives for computed/dynamic classes (color maps, size maps, animation utilities) that cannot be detected by scanning JS files alone.
+- **Hardened `@source inline()` safelist**: Removed redundant layout/sizing/typography/radius inlines that the filesystem scanner already detects. Kept only patterns the Tailwind v4 scanner cannot extract from JS: opacity modifiers (`bg-primary/10`), variant prefixes (`hover:`, `focus:`, `peer-checked:`, `data-[]`, `marker:`), stroke utilities, and custom `@utility` names. Added clear documentation explaining why each category exists.
 
-- **`:root` fallback on `default.css` only**: The default theme preset applies to `:root` so it works without a `data-theme` attribute. Other presets (ocean, sunset, forest, minimal) require `data-theme="..."` to activate, preventing cascade conflicts when multiple presets are imported.
+- **`:root` fallback on `default.css` only**: Removed `:root` from ocean/sunset/forest/minimal presets to prevent CSS cascade conflicts when multiple presets are imported.
 
-- **Missing toast animation utilities**: Added `slide-in-from-{top,bottom,left}-full` and `slide-out-to-{top,bottom,left}-full` `@utility` definitions for full directional toast slide animations.
+- **Toast animation utilities**: Added `slide-in-from-{top,bottom,left}-full` and `slide-out-to-{top,bottom,left}-full` `@utility` definitions.
 
 ### @ninna-ui/cli (patch)
 

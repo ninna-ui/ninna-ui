@@ -14,6 +14,8 @@
    This ensures Tailwind detects ALL utility classes in
    every @ninna-ui component package automatically.
    ============================================ */
+@source "../index.js";
+@source "../../dist/index.js";
 @source "../../../primitives/dist/index.js";
 @source "../../../feedback/dist/index.js";
 @source "../../../forms/dist/index.js";
@@ -25,21 +27,39 @@
 
 /* ============================================
    Safelist — @source inline()
-   Covers computed / dynamic classes that cannot be
-   detected by scanning JS files (e.g. classes built
-   from color maps, size maps, or string interpolation).
+
+   WHY THIS EXISTS:
+   Tailwind v4's JS scanner cannot extract classes
+   containing opacity modifiers (/10, /20) or variant
+   prefixes (hover:, focus:, peer-checked:, data-[],
+   marker:) from compiled JS string literals. The base
+   semantic color classes are also required here because
+   they act as token-registration triggers that enable
+   the variant/opacity forms to resolve.
+
+   WHAT THE FILESYSTEM @source HANDLES (no inline needed):
+   - Layout utilities (gap-*, grid-cols-*, flex, etc.)
+   - Sizing (h-*, w-*, px-*, min-h-*, max-w-*)
+   - Typography (text-xs..6xl, font-light..bold)
+   - Border radius (rounded-*)
+   - Standard animations (animate-spin, animate-bounce)
+   - Modal/drawer/container sizes
+   - Input-group padding overrides (!pl-*, !pr-*)
+   - All other static classes in component .styles.ts
    ============================================ */
 
-/* --- Semantic color utilities (8 colors) --- */
+/* --- Semantic color base classes (8 colors × 5 properties = 40) --- */
 @source inline("{bg,text,border,ring,stroke}-{primary,secondary,accent,neutral,success,danger,warning,info}");
 @source inline("{bg,text,border}-{primary,secondary,accent,neutral,success,danger,warning,info}-content");
-@source inline("bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{10,20,30}");
+
+/* --- Opacity modifier classes --- */
+@source inline("bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{10,20,30,90}");
+@source inline("text-{primary,secondary,accent,neutral,success,danger,warning,info}/{70,80}");
 @source inline("border-{primary,secondary,accent,neutral,success,danger,warning,info}/{20,30}");
-@source inline("text-{primary,secondary,accent,neutral,success,danger,warning,info}/{70}");
 
 /* --- Hover variants --- */
-@source inline("hover:bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{10,20,90}");
 @source inline("hover:bg-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("hover:bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{10,20,90}");
 @source inline("hover:text-{primary,secondary,accent,neutral,success,danger,warning,info}-content");
 @source inline("hover:text-{primary,secondary,accent,neutral,success,danger,warning,info}/{80}");
 @source inline("hover:underline");
@@ -55,11 +75,9 @@
 @source inline("peer-checked:border-{primary,secondary,accent,neutral,success,danger,warning,info}");
 @source inline("peer-focus-visible:ring-{primary,secondary,accent,neutral,success,danger,warning,info}");
 
-/* --- Data-state-checked (switch, radio — Radix) --- */
+/* --- Data-state (switch, radio, tabs — Radix) --- */
 @source inline("data-[state=checked]:bg-{primary,secondary,accent,neutral,success,danger,warning,info}");
 @source inline("data-[state=checked]:border-{primary,secondary,accent,neutral,success,danger,warning,info}");
-
-/* --- Data-state-active (tabs — Radix) --- */
 @source inline("data-[state=active]:border-{primary,secondary,accent,neutral,success,danger,warning,info}");
 @source inline("data-[state=active]:text-{primary,secondary,accent,neutral,success,danger,warning,info}");
 @source inline("data-[state=active]:bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{10}");
@@ -70,25 +88,8 @@
 /* --- Fill (tooltip/popover arrows) --- */
 @source inline("fill-{neutral,base-100,base-200}");
 
-/* --- Typography --- */
-@source inline("text-{xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl}");
-@source inline("font-{light,normal,medium,semibold,bold}");
-
-/* --- Sizing (button, icon-button, input, avatar, stepper, loading, etc.) --- */
-@source inline("h-{1,1.5,2,2.5,3,3.5,4,5,6,7,8,9,10,11,12,14,16}");
-@source inline("w-{1,1.5,2,2.5,3,3.5,4,5,6,7,8,9,10,11,12,14,16}");
-@source inline("min-h-{16,20,24,32,40,48}");
-@source inline("px-{2,3,4,5,6}");
-
-/* --- Input-group important padding overrides --- */
-@source inline("!pl-{7,8,10,11,12}");
-@source inline("!pr-{7,8,10,11,12}");
-
-/* --- Border radius --- */
-@source inline("rounded-{none,sm,md,lg,xl,2xl,full}");
-
-/* --- Animations (loading variants) --- */
-@source inline("animate-{spin,ping,pulse,bounce}");
+/* --- Separator color variants --- */
+@source inline("bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{30}");
 
 /* --- Custom animation utilities (overlays, toast, drawer, accordion) --- */
 @source inline("animate-in animate-out");
@@ -100,23 +101,6 @@
 @source inline("slide-in-from-right-full slide-in-from-left-full slide-in-from-bottom-full slide-in-from-top-full");
 @source inline("slide-out-to-right-full slide-out-to-left-full slide-out-to-bottom-full slide-out-to-top-full");
 @source inline("animate-accordion-down animate-accordion-up");
-
-/* --- Layout: gap, grid --- */
-@source inline("gap-{0,1,2,3,4,5,6,8,10,12,16}");
-@source inline("gap-x-{0,1,2,3,4,5,6,8,10,12,16}");
-@source inline("gap-y-{0,1,2,3,4,5,6,8,10,12,16}");
-@source inline("grid-cols-{1,2,3,4,5,6,7,8,9,10,11,12,none}");
-@source inline("grid-rows-{1,2,3,4,5,6,none}");
-@source inline("max-w-screen-{sm,md,lg,xl,2xl}");
-
-/* --- Drawer sizes --- */
-@source inline("w-{64,80,96} h-{48,64,80,96}");
-
-/* --- Modal sizes --- */
-@source inline("max-w-{xs,sm,md,lg,xl}");
-
-/* --- Separator color variants --- */
-@source inline("bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{30}");
 
 @theme inline {
   /* Semantic color tokens */
