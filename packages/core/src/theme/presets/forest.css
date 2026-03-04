@@ -19,6 +19,7 @@
    Light Theme - Forest
    Applies when data-theme="forest" is set.
    ============================================ */
+:root,
 [data-theme="forest"] {
   color-scheme: light;
 
@@ -80,6 +81,7 @@
    Dark Theme - Forest (explicit .dark class)
    Applies when <html class="dark" data-theme="forest">
    ============================================ */
+:root.dark,
 .dark [data-theme="forest"],
 [data-theme="forest"].dark {
   color-scheme: dark;
@@ -144,6 +146,7 @@
    Pure CSS requires duplication — no mixin support.
    ============================================ */
 @media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark):not([data-theme]),
   [data-theme="forest"]:not(.light):not(.dark) {
     color-scheme: dark;
 

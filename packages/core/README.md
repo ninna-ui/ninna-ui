@@ -24,8 +24,11 @@ Add one of the 5 theme presets to your app's CSS entry point:
 ```css
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
-@source "../node_modules/@ninna-ui/*";
+
+@variant dark (&:is(.dark *));
 ```
+
+> **No `@source` needed** — the theme preset automatically includes all utility classes used by Ninna UI components via built-in `@source inline()` directives.
 
 | Preset | Colors | Character |
 |--------|--------|-----------|

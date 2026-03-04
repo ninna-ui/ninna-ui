@@ -8,6 +8,102 @@
  * Consumers should import a preset, not this file directly.
  */
 
+/* ============================================
+   Safelist — @source inline()
+   Ensures Tailwind generates all utility classes
+   used by @ninna-ui component packages, even when
+   the consumer's build tool cannot scan node_modules
+   (e.g. pnpm symlinks with @tailwindcss/vite ≥4.0.8).
+   ============================================ */
+
+/* --- Semantic color utilities (8 colors) --- */
+@source inline("{bg,text,border,ring,stroke}-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("{bg,text,border}-{primary,secondary,accent,neutral,success,danger,warning,info}-content");
+@source inline("bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{10,20,30}");
+@source inline("border-{primary,secondary,accent,neutral,success,danger,warning,info}/{20,30}");
+@source inline("text-{primary,secondary,accent,neutral,success,danger,warning,info}/{70}");
+
+/* --- Hover variants --- */
+@source inline("hover:bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{10,20,90}");
+@source inline("hover:bg-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("hover:text-{primary,secondary,accent,neutral,success,danger,warning,info}-content");
+@source inline("hover:text-{primary,secondary,accent,neutral,success,danger,warning,info}/{80}");
+@source inline("hover:underline");
+
+/* --- Focus / focus-visible variants --- */
+@source inline("focus:border-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("focus:ring-{primary,secondary,accent,neutral,success,danger,warning,info}/{20}");
+@source inline("focus-visible:ring-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:ring-offset-2");
+
+/* --- Peer-checked (checkbox) --- */
+@source inline("peer-checked:bg-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("peer-checked:border-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("peer-focus-visible:ring-{primary,secondary,accent,neutral,success,danger,warning,info}");
+
+/* --- Data-state-checked (switch, radio — Radix) --- */
+@source inline("data-[state=checked]:bg-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("data-[state=checked]:border-{primary,secondary,accent,neutral,success,danger,warning,info}");
+
+/* --- Data-state-active (tabs — Radix) --- */
+@source inline("data-[state=active]:border-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("data-[state=active]:text-{primary,secondary,accent,neutral,success,danger,warning,info}");
+@source inline("data-[state=active]:bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{10}");
+
+/* --- Marker (list) --- */
+@source inline("marker:text-{primary,secondary,accent,neutral,success,danger,warning,info}");
+
+/* --- Fill (tooltip/popover arrows) --- */
+@source inline("fill-{neutral,base-100,base-200}");
+
+/* --- Typography --- */
+@source inline("text-{xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl}");
+@source inline("font-{light,normal,medium,semibold,bold}");
+
+/* --- Sizing (button, icon-button, input, avatar, stepper, loading, etc.) --- */
+@source inline("h-{1,1.5,2,2.5,3,3.5,4,5,6,7,8,9,10,11,12,14,16}");
+@source inline("w-{1,1.5,2,2.5,3,3.5,4,5,6,7,8,9,10,11,12,14,16}");
+@source inline("min-h-{16,20,24,32,40,48}");
+@source inline("px-{2,3,4,5,6}");
+
+/* --- Input-group important padding overrides --- */
+@source inline("!pl-{7,8,10,11,12}");
+@source inline("!pr-{7,8,10,11,12}");
+
+/* --- Border radius --- */
+@source inline("rounded-{none,sm,md,lg,xl,2xl,full}");
+
+/* --- Animations (loading variants) --- */
+@source inline("animate-{spin,ping,pulse,bounce}");
+
+/* --- Custom animation utilities (overlays, toast, drawer, accordion) --- */
+@source inline("animate-in animate-out");
+@source inline("fade-in-0 fade-out-0");
+@source inline("zoom-in-95 zoom-out-95");
+@source inline("slide-in-from-top-2 slide-in-from-bottom-2 slide-in-from-left-2 slide-in-from-right-2");
+@source inline("slide-in-from-top slide-in-from-bottom slide-in-from-left slide-in-from-right");
+@source inline("slide-out-to-top slide-out-to-bottom slide-out-to-left slide-out-to-right");
+@source inline("slide-in-from-right-full slide-in-from-left-full slide-in-from-bottom-full slide-in-from-top-full");
+@source inline("slide-out-to-right-full slide-out-to-left-full slide-out-to-bottom-full slide-out-to-top-full");
+@source inline("animate-accordion-down animate-accordion-up");
+
+/* --- Layout: gap, grid --- */
+@source inline("gap-{0,1,2,3,4,5,6,8,10,12,16}");
+@source inline("gap-x-{0,1,2,3,4,5,6,8,10,12,16}");
+@source inline("gap-y-{0,1,2,3,4,5,6,8,10,12,16}");
+@source inline("grid-cols-{1,2,3,4,5,6,7,8,9,10,11,12,none}");
+@source inline("grid-rows-{1,2,3,4,5,6,none}");
+@source inline("max-w-screen-{sm,md,lg,xl,2xl}");
+
+/* --- Drawer sizes --- */
+@source inline("w-{64,80,96} h-{48,64,80,96}");
+
+/* --- Modal sizes --- */
+@source inline("max-w-{xs,sm,md,lg,xl}");
+
+/* --- Separator color variants --- */
+@source inline("bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{30}");
+
 @theme inline {
   /* Semantic color tokens */
   --color-neutral: var(--color-neutral);
@@ -190,13 +286,37 @@
   --tw-exit-translate-x: 100%;
 }
 
-/* Slide — full with -full suffix (toast) */
+/* Slide — full with -full suffix (toast, drawer) */
 @utility slide-in-from-right-full {
   --tw-enter-translate-x: 100%;
 }
 
+@utility slide-in-from-left-full {
+  --tw-enter-translate-x: -100%;
+}
+
+@utility slide-in-from-bottom-full {
+  --tw-enter-translate-y: 100%;
+}
+
+@utility slide-in-from-top-full {
+  --tw-enter-translate-y: -100%;
+}
+
 @utility slide-out-to-right-full {
   --tw-exit-translate-x: 100%;
+}
+
+@utility slide-out-to-left-full {
+  --tw-exit-translate-x: -100%;
+}
+
+@utility slide-out-to-bottom-full {
+  --tw-exit-translate-y: 100%;
+}
+
+@utility slide-out-to-top-full {
+  --tw-exit-translate-y: -100%;
 }
 
 /* Accordion */

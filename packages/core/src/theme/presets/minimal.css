@@ -19,6 +19,7 @@
    Light Theme - Minimal
    Applies when data-theme="minimal" is set.
    ============================================ */
+:root,
 [data-theme="minimal"] {
   color-scheme: light;
 
@@ -78,6 +79,7 @@
    Dark Theme - Minimal (explicit .dark class)
    Applies when <html class="dark" data-theme="minimal">
    ============================================ */
+:root.dark,
 .dark [data-theme="minimal"],
 [data-theme="minimal"].dark {
   color-scheme: dark;
@@ -142,6 +144,7 @@
    Pure CSS requires duplication — no mixin support.
    ============================================ */
 @media (prefers-color-scheme: dark) {
+  :root:not(.light):not(.dark):not([data-theme]),
   [data-theme="minimal"]:not(.light):not(.dark) {
     color-scheme: dark;
 
