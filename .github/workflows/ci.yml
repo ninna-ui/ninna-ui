@@ -8,9 +8,6 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
 jobs:
   validate:
@@ -52,13 +49,13 @@ jobs:
       - name: Check internal deps not exposed
         run: pnpm check-internal-deps
 
-      - name: Validate exports (publint)
+      - name: Validate exports
         run: pnpm check-exports
 
-      - name: Validate pack (dry-run)
+      - name: Validate package (dry run)
         run: pnpm check-pack
 
-      - name: Validate Changeset (if needed)
+      - name: Validate Changeset 
         run: |
           chmod +x .github/scripts/validate-changeset.sh
           .github/scripts/validate-changeset.sh
