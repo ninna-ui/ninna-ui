@@ -1,27 +1,36 @@
-# Changesets
+# Changeset Workflow
 
-This folder contains changesets for version management.
-
-## Adding a Changeset
-
+## Adding Changes
 ```bash
-pnpm changeset
+pnpm changeset add
 ```
+- Creates a changeset file (e.g., `few-worms-rest.md`)
+- Follow prompts to select packages and change type
+- Write clear description of what changed
 
-Follow the prompts to:
-1. Select packages that have changed
-2. Choose version bump type (patch/minor/major)
-3. Write a summary of changes
+## Versioning Packages
+```bash
+pnpm changeset version
+```
+- Updates package versions based on changesets
+- Generates changelog entries
+- Removes processed changeset files
 
-## Version Bumps
+## Publishing
+```bash
+pnpm release
+```
+- Builds all packages
+- Publishes to npm
+- Creates GitHub release
 
+## Version Types
 - **patch**: Bug fixes, documentation
 - **minor**: New features (pre-1.0: may include breaking changes)
 - **major**: Breaking changes (post-1.0 only)
 
-## Publishing
-
-```bash
-pnpm version-packages  # Apply changesets
-pnpm release           # Build and publish
-```
+## Best Practices
+- One changeset per logical change
+- Use semantic versioning
+- Write clear, concise descriptions
+- Review changeset files before versioning
