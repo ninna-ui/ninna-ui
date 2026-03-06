@@ -32,9 +32,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: 20
           cache: pnpm
           registry-url: https://registry.npmjs.org
+          scope: '@ninna-ui'
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -53,7 +54,7 @@ jobs:
           title: "chore: version packages"
           commit: "chore: version packages"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
 
       - name: Notify on Success
         if: ${{ steps.changesets.outputs.published == 'true' }}
