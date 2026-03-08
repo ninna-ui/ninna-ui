@@ -5,6 +5,9 @@ import { Button, Heading, Text, Badge } from "@ninna-ui/primitives";
 import { Alert } from "@ninna-ui/feedback";
 import { VStack, HStack } from "@ninna-ui/layout";
 import { Input, Field } from "@ninna-ui/forms";
+import { Card } from "@ninna-ui/data-display";
+import { Tabs } from "@ninna-ui/navigation";
+import { CodeBlock } from "@ninna-ui/code-block";
 
 export default function Home() {
   const [name, setName] = useState("");
@@ -33,7 +36,7 @@ export default function Home() {
             <Input
               placeholder="Enter your name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
             />
           </Field>
 
@@ -68,20 +71,40 @@ export default function Home() {
           />
         )}
 
-        <HStack gap="2" justify="center" className="flex-wrap">
-          {["primary", "secondary", "success", "danger", "warning", "info"].map(
-            (color) => (
-              <Button
-                key={color}
-                variant="soft"
-                color={color as any}
-                size="sm"
-              >
-                {color}
-              </Button>
-            )
-          )}
-        </HStack>
+        <Card className="w-full p-4 bg-base-100 border border-base-200">
+          <Tabs defaultValue="colors">
+            <Tabs.List>
+              <Tabs.Trigger value="colors">Colors</Tabs.Trigger>
+              <Tabs.Trigger value="code">Code</Tabs.Trigger>
+            </Tabs.List>
+            <Tabs.Content value="colors">
+              <HStack gap="2" justify="center" className="flex-wrap">
+                {["primary", "secondary", "success", "danger", "warning", "info"].map(
+                  (color) => (
+                    <Button
+                      key={color}
+                      variant="soft"
+                      color={color as any}
+                      size="sm"
+                    >
+                      {color}
+                    </Button>
+                  )
+                )}
+              </HStack>
+            </Tabs.Content>
+            <Tabs.Content value="code">
+              <CodeBlock
+                code={`import { Button } from "@ninna-ui/primitives";
+
+export default function Page() {
+  return <Button color="primary">Click me</Button>;
+}`}
+                language="tsx"
+              />
+            </Tabs.Content>
+          </Tabs>
+        </Card>
       </VStack>
     </div>
   );

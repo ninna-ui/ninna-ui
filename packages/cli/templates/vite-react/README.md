@@ -17,8 +17,8 @@ pnpm build      # Build for production
 - **React 19** with TypeScript strict mode
 - **Vite 7** with `@tailwindcss/vite` plugin
 - **Tailwind CSS v4.1** — CSS-first, no `tailwind.config.ts`
-- **Ninna UI** — primitives, feedback, forms, layout, overlays, navigation, data-display, code-block
-- **Default theme preset** with automatic dark mode
+- **Ninna UI v0.2.0** — All 9 packages: primitives, feedback, forms, layout, overlays, navigation, data-display, code-block, core
+- **Default theme preset** with automatic dark mode + 4 additional presets
 
 ## Customization
 
