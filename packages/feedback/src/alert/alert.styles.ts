@@ -1,4 +1,5 @@
 import { cva, type VariantProps } from 'class-variance-authority';
+import type { Size } from '@ninna-ui/core';
 
 export const alertVariants = cva(
   "relative w-full rounded-lg flex items-start",
@@ -66,7 +67,7 @@ export const alertVariants = cva(
 
 export type AlertVariantsProps = VariantProps<typeof alertVariants>;
 
-export const ALERT_ICON_SIZES: Record<string, string> = {
+export const ALERT_ICON_SIZES: Record<Size, string> = {
   xs: "h-4 w-4",
   sm: "h-4 w-4",
   md: "h-5 w-5",

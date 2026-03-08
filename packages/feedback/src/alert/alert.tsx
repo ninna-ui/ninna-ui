@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
 import type { AlertProps } from "./alert.types";
 import { alertVariants, alertStyles, ALERT_ICON_SIZES } from "./alert.styles";
-import type { Color } from "@ninna-ui/core";
+import type { Color, Size } from "@ninna-ui/core";
 
 /**
  * Default icons for each color
@@ -64,7 +64,7 @@ const AlertIcon = ({ icon, showIcon, color, size }: {
   icon?: React.ReactNode; 
   showIcon?: boolean; 
   color: Color; 
-  size: string; 
+  size: Size; 
 }) => {
   if (!showIcon && !icon) return null;
   

@@ -2,8 +2,9 @@ import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
 import type { LoadingProps } from "./loading.types";
 import { loadingVariants } from "./loading.styles";
+import type { SpinnerSize } from "@ninna-ui/core";
 
-const DOT_SIZES: Record<string, string> = {
+const DOT_SIZES: Record<SpinnerSize, string> = {
   xs: "size-1.5",
   sm: "size-2",
   md: "size-2.5",

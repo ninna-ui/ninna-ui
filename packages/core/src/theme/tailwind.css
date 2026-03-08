@@ -91,68 +91,6 @@
 /* --- Separator color variants --- */
 @source inline("bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{30}");
 
-/* --- COMPREHENSIVE UTILITIES FROM ACTUAL USAGE ACROSS ALL COMPONENTS --- */
-
-/* Size utilities (from Button, IconButton, Avatar, Stepper, Input, etc.) */
-@source inline("h-6 h-7 h-8 h-9 h-10 h-11 h-12 h-16 h-20 h-3 h-4 h-5 h-full h-screen min-h-20 min-h-24 min-h-32 min-h-40 w-3 w-4 w-5 w-6 w-7 w-8 w-9 w-10 w-11 w-12 w-14 w-16 w-full");
-
-/* Padding utilities (from Button, Modal, Drawer, Container, etc.) */
-@source inline("px-2 px-3 px-4 px-5 px-6 px-8 py-1 py-2 py-2.5 py-3 py-3.5 py-4 py-6 py-10 py-16 pt-2 pt-6 pb-2 pb-4 pb-6 pl-2 pl-4 pl-6 pl-8 pl-11 pl-12 pr-2 pr-4 pr-6 pr-8 pr-11 pr-12");
-
-/* Margin utilities (from various components) */
-@source inline("mb-0 mb-1 mb-2 mt-0 ml-0 ml-1 ml-auto");
-
-/* Typography utilities */
-@source inline("text-xs text-sm text-base text-lg text-xl text-2xl text-3xl text-4xl text-5xl text-6xl font-thin font-extralight font-light font-normal font-medium font-semibold font-bold font-extrabold font-black font-sans font-serif font-mono text-center text-left text-right text-justify text-primary text-neutral text-danger text-success text-warning text-info text-base-content text-blue-500 text-red-500 text-[13px] leading-relaxed leading-tight leading-normal leading-relaxed leading-loose tracking-tighter tracking-tight tracking-normal tracking-wide tracking-wider tracking-widerst decoration-none decoration-underline decoration-overline decoration-line-through uppercase lowercase capitalize normal-nums ordinal slashed-zero tabular-nums proportional-nums antialiased subpixel-antialiased");
-
-/* Color utilities */
-@source inline("bg-transparent bg-current bg-base bg-base-50 bg-base-100 bg-base-200 bg-base-300 bg-primary bg-danger bg-success bg-warning bg-info bg-neutral text-transparent text-current text-base text-primary text-neutral text-danger text-success text-warning text-info border-transparent border-current border-base border-base-200 border-base-300 border-primary border-danger border-success border-warning border-info border-neutral ring-transparent ring-current ring-base ring-primary ring-danger ring-success ring-warning ring-info ring-neutral stroke-transparent stroke-current stroke-base stroke-primary stroke-danger stroke-success stroke-warning stroke-info stroke-neutral fill-transparent fill-current fill-base fill-primary fill-danger fill-success fill-warning fill-info fill-neutral shadow-transparent shadow-current shadow-base shadow-primary shadow-danger shadow-success shadow-warning shadow-info shadow-neutral");
-
-/* Border utilities */
-@source inline("border-0 border-1 border-2 border-4 border-8 border border-t border-t-0 border-t-transparent border-b border-b-0 border-l border-l-0 border-r border-r-0 border-x border-y");
-
-/* Border radius utilities */
-@source inline("rounded-none rounded-sm rounded-md rounded-lg rounded-xl rounded-2xl rounded-3xl rounded-full rounded-l-none");
-
-/* Animation utilities */
-@source inline("animate-none animate-spin animate-ping animate-pulse animate-bounce animate-fade animate-slide animate-zoom animate-flip animate-wiggle animate-shake animate-bounce-in animate-bounce-out animate-fade-in animate-fade-out animate-slide-in animate-slide-out animate-zoom-in animate-zoom-out animate-flip-in animate-flip-out animate-wiggle animate-shake animate-bounce-in animate-bounce-out animate-fade-in animate-fade-out animate-slide-in animate-slide-out animate-zoom-in animate-zoom-out animate-flip-in animate-flip-out animate-wiggle animate-shake");
-
-/* Opacity utilities */
-@source inline("opacity-0 opacity-5 opacity-10 opacity-20 opacity-25 opacity-30 opacity-40 opacity-50 opacity-60 opacity-70 opacity-75 opacity-80 opacity-90 opacity-95 opacity-100");
-
-/* Transform utilities */
-@source inline("transform scale-50 scale-75 scale-90 scale-95 scale-100 scale-105 scale-110 scale-125 scale-150 scale-x-50 scale-x-75 scale-x-90 scale-x-95 scale-x-100 scale-x-105 scale-x-110 scale-x-125 scale-x-150 scale-y-50 scale-y-75 scale-y-90 scale-y-95 scale-y-100 scale-y-105 scale-y-110 scale-y-125 scale-y-150 rotate-0 rotate-1 rotate-2 rotate-3 rotate-6 rotate-12 rotate-45 rotate-90 rotate-180 rotate-x-45 rotate-y-45 rotate-z-45 translate-x-0 translate-y-0 translate-x-1 translate-y-1 translate-x-2 translate-y-2 translate-x-3 translate-y-3 translate-x-4 translate-y-4 translate-x-5 translate-y-5 translate-x-6 translate-y-6 translate-x-8 translate-y-8 translate-x-10 translate-y-10 translate-x-12 translate-y-12 translate-x-16 translate-y-16 translate-x-20 translate-y-20 translate-x-24 translate-y-24 translate-x-32 translate-y-32 translate-x-36 translate-y-36 translate-x-40 translate-y-40 translate-x-44 translate-y-44 translate-x-48 translate-y-48 translate-x-52 translate-y-52 translate-x-56 translate-y-56 translate-x-60 translate-y-60 translate-x-64 translate-y-64 translate-x-72 translate-y-72 translate-x-80 translate-y-80 translate-x-96 translate-y-96 skew-x-0 skew-y-0 skew-x-1 skew-y-1 skew-x-2 skew-y-2 skew-x-3 skew-y-3 skew-x-6 skew-y-6 skew-x-12 skew-y-12");
-
-/* Transition utilities */
-@source inline("transition-none transition-all transition-colors transition-opacity transition-transform transition-shadow transition-width transition-height transition-spacing transition-position transition-inset transition-margin transition-padding transition-border transition-background transition-text transition-decoration transition-transform transition-opacity transition-shadow transition-width transition-height transition-spacing transition-position transition-inset transition-margin transition-padding transition-border transition-background transition-text transition-decoration transition-transform transition-opacity transition-shadow transition-width transition-height transition-spacing transition-position transition-inset transition-margin transition-padding transition-border transition-background transition-text transition-decoration duration-75 duration-100 duration-150 duration-200 duration-300 duration-500 duration-700 duration-1000 ease-linear ease-in ease-out ease-in-out ease-bounce ease-elastic ease-backwards ease-forwards");
-
-/* Layout utilities */
-@source inline("block inline-block inline flex inline-flex grid grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 grid-cols-5 grid-cols-6 grid-cols-7 grid-cols-8 grid-cols-9 grid-cols-10 grid-cols-11 grid-cols-12 grid-rows-1 grid-rows-2 grid-rows-3 grid-rows-4 grid-rows-5 grid-rows-6 grid-flow-row grid-flow-col grid-flow-dense grid-flow-row-dense grid-flow-col-dense auto-cols-auto auto-cols-fr auto-cols-min auto-cols-max auto-rows-auto auto-rows-fr auto-rows-min auto-rows-max subgrid-auto-rows subgrid-auto-cols gap-0 gap-1 gap-2 gap-3 gap-4 gap-5 gap-6 gap-7 gap-8 gap-x-0 gap-x-1 gap-x-2 gap-x-3 gap-x-4 gap-x-5 gap-x-6 gap-x-7 gap-x-8 gap-y-0 gap-y-1 gap-y-2 gap-y-3 gap-y-4 gap-y-5 gap-y-6 gap-y-7 gap-y-8 justify-start justify-end justify-center justify-between justify-around justify-evenly justify-items-start justify-items-end justify-items-center justify-items-stretch justify-self-start justify-self-end justify-self-center justify-self-stretch content-start content-end content-center content-between content-around content-evenly items-start items-end items-center items-baseline items-stretch place-content-start place-content-end place-content-center place-content-between place-content-around place-content-evenly place-items-start place-items-end place-items-center place-items-baseline place-items-stretch place-self-start place-self-end place-self-center place-self-stretch");
-
-/* Position utilities */
-@source inline("static fixed absolute relative sticky inset-0 inset-x-0 inset-y-0 inset-x-auto inset-y-auto top-0 top-auto bottom-0 bottom-auto left-0 left-auto right-0 right-auto");
-
-/* Z-index utilities */
-@source inline("z-auto z-0 z-10 z-20 z-30 z-40 z-50");
-
-/* Interactivity utilities */
-@source inline("pointer-events-auto pointer-events-none cursor-default cursor-pointer cursor-move cursor-text cursor-wait cursor-help cursor-not-allowed cursor-crosshair cursor-progress cursor-cell cursor-col-resize cursor-row-resize cursor-n-resize cursor-e-resize cursor-s-resize cursor-w-resize cursor-ne-resize cursor-nw-resize cursor-se-resize cursor-sw-resize cursor-ew-resize cursor-ns-resize cursor-nesw-resize cursor-nwse-resize select-auto select-none select-text select-all select-edit resize-none resize-x resize-y resize both");
-
-/* State utilities */
-@source inline("hover:focus active visited disabled group-hover group-focus peer-hover peer-focus first last odd even checked indeterminate default required valid invalid in-range out-of-range read-only empty focus-within focus-visible aria-busy aria-checked aria-disabled aria-expanded aria-hidden aria-invalid aria-label aria-live aria-pressed aria-readonly aria-required aria-selected");
-
-/* Data state utilities */
-@source inline("data-[loading=true]:cursor-wait data-[loading=true]:pointer-events-none data-[state=checked]:bg data-[state=checked]:border data-[state=active]:bg data-[state=active]:border data-[state=active]:text data-[state=active]:bg data-[state=checked]:bg-current data-[state=checked]:border-current data-[state=unchecked]:border-base-300");
-
-/* Focus utilities */
-@source inline("focus:outline-none focus:outline-2 focus:outline-4 focus:outline-dashed focus:outline-dotted focus:outline-double focus:ring-0 focus:ring-1 focus:ring-2 focus:ring-4 focus:ring-8 focus:ring focus:ring-inset focus:ring-offset-0 focus:ring-offset-1 focus:ring-offset-2 focus:ring-offset-4 focus:ring-offset-8 focus-visible:outline-none focus-visible:outline-2 focus-visible:outline-4 focus-visible:outline-dashed focus-visible:outline-dotted focus-visible:outline-double focus-visible:ring-0 focus-visible:ring-1 focus-visible:ring-2 focus-visible:ring-4 focus-visible:ring-8 focus-visible:ring focus-visible:ring-inset focus-visible:ring-offset-0 focus-visible:ring-offset-1 focus-visible:ring-offset-2 focus-visible:ring-offset-4 focus-visible:ring-offset-8");
-
-/* Component-specific utilities (from Modal, Popover, etc.) */
-@source inline("modal-body modal-close modal-content modal-footer modal-header modal-overlay modal-trigger popover-arrow popover-close popover-content popover-trigger dropdown-content dropdown-item dropdown-trigger drawer-body drawer-close drawer-content drawer-footer drawer-header drawer-overlay drawer-trigger alert avatar badge blockquote breadcrumbs breadcrumbs-item breadcrumbs-link button card card-body card-description card-footer card-header card-title checkbox checkbox-group code data-table data-table-cell data-table-head data-table-row divider empty-state input input-group kbd mark pagination pagination-content pagination-item radio radio-group stat stat-help stat-icon stat-label stat-value status switch tabs tabs-content tabs-list tabs-trigger text textarea timeline timeline-connector timeline-content timeline-description timeline-heading timeline-indicator timeline-item timeline-time toast tooltip tooltip-arrow tooltip-content tooltip-trigger");
-
-/* Other common utilities */
-@source inline("max-w-lg max-w-xl max-w-2xl max-w-3xl max-w-4xl max-w-5xl max-w-6xl max-w-7xl max-w-full max-w-none min-h-screen aspect-ratio aspect-square aspect-video isolate isolate isolate isolation-auto isolate isolate");
-
 /* Custom animation utilities (overlays, toast, drawer, accordion) --- */
 @source inline("animate-in animate-out");
 @source inline("fade-in-0 fade-out-0");
