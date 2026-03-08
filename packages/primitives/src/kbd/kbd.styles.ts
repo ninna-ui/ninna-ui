@@ -1,66 +1,29 @@
-import { SOFT_BG_COLORS, MUTED_BORDER_COLORS, TEXT_COLORS } from "@ninna-ui/core";
-import type { Color } from "@ninna-ui/core";
-import type { KbdSize } from "./kbd.types";
+import { cva, type VariantProps } from 'class-variance-authority';
 
-/**
- * Kbd styles configuration
- */
-export const kbdStyles = {
-  /**
-   * Base styles applied to all kbd elements
-   */
-  base: "inline-flex items-center justify-center font-mono font-medium border rounded shadow-sm",
+export const kbdVariants = cva(
+  "inline-flex items-center justify-center font-mono font-medium border rounded shadow-sm",
+  {
+    variants: {
+      size: {
+        xs: "px-1 py-0.5 text-xs min-w-5",
+        sm: "px-1.5 py-0.5 text-xs min-w-6",
+        md: "px-2 py-1 text-sm min-w-7",
+        lg: "px-2.5 py-1 text-base min-w-8",
+      },
+      color: {
+        primary:   "bg-primary/10 border-primary/30 text-primary",
+        secondary: "bg-secondary/10 border-secondary/30 text-secondary",
+        accent:    "bg-accent/10 border-accent/30 text-accent",
+        neutral:   "bg-neutral/10 border-neutral/30 text-neutral",
+        success:   "bg-success/10 border-success/30 text-success",
+        danger:    "bg-danger/10 border-danger/30 text-danger",
+        warning:   "bg-warning/10 border-warning/30 text-warning",
+        info:      "bg-info/10 border-info/30 text-info",
+        default:   "bg-base-100 border-base-300 text-base-content",
+      },
+    },
+    defaultVariants: { size: "sm", color: "neutral" },
+  }
+);
 
-  /**
-   * Size variants
-   */
-  sizes: {
-    xs: "px-1 py-0.5 text-xs min-w-5",
-    sm: "px-1.5 py-0.5 text-xs min-w-6",
-    md: "px-2 py-1 text-sm min-w-7",
-    lg: "px-2.5 py-1 text-base min-w-8",
-  } as Record<KbdSize, string>,
-
-  /**
-   * Background color variants
-   */
-  bgColors: SOFT_BG_COLORS,
-
-  /**
-   * Border color variants
-   */
-  borderColors: MUTED_BORDER_COLORS,
-
-  /**
-   * Text color variants
-   */
-  textColors: TEXT_COLORS,
-};
-
-/**
- * Get size class
- */
-export function getSizeClass(size: KbdSize): string {
-  return kbdStyles.sizes[size];
-}
-
-/**
- * Get background color class
- */
-export function getBgColorClass(color: Color): string {
-  return kbdStyles.bgColors[color];
-}
-
-/**
- * Get border color class
- */
-export function getBorderColorClass(color: Color): string {
-  return kbdStyles.borderColors[color];
-}
-
-/**
- * Get text color class
- */
-export function getTextColorClass(color: Color): string {
-  return kbdStyles.textColors[color];
-}
+export type KbdVariantsProps = VariantProps<typeof kbdVariants>;

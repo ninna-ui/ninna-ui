@@ -1,13 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import {
-  gridStyles,
-  getColumnsClass,
-  getRowsClass,
-  getGapClass,
-  getRowGapClass,
-  getColumnGapClass,
-} from "./grid.styles";
+import { gridStyles } from "./grid.styles";
+import { GRID_COLUMNS, GRID_ROWS, GAP_SIZES, ROW_GAP_SIZES, COLUMN_GAP_SIZES } from "@ninna-ui/core";
 import type { GridProps } from "./grid.types";
 import { gridDefaults } from "./grid.types";
 
@@ -53,11 +47,11 @@ export const Grid = forwardRef<HTMLDivElement, GridProps>(
         data-slot="grid"
         className={cn(
           gridStyles.base,
-          getColumnsClass(columns),
-          rows && getRowsClass(rows),
-          !hasSpecificGaps && getGapClass(gap),
-          rowGap && getRowGapClass(rowGap),
-          columnGap && getColumnGapClass(columnGap),
+          GRID_COLUMNS[columns],
+          rows && GRID_ROWS[rows],
+          !hasSpecificGaps && GAP_SIZES[gap],
+          rowGap && ROW_GAP_SIZES[rowGap],
+          columnGap && COLUMN_GAP_SIZES[columnGap],
           flow && gridStyles.flow[flow],
           className
         )}

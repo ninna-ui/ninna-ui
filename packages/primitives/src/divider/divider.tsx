@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
 import type { DividerProps } from "./divider.types";
-import { dividerStyles, getColorClass, getWeightClass } from "./divider.styles";
+import { dividerVariants, dividerStyles, DIVIDER_TEXT_COLORS } from "./divider.styles";
 
 /**
  * Divider component for visual separation
@@ -32,8 +32,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
           ref={ref}
           data-slot="divider"
           className={cn(
-            dividerStyles.vertical.base,
-            getWeightClass(variant, weight),
+            dividerVariants({ orientation: "vertical", weight }),
             className
           )}
           role="separator"
@@ -49,18 +48,18 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
         <div
           ref={ref}
           data-slot="divider"
-          className={cn(dividerStyles.withText.container, className)}
+          className={cn(dividerStyles.withTextContainer, className)}
           role="separator"
           aria-label={text}
           {...props}
         >
-          <div className={cn(dividerStyles.withText.line, getWeightClass(variant, weight))} />
+          <div className={cn(dividerStyles.withTextLine, dividerVariants({ orientation: "horizontal", weight }))} />
           {text && (
-            <span data-slot="label" className={cn(dividerStyles.withText.text, getColorClass(color))}>
+            <span data-slot="label" className={cn(dividerStyles.withTextContent, DIVIDER_TEXT_COLORS[color])}>
               {text}
             </span>
           )}
-          <div className={cn(dividerStyles.withText.line, getWeightClass(variant, weight))} />
+          <div className={cn(dividerStyles.withTextLine, dividerVariants({ orientation: "horizontal", weight }))} />
         </div>
       );
     }
@@ -71,8 +70,7 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
         ref={ref}
         data-slot="divider"
         className={cn(
-          dividerStyles.horizontal.base,
-          getWeightClass(variant, weight),
+          dividerVariants({ orientation: "horizontal", weight }),
           className
         )}
         role="separator"

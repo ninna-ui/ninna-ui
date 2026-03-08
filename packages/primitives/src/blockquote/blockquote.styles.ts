@@ -1,80 +1,53 @@
-import { BORDER_COLORS, SOFT_BG_COLORS, TEXT_MUTED_COLORS } from "@ninna-ui/core";
-import type { Color } from "@ninna-ui/core";
-import type { BlockquoteVariant } from "./blockquote.types";
+import { cva, type VariantProps } from 'class-variance-authority';
 
-/**
- * Blockquote styles configuration
- */
+export const blockquoteVariants = cva(
+  "relative my-4",
+  {
+    variants: {
+      variant: {
+        outline: "pl-4 border-l-4",
+        solid:   "pl-4 border-l-4 py-4 pr-4 rounded-r-lg",
+        soft:    "pl-4 border-l-4 py-4 pr-4 border rounded-lg",
+      },
+      color: {
+        primary:   "border-primary",
+        secondary: "border-secondary",
+        accent:    "border-accent",
+        neutral:   "border-neutral",
+        success:   "border-success",
+        danger:    "border-danger",
+        warning:   "border-warning",
+        info:      "border-info",
+      },
+    },
+    compoundVariants: [
+      { variant: "soft", color: "primary",   class: "bg-primary/10" },
+      { variant: "soft", color: "secondary", class: "bg-secondary/10" },
+      { variant: "soft", color: "accent",    class: "bg-accent/10" },
+      { variant: "soft", color: "neutral",   class: "bg-neutral/10" },
+      { variant: "soft", color: "success",   class: "bg-success/10" },
+      { variant: "soft", color: "danger",    class: "bg-danger/10" },
+      { variant: "soft", color: "warning",   class: "bg-warning/10" },
+      { variant: "soft", color: "info",      class: "bg-info/10" },
+    ],
+    defaultVariants: { variant: "outline", color: "neutral" },
+  }
+);
+
+export type BlockquoteVariantsProps = VariantProps<typeof blockquoteVariants>;
+
 export const blockquoteStyles = {
-  /**
-   * Base styles applied to all blockquotes
-   */
-  base: "relative my-4",
-
-  /**
-   * Variant styles
-   */
-  variants: {
-    outline: "pl-4 border-l-4",
-    solid: "pl-4 border-l-4 py-4 pr-4 rounded-r-lg",
-    soft: "pl-4 border-l-4 py-4 pr-4 border rounded-lg",
-  } as Record<BlockquoteVariant, string>,
-
-  /**
-   * Border color variants from core
-   */
-  borderColors: BORDER_COLORS,
-
-  /**
-   * Background color variants from core
-   */
-  bgColors: SOFT_BG_COLORS,
-
-  /**
-   * Icon color variants from core
-   */
-  iconColors: TEXT_MUTED_COLORS,
-
-  /**
-   * Quote content styles
-   */
-  content: "text-base-content/80 italic",
-
-  /**
-   * Citation styles
-   */
-  citation: "mt-2 text-sm text-base-content/70 not-italic",
-
-  /**
-   * Icon wrapper styles
-   */
+  content:     "text-base-content/80 italic",
+  citation:    "mt-2 text-sm text-base-content/70 not-italic",
   iconWrapper: "absolute -left-3 -top-2 text-4xl opacity-50",
+  iconColors: {
+    primary:   "text-primary/50",
+    secondary: "text-secondary/50",
+    accent:    "text-accent/50",
+    neutral:   "text-neutral/50",
+    success:   "text-success/50",
+    danger:    "text-danger/50",
+    warning:   "text-warning/50",
+    info:      "text-info/50",
+  },
 };
-
-/**
- * Get variant class
- */
-export function getVariantClass(variant: BlockquoteVariant): string {
-  return blockquoteStyles.variants[variant];
-}
-
-/**
- * Get border color class
- */
-export function getBorderColorClass(color: Color): string {
-  return blockquoteStyles.borderColors[color];
-}
-
-/**
- * Get background color class
- */
-export function getBgColorClass(color: Color): string {
-  return blockquoteStyles.bgColors[color];
-}
-
-/**
- * Get icon color class
- */
-export function getIconColorClass(color: Color): string {
-  return blockquoteStyles.iconColors[color];
-}

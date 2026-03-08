@@ -2,7 +2,7 @@ import { forwardRef, useState, useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { cn } from '@ninna-ui/utils';
 import { Toast } from './toast';
-import { viewportPositions, viewportDirections, viewportStyles } from './toast.styles';
+import { viewportPositions, viewportDirections, VIEWPORT_BASE_CLASS } from './toast.styles';
 import type { ToasterProps, ToastData, CreateToastOptions, ToastPosition } from './toast.types';
 
 let toastCount = 0;
@@ -277,7 +277,7 @@ export const Toaster = forwardRef<HTMLDivElement, ToasterProps>(
       <div
         ref={ref}
         data-slot="toaster"
-        className={cn(viewportStyles.base, directionClass, positionClass, className)}
+        className={cn(VIEWPORT_BASE_CLASS, directionClass, positionClass, className)}
         style={{
           gap: `${gap}px`,
           padding: typeof offset === 'number' ? `${offset}px` : offset,

@@ -2,7 +2,7 @@ import { forwardRef, createContext, useContext } from 'react';
 import type { CompactSize } from '@ninna-ui/core';
 import { cn } from '@ninna-ui/utils';
 import { TabsEngine } from '@ninna-ui/react-internal';
-import { tabsStyles, TABS_LIST_VARIANTS, TABS_TRIGGER_VARIANTS, TABS_TRIGGER_SIZES } from './tabs.styles';
+import { tabsListVariants, tabsTriggerVariants, TABS_ROOT_CLASS, TABS_CONTENT_CLASS } from './tabs.styles';
 import type { TabsProps, TabsListProps, TabsTriggerProps, TabsContentProps, TabsVariant } from './tabs.types';
 
 interface TabsContextValue {
@@ -40,8 +40,8 @@ const TabsRoot = forwardRef<HTMLDivElement, TabsProps>(
           data-slot="tabs"
           data-orientation={orientation}
           className={cn(
-            tabsStyles.root,
-            orientation === 'vertical' && tabsStyles.rootVertical,
+            TABS_ROOT_CLASS,
+            orientation === 'vertical' && 'flex-row',
             className
           )}
           {...props}
@@ -64,8 +64,7 @@ const TabsList = forwardRef<HTMLDivElement, TabsListProps>(
           data-slot="tabs-list"
           loop={loop}
           className={cn(
-            tabsStyles.list.base,
-            TABS_LIST_VARIANTS[variant],
+            tabsListVariants({ variant }),
             className
           )}
           {...props}
@@ -89,9 +88,7 @@ const TabsTrigger = forwardRef<HTMLButtonElement, TabsTriggerProps>(
         disabled={disabled}
         data-slot="tabs-trigger"
         className={cn(
-          tabsStyles.trigger.base,
-          TABS_TRIGGER_VARIANTS[variant],
-          TABS_TRIGGER_SIZES[size],
+          tabsTriggerVariants({ variant, size }),
           className
         )}
         {...props}
@@ -112,7 +109,7 @@ const TabsContent = forwardRef<HTMLDivElement, TabsContentProps>(
         value={value}
         forceMount={forceMount}
         data-slot="tabs-content"
-        className={cn(tabsStyles.content, className)}
+        className={cn(TABS_CONTENT_CLASS, className)}
         {...props}
       >
         {children}

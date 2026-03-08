@@ -1,12 +1,6 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import {
-  kbdStyles,
-  getSizeClass,
-  getBgColorClass,
-  getBorderColorClass,
-  getTextColorClass,
-} from "./kbd.styles";
+import { kbdVariants } from "./kbd.styles";
 import type { KbdProps } from "./kbd.types";
 
 /**
@@ -31,11 +25,7 @@ export const Kbd = forwardRef<HTMLElement, KbdProps>(
     ref
   ) => {
     const classes = cn(
-      kbdStyles.base,
-      getSizeClass(size),
-      getBgColorClass(color),
-      getBorderColorClass(color),
-      getTextColorClass(color),
+      kbdVariants({ size, color }),
       className
     );
 

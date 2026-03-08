@@ -2,11 +2,11 @@ import { forwardRef, createElement, createContext, useContext } from "react";
 import { cn } from "@ninna-ui/utils";
 import {
   listStyles,
-  getSpacingClass,
-  getUnorderedMarkerClass,
-  getOrderedMarkerClass,
-  getMarkerColorClass,
-  getIconColorClass,
+  listVariants,
+  LIST_UNORDERED_MARKERS,
+  LIST_ORDERED_MARKERS,
+  LIST_MARKER_COLORS,
+  LIST_ICON_COLORS,
 } from "./list.styles";
 import type { ListProps, ListItemProps } from "./list.types";
 import type { Color } from "@ninna-ui/core";
@@ -115,14 +115,13 @@ export const List = forwardRef<HTMLUListElement | HTMLOListElement, ListProps>(
     const markerIcon = icon ?? getMarkerIcon(marker);
 
     const markerClass = type === "ordered"
-      ? getOrderedMarkerClass(marker)
-      : getUnorderedMarkerClass(marker);
+      ? LIST_ORDERED_MARKERS[marker as 'decimal' | 'alpha' | 'roman' | 'none']
+      : LIST_UNORDERED_MARKERS[marker as 'disc' | 'circle' | 'square' | 'none'];
 
     const classes = cn(
-      listStyles.base,
-      getSpacingClass(spacing),
+      listVariants({ spacing }),
       isCustomMarker ? listStyles.customMarker : markerClass,
-      !isCustomMarker && getMarkerColorClass(markerColor),
+      !isCustomMarker && LIST_MARKER_COLORS[markerColor],
       className
     );
 
@@ -174,7 +173,7 @@ export const ListItem = forwardRef<HTMLLIElement, ListItemProps>(
           className={cn(listStyles.itemBase, listStyles.itemWithIcon, className)}
           {...props}
         >
-          <span data-slot="icon" className={cn(listStyles.iconWrapper, getIconColorClass(itemIconColor))}>
+          <span data-slot="icon" className={cn(listStyles.iconWrapper, LIST_ICON_COLORS[itemIconColor])}>
             {itemIcon}
           </span>
           <span data-slot="content" className="flex-1">{children}</span>

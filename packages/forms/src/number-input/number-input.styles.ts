@@ -1,4 +1,4 @@
-import type { Size } from "@ninna-ui/core";
+import type { Size } from '@ninna-ui/core';
 
 export const NUMBER_INPUT_SIZES: Record<Size, string> = {
   xs: "h-7 px-2 text-xs",

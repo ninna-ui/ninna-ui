@@ -1,10 +1,4 @@
-import type { FlexDirection, FlexAlign, FlexJustify, FlexWrap, GapSize } from '../types';
-
-const GAP_SIZES: Record<GapSize, string> = {
-  '0': 'gap-0', '1': 'gap-1', '2': 'gap-2', '3': 'gap-3',
-  '4': 'gap-4', '5': 'gap-5', '6': 'gap-6', '8': 'gap-8',
-  '10': 'gap-10', '12': 'gap-12', '16': 'gap-16',
-};
+import type { FlexDirection, FlexAlign, FlexJustify, FlexWrap } from '../types';
 
 /**
  * Flex styles configuration
@@ -62,38 +56,3 @@ export const flexStyles = {
     "wrap-reverse": "flex-wrap-reverse",
   } as Record<FlexWrap, string>,
 };
-
-/**
- * Get direction class
- */
-export function getDirectionClass(direction: FlexDirection): string {
-  return flexStyles.direction[direction];
-}
-
-/**
- * Get align class
- */
-export function getAlignClass(align: FlexAlign): string {
-  return flexStyles.align[align];
-}
-
-/**
- * Get justify class
- */
-export function getJustifyClass(justify: FlexJustify): string {
-  return flexStyles.justify[justify];
-}
-
-/**
- * Get wrap class
- */
-export function getWrapClass(wrap: FlexWrap): string {
-  return flexStyles.wrap[wrap];
-}
-
-/**
- * Get gap class
- */
-export function getGapClass(gap: GapSize): string {
-  return GAP_SIZES[gap];
-}

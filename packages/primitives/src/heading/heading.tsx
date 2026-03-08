@@ -1,14 +1,10 @@
 import { forwardRef, createElement } from 'react';
 import { cn } from '@ninna-ui/utils';
 import {
-  headingStyles,
-  getLevelSizeClass,
-  getLevelWeightClass,
-  getSizeClass,
-  getWeightClass,
-  getColorClass,
-  getAlignClass,
-  getLineClampClass,
+  headingVariants,
+  HEADING_LEVEL_SIZES,
+  HEADING_LEVEL_WEIGHTS,
+  HEADING_LINE_CLAMP,
 } from './heading.styles';
 import type { HeadingProps } from './heading.types';
 
@@ -41,14 +37,10 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     ref
   ) => {
     const classes = cn(
-      headingStyles.base,
-      size ? getSizeClass(size) : getLevelSizeClass(as),
-      weight ? getWeightClass(weight) : getLevelWeightClass(as),
-      getColorClass(color),
-      align && getAlignClass(align),
-      truncate && !lineClamp && headingStyles.truncate,
-      lineClamp && getLineClampClass(lineClamp),
-      noWrap && headingStyles.noWrap,
+      headingVariants({ size, weight, color, align, truncate: truncate && !lineClamp ? true : false, noWrap }),
+      !size && HEADING_LEVEL_SIZES[as],
+      !weight && HEADING_LEVEL_WEIGHTS[as],
+      lineClamp && HEADING_LINE_CLAMP[lineClamp],
       className
     );
 

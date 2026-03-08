@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import { simpleGridStyles, getGapClass } from "./simple-grid.styles";
+import { simpleGridStyles } from "./simple-grid.styles";
+import { GAP_SIZES } from "@ninna-ui/core";
 import type { SimpleGridProps } from "./simple-grid.types";
 import { simpleGridDefaults } from "./simple-grid.types";
 
@@ -52,7 +53,7 @@ export const SimpleGrid = forwardRef<HTMLDivElement, SimpleGridProps>(
       <div
         ref={ref}
         data-slot="simple-grid"
-        className={cn(simpleGridStyles.base, getGapClass(gap), className)}
+        className={cn(simpleGridStyles.base, GAP_SIZES[gap], className)}
         style={gridStyle}
         {...props}
       >

@@ -1,7 +1,7 @@
 import { forwardRef, createContext, useContext } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { AccordionEngine } from '@ninna-ui/react-internal';
-import { accordionStyles, ACCORDION_VARIANTS } from './accordion.styles';
+import { accordionRootVariants, accordionItemVariants, accordionStyles } from './accordion.styles';
 import type {
   AccordionProps,
   AccordionItemProps,
@@ -21,16 +21,15 @@ const ChevronIcon = () => (
 const AccordionRoot = forwardRef<HTMLDivElement, AccordionProps>(
   (props, ref) => {
     const { variant = 'outline', className, children, dir, ...rest } = props;
-    const variantStyles = ACCORDION_VARIANTS[variant];
 
     return (
       <AccordionContext.Provider value={{ variant }}>
         <AccordionEngine.Root
+          {...rest}
           ref={ref}
           data-slot="accordion"
           dir={dir as 'ltr' | 'rtl' | undefined}
-          className={cn(accordionStyles.root, variantStyles.root, className)}
-          {...rest}
+          className={cn(accordionRootVariants({ variant }), className)}
         >
           {children}
         </AccordionEngine.Root>
@@ -44,14 +43,13 @@ AccordionRoot.displayName = 'Accordion';
 const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(
   ({ value, disabled, className, children, ...props }, ref) => {
     const { variant } = useContext(AccordionContext);
-    const variantStyles = ACCORDION_VARIANTS[variant];
     return (
       <AccordionEngine.Item
         ref={ref}
         value={value}
         disabled={disabled}
         data-slot="accordion-item"
-        className={cn(accordionStyles.item, variantStyles.item, className)}
+        className={cn(accordionItemVariants({ variant }), className)}
         {...props}
       >
         {children}

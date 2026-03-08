@@ -1,14 +1,14 @@
 import { forwardRef, useEffect, useRef, useCallback } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { toastStyles, toastVariants, toastIconColors } from './toast.styles';
+import { toastContentStyles, toastVariants, TOAST_ICON_COLORS, TOAST_ANIMATIONS } from './toast.styles';
 import type { ToastProps, ToastVariant, ToastType, ToastPosition } from './toast.types';
 
 function getEnteringClass(position?: ToastPosition): string {
-  if (!position) return toastStyles.entering;
-  if (position === 'top-center' || position === 'bottom-center') return toastStyles.enteringCenter;
-  if (position.startsWith('top-')) return toastStyles.enteringTop;
-  if (position.endsWith('-left')) return toastStyles.enteringLeft;
-  return toastStyles.enteringRight;
+  if (!position) return TOAST_ANIMATIONS.entering;
+  if (position === 'top-center' || position === 'bottom-center') return TOAST_ANIMATIONS.enteringCenter;
+  if (position.startsWith('top-')) return TOAST_ANIMATIONS.enteringTop;
+  if (position.endsWith('-left')) return TOAST_ANIMATIONS.enteringLeft;
+  return TOAST_ANIMATIONS.enteringRight;
 }
 
 export const Toast = forwardRef<HTMLDivElement, ToastProps>(
@@ -69,9 +69,8 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         aria-atomic="true"
         tabIndex={-1}
         className={cn(
-          toastStyles.base,
+          toastVariants({ variant, type }),
           getEnteringClass(position),
-          toastVariants[variant][type],
           className
         )}
         data-slot="toast"
@@ -81,21 +80,21 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         <div className="flex items-start gap-3 flex-1">
           {icon && (
             <span className={cn(
-              isLoading ? toastStyles.loadingIcon : toastStyles.icon,
-              toastIconColors[type]
+              isLoading ? toastContentStyles.loadingIcon : toastContentStyles.icon,
+              TOAST_ICON_COLORS[type]
             )}>
               {icon}
             </span>
           )}
           
-          <div data-slot="content" className={toastStyles.content}>
+          <div data-slot="content" className={toastContentStyles.content}>
             {title && (
-              <div data-slot="title" className={toastStyles.title}>
+              <div data-slot="title" className={toastContentStyles.title}>
                 {title}
               </div>
             )}
             {description && (
-              <div className={toastStyles.description}>
+              <div className={toastContentStyles.description}>
                 {description}
               </div>
             )}
@@ -107,7 +106,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
             <button
               type="button"
               onClick={action.onClick}
-              className={toastStyles.actionButton}
+              className={toastContentStyles.actionButton}
               aria-label={action.altText || action.label}
             >
               {action.label}
@@ -119,7 +118,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
               type="button"
               onClick={handleDismiss}
               className={cn(
-                toastStyles.closeButton,
+                toastContentStyles.closeButton,
                 'opacity-70 hover:opacity-100'
               )}
               aria-label="Close notification"

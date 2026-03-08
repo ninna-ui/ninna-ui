@@ -1,6 +1,6 @@
 import { forwardRef, useId } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { formGroupStyles, formGroupSpacing } from './form-group.styles';
+import { formGroupStyles, formGroupContentVariants } from './form-group.styles';
 import type { FormGroupProps } from './form-group.types';
 
 /**
@@ -59,9 +59,7 @@ export const FormGroup = forwardRef<HTMLFieldSetElement, FormGroupProps>(
 
         <div
           className={cn(
-            formGroupStyles.content,
-            direction === 'vertical' ? formGroupStyles.contentVertical : formGroupStyles.contentHorizontal,
-            formGroupSpacing[spacing][direction]
+            formGroupContentVariants({ orientation: direction, size: spacing })
           )}
         >
           {children}

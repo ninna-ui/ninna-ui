@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
 import type { LoadingProps } from "./loading.types";
-import { loadingStyles, getColorClass, getSizeClass, getVariantClass } from "./loading.styles";
+import { loadingVariants, LOADING_COLORS } from "./loading.styles";
 
 /**
  * Loading component for loading states
@@ -39,17 +39,16 @@ export const Loading = forwardRef<HTMLDivElement, LoadingProps>(
         ref={ref}
         data-slot="loading"
         className={cn(
-          loadingStyles.base,
-          getVariantClass(variant),
+          loadingVariants({ variant }),
           className
         )}
         role="status"
         aria-label={label}
         {...props}
       >
-        <span className={cn("rounded-full animate-bounce", dotSize, getColorClass(color), "bg-current")} style={{ animationDelay: "0ms" }} />
-        <span className={cn("rounded-full animate-bounce", dotSize, getColorClass(color), "bg-current")} style={{ animationDelay: "150ms" }} />
-        <span className={cn("rounded-full animate-bounce", dotSize, getColorClass(color), "bg-current")} style={{ animationDelay: "300ms" }} />
+        <span className={cn("rounded-full animate-bounce", dotSize, LOADING_COLORS[color], "bg-current")} style={{ animationDelay: "0ms" }} />
+        <span className={cn("rounded-full animate-bounce", dotSize, LOADING_COLORS[color], "bg-current")} style={{ animationDelay: "150ms" }} />
+        <span className={cn("rounded-full animate-bounce", dotSize, LOADING_COLORS[color], "bg-current")} style={{ animationDelay: "300ms" }} />
         <span className="sr-only">{label}</span>
       </div>
     );
@@ -60,10 +59,7 @@ export const Loading = forwardRef<HTMLDivElement, LoadingProps>(
       ref={ref}
       data-slot="loading"
       className={cn(
-        loadingStyles.base,
-        getSizeClass(size),
-        getVariantClass(variant),
-        getColorClass(color),
+        loadingVariants({ variant, size, color }),
         (variant === "pulse" || variant === "ping") && "bg-current",
         className
       )}

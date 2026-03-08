@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { DialogEngine } from '@ninna-ui/react-internal';
-import { drawerStyles, DRAWER_PLACEMENT, DRAWER_SIZES_HORIZONTAL, DRAWER_SIZES_VERTICAL } from './drawer.styles';
+import { drawerStyles, drawerContentVariants, DRAWER_SIZES_HORIZONTAL, DRAWER_SIZES_VERTICAL } from './drawer.styles';
 import type {
   DrawerProps,
   DrawerTriggerProps,
@@ -92,8 +92,7 @@ const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
           data-placement={placement}
           data-size={size}
           className={cn(
-            drawerStyles.content,
-            DRAWER_PLACEMENT[placement],
+            drawerContentVariants({ placement }),
             sizeClass,
             className
           )}

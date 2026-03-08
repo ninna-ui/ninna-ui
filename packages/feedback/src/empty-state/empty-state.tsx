@@ -2,11 +2,11 @@ import { forwardRef, cloneElement, isValidElement } from "react";
 import { cn } from "@ninna-ui/utils";
 import {
   emptyStateStyles,
-  getSizeClass,
-  getIconContainerSizeClass,
-  getIconSizeClass,
-  getTitleSizeClass,
-  getDescriptionSizeClass,
+  emptyStateVariants,
+  emptyStateIconContainerVariants,
+  emptyStateTitleVariants,
+  emptyStateDescriptionVariants,
+  EMPTY_STATE_ICON_SIZES,
 } from "./empty-state.styles";
 import type { EmptyStateProps, EmptyStateSize } from "./empty-state.types";
 
@@ -17,7 +17,7 @@ const EmptyStateIcon = ({ icon, size }: { icon?: React.ReactNode; size: EmptySta
   if (isValidElement(icon)) {
     return cloneElement(icon as React.ReactElement<{ className?: string }>, {
       className: cn(
-        getIconSizeClass(size),
+        EMPTY_STATE_ICON_SIZES[size],
         (icon as React.ReactElement<{ className?: string }>).props.className
       ),
     });
@@ -61,8 +61,7 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
         role="status"
         aria-label={title}
         className={cn(
-          emptyStateStyles.base,
-          getSizeClass(size),
+          emptyStateVariants({ size }),
           className
         )}
         {...props}
@@ -71,8 +70,7 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
           <div
             data-slot="icon"
             className={cn(
-              emptyStateStyles.iconContainer.base,
-              getIconContainerSizeClass(size)
+              emptyStateIconContainerVariants({ size })
             )}
             aria-hidden="true"
           >
@@ -83,8 +81,7 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
         <h3
           data-slot="title"
           className={cn(
-            emptyStateStyles.title.base,
-            getTitleSizeClass(size)
+            emptyStateTitleVariants({ size })
           )}
         >
           {title}
@@ -94,8 +91,7 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
           <p
             data-slot="description"
             className={cn(
-              emptyStateStyles.description.base,
-              getDescriptionSizeClass(size)
+              emptyStateDescriptionVariants({ size })
             )}
           >
             {description}

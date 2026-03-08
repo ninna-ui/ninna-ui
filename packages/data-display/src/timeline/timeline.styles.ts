@@ -20,7 +20,7 @@ export const timelineStyles = {
   time: 'text-xs text-base-content/70 mt-1',
 };
 
-export const TIMELINE_INDICATOR_STATUS: Record<string, string> = {
+export const TIMELINE_INDICATOR_STATUS: Record<'default' | 'primary' | 'success' | 'danger' | 'warning', string> = {
   default: timelineStyles.indicator.default,
   primary: timelineStyles.indicator.primary,
   success: timelineStyles.indicator.success,

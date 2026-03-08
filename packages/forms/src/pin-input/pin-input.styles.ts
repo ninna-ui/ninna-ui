@@ -1,4 +1,4 @@
-import type { Size } from "@ninna-ui/core";
+import type { Size } from '@ninna-ui/core';
 
 export const PIN_INPUT_SIZES: Record<Size, { input: string; gap: string }> = {
   xs: { input: "w-7 h-7 text-xs", gap: "gap-1" },

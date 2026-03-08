@@ -1,8 +1,7 @@
 import { forwardRef, useState, useCallback, useId } from 'react';
 import { cn } from '@ninna-ui/utils';
-import type { Size } from '@ninna-ui/core';
 import { useFormControlProps } from '../form-control';
-import { inputStyles, INPUT_SIZES, INPUT_COLORS, INPUT_ERROR_COLORS } from './input.styles';
+import { inputStyles, inputVariants } from './input.styles';
 import type { InputProps } from './input.types';
 
 const ClearIcon = ({ className }: { className?: string }) => (
@@ -75,25 +74,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       onClear?.();
     }, [value, onClear]);
 
-    const getVariantClasses = () => {
-      if (variant === 'unstyled') {
-        return inputStyles.unstyled;
-      }
-
-      const variantKey = variant as keyof typeof INPUT_COLORS;
-
-      if (isInvalid) {
-        return INPUT_ERROR_COLORS[variantKey] ?? INPUT_ERROR_COLORS.outline;
-      }
-
-      const variantColors = INPUT_COLORS[variantKey];
-      if (variantColors) {
-        return variantColors[color as keyof typeof variantColors] ?? variantColors.primary;
-      }
-
-      return INPUT_COLORS.outline.primary;
-    };
-
     const showClearButton = clearable && currentValue.length > 0 && !props.disabled && !props.readOnly;
 
     const inputElement = (
@@ -109,12 +89,10 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         data-invalid={isInvalid || undefined}
         data-disabled={props.disabled || undefined}
         className={cn(
-          variant !== 'unstyled' && inputStyles.base,
-          variant !== 'unstyled' && INPUT_SIZES[size],
-          getVariantClasses(),
+          variant === 'unstyled' && inputStyles.unstyled,
+          variant !== 'unstyled' && inputVariants({ inputVariant: variant as 'outline' | 'filled' | 'flushed', color, size, invalid: !!isInvalid }),
           showClearButton && inputStyles.withClearButton,
           floatingLabel && inputStyles.floatingInput,
-          fullWidth && inputStyles.fullWidth,
           className
         )}
         aria-invalid={isInvalid || undefined}
@@ -139,7 +117,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
               htmlFor={inputId}
               className={cn(
                 inputStyles.floatingLabel,
-                inputStyles.floatingLabelSizes[size as Size]
+                inputStyles.floatingLabelSizes[size]
               )}
             >
               {floatingLabel}

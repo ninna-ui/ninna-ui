@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { badgeStyles, getVariantClasses } from './badge.styles';
+import { badgeVariants } from './badge.styles';
 import type { BadgeProps } from './badge.types';
 
 /**
@@ -31,10 +31,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
         ref={ref}
         data-slot="badge"
         className={cn(
-          badgeStyles.base,
-          badgeStyles.sizes[size],
-          badgeStyles.radius[radius],
-          getVariantClasses(variant, color),
+          badgeVariants({ variant, color, size, radius }),
           className
         )}
         {...props}

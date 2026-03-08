@@ -1,8 +1,7 @@
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { SelectEngine } from '@ninna-ui/react-internal';
-import { selectStyles, SELECT_SIZES } from './select.styles';
-import { INPUT_FOCUS_COLORS } from '@ninna-ui/core';
+import { selectStyles, selectTriggerVariants } from './select.styles';
 import type { SelectProps, SelectItemProps, SelectGroupProps } from './select.types';
 
 const ChevronDownIcon = ({ className }: { className?: string }) => (
@@ -32,7 +31,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
   (
     {
       size = 'md',
-      color = 'primary',
       variant = 'outline',
       value,
       defaultValue,
@@ -54,8 +52,6 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     ref
   ) => {
     const isInvalid = invalid;
-    const variantStyles = selectStyles.variants[variant] || selectStyles.variants.outline;
-    const invalidStyles = selectStyles.triggerInvalid[variant] || selectStyles.triggerInvalid.outline;
     
     return (
       <SelectEngine.Root
@@ -76,12 +72,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           data-disabled={disabled || undefined}
           data-variant={variant}
           className={cn(
-            selectStyles.triggerBase,
-            variantStyles,
-            INPUT_FOCUS_COLORS[color],
-            SELECT_SIZES[size],
-            isInvalid && invalidStyles,
-            fullWidth && selectStyles.triggerFullWidth,
+            selectTriggerVariants({ selectVariant: variant as 'outline' | 'filled' | 'flushed', size, invalid: !!isInvalid, fullWidth: !!fullWidth }),
             className
           )}
           aria-label={ariaLabel}

@@ -1,10 +1,6 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
-import {
-  linkStyles,
-  getHoverColorClass,
-  getUnderlineClass,
-} from './link.styles';
+import { linkVariants, LINK_EXTERNAL_ICON_CLASS } from './link.styles';
 import type { LinkProps } from './link.types';
 
 /**
@@ -15,7 +11,7 @@ const DefaultExternalIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 20 20"
     fill="currentColor"
-    className={linkStyles.externalIcon}
+    className={LINK_EXTERNAL_ICON_CLASS}
     aria-hidden="true"
   >
     <path
@@ -61,11 +57,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     const isExternal = external || target === '_blank';
     
     const classes = cn(
-      linkStyles.base,
-      size && linkStyles.sizes[size],
-      linkStyles.colors[color],
-      getHoverColorClass(color),
-      getUnderlineClass(underline),
+      linkVariants({ color, size, underline }),
       className
     );
 

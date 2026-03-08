@@ -2,10 +2,7 @@ import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
 import {
   blockquoteStyles,
-  getVariantClass,
-  getBorderColorClass,
-  getBgColorClass,
-  getIconColorClass,
+  blockquoteVariants,
 } from "./blockquote.styles";
 import type { BlockquoteProps } from "./blockquote.types";
 
@@ -49,13 +46,8 @@ export const Blockquote = forwardRef<HTMLQuoteElement, BlockquoteProps>(
     },
     ref
   ) => {
-    const hasBg = variant === "solid" || variant === "soft";
-
     const classes = cn(
-      blockquoteStyles.base,
-      getVariantClass(variant),
-      getBorderColorClass(color),
-      hasBg && getBgColorClass(color),
+      blockquoteVariants({ variant, color }),
       className
     );
 
@@ -68,7 +60,7 @@ export const Blockquote = forwardRef<HTMLQuoteElement, BlockquoteProps>(
         {...props}
       >
         {showIcon && (
-          <span data-slot="icon" className={cn(blockquoteStyles.iconWrapper, getIconColorClass(color))}>
+          <span data-slot="icon" className={cn(blockquoteStyles.iconWrapper, blockquoteStyles.iconColors[color])}>
             {icon ?? <DefaultQuoteIcon />}
           </span>
         )}

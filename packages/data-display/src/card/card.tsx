@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { cardStyles, CARD_VARIANTS } from './card.styles';
+import { cardStyles, cardVariants } from './card.styles';
 import type {
   CardProps,
   CardHeaderProps,
@@ -18,9 +18,7 @@ const CardRoot = forwardRef<HTMLDivElement, CardProps>(
         data-slot="card"
         data-variant={variant}
         className={cn(
-          cardStyles.root,
-          CARD_VARIANTS[variant],
-          interactive && cardStyles.interactive,
+          cardVariants({ variant, interactive: !!interactive }),
           className
         )}
         {...(interactive ? { tabIndex: 0, role: 'button' } : {})}

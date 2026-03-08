@@ -1,7 +1,7 @@
 import { forwardRef, createContext, useContext, useId } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { RadioEngine } from '@ninna-ui/react-internal';
-import { RADIO_SIZES, RADIO_INDICATOR_SIZES, RADIO_COLORS, RADIO_INDICATOR_COLORS, radioGroupStyles, radioCardStyles } from './radio-group.styles';
+import { radioItemVariants, RADIO_INDICATOR_SIZES, RADIO_INDICATOR_COLORS, radioGroupStyles, radioCardStyles } from './radio-group.styles';
 import type { Color } from '@ninna-ui/core';
 import type { RadioSize } from '../types';
 import type { RadioGroupProps, RadioGroupItemProps, RadioCardProps, RadioVariant } from './radio-group.types';
@@ -116,11 +116,7 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
         disabled={disabled}
         data-invalid={invalid || undefined}
         className={cn(
-          radioGroupStyles.item,
-          radioGroupStyles.variants[variant],
-          RADIO_SIZES[size],
-          RADIO_COLORS[color],
-          invalid && radioGroupStyles.invalid,
+          radioItemVariants({ variant, color, size, invalid: !!invalid }),
           className
         )}
         {...props}

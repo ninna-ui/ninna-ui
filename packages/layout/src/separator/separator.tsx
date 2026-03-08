@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import { separatorStyles, getOrientationClass } from "./separator.styles";
+import { separatorVariants } from "./separator.styles";
 import type { SeparatorProps } from "./separator.types";
 import { separatorDefaults } from "./separator.types";
 
@@ -32,8 +32,7 @@ export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
         role={decorative ? "none" : "separator"}
         aria-orientation={decorative ? undefined : orientation}
         className={cn(
-          separatorStyles.base,
-          getOrientationClass(orientation),
+          separatorVariants({ orientation }),
           className
         )}
         {...props}

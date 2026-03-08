@@ -1,12 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import {
-  stackStyles,
-  getDirectionClass,
-  getAlignClass,
-  getJustifyClass,
-  getGapClass,
-} from "./stack.styles";
+import { stackStyles } from "./stack.styles";
+import { GAP_SIZES } from "@ninna-ui/core";
 import type { StackProps } from "./stack.types";
 import { stackDefaults } from "./stack.types";
 
@@ -46,10 +41,10 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
         data-slot="stack"
         className={cn(
           stackStyles.base,
-          getDirectionClass(direction),
-          getGapClass(gap),
-          align && getAlignClass(align),
-          justify && getJustifyClass(justify),
+          stackStyles.direction[direction],
+          GAP_SIZES[gap],
+          align && stackStyles.align[align],
+          justify && stackStyles.justify[justify],
           wrap && stackStyles.wrap,
           className
         )}

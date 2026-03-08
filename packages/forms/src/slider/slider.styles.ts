@@ -1,18 +1,25 @@
-import { BG_COLORS, BORDER_COLORS } from "@ninna-ui/core";
-import type { Color } from "@ninna-ui/core";
+import type { Color } from '@ninna-ui/core';
 
-/**
- * Slider color variants using core utilities
- */
-export const SLIDER_COLORS: Record<Color, { range: string; thumb: string }> = {
-  primary: { range: BG_COLORS.primary, thumb: `bg-base-100 ${BORDER_COLORS.primary}` },
-  secondary: { range: BG_COLORS.secondary, thumb: `bg-base-100 ${BORDER_COLORS.secondary}` },
-  accent: { range: BG_COLORS.accent, thumb: `bg-base-100 ${BORDER_COLORS.accent}` },
-  neutral: { range: BG_COLORS.neutral, thumb: `bg-base-100 ${BORDER_COLORS.neutral}` },
-  success: { range: BG_COLORS.success, thumb: `bg-base-100 ${BORDER_COLORS.success}` },
-  danger: { range: BG_COLORS.danger, thumb: `bg-base-100 ${BORDER_COLORS.danger}` },
-  warning: { range: BG_COLORS.warning, thumb: `bg-base-100 ${BORDER_COLORS.warning}` },
-  info: { range: BG_COLORS.info, thumb: `bg-base-100 ${BORDER_COLORS.info}` },
+export const SLIDER_RANGE_COLORS: Record<Color, string> = {
+  primary:   "bg-primary",
+  secondary: "bg-secondary",
+  accent:    "bg-accent",
+  neutral:   "bg-neutral",
+  success:   "bg-success",
+  danger:    "bg-danger",
+  warning:   "bg-warning",
+  info:      "bg-info",
+};
+
+export const SLIDER_THUMB_COLORS: Record<Color, string> = {
+  primary:   "bg-base-100 border-primary",
+  secondary: "bg-base-100 border-secondary",
+  accent:    "bg-base-100 border-accent",
+  neutral:   "bg-base-100 border-neutral",
+  success:   "bg-base-100 border-success",
+  danger:    "bg-base-100 border-danger",
+  warning:   "bg-base-100 border-warning",
+  info:      "bg-base-100 border-info",
 };
 
 export const SLIDER_SIZES = {

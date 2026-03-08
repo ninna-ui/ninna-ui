@@ -1,37 +1,23 @@
-import { MUTED_BG_COLORS, TEXT_COLORS } from "@ninna-ui/core";
-import type { Color } from "@ninna-ui/core";
+import { cva, type VariantProps } from 'class-variance-authority';
 
-/**
- * Mark styles configuration
- * Note: Mark uses muted backgrounds (20% opacity) for highlight effect
- */
-export const markStyles = {
-  /**
-   * Base styles applied to all mark elements
-   */
-  base: "px-0.5 rounded-sm",
+export const markVariants = cva(
+  "px-0.5 rounded-sm",
+  {
+    variants: {
+      color: {
+        primary:   "bg-primary/20 text-primary",
+        secondary: "bg-secondary/20 text-secondary",
+        accent:    "bg-accent/20 text-accent",
+        neutral:   "bg-neutral/20 text-neutral",
+        success:   "bg-success/20 text-success",
+        danger:    "bg-danger/20 text-danger",
+        warning:   "bg-warning/20 text-warning",
+        info:      "bg-info/20 text-info",
+        default:   "bg-warning/30 text-base-content",
+      },
+    },
+    defaultVariants: { color: "neutral" },
+  }
+);
 
-  /**
-   * Background color variants from core
-   */
-  bgColors: MUTED_BG_COLORS,
-
-  /**
-   * Text color variants from core
-   */
-  textColors: TEXT_COLORS,
-};
-
-/**
- * Get background color class
- */
-export function getBgColorClass(color: Color): string {
-  return markStyles.bgColors[color];
-}
-
-/**
- * Get text color class
- */
-export function getTextColorClass(color: Color): string {
-  return markStyles.textColors[color];
-}
+export type MarkVariantsProps = VariantProps<typeof markVariants>;

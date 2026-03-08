@@ -1,11 +1,6 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import {
-  codeStyles,
-  getBgColorClass,
-  getTextColorClass,
-  getSizeClass,
-} from "./code.styles";
+import { codeVariants } from "./code.styles";
 import type { CodeProps } from "./code.types";
 
 /**
@@ -30,10 +25,7 @@ export const Code = forwardRef<HTMLElement, CodeProps>(
     ref
   ) => {
     const classes = cn(
-      codeStyles.base,
-      getBgColorClass(color),
-      getTextColorClass(color),
-      getSizeClass(size),
+      codeVariants({ color, size }),
       className
     );
 

@@ -1,10 +1,6 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import {
-  markStyles,
-  getBgColorClass,
-  getTextColorClass,
-} from "./mark.styles";
+import { markVariants } from "./mark.styles";
 import type { MarkProps } from "./mark.types";
 
 /**
@@ -28,9 +24,7 @@ export const Mark = forwardRef<HTMLElement, MarkProps>(
     ref
   ) => {
     const classes = cn(
-      markStyles.base,
-      getBgColorClass(color),
-      getTextColorClass(color),
+      markVariants({ color }),
       className
     );
 

@@ -8,3 +8,4 @@ export * from './typography';
 export * from './radius';
 export * from './size';
 export * from './variants';
+export * from './layout';

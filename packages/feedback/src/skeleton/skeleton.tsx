@@ -1,9 +1,9 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
 import {
-  skeletonStyles,
-  getVariantClass,
-  getRadiusClass,
+  skeletonVariants,
+  SKELETON_TEXT_LINE,
+  SKELETON_TEXT_LINE_LAST,
 } from "./skeleton.styles";
 import type {
   SkeletonProps,
@@ -92,9 +92,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
         aria-busy="true"
         aria-label="Loading"
         className={cn(
-          skeletonStyles.base,
-          getVariantClass(variant),
-          getRadiusClass(radius),
+          skeletonVariants({ variant, radius }),
           className
         )}
         style={sizeStyle}
@@ -155,9 +153,7 @@ export const SkeletonCircle = forwardRef<HTMLDivElement, SkeletonCircleProps>(
         aria-busy="true"
         aria-label="Loading"
         className={cn(
-          skeletonStyles.base,
-          getVariantClass(variant),
-          skeletonStyles.circle,
+          skeletonVariants({ variant, radius: 'full' }),
           className
         )}
         style={sizeStyle}
@@ -220,11 +216,10 @@ export const SkeletonText = forwardRef<HTMLDivElement, SkeletonTextProps>(
           <div
             key={index}
             className={cn(
-              skeletonStyles.base,
-              getVariantClass(variant),
-              skeletonStyles.textLine,
+              skeletonVariants({ variant }),
+              SKELETON_TEXT_LINE,
               "rounded",
-              index === noOfLines - 1 && noOfLines > 1 && skeletonStyles.textLineLast
+              index === noOfLines - 1 && noOfLines > 1 && SKELETON_TEXT_LINE_LAST
             )}
           />
         ))}

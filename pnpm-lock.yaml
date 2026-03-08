@@ -284,6 +284,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
     devDependencies:
       '@ninna-ui/test-config':
         specifier: workspace:*
@@ -343,6 +346,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
     devDependencies:
       '@ninna-ui/test-config':
         specifier: workspace:*
@@ -380,6 +386,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
     devDependencies:
       '@ninna-ui/test-config':
         specifier: workspace:*
@@ -417,6 +426,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
     devDependencies:
       '@ninna-ui/react-internal':
         specifier: workspace:*
@@ -457,6 +469,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
     devDependencies:
       '@ninna-ui/test-config':
         specifier: workspace:*
@@ -494,6 +509,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
     devDependencies:
       '@ninna-ui/react-internal':
         specifier: workspace:*
@@ -534,6 +552,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
     devDependencies:
       '@ninna-ui/react-internal':
         specifier: workspace:*
@@ -574,6 +595,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      class-variance-authority:
+        specifier: ^0.7.1
+        version: 0.7.1
     devDependencies:
       '@ninna-ui/test-config':
         specifier: workspace:*
@@ -2787,6 +2811,9 @@ packages:
 
   cjs-module-lexer@1.4.3:
     resolution: {integrity: sha512-9z8TZaGM1pfswYeXrUpzPrkx8UnWYdhJclsiYMm6x/w5+nN+8Tf/LnAgfLGQCm59qAOxU8WwHEq2vNwF6i4j+Q==}
+
+  class-variance-authority@0.7.1:
+    resolution: {integrity: sha512-Ka+9Trutv7G8M6WT6SeiRWz792K5qEqIGEGzXKhAE6xOWAY6pPH8U+9IY3oCMv6kqTmLsv7Xh/2w2RigkePMsg==}
 
   cli-highlight@2.1.11:
     resolution: {integrity: sha512-9KDcoEVwyUXrjcJNvHD0NFc/hiwe/WPVYIleQh2O1N2Zro5gWJZ/K+3DGn8w8P/F6FxOgzyC5bxDyHIgCSPhGg==}
@@ -7437,6 +7464,10 @@ snapshots:
   ci-info@3.9.0: {}
 
   cjs-module-lexer@1.4.3: {}
+
+  class-variance-authority@0.7.1:
+    dependencies:
+      clsx: 2.1.1
 
   cli-highlight@2.1.11:
     dependencies:

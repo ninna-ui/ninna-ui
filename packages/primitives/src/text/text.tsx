@@ -1,12 +1,10 @@
 import { forwardRef, createElement } from 'react';
 import { cn } from '@ninna-ui/utils';
 import {
-  textStyles,
-  getSizeClass,
-  getWeightClass,
-  getColorClass,
-  getAlignClass,
-  getLineClampClass,
+  textVariants,
+  TEXT_LINE_CLAMP,
+  TEXT_TRANSFORMS,
+  TEXT_DECORATIONS,
 } from './text.styles';
 import type { TextProps } from './text.types';
 
@@ -47,20 +45,14 @@ export const Text = forwardRef<HTMLParagraphElement, TextProps>(
     ref
   ) => {
     const classes = cn(
-      textStyles.base,
-      getSizeClass(size),
-      weight && getWeightClass(weight),
-      getColorClass(color, muted),
-      align && getAlignClass(align),
-      truncate && !lineClamp && textStyles.truncate,
-      lineClamp && getLineClampClass(lineClamp),
-      noWrap && textStyles.noWrap,
-      uppercase && textStyles.transform.uppercase,
-      lowercase && textStyles.transform.lowercase,
-      capitalize && textStyles.transform.capitalize,
-      italic && textStyles.decoration.italic,
-      underline && textStyles.decoration.underline,
-      strikethrough && textStyles.decoration.strikethrough,
+      textVariants({ size, weight, color: muted ? undefined : color, align, truncate: truncate && !lineClamp ? true : false, noWrap, muted }),
+      lineClamp && TEXT_LINE_CLAMP[lineClamp],
+      uppercase && TEXT_TRANSFORMS.uppercase,
+      lowercase && TEXT_TRANSFORMS.lowercase,
+      capitalize && TEXT_TRANSFORMS.capitalize,
+      italic && TEXT_DECORATIONS.italic,
+      underline && TEXT_DECORATIONS.underline,
+      strikethrough && TEXT_DECORATIONS.strikethrough,
       className
     );
 

@@ -1,8 +1,8 @@
 import { forwardRef, useState, useCallback, useEffect, useRef, useId } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { INPUT_COLORS, INPUT_ERROR_COLORS } from "../input/input.styles";
+import { inputVariants } from "../input/input.styles";
 import { useFormControlProps } from '../form-control';
-import { textareaStyles, TEXTAREA_SIZES } from './textarea.styles';
+import { textareaStyles, textareaVariants } from './textarea.styles';
 import type { TextareaProps } from './textarea.types';
 
 /**
@@ -96,25 +96,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       [value, onChange, autoResize, adjustHeight]
     );
 
-    const getVariantClasses = () => {
-      if (variant === 'unstyled') {
-        return textareaStyles.unstyled;
-      }
-
-      const variantKey = variant as keyof typeof INPUT_COLORS;
-
-      if (isInvalid) {
-        return INPUT_ERROR_COLORS[variantKey] ?? INPUT_ERROR_COLORS.outline;
-      }
-
-      const variantColors = INPUT_COLORS[variantKey];
-      if (variantColors) {
-        return variantColors[color as keyof typeof variantColors] ?? variantColors.primary;
-      }
-
-      return INPUT_COLORS.outline.primary;
-    };
-
     const textareaElement = (
       <textarea
         ref={textareaRef}
@@ -128,11 +109,10 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         data-invalid={isInvalid || undefined}
         data-disabled={props.disabled || undefined}
         className={cn(
-          variant !== 'unstyled' && textareaStyles.base,
-          variant !== 'unstyled' && TEXTAREA_SIZES[size],
-          getVariantClasses(),
-          autoResize ? textareaStyles.autoResize : textareaStyles.resize[resize],
-          fullWidth && textareaStyles.fullWidth,
+          variant === 'unstyled' && textareaStyles.unstyled,
+          variant !== 'unstyled' && textareaVariants({ size, resize: autoResize ? 'none' : resize }),
+          variant !== 'unstyled' && inputVariants({ inputVariant: variant as 'outline' | 'filled' | 'flushed', color, size, invalid: !!isInvalid }),
+          autoResize && textareaStyles.autoResize,
           className
         )}
         aria-invalid={isInvalid || undefined}

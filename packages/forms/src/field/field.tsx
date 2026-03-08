@@ -1,6 +1,6 @@
 import { forwardRef, useId, cloneElement, isValidElement, Children } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { fieldStyles, fieldSizes } from './field.styles';
+import { fieldStyles, fieldLabelVariants, fieldHelperVariants } from './field.styles';
 import type { FieldProps } from './field.types';
 
 /**
@@ -38,7 +38,6 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
     const generatedId = useId();
     const fieldId = id || generatedId;
     const helperId = helperText || errorText ? `${fieldId}-helper` : undefined;
-    const sizeStyles = fieldSizes[size];
 
     // Clone child to pass necessary props
     const enhancedChildren = Children.map(children, (child) => {
@@ -68,7 +67,7 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
           <div className={fieldStyles.labelRow}>
             <label
               htmlFor={fieldId}
-              className={cn(fieldStyles.label, sizeStyles.label)}
+              className={cn(fieldLabelVariants({ size }))}
             >
               {label}
               {required && <span className={fieldStyles.required}>*</span>}
@@ -82,11 +81,11 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
         {enhancedChildren}
 
         {invalid && errorText ? (
-          <p id={helperId} className={cn(fieldStyles.errorText, sizeStyles.helper)} role="alert">
+          <p id={helperId} className={cn(fieldStyles.errorText, fieldHelperVariants({ size }))} role="alert">
             {errorText}
           </p>
         ) : helperText ? (
-          <p id={helperId} className={cn(fieldStyles.helperText, sizeStyles.helper)}>
+          <p id={helperId} className={cn(fieldHelperVariants({ size }))}>
             {helperText}
           </p>
         ) : null}
