@@ -2,8 +2,8 @@ import React, { forwardRef, Children, isValidElement, createContext, useContext,
 import type { CompactSize } from '@ninna-ui/core';
 import { cn } from '@ninna-ui/utils';
 import {
+  stepperIndicatorVariants,
   stepperStyles,
-  STEPPER_INDICATOR_SIZES,
   STEPPER_LABEL_SIZES,
   STEPPER_DESCRIPTION_SIZES,
 } from './stepper.styles';
@@ -159,11 +159,7 @@ const StepIndicator = forwardRef<HTMLDivElement, StepIndicatorProps>(
         data-slot="step-indicator"
         data-status={status}
         className={cn(
-          stepperStyles.indicator.base,
-          STEPPER_INDICATOR_SIZES[size],
-          status === 'complete' && stepperStyles.indicator.complete,
-          status === 'current' && stepperStyles.indicator.current,
-          status === 'upcoming' && stepperStyles.indicator.upcoming,
+          stepperIndicatorVariants({ status, size }),
           className
         )}
         {...props}

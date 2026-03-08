@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { TooltipEngine } from '@ninna-ui/react-internal';
-import { tooltipStyles } from './tooltip.styles';
+import { tooltipContentVariants, tooltipStyles } from './tooltip.styles';
 import type {
   TooltipProps,
   TooltipTriggerProps,
@@ -88,7 +88,7 @@ const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
           align={align}
           avoidCollisions={avoidCollisions}
           role="tooltip"
-          className={cn(tooltipStyles.content, className)}
+          className={cn(tooltipContentVariants(), className)}
           {...props}
         >
           {children}

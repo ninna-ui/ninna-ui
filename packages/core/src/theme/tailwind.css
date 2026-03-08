@@ -91,7 +91,7 @@
 /* --- Separator color variants --- */
 @source inline("bg-{primary,secondary,accent,neutral,success,danger,warning,info}/{30}");
 
-/* --- Custom animation utilities (overlays, toast, drawer, accordion) --- */
+/* Custom animation utilities (overlays, toast, drawer, accordion) --- */
 @source inline("animate-in animate-out");
 @source inline("fade-in-0 fade-out-0");
 @source inline("zoom-in-95 zoom-out-95");

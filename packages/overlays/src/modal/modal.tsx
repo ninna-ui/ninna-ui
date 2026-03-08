@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { DialogEngine } from '@ninna-ui/react-internal';
-import { modalStyles, MODAL_SIZES } from './modal.styles';
+import { modalStyles, modalContentVariants } from './modal.styles';
 import type {
   ModalProps,
   ModalTriggerProps,
@@ -90,9 +90,7 @@ const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
           data-slot="modal-content"
           data-size={size}
           className={cn(
-            modalStyles.content,
-            MODAL_SIZES[size],
-            centered ? modalStyles.contentCentered : modalStyles.contentTop,
+            modalContentVariants({ size, placement: centered ? 'center' : 'top' }),
             className
           )}
           onEscapeKeyDown={(event) => {

@@ -1,6 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import { wrapStyles, getAlignClass, getJustifyClass, getGapClass } from "./wrap.styles";
+import { wrapStyles } from "./wrap.styles";
+import { GAP_SIZES } from "@ninna-ui/core";
 import type { WrapProps } from "./wrap.types";
 import { wrapDefaults } from "./wrap.types";
 
@@ -35,9 +36,9 @@ export const Wrap = forwardRef<HTMLDivElement, WrapProps>(
         data-slot="wrap"
         className={cn(
           wrapStyles.base,
-          getGapClass(gap),
-          align && getAlignClass(align),
-          justify && getJustifyClass(justify),
+          GAP_SIZES[gap],
+          align && wrapStyles.align[align],
+          justify && wrapStyles.justify[justify],
           className
         )}
         {...props}

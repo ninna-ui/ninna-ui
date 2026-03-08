@@ -2,5 +2,5 @@ export const boxMeta = {
   title: "Box",
   description: "The most basic layout component. A simple div wrapper that accepts className and children.",
   category: "Layout",
-  version: "0.1.0",
+  version: "0.3.0",
 };

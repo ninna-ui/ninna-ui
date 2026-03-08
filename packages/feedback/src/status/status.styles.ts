@@ -1,84 +1,52 @@
-import type { StatusValue, StatusSize } from './status.types';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-/**
- * Status styles configuration
- */
-export const statusStyles = {
-  /**
-   * Base styles for the status root container
-   */
-  base: "inline-flex items-center gap-2",
+export const statusIndicatorVariants = cva(
+  "rounded-full shrink-0",
+  {
+    variants: {
+      value: {
+        success: "bg-success",
+        danger:  "bg-danger",
+        warning: "bg-warning",
+        info:    "bg-info",
+      },
+      size: {
+        sm: "h-2 w-2",
+        md: "h-2.5 w-2.5",
+        lg: "h-3 w-3",
+      },
+    },
+    defaultVariants: {
+      value: "info",
+      size: "md",
+    },
+  }
+);
 
-  /**
-   * Indicator base styles
-   */
-  indicator: {
-    base: "rounded-full shrink-0",
-  },
+export const statusLabelVariants = cva(
+  "",
+  {
+    variants: {
+      value: {
+        success: "text-success",
+        danger:  "text-danger",
+        warning: "text-warning",
+        info:    "text-info",
+      },
+      size: {
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-base",
+      },
+    },
+    defaultVariants: {
+      value: "info",
+      size: "md",
+    },
+  }
+);
 
-  /**
-   * Indicator size variants
-   */
-  indicatorSizes: {
-    sm: "h-2 w-2",
-    md: "h-2.5 w-2.5",
-    lg: "h-3 w-3",
-  } as Record<StatusSize, string>,
+export type StatusIndicatorVariantsProps = VariantProps<typeof statusIndicatorVariants>;
+export type StatusLabelVariantsProps = VariantProps<typeof statusLabelVariants>;
 
-  /**
-   * Label size variants
-   */
-  labelSizes: {
-    sm: "text-xs",
-    md: "text-sm",
-    lg: "text-base",
-  } as Record<StatusSize, string>,
-
-  /**
-   * Indicator color variants
-   */
-  indicatorColors: {
-    success: 'bg-success',
-    danger: 'bg-danger',
-    warning: 'bg-warning',
-    info: 'bg-info',
-  } as Record<StatusValue, string>,
-
-  /**
-   * Text color variants
-   */
-  textColors: {
-    success: 'text-success',
-    danger: 'text-danger',
-    warning: 'text-warning',
-    info: 'text-info',
-  } as Record<StatusValue, string>,
-};
-
-/**
- * Get indicator size class
- */
-export function getIndicatorSizeClass(size: StatusSize): string {
-  return statusStyles.indicatorSizes[size];
-}
-
-/**
- * Get label size class
- */
-export function getLabelSizeClass(size: StatusSize): string {
-  return statusStyles.labelSizes[size];
-}
-
-/**
- * Get indicator color class
- */
-export function getIndicatorColorClass(value: StatusValue): string {
-  return statusStyles.indicatorColors[value];
-}
-
-/**
- * Get text color class
- */
-export function getTextColorClass(value: StatusValue): string {
-  return statusStyles.textColors[value];
-}
+export const STATUS_ROOT_CLASS = "inline-flex items-center gap-2";

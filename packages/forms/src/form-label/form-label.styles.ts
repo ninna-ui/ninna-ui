@@ -1,10 +1,19 @@
-import type { Size } from "@ninna-ui/core";
+import { cva, type VariantProps } from 'class-variance-authority';
 
-/** Form label size class mappings */
-export const FORM_LABEL_SIZES: Record<Size, string> = {
-  xs: "text-xs",
-  sm: "text-sm",
-  md: "text-sm",
-  lg: "text-base",
-  xl: "text-base",
-};
+export const formLabelVariants = cva(
+  "block font-medium text-base-content",
+  {
+    variants: {
+      size: {
+        xs: "text-xs",
+        sm: "text-sm",
+        md: "text-sm",
+        lg: "text-base",
+        xl: "text-base",
+      },
+    },
+    defaultVariants: { size: "md" },
+  }
+);
+
+export type FormLabelVariantsProps = VariantProps<typeof formLabelVariants>;

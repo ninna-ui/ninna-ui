@@ -54,7 +54,8 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "@ninna-ui/core": "workspace:*"
+    "@ninna-ui/core": "workspace:*",
+    "class-variance-authority": "^0.7.1"
   },
   "peerDependencies": {
     "react": ">=19.0.0",

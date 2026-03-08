@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { FORM_LABEL_SIZES } from './form-label.styles';
+import { formLabelVariants } from './form-label.styles';
 import { useFormControl } from '../form-control';
 import type { FormLabelProps } from './form-label.types';
 
@@ -39,8 +39,7 @@ export const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(
         id={formControl?.labelId}
         htmlFor={htmlFor}
         className={cn(
-          'block font-medium text-base-content',
-          FORM_LABEL_SIZES[size],
+          formLabelVariants({ size }),
           isDisabled && 'opacity-50 cursor-not-allowed',
           className
         )}

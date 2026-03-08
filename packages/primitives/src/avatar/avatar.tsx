@@ -1,11 +1,12 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
 import {
-  avatarStyles,
-  getSizeClass,
-  getBgColorClass,
-  getRingColorClass,
-  getShapeClass,
+  avatarVariants,
+  AVATAR_TEXT_SIZES,
+  AVATAR_ICON_SIZES,
+  AVATAR_RING_COLORS,
+  AVATAR_IMAGE_CLASS,
+  AVATAR_FALLBACK_CLASS,
 } from './avatar.styles';
 import type { AvatarProps } from './avatar.types';
 import type { Color, Size } from '@ninna-ui/core';
@@ -71,15 +72,15 @@ const AvatarFallback = ({
     return (
       <DefaultFallbackIcon
         className={cn(
-          avatarStyles.iconSizes[size],
-          avatarStyles.textColors[color]
+          AVATAR_ICON_SIZES[size],
+          `text-${color}`
         )}
       />
     );
   }
 
   return (
-    <span className={cn(avatarStyles.textSizes[size], avatarStyles.textColors[color])}>
+    <span className={cn(AVATAR_TEXT_SIZES[size], `text-${color}`)}>  
       {initials}
     </span>
   );
@@ -128,12 +129,8 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
         role="img"
         aria-label={alt || name || 'Avatar'}
         className={cn(
-          avatarStyles.base,
-          getSizeClass(size),
-          getShapeClass(shape, radius),
-          showFallback && getBgColorClass(color),
-          showRing && avatarStyles.ring,
-          showRing && getRingColorClass(effectiveRingColor),
+          avatarVariants({ size, color: showFallback ? color : undefined, shape, radius: shape === 'square' ? radius : undefined, withRing: showRing }),
+          showRing && AVATAR_RING_COLORS[effectiveRingColor],
           className
         )}
         {...props}
@@ -145,14 +142,14 @@ export const Avatar = forwardRef<HTMLSpanElement, AvatarProps>(
             alt={alt || name || ''}
             loading={loading}
             className={cn(
-              avatarStyles.image,
-              getShapeClass(shape, radius)
+              AVATAR_IMAGE_CLASS,
+              shape === 'circle' ? 'rounded-full' : radius ? `rounded-${radius}` : 'rounded-md'
             )}
           />
         )}
 
         {showFallback && (
-          <span data-slot="fallback" className={avatarStyles.fallback}>
+          <span data-slot="fallback" className={AVATAR_FALLBACK_CLASS}>
             <AvatarFallback
               fallback={fallback}
               initials={initials}

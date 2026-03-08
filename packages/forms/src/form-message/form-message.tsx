@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { FORM_MESSAGE_SIZES, FORM_MESSAGE_COLORS } from './form-message.styles';
+import { formMessageVariants } from './form-message.styles';
 import { useFormControl } from '../form-control';
 import type { FormMessageProps } from './form-message.types';
 
@@ -46,8 +46,7 @@ export const FormMessage = forwardRef<HTMLParagraphElement, FormMessageProps>(
         role={type === 'error' ? 'alert' : undefined}
         aria-live={type === 'error' ? 'polite' : undefined}
         className={cn(
-          FORM_MESSAGE_SIZES[size],
-          FORM_MESSAGE_COLORS[type],
+          formMessageVariants({ size, type }),
           className
         )}
         {...props}

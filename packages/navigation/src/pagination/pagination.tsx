@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { paginationStyles, PAGINATION_SIZES } from './pagination.styles';
+import { paginationLinkVariants, paginationStyles } from './pagination.styles';
 import type {
   PaginationProps,
   PaginationContentProps,
@@ -76,9 +76,7 @@ const PaginationLink = forwardRef<HTMLButtonElement, PaginationLinkProps>(
         aria-current={isActive ? 'page' : undefined}
         data-active={isActive ? '' : undefined}
         className={cn(
-          paginationStyles.link,
-          PAGINATION_SIZES[size],
-          isActive && paginationStyles.linkActive,
+          paginationLinkVariants({ size, active: isActive }),
           className
         )}
         {...props}

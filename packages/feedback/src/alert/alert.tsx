@@ -1,8 +1,8 @@
 import React, { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
 import type { AlertProps } from "./alert.types";
-import { alertStyles, getVariantClass, getIconColorClass } from "./alert.styles";
-import type { Color, ColorVariant } from "@ninna-ui/core";
+import { alertVariants, alertStyles, ALERT_ICON_SIZES } from "./alert.styles";
+import type { Color, Size } from "@ninna-ui/core";
 
 /**
  * Default icons for each color
@@ -60,19 +60,18 @@ const CloseIcon = (
 );
 
 // Extracted components for better reconciliation
-const AlertIcon = ({ icon, showIcon, color, variant, size }: { 
+const AlertIcon = ({ icon, showIcon, color, size }: { 
   icon?: React.ReactNode; 
   showIcon?: boolean; 
   color: Color; 
-  variant: ColorVariant; 
-  size: string; 
+  size: Size; 
 }) => {
   if (!showIcon && !icon) return null;
   
   const iconElement = icon || DefaultIcons[color];
   
   return (
-    <div data-slot="icon" className={cn(alertStyles.iconContainer, alertStyles.iconSizes[size as keyof typeof alertStyles.iconSizes], getIconColorClass(variant, color))}>
+    <div data-slot="icon" className={cn(alertStyles.iconContainer, ALERT_ICON_SIZES[size])}>  
       {iconElement}
     </div>
   );
@@ -163,9 +162,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
         role={role}
         aria-live={role === "alert" ? "assertive" : "polite"}
         className={cn(
-          alertStyles.base,
-          alertStyles.sizes[size],
-          getVariantClass(variant, color),
+          alertVariants({ variant, color, size }),
           className
         )}
         {...props}
@@ -174,7 +171,6 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
           icon={icon} 
           showIcon={showIcon} 
           color={color} 
-          variant={variant} 
           size={size} 
         />
         <AlertContent 

@@ -1,7 +1,7 @@
 import { forwardRef, Children, createContext, useContext, isValidElement } from 'react';
 import type { ReactNode } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { breadcrumbsStyles, BREADCRUMBS_SIZES } from './breadcrumbs.styles';
+import { breadcrumbsVariants, breadcrumbsStyles } from './breadcrumbs.styles';
 import type {
   BreadcrumbsProps,
   BreadcrumbsItemProps,
@@ -43,7 +43,7 @@ const BreadcrumbsRoot = forwardRef<HTMLElement, BreadcrumbsProps>(
           ref={ref}
           aria-label={ariaLabel}
           data-slot="breadcrumbs"
-          className={cn(breadcrumbsStyles.nav, BREADCRUMBS_SIZES[size], className)}
+          className={cn(breadcrumbsVariants({ size }), className)}
           {...props}
         >
           <ol className={breadcrumbsStyles.list}>
@@ -98,7 +98,7 @@ const BreadcrumbsLink = forwardRef<HTMLAnchorElement, BreadcrumbsLinkProps>(
         aria-current={current ? 'page' : undefined}
         className={cn(
           breadcrumbsStyles.link,
-          current && breadcrumbsStyles.linkCurrent,
+          current && breadcrumbsStyles.currentLink,
           icon && 'inline-flex items-center gap-1.5',
           className
         )}

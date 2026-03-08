@@ -2,23 +2,24 @@ import { forwardRef, useEffect } from 'react';
 import { cn } from '@ninna-ui/utils';
 import type { ProgressProps } from './progress.types';
 import {
-  progressStyles,
-  getSizeClass,
-  getColorClass,
-  getVariantClass,
+  progressTrackVariants,
+  progressIndicatorVariants,
+  progressLabelStyles,
+  PROGRESS_CONTAINER_CLASS,
+  PROGRESS_INDETERMINATE_CLASS,
   progressAnimations,
   PROGRESS_KEYFRAMES,
 } from './progress.styles';
 
 // Extracted components for better reconciliation
 const ProgressLabel = ({ children, position, className }: { children: React.ReactNode; position: 'left' | 'right' | 'top' | 'inside'; className?: string }) => (
-  <span className={cn(progressStyles.label.base, progressStyles.label[position], className)}>
+  <span className={cn(progressLabelStyles.base, progressLabelStyles[position], className)}>
     {children}
   </span>
 );
 
 const ProgressInsideLabel = ({ children, className }: { children: React.ReactNode; className?: string }) => (
-  <span className={cn(progressStyles.label.inside, "absolute inset-0 flex items-center justify-center", className)}>
+  <span className={cn(progressLabelStyles.inside, "absolute inset-0 flex items-center justify-center", className)}>
     {children}
   </span>
 );
@@ -115,18 +116,15 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
       <div
         data-slot="track"
         className={cn(
-          progressStyles.track,
-          getSizeClass(size),
+          progressTrackVariants({ size }),
           trackClassName
         )}
       >
         <div
           data-slot="indicator"
           className={cn(
-            progressStyles.indicator,
-            getColorClass(color),
-            getVariantClass(variant),
-            indeterminate && progressStyles.indeterminate,
+            progressIndicatorVariants({ color, variant }),
+            indeterminate && PROGRESS_INDETERMINATE_CLASS,
             (variant === 'animated' || indeterminate) && 'ninna-progress-animated',
             indicatorClassName
           )}
@@ -146,15 +144,15 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
 
     if (labelPosition === "top") {
       return (
-        <div ref={ref} data-slot="progress" className={cn(progressStyles.container, className)} {...props}>
+        <div ref={ref} data-slot="progress" className={cn(PROGRESS_CONTAINER_CLASS, className)} {...props}>
           <div className="flex justify-between items-center mb-1">
             {label && (
-              <span className={cn(progressStyles.label.base, progressStyles.label.top, "mb-0")}>
+              <span className={cn(progressLabelStyles.base, progressLabelStyles.top, "mb-0")}>
                 {label}
               </span>
             )}
             {showValue && (
-              <span className={cn(progressStyles.label.base, progressStyles.label.right)}>
+              <span className={cn(progressLabelStyles.base, progressLabelStyles.right)}>
                 {formattedLabel}
               </span>
             )}
@@ -166,7 +164,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
 
     if (labelPosition === "left" && showValue) {
       return (
-        <div ref={ref} className={cn(progressStyles.container, "flex items-center gap-3", className)} {...props}>
+        <div ref={ref} className={cn(PROGRESS_CONTAINER_CLASS, "flex items-center gap-3", className)} {...props}>
           <ProgressLabel position="left">{formattedLabel}</ProgressLabel>
           <div className="flex-1">{progressBar}</div>
         </div>
@@ -175,7 +173,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
 
     if (labelPosition === "right" && showValue) {
       return (
-        <div ref={ref} className={cn(progressStyles.container, "flex items-center gap-3", className)} {...props}>
+        <div ref={ref} className={cn(PROGRESS_CONTAINER_CLASS, "flex items-center gap-3", className)} {...props}>
           <div className="flex-1">{progressBar}</div>
           <ProgressLabel position="right">{formattedLabel}</ProgressLabel>
         </div>
@@ -184,7 +182,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
 
     if (labelPosition === "inside") {
       return (
-        <div ref={ref} className={cn(progressStyles.container, "relative", className)} {...props}>
+        <div ref={ref} className={cn(PROGRESS_CONTAINER_CLASS, "relative", className)} {...props}>
           {progressBar}
           <ProgressInsideLabel>{formattedLabel}</ProgressInsideLabel>
         </div>
@@ -192,7 +190,7 @@ export const Progress = forwardRef<HTMLDivElement, ProgressProps>(
     }
 
     return (
-      <div ref={ref} className={cn(progressStyles.container, className)} {...props}>
+      <div ref={ref} className={cn(PROGRESS_CONTAINER_CLASS, className)} {...props}>
         {progressBar}
       </div>
     );

@@ -1,6 +1,30 @@
-import type { Size } from "@ninna-ui/core";
+import { cva, type VariantProps } from 'class-variance-authority';
 
-export const FILE_UPLOAD_SIZES: Record<Size, string> = {
+export const fileUploadDropzoneVariants = cva(
+  "relative flex flex-col items-center justify-center rounded-lg border-2 border-dashed transition-colors cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
+  {
+    variants: {
+      size: {
+        xs: "min-h-20 text-xs",
+        sm: "min-h-24 text-sm",
+        md: "min-h-32 text-sm",
+        lg: "min-h-40 text-base",
+        xl: "min-h-48 text-base",
+      },
+      state: {
+        default:  "border-base-300 bg-base-50 hover:border-base-400",
+        active:   "border-primary bg-primary/10",
+        disabled: "cursor-not-allowed opacity-50 bg-base-100",
+        invalid:  "border-danger bg-danger/10",
+      },
+    },
+    defaultVariants: { size: "md", state: "default" },
+  }
+);
+
+export type FileUploadDropzoneVariantsProps = VariantProps<typeof fileUploadDropzoneVariants>;
+
+export const FILE_UPLOAD_SIZES: Record<import('@ninna-ui/core').Size, string> = {
   xs: "min-h-20 text-xs",
   sm: "min-h-24 text-sm",
   md: "min-h-32 text-sm",

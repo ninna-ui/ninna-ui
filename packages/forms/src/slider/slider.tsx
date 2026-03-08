@@ -1,7 +1,7 @@
 import { forwardRef, useId } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { SliderEngine } from '@ninna-ui/react-internal';
-import { SLIDER_SIZES, SLIDER_COLORS, sliderStyles } from './slider.styles';
+import { SLIDER_SIZES, SLIDER_RANGE_COLORS, SLIDER_THUMB_COLORS, sliderStyles } from './slider.styles';
 import type { SliderProps } from './slider.types';
 
 /**
@@ -42,8 +42,9 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
   ) => {
     const generatedId = useId();
     const isHorizontal = orientation === 'horizontal';
-    const colorStyles = SLIDER_COLORS[color];
-    const sizeStyles = SLIDER_SIZES[size];
+    const rangeColor = SLIDER_RANGE_COLORS[color] ?? SLIDER_RANGE_COLORS.primary;
+    const thumbColor = SLIDER_THUMB_COLORS[color] ?? SLIDER_THUMB_COLORS.primary;
+    const sizeStyles = SLIDER_SIZES[size] ?? SLIDER_SIZES.md;
 
     const currentValue = value ?? defaultValue;
 
@@ -107,7 +108,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
               className={cn(
                 sliderStyles.range,
                 isHorizontal ? sliderStyles.rangeHorizontal : sliderStyles.rangeVertical,
-                colorStyles.range
+                rangeColor
               )}
             />
             {/* Render marks */}
@@ -139,7 +140,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
               className={cn(
                 sliderStyles.thumb,
                 sizeStyles.thumb,
-                colorStyles.thumb
+                thumbColor
               )}
             />
           ))}

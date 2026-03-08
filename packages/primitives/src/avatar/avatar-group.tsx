@@ -1,6 +1,6 @@
 import { forwardRef, Children, isValidElement, cloneElement } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { avatarStyles, getSizeClass } from './avatar.styles';
+import { avatarGroupStyles, avatarVariants } from './avatar.styles';
 import type { AvatarGroupProps, AvatarProps } from './avatar.types';
 
 /**
@@ -42,8 +42,8 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
         role="group"
         aria-label={`Avatar group with ${totalCount} members`}
         className={cn(
-          avatarStyles.group.base,
-          avatarStyles.group.spacing[spacing],
+          avatarGroupStyles.base,
+          avatarGroupStyles.spacing[spacing],
           className
         )}
         {...props}
@@ -53,7 +53,7 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
             return cloneElement(child, {
               key: child.key || `avatar-${index}`,
               size: size,
-              className: cn(avatarStyles.group.item, child.props.className),
+              className: cn(avatarGroupStyles.item, child.props.className),
             });
           }
           return child;
@@ -63,11 +63,10 @@ export const AvatarGroup = forwardRef<HTMLDivElement, AvatarGroupProps>(
           <span
             data-slot="overflow"
             className={cn(
-              avatarStyles.base,
-              getSizeClass(size),
+              avatarVariants({ size }),
               'rounded-full',
-              avatarStyles.group.item,
-              avatarStyles.group.overflow
+              avatarGroupStyles.item,
+              avatarGroupStyles.overflow
             )}
             aria-label={`${overflowCount} more members`}
           >

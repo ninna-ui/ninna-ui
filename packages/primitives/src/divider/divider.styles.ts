@@ -1,57 +1,38 @@
-import { TEXT_VARIANTS } from "@ninna-ui/core";
-import type { Color } from "@ninna-ui/core";
-import type { DividerVariant, DividerWeight } from "./divider.types";
+import { cva, type VariantProps } from 'class-variance-authority';
+import type { Color } from '@ninna-ui/core';
 
-/**
- * Divider styles configuration
- */
-export const dividerStyles = {
-  /**
-   * Base styles for horizontal divider
-   */
-  horizontal: {
-    base: "w-full border-t",
-    soft: "border-base-300/50",
-    solid: "border-base-300",
-  },
+export const dividerVariants = cva(
+  "",
+  {
+    variants: {
+      orientation: {
+        horizontal: "w-full border-t",
+        vertical:   "h-full border-l",
+      },
+      weight: {
+        soft:  "border-base-300/50",
+        solid: "border-base-300",
+      },
+    },
+    defaultVariants: { orientation: "horizontal", weight: "soft" },
+  }
+);
 
-  /**
-   * Base styles for vertical divider
-   */
-  vertical: {
-    base: "h-full border-l",
-    soft: "border-base-300/50",
-    solid: "border-base-300",
-  },
+export type DividerVariantsProps = VariantProps<typeof dividerVariants>;
 
-  /**
-   * Base styles for divider with text
-   */
-  withText: {
-    container: "flex items-center gap-3 w-full",
-    line: "flex-1 border-t",
-    text: "text-sm font-medium whitespace-nowrap",
-    soft: "border-base-300/50",
-    solid: "border-base-300",
-  },
+export const DIVIDER_TEXT_COLORS: Record<Color, string> = {
+  primary:   "text-primary",
+  secondary: "text-secondary",
+  accent:    "text-accent",
+  neutral:   "text-neutral",
+  success:   "text-success",
+  danger:    "text-danger",
+  warning:   "text-warning",
+  info:      "text-info",
 };
 
-/**
- * Get color class for divider text
- */
-export function getColorClass(color: Color): string {
-  return TEXT_VARIANTS[color];
-}
-
-/**
- * Get weight class for divider
- */
-export function getWeightClass(variant: DividerVariant, weight: DividerWeight): string {
-  if (variant === "horizontal") {
-    return dividerStyles.horizontal[weight];
-  } else if (variant === "vertical") {
-    return dividerStyles.vertical[weight];
-  } else {
-    return dividerStyles.withText[weight];
-  }
-}
+export const dividerStyles = {
+  withTextContainer: "flex items-center gap-3 w-full",
+  withTextLine:      "flex-1 border-t",
+  withTextContent:   "text-sm font-medium whitespace-nowrap",
+};

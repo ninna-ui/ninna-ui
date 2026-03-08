@@ -1,49 +1,28 @@
-// Loading component
-export { Loading } from "./loading";
-export type { LoadingProps, LoadingVariant } from "./loading";
+/**
+ * @ninna-ui/feedback
+ * Feedback components for Ninna-UI
+ */
 
-// Alert component
-export { Alert } from "./alert";
-export type { AlertProps, AlertVariant } from "./alert";
+// Loading
+export { Loading, type LoadingProps, type LoadingVariant } from "./loading";
 
-// Progress component
-export { Progress } from "./progress";
-export type {
-  ProgressProps,
-  ProgressVariant,
-  ProgressLabelPosition,
-} from "./progress";
+// Alert
+export { Alert, type AlertProps, type AlertVariant } from "./alert";
 
-// CircularProgress component
-export { CircularProgress } from "./circular-progress";
-export type {
-  CircularProgressProps,
-  CircularProgressLabelPosition,
-} from "./circular-progress";
+// Progress
+export { Progress, type ProgressProps, type ProgressVariant, type ProgressLabelPosition } from "./progress";
 
-// Status component
-export { Status } from "./status";
-export type { StatusProps, StatusValue, StatusSize } from "./status";
+// CircularProgress
+export { CircularProgress, type CircularProgressProps, type CircularProgressLabelPosition } from "./circular-progress";
 
-// Skeleton component
-export { Skeleton, SkeletonCircle, SkeletonText } from "./skeleton";
-export type {
-  SkeletonProps,
-  SkeletonCircleProps,
-  SkeletonTextProps,
-} from "./skeleton";
+// Status
+export { Status, type StatusProps, type StatusValue, type StatusSize } from "./status";
 
-// EmptyState component
-export { EmptyState } from "./empty-state";
-export type { EmptyStateProps } from "./empty-state";
+// Skeleton
+export { Skeleton, SkeletonCircle, SkeletonText, type SkeletonProps, type SkeletonCircleProps, type SkeletonTextProps } from "./skeleton";
 
-// Toast component
-export { Toast, Toaster, toast, ToastProvider, useToast } from "./toast";
-export type {
-  ToastProps,
-  ToasterProps,
-  ToastData,
-  ToastVariant,
-  CreateToastOptions,
-  ToastContextValue,
-} from "./toast";
+// EmptyState
+export { EmptyState, type EmptyStateProps } from "./empty-state";
+
+// Toast
+export { Toast, Toaster, toast, ToastProvider, useToast, type ToastProps, type ToasterProps, type ToastData, type ToastVariant, type CreateToastOptions, type ToastContextValue } from "./toast";

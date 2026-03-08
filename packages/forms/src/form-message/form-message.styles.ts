@@ -1,19 +1,25 @@
-import type { Size } from "@ninna-ui/core";
-import type { FormMessageType } from "./form-message.types";
+import { cva, type VariantProps } from 'class-variance-authority';
 
-/** Form message size class mappings */
-export const FORM_MESSAGE_SIZES: Record<Size, string> = {
-  xs: "text-xs",
-  sm: "text-xs",
-  md: "text-sm",
-  lg: "text-sm",
-  xl: "text-base",
-};
+export const formMessageVariants = cva(
+  "",
+  {
+    variants: {
+      type: {
+        error:   "text-danger",
+        success: "text-success",
+        warning: "text-warning",
+        hint:    "text-base-content/70",
+      },
+      size: {
+        xs: "text-xs",
+        sm: "text-xs",
+        md: "text-sm",
+        lg: "text-sm",
+        xl: "text-base",
+      },
+    },
+    defaultVariants: { type: "hint", size: "md" },
+  }
+);
 
-/** Form message color mappings */
-export const FORM_MESSAGE_COLORS: Record<FormMessageType, string> = {
-  error: 'text-danger',
-  success: 'text-success',
-  warning: 'text-warning',
-  hint: 'text-base-content/70',
-};
+export type FormMessageVariantsProps = VariantProps<typeof formMessageVariants>;

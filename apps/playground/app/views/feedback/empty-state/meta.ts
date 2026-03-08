@@ -4,6 +4,6 @@ export const emptyStateMeta: ComponentMeta = {
   title: "EmptyState",
   description: "EmptyState component is used to indicate when a resource is empty or unavailable. It provides a clear message and optional actions to guide users.",
   category: "Feedback",
-  version: "0.1.0",
+  version: "0.3.0",
   status: "stable",
 };

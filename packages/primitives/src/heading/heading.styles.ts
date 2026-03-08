@@ -1,137 +1,87 @@
-import {
-  TEXT_SIZE_CLASSES,
-  TEXT_WEIGHT_CLASSES,
-  TEXT_COLORS,
-} from '@ninna-ui/core';
-import type { Color, TextSize, TextWeight, HeadingLevel } from '@ninna-ui/core';
-import type { HeadingAlign } from './heading.types';
+import { cva, type VariantProps } from 'class-variance-authority';
+import type { HeadingLevel } from '@ninna-ui/core';
 
-/**
- * Heading styles configuration
- * All size/color classes come from @ninna-ui/core for consistency
- */
-export const headingStyles = {
-  /**
-   * Base styles applied to all headings
-   */
-  base: "scroll-m-20",
+export const headingVariants = cva(
+  "scroll-m-20",
+  {
+    variants: {
+      size: {
+        xs:   "text-xs",
+        sm:   "text-sm",
+        base: "text-base",
+        md:   "text-base",
+        lg:   "text-lg",
+        xl:   "text-xl",
+        "2xl": "text-2xl",
+        "3xl": "text-3xl",
+        "4xl": "text-4xl",
+        "5xl": "text-5xl",
+        "6xl": "text-6xl",
+      },
+      weight: {
+        thin:       "font-thin",
+        extralight: "font-extralight",
+        light:      "font-light",
+        normal:     "font-normal",
+        medium:     "font-medium",
+        semibold:   "font-semibold",
+        bold:       "font-bold",
+        extrabold:  "font-extrabold",
+        black:      "font-black",
+      },
+      color: {
+        primary:   "text-primary",
+        secondary: "text-secondary",
+        accent:    "text-accent",
+        neutral:   "text-neutral",
+        success:   "text-success",
+        danger:    "text-danger",
+        warning:   "text-warning",
+        info:      "text-info",
+      },
+      align: {
+        left:   "text-left",
+        center: "text-center",
+        right:  "text-right",
+      },
+      truncate: {
+        true:  "truncate",
+        false: "",
+      },
+      noWrap: {
+        true:  "whitespace-nowrap",
+        false: "",
+      },
+    },
+    defaultVariants: { truncate: false, noWrap: false },
+  }
+);
 
-  /**
-   * Default size classes per heading level
-   */
-  levelSizes: {
-    h1: 'text-4xl lg:text-5xl',
-    h2: 'text-3xl lg:text-4xl',
-    h3: 'text-2xl lg:text-3xl',
-    h4: 'text-xl lg:text-2xl',
-    h5: 'text-lg lg:text-xl',
-    h6: 'text-base lg:text-lg',
-  } satisfies Record<HeadingLevel, string>,
+export type HeadingVariantsProps = VariantProps<typeof headingVariants>;
 
-  /**
-   * Default weight classes per heading level
-   */
-  levelWeights: {
-    h1: 'font-bold',
-    h2: 'font-bold',
-    h3: 'font-semibold',
-    h4: 'font-semibold',
-    h5: 'font-medium',
-    h6: 'font-medium',
-  } satisfies Record<HeadingLevel, string>,
-
-  /**
-   * Size variants from core (for override)
-   */
-  sizes: TEXT_SIZE_CLASSES,
-
-  /**
-   * Weight variants from core
-   */
-  weights: TEXT_WEIGHT_CLASSES,
-
-  /**
-   * Color variants from core
-   */
-  colors: TEXT_COLORS,
-
-  /**
-   * Text alignment classes
-   */
-  align: {
-    left: "text-left",
-    center: "text-center",
-    right: "text-right",
-  } as Record<HeadingAlign, string>,
-
-  /**
-   * Truncation styles
-   */
-  truncate: "truncate",
-
-  /**
-   * Line clamp styles
-   */
-  lineClamp: {
-    1: "line-clamp-1",
-    2: "line-clamp-2",
-    3: "line-clamp-3",
-    4: "line-clamp-4",
-    5: "line-clamp-5",
-    6: "line-clamp-6",
-  } as Record<number, string>,
-
-  /**
-   * No wrap style
-   */
-  noWrap: "whitespace-nowrap",
+export const HEADING_LEVEL_SIZES: Record<HeadingLevel, string> = {
+  h1: "text-4xl lg:text-5xl",
+  h2: "text-3xl lg:text-4xl",
+  h3: "text-2xl lg:text-3xl",
+  h4: "text-xl lg:text-2xl",
+  h5: "text-lg lg:text-xl",
+  h6: "text-base lg:text-lg",
 };
 
-/**
- * Get default size class for heading level (without weight)
- */
-export function getLevelSizeClass(level: HeadingLevel): string {
-  return headingStyles.levelSizes[level];
-}
+export const HEADING_LEVEL_WEIGHTS: Record<HeadingLevel, string> = {
+  h1: "font-bold",
+  h2: "font-bold",
+  h3: "font-semibold",
+  h4: "font-semibold",
+  h5: "font-medium",
+  h6: "font-medium",
+};
 
-/**
- * Get default weight class for heading level
- */
-export function getLevelWeightClass(level: HeadingLevel): string {
-  return headingStyles.levelWeights[level];
-}
-
-/**
- * Get size class override
- */
-export function getSizeClass(size: TextSize): string {
-  return headingStyles.sizes[size];
-}
-
-/**
- * Get weight class
- */
-export function getWeightClass(weight: TextWeight): string {
-  return headingStyles.weights[weight];
-}
-
-/**
- * Get color class for heading
- */
-export function getColorClass(color: Color): string {
-  return headingStyles.colors[color];
-}
-
-/**
- * Get alignment class
- */
-export function getAlignClass(align: HeadingAlign): string {
-  return headingStyles.align[align];
-}
-
-/**
- * Get line clamp class
- */
-export function getLineClampClass(lines: number): string {
-  return headingStyles.lineClamp[lines] ?? "";
-}
+export const HEADING_LINE_CLAMP: Record<number, string> = {
+  1: "line-clamp-1",
+  2: "line-clamp-2",
+  3: "line-clamp-3",
+  4: "line-clamp-4",
+  5: "line-clamp-5",
+  6: "line-clamp-6",
+};

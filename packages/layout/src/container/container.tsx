@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import { containerStyles, getMaxWidthClass } from "./container.styles";
+import { containerStyles, MAX_WIDTHS } from "./container.styles";
 import type { ContainerProps } from "./container.types";
 import { containerDefaults } from "./container.types";
 
@@ -33,7 +33,7 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
         data-slot="container"
         className={cn(
           containerStyles.base,
-          getMaxWidthClass(maxWidth),
+          MAX_WIDTHS[maxWidth],
           center && containerStyles.center,
           padding && containerStyles.padding,
           className

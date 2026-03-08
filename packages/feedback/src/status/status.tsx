@@ -1,11 +1,9 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
 import {
-  statusStyles,
-  getIndicatorSizeClass,
-  getLabelSizeClass,
-  getIndicatorColorClass,
-  getTextColorClass,
+  statusIndicatorVariants,
+  statusLabelVariants,
+  STATUS_ROOT_CLASS,
 } from "./status.styles";
 import type { StatusProps } from "./status.types";
 
@@ -38,15 +36,13 @@ export const Status = forwardRef<HTMLDivElement, StatusProps>(
         data-slot="status"
         role="status"
         aria-label={children ? undefined : `Status: ${value}`}
-        className={cn(statusStyles.base, className)}
+        className={cn(STATUS_ROOT_CLASS, className)}
         {...props}
       >
         <span
           data-slot="indicator"
           className={cn(
-            statusStyles.indicator.base,
-            getIndicatorSizeClass(size),
-            getIndicatorColorClass(value)
+            statusIndicatorVariants({ value, size })
           )}
           aria-hidden="true"
         />
@@ -54,8 +50,7 @@ export const Status = forwardRef<HTMLDivElement, StatusProps>(
           <span
             data-slot="label"
             className={cn(
-              getLabelSizeClass(size),
-              getTextColorClass(value)
+              statusLabelVariants({ value, size })
             )}
           >
             {children}

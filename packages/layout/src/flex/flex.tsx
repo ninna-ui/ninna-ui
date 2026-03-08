@@ -1,13 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import {
-  flexStyles,
-  getDirectionClass,
-  getAlignClass,
-  getJustifyClass,
-  getWrapClass,
-  getGapClass,
-} from "./flex.styles";
+import { flexStyles } from "./flex.styles";
+import { GAP_SIZES } from "@ninna-ui/core";
 import type { FlexProps } from "./flex.types";
 import { flexDefaults } from "./flex.types";
 
@@ -48,11 +42,11 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
         data-slot="flex"
         className={cn(
           inline ? flexStyles.inline : flexStyles.base,
-          getDirectionClass(direction),
-          gap && getGapClass(gap),
-          align && getAlignClass(align),
-          justify && getJustifyClass(justify),
-          wrap && getWrapClass(wrap),
+          flexStyles.direction[direction],
+          gap && GAP_SIZES[gap],
+          align && flexStyles.align[align],
+          justify && flexStyles.justify[justify],
+          wrap && flexStyles.wrap[wrap],
           className
         )}
         {...props}

@@ -1,13 +1,17 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
+import type { Size } from "@ninna-ui/core";
 import type { CircularProgressProps } from "./circular-progress.types";
 import {
-  circularProgressStyles,
-  getSizeConfig,
-  getColorClass,
-  getLabelSizeClass,
+  circularProgressLabelStyles,
+  CIRCULAR_PROGRESS_SIZES,
+  CIRCULAR_PROGRESS_STROKE_COLORS,
+  CIRCULAR_PROGRESS_LABEL_SIZES,
+  CIRCULAR_PROGRESS_SVG_CLASS,
+  CIRCULAR_PROGRESS_TRACK_CLASS,
+  CIRCULAR_PROGRESS_INDICATOR_CLASS,
+  CIRCULAR_PROGRESS_INDETERMINATE_CLASS,
 } from "./circular-progress.styles";
-import type { Size } from "@ninna-ui/core";
 
 // Extracted components for better reconciliation
 const CircularProgressCenterContent = ({ children, showValue, labelPosition, formattedLabel, size }: {
@@ -19,7 +23,7 @@ const CircularProgressCenterContent = ({ children, showValue, labelPosition, for
 }) => {
   if (children) {
     return (
-      <div className={cn(circularProgressStyles.label.center)}>
+      <div className={cn(circularProgressLabelStyles.center)}>
         {children}
       </div>
     );
@@ -32,9 +36,9 @@ const CircularProgressCenterContent = ({ children, showValue, labelPosition, for
   return (
     <span
       className={cn(
-        circularProgressStyles.label.base,
-        circularProgressStyles.label.center,
-        getLabelSizeClass(size)
+        circularProgressLabelStyles.base,
+        circularProgressLabelStyles.center,
+        CIRCULAR_PROGRESS_LABEL_SIZES[size]
       )}
     >
       {formattedLabel}
@@ -55,9 +59,9 @@ const CircularProgressBottomLabel = ({ showValue, labelPosition, formattedLabel,
   return (
     <span
       className={cn(
-        circularProgressStyles.label.base,
-        circularProgressStyles.label.bottom,
-        getLabelSizeClass(size)
+        circularProgressLabelStyles.base,
+        circularProgressLabelStyles.bottom,
+        CIRCULAR_PROGRESS_LABEL_SIZES[size]
       )}
     >
       {formattedLabel}
@@ -104,7 +108,7 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
     },
     ref
   ) => {
-    const sizeConfig = getSizeConfig(size);
+    const sizeConfig = CIRCULAR_PROGRESS_SIZES[size];
     const diameter = sizeConfig.size;
     const strokeWidth = customStrokeWidth ?? sizeConfig.strokeWidth;
     const radius = (diameter - strokeWidth) / 2;
@@ -120,7 +124,7 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
         ref={ref}
         data-slot="circular-progress"
         className={cn(
-          circularProgressStyles.container,
+          "relative inline-flex items-center justify-center",
           labelPosition === "bottom" && "flex-col",
           className
         )}
@@ -131,8 +135,8 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
             width={diameter}
             height={diameter}
             className={cn(
-              circularProgressStyles.svg,
-              indeterminate && circularProgressStyles.indeterminate
+              CIRCULAR_PROGRESS_SVG_CLASS,
+              indeterminate && CIRCULAR_PROGRESS_INDETERMINATE_CLASS
             )}
             role="progressbar"
             aria-valuenow={indeterminate ? undefined : clampedValue}
@@ -149,7 +153,7 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
               r={radius}
               fill="none"
               strokeWidth={strokeWidth}
-              className={cn(circularProgressStyles.track, trackClassName)}
+              className={cn(CIRCULAR_PROGRESS_TRACK_CLASS, trackClassName)}
             />
             {/* Indicator (progress circle) */}
             <circle
@@ -163,8 +167,8 @@ export const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps
               strokeDasharray={circumference}
               strokeDashoffset={indeterminate ? circumference * 0.75 : strokeDashoffset}
               className={cn(
-                circularProgressStyles.indicator,
-                getColorClass(color),
+                CIRCULAR_PROGRESS_INDICATOR_CLASS,
+                CIRCULAR_PROGRESS_STROKE_COLORS[color],
                 indicatorClassName
               )}
             />

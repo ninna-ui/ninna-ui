@@ -23,7 +23,7 @@ export const containerStyles = {
 /**
  * Max width class mappings
  */
-const MAX_WIDTHS: Record<ContainerMaxWidth, string> = {
+export const MAX_WIDTHS: Record<ContainerMaxWidth, string> = {
   sm: 'max-w-screen-sm',
   md: 'max-w-screen-md',
   lg: 'max-w-screen-lg',
@@ -32,10 +32,3 @@ const MAX_WIDTHS: Record<ContainerMaxWidth, string> = {
   full: 'max-w-full',
   none: '',
 };
-
-/**
- * Get max width class
- */
-export function getMaxWidthClass(maxWidth: ContainerMaxWidth): string {
-  return MAX_WIDTHS[maxWidth];
-}

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { buttonStyles, getVariantClasses } from './button.styles';
+import { buttonVariants, BUTTON_SPINNER_SIZES } from './button.styles';
 import type { ButtonProps } from './button.types';
 
 /**
@@ -39,11 +39,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         data-slot="button"
         className={cn(
-          buttonStyles.base,
-          buttonStyles.sizes[size],
-          buttonStyles.radius[radius],
-          getVariantClasses(variant, color),
-          fullWidth && buttonStyles.fullWidth,
+          buttonVariants({ variant, color, size, radius, fullWidth }),
           className
         )}
         disabled={isDisabled}
@@ -57,7 +53,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           <span
             className={cn(
               'animate-spin rounded-full border-2 border-current border-t-transparent',
-              buttonStyles.spinnerSizes[size]
+              BUTTON_SPINNER_SIZES[size]
             )}
             aria-hidden="true"
           />

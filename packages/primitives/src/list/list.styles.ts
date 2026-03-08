@@ -1,114 +1,62 @@
-import { MARKER_COLORS, TEXT_COLORS } from "@ninna-ui/core";
-import type { Color } from "@ninna-ui/core";
-import type { ListSpacing, ListMarker } from "./list.types";
+import { cva, type VariantProps } from 'class-variance-authority';
+import type { Color } from '@ninna-ui/core';
 
-/**
- * List styles configuration
- */
-export const listStyles = {
-  /**
-   * Base styles applied to all lists
-   */
-  base: "pl-5",
+export const listVariants = cva(
+  "pl-5",
+  {
+    variants: {
+      spacing: {
+        none: "space-y-0",
+        sm:   "space-y-1",
+        md:   "space-y-2",
+        lg:   "space-y-4",
+      },
+    },
+    defaultVariants: { spacing: "md" },
+  }
+);
 
-  /**
-   * Spacing variants
-   */
-  spacing: {
-    none: "space-y-0",
-    sm: "space-y-1",
-    md: "space-y-2",
-    lg: "space-y-4",
-  } as Record<ListSpacing, string>,
+export type ListVariantsProps = VariantProps<typeof listVariants>;
 
-  /**
-   * Marker styles for unordered lists
-   */
-  unorderedMarkers: {
-    disc: "list-disc",
-    circle: "list-[circle]",
-    square: "list-[square]",
-    none: "list-none",
-  },
-
-  /**
-   * Marker styles for ordered lists
-   */
-  orderedMarkers: {
-    decimal: "list-decimal",
-    alpha: "list-[lower-alpha]",
-    roman: "list-[lower-roman]",
-    none: "list-none",
-  },
-
-  /**
-   * Marker color variants from core (for native list markers)
-   */
-  markerColors: MARKER_COLORS,
-
-  /**
-   * Icon color variants from core (for custom icon markers)
-   */
-  iconColors: TEXT_COLORS,
-
-  /**
-   * Custom marker base styles (for icon markers)
-   */
-  customMarker: "list-none",
-
-  /**
-   * List item base styles
-   */
-  itemBase: "text-base-content/80",
-
-  /**
-   * List item with custom icon
-   */
-  itemWithIcon: "flex items-start gap-2",
-
-  /**
-   * Icon wrapper styles
-   */
-  iconWrapper: "flex-shrink-0 mt-0.5",
+export const LIST_UNORDERED_MARKERS: Record<'disc' | 'circle' | 'square' | 'none', string> = {
+  disc:   "list-disc",
+  circle: "list-[circle]",
+  square: "list-[square]",
+  none:   "list-none",
 };
 
-/**
- * Get spacing class
- */
-export function getSpacingClass(spacing: ListSpacing): string {
-  return listStyles.spacing[spacing];
-}
+export const LIST_ORDERED_MARKERS: Record<'decimal' | 'alpha' | 'roman' | 'none', string> = {
+  decimal: "list-decimal",
+  alpha:   "list-[lower-alpha]",
+  roman:   "list-[lower-roman]",
+  none:    "list-none",
+};
 
-/**
- * Get marker class for unordered list
- */
-export function getUnorderedMarkerClass(marker: ListMarker): string {
-  if (marker in listStyles.unorderedMarkers) {
-    return listStyles.unorderedMarkers[marker as keyof typeof listStyles.unorderedMarkers];
-  }
-  return listStyles.unorderedMarkers.disc;
-}
+export const LIST_MARKER_COLORS: Record<Color, string> = {
+  primary:   "marker:text-primary",
+  secondary: "marker:text-secondary",
+  accent:    "marker:text-accent",
+  neutral:   "marker:text-neutral",
+  success:   "marker:text-success",
+  danger:    "marker:text-danger",
+  warning:   "marker:text-warning",
+  info:      "marker:text-info",
+};
 
-/**
- * Get marker class for ordered list
- */
-export function getOrderedMarkerClass(marker: ListMarker): string {
-  if (marker in listStyles.orderedMarkers) {
-    return listStyles.orderedMarkers[marker as keyof typeof listStyles.orderedMarkers];
-  }
-  return listStyles.orderedMarkers.decimal;
-}
+export const LIST_ICON_COLORS: Record<Color, string> = {
+  primary:   "text-primary",
+  secondary: "text-secondary",
+  accent:    "text-accent",
+  neutral:   "text-neutral",
+  success:   "text-success",
+  danger:    "text-danger",
+  warning:   "text-warning",
+  info:      "text-info",
+};
 
-/**
- * Get marker color class (for native list markers)
- */
-export function getMarkerColorClass(color: Color): string {
-  return listStyles.markerColors[color];
-}
-
-/**
- * Get icon color class (for custom icon markers)
- */
-export function getIconColorClass(color: Color): string {
-  return listStyles.iconColors[color];
-}
+export const listStyles = {
+  customMarker: "list-none",
+  itemBase:     "text-base-content/80",
+  itemWithIcon: "flex items-start gap-2",
+  iconWrapper:  "flex-shrink-0 mt-0.5",
+};

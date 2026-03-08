@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
 import {
-  iconButtonStyles,
-  getVariantClasses,
-  getIconSizeClass,
+  iconButtonVariants,
+  ICON_SIZES,
+  ICON_BUTTON_SPINNER_SIZES,
 } from './icon-button.styles';
 import type { IconButtonProps } from './icon-button.types';
 import type { Size } from '@ninna-ui/core';
@@ -25,7 +25,7 @@ const IconButtonIcon = ({ icon, size, loading }: { icon: React.ReactNode; size: 
       <span
         className={cn(
           'animate-spin rounded-full border-2 border-current border-t-transparent',
-          iconButtonStyles.spinnerSizes[size]
+          ICON_BUTTON_SPINNER_SIZES[size]
         )}
         aria-hidden="true"
       />
@@ -33,7 +33,7 @@ const IconButtonIcon = ({ icon, size, loading }: { icon: React.ReactNode; size: 
   }
 
   return (
-    <span data-slot="icon" className={cn('inline-flex items-center justify-center', getIconSizeClass(size))} aria-hidden="true">
+    <span data-slot="icon" className={cn('inline-flex items-center justify-center', ICON_SIZES[size])} aria-hidden="true">
       {icon}
     </span>
   );
@@ -63,10 +63,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
         data-slot="icon-button"
         type="button"
         className={cn(
-          iconButtonStyles.base,
-          iconButtonStyles.sizes[size],
-          iconButtonStyles.radius[radius],
-          getVariantClasses(variant, color),
+          iconButtonVariants({ variant, color, size, radius }),
           className
         )}
         disabled={isDisabled}

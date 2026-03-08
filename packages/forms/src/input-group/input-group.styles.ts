@@ -1,4 +1,4 @@
-import type { Size } from "@ninna-ui/core";
+import type { Size } from '@ninna-ui/core';
 
 export const INPUT_GROUP_SIZES: Record<Size, {
   element: string;
