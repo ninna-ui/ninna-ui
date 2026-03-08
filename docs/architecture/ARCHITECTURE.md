@@ -122,7 +122,12 @@ core/src/theme/
     └── minimal.css
 ```
 
-Each preset imports `tailwind.css` (no duplication of `@theme inline`). Presets define light mode (`:root`), dark mode (`.dark`, `[data-theme-mode="dark"]`), and `prefers-color-scheme: dark` auto-detection.
+Each preset imports `tailwind.css` (no duplication of `@theme inline`). Presets define:
+- **Light mode:** `[data-theme="preset-name"]` — activates when `data-theme` matches
+- **Explicit dark:** `.dark [data-theme="preset-name"], [data-theme="preset-name"].dark` — `.dark` class on `<html>` or ancestor
+- **System dark:** `@media (prefers-color-scheme: dark) { [data-theme="preset-name"]:not(.light):not(.dark) }` — OS preference, no class set
+
+The `data-theme` attribute is always required on `<html>` (or an ancestor element) for theme variables to activate.
 
 ### CSS Variable Contract (31 variables)
 

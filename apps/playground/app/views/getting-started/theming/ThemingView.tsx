@@ -12,20 +12,29 @@ export const themingSections: ComponentSectionType[] = [
   { id: "code-block-theming", title: "CodeBlock Theming", level: 2 },
 ];
 
-const THEME_SWITCH_CODE = `/* Switch to ocean theme — one line change */
+const THEME_SWITCH_CODE = `/* 1. Change the CSS import */
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/ocean.css";
 
 @variant dark (&:is(.dark *));`;
 
+const THEME_HTML_CODE = `<!-- 2. Set data-theme on your root element -->
+<html data-theme="ocean">
+
+<!-- Or import all presets and switch at runtime -->
+<html data-theme="ocean">  <!-- change this attribute to switch theme -->`;
+
 const DARK_MODE_CLASS_CODE = `<!-- Forced dark mode -->
 <html data-theme="default" class="dark">
 
-<!-- Forced light mode -->
+<!-- Forced light mode (blocks OS preference) -->
 <html data-theme="default" class="light">
 
-<!-- System preference (auto) — no class needed -->
-<html data-theme="default">`;
+<!-- System preference (auto) — no class, follows OS -->
+<html data-theme="default">
+
+<!-- Note: data-theme is always required -->
+<!-- Multiple presets can be imported; data-theme selects which applies -->`;
 
 const DARK_MODE_JS_CODE = `// Three modes: 'dark', 'light', 'system'
 function setTheme(mode) {
@@ -183,10 +192,16 @@ export function ThemingView() {
           title="Switching Themes"
           description="Change your entire theme by swapping a single CSS import line."
         >
-          <UsageExample
-            title="Switch from default to ocean theme"
-            code={THEME_SWITCH_CODE}
-          />
+          <div className="space-y-4">
+            <UsageExample
+              title="1. Change the CSS import"
+              code={THEME_SWITCH_CODE}
+            />
+            <UsageExample
+              title="2. Set data-theme on your root element"
+              code={THEME_HTML_CODE}
+            />
+          </div>
           <div className="mt-4 bg-info/10 border border-info/20 rounded-lg p-4">
             <Text size="sm" className="text-info">
               <strong>Available themes:</strong>{" "}
@@ -194,7 +209,8 @@ export function ThemingView() {
               <Code>ocean.css</Code>,{" "}
               <Code>sunset.css</Code>,{" "}
               <Code>forest.css</Code>,{" "}
-              <Code>minimal.css</Code>
+              <Code>minimal.css</Code>{" "}
+              — all can be imported together for per-section theming.
             </Text>
           </div>
         </ComponentSection>
@@ -209,8 +225,9 @@ export function ThemingView() {
               <Heading as="h3" size="base" weight="semibold" className="mb-2">How Dark Mode Works</Heading>
               <Text size="sm" className="text-base-content/70 mb-3">
                 Every built-in theme includes both light and dark color definitions. The dark mode
-                CSS selector uses <Code>{'.dark [data-theme="default"]'}</Code> (or <Code>{'[data-theme].dark'}</Code>) to
+                CSS selector uses <Code>{'.dark [data-theme="default"]'}</Code> or <Code>{'[data-theme="default"].dark'}</Code> to
                 redefine all CSS variables — no <Code>dark:</Code> utility classes needed anywhere.
+                A <Code>data-theme</Code> attribute is always required on <Code>{'<html>'}</Code> (or any ancestor element).
               </Text>
             </div>
 

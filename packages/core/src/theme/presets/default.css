@@ -26,7 +26,7 @@
    Light Theme - Default
    Applies when data-theme="default" is set.
    ============================================ */
-:root,
+
 [data-theme="default"] {
   color-scheme: light;
 
@@ -86,7 +86,6 @@
    Dark Theme - Default (explicit .dark class)
    Applies when <html class="dark" data-theme="default">
    ============================================ */
-:root.dark,
 .dark [data-theme="default"],
 [data-theme="default"].dark {
   color-scheme: dark;
@@ -151,7 +150,6 @@
    Pure CSS requires duplication — no mixin support.
    ============================================ */
 @media (prefers-color-scheme: dark) {
-  :root:not(.light):not(.dark):not([data-theme]),
   [data-theme="default"]:not(.light):not(.dark) {
     color-scheme: dark;
 
