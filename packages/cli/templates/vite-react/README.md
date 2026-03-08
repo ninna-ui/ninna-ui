@@ -24,11 +24,17 @@ pnpm build      # Build for production
 
 ### Change Theme Preset
 
-Edit `src/index.css`:
+1. Edit `src/index.css`:
 
 ```css
 /* Replace default with any preset: ocean, sunset, forest, minimal */
 @import "@ninna-ui/core/theme/presets/ocean.css";
+```
+
+2. Update `data-theme` in `index.html`:
+
+```html
+<html lang="en" data-theme="ocean">
 ```
 
 ### Enable Dark Mode
@@ -36,7 +42,7 @@ Edit `src/index.css`:
 Dark mode activates automatically via `prefers-color-scheme`. For manual toggle:
 
 ```html
-<html class="dark">
+<html lang="en" data-theme="default" class="dark">
 ```
 
 ## Learn More

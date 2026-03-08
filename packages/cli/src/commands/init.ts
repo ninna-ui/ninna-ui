@@ -51,7 +51,7 @@ export async function init(name: string | undefined, options: InitOptions) {
         choices: TEMPLATES,
       },
       {
-        type: options.preset && options.preset !== "default" ? null : "select",
+        type: options.preset ? null : "select",
         name: "preset",
         message: "Select a theme preset:",
         choices: PRESETS,
@@ -112,6 +112,7 @@ export async function init(name: string | undefined, options: InitOptions) {
 
   // Swap theme preset if not default
   if (preset !== "default") {
+    // Swap CSS import in all .css files
     const cssFiles = findCssFiles(targetDir);
     for (const cssFile of cssFiles) {
       let content = fs.readFileSync(cssFile, "utf-8");
@@ -120,6 +121,16 @@ export async function init(name: string | undefined, options: InitOptions) {
         `@ninna-ui/core/theme/presets/${preset}.css`
       );
       fs.writeFileSync(cssFile, content);
+    }
+    // Swap data-theme attribute in HTML/TSX markup files
+    const markupFiles = findMarkupFiles(targetDir);
+    for (const markupFile of markupFiles) {
+      let content = fs.readFileSync(markupFile, "utf-8");
+      content = content.replace(
+        /data-theme="default"/g,
+        `data-theme="${preset}"`
+      );
+      fs.writeFileSync(markupFile, content);
     }
   }
 
@@ -158,6 +169,21 @@ function findCssFiles(dir: string): string[] {
     if (entry.isDirectory() && entry.name !== "node_modules") {
       results.push(...findCssFiles(fullPath));
     } else if (entry.isFile() && entry.name.endsWith(".css")) {
+      results.push(fullPath);
+    }
+  }
+  return results;
+}
+
+function findMarkupFiles(dir: string): string[] {
+  const results: string[] = [];
+  const markupExts = [".html", ".tsx", ".jsx"];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory() && entry.name !== "node_modules") {
+      results.push(...findMarkupFiles(fullPath));
+    } else if (entry.isFile() && markupExts.some((ext) => entry.name.endsWith(ext))) {
       results.push(fullPath);
     }
   }

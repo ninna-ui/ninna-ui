@@ -23,11 +23,17 @@ pnpm build      # Build for production
 
 ### Change Theme Preset
 
-Edit `app/index.css`:
+1. Edit `app/index.css`:
 
 ```css
 /* Replace default with any preset: ocean, sunset, forest, minimal */
 @import "@ninna-ui/core/theme/presets/ocean.css";
+```
+
+2. Update `data-theme` in `app/root.tsx`:
+
+```tsx
+<html lang="en" data-theme="ocean">
 ```
 
 ### Enable Dark Mode
@@ -35,8 +41,10 @@ Edit `app/index.css`:
 Dark mode activates automatically via `prefers-color-scheme`. For manual toggle in `app/root.tsx`:
 
 ```tsx
-<html lang="en" className="dark">
+<html lang="en" data-theme="default" className="dark">
 ```
+
+> **SSR note:** This template uses React Router v7 SSR mode (`ssr: true`). The `Layout` export in `root.tsx` wraps every page — Tailwind utility classes are on a wrapper `<div>` inside `<body>` to avoid hydration mismatches.
 
 ## Learn More
 

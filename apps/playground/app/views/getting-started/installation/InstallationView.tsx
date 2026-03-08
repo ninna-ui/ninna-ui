@@ -38,6 +38,45 @@ const CSS_CODE = (entryFile: string) => `/* ${entryFile} */
 
 @variant dark (&:is(.dark *));`;
 
+const VITE_HTML_CODE = `<!-- index.html -->
+<html lang="en" data-theme="default">`;
+
+const NEXTJS_LAYOUT_CODE = `// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" data-theme="default">
+      <body>
+        <div className="min-h-screen bg-base-50 text-base-content antialiased">
+          {children}
+        </div>
+      </body>
+    </html>
+  );
+}`;
+
+const REACT_ROUTER_ROOT_CODE = `// app/root.tsx
+export function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" data-theme="default">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <div className="min-h-screen bg-base-50 text-base-content antialiased">
+          {children}
+        </div>
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+
+export default function App() {
+  return <Outlet />;
+}`;
+
 export function InstallationView() {
   return (
     <div className="">
@@ -118,7 +157,13 @@ export default defineConfig({
                   </div>
 
                   <div>
-                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Verify it works</Heading>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Add data-theme to index.html</Heading>
+                    <CodeBlock code={VITE_HTML_CODE} language="html" copyButtonAlwaysVisible />
+                    <Text size="sm" className="text-base-content/60 mt-2">Required — theme CSS variables only activate when <Code>data-theme</Code> matches the preset name.</Text>
+                  </div>
+
+                  <div>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">5. Verify it works</Heading>
                     <UsageExample code={VERIFY_CODE} />
                   </div>
                 </div>
@@ -151,7 +196,15 @@ export default {
                   </div>
 
                   <div>
-                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Verify it works</Heading>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Set up app/layout.tsx</Heading>
+                    <UsageExample code={NEXTJS_LAYOUT_CODE} />
+                    <div className="mt-2 bg-warning/10 border border-warning/20 rounded-lg p-3">
+                      <Text size="sm" className="text-warning"><strong>Hydration tip:</strong> Keep Tailwind classes on a wrapper <Code>{`<div>`}</Code> inside <Code>{`<body>`}</Code>, not on <Code>{`<body>`}</Code> itself — <Code>@tailwindcss/postcss</Code> adds internal attributes to <Code>{`<body>`}</Code> during SSR causing hydration mismatches.</Text>
+                    </div>
+                  </div>
+
+                  <div>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">5. Verify it works</Heading>
                     <UsageExample code={VERIFY_CODE} />
                   </div>
                 </div>
@@ -185,7 +238,13 @@ export default defineConfig({
                   </div>
 
                   <div>
-                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Verify it works</Heading>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Set up app/root.tsx</Heading>
+                    <UsageExample code={REACT_ROUTER_ROOT_CODE} />
+                    <Text size="sm" className="text-base-content/60 mt-2">The <Code>Layout</Code> export is required for React Router v7 SSR. Tailwind classes on a wrapper <Code>{`<div>`}</Code> avoids body hydration mismatches.</Text>
+                  </div>
+
+                  <div>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">5. Verify it works</Heading>
                     <UsageExample code={VERIFY_CODE} />
                   </div>
                 </div>
