@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/tsconfig",
-  "version": "0.3.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Shared TypeScript configurations for Ninna-UI",
   "license": "MIT",

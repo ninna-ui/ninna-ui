@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/feedback",
-  "version": "0.3.0",
+  "version": "0.2.0",
   "description": "8 feedback React components for Ninna UI — Alert, Toast, Progress, CircularProgress, Loading, Skeleton, Status, EmptyState. Accessible, themeable, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",

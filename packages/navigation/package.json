@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/navigation",
-  "version": "0.3.0",
+  "version": "0.2.0",
   "description": "5 navigation React components for Ninna UI — Tabs, Accordion, Breadcrumbs, Pagination, Stepper. Radix-powered, accessible, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",

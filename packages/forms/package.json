@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/forms",
-  "version": "0.3.0",
+  "version": "0.2.0",
   "description": "17 accessible form React components for Ninna UI — Input, Select, Checkbox, Switch, Radio, Slider, FileUpload, PinInput, NumberInput, and more. Radix-powered, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
