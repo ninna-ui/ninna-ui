@@ -17,18 +17,24 @@ pnpm build      # Build for production
 - **React 19** with TypeScript strict mode
 - **Vite 7** with `@tailwindcss/vite` plugin
 - **Tailwind CSS v4.1** — CSS-first, no `tailwind.config.ts`
-- **Ninna UI** — primitives, feedback, forms, layout, overlays, navigation, data-display, code-block
-- **Default theme preset** with automatic dark mode
+- **Ninna UI v0.2.0** — All 9 packages: primitives, feedback, forms, layout, overlays, navigation, data-display, code-block, core
+- **Default theme preset** with automatic dark mode + 4 additional presets
 
 ## Customization
 
 ### Change Theme Preset
 
-Edit `src/index.css`:
+1. Edit `src/index.css`:
 
 ```css
 /* Replace default with any preset: ocean, sunset, forest, minimal */
 @import "@ninna-ui/core/theme/presets/ocean.css";
+```
+
+2. Update `data-theme` in `index.html`:
+
+```html
+<html lang="en" data-theme="ocean">
 ```
 
 ### Enable Dark Mode
@@ -36,7 +42,7 @@ Edit `src/index.css`:
 Dark mode activates automatically via `prefers-color-scheme`. For manual toggle:
 
 ```html
-<html class="dark">
+<html lang="en" data-theme="default" class="dark">
 ```
 
 ## Learn More
