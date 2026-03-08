@@ -93,7 +93,8 @@ const CUSTOM_COLORS_CODE = `/* In your main CSS file — override after the them
   --color-base-200: oklch(0.940 0.010 80);
 }
 
-/* Dark mode overrides */
+/* Dark mode overrides — both selector forms required */
+.dark [data-theme="default"],
 [data-theme="default"].dark {
   --color-primary: oklch(0.72 0.22 220);
   --color-primary-content: oklch(0.12 0.02 220);

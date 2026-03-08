@@ -25,17 +25,26 @@ Add this to your main CSS file:
 ```css
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
-@source "../node_modules/@ninna-ui/*";
+
+@variant dark (&:is(.dark *));
 ```
 
-**Available theme presets:**
-- `default.css` — Electric purple + magenta
-- `ocean.css` — Blue + cyan
-- `sunset.css` — Orange + rose
-- `forest.css` — Green + amber
-- `minimal.css` — Monochrome
+### 3. Set `data-theme` on your root element
 
-Tailwind CSS v4 uses CSS-first configuration — no `tailwind.config.ts` needed. The `@source` directive tells Tailwind to scan Ninna UI packages for utility classes.
+```html
+<html data-theme="default">
+```
+
+> **Required:** Theme variables only activate when `data-theme` matches the preset name. No `@source` directive needed — each preset automatically scans `@ninna-ui` package dist files.
+
+**Available theme presets:**
+- `default.css` → `data-theme="default"` — Electric purple + magenta
+- `ocean.css` → `data-theme="ocean"` — Blue + cyan
+- `sunset.css` → `data-theme="sunset"` — Orange + rose
+- `forest.css` → `data-theme="forest"` — Green + amber
+- `minimal.css` → `data-theme="minimal"` — Monochrome
+
+Tailwind CSS v4 uses CSS-first configuration — no `tailwind.config.ts` needed.
 
 ---
 
@@ -86,21 +95,33 @@ export default function App() {
 
 ### Change Theme
 
-Switch themes by importing a different CSS file:
+Switch themes by importing a different CSS file and updating `data-theme` on `<html>`:
 
 ```css
-/* Switch from default to ocean theme */
+/* 1. Change the CSS import */
 @import "@ninna-ui/core/theme/presets/ocean.css";
+```
+
+```html
+<!-- 2. Update data-theme on your root element -->
+<html data-theme="ocean">
 ```
 
 ### Override Colors
 
-Use CSS custom properties to customize colors:
+Use CSS custom properties to customize colors — scope to `[data-theme]` to match the current selector pattern:
 
 ```css
-:root {
+[data-theme="default"] {
   --color-primary: oklch(0.55 0.25 280);
-  --color-primary-content: white;
+  --color-primary-content: oklch(0.97 0.01 280);
+}
+
+/* Dark mode overrides */
+.dark [data-theme="default"],
+[data-theme="default"].dark {
+  --color-primary: oklch(0.72 0.22 280);
+  --color-primary-content: oklch(0.12 0.02 280);
 }
 ```
 

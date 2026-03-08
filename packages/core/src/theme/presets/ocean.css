@@ -26,7 +26,6 @@
    Light Theme - Ocean
    Applies when data-theme="ocean" is set.
    ============================================ */
-:root,
 [data-theme="ocean"] {
   color-scheme: light;
 
@@ -89,7 +88,6 @@
    Dark Theme - Ocean (explicit .dark class)
    Applies when <html class="dark" data-theme="ocean">
    ============================================ */
-:root.dark,
 .dark [data-theme="ocean"],
 [data-theme="ocean"].dark {
   color-scheme: dark;
@@ -154,7 +152,6 @@
    Pure CSS requires duplication — no mixin support.
    ============================================ */
 @media (prefers-color-scheme: dark) {
-  :root:not(.light):not(.dark):not([data-theme]),
   [data-theme="ocean"]:not(.light):not(.dark) {
     color-scheme: dark;
 

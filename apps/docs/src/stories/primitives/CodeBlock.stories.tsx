@@ -85,7 +85,6 @@ export default function Counter() {
 }`;
 
 const cssCode = `/* Custom theme */
-:root,
 [data-theme="my-brand"] {
   color-scheme: light;
 

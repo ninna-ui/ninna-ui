@@ -19,7 +19,7 @@ pnpm add @ninna-ui/core
 
 ## CSS Setup
 
-Add one of the 5 theme presets to your app's CSS entry point:
+Add one of the 5 theme presets to your app's CSS entry point, then set `data-theme` on your root element:
 
 ```css
 @import "tailwindcss";
@@ -28,7 +28,11 @@ Add one of the 5 theme presets to your app's CSS entry point:
 @variant dark (&:is(.dark *));
 ```
 
-> **No `@source` needed** — each theme preset automatically scans all `@ninna-ui` package dist files via built-in `@source` directives. The `default.css` preset also applies to `:root`, so it works without a `data-theme` attribute. Other presets require `data-theme="ocean"` etc.
+```html
+<html data-theme="default">
+```
+
+> **No `@source` needed** — each theme preset automatically scans all `@ninna-ui` package dist files via built-in `@source` directives. Every preset requires a `data-theme` attribute to activate. This allows multiple presets to be safely imported for per-section theming without CSS conflicts.
 
 | Preset | Colors | Character |
 |--------|--------|-----------|
@@ -38,7 +42,7 @@ Add one of the 5 theme presets to your app's CSS entry point:
 | `forest.css` | Green / Amber | Natural, earthy |
 | `minimal.css` | Monochrome | Clean, understated |
 
-**Switch themes by changing one line** — no JavaScript configuration, no provider wrappers, no build step.
+**Switch themes by changing one line** — no JavaScript configuration, no provider wrappers, no build step. All presets can be imported simultaneously for per-section theming using nested `data-theme` attributes.
 
 ### Framework-Specific Setup
 
@@ -57,10 +61,33 @@ export default { plugins: { "@tailwindcss/postcss": {} } };
 
 ## Dark Mode
 
-Every preset includes **automatic dark mode** via `@media (prefers-color-scheme: dark)`. For manual toggle, add the `.dark` class to your root element:
+Every preset includes **automatic dark mode** via `@media (prefers-color-scheme: dark)`. The selector pattern per preset is:
+
+```css
+/* Light (default when no class set) */
+[data-theme="preset"] { }
+
+/* Explicit dark — .dark class on <html> or ancestor */
+.dark [data-theme="preset"],
+[data-theme="preset"].dark { }
+
+/* System dark — no class, follows OS preference */
+@media (prefers-color-scheme: dark) {
+  [data-theme="preset"]:not(.light):not(.dark) { }
+}
+```
+
+For manual toggle, add the `.dark` or `.light` class to your root element:
 
 ```html
-<html class="dark">
+<!-- Forced dark -->
+<html data-theme="default" class="dark">
+
+<!-- Forced light (blocks OS preference) -->
+<html data-theme="default" class="light">
+
+<!-- System preference auto (no class) -->
+<html data-theme="default">
 ```
 
 All colors use the **oklch** color space — perceptually uniform, vibrant, and WCAG AA compliant.

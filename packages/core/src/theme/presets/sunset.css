@@ -26,7 +26,6 @@
    Light Theme - Sunset
    Applies when data-theme="sunset" is set.
    ============================================ */
-:root,
 [data-theme="sunset"] {
   color-scheme: light;
 
@@ -86,7 +85,6 @@
    Dark Theme - Sunset (explicit .dark class)
    Applies when <html class="dark" data-theme="sunset">
    ============================================ */
-:root.dark,
 .dark [data-theme="sunset"],
 [data-theme="sunset"].dark {
   color-scheme: dark;
@@ -151,7 +149,6 @@
    Pure CSS requires duplication — no mixin support.
    ============================================ */
 @media (prefers-color-scheme: dark) {
-  :root:not(.light):not(.dark):not([data-theme]),
   [data-theme="sunset"]:not(.light):not(.dark) {
     color-scheme: dark;
 
