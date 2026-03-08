@@ -17,6 +17,25 @@ See individual package changelogs:
 - [`@ninna-ui/code-block`](./packages/code-block/CHANGELOG.md)
 - [`@ninna-ui/cli`](./packages/cli/CHANGELOG.md)
 
+## [0.3.0] — 2026-03-08
+
+### Bug Fixes
+
+- **Tabs**: Fix vertical tabs — orientation now propagates via context to CVA variants; line variant renders `border-r` when vertical
+- **Input/Textarea/Select**: Fix focus border — remove browser default outline with `outline-none focus:outline-none focus-visible:outline-none`; compound variants own the full focus ring
+- **Toast**: Fix viewport blocking clicks — add `pointer-events-none` to viewport container
+- **Loading dots**: Fix dots appearing as vertical lines — use `inline-flex` wrapper, proper `size-*` classes for round dots, `gap-1.5` spacing
+- **CVA regressions**: Fix 11 defaultVariants regressions and 4 styling regressions across all component packages
+
+### Improvements
+
+- **Loading dots**: Increased dot sizes across all breakpoints for better visibility
+- **Textarea**: Fix unused `fullWidth` lint error
+- **CLI templates**: Update all template package versions to 0.3.0
+- **Documentation**: Update all meta version references to 0.3.0
+
+---
+
 ## [0.1.0] — 2026-02-27
 
 ### Initial Release

@@ -24,7 +24,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       color = 'primary',
       invalid,
       resize = 'vertical',
-      fullWidth = true,
+      fullWidth: _fullWidth = true,
       autoResize = false,
       minRows = 3,
       maxRows,

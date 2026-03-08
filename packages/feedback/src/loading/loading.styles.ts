@@ -8,7 +8,7 @@ export const loadingVariants = cva(
         spin: "animate-spin rounded-full border-2 border-current border-t-transparent",
         ping: "animate-ping rounded-full",
         pulse: "animate-pulse rounded-full",
-        dots: "flex items-center gap-1",
+        dots: "inline-flex items-center gap-1.5",
       },
       color: {
         primary:   "text-primary",

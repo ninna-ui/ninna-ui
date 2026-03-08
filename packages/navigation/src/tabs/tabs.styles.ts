@@ -5,7 +5,7 @@ export const tabsListVariants = cva(
   {
     variants: {
       variant: {
-        line:     "border-b border-base-200 gap-0",
+        line:     "",
         enclosed: "bg-base-200/50 rounded-lg p-1 gap-1",
         soft:     "gap-1",
         outline:  "border border-base-200 rounded-lg p-1 gap-1",
@@ -15,6 +15,10 @@ export const tabsListVariants = cva(
         vertical:   "flex-col",
       },
     },
+    compoundVariants: [
+      { variant: "line", orientation: "horizontal", class: "border-b border-base-200 gap-0" },
+      { variant: "line", orientation: "vertical",   class: "border-r border-base-200 gap-0" },
+    ],
     defaultVariants: { variant: "line", orientation: "horizontal" },
   }
 );
@@ -24,7 +28,7 @@ export const tabsTriggerVariants = cva(
   {
     variants: {
       variant: {
-        line:     "border-b-2 border-transparent px-4 pb-2.5 pt-2 data-[state=active]:border-primary data-[state=active]:text-primary hover:text-base-content/80",
+        line:     "",
         enclosed: "rounded-md px-3 py-1.5 data-[state=active]:bg-base-100 data-[state=active]:shadow-sm data-[state=active]:text-base-content text-base-content/70",
         soft:     "rounded-md px-3 py-1.5 data-[state=active]:bg-primary/10 data-[state=active]:text-primary text-base-content/70 hover:bg-base-200/50",
         outline:  "rounded-md px-3 py-1.5 border border-transparent data-[state=active]:bg-base-100 data-[state=active]:border-base-200 data-[state=active]:shadow-sm text-base-content/70",
@@ -34,8 +38,16 @@ export const tabsTriggerVariants = cva(
         md: "text-sm",
         lg: "text-base",
       },
+      orientation: {
+        horizontal: "",
+        vertical:   "",
+      },
     },
-    defaultVariants: { variant: "line", size: "md" },
+    compoundVariants: [
+      { variant: "line", orientation: "horizontal", class: "border-b-2 border-transparent px-4 pb-2.5 pt-2 data-[state=active]:border-primary data-[state=active]:text-primary hover:text-base-content/80" },
+      { variant: "line", orientation: "vertical",   class: "border-r-2 border-transparent px-4 py-2 data-[state=active]:border-primary data-[state=active]:text-primary hover:text-base-content/80" },
+    ],
+    defaultVariants: { variant: "line", size: "md", orientation: "horizontal" },
   }
 );
 

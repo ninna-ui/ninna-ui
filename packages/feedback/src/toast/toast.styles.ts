@@ -98,4 +98,4 @@ export const viewportDirections: Record<ToastPosition, string> = {
   'bottom-right':  'flex-col-reverse',
 };
 
-export const VIEWPORT_BASE_CLASS = 'fixed z-[100] flex max-h-screen w-full p-4 md:max-w-[420px]';
+export const VIEWPORT_BASE_CLASS = 'fixed z-[100] flex pointer-events-none max-h-screen w-full p-4 md:max-w-[420px]';

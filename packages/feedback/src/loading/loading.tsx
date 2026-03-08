@@ -27,12 +27,12 @@ export const Loading = forwardRef<HTMLDivElement, LoadingProps>(
   ) => {
   // Dots variant has different structure
   if (variant === "dots") {
-    const dotSize = size === "xs" ? "h-1 w-1" : 
-                    size === "sm" ? "h-1.5 w-1.5" :
-                    size === "md" ? "h-2 w-2" :
-                    size === "lg" ? "h-2.5 w-2.5" :
-                    size === "xl" ? "h-3 w-3" :
-                    size === "2xl" ? "h-4 w-4" : "h-5 w-5";
+    const dotSize = size === "xs" ? "size-1.5" : 
+                    size === "sm" ? "size-2" :
+                    size === "md" ? "size-2.5" :
+                    size === "lg" ? "size-3" :
+                    size === "xl" ? "size-4" :
+                    size === "2xl" ? "size-5" : "size-6";
 
     return (
       <div

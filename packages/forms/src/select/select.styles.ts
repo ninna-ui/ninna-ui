@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
 export const selectTriggerVariants = cva(
-  "inline-flex items-center justify-between gap-2 text-base-content transition-colors duration-200 focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed data-[placeholder]:text-base-content/70",
+  "inline-flex items-center justify-between gap-2 text-base-content transition-colors duration-200 outline-none focus:outline-none focus-visible:outline-none disabled:opacity-50 disabled:cursor-not-allowed data-[placeholder]:text-base-content/70",
   {
     variants: {
       selectVariant: {
