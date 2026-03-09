@@ -1,4 +1,4 @@
-import { NINNA_UI_VERSION } from "~/constants/version;
+import { NINNA_UI_VERSION } from "~/constants/version";
 export const popoverMeta = {
   title: "Popover",
   description: "A floating panel anchored to a trigger element.",

@@ -1,4 +1,4 @@
-import { NINNA_UI_VERSION } from "~/constants/version;
+import { NINNA_UI_VERSION } from "~/constants/version";
 import type { ComponentMeta } from "~/components/docs/types";
 
 export const textareaMeta: ComponentMeta = {

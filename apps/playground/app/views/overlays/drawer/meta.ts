@@ -1,4 +1,4 @@
-import { NINNA_UI_VERSION } from "~/constants/version;
+import { NINNA_UI_VERSION } from "~/constants/version";
 export const drawerMeta = {
   title: "Drawer",
   description: "A panel that slides in from the edge of the screen.",

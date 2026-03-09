@@ -1,4 +1,4 @@
-import { NINNA_UI_VERSION } from "~/constants/version;
+import { NINNA_UI_VERSION } from "~/constants/version";
 export const progressMeta = {
   title: "Progress",
   description: "Progress bar component for displaying progress indicators with various styles, sizes, and label positions.",

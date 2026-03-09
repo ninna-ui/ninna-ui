@@ -1,4 +1,4 @@
-import { NINNA_UI_VERSION } from "~/constants/version;
+import { NINNA_UI_VERSION } from "~/constants/version";
 export const accordionMeta = {
   title: "Accordion",
   description: "Vertically stacked collapsible content sections.",
