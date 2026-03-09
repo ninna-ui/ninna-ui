@@ -1,6 +1,8 @@
+import { NINNA_UI_VERSION } from "~/constants/version";
 export const paginationMeta = {
   title: "Pagination",
   description: "Navigate between pages of content.",
   category: "Navigation",
-  version: "0.3.0",
+  version: NINNA_UI_VERSION,
 };
+

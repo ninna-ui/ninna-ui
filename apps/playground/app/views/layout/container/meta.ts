@@ -1,6 +1,8 @@
+import { NINNA_UI_VERSION } from "~/constants/version";
 export const containerMeta = {
   title: "Container",
   description: "A max-width wrapper for page content with responsive padding and centering.",
   category: "Layout",
-  version: "0.3.0",
+  version: NINNA_UI_VERSION,
 };
+

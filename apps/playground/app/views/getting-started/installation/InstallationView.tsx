@@ -2,12 +2,13 @@ import { ComponentHeader, ComponentSection, UsageExample, type ComponentSectionT
 import { Heading, Text, Code } from "@ninna-ui/primitives";
 import { Tabs } from "@ninna-ui/navigation";
 import { CodeBlock } from "@ninna-ui/code-block";
+import { NINNA_UI_VERSION } from "~/constants/version";
 
 const installationMeta = {
   title: "Installation",
   description: "Step-by-step installation guides for Vite, Next.js, and React Router. Set up Ninna UI in under 2 minutes.",
   category: "Getting Started",
-  version: "0.3.0",
+  version: NINNA_UI_VERSION,
   status: "stable" as const,
 };
 

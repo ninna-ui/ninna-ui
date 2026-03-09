@@ -3,12 +3,13 @@ import { Button, Heading, Text, Badge, Code } from "@ninna-ui/primitives";
 import { ArrowRight, Palette, Zap, Code2, Shield, Layers, Sun } from "lucide-react";
 import { Link } from "react-router";
 import { CodeBlock } from "@ninna-ui/code-block";
+import { NINNA_UI_VERSION } from "~/constants/version";
 
 const introductionMeta = {
   title: "Introduction",
   description: "Beautiful, accessible React components with simple theming. Zero-config dark mode, 5 built-in themes, 64+ components.",
   category: "Getting Started",
-  version: "0.3.0",
+  version: NINNA_UI_VERSION,
   status: "stable" as const,
 };
 
