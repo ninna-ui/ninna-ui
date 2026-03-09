@@ -1,6 +1,8 @@
+import { NINNA_UI_VERSION } from "~/constants/version;
 export const dividerMeta = {
   title: "Divider",
   description: "Visual separator for content sections with horizontal, vertical, and text variants.",
   category: "Primitives",
-  version: "0.3.1",
+  version: NINNA_UI_VERSION,
 };
+

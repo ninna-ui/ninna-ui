@@ -1,6 +1,8 @@
+import { NINNA_UI_VERSION } from "~/constants/version;
 export const breadcrumbsMeta = {
   title: "Breadcrumbs",
   description: "Navigation trail showing the current page location.",
   category: "Navigation",
-  version: "0.3.1",
+  version: NINNA_UI_VERSION,
 };
+

@@ -1,1 +1,3 @@
-export const treeMeta = { title: "Tree", description: "Hierarchical tree view for displaying nested data.", category: "Data Display", version: "0.3.1" };
+import { NINNA_UI_VERSION } from "~/constants/version;
+export const treeMeta = { title: "Tree", description: "Hierarchical tree view for displaying nested data.", category: "Data Display", version: NINNA_UI_VERSION };
+
