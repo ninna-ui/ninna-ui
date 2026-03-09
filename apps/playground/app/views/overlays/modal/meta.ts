@@ -2,5 +2,5 @@ export const modalMeta = {
   title: "Modal",
   description: "A dialog window that appears above the main content with an overlay backdrop.",
   category: "Overlays",
-  version: "0.3.0",
+  version: "0.3.1",
 };

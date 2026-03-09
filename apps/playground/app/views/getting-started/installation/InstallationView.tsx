@@ -7,7 +7,7 @@ const installationMeta = {
   title: "Installation",
   description: "Step-by-step installation guides for Vite, Next.js, and React Router. Set up Ninna UI in under 2 minutes.",
   category: "Getting Started",
-  version: "0.3.0",
+  version: "0.3.1",
   status: "stable" as const,
 };
 

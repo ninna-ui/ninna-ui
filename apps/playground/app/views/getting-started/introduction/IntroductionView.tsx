@@ -8,7 +8,7 @@ const introductionMeta = {
   title: "Introduction",
   description: "Beautiful, accessible React components with simple theming. Zero-config dark mode, 5 built-in themes, 64+ components.",
   category: "Getting Started",
-  version: "0.3.0",
+  version: "0.3.1",
   status: "stable" as const,
 };
 

@@ -4,6 +4,6 @@ export const textMeta: ComponentMeta = {
   title: "Text",
   description: "Text component is used to render text and paragraphs with various styles, sizes, weights, and colors. It supports truncation, line clamping, and text transformations.",
   category: "Primitives",
-  version: "0.3.0",
+  version: "0.3.1",
   status: "stable",
 };

@@ -4,6 +4,6 @@ export const checkboxMeta: ComponentMeta = {
   title: "Checkbox",
   description: "Checkbox component for boolean selection with support for indeterminate state, labels, and multiple sizes.",
   category: "Forms",
-  version: "0.3.0",
+  version: "0.3.1",
   status: "stable",
 };

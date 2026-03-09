@@ -4,6 +4,6 @@ export const textareaMeta: ComponentMeta = {
   title: "Textarea",
   description: "Textarea component for multi-line text input with support for multiple variants, sizes, and resize options.",
   category: "Forms",
-  version: "0.3.0",
+  version: "0.3.1",
   status: "stable",
 };

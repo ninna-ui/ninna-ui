@@ -5,7 +5,7 @@ export const codeBlockMeta: ComponentMeta = {
   description:
     "A lightweight syntax-highlighted code block with copy-to-clipboard, line numbers, and automatic dark mode support. Zero external dependencies for syntax highlighting.",
   category: "Code Block",
-  version: "0.3.0",
+  version: "0.3.1",
   status: "stable",
   source: {
     package: "@ninna-ui/code-block",
