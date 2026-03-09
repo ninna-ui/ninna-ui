@@ -11,7 +11,7 @@ Instead of manually updating version numbers in multiple files, we use a central
 The current version is defined in a single file:
 
 ```typescript
-// packages/core/src/constants/version.ts
+// apps/playground/app/constants/version.ts
 export const NINNA_UI_VERSION = "0.3.1" as const;
 ```
 
@@ -47,13 +47,13 @@ const installationMeta = {
 
 ## How to Update Versions
 
-1. Update the version in `packages/core/src/constants/version.ts`
+1. Update the version in `apps/playground/app/constants/version.ts`
 2. The change will automatically be reflected wherever the constant is imported
 
 ## Files Using the Constant
 
 ### Playground App
-- `apps/playground/app/constants/version.ts` - Re-exports the core constant
+- `apps/playground/app/constants/version.ts` - Central version constant
 - All `meta.ts` files in `apps/playground/app/views/*/`
 - Getting started views in `apps/playground/app/views/getting-started/`
 
