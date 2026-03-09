@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/data-display",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "7 data display React components for Ninna UI — Card, Stat, Table, DataTable, Timeline, Tree, Calendar. Semantic HTML, accessible, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
