@@ -10,20 +10,19 @@
 
 /* ============================================
    Filesystem source — scan sibling @ninna-ui packages
-   From dist/theme/tailwind.css → ../../../ = @ninna-ui/
-   This ensures Tailwind detects ALL utility classes in
-   every @ninna-ui component package automatically.
+   
+   These paths are relative to this file's location:
+   - In monorepo: packages/core/src/theme/tailwind.css
+   - After npm install: node_modules/@ninna-ui/core/src/theme/tailwind.css
    ============================================ */
-@source "../index.js";
-@source "../../dist/index.js";
-@source "../../../primitives/dist/index.js";
-@source "../../../feedback/dist/index.js";
-@source "../../../forms/dist/index.js";
-@source "../../../overlays/dist/index.js";
-@source "../../../navigation/dist/index.js";
-@source "../../../layout/dist/index.js";
-@source "../../../data-display/dist/index.js";
-@source "../../../code-block/dist/index.js";
+@source "../../../primitives/dist/**/*.js";
+@source "../../../feedback/dist/**/*.js";
+@source "../../../forms/dist/**/*.js";
+@source "../../../overlays/dist/**/*.js";
+@source "../../../navigation/dist/**/*.js";
+@source "../../../layout/dist/**/*.js";
+@source "../../../data-display/dist/**/*.js";
+@source "../../../code-block/dist/**/*.js";
 
 /* ============================================
    Safelist — @source inline()
