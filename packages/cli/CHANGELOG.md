@@ -1,5 +1,13 @@
 # @ninna-ui/cli
 
+## 0.3.3
+
+### Patch Changes
+
+- Updated all CLI template package versions from 0.3.2 to 0.3.3
+- Templates now include latest bundle size optimizations and modal responsive fixes
+- All starter projects (Vite, Next.js, React Router) use optimized packages
+
 ## 0.3.1
 
 ### Patch Changes
