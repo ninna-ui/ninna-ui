@@ -1,5 +1,14 @@
 # @ninna-ui/overlays
 
+## 0.3.3
+
+### Patch Changes
+
+- [`c04d18c4ae4998d8d344545b32e31125233e8990`](https://github.com/ninna-ui/ninna-ui/commit/c04d18c4ae4998d8d344545b32e31125233e8990) [#18](https://github.com/ninna-ui/ninna-ui/pull/18) Thanks [@chnkc41](https://github.com/chnkc41)! - Tailwindcss safelist validation.
+  Builds a minimal Tailwind CSS output using the ninna-ui theme and checks that every class token extracted from component source files has a corresponding CSS rule in the built output.
+- Updated dependencies [[`c04d18c4ae4998d8d344545b32e31125233e8990`](https://github.com/ninna-ui/ninna-ui/commit/c04d18c4ae4998d8d344545b32e31125233e8990)]:
+  - @ninna-ui/core@0.3.3
+
 ## 0.3.1
 
 ### Patch Changes
