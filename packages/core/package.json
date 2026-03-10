@@ -44,7 +44,9 @@
     "**/*.css"
   ],
   "scripts": {
-    "build": "tsup && node -e \"const fs=require('fs');const p=require('path');function cpCss(s,d){fs.mkdirSync(d,{recursive:true});for(const f of fs.readdirSync(s,{withFileTypes:true})){const sp=p.join(s,f.name),dp=p.join(d,f.name);f.isDirectory()?cpCss(sp,dp):f.name.endsWith('.css')&&fs.copyFileSync(sp,dp)}}cpCss('src/theme','dist/theme')\"",
+    "generate-safelist": "node scripts/generate-safelist.mjs",
+    "build": "node scripts/generate-safelist.mjs && tsup && node -e \"const fs=require('fs');const p=require('path');function cpCss(s,d){fs.mkdirSync(d,{recursive:true});for(const f of fs.readdirSync(s,{withFileTypes:true})){const sp=p.join(s,f.name),dp=p.join(d,f.name);f.isDirectory()?cpCss(sp,dp):f.name.endsWith('.css')&&fs.copyFileSync(sp,dp)}}cpCss('src/theme','dist/theme')\"",
+    "verify-classes": "node scripts/verify-classes.mjs",
     "dev": "tsup --watch",
     "test": "vitest run --passWithNoTests",
     "typecheck": "tsc --noEmit",
