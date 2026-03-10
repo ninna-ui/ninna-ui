@@ -1,5 +1,11 @@
 # @ninna-ui/utils
 
+## 0.3.1
+
+### Patch Changes
+
+- [`5279ff2915abd1b01ff53a40f217f4fc1828e6a1`](https://github.com/ninna-ui/ninna-ui/commit/5279ff2915abd1b01ff53a40f217f4fc1828e6a1) [#15](https://github.com/ninna-ui/ninna-ui/pull/15) Thanks [@chnkc41](https://github.com/chnkc41)! - Fixed tailwindcss treeshaking class scanning
+
 ## 0.3.0
 
 ### Minor Changes

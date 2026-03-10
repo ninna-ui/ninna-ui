@@ -1,5 +1,17 @@
 # @ninna-ui/cli
 
+## 0.3.1
+
+### Patch Changes
+
+- [`2a5a88df71e4ca57ad9fa6f893405b8c2df7c166`](https://github.com/ninna-ui/ninna-ui/commit/2a5a88df71e4ca57ad9fa6f893405b8c2df7c166) [#17](https://github.com/ninna-ui/ninna-ui/pull/17) Thanks [@chnkc41](https://github.com/chnkc41)! - ### Updated
+  - Update CLI template package versions from 0.3.0 to 0.3.1
+  - Update documentation version references to 0.3.1
+  - Update ninna-ui-web dependencies to 0.3.1
+  - Update Storybook versions to 10.2.16 in docs app
+
+- [`5279ff2915abd1b01ff53a40f217f4fc1828e6a1`](https://github.com/ninna-ui/ninna-ui/commit/5279ff2915abd1b01ff53a40f217f4fc1828e6a1) [#15](https://github.com/ninna-ui/ninna-ui/pull/15) Thanks [@chnkc41](https://github.com/chnkc41)! - Fixed tailwindcss treeshaking class scanning
+
 ## 0.3.0
 
 ### Minor Changes

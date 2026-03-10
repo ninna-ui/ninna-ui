@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/primitives",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "14 primitive React UI components for Ninna UI — Button, Badge, Avatar, Text, Heading, Link, Code, Kbd, Divider, and more. Accessible, themeable, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
