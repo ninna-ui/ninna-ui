@@ -148,6 +148,7 @@ function isValidTailwindClass(token) {
 function classToSelector(cls) {
   // Escape special CSS characters
   return cls
+    .replace(/\\/g, '\\\\')
     .replace(/\//g, '\\/')
     .replace(/\[/g, '\\[')
     .replace(/\]/g, '\\]')
@@ -248,7 +249,7 @@ function main() {
     } else {
       // Some classes might be in @utility definitions or use different escaping
       // Try a simpler check — look for the class name in any context
-      const simpleCheck = cls.replace(/[/:[\]!.]/g, '\\$&');
+      const simpleCheck = cls.replace(/[\\\/:\[\]!.]/g, '\\$&');
       if (new RegExp(`\\.${simpleCheck}[{,\\s>~+]`).test(builtCss)) {
         found.push(cls);
       } else {
