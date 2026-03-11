@@ -5,16 +5,16 @@ export const modalContentVariants = cva(
   {
     variants: {
       size: {
-        xs:   "w-full max-w-xs",
-        sm:   "w-full max-w-sm",
-        md:   "w-full max-w-md",
-        lg:   "w-full max-w-lg",
-        xl:   "w-full max-w-xl",
-        full: "w-[calc(100%-2rem)] h-[calc(100%-2rem)] max-w-none max-h-none",
+        xs:   "w-[calc(100%-1rem)] max-w-xs sm:w-full sm:max-w-xs",
+        sm:   "w-[calc(100%-1rem)] max-w-sm sm:w-full sm:max-w-sm",
+        md:   "w-[calc(100%-1rem)] max-w-md sm:w-full sm:max-w-md",
+        lg:   "w-[calc(100%-1rem)] max-w-lg sm:w-full sm:max-w-lg",
+        xl:   "w-[calc(100%-1rem)] max-w-xl sm:w-full sm:max-w-xl",
+        full: "w-[calc(100%-1rem)] h-[calc(100%-1rem)] max-w-none max-h-none sm:w-[calc(100%-2rem)] sm:h-[calc(100%-2rem)]",
       },
       placement: {
-        center: "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2",
-        top:    "left-1/2 top-[10vh] -translate-x-1/2",
+        center: "left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2",
+        top:    "left-1/2 top-[1rem] -translate-x-1/2 sm:left-1/2 sm:top-[4rem] sm:-translate-x-1/2",
       },
     },
     defaultVariants: { size: "md", placement: "center" },
