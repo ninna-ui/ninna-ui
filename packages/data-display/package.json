@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@ninna-ui/core": "workspace:*",
+    "@ninna-ui/utils": "workspace:*",
     "class-variance-authority": "^0.7.1"
   },
   "peerDependencies": {
@@ -68,7 +69,6 @@
     "@types/react-dom": "^19.0.0",
     "@ninna-ui/tsconfig": "workspace:*",
     "@ninna-ui/test-config": "workspace:*",
-    "@ninna-ui/utils": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tsup": "^8.0.0",
