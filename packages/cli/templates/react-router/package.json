@@ -7,7 +7,7 @@
     "dev": "react-router dev",
     "build": "react-router build",
     "typecheck": "react-router typegen && tsc --noEmit",
-    "start": "react-router-serve ./build/client/index.js"
+    "start": "react-router-serve ./build/server/index.js"
   },
   "dependencies": {
     "@ninna-ui/core": "latest",
