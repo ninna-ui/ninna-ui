@@ -15,8 +15,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        <Links />
-        <script src="/theme-init.js" />
+        <Links /> 
       </head>
       <body className="min-h-screen bg-base-50 text-base-content antialiased" suppressHydrationWarning>
         {children}
