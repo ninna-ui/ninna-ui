@@ -10,14 +10,14 @@ import "./index.css";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="light" data-theme="default" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
-        <Links />
+        <Links /> 
       </head>
-      <body className="min-h-screen bg-base-50 text-base-content antialiased">
+      <body className="min-h-screen bg-base-50 text-base-content antialiased" suppressHydrationWarning>
         {children}
         <ScrollRestoration />
         <Scripts />
