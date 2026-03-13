@@ -11,7 +11,3 @@
 
 /* Code block syntax token colors (static — no runtime style injection) */
 @import "@ninna-ui/code-block/styles";
-
-/* Content sources for Tailwind CSS v4 tree-shaking */
-@source "../node_modules/@ninna-ui/**/*.{js,ts,jsx,tsx}";
-@source "./**/*.{ts,tsx}";

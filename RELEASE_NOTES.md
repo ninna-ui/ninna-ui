@@ -39,7 +39,6 @@ npx @ninna-ui/cli init my-app
 /* Add to your main CSS file */
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
-@source "../node_modules/@ninna-ui/*";
 ```
 
 ```tsx
