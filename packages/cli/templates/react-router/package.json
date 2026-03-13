@@ -6,33 +6,33 @@
   "scripts": {
     "dev": "react-router dev",
     "build": "react-router build",
+    "typecheck": "react-router typegen && tsc --noEmit",
     "start": "react-router-serve ./build/server/index.js"
   },
   "dependencies": {
-    "@ninna-ui/core": "^0.3.2",
-    "@ninna-ui/primitives": "^0.3.2",
-    "@ninna-ui/feedback": "^0.3.2",
-    "@ninna-ui/forms": "^0.3.2",
-    "@ninna-ui/layout": "^0.3.2",
-    "@ninna-ui/overlays": "^0.3.2",
-    "@ninna-ui/navigation": "^0.3.2",
-    "@ninna-ui/data-display": "^0.3.2",
-    "@ninna-ui/code-block": "^0.3.2",
-    "@react-router/node": "^7.6.0",
-    "react-router": "^7.6.0",
-    "isbot": "^5.1.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
-  },
-  "devDependencies": {
+    "@ninna-ui/core": "latest",
+    "@ninna-ui/primitives": "latest",
+    "@ninna-ui/feedback": "latest",
+    "@ninna-ui/forms": "latest",
+    "@ninna-ui/layout": "latest",
+    "@ninna-ui/overlays": "latest",
+    "@ninna-ui/navigation": "latest",
+    "@ninna-ui/data-display": "latest",
+    "@ninna-ui/code-block": "latest",
     "@react-router/dev": "^7.6.0",
     "@react-router/fs-routes": "^7.6.0",
-    "@react-router/serve": "^7.6.0",
+    "@react-router/node": "^7.6.0",
     "@tailwindcss/vite": "^4.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "isbot": "^5.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.6.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.6.0",
     "vite": "^7.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0"
   }
 }
