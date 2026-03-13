@@ -1,5 +1,35 @@
 # @ninna-ui/core
 
+## 0.3.5
+
+### Patch Changes
+
+- [`02cc545b1471c9986eea18bc0fded9fb9de4427d`](https://github.com/ninna-ui/ninna-ui/commit/02cc545b1471c9986eea18bc0fded9fb9de4427d) [#24](https://github.com/ninna-ui/ninna-ui/pull/24) Thanks [@chnkc41](https://github.com/chnkc41)! - fix: resolve React Router template hydration issues with minimal SSR fixes
+  - Add suppressHydrationWarning to html and body elements to prevent Tailwind CSS v4 PostCSS attribute mismatch
+  - Maintain build-time dependencies in dependencies for npm compatibility
+
+  Fixes hydration mismatch caused by Tailwind CSS v4's \__processed_\* attributes during SSR.
+
+- [`31be4238dc63b8d31d33c5ca4793955dd67a3f20`](https://github.com/ninna-ui/ninna-ui/commit/31be4238dc63b8d31d33c5ca4793955dd67a3f20) [#27](https://github.com/ninna-ui/ninna-ui/pull/27) Thanks [@chnkc41](https://github.com/chnkc41)! - fix: resolve Next.js template hydration issues with minimal SSR fixes
+  - Add suppressHydrationWarning to html and body elements to prevent Tailwind CSS v4 PostCSS attribute mismatch
+  - Include minimal theme-init.js script to prevent FOUC with dark mode
+  - Add className="light" to html element for consistent theme initialization
+  - Add missing @types/node dependency for TypeScript support
+
+  Fixes hydration mismatch caused by Tailwind CSS v4's \__processed_\* attributes during SSR.
+
+- [`5d169f443ad7120742dc8bed37164c38b251ee5e`](https://github.com/ninna-ui/ninna-ui/commit/5d169f443ad7120742dc8bed37164c38b251ee5e) [#22](https://github.com/ninna-ui/ninna-ui/pull/22) Thanks [@chnkc41](https://github.com/chnkc41)! - ## Performance Improvements
+  - Massive bundle size reduction (94% for overlays, 83% for forms, 95% for navigation)
+  - Fixed modal responsive design for mobile devices
+  - Made react-internal external to prevent bundling duplication
+  - Updated dependencies for proper npm package compatibility
+
+  ## Technical Changes
+  - Updated tsup configs to externalize @ninna-ui/react-internal and @ninna-ui/utils
+  - Added proper dependencies to package.json files
+  - Maintained all functionality while dramatically reducing bundle sizes
+  - All tests pass with new structure
+
 ## 0.3.3
 
 ### Patch Changes
