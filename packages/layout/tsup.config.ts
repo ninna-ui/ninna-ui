@@ -9,8 +9,7 @@ export default defineConfig({
   clean: true,
   treeshake: true,
   minify: false,
-  external: ["react", "react-dom", "@ninna-ui/core"],
-  noExternal: ["@ninna-ui/utils"],
+  external: ["react", "react-dom", "@ninna-ui/core", "@ninna-ui/utils"],
   esbuildOptions(options) {
     options.jsx = "automatic";
   },

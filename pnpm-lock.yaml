@@ -284,6 +284,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@ninna-ui/utils':
+        specifier: workspace:*
+        version: link:../utils
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -294,9 +297,6 @@ importers:
       '@ninna-ui/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
-      '@ninna-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.10
@@ -346,6 +346,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@ninna-ui/utils':
+        specifier: workspace:*
+        version: link:../utils
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -356,9 +359,6 @@ importers:
       '@ninna-ui/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
-      '@ninna-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.10
@@ -386,6 +386,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@ninna-ui/utils':
+        specifier: workspace:*
+        version: link:../utils
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -396,9 +399,6 @@ importers:
       '@ninna-ui/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
-      '@ninna-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.10
@@ -469,6 +469,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@ninna-ui/utils':
+        specifier: workspace:*
+        version: link:../utils
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -479,9 +482,6 @@ importers:
       '@ninna-ui/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
-      '@ninna-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.10
@@ -595,6 +595,9 @@ importers:
       '@ninna-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@ninna-ui/utils':
+        specifier: workspace:*
+        version: link:../utils
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -605,9 +608,6 @@ importers:
       '@ninna-ui/tsconfig':
         specifier: workspace:*
         version: link:../../tooling/tsconfig
-      '@ninna-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@types/react':
         specifier: ^19.0.0
         version: 19.2.10
