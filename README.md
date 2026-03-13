@@ -59,7 +59,6 @@ pnpm add @ninna-ui/core @ninna-ui/primitives
 ```css
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
-@source "../node_modules/@ninna-ui/*";
 ```
 
 ### 3. Use components
@@ -107,8 +106,8 @@ Choose from **Vite + React**, **Next.js 15**, or **React Router** templates with
 |---------|-------------|--------|
 | [`@ninna-ui/core`](./packages/core) | Design tokens, Tailwind class mappings, 5 CSS theme presets | [README](./packages/core/README.md) |
 | [`@ninna-ui/cli`](./packages/cli) | Project scaffolding CLI with 3 framework templates | [README](./packages/cli/README.md) |
-| `@ninna-ui/utils` | Shared utilities — bundled into each package (not installed separately) | [README](./packages/utils/README.md) |
-| `@ninna-ui/react-internal` | Internal Radix engine wrappers (not published) | [README](./packages/react-internal/README.md) |
+| `@ninna-ui/utils` | Shared utilities — auto-installed with component packages | [README](./packages/utils/README.md) |
+| `@ninna-ui/react-internal` | Internal Radix engine wrappers — auto-installed with component packages | [README](./packages/react-internal/README.md) |
 
 ## Theme Presets
 
