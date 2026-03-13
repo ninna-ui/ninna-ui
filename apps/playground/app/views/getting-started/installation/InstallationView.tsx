@@ -45,11 +45,10 @@ const VITE_HTML_CODE = `<!-- index.html -->
 const NEXTJS_LAYOUT_CODE = `// app/layout.tsx
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="default">
-      <body>
-        <div className="min-h-screen bg-base-50 text-base-content antialiased">
-          {children}
-        </div>
+    <html lang="en" className="light" data-theme="default" suppressHydrationWarning>
+      <head></head>
+      <body className="min-h-screen bg-base-50 text-base-content antialiased" suppressHydrationWarning>
+        {children}
       </body>
     </html>
   );
@@ -58,15 +57,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 const REACT_ROUTER_ROOT_CODE = `// app/root.tsx
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" data-theme="default">
+    <html lang="en" className="light" data-theme="default" suppressHydrationWarning>
       <head>
         <Meta />
         <Links />
       </head>
-      <body>
-        <div className="min-h-screen bg-base-50 text-base-content antialiased">
-          {children}
-        </div>
+      <body className="min-h-screen bg-base-50 text-base-content antialiased" suppressHydrationWarning>
+        {children}
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -200,7 +197,7 @@ export default {
                     <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Set up app/layout.tsx</Heading>
                     <UsageExample code={NEXTJS_LAYOUT_CODE} />
                     <div className="mt-2 bg-warning/10 border border-warning/20 rounded-lg p-3">
-                      <Text size="sm" className="text-warning"><strong>Hydration tip:</strong> Keep Tailwind classes on a wrapper <Code>{`<div>`}</Code> inside <Code>{`<body>`}</Code>, not on <Code>{`<body>`}</Code> itself — <Code>@tailwindcss/postcss</Code> adds internal attributes to <Code>{`<body>`}</Code> during SSR causing hydration mismatches.</Text>
+                      <Text size="sm" className="text-warning"><strong>Hydration tip:</strong> The updated approach uses <Code>suppressHydrationWarning</Code> on the html and body elements, plus <Code>className="light"</Code> to prevent hydration mismatches when using <Code>@tailwindcss/postcss</Code>.</Text>
                     </div>
                   </div>
 
@@ -241,7 +238,7 @@ export default defineConfig({
                   <div>
                     <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Set up app/root.tsx</Heading>
                     <UsageExample code={REACT_ROUTER_ROOT_CODE} />
-                    <Text size="sm" className="text-base-content/60 mt-2">The <Code>Layout</Code> export is required for React Router v7 SSR. Tailwind classes on a wrapper <Code>{`<div>`}</Code> avoids body hydration mismatches.</Text>
+                    <Text size="sm" className="text-base-content/60 mt-2">The <Code>Layout</Code> export is required for React Router v7 SSR. The updated approach uses <Code>suppressHydrationWarning</Code> and <Code>className="light"</Code> to prevent hydration mismatches.</Text>
                   </div>
 
                   <div>
