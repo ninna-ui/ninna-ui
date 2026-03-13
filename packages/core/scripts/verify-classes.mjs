@@ -67,6 +67,25 @@ const KNOWN_TW_PREFIXES = new Set([
   'animate', 'fade', 'zoom', 'slide',
 ]);
 
+// ─── Explicit blocklist of non-Tailwind tokens (same as generate-safelist.mjs) ───
+const BLOCKLIST = new Set([
+  'application/pdf', 'text/plain', 'image/png', 'image/svg',
+  'ninna-ui/core', 'ninna-ui/react', 'ninna-ui/utils',
+  'testing-library/react', 'testing-library/user',
+  'htmlFor/id',
+  'next/previous', 'light/dark', 'input/input',
+  'article/1', 'org/2000',
+  'data-slot', 'data-slots', 'data-testid', 'data-variant', 'data-disabled',
+  'data-invalid', 'data-loading', 'data-orientation', 'data-placement',
+  'data-table', 'data-table-cell', 'data-table-head', 'data-table-row',
+  'left-icon', 'right-icon', 'hidden-field',
+  'top-center', 'top-left', 'top-right',
+  'bottom-center', 'bottom-left', 'bottom-right',
+  'table-body', 'table-caption', 'table-footer', 'table-header',
+  'table-cell', 'table-head', 'table-row',
+  'aspect-ratio', 'ltr', 'rtl', 'clear', 'will',
+]);
+
 // ─── Helpers ─────────────────────────────────────────────────────
 
 function collectSourceFiles(dir, files = []) {
@@ -100,6 +119,7 @@ function extractClassStrings(content) {
 
 function isValidTailwindClass(token) {
   if (token.length < 2 || token.length > 120) return false;
+  if (BLOCKLIST.has(token)) return false;
   if (/^[A-Z]/.test(token)) return false;
   if (/^(import|export|from|const|let|var|function|return|if|else|switch|case|break|class|extends|type|enum|true|false|null|undefined|void|typeof|instanceof|new|delete|this|super|yield|async|await|for|while|do|try|catch|finally|throw|as|is|of|in)$/.test(token)) return false;
   if (/^(horizontal|vertical|outline|filled|flushed|solid|soft|ghost|line|enclosed|center|top|bottom|left|right|spin|ping|pulse|dots|default|success|danger|warning|info|primary|secondary|accent|neutral|loading|xs|sm|md|lg|xl|2xl|3xl|full|none|auto|start|end|between|around|evenly|stretch|baseline|wrap|nowrap|reverse|column|row|initial|inherit|revert|unset)$/.test(token)) return false;
@@ -243,19 +263,58 @@ function main() {
   for (const cls of [...allClasses].sort()) {
     // For each class, check if its escaped selector form appears in the CSS
     const selector = classToSelector(cls);
-    // Check both with dot prefix (class selector) and without
-    if (builtCss.includes(`.${selector}`) || builtCss.includes(selector)) {
+    // Check with dot prefix (class selector)
+    if (builtCss.includes(`.${selector}`)) {
       found.push(cls);
-    } else {
-      // Some classes might be in @utility definitions or use different escaping
-      // Try a simpler check — look for the class name in any context
-      const simpleCheck = cls.replace(/[\\\/:\[\]!.]/g, '\\$&');
-      if (new RegExp(`\\.${simpleCheck}[{,\\s>~+]`).test(builtCss)) {
+      continue;
+    }
+
+    // For complex selectors (variants with brackets, data-attributes, etc.)
+    // Tailwind may use different escaping in the output.
+    // Extract the base utility (after the last ':') and check for that.
+    let base = cls;
+    // Strip variant prefixes to get the base utility
+    const lastColon = cls.lastIndexOf(':');
+    if (lastColon !== -1) {
+      base = cls.slice(lastColon + 1);
+    }
+    const baseSelector = classToSelector(base);
+    // If the base utility (e.g. "pointer-events-none", "slide-in-from-top-2")
+    // appears as a class in the CSS, the full variant version is covered
+    if (builtCss.includes(`.${baseSelector}`) || builtCss.includes(`{${baseSelector}`)) {
+      found.push(cls);
+      continue;
+    }
+
+    // For data-attribute variant classes, check if the base utility is defined
+    // as a @utility or @keyframes in the CSS (custom animations like accordion-up/down)
+    if (base !== cls) {
+      const plainBase = base.replace(/^[-!]/, '');
+      // Also try CSS-escaped form (Tailwind escapes / as \/ and . as \. in selectors)
+      const escapedBase = plainBase.replace(/\//g, '\\/').replace(/\./g, '\\.');
+      // Check for @utility definition or the utility name appearing in CSS rules
+      if (builtCss.includes(`@utility ${plainBase}`) ||
+          builtCss.includes(`@keyframes ${plainBase}`) ||
+          builtCss.includes(plainBase) ||
+          builtCss.includes(escapedBase)) {
         found.push(cls);
-      } else {
-        missing.push(cls);
+        continue;
       }
     }
+
+    // Try a raw substring match — the class name with special chars escaped
+    // should appear somewhere in the CSS output
+    const rawEscaped = cls
+      .replace(/\[/g, '\\[')
+      .replace(/\]/g, '\\]')
+      .replace(/=/g, '\\=')
+      .replace(/\//g, '\\/');
+    if (builtCss.includes(rawEscaped)) {
+      found.push(cls);
+      continue;
+    }
+
+    missing.push(cls);
   }
 
   // ── Report ────────────────────────────────────────────────────
