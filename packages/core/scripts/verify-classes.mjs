@@ -290,8 +290,11 @@ function main() {
     // as a @utility or @keyframes in the CSS (custom animations like accordion-up/down)
     if (base !== cls) {
       const plainBase = base.replace(/^[-!]/, '');
-      // Also try CSS-escaped form (Tailwind escapes / as \/ and . as \. in selectors)
-      const escapedBase = plainBase.replace(/\//g, '\\/').replace(/\./g, '\\.');
+      // Also try CSS-escaped form (Tailwind escapes \ as \\, / as \/ and . as \. in selectors)
+      const escapedBase = plainBase
+        .replace(/\\/g, '\\\\')
+        .replace(/\//g, '\\/')
+        .replace(/\./g, '\\.');
       // Check for @utility definition or the utility name appearing in CSS rules
       if (builtCss.includes(`@utility ${plainBase}`) ||
           builtCss.includes(`@keyframes ${plainBase}`) ||
@@ -305,6 +308,7 @@ function main() {
     // Try a raw substring match — the class name with special chars escaped
     // should appear somewhere in the CSS output
     const rawEscaped = cls
+      .replace(/\\/g, '\\\\')
       .replace(/\[/g, '\\[')
       .replace(/\]/g, '\\]')
       .replace(/=/g, '\\=')
