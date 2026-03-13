@@ -13,11 +13,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="default">
-      <body>
-        <div className="min-h-screen bg-base-50 text-base-content antialiased">
-          {children}
-        </div>
+    <html lang="en" className="light" data-theme="default" suppressHydrationWarning>
+      <head>
+        <script src="/theme-init.js" />
+      </head>
+      <body className="min-h-screen bg-base-50 text-base-content antialiased" suppressHydrationWarning>
+        {children}
       </body>
     </html>
   );
