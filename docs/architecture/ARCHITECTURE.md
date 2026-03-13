@@ -156,7 +156,6 @@ The `data-theme` attribute is always required on `<html>` (or an ancestor elemen
 /* External consumers */
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
-@source "../node_modules/@ninna-ui/*";
 ```
 
 ---

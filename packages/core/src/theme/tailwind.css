@@ -13,7 +13,7 @@
    
    These paths are relative to this file's location:
    - In monorepo: packages/core/src/theme/tailwind.css
-   - After npm install: node_modules/@ninna-ui/core/src/theme/tailwind.css
+   - After npm install: node_modules/@ninna-ui/core/dist/theme/tailwind.css
    ============================================ */
 @source "../../../primitives/dist/**/*.js";
 @source "../../../feedback/dist/**/*.js";
