@@ -43,7 +43,7 @@
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.0.0",
-    "jsdom": "^28.0.0",
+    "jsdom": "^28.1.0",
     "prettier": "^3.8.0",
     "publint": "^0.2.0",
     "react": "^19.2.0",
@@ -51,6 +51,7 @@
     "rimraf": "^6.1.2",
     "turbo": "^2.8.10",
     "typescript": "^5.4.0",
+    "undici": "7.24.0",
     "vitest": "^4.0.0",
     "vitest-axe": "1.0.0-pre.5"
   },
