@@ -1,6 +1,6 @@
 export const timelineStyles = {
   root: 'relative flex flex-col gap-0',
-  rootHorizontal: 'flex-row',
+  rootHorizontal: 'flex-row overflow-x-auto',
   item: 'relative flex gap-4 pb-8 last:pb-0',
   itemHorizontal: 'flex-col items-center',
   indicator: {

@@ -60,7 +60,7 @@ export const radioGroupStyles = {
   indicator:          "flex items-center justify-center",
   indicatorDot:       "rounded-full",
   indicatorDotSolid:  "rounded-full bg-white",
-  itemWrapper:        "flex items-center gap-3",
+  itemWrapper:        "flex items-center gap-3 min-h-[44px]",
   itemWrapperReverse: "flex-row-reverse",
   labelWrapper:       "flex flex-col gap-0.5",
   label:              "text-base-content font-medium cursor-pointer select-none",

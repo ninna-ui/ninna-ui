@@ -100,7 +100,7 @@ const PaginationPrevious = forwardRef<HTMLButtonElement, PaginationPreviousProps
         {...props}
       >
         <ChevronLeftIcon />
-        {children ?? <span>Previous</span>}
+        {children ?? <span className={paginationStyles.previousLabel}>Previous</span>}
       </PaginationLink>
     );
   }
@@ -118,7 +118,7 @@ const PaginationNext = forwardRef<HTMLButtonElement, PaginationNextProps>(
         className={cn(paginationStyles.next, className)}
         {...props}
       >
-        {children ?? <span>Next</span>}
+        {children ?? <span className={paginationStyles.nextLabel}>Next</span>}
         <ChevronRightIcon />
       </PaginationLink>
     );

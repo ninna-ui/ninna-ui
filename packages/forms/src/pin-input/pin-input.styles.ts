@@ -2,10 +2,10 @@ import type { Size } from '@ninna-ui/core';
 
 export const PIN_INPUT_SIZES: Record<Size, { input: string; gap: string }> = {
   xs: { input: "w-7 h-7 text-xs", gap: "gap-1" },
-  sm: { input: "w-8 h-8 text-sm", gap: "gap-1.5" },
-  md: { input: "w-10 h-10 text-base", gap: "gap-2" },
-  lg: { input: "w-12 h-12 text-lg", gap: "gap-2" },
-  xl: { input: "w-14 h-14 text-xl", gap: "gap-3" },
+  sm: { input: "w-7 h-7 sm:w-8 sm:h-8 text-sm", gap: "gap-1 sm:gap-1.5" },
+  md: { input: "w-8 h-8 sm:w-10 sm:h-10 text-sm sm:text-base", gap: "gap-1.5 sm:gap-2" },
+  lg: { input: "w-10 h-10 sm:w-12 sm:h-12 text-base sm:text-lg", gap: "gap-1.5 sm:gap-2" },
+  xl: { input: "w-12 h-12 sm:w-14 sm:h-14 text-lg sm:text-xl", gap: "gap-2 sm:gap-3" },
 };
 
 export const pinInputStyles = {

@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import type { ToastPosition } from './toast.types';
 
 export const toastVariants = cva(
-  "group pointer-events-auto relative flex w-full items-center justify-between space-x-4 overflow-hidden rounded-lg border p-4 shadow-lg transition-all duration-300 ease-out motion-reduce:transition-none",
+  "group pointer-events-auto relative flex w-full flex-wrap items-center justify-between gap-x-4 gap-y-2 overflow-hidden rounded-lg border p-4 shadow-lg transition-all duration-300 ease-out motion-reduce:transition-none",
   {
     variants: {
       variant: {

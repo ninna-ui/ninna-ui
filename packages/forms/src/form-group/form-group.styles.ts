@@ -6,7 +6,7 @@ export const formGroupContentVariants = cva(
     variants: {
       orientation: {
         vertical:   "flex-col",
-        horizontal: "flex-row flex-wrap items-start",
+        horizontal: "flex-col sm:flex-row sm:flex-wrap items-start",
       },
       size: {
         sm: "",

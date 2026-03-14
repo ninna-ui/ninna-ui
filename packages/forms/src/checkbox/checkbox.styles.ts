@@ -45,7 +45,7 @@ export const checkboxStyles = {
   input:            "sr-only peer",
   icon:             "text-white opacity-0 peer-checked:opacity-100 transition-opacity",
   indeterminateIcon:"text-white",
-  wrapper:          "inline-flex items-start gap-3",
+  wrapper:          "inline-flex items-start gap-3 min-h-[44px]",
   wrapperReverse:   "flex-row-reverse",
   labelWrapper:     "flex flex-col gap-0.5",
   label:            "text-base-content font-medium cursor-pointer select-none",

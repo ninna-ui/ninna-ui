@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
 export const tabsListVariants = cva(
-  "flex items-center",
+  "flex items-center overflow-x-auto",
   {
     variants: {
       variant: {
