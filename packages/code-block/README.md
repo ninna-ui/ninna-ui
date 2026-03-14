@@ -26,6 +26,14 @@ pnpm add @ninna-ui/code-block @ninna-ui/core
 @variant dark (&:is(.dark *));
 ```
 
+## HTML Setup
+
+Add the `data-theme` attribute to your `<html>` element:
+
+```html
+<html data-theme="default">
+```
+
 ## Quick Start
 
 ```tsx

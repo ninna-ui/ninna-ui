@@ -16,7 +16,7 @@ pnpm build      # Build for production
 
 - **Next.js 15** App Router with TypeScript strict mode
 - **Tailwind CSS v4.1** with `@tailwindcss/postcss` plugin
-- **Ninna UI v0.2.0** — All 9 packages: primitives, feedback, forms, layout, overlays, navigation, data-display, code-block, core
+- **Ninna UI v0.4.0** — All 9 packages: primitives, feedback, forms, layout, overlays, navigation, data-display, code-block, core
 - **Default theme preset** with automatic dark mode + 4 additional presets
 
 ## Customization
