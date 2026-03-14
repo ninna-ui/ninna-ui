@@ -24,6 +24,14 @@ pnpm add @ninna-ui/navigation @ninna-ui/core
 @variant dark (&:is(.dark *));
 ```
 
+## HTML Setup
+
+Add the `data-theme` attribute to your `<html>` element:
+
+```html
+<html data-theme="default">
+```
+
 ## Components
 
 | Component | Description | Engine |

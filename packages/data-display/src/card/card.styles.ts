@@ -22,9 +22,9 @@ export const cardVariants = cva(
 export type CardVariantsProps = VariantProps<typeof cardVariants>;
 
 export const cardStyles = {
-  header:      "flex flex-col gap-1.5 p-6",
-  body:        "p-6 pt-0",
-  footer:      "flex items-center p-6 pt-0",
+  header:      "flex flex-col gap-1.5 p-4 sm:p-6",
+  body:        "p-4 sm:p-6 pt-0",
+  footer:      "flex items-center p-4 sm:p-6 pt-0",
   title:       "text-lg font-semibold leading-none tracking-tight",
   description: "text-sm text-base-content/70",
 };

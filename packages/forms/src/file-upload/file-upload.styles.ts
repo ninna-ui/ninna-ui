@@ -40,7 +40,7 @@ export const fileUploadStyles = {
   dropzoneDisabled: 'cursor-not-allowed opacity-50 bg-base-100',
   dropzoneInvalid: 'border-danger bg-danger/10',
   input: 'absolute inset-0 w-full h-full opacity-0 cursor-pointer disabled:cursor-not-allowed',
-  content: 'flex flex-col items-center justify-center gap-2 p-6 pointer-events-none',
+  content: 'flex flex-col items-center justify-center gap-2 p-4 sm:p-6 pointer-events-none',
   icon: 'text-base-content/70',
   text: 'text-base-content/80',
   textSecondary: 'text-base-content/70 text-sm',

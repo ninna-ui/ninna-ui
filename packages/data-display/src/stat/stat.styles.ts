@@ -13,7 +13,7 @@ export const statStyles = {
 };
 
 export const STAT_VALUE_SIZES: Record<'sm' | 'md' | 'lg', string> = {
-  sm: 'text-xl',
-  md: 'text-2xl',
-  lg: 'text-4xl',
+  sm: 'text-lg sm:text-xl',
+  md: 'text-xl sm:text-2xl',
+  lg: 'text-2xl sm:text-4xl',
 };
