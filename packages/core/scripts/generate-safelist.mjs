@@ -198,9 +198,9 @@ function isValidTailwindClass(token) {
     if (parts.length !== 2) return false;
     const [before, after] = parts;
     // After the slash should be a number (opacity) or a known fraction
-    if (!/^\d+$/.test(after) && !/^\d+\.\d+$/.test(after)) return false;
+    if (!/^\d+$/.test(after) && !/^\d+\.\d+$/.test(after) && !/^\d+\/\d+$/.test(after)) return false;
     // Before the slash should start with a known TW prefix
-    const stripped = before.replace(/^!/, '').replace(/^.*:/, '');
+    const stripped = before.replace(/^!/, '').replace(/^.*:/, '').replace(/^-/, '');
     const prefix = stripped.split('-')[0];
     if (!KNOWN_TW_PREFIXES.has(prefix)) return false;
   }
@@ -228,10 +228,14 @@ function isValidTailwindClass(token) {
   base = base.replace(/^!/, '');
 
   // Strip negative prefix
-  base = base.replace(/^-/, '');
+  let cls = base;
+  if (cls.startsWith('-')) {
+    cls = cls.substring(1);
+  }
 
   // The base utility must start with a known TW prefix
-  const prefix = base.split('-')[0].split('/')[0].split('[')[0];
+  const prefix = cls.split('-')[0].split('/')[0].split('[')[0];
+
   if (!prefix) return false;
   if (!KNOWN_TW_PREFIXES.has(prefix)) return false;
 

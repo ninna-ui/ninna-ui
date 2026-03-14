@@ -133,8 +133,8 @@ function isValidTailwindClass(token) {
     const parts = token.split('/');
     if (parts.length !== 2) return false;
     const [before, after] = parts;
-    if (!/^\d+$/.test(after) && !/^\d+\.\d+$/.test(after)) return false;
-    const stripped = before.replace(/^!/, '').replace(/^.*:/, '');
+    if (!/^\d+$/.test(after) && !/^\d+\.\d+$/.test(after) && !/^\d+\/\d+$/.test(after)) return false;
+    const stripped = before.replace(/^!/, '').replace(/^.*:/, '').replace(/^-/, '');
     const prefix = stripped.split('-')[0];
     if (!KNOWN_TW_PREFIXES.has(prefix)) return false;
   }
