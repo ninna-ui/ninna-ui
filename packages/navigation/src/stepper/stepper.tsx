@@ -111,7 +111,7 @@ const Step = forwardRef<HTMLDivElement, StepProps>(
         {...domProps}
       >
         <StepIndicator status={status} stepNumber={index + 1} icon={icon} />
-        <div className={cn('flex flex-col', orientation === 'horizontal' ? 'items-center text-center' : 'items-start text-left')}>
+        <div className={cn('flex flex-col', orientation === 'horizontal' ? 'items-start text-left sm:items-center sm:text-center' : 'items-start text-left')}>
           <span
             data-slot="step-label"
             className={cn(

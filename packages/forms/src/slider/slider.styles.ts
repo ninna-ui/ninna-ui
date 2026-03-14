@@ -38,7 +38,7 @@ export const sliderStyles = {
   range: 'absolute rounded-full',
   rangeHorizontal: 'h-full',
   rangeVertical: 'w-full',
-  thumb: 'block rounded-full border-2 bg-base-100 shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 -translate-x-1/2',
+  thumb: 'relative block rounded-full border-2 bg-base-100 shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 -translate-x-1/2 before:absolute before:inset-[-8px] before:content-[""]',
   thumbVertical: '!translate-x-0 -translate-y-1/2',
   label: 'text-sm font-medium text-base-content/80 mb-2',
   valueLabel: 'text-sm text-base-content/80 ml-2',
