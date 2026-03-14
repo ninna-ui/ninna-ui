@@ -198,9 +198,9 @@ function isValidTailwindClass(token) {
     if (parts.length !== 2) return false;
     const [before, after] = parts;
     // After the slash should be a number (opacity) or a known fraction
-    if (!/^\d+$/.test(after) && !/^\d+\.\d+$/.test(after)) return false;
+    if (!/^\d+$/.test(after) && !/^\d+\.\d+$/.test(after) && !/^\d+\/\d+$/.test(after)) return false;
     // Before the slash should start with a known TW prefix
-    const stripped = before.replace(/^!/, '').replace(/^.*:/, '');
+    const stripped = before.replace(/^!/, '').replace(/^.*:/, '').replace(/^-/, '');
     const prefix = stripped.split('-')[0];
     if (!KNOWN_TW_PREFIXES.has(prefix)) return false;
   }
@@ -228,10 +228,14 @@ function isValidTailwindClass(token) {
   base = base.replace(/^!/, '');
 
   // Strip negative prefix
-  base = base.replace(/^-/, '');
+  let cls = base;
+  if (cls.startsWith('-')) {
+    cls = cls.substring(1);
+  }
 
   // The base utility must start with a known TW prefix
-  const prefix = base.split('-')[0].split('/')[0].split('[')[0];
+  const prefix = cls.split('-')[0].split('/')[0].split('[')[0];
+
   if (!prefix) return false;
   if (!KNOWN_TW_PREFIXES.has(prefix)) return false;
 
@@ -330,23 +334,27 @@ function main() {
       groups['Stroke/fill utilities'].push(cls);
     } else if (cls.startsWith('!')) {
       groups['Arbitrary values & important overrides'].push(cls);
-    } else if (cls.startsWith('-')) {
+    } else if (cls.startsWith('-') || /:-translate/.test(cls)) {
       groups['Negative values'].push(cls);
     } else if (cls.includes('/') && !cls.includes(':')) {
       groups['Opacity modifiers'].push(cls);
     } else if (cls.includes(':')) {
-      // Has variant prefix
-      const variant = cls.split(':')[0];
-      if (['hover', 'focus', 'focus-visible', 'disabled', 'read-only', 'placeholder', 'motion-reduce'].includes(variant)) {
-        groups['Variant prefixes (hover, focus, focus-visible, disabled, etc.)'].push(cls);
-      } else if (variant.startsWith('data-') || variant.startsWith('peer') || variant.startsWith('group')) {
-        if (variant.startsWith('peer') || variant.startsWith('group')) {
-          groups['Peer/group variants'].push(cls);
-        } else {
-          groups['Data-attribute variants (Radix)'].push(cls);
-        }
+      // Has variant prefix - check for negative translate first
+      if (/-translate/.test(cls)) {
+        groups['Negative values'].push(cls);
       } else {
-        groups['Variant prefixes (hover, focus, focus-visible, disabled, etc.)'].push(cls);
+        const variant = cls.split(':')[0];
+        if (['hover', 'focus', 'focus-visible', 'disabled', 'read-only', 'placeholder', 'motion-reduce'].includes(variant)) {
+          groups['Variant prefixes (hover, focus, focus-visible, disabled, etc.)'].push(cls);
+        } else if (variant.startsWith('data-') || variant.startsWith('peer') || variant.startsWith('group')) {
+          if (variant.startsWith('peer') || variant.startsWith('group')) {
+            groups['Peer/group variants'].push(cls);
+          } else {
+            groups['Data-attribute variants (Radix)'].push(cls);
+          }
+        } else {
+          groups['Variant prefixes (hover, focus, focus-visible, disabled, etc.)'].push(cls);
+        }
       }
     } else if (/^size-/.test(cls) || cls === 'bg-current') {
       groups['Other (size-*, bg-current, etc.)'].push(cls);
