@@ -564,12 +564,6 @@ importers:
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
-      react:
-        specifier: '>=19.0.0'
-        version: 19.2.3
-      react-dom:
-        specifier: '>=19.0.0'
-        version: 19.2.3(react@19.2.3)
     devDependencies:
       '@ninna-ui/test-config':
         specifier: workspace:*
@@ -583,6 +577,12 @@ importers:
       '@types/react-dom':
         specifier: ^19.0.0
         version: 19.2.3(@types/react@19.2.10)
+      react:
+        specifier: ^19.0.0
+        version: 19.2.3
+      react-dom:
+        specifier: ^19.0.0
+        version: 19.2.3(react@19.2.3)
       tsup:
         specifier: ^8.0.0
         version: 8.5.1(jiti@2.6.1)(postcss@8.5.6)(typescript@5.9.3)(yaml@2.8.2)

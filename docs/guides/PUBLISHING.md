@@ -28,6 +28,8 @@ pnpm changeset
 
 #### ✅ Public Packages (Include)
 - @ninna-ui/core
+- @ninna-ui/utils
+- @ninna-ui/react-internal
 - @ninna-ui/primitives  
 - @ninna-ui/cli
 - @ninna-ui/code-block
@@ -39,8 +41,6 @@ pnpm changeset
 - @ninna-ui/overlays
 
 #### ❌ Private Packages (Exclude)
-- @ninna-ui/utils
-- @ninna-ui/react-internal
 - @ninna-ui/eslint-config
 - @ninna-ui/test-config
 - @ninna-ui/tsconfig
@@ -48,7 +48,7 @@ pnpm changeset
 **Why?** Private packages are:
 - Only used in development (`devDependencies`)
 - Not published to npm (`private: true`)
-- Internal workspace tools
+- Internal workspace tools (linting, testing, TypeScript configs)
 
 ### 2. Choose Version Type
 

@@ -1,10 +1,8 @@
 /**
  * @ninna-ui/react-internal
- * Internal Radix adapters for Ninna-UI
+ * Radix UI engine adapters for Ninna UI
  *
- * ⚠️ CRITICAL: This package is INTERNAL ONLY
- * - NEVER publish to npm
- * - NEVER expose Radix types in public API
+ * - Do NOT expose Radix types in public API
  * - Only import from other @ninna-ui packages
  */
 

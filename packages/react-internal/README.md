@@ -1,8 +1,10 @@
 # @ninna-ui/react-internal
 
-> ⚠️ **INTERNAL PACKAGE — DO NOT PUBLISH TO NPM**
+> Radix UI engine adapters for [Ninna UI](../../README.md) — isolates all Radix dependencies behind clean TypeScript interfaces so that **no Radix types leak into the public API**.
 
-Internal Radix UI adapters for [Ninna UI](../../README.md). This package isolates all Radix dependencies behind clean TypeScript interfaces so that **no Radix types leak into the public API**.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
+
+This package is auto-installed as a dependency of `@ninna-ui/forms`, `@ninna-ui/overlays`, and `@ninna-ui/navigation`. You typically do **not** need to install it directly.
 
 ## Why This Exists
 
@@ -44,11 +46,16 @@ Radix component wrappers with Ninna UI's own type interfaces:
 
 ## Architecture Rules
 
-- **NEVER publish** this package to npm
 - **NO Radix types** in exported interfaces — wrap everything
 - **NO direct imports** from apps — only `@ninna-ui/*` packages may import this
 - **NO `@radix-ui/*` imports** anywhere else in the monorepo
 
+## Related Packages
+
+- [`@ninna-ui/utils`](../utils/README.md) — Shared utility functions
+- [`@ninna-ui/core`](../core/README.md) — Design tokens and theme presets
+- [All packages](../../README.md#packages) — Complete package list
+
 ## License
 
-[MIT](../../LICENSE) (Internal use only)
+[MIT](../../LICENSE)

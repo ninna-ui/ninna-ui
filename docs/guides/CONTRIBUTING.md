@@ -40,6 +40,8 @@ pnpm changeset
 
 **Public Packages (✓ include):**
 - @ninna-ui/core
+- @ninna-ui/utils
+- @ninna-ui/react-internal
 - @ninna-ui/primitives  
 - @ninna-ui/cli
 - @ninna-ui/code-block
@@ -51,8 +53,6 @@ pnpm changeset
 - @ninna-ui/overlays
 
 **Private Packages (❌ exclude):**
-- @ninna-ui/utils
-- @ninna-ui/react-internal
 - @ninna-ui/eslint-config
 - @ninna-ui/test-config
 - @ninna-ui/tsconfig

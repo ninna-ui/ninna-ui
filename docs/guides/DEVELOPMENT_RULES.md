@@ -133,7 +133,6 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 ## 6. Radix Usage Rules
 
 - Radix is **ONLY** imported in `@ninna-ui/react-internal`
-- `react-internal` is **NEVER** published to npm
 - Components needing Radix import engines: `CheckboxEngine`, `SwitchEngine`, `RadioEngine`, `SelectEngine`, `SliderEngine`, `DialogEngine`, `DropdownEngine`, `PopoverEngine`, `TooltipEngine`, `TabsEngine`, `AccordionEngine`
 - Radix types are **NEVER** exposed in public APIs
 - No `@radix-ui/*` imports anywhere except `packages/react-internal/src/`
@@ -151,9 +150,9 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 - ✅ React is an optional peer dependency (for `createContext`, `composeRefs`)
 - ❌ NO DOM APIs, NO @ninna-ui imports
 
-### `@ninna-ui/react-internal` (Private)
-- ✅ Radix engine wrappers only
-- ❌ NEVER published, NEVER imported by apps directly
+### `@ninna-ui/react-internal`
+- ✅ Radix engine wrappers only (Radix is bundled, not a consumer dependency)
+- ❌ NEVER imported by apps directly — only `@ninna-ui/*` packages may import this
 
 ### `@ninna-ui/primitives`
 - ✅ Simple, stateless components

@@ -299,11 +299,10 @@ All Ninna-UI components MUST meet WCAG 2.1 Level AA standards. Accessibility is 
 - ✅ `react` is an optional peer dependency (for `createContext`, `composeRefs`)
 - ❌ NO @ninna-ui/core imports
 
-### `@ninna-ui/react-internal` (Private)
-- ✅ Radix engine wrappers + Slot
+### `@ninna-ui/react-internal`
+- ✅ Radix engine wrappers + Slot (Radix is bundled, not a consumer dependency)
 - ✅ Own interface definitions (never re-export Radix types)
-- ❌ NEVER published to npm
-- ❌ NEVER imported by apps directly
+- ❌ NEVER imported by apps directly — only `@ninna-ui/*` packages may import this
 
 ### `@ninna-ui/primitives`
 - ✅ Simple, mostly stateless components

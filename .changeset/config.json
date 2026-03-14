@@ -8,6 +8,8 @@
   "fixed": [
     [
       "@ninna-ui/core",
+      "@ninna-ui/utils",
+      "@ninna-ui/react-internal",
       "@ninna-ui/primitives",
       "@ninna-ui/feedback",
       "@ninna-ui/layout",

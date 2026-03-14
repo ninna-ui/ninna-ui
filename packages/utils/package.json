@@ -1,7 +1,6 @@
 {
   "name": "@ninna-ui/utils",
   "version": "0.3.3",
-  "private": true,
   "description": "Shared utility functions for Ninna UI — cn (class merging), composeRefs, createContext, keyboard constants, and SSR helpers.",
   "license": "MIT",
   "author": "Ninna-UI Team",
@@ -40,6 +39,9 @@
     "dist"
   ],
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",

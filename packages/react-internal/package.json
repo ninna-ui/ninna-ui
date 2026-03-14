@@ -1,8 +1,7 @@
 {
   "name": "@ninna-ui/react-internal",
   "version": "0.3.3",
-  "private": true,
-  "description": "Internal Radix UI adapters and engine wrappers for Ninna UI — isolates Radix dependencies, prevents type leakage. Not published to npm.",
+  "description": "Radix UI engine adapters for Ninna UI — isolates Radix dependencies behind clean TypeScript interfaces, prevents type leakage.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -10,6 +9,7 @@
     "url": "git+https://github.com/ninna-ui/ninna-ui.git",
     "directory": "packages/react-internal"
   },
+  "homepage": "https://ninna-ui.dev",
   "type": "module",
   "exports": {
     ".": {
@@ -19,10 +19,14 @@
     },
     "./package.json": "./package.json"
   },
+  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
