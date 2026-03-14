@@ -1,5 +1,19 @@
 # @ninna-ui/feedback
 
+## 0.4.1
+
+### Patch Changes
+
+- [`72e08d9eade52c6f3f0fa94199517753a5732cee`](https://github.com/ninna-ui/ninna-ui/commit/72e08d9eade52c6f3f0fa94199517753a5732cee) [#32](https://github.com/ninna-ui/ninna-ui/pull/32) Thanks [@chnkc41](https://github.com/chnkc41)! - docs: fix documentation consistency and version references
+  - Add missing HTML setup sections with data-theme attribute to package READMEs
+  - Update CLI template version references for consistency
+  - Fix version constant documentation
+  - Ensure all documentation accurately reflects theme setup requirements
+
+- Updated dependencies [[`d4f6b998dbe79e6e3b4cd76be3f8742602b07c31`](https://github.com/ninna-ui/ninna-ui/commit/d4f6b998dbe79e6e3b4cd76be3f8742602b07c31), [`72e08d9eade52c6f3f0fa94199517753a5732cee`](https://github.com/ninna-ui/ninna-ui/commit/72e08d9eade52c6f3f0fa94199517753a5732cee)]:
+  - @ninna-ui/core@0.4.1
+  - @ninna-ui/utils@0.4.1
+
 ## 0.4.0
 
 ### Minor Changes

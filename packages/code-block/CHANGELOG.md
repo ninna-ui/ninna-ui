@@ -1,5 +1,13 @@
 # @ninna-ui/code-block
 
+## 0.4.1
+
+### Patch Changes
+
+- Updated dependencies [[`d4f6b998dbe79e6e3b4cd76be3f8742602b07c31`](https://github.com/ninna-ui/ninna-ui/commit/d4f6b998dbe79e6e3b4cd76be3f8742602b07c31), [`72e08d9eade52c6f3f0fa94199517753a5732cee`](https://github.com/ninna-ui/ninna-ui/commit/72e08d9eade52c6f3f0fa94199517753a5732cee)]:
+  - @ninna-ui/core@0.4.1
+  - @ninna-ui/utils@0.4.1
+
 ## 0.4.0
 
 ### Minor Changes
