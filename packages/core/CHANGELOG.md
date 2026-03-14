@@ -1,5 +1,21 @@
 # @ninna-ui/core
 
+## 0.4.0
+
+### Minor Changes
+
+- [`a766345ed91d83f79fafb427858bacb234f36122`](https://github.com/ninna-ui/ninna-ui/commit/a766345ed91d83f79fafb427858bacb234f36122) [#30](https://github.com/ninna-ui/ninna-ui/pull/30) Thanks [@chnkc41](https://github.com/chnkc41)! - ### Minor Changes
+
+  Introduce the new public internal architecture and coordinated package release.
+  - Publish **@ninna-ui/utils** and **@ninna-ui/react-internal** as public npm packages.
+  - All Ninna UI packages are now versioned together using a **Changesets fixed group**.
+  - Consumers no longer need to install Radix UI dependencies directly — all Radix adapters are bundled inside **@ninna-ui/react-internal**.
+  - Updated architecture documentation and contribution guidelines.
+  - Fixed missing `react` and `react-dom` devDependencies in the overlays package.
+  - Updated documentation and component counts to reflect the new public package structure.
+
+  This release prepares the ecosystem for **v0.4.0 coordinated publishing** across all packages.
+
 ## 0.3.5
 
 ### Patch Changes
