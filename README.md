@@ -25,7 +25,7 @@ Most component libraries force you to choose: **great components** (Chakra, Mant
 - **`data-slot` API** — 98 data-slot attributes across all components for surgical CSS overrides
 - **No `'use client'` directives** — Every component works in React Server Components out of the box
 - **TypeScript Strict** — Full type safety with JSDoc on every exported prop
-- **Install only what you need** — 10 published packages, tree-shakeable, no monolithic bundle
+- **Install only what you need** — 12 published packages, tree-shakeable, no monolithic bundle
 
 ## How Ninna UI Compares
 
@@ -38,7 +38,7 @@ Most component libraries force you to choose: **great components** (Chakra, Mant
 | oklch colors | **Yes** | Partial | No | No | Yes |
 | Radix accessibility | **Yes** | Yes | No | No | No |
 | `data-slot` CSS targeting | **98 slots** | Yes | Yes | No | No |
-| Modular packages | **10 pkgs** | Copy-paste | 1 package | 1 package | 1 plugin |
+| Modular packages | **12 pkgs** | Copy-paste | 1 package | 1 package | 1 plugin |
 | No `'use client'` | **Yes** | Yes | No | No | N/A |
 | CLI scaffolding | **3 templates** | Yes | No | No | No |
 | React 19 | **Yes** | Yes | Yes | Yes | N/A |
@@ -91,8 +91,8 @@ Choose from **Vite + React**, **Next.js 15**, or **React Router** templates with
 
 | Package | Components | Description | README |
 |---------|:----------:|-------------|--------|
-| [`@ninna-ui/primitives`](./packages/primitives) | 15 | Button, Badge, Avatar, Text, Heading, Link, Code, Kbd, and more | [README](./packages/primitives/README.md) |
-| [`@ninna-ui/feedback`](./packages/feedback) | 9 | Alert, Toast, Loading, Progress, CircularProgress, Skeleton, Status, EmptyState | [README](./packages/feedback/README.md) |
+| [`@ninna-ui/primitives`](./packages/primitives) | 14 | Button, Badge, Avatar, Text, Heading, Link, Code, Kbd, and more | [README](./packages/primitives/README.md) |
+| [`@ninna-ui/feedback`](./packages/feedback) | 8 | Alert, Toast, Loading, Progress, CircularProgress, Skeleton, Status, EmptyState | [README](./packages/feedback/README.md) |
 | [`@ninna-ui/forms`](./packages/forms) | 17 | Input, Select, Checkbox, Switch, Radio, Slider, FileUpload, and more | [README](./packages/forms/README.md) |
 | [`@ninna-ui/layout`](./packages/layout) | 10 | Box, Stack, Flex, Grid, Container, Center, SimpleGrid, and more | [README](./packages/layout/README.md) |
 | [`@ninna-ui/overlays`](./packages/overlays) | 5 | Modal, Drawer, Popover, Tooltip, DropdownMenu | [README](./packages/overlays/README.md) |
@@ -106,8 +106,8 @@ Choose from **Vite + React**, **Next.js 15**, or **React Router** templates with
 |---------|-------------|--------|
 | [`@ninna-ui/core`](./packages/core) | Design tokens, Tailwind class mappings, 5 CSS theme presets | [README](./packages/core/README.md) |
 | [`@ninna-ui/cli`](./packages/cli) | Project scaffolding CLI with 3 framework templates | [README](./packages/cli/README.md) |
-| `@ninna-ui/utils` | Shared utilities — auto-installed with component packages | [README](./packages/utils/README.md) |
-| `@ninna-ui/react-internal` | Internal Radix engine wrappers — auto-installed with component packages | [README](./packages/react-internal/README.md) |
+| [`@ninna-ui/utils`](./packages/utils) | Shared utilities (cn, composeRefs, createContext) — auto-installed with component packages | [README](./packages/utils/README.md) |
+| [`@ninna-ui/react-internal`](./packages/react-internal) | Radix engine adapters — auto-installed with component packages | [README](./packages/react-internal/README.md) |
 
 ## Theme Presets
 
@@ -157,9 +157,9 @@ ninna-ui/
 ├── packages/
 │   ├── core/              # Design tokens + 5 CSS theme presets
 │   ├── utils/             # Shared utilities (cn, composeRefs)
-│   ├── react-internal/    # Radix engine wrappers (internal)
-│   ├── primitives/        # 15 base components
-│   ├── feedback/          # 9 feedback components
+│   ├── react-internal/    # Radix engine wrappers (published)
+│   ├── primitives/        # 14 base components
+│   ├── feedback/          # 8 feedback components
 │   ├── forms/             # 17 form components
 │   ├── layout/            # 10 layout components
 │   ├── overlays/          # 5 overlay components

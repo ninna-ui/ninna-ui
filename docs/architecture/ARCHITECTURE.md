@@ -29,9 +29,9 @@ ninna-ui/
 ├─ packages/
 │  ├─ core/                  # Types, tokens, Tailwind class mappings, CSS presets (NO JSX)
 │  ├─ utils/                 # cn(), composeRefs, createContext (React optional peer dep)
-│  ├─ react-internal/        # 11 Radix engine wrappers + Slot (PRIVATE, never published)
-│  ├─ primitives/            # 15 simple components (NO Radix)
-│  ├─ feedback/              # 9 feedback components + useToast
+│  ├─ react-internal/        # 11 Radix engine wrappers + Slot (published, Radix bundled)
+│  ├─ primitives/            # 14 simple components (NO Radix)
+│  ├─ feedback/              # 8 feedback components + useToast
 │  ├─ layout/                # 10 layout components
 │  ├─ forms/                 # 17 form components (Radix via react-internal)
 │  ├─ overlays/              # 5 overlay components (Radix via react-internal)
@@ -73,7 +73,7 @@ ninna-ui/
           │                    │                        │
    ┌──────▼──────┐  ┌─────────▼─────────┐   ┌──────────▼──────────┐
    │ primitives  │  │  react-internal   │   │ feedback, layout,   │
-   │             │  │  (PRIVATE/Radix)  │   │ data-display,       │
+   │             │  │  (Radix engines)  │   │ data-display,       │
    └─────────────┘  └─────────┬─────────┘   │ code-block          │
                               │              └─────────────────────┘
                    ┌──────────┼──────────┐
@@ -90,7 +90,7 @@ ninna-ui/
 |---------|---------------|-------------------|
 | `core` | Nothing | React, JSX, Radix |
 | `utils` | `clsx`, `tailwind-merge` | React (peer only), core |
-| `react-internal` | `core`, `utils`, Radix | Published to npm |
+| `react-internal` | `core`, `utils`, Radix | Radix type leakage |
 | `primitives` | `core`, `utils` | Radix, react-internal |
 | `feedback` | `core`, `utils` | Radix, react-internal, primitives |
 | `layout` | `core`, `utils` | Radix, react-internal |

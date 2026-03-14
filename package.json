@@ -26,7 +26,7 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build && changeset publish",
-    "check-exports": "publint packages/core && publint packages/primitives && publint packages/feedback && publint packages/layout && publint packages/forms && publint packages/overlays && publint packages/navigation && publint packages/data-display && publint packages/code-block && publint packages/cli",
+    "check-exports": "publint packages/core && publint packages/utils && publint packages/react-internal && publint packages/primitives && publint packages/feedback && publint packages/layout && publint packages/forms && publint packages/overlays && publint packages/navigation && publint packages/data-display && publint packages/code-block && publint packages/cli",
     "check-pack": "node scripts/check-pack.js",
     "check-internal-deps": "node scripts/check-internal-deps.js"
   },
