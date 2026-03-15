@@ -1,13 +1,29 @@
 @import "tailwindcss";
+@import "../../../packages/core/src/theme/tailwind.css";
 
 /* Import all theme presets for theme switching */
-@import "@ninna-ui/core/theme/presets/default.css";
-@import "@ninna-ui/core/theme/presets/ocean.css";
-@import "@ninna-ui/core/theme/presets/sunset.css";
-@import "@ninna-ui/core/theme/presets/forest.css";
-@import "@ninna-ui/core/theme/presets/minimal.css";
+@import "../../../packages/core/src/theme/presets/default.css";
+@import "../../../packages/core/src/theme/presets/ocean.css";
+@import "../../../packages/core/src/theme/presets/sunset.css";
+@import "../../../packages/core/src/theme/presets/forest.css";
+@import "../../../packages/core/src/theme/presets/minimal.css";
 
+/* Dark mode support for Tailwind v4 */
 @variant dark (&:is(.dark *));
 
 /* Code block syntax token colors (static — no runtime style injection) */
-@import "@ninna-ui/code-block/styles";
+@import "../../../packages/code-block/src/code-block/code-block.css";
+
+/* Reset Storybook's default UI elements for true full screen */
+.sb-show-main,
+.sb-show-main.sb-main-centered,
+#storybook-root,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide Storybook's default background and borders */
+.sb-show-main.sb-main-centered::before {
+  display: none !important;
+}
