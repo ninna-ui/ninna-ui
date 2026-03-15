@@ -1,5 +1,27 @@
 # @ninna-ui/core
 
+## 0.4.1
+
+### Patch Changes
+
+- [`d4f6b998dbe79e6e3b4cd76be3f8742602b07c31`](https://github.com/ninna-ui/ninna-ui/commit/d4f6b998dbe79e6e3b4cd76be3f8742602b07c31) [#34](https://github.com/ninna-ui/ninna-ui/pull/34) Thanks [@chnkc41](https://github.com/chnkc41)! - Fixes critical modal centering issue on ninna-ui.dev production site. The modal was not properly centered due to missing negative translate CSS classes in the safelist.
+
+  **Changes:**
+  - Added missing negative translate classes: `-translate-x-1/2`, `-translate-y-1/2`, `sm:-translate-x-1/2`, `sm:-translate-y-1/2`
+  - Fixed generator logic to properly categorize negative translate classes with variant prefixes
+  - Manual safelist update applied due to generator priority bug
+  - Rebuilt core package with updated CSS safelist
+
+  **Impact:**
+  - Modals now properly centered on both playground and production documentation
+  - Resolves visual inconsistency between development and production environments
+
+- [`72e08d9eade52c6f3f0fa94199517753a5732cee`](https://github.com/ninna-ui/ninna-ui/commit/72e08d9eade52c6f3f0fa94199517753a5732cee) [#32](https://github.com/ninna-ui/ninna-ui/pull/32) Thanks [@chnkc41](https://github.com/chnkc41)! - docs: fix documentation consistency and version references
+  - Add missing HTML setup sections with data-theme attribute to package READMEs
+  - Update CLI template version references for consistency
+  - Fix version constant documentation
+  - Ensure all documentation accurately reflects theme setup requirements
+
 ## 0.4.0
 
 ### Minor Changes
