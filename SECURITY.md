@@ -26,20 +26,21 @@ If you discover a security vulnerability in any Ninna UI package, please report 
 ### Response Timeline
 
 - **Acknowledgment** - within 48 hours of report
-- **Assessment** - within 1 week
-- **Fix timeline** - communicated after assessment
+- **Initial assessment** - within 3-5 business days
+- **Fix timeline** - determined based on severity and communicated after assessment
+- **Security advisory** - published when fix is available (or sooner if widespread risk)
 - **Credit** - given in the security advisory (unless you prefer anonymity)
 
 ### Severity Classification
 
-We classify vulnerabilities using the following severity levels:
+We classify vulnerabilities using industry-standard CVSS scoring and the following severity levels:
 
-| Severity | Description | Typical Fix Timeline |
-|----------|-------------|---------------------|
-| **Critical** | Remote code execution, privilege escalation, or widespread data exposure | 48-72 hours |
-| **High** | Significant data exposure, authentication bypass, or major security control failure | 1 week |
-| **Medium** | Limited data exposure, minor authentication issues, or security best practice violations | 2 weeks |
-| **Low** | Information disclosure, minor security improvements, or defense in depth | 1 month |
+| Severity | CVSS Score | Description | Target Fix Timeline |
+|----------|-------------|-------------|---------------------|
+| **Critical** | 9.0-10.0 | Remote code execution, privilege escalation, widespread data exposure | 48-72 hours |
+| **High** | 7.0-8.9 | Significant data exposure, authentication bypass, major security control failure | 5-7 business days |
+| **Medium** | 4.0-6.9 | Limited data exposure, minor authentication issues, security best practice violations | 2-3 weeks |
+| **Low** | 0.1-3.9 | Information disclosure, minor security improvements, defense in depth | 4-6 weeks |
 
 ### Scope
 
