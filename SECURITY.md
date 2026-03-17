@@ -1,12 +1,13 @@
 # Security Policy
 
-> **Responsible vulnerability reporting and security practices for the Ninna UI ecosystem** - covering all 10 published `@ninna-ui` packages on npm.
+> **Responsible vulnerability reporting and security practices for the Ninna UI ecosystem** - covering all 12 published `@ninna-ui` packages on npm.
 
 ## Supported Versions
 
 | Version | Supported |
 |---------|-----------|
-| 0.1.x   | Yes       |
+| 0.4.x   | Yes       |
+| < 0.4   | No        |
 
 ## Reporting a Vulnerability
 
@@ -28,6 +29,17 @@ If you discover a security vulnerability in any Ninna UI package, please report 
 - **Assessment** - within 1 week
 - **Fix timeline** - communicated after assessment
 - **Credit** - given in the security advisory (unless you prefer anonymity)
+
+### Severity Classification
+
+We classify vulnerabilities using the following severity levels:
+
+| Severity | Description | Typical Fix Timeline |
+|----------|-------------|---------------------|
+| **Critical** | Remote code execution, privilege escalation, or widespread data exposure | 48-72 hours |
+| **High** | Significant data exposure, authentication bypass, or major security control failure | 1 week |
+| **Medium** | Limited data exposure, minor authentication issues, or security best practice violations | 2 weeks |
+| **Low** | Information disclosure, minor security improvements, or defense in depth | 1 month |
 
 ### Scope
 
