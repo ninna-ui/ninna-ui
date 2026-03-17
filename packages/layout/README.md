@@ -1,13 +1,13 @@
 # @ninna-ui/layout
 
-> 10 layout components for Ninna-UI — Box, Stack, Flex, Grid, Container, Center, and more.
+> **10 responsive React layout primitives** - Box, Stack, Flex, Grid, Container, Center, SimpleGrid, and more. Pure React components with prop-driven spacing, alignment, and responsive grid layouts. No Radix dependency.
 
 [![npm](https://img.shields.io/npm/v/@ninna-ui/layout.svg)](https://www.npmjs.com/package/@ninna-ui/layout)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 📖 **[Full Documentation →](https://www.ninna-ui.dev/layout)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/layout)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/layout)**
 
-Structural layout components for [Ninna UI](../../README.md) — the building blocks for responsive page layouts. All components are pure React with no Radix dependency, support `forwardRef`, `className`, and `data-slot` CSS targeting.
+The structural foundation for [Ninna UI](../../README.md) apps - responsive layout primitives that handle spacing, alignment, and grid composition through clean props instead of raw CSS classes. All components are pure React with no Radix dependency, full `forwardRef` support, `className` merging, and `data-slot` CSS targeting.
 
 ## Installation
 
@@ -44,7 +44,7 @@ Add the `data-theme` attribute to your `<html>` element:
 | `Flex` | Flexbox container with full flex control | `direction`, `align`, `justify`, `wrap`, `gap` |
 | `Grid` | CSS Grid container | `columns`, `rows`, `gap`, `flow` |
 | `SimpleGrid` | Auto-responsive grid with equal columns | `columns`, `minChildWidth`, `gap` |
-| `Center` | Centers content horizontally and vertically | — |
+| `Center` | Centers content horizontally and vertically | - |
 | `Wrap` | Flex wrap with gap control | `gap`, `align`, `justify` |
 | `AspectRatio` | Maintains a fixed aspect ratio | `ratio` (square, video, portrait, etc.) |
 | `Separator` | Visual separator line | `orientation` (horizontal, vertical) |
@@ -94,10 +94,10 @@ import {
 
 ## Related Packages
 
-- [`@ninna-ui/core`](../core/README.md) — Design tokens and theme presets (required)
-- [`@ninna-ui/primitives`](../primitives/README.md) — Base components (Button, Text, Heading)
-- [`@ninna-ui/forms`](../forms/README.md) — Form components (Input, Select, Checkbox)
-- [All packages](../../README.md#packages) — Complete package list
+- [`@ninna-ui/core`](../core/README.md) - Design tokens and theme presets (required)
+- [`@ninna-ui/primitives`](../primitives/README.md) - Base components (Button, Text, Heading)
+- [`@ninna-ui/forms`](../forms/README.md) - Form components (Input, Select, Checkbox)
+- [All packages](../../README.md#packages) - Complete package list
 
 ## License
 

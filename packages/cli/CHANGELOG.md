@@ -11,7 +11,7 @@
   Introduce the new public internal architecture and coordinated package release.
   - Publish **@ninna-ui/utils** and **@ninna-ui/react-internal** as public npm packages.
   - All Ninna UI packages are now versioned together using a **Changesets fixed group**.
-  - Consumers no longer need to install Radix UI dependencies directly — all Radix adapters are bundled inside **@ninna-ui/react-internal**.
+  - Consumers no longer need to install Radix UI dependencies directly - all Radix adapters are bundled inside **@ninna-ui/react-internal**.
   - Updated architecture documentation and contribution guidelines.
   - Fixed missing `react` and `react-dom` devDependencies in the overlays package.
   - Updated documentation and component counts to reflect the new public package structure.
@@ -88,13 +88,13 @@
 
 ### Minor Changes
 
-- [`fc5592107862b77fdc212034135bb6262a5c647d`](https://github.com/ninna-ui/ninna-ui/commit/fc5592107862b77fdc212034135bb6262a5c647d) [#13](https://github.com/ninna-ui/ninna-ui/pull/13) Thanks [@chnkc41](https://github.com/chnkc41)! - feat: v0.3.0 — component regression fixes and improvements
+- [`fc5592107862b77fdc212034135bb6262a5c647d`](https://github.com/ninna-ui/ninna-ui/commit/fc5592107862b77fdc212034135bb6262a5c647d) [#13](https://github.com/ninna-ui/ninna-ui/pull/13) Thanks [@chnkc41](https://github.com/chnkc41)! - feat: v0.3.0 - component regression fixes and improvements
 
   ### Bug Fixes
-  - **Tabs**: Fix vertical tabs — orientation now propagates via context to CVA variants; line variant renders `border-r` when vertical
-  - **Input/Textarea/Select**: Fix double focus border — remove browser default outline with `outline-none focus:outline-none focus-visible:outline-none`; compound variants own the full focus ring
-  - **Toast**: Fix viewport blocking clicks — add `pointer-events-none` to viewport container
-  - **Loading dots**: Fix dots appearing as vertical lines — use `inline-flex` wrapper, proper `size-*` classes for round dots, `gap-1.5` spacing
+  - **Tabs**: Fix vertical tabs - orientation now propagates via context to CVA variants; line variant renders `border-r` when vertical
+  - **Input/Textarea/Select**: Fix double focus border - remove browser default outline with `outline-none focus:outline-none focus-visible:outline-none`; compound variants own the full focus ring
+  - **Toast**: Fix viewport blocking clicks - add `pointer-events-none` to viewport container
+  - **Loading dots**: Fix dots appearing as vertical lines - use `inline-flex` wrapper, proper `size-*` classes for round dots, `gap-1.5` spacing
 
   ### Improvements
   - **Loading dots**: Increased dot sizes across all breakpoints for better visibility
@@ -135,7 +135,7 @@
 - [`c04c5910c7596071b77a9e3df4e51b3071633544`](https://github.com/ninna-ui/ninna-ui/commit/c04c5910c7596071b77a9e3df4e51b3071633544) [#4](https://github.com/ninna-ui/ninna-ui/pull/4) Thanks [@chnkc41](https://github.com/chnkc41)! - fix: production CSS purge, theme fallback, safelist hardening
 
   ### @ninna-ui/core (minor)
-  - **Filesystem `@source` scanning in `tailwind.css`**: Added `@source` directives pointing to core's own dist and all 8 sibling `@ninna-ui` package dist files. Tailwind now automatically scans every component's JS output when a consumer imports any theme preset — no manual `@source` directive needed.
+  - **Filesystem `@source` scanning in `tailwind.css`**: Added `@source` directives pointing to core's own dist and all 8 sibling `@ninna-ui` package dist files. Tailwind now automatically scans every component's JS output when a consumer imports any theme preset - no manual `@source` directive needed.
   - **Hardened `@source inline()` safelist**: Removed redundant layout/sizing/typography/radius inlines that the filesystem scanner already detects. Kept only patterns the Tailwind v4 scanner cannot extract from JS: opacity modifiers (`bg-primary/10`), variant prefixes (`hover:`, `focus:`, `peer-checked:`, `data-[]`, `marker:`), stroke utilities, and custom `@utility` names. Added clear documentation explaining why each category exists.
   - **`:root` fallback on `default.css` only**: Removed `:root` from ocean/sunset/forest/minimal presets to prevent CSS cascade conflicts when multiple presets are imported.
   - **Toast animation utilities**: Added `slide-in-from-{top,bottom,left}-full` and `slide-out-to-{top,bottom,left}-full` `@utility` definitions.

@@ -29,7 +29,7 @@ export default function NavigationOverview() {
     <PackageOverview
       packageName="@ninna-ui/navigation"
       title="Navigation"
-      description="Navigation components — tabs, accordions, breadcrumbs, pagination, and steppers. Guide users through your application with accessible patterns."
+      description="Navigation components - tabs, accordions, breadcrumbs, pagination, and steppers. Guide users through your application with accessible patterns."
       components={components}
       features={features}
     />

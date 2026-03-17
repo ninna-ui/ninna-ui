@@ -4,13 +4,13 @@
 
 ## Type of Change
 
-- [ ] `feat` — New feature or component
-- [ ] `fix` — Bug fix
-- [ ] `docs` — Documentation only
-- [ ] `refactor` — Code change that neither fixes a bug nor adds a feature
-- [ ] `perf` — Performance improvement
-- [ ] `test` — Adding or updating tests
-- [ ] `chore` — Build process, tooling, or dependency changes
+- [ ] `feat` - New feature or component
+- [ ] `fix` - Bug fix
+- [ ] `docs` - Documentation only
+- [ ] `refactor` - Code change that neither fixes a bug nor adds a feature
+- [ ] `perf` - Performance improvement
+- [ ] `test` - Adding or updating tests
+- [ ] `chore` - Build process, tooling, or dependency changes
 
 ## Related Issues
 
@@ -20,7 +20,7 @@
 
 <!-- Does this PR introduce any breaking changes? If yes, describe what breaks and the migration path. -->
 - [ ] No breaking changes
-- [ ] Yes — described below:
+- [ ] Yes - described below:
 
 ## Packages Affected
 

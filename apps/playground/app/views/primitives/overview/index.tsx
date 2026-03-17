@@ -30,7 +30,7 @@ const features = [
   "5 size options (xs–xl)",
   "Polymorphic 'as' prop on typography",
   "Full ref forwarding support",
-  "Tree-shakeable — import only what you use",
+  "Tree-shakeable - import only what you use",
 ];
 
 export default function PrimitivesOverview() {
@@ -38,7 +38,7 @@ export default function PrimitivesOverview() {
     <PackageOverview
       packageName="@ninna-ui/primitives"
       title="Primitives"
-      description="Foundational UI building blocks — buttons, badges, typography, links, and more. These are the atoms of the Ninna UI design system."
+      description="Foundational UI building blocks - buttons, badges, typography, links, and more. These are the atoms of the Ninna UI design system."
       components={components}
       features={features}
     />

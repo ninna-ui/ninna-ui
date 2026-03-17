@@ -1,18 +1,18 @@
 # @ninna-ui/react-internal
 
-> Radix UI engine adapters for [Ninna UI](../../README.md) — isolates all Radix dependencies behind clean TypeScript interfaces so that **no Radix types leak into the public API**.
+> **Radix UI isolation layer for Ninna UI** - wraps 11 Radix primitives behind clean TypeScript interfaces so **no Radix types, imports, or dependencies ever leak into your code**. The architecture that makes Ninna UI's API clean while keeping Radix's accessibility bulletproof.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-This package is auto-installed as a dependency of `@ninna-ui/forms`, `@ninna-ui/overlays`, and `@ninna-ui/navigation`. You typically do **not** need to install it directly.
+This package is **auto-installed** as a dependency of `@ninna-ui/forms`, `@ninna-ui/overlays`, and `@ninna-ui/navigation`. You do **not** need to install it directly - it's an internal implementation detail.
 
 ## Why This Exists
 
-Ninna UI uses [Radix UI](https://www.radix-ui.com/) for complex accessible components (Select, Checkbox, Accordion, Modal, etc.) but wraps every Radix primitive behind an "engine" abstraction. This means:
+Ninna UI uses [Radix UI](https://www.radix-ui.com/) for complex accessible components (Select, Modal, Tabs, Accordion, etc.) but wraps every Radix primitive behind an "engine" abstraction. This architectural decision gives you:
 
-- **Consumers never import Radix directly** — all Radix types stay internal
-- **Radix can be upgraded or swapped** without breaking the public API
-- **Bundle size stays minimal** — only the engines you use are included
+- **Zero Radix in your imports** - consumers never see or type against Radix. Your code stays clean
+- **Upgrade-safe API** - Radix can be upgraded or even swapped to a different engine without breaking your app
+- **Minimal bundle impact** - only the engines your imported components use are included. Tree-shaking works perfectly
 
 ## Used By
 
@@ -42,19 +42,19 @@ Radix component wrappers with Ninna UI's own type interfaces:
 
 ## Primitives
 
-- **`Slot`** — Polymorphic component slot for the `asChild` pattern
+- **`Slot`** - Polymorphic component slot for the `asChild` pattern
 
 ## Architecture Rules
 
-- **NO Radix types** in exported interfaces — wrap everything
-- **NO direct imports** from apps — only `@ninna-ui/*` packages may import this
+- **NO Radix types** in exported interfaces - wrap everything
+- **NO direct imports** from apps - only `@ninna-ui/*` packages may import this
 - **NO `@radix-ui/*` imports** anywhere else in the monorepo
 
 ## Related Packages
 
-- [`@ninna-ui/utils`](../utils/README.md) — Shared utility functions
-- [`@ninna-ui/core`](../core/README.md) — Design tokens and theme presets
-- [All packages](../../README.md#packages) — Complete package list
+- [`@ninna-ui/utils`](../utils/README.md) - Shared utility functions
+- [`@ninna-ui/core`](../core/README.md) - Design tokens and theme presets
+- [All packages](../../README.md#packages) - Complete package list
 
 ## License
 

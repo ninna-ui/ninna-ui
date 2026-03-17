@@ -4,7 +4,7 @@ import type { CompactSize } from '@ninna-ui/core';
 /** Status value options */
 export type StatusValue = 'success' | 'danger' | 'warning' | 'info';
 
-/** Status size — uses core CompactSize for consistency */
+/** Status size - uses core CompactSize for consistency */
 export type StatusSize = CompactSize;
 
 /**

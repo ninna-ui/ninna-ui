@@ -9,7 +9,7 @@
  * Palette: Warm Orange primary, Vivid Rose secondary, Hot Fuchsia accent.
  *
  * Dark mode: Add class="dark" to <html> element.
- * System auto: Omit class — follows prefers-color-scheme automatically.
+ * System auto: Omit class - follows prefers-color-scheme automatically.
  *
  * Usage:
  * @import "tailwindcss";
@@ -29,39 +29,39 @@
 [data-theme="sunset"] {
   color-scheme: light;
 
-  /* Primary — Deep Orange (bold CTA — white text) */
+  /* Primary - Deep Orange (bold CTA - white text) */
   --color-primary: oklch(0.52 0.20 40);
   --color-primary-content: oklch(0.93 0.03 40);
 
-  /* Secondary — Deep Rose (bold — white text, consistent with primary) */
+  /* Secondary - Deep Rose (bold - white text, consistent with primary) */
   --color-secondary: oklch(0.50 0.24 350);
   --color-secondary-content: oklch(0.93 0.03 350);
 
-  /* Accent — Hot Fuchsia (vibrant — dark text) */
+  /* Accent - Hot Fuchsia (vibrant - dark text) */
   --color-accent: oklch(0.66 0.28 330);
   --color-accent-content: oklch(0.15 0.04 330);
 
-  /* Neutral — Dark Warm Stone */
+  /* Neutral - Dark Warm Stone */
   --color-neutral: oklch(0.22 0.04 50);
   --color-neutral-content: oklch(0.93 0.01 50);
 
-  /* Success — Bright Emerald (light — dark text) */
+  /* Success - Bright Emerald (light - dark text) */
   --color-success: oklch(0.72 0.22 155);
   --color-success-content: oklch(0.14 0.04 155);
 
-  /* Danger — Bright Coral (light — dark text) */
+  /* Danger - Bright Coral (light - dark text) */
   --color-danger: oklch(0.71 0.22 25);
   --color-danger-content: oklch(0.14 0.04 25);
 
-  /* Warning — Vivid Amber (bright — dark text) */
+  /* Warning - Vivid Amber (bright - dark text) */
   --color-warning: oklch(0.84 0.20 84);
   --color-warning-content: oklch(0.20 0.05 84);
 
-  /* Info — Sky Blue (light — dark text) */
+  /* Info - Sky Blue (light - dark text) */
   --color-info: oklch(0.72 0.19 232);
   --color-info-content: oklch(0.14 0.04 232);
 
-  /* Base surfaces — Warm Stone (50=lightest → 900=darkest) */
+  /* Base surfaces - Warm Stone (50=lightest → 900=darkest) */
   --color-base-50: oklch(0.985 0.006 45);
   --color-base-100: oklch(0.970 0.008 45);
   --color-base-200: oklch(0.940 0.010 45);
@@ -89,39 +89,39 @@
 [data-theme="sunset"].dark {
   color-scheme: dark;
 
-  /* Primary — Bright Orange */
+  /* Primary - Bright Orange */
   --color-primary: oklch(0.68 0.20 40);
   --color-primary-content: oklch(0.15 0.03 40);
 
-  /* Secondary — Deep Rose (light text for WCAG AA contrast on dark bg) */
+  /* Secondary - Deep Rose (light text for WCAG AA contrast on dark bg) */
   --color-secondary: oklch(0.50 0.22 350);
   --color-secondary-content: oklch(0.95 0.03 350);
 
-  /* Accent — Bright Fuchsia */
+  /* Accent - Bright Fuchsia */
   --color-accent: oklch(0.74 0.26 330);
   --color-accent-content: oklch(0.15 0.03 330);
 
-  /* Neutral — Light Warm Stone (flipped for dark bg readability) */
+  /* Neutral - Light Warm Stone (flipped for dark bg readability) */
   --color-neutral: oklch(0.70 0.04 50);
   --color-neutral-content: oklch(0.15 0.01 50);
 
-  /* Success — Bright Emerald */
+  /* Success - Bright Emerald */
   --color-success: oklch(0.72 0.20 155);
   --color-success-content: oklch(0.15 0.04 155);
 
-  /* Danger — Bright Coral */
+  /* Danger - Bright Coral */
   --color-danger: oklch(0.70 0.24 25);
   --color-danger-content: oklch(0.15 0.03 25);
 
-  /* Warning — Bright Amber (dark text) */
+  /* Warning - Bright Amber (dark text) */
   --color-warning: oklch(0.86 0.20 84);
   --color-warning-content: oklch(0.20 0.05 84);
 
-  /* Info — Bright Sky Blue */
+  /* Info - Bright Sky Blue */
   --color-info: oklch(0.74 0.18 232);
   --color-info-content: oklch(0.15 0.03 232);
 
-  /* Base surfaces — Deep Warm Stone */
+  /* Base surfaces - Deep Warm Stone */
   --color-base-50: oklch(0.140 0.010 45);
   --color-base-100: oklch(0.180 0.012 45);
   --color-base-200: oklch(0.230 0.014 45);
@@ -146,7 +146,7 @@
    Applies when no .dark/.light class is set and
    the OS prefers dark mode.
    SYNC: Values must match the .dark block above.
-   Pure CSS requires duplication — no mixin support.
+   Pure CSS requires duplication - no mixin support.
    ============================================ */
 @media (prefers-color-scheme: dark) {
   [data-theme="sunset"]:not(.light):not(.dark) {

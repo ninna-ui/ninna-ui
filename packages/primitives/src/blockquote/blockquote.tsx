@@ -67,7 +67,7 @@ export const Blockquote = forwardRef<HTMLQuoteElement, BlockquoteProps>(
         <p data-slot="content" className={blockquoteStyles.content}>{children}</p>
         {citeSource && (
           <footer data-slot="citation" className={blockquoteStyles.citation}>
-            — {citeSource}
+            - {citeSource}
           </footer>
         )}
       </blockquote>

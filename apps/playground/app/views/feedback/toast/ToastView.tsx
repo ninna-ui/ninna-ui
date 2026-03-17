@@ -47,7 +47,7 @@ const TOASTER_PROPS: PropDefinition[] = [
   {
     name: 'id',
     type: 'string',
-    description: 'Unique identifier — only toasts created with a matching toasterId will be shown by this Toaster. Omit for the default global Toaster.',
+    description: 'Unique identifier - only toasts created with a matching toasterId will be shown by this Toaster. Omit for the default global Toaster.',
   },
   {
     name: 'max',

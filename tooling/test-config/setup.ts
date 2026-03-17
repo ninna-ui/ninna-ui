@@ -10,14 +10,14 @@ expect.extend(matchers);
 // import in Node-only test suites (hooks, utils) even though jsdom is the
 // default environment.
 if (typeof globalThis.window !== 'undefined') {
-    // ResizeObserver — required by many Radix primitives
+    // ResizeObserver - required by many Radix primitives
     globalThis.ResizeObserver ??= class ResizeObserver {
         observe(): void {}
         unobserve(): void {}
         disconnect(): void {}
     } as unknown as typeof ResizeObserver;
 
-    // PointerEvent — required by Radix for pointer interactions
+    // PointerEvent - required by Radix for pointer interactions
     globalThis.PointerEvent ??= class PointerEvent extends Event {
         readonly pointerId: number;
         readonly pointerType: string;
@@ -28,7 +28,7 @@ if (typeof globalThis.window !== 'undefined') {
         }
     } as unknown as typeof PointerEvent;
 
-    // matchMedia — required by useMediaQuery and responsive components
+    // matchMedia - required by useMediaQuery and responsive components
     Object.defineProperty(globalThis, 'matchMedia', {
         writable: true,
         configurable: true,
@@ -44,16 +44,16 @@ if (typeof globalThis.window !== 'undefined') {
         })),
     });
 
-    // HTMLElement pointer capture — required by Radix Slider, Dialog, etc.
+    // HTMLElement pointer capture - required by Radix Slider, Dialog, etc.
     HTMLElement.prototype.hasPointerCapture ??= () => false;
     HTMLElement.prototype.setPointerCapture ??= () => {};
     HTMLElement.prototype.releasePointerCapture ??= () => {};
     HTMLElement.prototype.scrollIntoView ??= () => {};
 
-    // HTMLCanvasElement.getContext — required by axe-core
+    // HTMLCanvasElement.getContext - required by axe-core
     HTMLCanvasElement.prototype.getContext = (() => null) as never;
 
-    // getComputedStyle — jsdom stub for Radix animations/transitions
+    // getComputedStyle - jsdom stub for Radix animations/transitions
     const origGetComputedStyle = globalThis.getComputedStyle;
     globalThis.getComputedStyle = (elt: Element, pseudoElt?: string | null) => {
         try {

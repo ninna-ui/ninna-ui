@@ -4,7 +4,7 @@ import type { Color, TextSize } from '@ninna-ui/core';
 export type LinkUnderline = 'always' | 'hover' | 'none';
 
 export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
-  /** Text size — matches Text component sizes */
+  /** Text size - matches Text component sizes */
   size?: TextSize;
 
   /** Color variant */

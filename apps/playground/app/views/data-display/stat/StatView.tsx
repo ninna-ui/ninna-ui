@@ -87,7 +87,7 @@ export function StatView() {
             <ul className="space-y-2 text-base-content/70">
               <li>Stat uses semantic HTML for label-value association</li>
               <li>Trend direction is communicated both visually and through accessible text</li>
-              <li>Color is not the only indicator — arrow icons convey direction</li>
+              <li>Color is not the only indicator - arrow icons convey direction</li>
             </ul>
           </div>
         </ComponentSection>

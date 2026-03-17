@@ -31,7 +31,7 @@ interface InitOptions {
 
 export async function init(name: string | undefined, options: InitOptions) {
   console.log();
-  console.log(pc.bold(pc.cyan("  Ninna UI") + " — Create a new project"));
+  console.log(pc.bold(pc.cyan("  Ninna UI") + " - Create a new project"));
   console.log();
 
   const response = await prompts(

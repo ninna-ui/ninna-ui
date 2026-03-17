@@ -38,31 +38,31 @@ const SEMANTIC_COLORS = [
   {
     name: "success",
     label: "Success",
-    desc: "Positive states — confirmations, completed actions, valid inputs.",
+    desc: "Positive states - confirmations, completed actions, valid inputs.",
     classes: { bg: "bg-success", text: "text-success", content: "text-success-content" },
   },
   {
     name: "danger",
     label: "Danger",
-    desc: "Error and destructive states — validation errors, delete confirmations.",
+    desc: "Error and destructive states - validation errors, delete confirmations.",
     classes: { bg: "bg-danger", text: "text-danger", content: "text-danger-content" },
   },
   {
     name: "warning",
     label: "Warning",
-    desc: "Caution states — non-blocking alerts, expiration notices.",
+    desc: "Caution states - non-blocking alerts, expiration notices.",
     classes: { bg: "bg-warning", text: "text-warning", content: "text-warning-content" },
   },
   {
     name: "info",
     label: "Info",
-    desc: "Informational states — tips, help text, neutral notifications.",
+    desc: "Informational states - tips, help text, neutral notifications.",
     classes: { bg: "bg-info", text: "text-info", content: "text-info-content" },
   },
 ];
 
 const BASE_SCALE = [
-  { name: "base-50", class: "bg-base-50", desc: "Lightest surface — page background" },
+  { name: "base-50", class: "bg-base-50", desc: "Lightest surface - page background" },
   { name: "base-100", class: "bg-base-100", desc: "Card / panel backgrounds" },
   { name: "base-200", class: "bg-base-200", desc: "Subtle backgrounds, code blocks" },
   { name: "base-300", class: "bg-base-300", desc: "Borders, dividers" },
@@ -74,7 +74,7 @@ const BASE_SCALE = [
   { name: "base-900", class: "bg-base-900", desc: "Darkest surface" },
 ];
 
-const CUSTOM_COLORS_CODE = `/* In your main CSS file — override after the theme import */
+const CUSTOM_COLORS_CODE = `/* In your main CSS file - override after the theme import */
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
 
@@ -93,7 +93,7 @@ const CUSTOM_COLORS_CODE = `/* In your main CSS file — override after the them
   --color-base-200: oklch(0.940 0.010 80);
 }
 
-/* Dark mode overrides — both selector forms required */
+/* Dark mode overrides - both selector forms required */
 .dark [data-theme="default"],
 [data-theme="default"].dark {
   --color-primary: oklch(0.72 0.22 220);
@@ -210,7 +210,7 @@ export function ColorsView() {
             <div className="flex items-center gap-3 p-4 border border-base-200 rounded-lg">
               <div className="flex-1">
                 <Text size="sm" weight="semibold">base-content</Text>
-                <Text size="sm" className="text-base-content/70">Default text color — adapts per theme and mode.</Text>
+                <Text size="sm" className="text-base-content/70">Default text color - adapts per theme and mode.</Text>
               </div>
               <div className="flex gap-2 items-center">
                 <span className="text-base-content text-sm font-semibold">Aa</span>

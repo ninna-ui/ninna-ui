@@ -7,20 +7,20 @@
 @import "@ninna-ui/core/theme/presets/forest.css";
 @import "@ninna-ui/core/theme/presets/minimal.css";
 
-/* Code block syntax token colors (static — no runtime style injection) */
+/* Code block syntax token colors (static - no runtime style injection) */
 @import "@ninna-ui/code-block/styles";
 
 /* Content sources for tree-shaking */
 @source "./**/*.{ts,tsx}";
 
-/* Dark mode variant — matches .dark class on <html> (set by ThemeContext) */
+/* Dark mode variant - matches .dark class on <html> (set by ThemeContext) */
 @variant dark (&:is(.dark *)); 
 
 /* ============================================
    Global Base Styles
    ============================================ */
 
-/* Smooth scroll — respects prefers-reduced-motion via core CSS */
+/* Smooth scroll - respects prefers-reduced-motion via core CSS */
 html {
   scroll-behavior: smooth;
 }
@@ -30,7 +30,7 @@ html {
   box-sizing: border-box;
 }
 
-/* Global focus-visible ring — WCAG 2.4.7 Focus Visible
+/* Global focus-visible ring - WCAG 2.4.7 Focus Visible
    Uses primary color with offset for all interactive elements.
    Components can override with their own focus-visible styles. */
 :focus-visible {
@@ -44,13 +44,13 @@ html {
   outline: none;
 }
 
-/* Text selection color — uses primary with opacity */
+/* Text selection color - uses primary with opacity */
 ::selection {
   background-color: color-mix(in oklch, var(--color-primary) 25%, transparent);
   color: var(--color-base-content);
 }
 
-/* Skip link — visible only on focus (defined in root.tsx) */
+/* Skip link - visible only on focus (defined in root.tsx) */
 .sr-only:focus {
   position: fixed;
   top: 1rem;
@@ -65,7 +65,7 @@ html {
 }
 
 /* ============================================
-   Print Styles — Lighthouse Best Practices
+   Print Styles - Lighthouse Best Practices
    ============================================ */
 @media print {
   /* Hide navigation and interactive elements */
@@ -93,7 +93,7 @@ html {
   }
 }
 
-/* Custom scrollbar — sidebar (uses theme CSS variables, adapts to any theme + dark mode) */
+/* Custom scrollbar - sidebar (uses theme CSS variables, adapts to any theme + dark mode) */
 [data-sidebar-scroll]::-webkit-scrollbar {
   width: 4px;
 }

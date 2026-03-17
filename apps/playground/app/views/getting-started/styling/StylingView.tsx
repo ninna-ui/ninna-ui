@@ -118,7 +118,7 @@ export function StylingView() {
           <div className="space-y-4">
             <Text className="text-base-content/70 leading-relaxed">
               All components spread <Code>...props</Code> on their root element, 
-              so any standard HTML attribute works — including <Code>className</Code>, 
+              so any standard HTML attribute works - including <Code>className</Code>, 
               <Code>style</Code>, 
               <Code>id</Code>, and event handlers.
             </Text>
@@ -129,7 +129,7 @@ export function StylingView() {
         <ComponentSection
           id="data-slot"
           title="data-slot API"
-          description="Target component internals with CSS using data-slot attributes — no component code modification needed."
+          description="Target component internals with CSS using data-slot attributes - no component code modification needed."
         >
           <div className="space-y-6">
             <Text className="text-base-content/70 leading-relaxed">

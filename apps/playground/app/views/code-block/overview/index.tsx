@@ -24,13 +24,13 @@ const QUICK_START = `/* your CSS entry point */
 @import "@ninna-ui/code-block/styles";`;
 
 const features = [
-  "Zero external highlighting dependencies — pure regex tokenizer",
+  "Zero external highlighting dependencies - pure regex tokenizer",
   "TSX / JSX / CSS / HTML / JSON / Bash language support",
   "Copy-to-clipboard button with hover or always-visible mode",
   "Optional line numbers",
   "colorScheme prop: force light, dark, or auto (follows theme)",
   "CSS custom properties (--ninna-cb-*) for per-token color overrides",
-  "Static CSS — no runtime style injection, strict CSP compatible",
+  "Static CSS - no runtime style injection, strict CSP compatible",
   "Full TypeScript support",
 ];
 

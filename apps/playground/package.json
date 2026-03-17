@@ -2,7 +2,7 @@
   "name": "@ninna-ui/playground",
   "version": "0.0.0",
   "private": true,
-  "description": "Developer playground for Ninna UI — live component sandbox for local development",
+  "description": "Developer playground for Ninna UI - live component sandbox for local development",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "type": "module",

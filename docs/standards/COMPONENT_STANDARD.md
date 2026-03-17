@@ -1,8 +1,8 @@
-# Ninna-UI Component Standard
+# Ninna UI Component Standard
 
-> **Version:** 1.0.0  
-> **Last Updated:** February 2026  
-> **Source of truth for all component implementation decisions.**
+> **The definitive guide to building Ninna UI components** - canonical 4-file pattern, props design, `data-slot` API, `forwardRef` conventions, style organization, export strategy, and accessibility requirements. This is the source of truth for all component implementation decisions.
+>
+> **Version:** 1.0.0 · **Last Updated:** February 2026
 
 ---
 
@@ -36,14 +36,14 @@ component-name/
 ### 1.3 Barrel Index Rules
 
 ```typescript
-// ✅ CORRECT — component + types only
+// ✅ CORRECT - component + types only
 export { Button } from './button';
 export type { ButtonProps } from './button.types';
 
-// ❌ WRONG — never export styles
+// ❌ WRONG - never export styles
 export { buttonStyles } from './button.styles';
 
-// ❌ WRONG — never use wildcard re-exports for components
+// ❌ WRONG - never use wildcard re-exports for components
 export * from './button';
 ```
 
@@ -163,7 +163,7 @@ Rules:
 | `loading` | `boolean` | `false` | Button, IconButton |
 | `invalid` | `boolean` | `false` | All form inputs |
 | `fullWidth` | `boolean` | varies | Button, Input |
-| `className` | `string` | — | ALL components |
+| `className` | `string` | - | ALL components |
 
 ### 3.2 Props Interface Rules
 
@@ -193,7 +193,7 @@ Rules:
 - Extend the correct HTML element attributes (`HTMLAttributes<HTMLDivElement>`, `ButtonHTMLAttributes<HTMLButtonElement>`, etc.)
 - JSDoc on every prop
 - All props optional (except `children` when required)
-- Use core types (`Color`, `Size`, `Radius`, `ColorVariant`, `ButtonVariant`, `InputVariant`) — never inline unions
+- Use core types (`Color`, `Size`, `Radius`, `ColorVariant`, `ButtonVariant`, `InputVariant`) - never inline unions
 - Omit conflicting HTML attributes when needed: `Omit<HTMLAttributes<HTMLDivElement>, 'title'>`
 
 ### 3.3 Variant Type Hierarchy
@@ -254,10 +254,10 @@ export function getVariantClasses(variant: ButtonVariant, color: Color): string 
 
 ### 4.3 Style Rules
 
-- **No `dark:` prefixes** — CSS variables handle dark mode automatically
-- **No hardcoded palette colors** — use semantic tokens (`bg-primary`, not `bg-indigo-500`)
-- **No inline styles** — except oklch values in CSS presets
-- **No CSS-in-JS** — Tailwind utility classes only
+- **No `dark:` prefixes** - CSS variables handle dark mode automatically
+- **No hardcoded palette colors** - use semantic tokens (`bg-primary`, not `bg-indigo-500`)
+- **No inline styles** - except oklch values in CSS presets
+- **No CSS-in-JS** - Tailwind utility classes only
 - Use `satisfies Record<Size, string>` for type safety on size maps
 - Use `.join(" ")` for multi-line base style arrays
 - Helper functions (e.g., `getVariantClasses`) for complex variant logic
@@ -302,7 +302,7 @@ All Ninna-UI components MUST meet WCAG 2.1 Level AA standards. Accessibility is 
 ### `@ninna-ui/react-internal`
 - ✅ Radix engine wrappers + Slot (Radix is bundled, not a consumer dependency)
 - ✅ Own interface definitions (never re-export Radix types)
-- ❌ NEVER imported by apps directly — only `@ninna-ui/*` packages may import this
+- ❌ NEVER imported by apps directly - only `@ninna-ui/*` packages may import this
 
 ### `@ninna-ui/primitives`
 - ✅ Simple, mostly stateless components
@@ -356,7 +356,7 @@ All packages use ESM-only format via tsup (`format: ['esm']`):
 export { Button } from './button';
 export type { ButtonProps } from './button.types';
 
-// ❌ WRONG — no default exports
+// ❌ WRONG - no default exports
 export default Button;
 ```
 
@@ -469,11 +469,11 @@ The rule checks for test files in:
 |---------|---------------|---------------|----------------|
 | `primitives` | Button, Input | Badge, Avatar, Link | Box, Divider, Text, Heading |
 | `forms` | Input, Select, Checkbox, RadioGroup | Field, FormControl, Slider | HiddenField, FormGroup |
-| `overlays` | Modal, Tooltip | Drawer, Popover, DropdownMenu | — |
+| `overlays` | Modal, Tooltip | Drawer, Popover, DropdownMenu | - |
 | `navigation` | Tabs | Accordion, Pagination | Breadcrumbs, Stepper |
 | `feedback` | Alert, Toast | Progress, Loading | Skeleton, Status |
 | `data-display` | Table | Card, DataTable | Stat, Timeline, Tree |
-| `layout` | — | — | All (Box, Stack, Grid, etc.) |
+| `layout` | - | - | All (Box, Stack, Grid, etc.) |
 
 ---
 
@@ -497,7 +497,7 @@ The rule checks for test files in:
 
 | Issue | Resolution |
 |-------|------------|
-| **Barrel export inconsistency** | Normalized `data-display/`, `navigation/`, `overlays/` to use named exports without `.js` extensions — matching `primitives/`, `feedback/`, `forms/`, `layout/` |
+| **Barrel export inconsistency** | Normalized `data-display/`, `navigation/`, `overlays/` to use named exports without `.js` extensions - matching `primitives/`, `feedback/`, `forms/`, `layout/` |
 | **`@types/react` version mismatch** | Fixed playground `@types/react` and `@types/react-dom` from `^18.2.0` → `^19.0.0` |
 | **Alert `sizes` defined but unused** | Added `size` prop to `AlertProps` and wired `alertStyles.sizes[size]` + `alertStyles.iconSizes[size]` in component |
 
@@ -507,20 +507,20 @@ The rule checks for test files in:
 |------|-----------|
 | **Checkbox not using Radix** | Native `<input type="checkbox">` is simpler and sufficient |
 | **`useCallbackRef` duplicated** | Inline version in `use-controllable-state.ts` is a private helper, not exported |
-| **`utils` has React peer dep** | `createContext` and `composeRefs` use React — marked as optional peer |
-| **`feedback` depends on `primitives`** | Used by Toast component — acceptable cross-package dependency |
-| **`TEXT_SIZE_CLASSES` has `md` AND `base`** | Intentional — `md` is the standard scale name, `base` is an alias |
+| **`utils` has React peer dep** | `createContext` and `composeRefs` use React - marked as optional peer |
+| **`feedback` depends on `primitives`** | Used by Toast component - acceptable cross-package dependency |
+| **`TEXT_SIZE_CLASSES` has `md` AND `base`** | Intentional - `md` is the standard scale name, `base` is an alias |
 
 ### 11.3 Test Coverage
 
 | Package | Components WITH tests | Remaining gaps |
 |---------|----------------------|----------------|
 | `primitives` (15) | button, badge, avatar, icon-button, link, link-overlay, **heading**, **text** | blockquote, code, divider, kbd, list, mark |
-| `feedback` (9) | alert, circular-progress, loading, progress, skeleton, status, toast, **empty-state** | — |
+| `feedback` (9) | alert, circular-progress, loading, progress, skeleton, status, toast, **empty-state** | - |
 | `forms` (17) | checkbox, file-upload, form-control, input, number-input, pin-input, radio-group, select, slider, switch, textarea, **field** | form-group, form-label, form-message, hidden-field, input-group |
-| `layout` (10) | — | ALL (thin wrappers — P2 priority) |
-| `overlays` (5) | drawer, dropdown-menu, modal, popover, tooltip | — |
-| `navigation` (5) | accordion, pagination, stepper, tabs, **breadcrumbs** | — |
+| `layout` (10) | - | ALL (thin wrappers - P2 priority) |
+| `overlays` (5) | drawer, dropdown-menu, modal, popover, tooltip | - |
+| `navigation` (5) | accordion, pagination, stepper, tabs, **breadcrumbs** | - |
 | `data-display` (7) | calendar, data-table, tree, **card**, **table** | stat, timeline |
 | `utils` (6) | cn, compose-refs, create-context | compose-handlers, dom, keyboard |
 

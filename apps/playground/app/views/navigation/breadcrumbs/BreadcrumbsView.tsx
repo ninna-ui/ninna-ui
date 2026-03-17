@@ -101,7 +101,7 @@ export function BreadcrumbsView() {
               <li>Current page uses <Code>aria-current="page"</Code></li>
               <li>Separators are decorative and hidden from screen readers</li>
               <li>Links are properly focusable and navigable via keyboard</li>
-              <li>Icons are decorative (<Code>aria-hidden</Code>) — text labels provide the accessible name</li>
+              <li>Icons are decorative (<Code>aria-hidden</Code>) - text labels provide the accessible name</li>
             </ul>
           </div>
         </ComponentSection>

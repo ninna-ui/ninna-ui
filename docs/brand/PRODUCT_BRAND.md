@@ -1,26 +1,26 @@
-# Ninna-UI Product & Brand
+# Ninna UI Product & Brand
 
-> **Version:** 1.0.0  
-> **Last Updated:** February 2026  
-> **Defines what Ninna-UI is, who it's for, and how it's positioned.**
+> **Product identity, competitive positioning, and brand guidelines** - defines what Ninna UI is, who it's for, and how it stands apart from shadcn/ui, Chakra UI, Mantine, and DaisyUI.
+>
+> **Version:** 1.0.0 · **Last Updated:** February 2026
 
 ---
 
 ## 1. Product Identity
 
-### What Is Ninna-UI?
+### What Is Ninna UI?
 
-Ninna-UI is a **React component library** that combines the component quality of shadcn/Chakra UI/Mantine with the theming simplicity of DaisyUI. It ships 69+ production-ready components across 10 packages, with 5 theme presets, 100% accessibility, and zero configuration.
+Ninna UI is a **full React UI library with zero runtime styling and native Tailwind CSS v4 support**. It combines the component quality and accessibility of shadcn/Chakra UI/Mantine with the theming simplicity of DaisyUI - shipping 69+ production-ready, accessible components across 12 packages, with 5 built-in theme presets, oklch perceptual colors, and zero JavaScript theming overhead.
 
 ### One-Line Pitch
 
-> Beautiful React components with DaisyUI-simple theming — one CSS import, instant design system.
+> Full React UI library with zero runtime styling and native Tailwind support - one CSS import, instant design system.
 
 ### Tagline Options
 
 - "Component quality meets theming simplicity."
-- "shadcn quality. DaisyUI theming. Zero config."
-- "The React component library that themes like DaisyUI."
+- "Chakra-level quality. DaisyUI-simple theming. Zero runtime overhead."
+- "The React component library that themes like DaisyUI and builds like shadcn."
 
 ---
 
@@ -65,15 +65,15 @@ Ninna-UI is a **React component library** that combines the component quality of
 
 ### Key Differentiators
 
-1. **DaisyUI-level theming simplicity** — One `@import` line. No ThemeProvider, no JS config, no context wrappers. Change themes by swapping one CSS import.
+1. **DaisyUI-level theming simplicity** - One `@import` line. No ThemeProvider, no JS config, no context wrappers. Change themes by swapping one CSS import.
 
-2. **shadcn-level component quality** — Every component has `forwardRef`, `displayName`, `data-slot`, `cn()`, ARIA attributes, keyboard navigation. Not CSS-only like DaisyUI.
+2. **shadcn-level component quality** - Every component has `forwardRef`, `displayName`, `data-slot`, `cn()`, ARIA attributes, keyboard navigation. Not CSS-only like DaisyUI.
 
-3. **Radix without Radix** — Complex components (Select, Modal, Tabs, Accordion) use Radix internally via engine wrappers, but consumers never see or import Radix. No Radix types leak into your code.
+3. **Radix without Radix** - Complex components (Select, Modal, Tabs, Accordion) use Radix internally via engine wrappers, but consumers never see or import Radix. No Radix types leak into your code.
 
-4. **Tailwind CSS v4.1 native** — CSS-first configuration. No `tailwind.config.ts`. Uses `@theme inline` and CSS custom properties. Works with `@tailwindcss/vite` and `@tailwindcss/postcss`.
+4. **Tailwind CSS v4.1 native** - CSS-first configuration. No `tailwind.config.ts`. Uses `@theme inline` and CSS custom properties. Works with `@tailwindcss/vite` and `@tailwindcss/postcss`.
 
-5. **oklch color system** — All theme colors use oklch for perceptually uniform color spaces. WCAG AA contrast guaranteed between semantic colors and their `-content` counterparts.
+5. **oklch color system** - All theme colors use oklch for perceptually uniform color spaces. WCAG AA contrast guaranteed between semantic colors and their `-content` counterparts.
 
 ---
 
@@ -86,8 +86,8 @@ Ninna-UI is a **React component library** that combines the component quality of
 ### Logo
 
 - Monochrome rounded square with "N" letterform
-- Uses `fill-base-content` / `fill-base-100` — adapts to any theme automatically
-- Inline SVG (not img tag) — inherits theme colors
+- Uses `fill-base-content` / `fill-base-100` - adapts to any theme automatically
+- Inline SVG (not img tag) - inherits theme colors
 - Favicon: Black `#111` square with white N
 
 ### Typography
@@ -97,16 +97,16 @@ Ninna-UI is a **React component library** that combines the component quality of
 
 ### Color
 
-- No fixed brand color — the brand adapts to whichever theme preset is active
+- No fixed brand color - the brand adapts to whichever theme preset is active
 - Default preset: Electric purple primary (`oklch(0.49 0.31 275)`)
 - The brand IS the theming system itself
 
 ### Visual Style
 
-- **Minimalist** — shadcn/Radix aesthetic
-- **Clean** — No gradients on components, no shadows by default
-- **Vibrant** — High-chroma oklch colors (C=0.18-0.31)
-- **Adaptive** — Everything responds to theme changes instantly
+- **Minimalist** - shadcn/Radix aesthetic
+- **Clean** - No gradients on components, no shadows by default
+- **Vibrant** - High-chroma oklch colors (C=0.18-0.31)
+- **Adaptive** - Everything responds to theme changes instantly
 
 ---
 
@@ -117,7 +117,7 @@ Ninna-UI is a **React component library** that combines the component quality of
 | Package | Published | Description |
 |---------|-----------|-------------|
 | `@ninna-ui/core` | Yes | Types, tokens, CSS theme presets |
-| `@ninna-ui/utils` | **No** | Utility functions — bundled into each package |
+| `@ninna-ui/utils` | **No** | Utility functions - bundled into each package |
 | `@ninna-ui/primitives` | Yes | Basic components (Button, Badge, Text, etc.) |
 | `@ninna-ui/feedback` | Yes | Feedback components (Alert, Toast, Progress, etc.) |
 | `@ninna-ui/layout` | Yes | Layout components (Stack, Grid, Container, etc.) |
@@ -141,27 +141,27 @@ Ninna-UI is a **React component library** that combines the component quality of
 |---------|-----|---------|----------|
 | **Website** (`ninna-ui-web`) | `https://ninna-ui.dev` | Public documentation, SEO-optimized, full component reference | End users installing and using Ninna UI |
 | **Storybook** (`apps/docs`) | local `:6006` | Component API reference, interactive props playground, variant showcase | Developers exploring the API |
-| **Playground** (`apps/playground`) | local `:3000` | Internal developer sandbox — live component preview for contributors | Library contributors and maintainers |
+| **Playground** (`apps/playground`) | local `:3000` | Internal developer sandbox - live component preview for contributors | Library contributors and maintainers |
 
 ### Website / Playground Structure
 
 9 categories in sidebar:
-1. **Getting Started** — Introduction, Installation
-2. **Primitives** — Button, Badge, Avatar, Text, Heading, etc.
-3. **Feedback** — Alert, Toast, Progress, Loading, etc.
-4. **Forms** — Input, Checkbox, Select, RadioGroup, etc.
-5. **Layout** — Stack, Grid, Container, Flex, etc.
-6. **Navigation** — Tabs, Accordion, Breadcrumbs, etc.
-7. **Overlays** — Modal, Drawer, Tooltip, Popover, etc.
-8. **Data Display** — Card, Table, Calendar, Timeline, etc.
-9. **Code Block** — CodeBlock component
+1. **Getting Started** - Introduction, Installation
+2. **Primitives** - Button, Badge, Avatar, Text, Heading, etc.
+3. **Feedback** - Alert, Toast, Progress, Loading, etc.
+4. **Forms** - Input, Checkbox, Select, RadioGroup, etc.
+5. **Layout** - Stack, Grid, Container, Flex, etc.
+6. **Navigation** - Tabs, Accordion, Breadcrumbs, etc.
+7. **Overlays** - Modal, Drawer, Tooltip, Popover, etc.
+8. **Data Display** - Card, Table, Calendar, Timeline, etc.
+9. **Code Block** - CodeBlock component
 
 Each component view has:
-- **ComponentHeader** — Name, description, import path
-- **Usage** — Basic usage with code example
-- **Examples** — Variants, sizes, colors, states
-- **API Reference** — PropsTable with all props
-- **Accessibility** — ARIA attributes, keyboard navigation
+- **ComponentHeader** - Name, description, import path
+- **Usage** - Basic usage with code example
+- **Examples** - Variants, sizes, colors, states
+- **API Reference** - PropsTable with all props
+- **Accessibility** - ARIA attributes, keyboard navigation
 
 ### Mandatory Documentation Sections (per component)
 
@@ -203,9 +203,9 @@ Each component view has:
 
 ### Build Requirements
 
-- `pnpm build` — All packages build successfully (ESM + DTS)
-- `pnpm typecheck` — Zero TypeScript errors (`tsc --noEmit`)
-- `pnpm vitest run` — All tests pass
+- `pnpm build` - All packages build successfully (ESM + DTS)
+- `pnpm typecheck` - Zero TypeScript errors (`tsc --noEmit`)
+- `pnpm vitest run` - All tests pass
 - Zero `dark:` prefixes in component styles
 - Zero `'use client'` directives in library code
 - Zero `@radix-ui/*` imports outside `react-internal`

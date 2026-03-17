@@ -91,7 +91,7 @@ const ALERT_PROPS: PropDefinition[] = [
     name: "role",
     type: "string",
     defaultValue: "'alert'",
-    description: "ARIA role — use 'status' for non-critical messages",
+    description: "ARIA role - use 'status' for non-critical messages",
   },
   {
     name: "children",

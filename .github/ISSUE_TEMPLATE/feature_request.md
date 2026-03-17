@@ -13,16 +13,16 @@ assignees: ''
 
 ### Package
 <!-- Which package does this belong to? -->
-- [ ] `@ninna-ui/primitives` — Basic components
-- [ ] `@ninna-ui/feedback` — Feedback components
-- [ ] `@ninna-ui/forms` — Form components
-- [ ] `@ninna-ui/layout` — Layout components
-- [ ] `@ninna-ui/overlays` — Overlay components
-- [ ] `@ninna-ui/navigation` — Navigation components
-- [ ] `@ninna-ui/data-display` — Data display components
-- [ ] `@ninna-ui/code-block` — Code block
-- [ ] `@ninna-ui/core` — Design tokens / themes
-- [ ] `@ninna-ui/cli` — CLI tooling
+- [ ] `@ninna-ui/primitives` - Basic components
+- [ ] `@ninna-ui/feedback` - Feedback components
+- [ ] `@ninna-ui/forms` - Form components
+- [ ] `@ninna-ui/layout` - Layout components
+- [ ] `@ninna-ui/overlays` - Overlay components
+- [ ] `@ninna-ui/navigation` - Navigation components
+- [ ] `@ninna-ui/data-display` - Data display components
+- [ ] `@ninna-ui/code-block` - Code block
+- [ ] `@ninna-ui/core` - Design tokens / themes
+- [ ] `@ninna-ui/cli` - CLI tooling
 - [ ] New package / unsure
 
 ### Use Case

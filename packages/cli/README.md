@@ -1,13 +1,13 @@
 # @ninna-ui/cli
 
-> CLI tool for scaffolding Ninna UI projects — choose your framework, pick a theme, and start building in seconds.
+> **Zero-config project scaffolding for Ninna UI** - choose your framework (Vite, Next.js, React Router), pick a theme preset, and get a production-ready React app in seconds. TypeScript strict, Tailwind CSS v4, all 69 components pre-installed.
 
 [![npm](https://img.shields.io/npm/v/@ninna-ui/cli.svg)](https://www.npmjs.com/package/@ninna-ui/cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 📖 **[Full Documentation →](https://www.ninna-ui.dev/getting-started/installation)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/cli)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/cli)**
 
-The official CLI for [Ninna UI](../../README.md). Scaffold a new project with your preferred framework and theme preset — fully configured with Tailwind CSS v4, TypeScript, and all Ninna UI packages.
+The official CLI for [Ninna UI](../../README.md). Scaffold a production-ready project with your preferred framework and theme preset - fully configured with Tailwind CSS v4, TypeScript strict mode, and all Ninna UI component packages pre-installed. No manual setup required.
 
 ## Usage
 
@@ -17,8 +17,8 @@ npx @ninna-ui/cli init my-app
 
 The interactive prompt will ask you to choose:
 
-1. **Template** — Vite + React, Next.js 15, or React Router v7
-2. **Theme preset** — Default (Purple), Ocean (Blue), Sunset (Orange), Forest (Green), or Minimal (Monochrome)
+1. **Template** - Vite + React, Next.js 15, or React Router v7
+2. **Theme preset** - Default (Purple), Ocean (Blue), Sunset (Orange), Forest (Green), or Minimal (Monochrome)
 
 ## Options
 
@@ -72,9 +72,9 @@ Every template includes:
 
 ## Related Packages
 
-- [`@ninna-ui/core`](../core/README.md) — Design tokens and theme presets
-- [All packages](../../README.md#packages) — Complete package list
-- [Starter templates](../../templates/) — Template source code
+- [`@ninna-ui/core`](../core/README.md) - Design tokens and theme presets
+- [All packages](../../README.md#packages) - Complete package list
+- [Starter templates](../../templates/) - Template source code
 
 ## License
 

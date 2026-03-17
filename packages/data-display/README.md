@@ -1,13 +1,13 @@
 # @ninna-ui/data-display
 
-> 7 data display components for Ninna-UI — Card, Stat, Table, DataTable, Timeline, Tree, and Calendar.
+> **7 React data visualization components** - Card, Stat, Table, DataTable, Timeline, Tree, and Calendar. Built with semantic HTML, keyboard navigation, and ARIA roles. No Radix dependency - pure custom implementations.
 
 [![npm](https://img.shields.io/npm/v/@ninna-ui/data-display.svg)](https://www.npmjs.com/package/@ninna-ui/data-display)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 📖 **[Full Documentation →](https://www.ninna-ui.dev/data-display)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/data-display)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/data-display)**
 
-Data display components for [Ninna UI](../../README.md). All are custom implementations (no Radix dependency) with semantic HTML — `<table>`, `<th scope>`, `<caption>`, `role="grid"`, `role="tree"`, and proper `aria-expanded` attributes.
+Data presentation components for [Ninna UI](../../README.md) - everything you need to display structured information, metrics, and hierarchical data. All are custom implementations (no Radix dependency) built on semantic HTML - `<table>`, `<th scope>`, `<caption>`, `role="grid"`, `role="tree"`, and proper `aria-expanded` attributes for screen reader compatibility.
 
 ## Installation
 
@@ -82,18 +82,18 @@ function Dashboard() {
 
 ## Accessibility
 
-- **Table** — Semantic `<table>`, `<th scope="col">`, `<caption>` for screen readers
-- **DataTable** — `role="grid"`, sortable column headers with `aria-sort`
-- **Tree** — `role="tree"` / `role="treeitem"`, `aria-expanded`, arrow key navigation
-- **Calendar** — `role="grid"`, arrow key date navigation, `aria-selected`
-- **All components** — `forwardRef`, `data-slot`, `className` support
+- **Table** - Semantic `<table>`, `<th scope="col">`, `<caption>` for screen readers
+- **DataTable** - `role="grid"`, sortable column headers with `aria-sort`
+- **Tree** - `role="tree"` / `role="treeitem"`, `aria-expanded`, arrow key navigation
+- **Calendar** - `role="grid"`, arrow key date navigation, `aria-selected`
+- **All components** - `forwardRef`, `data-slot`, `className` support
 
 ## Related Packages
 
-- [`@ninna-ui/core`](../core/README.md) — Design tokens and theme presets (required)
-- [`@ninna-ui/layout`](../layout/README.md) — Layout components for page structure
-- [`@ninna-ui/primitives`](../primitives/README.md) — Base components (Badge, Text, Heading)
-- [All packages](../../README.md#packages) — Complete package list
+- [`@ninna-ui/core`](../core/README.md) - Design tokens and theme presets (required)
+- [`@ninna-ui/layout`](../layout/README.md) - Layout components for page structure
+- [`@ninna-ui/primitives`](../primitives/README.md) - Base components (Badge, Text, Heading)
+- [All packages](../../README.md#packages) - Complete package list
 
 ## License
 

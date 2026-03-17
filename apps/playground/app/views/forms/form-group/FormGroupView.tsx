@@ -165,7 +165,7 @@ export function FormGroupView() {
         <ComponentSection
           id="with-checkboxes"
           title="With Checkboxes & Radio"
-          description="FormGroup works with any form control — checkboxes, radio groups, and more."
+          description="FormGroup works with any form control - checkboxes, radio groups, and more."
           level={3}
         >
           <CodePreview
@@ -186,11 +186,11 @@ export function FormGroupView() {
           <div className="prose max-w-none">
             <ul className="space-y-2 text-base-content/70">
               <li>Renders a native <Code>fieldset</Code> element for semantic grouping of related controls</li>
-              <li>The <Code>legend</Code> prop renders a <Code>&lt;legend&gt;</Code> element — the primary accessible label for the group</li>
+              <li>The <Code>legend</Code> prop renders a <Code>&lt;legend&gt;</Code> element - the primary accessible label for the group</li>
               <li>The <Code>description</Code> prop is linked via <Code>aria-describedby</Code> for additional context</li>
-              <li>Setting <Code>disabled</Code> on the fieldset disables all child controls natively — no JavaScript needed</li>
+              <li>Setting <Code>disabled</Code> on the fieldset disables all child controls natively - no JavaScript needed</li>
               <li>Setting <Code>required</Code> shows a visual indicator; pair with <Code>required</Code> on individual <Code>Field</Code> components for full a11y</li>
-              <li>All HTML attributes are forwarded via <Code>...props</Code> spread — <Code>aria-label</Code>, <Code>role</Code>, etc. are fully overridable</li>
+              <li>All HTML attributes are forwarded via <Code>...props</Code> spread - <Code>aria-label</Code>, <Code>role</Code>, etc. are fully overridable</li>
             </ul>
           </div>
         </ComponentSection>
