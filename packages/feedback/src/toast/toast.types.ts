@@ -13,7 +13,7 @@ export type ToastPosition =
   | 'bottom-center'
   | 'bottom-right';
 
-/** Toast variant — uses core ColorVariant for consistency */
+/** Toast variant - uses core ColorVariant for consistency */
 export type ToastVariant = ColorVariant;
 
 /** Toast data structure for creating toasts */
@@ -57,7 +57,7 @@ export interface ToastProps {
   toast: ToastData;
   /** Callback to dismiss the toast */
   onDismiss?: (id: string) => void;
-  /** Position of the toaster — used for correct enter/exit animations */
+  /** Position of the toaster - used for correct enter/exit animations */
   position?: ToastPosition;
   /** Additional CSS classes */
   className?: string;
@@ -75,7 +75,7 @@ export interface ToasterProps {
   offset?: string | number;
   /** Pause auto-dismiss on hover */
   pauseOnHover?: boolean;
-  /** Unique id — only toasts created with this toasterId will be shown */
+  /** Unique id - only toasts created with this toasterId will be shown */
   id?: string;
   /** Additional CSS classes for viewport */
   className?: string;

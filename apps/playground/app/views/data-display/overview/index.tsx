@@ -31,7 +31,7 @@ export default function DataDisplayOverview() {
     <PackageOverview
       packageName="@ninna-ui/data-display"
       title="Data Display"
-      description="Components for presenting data — cards, tables, statistics, timelines, trees, and calendars. Display structured information clearly."
+      description="Components for presenting data - cards, tables, statistics, timelines, trees, and calendars. Display structured information clearly."
       components={components}
       features={features}
     />

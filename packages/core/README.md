@@ -1,15 +1,15 @@
 # @ninna-ui/core
 
-> Design system foundation — pure TypeScript tokens, Tailwind class mappings, and 5 CSS theme presets with automatic dark mode.
+> **The design system engine that powers Ninna UI** - pure TypeScript tokens, Tailwind CSS v4 class mappings, and 5 production-ready theme presets with automatic dark mode. Zero React. Zero runtime. Pure CSS.
 
 [![npm](https://img.shields.io/npm/v/@ninna-ui/core.svg)](https://www.npmjs.com/package/@ninna-ui/core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 📖 **[Full Documentation →](https://www.ninna-ui.dev/getting-started/theming)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/core)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/core)**
 
-`@ninna-ui/core` is the zero-dependency foundation of [Ninna UI](../../README.md). It contains **no React code, no JSX, and no component logic** — only the shared design language that every component package consumes.
+`@ninna-ui/core` is the zero-dependency foundation of [Ninna UI](../../README.md). It ships **no React code, no JSX, and no component logic** - only the shared design language that every component package consumes. This is the package that makes one-line theme switching possible.
 
-**Why this matters:** Unlike libraries that bundle theming into a JS runtime (Chakra UI, Mantine), Ninna UI's entire theme system lives in pure CSS. Your app ships zero theming JavaScript — just CSS custom properties that the browser resolves natively.
+**Why this matters:** Unlike libraries that bundle theming into a JavaScript runtime (Chakra UI, Mantine), Ninna UI's entire theme system lives in pure CSS custom properties. Your app ships **zero theming JavaScript** - the browser resolves colors and tokens natively, with zero hydration cost.
 
 ## Installation
 
@@ -32,7 +32,7 @@ Add one of the 5 theme presets to your app's CSS entry point, then set `data-the
 <html data-theme="default">
 ```
 
-> **No `@source` needed** — each theme preset automatically scans all `@ninna-ui` package dist files via built-in `@source` directives. Every preset requires a `data-theme` attribute to activate. This allows multiple presets to be safely imported for per-section theming without CSS conflicts.
+> **No `@source` needed** - each theme preset automatically scans all `@ninna-ui` package dist files via built-in `@source` directives. Every preset requires a `data-theme` attribute to activate. This allows multiple presets to be safely imported for per-section theming without CSS conflicts.
 
 | Preset | Colors | Character |
 |--------|--------|-----------|
@@ -42,18 +42,18 @@ Add one of the 5 theme presets to your app's CSS entry point, then set `data-the
 | `forest.css` | Green / Amber | Natural, earthy |
 | `minimal.css` | Monochrome | Clean, understated |
 
-**Switch themes by changing one line** — no JavaScript configuration, no provider wrappers, no build step. All presets can be imported simultaneously for per-section theming using nested `data-theme` attributes.
+**Switch themes by changing one line** - no JavaScript configuration, no provider wrappers, no build step. All presets can be imported simultaneously for per-section theming using nested `data-theme` attributes.
 
 ### Framework-Specific Setup
 
-**Vite / React Router** — use `@tailwindcss/vite`:
+**Vite / React Router** - use `@tailwindcss/vite`:
 ```ts
 // vite.config.ts
 import tailwindcss from "@tailwindcss/vite";
 export default { plugins: [tailwindcss()] };
 ```
 
-**Next.js** — use `@tailwindcss/postcss`:
+**Next.js** - use `@tailwindcss/postcss`:
 ```js
 // postcss.config.mjs
 export default { plugins: { "@tailwindcss/postcss": {} } };
@@ -67,11 +67,11 @@ Every preset includes **automatic dark mode** via `@media (prefers-color-scheme:
 /* Light (default when no class set) */
 [data-theme="preset"] { }
 
-/* Explicit dark — .dark class on <html> or ancestor */
+/* Explicit dark - .dark class on <html> or ancestor */
 .dark [data-theme="preset"],
 [data-theme="preset"].dark { }
 
-/* System dark — no class, follows OS preference */
+/* System dark - no class, follows OS preference */
 @media (prefers-color-scheme: dark) {
   [data-theme="preset"]:not(.light):not(.dark) { }
 }
@@ -90,11 +90,11 @@ For manual toggle, add the `.dark` or `.light` class to your root element:
 <html data-theme="default">
 ```
 
-All colors use the **oklch** color space — perceptually uniform, vibrant, and WCAG AA compliant.
+All colors use the **oklch** color space - perceptually uniform, vibrant, and WCAG AA compliant.
 
 ## Design Tokens
 
-Type definitions for the design system's foundational values — consumed by every component package:
+Type definitions for the design system's foundational values - consumed by every component package:
 
 ```typescript
 import type { Color, Size, Radius, ColorVariant } from '@ninna-ui/core';
@@ -116,7 +116,7 @@ import type { Color, Size, Radius, ColorVariant } from '@ninna-ui/core';
 
 ## Tailwind Class Mappings
 
-Pre-built maps from design tokens to Tailwind CSS classes — used internally by component `.styles.ts` files:
+Pre-built maps from design tokens to Tailwind CSS classes - used internally by component `.styles.ts` files:
 
 ```typescript
 import { BG_COLORS, TEXT_COLORS, RADIUS_CLASSES, SOLID_VARIANTS } from '@ninna-ui/core';
@@ -130,10 +130,10 @@ SOLID_VARIANTS.primary  // Complete solid variant class set for primary
 ### Available Maps
 
 **Color maps:**
-- `BG_COLORS`, `TEXT_COLORS`, `BORDER_COLORS` — Semantic color classes
-- `SOFT_BG_COLORS`, `MUTED_BG_COLORS`, `MUTED_BORDER_COLORS` — Opacity-based variants
-- `SOLID_VARIANTS`, `SOFT_VARIANTS`, `OUTLINE_VARIANTS`, `GHOST_VARIANTS`, `TEXT_VARIANTS` — Complete variant class sets per color
-- `RING_COLORS`, `STROKE_COLORS`, `MARKER_COLORS`, `HOVER_TEXT_COLORS` — Additional utility maps
+- `BG_COLORS`, `TEXT_COLORS`, `BORDER_COLORS` - Semantic color classes
+- `SOFT_BG_COLORS`, `MUTED_BG_COLORS`, `MUTED_BORDER_COLORS` - Opacity-based variants
+- `SOLID_VARIANTS`, `SOFT_VARIANTS`, `OUTLINE_VARIANTS`, `GHOST_VARIANTS`, `TEXT_VARIANTS` - Complete variant class sets per color
+- `RING_COLORS`, `STROKE_COLORS`, `MARKER_COLORS`, `HOVER_TEXT_COLORS` - Additional utility maps
 
 **State maps:**
 - `FOCUS_RING_COLORS`, `FOCUS_BORDER_COLORS`, `INPUT_FOCUS_COLORS`, `FOCUS_VISIBLE_RING_COLORS`
@@ -188,17 +188,17 @@ core/
 
 ## Architecture Rules
 
-- **No React, no JSX** — This package must never import React
-- **No component logic** — Styles, behavior, and rendering belong in component packages
-- **Types are the API** — `Color`, `Size`, `Radius` are consumed by every component
-- **CSS presets are complete** — Each preset defines all required custom properties
-- **Class maps are exhaustive** — Every `Color` value has a corresponding entry in every map
+- **No React, no JSX** - This package must never import React
+- **No component logic** - Styles, behavior, and rendering belong in component packages
+- **Types are the API** - `Color`, `Size`, `Radius` are consumed by every component
+- **CSS presets are complete** - Each preset defines all required custom properties
+- **Class maps are exhaustive** - Every `Color` value has a corresponding entry in every map
 
 ## Related Packages
 
-- [`@ninna-ui/utils`](../utils/README.md) — Shared utility functions (`cn`, `composeRefs`)
-- [`@ninna-ui/primitives`](../primitives/README.md) — Base components that consume core tokens
-- [All packages](../../README.md#packages) — Complete package list
+- [`@ninna-ui/utils`](../utils/README.md) - Shared utility functions (`cn`, `composeRefs`)
+- [`@ninna-ui/primitives`](../primitives/README.md) - Base components that consume core tokens
+- [All packages](../../README.md#packages) - Complete package list
 
 ## License
 

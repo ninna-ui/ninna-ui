@@ -100,7 +100,7 @@ export function StepperView() {
               <li>Each step renders as <Code>role="listitem"</Code> with an <Code>aria-label</Code> describing step number, label, and status</li>
               <li>Step status (complete, current, upcoming) is conveyed via <Code>data-status</Code> and the listitem aria-label</li>
               <li>Separators are hidden from assistive technology via <Code>aria-hidden="true"</Code></li>
-              <li>Step index is computed via React context — no cloneElement or prop injection required</li>
+              <li>Step index is computed via React context - no cloneElement or prop injection required</li>
               <li>Optional steps include "(optional)" in the aria-label</li>
             </ul>
           </div>

@@ -39,7 +39,7 @@ const LINK_PROPS: PropDefinition[] = [
   {
     name: "size",
     type: "'xs' | 'sm' | 'md' | 'lg' | 'xl'",
-    description: "Text size — matches Text component sizes. Inherits from parent when not set.",
+    description: "Text size - matches Text component sizes. Inherits from parent when not set.",
   },
   {
     name: "color",

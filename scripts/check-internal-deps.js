@@ -37,7 +37,7 @@ for (const dir of packageDirs) {
 
   const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
 
-  // Skip private packages — they are not published
+  // Skip private packages - they are not published
   if (pkg.private) continue;
 
   const deps = Object.keys(pkg.dependencies || {});

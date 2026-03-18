@@ -29,7 +29,7 @@ export default function OverlaysOverview() {
     <PackageOverview
       packageName="@ninna-ui/overlays"
       title="Overlays"
-      description="Overlay components built on Radix UI — modals, drawers, popovers, tooltips, and dropdown menus. Fully accessible with focus management."
+      description="Overlay components built on Radix UI - modals, drawers, popovers, tooltips, and dropdown menus. Fully accessible with focus management."
       components={components}
       features={features}
     />

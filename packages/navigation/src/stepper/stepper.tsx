@@ -102,7 +102,7 @@ const Step = forwardRef<HTMLDivElement, StepProps>(
         data-slot="step"
         data-status={status}
         role="listitem"
-        aria-label={`Step ${index + 1}: ${label}${optional ? ' (optional)' : ''} — ${status}`}
+        aria-label={`Step ${index + 1}: ${label}${optional ? ' (optional)' : ''} - ${status}`}
         className={cn(
           stepperStyles.step,
           orientation === 'horizontal' ? stepperStyles.stepHorizontal : stepperStyles.stepVertical,

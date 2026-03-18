@@ -255,7 +255,7 @@ export function FileUploadView() {
         <ComponentSection id="accessibility" title="Accessibility" level={3}>
           <div className="prose max-w-none">
             <ul className="space-y-2 text-base-content/70">
-              <li>Keyboard accessible — can be activated with <Code>Enter</Code> or <Code>Space</Code></li>
+              <li>Keyboard accessible - can be activated with <Code>Enter</Code> or <Code>Space</Code></li>
               <li>Uses <Code>aria-disabled</Code> and <Code>aria-invalid</Code> for disabled and invalid states</li>
               <li>File input is properly labeled for screen readers via <Code>aria-label</Code></li>
               <li>File list items have accessible remove buttons with descriptive <Code>aria-label</Code></li>

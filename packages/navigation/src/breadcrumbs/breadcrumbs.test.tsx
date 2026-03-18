@@ -111,7 +111,7 @@ describe('Breadcrumbs', () => {
         <Breadcrumbs.Item><Breadcrumbs.Link current>Details</Breadcrumbs.Link></Breadcrumbs.Item>
       </Breadcrumbs>
     );
-    // Disable list/listitem rules — separator spans inside <ol> is a known pattern
+    // Disable list/listitem rules - separator spans inside <ol> is a known pattern
     const results = await axe(container, { rules: { list: { enabled: false }, listitem: { enabled: false } } });
     expect(results).toHaveNoViolations();
   });

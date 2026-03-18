@@ -9,5 +9,5 @@
 
 @variant dark (&:is(.dark *));
 
-/* Code block syntax token colors (static — no runtime style injection) */
+/* Code block syntax token colors (static - no runtime style injection) */
 @import "@ninna-ui/code-block/styles";

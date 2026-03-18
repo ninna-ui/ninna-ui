@@ -1,7 +1,8 @@
 # Contributing to Ninna UI
 
-> **Version:** 2.0.0  
-> **Last Updated:** February 2026
+> **Everything you need to contribute to the Ninna UI monorepo** - from your first PR to publishing packages on npm. Fork, build, add components, ship.
+>
+> **Version:** 2.0.0 · **Last Updated:** February 2026
 
 ---
 
@@ -201,7 +202,7 @@ packages/<package>/src/component-name/
 - [ ] Has proper ARIA attributes (`aria-label`, `aria-describedby`, etc.)
 - [ ] Has keyboard navigation where applicable
 - [ ] Uses design tokens from `@ninna-ui/core` (no hardcoded colors like `text-red-500`)
-- [ ] No `dark:` prefixes — CSS variables handle dark mode
+- [ ] No `dark:` prefixes - CSS variables handle dark mode
 - [ ] No `'use client'` directive
 - [ ] Props documented with JSDoc
 - [ ] Default values set in destructuring
@@ -305,18 +306,18 @@ pnpm vitest run     # Must pass
 
 ## Changeset Guidelines
 
-- **patch** — Bug fixes, documentation updates
-- **minor** — New features, new components
-- **major** — Breaking changes (prop renames, removed exports, type changes)
+- **patch** - Bug fixes, documentation updates
+- **minor** - New features, new components
+- **major** - Breaking changes (prop renames, removed exports, type changes)
 
 ## Code Style
 
-- TypeScript strict mode — no `any` in public APIs
-- Semantic tokens only — no hardcoded Tailwind palette colors (`text-gray-500`)
-- Tailwind CSS utility classes only — no CSS-in-JS, no inline styles (except oklch values in CSS presets)
+- TypeScript strict mode - no `any` in public APIs
+- Semantic tokens only - no hardcoded Tailwind palette colors (`text-gray-500`)
+- Tailwind CSS utility classes only - no CSS-in-JS, no inline styles (except oklch values in CSS presets)
 - Import order: `react` → `@ninna-ui/*` → local `./`
-- `cn()` from `@ninna-ui/utils` exclusively — no local utility
-- Named exports only — no default exports
+- `cn()` from `@ninna-ui/utils` exclusively - no local utility
+- Named exports only - no default exports
 - `satisfies Record<Size, string>` on size/color maps for type safety
 
 ## Git Commit Format

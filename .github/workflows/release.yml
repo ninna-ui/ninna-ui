@@ -50,7 +50,7 @@ jobs:
           if git diff --quiet src/theme/tailwind.css; then
             echo "✅ Safelist is up-to-date"
           else
-            echo "❌ Safelist is out-of-date — run 'node scripts/generate-safelist.mjs' and commit"
+            echo "❌ Safelist is out-of-date - run 'node scripts/generate-safelist.mjs' and commit"
             git diff src/theme/tailwind.css
             exit 1
           fi

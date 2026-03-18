@@ -23,12 +23,12 @@ export const introductionSections: ComponentSectionType[] = [
 ];
 
 const WHY_ITEMS = [
-  { title: "One import, complete theme", desc: "A single CSS import gives you a full design system — colors, surfaces, dark mode, and all component styles. No configuration files, no token setup." },
+  { title: "One import, complete theme", desc: "A single CSS import gives you a full design system - colors, surfaces, dark mode, and all component styles. No configuration files, no token setup." },
   { title: "64+ production-ready components", desc: "Every component ships with proper ARIA attributes, keyboard navigation, focus management, and screen reader support. Accessibility is not an afterthought." },
-  { title: "Radix primitives under the hood", desc: "Complex interactive widgets — Select, Checkbox, Radio, Switch, Slider, Tabs, Accordion — are built on battle-tested Radix UI primitives." },
+  { title: "Radix primitives under the hood", desc: "Complex interactive widgets - Select, Checkbox, Radio, Switch, Slider, Tabs, Accordion - are built on battle-tested Radix UI primitives." },
   { title: "Zero JS runtime for theming", desc: "All theming is pure CSS variables. No JavaScript theme provider, no Emotion, no styled-components. Instant theme switching with zero re-renders." },
   { title: "Tailwind CSS v4 native", desc: "Built from the ground up for Tailwind v4. CSS-first configuration, @theme inline tokens, and full tree-shaking via @source directives." },
-  { title: "data-slot deep customization", desc: "98 data-slot attributes across all components. Target any internal element with plain CSS — no component forks, no prop drilling." },
+  { title: "data-slot deep customization", desc: "98 data-slot attributes across all components. Target any internal element with plain CSS - no component forks, no prop drilling." },
 ];
 
 function WhySection() {
@@ -56,12 +56,12 @@ const PACKAGES = [
   { name: "@ninna-ui/data-display", count: "7 components", color: true, desc: "Card, Stat, Table, DataTable, Timeline, Tree, Calendar." },
   { name: "@ninna-ui/code-block", count: "optional", color: false, desc: "Syntax-highlighted CodeBlock component with copy-to-clipboard and dark mode." },
   { name: "@ninna-ui/core", count: "auto-installed", color: false, desc: "Types, tokens, color maps, 5 built-in themes. Auto-installed as a direct dependency of all component packages." },
-  { name: "@ninna-ui/cli", count: "scaffolding", color: true, desc: "npx @ninna-ui/cli init — scaffold a project with templates and themes." },
+  { name: "@ninna-ui/cli", count: "scaffolding", color: true, desc: "npx @ninna-ui/cli init - scaffold a project with templates and themes." },
 ];
 
 function PackagesSection() {
   return (
-    <ComponentSection id="packages" title="Packages" description="Ninna UI is split into focused packages — install only what you need.">
+    <ComponentSection id="packages" title="Packages" description="Ninna UI is split into focused packages - install only what you need.">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {PACKAGES.map((pkg) => (
           <div key={pkg.name} className="border border-base-200 rounded-lg p-5 bg-base-100">
@@ -78,10 +78,10 @@ function PackagesSection() {
 }
 
 const FEATURES = [
-  { icon: Palette, color: "primary", title: "8 Semantic Colors", desc: "Primary, secondary, accent, neutral, success, danger, warning, info — each with auto-generated content contrast colors." },
+  { icon: Palette, color: "primary", title: "8 Semantic Colors", desc: "Primary, secondary, accent, neutral, success, danger, warning, info - each with auto-generated content contrast colors." },
   { icon: Zap, color: "success", title: "5 Component Variants", desc: "Solid, soft, outline, ghost, and text variants on interactive components. Consistent across all packages." },
   { icon: Code2, color: "secondary", title: "TypeScript First", desc: "Every component is fully typed. All props, variants, colors, and sizes get IntelliSense out of the box." },
-  { icon: Sun, color: "warning", title: "Zero-Config Dark Mode", desc: "Dark mode via CSS variables. No dark: classes needed — the theme handles everything." },
+  { icon: Sun, color: "warning", title: "Zero-Config Dark Mode", desc: "Dark mode via CSS variables. No dark: classes needed - the theme handles everything." },
   { icon: Shield, color: "accent", title: "Accessibility Built-in", desc: "ARIA attributes, keyboard navigation, focus management, and screen reader support on every component. Radix primitives for complex widgets." },
   { icon: Layers, color: "info", title: "data-slot Styling", desc: "98 data-slot attributes across all components. Target any inner element with CSS without modifying component code." },
 ] as const;
@@ -105,8 +105,8 @@ function FeaturesSection() {
 }
 
 const PHILOSOPHY_ITEMS = [
-  { color: "primary", title: "CSS-First Theming", desc: "One CSS import for a complete theme. No token configuration files, no JavaScript theme providers required. Just CSS variables — instant switching, zero re-renders." },
-  { color: "success", title: "Production-Grade Components", desc: "Every component ships with proper accessibility, keyboard navigation, compound patterns, and comprehensive TypeScript props — built to the highest standard." },
+  { color: "primary", title: "CSS-First Theming", desc: "One CSS import for a complete theme. No token configuration files, no JavaScript theme providers required. Just CSS variables - instant switching, zero re-renders." },
+  { color: "success", title: "Production-Grade Components", desc: "Every component ships with proper accessibility, keyboard navigation, compound patterns, and comprehensive TypeScript props - built to the highest standard." },
   { color: "secondary", title: "Radix Under the Hood", desc: "Complex interactive components (Select, Checkbox, Radio, Switch, Slider) are built on Radix primitives for battle-tested accessibility and behavior." },
   { color: "warning", title: "Tree-Shakeable & Modular", desc: "Each package is independently installable with tree-shakeable exports. Only the components you import end up in your bundle." },
 ];
@@ -180,13 +180,13 @@ export function IntroductionView() {
         <ComponentSection
           id="overview"
           title="Overview"
-          description="Ninna UI is a modern React component library built for production — accessible, themeable, and modular by design."
+          description="Ninna UI is a modern React component library built for production - accessible, themeable, and modular by design."
         >
           <div className="max-w-none space-y-4">
             <Text className="text-base-content/70 leading-relaxed">
               Built with <strong>React 19</strong>, <strong>TypeScript</strong>, and <strong>Tailwind CSS v4</strong>, 
               Ninna UI provides 64+ production-ready components across 8 packages. The entire theme system is driven 
-              by CSS variables — no complex token management, no JavaScript runtime for styling.
+              by CSS variables - no complex token management, no JavaScript runtime for styling.
             </Text>
             <Text className="text-base-content/70 leading-relaxed">
               Switch between 5 built-in themes with a single CSS import. Dark mode works automatically via 

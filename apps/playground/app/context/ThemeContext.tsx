@@ -91,7 +91,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
     } else if (theme === 'light') {
       root.classList.add('light');
     }
-    // 'system': no class — let @media (prefers-color-scheme: dark) handle it
+    // 'system': no class - let @media (prefers-color-scheme: dark) handle it
   }, [theme]);
 
   // Update preset in localStorage and apply to document
@@ -103,7 +103,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   }, [preset]);
 
   // Listen for system theme changes to update isDarkMode reactive state
-  // Note: we do NOT add/remove classes here — CSS @media handles the visuals.
+  // Note: we do NOT add/remove classes here - CSS @media handles the visuals.
   // We only update React state so isDarkMode stays accurate for consumers.
   useEffect(() => {
     if (typeof window === 'undefined') return;

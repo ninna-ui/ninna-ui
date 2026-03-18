@@ -1,10 +1,10 @@
 # Version Constant Management
 
-This document explains the simple approach to managing versions across the Ninna UI monorepo using a centralized constant.
+> **Centralized version management for the Ninna UI monorepo** - a single TypeScript constant controls the version number across all documentation, component pages, and meta files. Update one file, and every reference stays in sync.
 
 ## Overview
 
-Instead of manually updating version numbers in multiple files, we use a centralized version constant that can be imported where needed.
+Instead of manually updating version numbers across dozens of files, Ninna UI uses a centralized version constant that can be imported wherever a version reference is needed - component headers, meta files, getting started views, and more.
 
 ## Central Version
 
@@ -12,7 +12,7 @@ The current version is defined in a single file:
 
 ```typescript
 // apps/playground/app/constants/version.ts
-export const NINNA_UI_VERSION = "0.4.0" as const;
+export const NINNA_UI_VERSION = "0.4.1" as const;
 ```
 
 ## How to Use

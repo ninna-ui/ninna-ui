@@ -1,10 +1,10 @@
 # @ninna-ui/utils
 
-> Shared utility functions for the Ninna-UI design system — class merging, ref composition, type-safe context, and SSR helpers.
+> **Shared utility toolkit for the Ninna UI ecosystem** - intelligent Tailwind class merging, ref composition, type-safe React context, keyboard constants, and SSR-safe helpers. Zero side effects. Tree-shakeable.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
-Shared utility functions used across all [Ninna UI](../../README.md) component packages. Core utilities (`cn`, `KEYS`, `canUseDOM`) are pure functions with **no React dependency**. React-aware utilities (`createContext`, `composeRefs`) use React as an **optional peer dependency**.
+The shared utility layer powering every [Ninna UI](../../README.md) component package. Core utilities (`cn`, `KEYS`, `canUseDOM`) are pure functions with **no React dependency** - they work in any JavaScript environment. React-aware utilities (`createContext`, `composeRefs`) use React as an **optional peer dependency**.
 
 ## Installation
 
@@ -14,19 +14,19 @@ pnpm add @ninna-ui/utils
 
 ## Exports
 
-### `cn(...inputs)` — Class Name Merger
+### `cn(...inputs)` - Class Name Merger
 
 Combines Tailwind CSS classes with intelligent conflict resolution. Built on `clsx` + `tailwind-merge`.
 
 ```typescript
 import { cn } from '@ninna-ui/utils';
 
-cn('px-4 py-2', 'px-6');              // "py-2 px-6" — px-4 overridden
+cn('px-4 py-2', 'px-6');              // "py-2 px-6" - px-4 overridden
 cn('text-red-500', false && 'hidden'); // "text-red-500"
 cn('rounded-md', undefined, 'p-4');    // "rounded-md p-4"
 ```
 
-### `composeRefs(...refs)` — Ref Composition
+### `composeRefs(...refs)` - Ref Composition
 
 Combines multiple React refs into a single ref callback. Essential for `forwardRef` components that also use internal refs.
 
@@ -39,7 +39,7 @@ const Component = forwardRef((props, forwardedRef) => {
 });
 ```
 
-### `composeEventHandlers(external, internal)` — Event Handler Composition
+### `composeEventHandlers(external, internal)` - Event Handler Composition
 
 Chains event handlers so both external (user-provided) and internal handlers run. Respects `event.preventDefault()`.
 
@@ -49,7 +49,7 @@ import { composeEventHandlers } from '@ninna-ui/utils';
 <button onClick={composeEventHandlers(props.onClick, handleInternalClick)} />
 ```
 
-### `createContext(name)` — Type-Safe Context
+### `createContext(name)` - Type-Safe Context
 
 Creates a React context with a required provider. Throws a helpful error if consumed outside its provider.
 
@@ -59,7 +59,7 @@ import { createContext } from '@ninna-ui/utils';
 const [FormProvider, useFormContext] = createContext<FormContextValue>('FormControl');
 ```
 
-### `KEYS` — Keyboard Constants
+### `KEYS` - Keyboard Constants
 
 Standard keyboard key constants for accessible event handling:
 
@@ -74,7 +74,7 @@ KEYS.ARROW_DOWN // "ArrowDown"
 KEYS.TAB        // "Tab"
 ```
 
-### `canUseDOM` / `getOwnerWindow` — SSR Safety
+### `canUseDOM` / `getOwnerWindow` - SSR Safety
 
 Runtime checks for safe DOM access in server-side rendering contexts:
 
@@ -90,15 +90,15 @@ const win = getOwnerWindow(element); // Get the owner window of a DOM element
 
 ## Architecture Rules
 
-- **React is optional** — `cn`, `KEYS`, `canUseDOM` are pure; `createContext` and `composeRefs` require React
-- **No DOM APIs** — Must work in SSR contexts (`canUseDOM` is a check, not a usage)
-- **No `@ninna-ui/*` imports** — This is a leaf dependency
-- **No side effects** — All functions are pure
+- **React is optional** - `cn`, `KEYS`, `canUseDOM` are pure; `createContext` and `composeRefs` require React
+- **No DOM APIs** - Must work in SSR contexts (`canUseDOM` is a check, not a usage)
+- **No `@ninna-ui/*` imports** - This is a leaf dependency
+- **No side effects** - All functions are pure
 
 ## Related Packages
 
-- [`@ninna-ui/core`](../core/README.md) — Design tokens and theme presets
-- [All packages](../../README.md#packages) — Complete package list
+- [`@ninna-ui/core`](../core/README.md) - Design tokens and theme presets
+- [All packages](../../README.md#packages) - Complete package list
 
 ## License
 

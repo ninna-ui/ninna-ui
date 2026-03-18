@@ -163,7 +163,7 @@ function isValidTailwindClass(token) {
 
 /**
  * Convert a Tailwind class to its expected CSS selector.
- * This is a simplified version — handles the most common patterns.
+ * This is a simplified version - handles the most common patterns.
  */
 function classToSelector(cls) {
   // Escape special CSS characters
@@ -305,7 +305,7 @@ function main() {
       }
     }
 
-    // Try a raw substring match — the class name with special chars escaped
+    // Try a raw substring match - the class name with special chars escaped
     // should appear somewhere in the CSS output
     const rawEscaped = cls
       .replace(/\\/g, '\\\\')
@@ -357,8 +357,8 @@ function main() {
   cleanup();
 
   if (missing.length > 0) {
-    console.log(`\n⚠️  ${missing.length} classes missing — review safelist or @source directives.`);
-    // Don't exit with error for now — just warn
+    console.log(`\n⚠️  ${missing.length} classes missing - review safelist or @source directives.`);
+    // Don't exit with error for now - just warn
     // process.exit(1);
   } else {
     console.log('\n🎉 All classes present in built CSS!');

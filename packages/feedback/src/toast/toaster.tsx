@@ -161,7 +161,7 @@ export const Toaster = forwardRef<HTMLDivElement, ToasterProps>(
       setMounted(true);
     }, []);
 
-    // Subscribe to global toast state — filter by toasterId if provided
+    // Subscribe to global toast state - filter by toasterId if provided
     useEffect(() => {
       const filter = (all: ToastData[]) =>
         id !== undefined

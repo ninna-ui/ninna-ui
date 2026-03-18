@@ -97,7 +97,7 @@ export const Simple: Story = {
     <Card className="w-[350px]">
       <Card.Body>
         <p className="text-sm text-base-content/70">
-          A simple card with only a body — no header or footer.
+          A simple card with only a body - no header or footer.
         </p>
       </Card.Body>
     </Card>

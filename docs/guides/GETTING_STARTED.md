@@ -1,8 +1,8 @@
-# Getting Started with Ninna-UI
+# Getting Started with Ninna UI
 
-Quick start guide for installing and using Ninna-UI in your React project.
+> **From zero to a fully themed React app in under 2 minutes.** Install a package, import one CSS file, and start building with 69 accessible, production-ready components.
 
-> **Full documentation:** [ninna-ui.dev](https://ninna-ui.dev) — live component demos, API reference, and guides.
+**Full documentation with live demos:** [ninna-ui.dev](https://ninna-ui.dev) - interactive component reference, framework guides, and API documentation.
 
 ---
 
@@ -35,16 +35,16 @@ Add this to your main CSS file:
 <html data-theme="default">
 ```
 
-> **Required:** Theme variables only activate when `data-theme` matches the preset name. No `@source` directive needed — each preset automatically scans `@ninna-ui` package dist files.
+> **Required:** Theme variables only activate when `data-theme` matches the preset name. No `@source` directive needed - each preset automatically scans `@ninna-ui` package dist files.
 
 **Available theme presets:**
-- `default.css` → `data-theme="default"` — Electric purple + magenta
-- `ocean.css` → `data-theme="ocean"` — Blue + cyan
-- `sunset.css` → `data-theme="sunset"` — Orange + rose
-- `forest.css` → `data-theme="forest"` — Green + amber
-- `minimal.css` → `data-theme="minimal"` — Monochrome
+- `default.css` → `data-theme="default"` - Electric purple + magenta
+- `ocean.css` → `data-theme="ocean"` - Blue + cyan
+- `sunset.css` → `data-theme="sunset"` - Orange + rose
+- `forest.css` → `data-theme="forest"` - Green + amber
+- `minimal.css` → `data-theme="minimal"` - Monochrome
 
-Tailwind CSS v4 uses CSS-first configuration — no `tailwind.config.ts` needed.
+Tailwind CSS v4 uses CSS-first configuration - no `tailwind.config.ts` needed.
 
 ---
 
@@ -109,7 +109,7 @@ Switch themes by importing a different CSS file and updating `data-theme` on `<h
 
 ### Override Colors
 
-Use CSS custom properties to customize colors — scope to `[data-theme]` to match the current selector pattern:
+Use CSS custom properties to customize colors - scope to `[data-theme]` to match the current selector pattern:
 
 ```css
 [data-theme="default"] {
@@ -140,11 +140,11 @@ Target specific component parts for styling:
 
 ## Next Steps
 
-- **[Documentation Website](https://ninna-ui.dev)** — Full component docs with live examples
-- **[Component Standards](../standards/COMPONENT_STANDARD.md)** — Learn component patterns
-- **[Architecture](../architecture/ARCHITECTURE.md)** — Understand the system design
-- **[Accessibility](../standards/ACCESSIBILITY.md)** — WCAG compliance details
-- **[Contributing](./CONTRIBUTING.md)** — Help improve Ninna-UI
+- **[Documentation Website](https://ninna-ui.dev)** - Full component docs with live examples
+- **[Component Standards](../standards/COMPONENT_STANDARD.md)** - Learn component patterns
+- **[Architecture](../architecture/ARCHITECTURE.md)** - Understand the system design
+- **[Accessibility](../standards/ACCESSIBILITY.md)** - WCAG compliance details
+- **[Contributing](./CONTRIBUTING.md)** - Help improve Ninna-UI
 
 ---
 

@@ -209,7 +209,7 @@ export function DropdownMenuView() {
             <ul className="space-y-2 text-base-content/70">
               <li>Uses <Code>role="menu"</Code> with proper ARIA attributes</li>
               <li>Arrow keys navigate between items, Enter/Space selects</li>
-              <li>Typeahead support — type to jump to matching items</li>
+              <li>Typeahead support - type to jump to matching items</li>
               <li>Escape key closes the menu</li>
               <li>Sub menus open with Arrow Right and close with Arrow Left</li>
               <li>Disabled items are skipped during keyboard navigation</li>

@@ -157,7 +157,7 @@ export default defineConfig({
                   <div>
                     <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Add data-theme to index.html</Heading>
                     <CodeBlock code={VITE_HTML_CODE} language="html" copyButtonAlwaysVisible />
-                    <Text size="sm" className="text-base-content/60 mt-2">Required — theme CSS variables only activate when <Code>data-theme</Code> matches the preset name.</Text>
+                    <Text size="sm" className="text-base-content/60 mt-2">Required - theme CSS variables only activate when <Code>data-theme</Code> matches the preset name.</Text>
                   </div>
 
                   <div>
@@ -332,7 +332,7 @@ export default defineConfig({
                     </tr>
                     <tr>
                       <td className="py-2.5 pr-4"><Code color="primary">@ninna-ui/cli</Code></td>
-                      <td className="py-2.5 pr-4">Project scaffolding CLI — <Code>npx @ninna-ui/cli init</Code></td>
+                      <td className="py-2.5 pr-4">Project scaffolding CLI - <Code>npx @ninna-ui/cli init</Code></td>
                       <td className="py-2.5"><Code >npx @ninna-ui/cli init my-app</Code></td>
                     </tr>
                   </tbody>
