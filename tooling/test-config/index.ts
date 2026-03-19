@@ -24,6 +24,8 @@ export const config = defineConfig({
         setupFiles: [path.resolve(_dirname, './setup.js')],
         css: true,
         testTimeout: 15000,
+        pool: 'threads',
+        maxWorkers: 1,
     },
 });
 
