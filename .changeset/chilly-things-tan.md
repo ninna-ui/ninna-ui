@@ -22,3 +22,5 @@ fix: upgrade all dependencies to latest stable versions and resolve security vul
 - Removed pnpm overrides as direct upgrades are sufficient
 - Updated eslint, typescript, react, and all other dependencies
 - All packages now report 0 vulnerabilities in pnpm audit
+- Fixed vitest worker timeout issues with single-threaded execution
+- All tests (708) now pass successfully after dependency upgrade
