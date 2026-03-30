@@ -8,9 +8,13 @@ export const timelineStyles = {
     withIcon: 'h-8 w-8 mt-0',
     default: 'bg-base-300',
     primary: 'bg-primary',
+    secondary: 'bg-secondary',
+    accent: 'bg-accent',
+    neutral: 'bg-neutral',
     success: 'bg-success',
     danger: 'bg-danger',
     warning: 'bg-warning',
+    info: 'bg-info',
   },
   connector: 'absolute left-[5px] top-4 bottom-0 w-0.5 bg-base-200',
   connectorHorizontal: 'static h-0.5 w-full',
@@ -20,10 +24,14 @@ export const timelineStyles = {
   time: 'text-xs text-base-content/70 mt-1',
 };
 
-export const TIMELINE_INDICATOR_STATUS: Record<'default' | 'primary' | 'success' | 'danger' | 'warning', string> = {
+export const TIMELINE_INDICATOR_STATUS: Record<'default' | 'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'danger' | 'warning' | 'info', string> = {
   default: timelineStyles.indicator.default,
   primary: timelineStyles.indicator.primary,
+  secondary: timelineStyles.indicator.secondary,
+  accent: timelineStyles.indicator.accent,
+  neutral: timelineStyles.indicator.neutral,
   success: timelineStyles.indicator.success,
   danger: timelineStyles.indicator.danger,
   warning: timelineStyles.indicator.warning,
+  info: timelineStyles.indicator.info,
 };

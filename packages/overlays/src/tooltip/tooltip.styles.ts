@@ -5,12 +5,15 @@ export const tooltipContentVariants = cva(
   {
     variants: {
       color: {
-        default:  "bg-neutral text-neutral-content",
-        primary:  "bg-primary text-primary-content",
-        success:  "bg-success text-success-content",
-        danger:   "bg-danger text-danger-content",
-        warning:  "bg-warning text-warning-content",
-        info:     "bg-info text-info-content",
+        default:   "bg-neutral text-neutral-content",
+        primary:   "bg-primary text-primary-content",
+        secondary: "bg-secondary text-secondary-content",
+        accent:    "bg-accent text-accent-content",
+        neutral:   "bg-neutral text-neutral-content",
+        success:   "bg-success text-success-content",
+        danger:    "bg-danger text-danger-content",
+        warning:   "bg-warning text-warning-content",
+        info:      "bg-info text-info-content",
       },
     },
     defaultVariants: { color: "default" },
@@ -18,6 +21,18 @@ export const tooltipContentVariants = cva(
 );
 
 export type TooltipContentVariantsProps = VariantProps<typeof tooltipContentVariants>;
+
+export const TOOLTIP_ARROW_COLORS: Record<string, string> = {
+  default:   "fill-neutral",
+  primary:   "fill-primary",
+  secondary: "fill-secondary",
+  accent:    "fill-accent",
+  neutral:   "fill-neutral",
+  success:   "fill-success",
+  danger:    "fill-danger",
+  warning:   "fill-warning",
+  info:      "fill-info",
+};
 
 export const tooltipStyles = {
   arrow: "fill-neutral",

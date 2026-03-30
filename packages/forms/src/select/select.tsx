@@ -32,6 +32,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
     {
       size = 'md',
       variant = 'outline',
+      color = 'primary',
       value,
       defaultValue,
       onValueChange,
@@ -72,7 +73,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           data-disabled={disabled || undefined}
           data-variant={variant}
           className={cn(
-            selectTriggerVariants({ selectVariant: variant as 'outline' | 'filled' | 'flushed', size, invalid: !!isInvalid, fullWidth: !!fullWidth }),
+            selectTriggerVariants({ selectVariant: variant as 'outline' | 'filled' | 'flushed', color, size, invalid: !!isInvalid, fullWidth: !!fullWidth }),
             className
           )}
           aria-label={ariaLabel}

@@ -33,6 +33,8 @@ export interface TooltipContentProps extends ComponentPropsWithoutRef<'div'> {
   sideOffset?: number;
   /** Alignment along the side @default 'center' */
   align?: 'start' | 'center' | 'end';
+  /** Color theme @default 'default' */
+  color?: 'default' | 'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'danger' | 'warning' | 'info';
   /** Whether to show an arrow @default false */
   hasArrow?: boolean | undefined;
   /** Whether to avoid collisions with viewport boundary @default true */

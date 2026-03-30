@@ -47,6 +47,27 @@ describe('Toast', () => {
     });
   });
 
+  it('soft variant applies left accent bar', () => {
+    render(
+      <Toast
+        toast={{ id: 't-soft', title: 'Soft', type: 'success', variant: 'soft', closable: true }}
+      />
+    );
+    const el = screen.getByRole('status');
+    expect(el.className).toContain('border-l-4');
+    expect(el.className).toContain('border-l-success');
+  });
+
+  it('outline variant does not have left accent bar', () => {
+    render(
+      <Toast
+        toast={{ id: 't-outline', title: 'Outline', type: 'success', variant: 'outline', closable: true }}
+      />
+    );
+    const el = screen.getByRole('status');
+    expect(el.className).not.toContain('border-l-4');
+  });
+
   it('has no accessibility violations', async () => {
     const { container } = render(
       <Toast toast={{ id: 't1', title: 'Info', type: 'info', closable: true }} />

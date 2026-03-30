@@ -26,5 +26,7 @@ export interface StatTrendProps extends ComponentPropsWithoutRef<'span'> {
 
 /** Props for Stat icon */
 export interface StatIconProps extends ComponentPropsWithoutRef<'div'> {
+  /** Color theme for the icon background @default 'primary' */
+  color?: 'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'danger' | 'warning' | 'info';
   children: ReactNode;
 }

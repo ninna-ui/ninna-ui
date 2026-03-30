@@ -14,7 +14,7 @@ export interface TimelineIndicatorProps extends ComponentPropsWithoutRef<'div'> 
   /** Custom icon to show instead of a dot */
   icon?: ReactNode;
   /** Status color */
-  status?: 'default' | 'primary' | 'success' | 'danger' | 'warning';
+  status?: 'default' | 'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'danger' | 'warning' | 'info';
 }
 
 /** Props for Timeline content */

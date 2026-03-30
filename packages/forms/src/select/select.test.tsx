@@ -42,4 +42,26 @@ describe('Select', () => {
     expect(trigger).toHaveAttribute('aria-expanded', 'false');
     expect(trigger).toHaveAttribute('aria-autocomplete', 'none');
   });
+
+  it('applies default primary focus ring color', () => {
+    render(
+      <Select placeholder="Pick one">
+        <SelectItem value="a">A</SelectItem>
+      </Select>
+    );
+    const trigger = screen.getByRole('combobox');
+    expect(trigger.className).toContain('focus:ring-primary/30');
+    expect(trigger.className).toContain('focus:border-primary');
+  });
+
+  it('applies custom color focus ring', () => {
+    render(
+      <Select color="accent" placeholder="Pick one">
+        <SelectItem value="a">A</SelectItem>
+      </Select>
+    );
+    const trigger = screen.getByRole('combobox');
+    expect(trigger.className).toContain('focus:ring-accent/30');
+    expect(trigger.className).toContain('focus:border-accent');
+  });
 });

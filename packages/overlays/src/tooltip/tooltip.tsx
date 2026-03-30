@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { TooltipEngine } from '@ninna-ui/react-internal';
-import { tooltipContentVariants, tooltipStyles } from './tooltip.styles';
+import { tooltipContentVariants, tooltipStyles, TOOLTIP_ARROW_COLORS } from './tooltip.styles';
 import type {
   TooltipProps,
   TooltipTriggerProps,
@@ -70,6 +70,7 @@ const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
       side = 'top',
       sideOffset = 4,
       align = 'center',
+      color = 'default',
       hasArrow = false,
       avoidCollisions = true,
       className,
@@ -88,14 +89,14 @@ const TooltipContent = forwardRef<HTMLDivElement, TooltipContentProps>(
           align={align}
           avoidCollisions={avoidCollisions}
           role="tooltip"
-          className={cn(tooltipContentVariants(), className)}
+          className={cn(tooltipContentVariants({ color }), className)}
           {...props}
         >
           {children}
           {hasArrow && (
             <TooltipEngine.Arrow
               data-slot="tooltip-arrow"
-              className={tooltipStyles.arrow}
+              className={TOOLTIP_ARROW_COLORS[color] || tooltipStyles.arrow}
             />
           )}
         </TooltipEngine.Content>

@@ -27,13 +27,13 @@ export const toastVariants = cva(
       { variant: "solid", type: "warning", class: "bg-warning text-warning-content border-warning" },
       { variant: "solid", type: "info",    class: "bg-info text-info-content border-info" },
       { variant: "solid", type: "loading", class: "bg-base-content text-base-100 border-base-content" },
-      // soft
-      { variant: "soft", type: "default", class: "bg-base-100 text-base-content border-base-200" },
-      { variant: "soft", type: "success", class: "bg-success/10 text-success border-success/20" },
-      { variant: "soft", type: "danger",  class: "bg-danger/10 text-danger border-danger/20" },
-      { variant: "soft", type: "warning", class: "bg-warning/10 text-warning border-warning/20" },
-      { variant: "soft", type: "info",    class: "bg-info/10 text-info border-info/20" },
-      { variant: "soft", type: "loading", class: "bg-base-100 text-base-content border-base-200" },
+      // soft - opaque background with colored left accent bar + subtle border
+      { variant: "soft", type: "default", class: "bg-base-100 text-base-content border-base-300 border-l-4 border-l-base-content" },
+      { variant: "soft", type: "success", class: "bg-base-100 text-success border-success/30 border-l-4 border-l-success" },
+      { variant: "soft", type: "danger",  class: "bg-base-100 text-danger border-danger/30 border-l-4 border-l-danger" },
+      { variant: "soft", type: "warning", class: "bg-base-100 text-warning border-warning/30 border-l-4 border-l-warning" },
+      { variant: "soft", type: "info",    class: "bg-base-100 text-info border-info/30 border-l-4 border-l-info" },
+      { variant: "soft", type: "loading", class: "bg-base-100 text-base-content border-base-300 border-l-4 border-l-base-content" },
       // outline
       { variant: "outline", type: "default", class: "bg-base-100 text-base-content border-base-300" },
       { variant: "outline", type: "success", class: "bg-base-100 text-success border-success" },

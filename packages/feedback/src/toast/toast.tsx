@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useRef, useCallback } from 'react';
-import { cn } from '@ninna-ui/utils';
 import { toastContentStyles, toastVariants, TOAST_ICON_COLORS, TOAST_ANIMATIONS } from './toast.styles';
 import type { ToastProps, ToastVariant, ToastType, ToastPosition } from './toast.types';
+import { cn } from '@ninna-ui/utils';
 
 function getEnteringClass(position?: ToastPosition): string {
   if (!position) return TOAST_ANIMATIONS.entering;
@@ -81,12 +81,13 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
           {icon && (
             <span className={cn(
               isLoading ? toastContentStyles.loadingIcon : toastContentStyles.icon,
-              TOAST_ICON_COLORS[type]
+              TOAST_ICON_COLORS[type],
+              variant === 'solid' && 'text-current'
             )}>
               {icon}
             </span>
           )}
-          
+
           <div data-slot="content" className={toastContentStyles.content}>
             {title && (
               <div data-slot="title" className={toastContentStyles.title}>

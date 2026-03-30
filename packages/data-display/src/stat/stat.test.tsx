@@ -68,6 +68,28 @@ describe('Stat', () => {
     expect(screen.getByText('-5%')).toBeInTheDocument();
   });
 
+  it('icon defaults to primary color', () => {
+    render(
+      <Stat>
+        <Stat.Icon data-testid="icon">📈</Stat.Icon>
+      </Stat>
+    );
+    const icon = screen.getByTestId('icon');
+    expect(icon.className).toContain('bg-primary/10');
+    expect(icon.className).toContain('text-primary');
+  });
+
+  it('icon accepts custom color', () => {
+    render(
+      <Stat>
+        <Stat.Icon color="success" data-testid="icon">✅</Stat.Icon>
+      </Stat>
+    );
+    const icon = screen.getByTestId('icon');
+    expect(icon.className).toContain('bg-success/10');
+    expect(icon.className).toContain('text-success');
+  });
+
   it('has no accessibility violations', async () => {
     const { container } = render(
       <Stat>
