@@ -1,3 +1,5 @@
+import type { Color } from '@ninna-ui/core';
+
 export const timelineStyles = {
   root: 'relative flex flex-col gap-0',
   rootHorizontal: 'flex-row overflow-x-auto',
@@ -24,12 +26,11 @@ export const timelineStyles = {
   time: 'text-xs text-base-content/70 mt-1',
 };
 
-export const TIMELINE_INDICATOR_STATUS: Record<'default' | 'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'danger' | 'warning' | 'info', string> = {
-  default: timelineStyles.indicator.default,
+export const TIMELINE_INDICATOR_STATUS: Record<Color, string> = {
   primary: timelineStyles.indicator.primary,
   secondary: timelineStyles.indicator.secondary,
   accent: timelineStyles.indicator.accent,
-  neutral: timelineStyles.indicator.neutral,
+  neutral: timelineStyles.indicator.default,
   success: timelineStyles.indicator.success,
   danger: timelineStyles.indicator.danger,
   warning: timelineStyles.indicator.warning,

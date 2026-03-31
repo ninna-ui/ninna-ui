@@ -14,6 +14,12 @@ const meta: Meta = {
       description: 'Size of the stat value (on Stat.Value)',
       table: { defaultValue: { summary: 'md' } },
     },
+    color: {
+      control: 'select',
+      options: ['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'],
+      description: 'Color theme for the icon background (on Stat.Icon)',
+      table: { defaultValue: { summary: 'primary' } },
+    },
   },
 };
 
@@ -111,6 +117,30 @@ export const WithIcon: Story = {
       </Stat>
     </div>
   ),
+};
+
+export const ColorVariants: Story = {
+  render: () => {
+    const colors = ['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'] as const;
+    const UserIcon = () => (
+      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    );
+    return (
+      <div className="grid grid-cols-4 gap-4">
+        {colors.map((color) => (
+          <Stat key={color}>
+            <Stat.Label>{color.charAt(0).toUpperCase() + color.slice(1)}</Stat.Label>
+            <Stat.Value>1,234</Stat.Value>
+            <Stat.Icon color={color}>
+              <UserIcon />
+            </Stat.Icon>
+          </Stat>
+        ))}
+      </div>
+    );
+  },
 };
 
 export const Dashboard: Story = {

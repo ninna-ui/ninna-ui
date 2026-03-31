@@ -7,6 +7,7 @@ import {
   AVATAR_RING_COLORS,
   AVATAR_IMAGE_CLASS,
   AVATAR_FALLBACK_CLASS,
+  AVATAR_COLOR_CLASSES,
 } from './avatar.styles';
 import type { AvatarProps } from './avatar.types';
 import type { Color, Size } from '@ninna-ui/core';
@@ -73,14 +74,14 @@ const AvatarFallback = ({
       <DefaultFallbackIcon
         className={cn(
           AVATAR_ICON_SIZES[size],
-          `text-${color}`
+          AVATAR_COLOR_CLASSES[color]
         )}
       />
     );
   }
 
   return (
-    <span className={cn(AVATAR_TEXT_SIZES[size], `text-${color}`)}>  
+    <span className={cn(AVATAR_TEXT_SIZES[size], AVATAR_COLOR_CLASSES[color])}>  
       {initials}
     </span>
   );

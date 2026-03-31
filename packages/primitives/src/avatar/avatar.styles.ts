@@ -94,3 +94,15 @@ export const avatarGroupStyles = {
 export const AVATAR_IMAGE_CLASS = "h-full w-full object-cover";
 export const AVATAR_FALLBACK_CLASS = "flex items-center justify-center h-full w-full font-medium uppercase";
 
+/** Color classes for fallback text and icons */
+export const AVATAR_COLOR_CLASSES: Record<import('@ninna-ui/core').Color, string> = {
+  primary: "text-primary",
+  secondary: "text-secondary", 
+  accent: "text-accent",
+  neutral: "text-neutral",
+  success: "text-success",
+  danger: "text-danger",
+  warning: "text-warning",
+  info: "text-info",
+};
+

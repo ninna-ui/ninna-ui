@@ -33,6 +33,11 @@ const TREND_PROPS: PropDefinition[] = [
   { name: "className", type: "string", description: "Additional CSS classes" },
 ];
 
+const ICON_PROPS: PropDefinition[] = [
+  { name: "color", type: "'neutral' | 'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info'", defaultValue: "'primary'", description: "Color theme for the icon background" },
+  { name: "className", type: "string", description: "Additional CSS classes" },
+];
+
 const USAGE = `import { Stat } from "@ninna-ui/data-display";
 
 export default function Example() {
@@ -79,6 +84,7 @@ export function StatView() {
           <div className="space-y-8">
             <PropsTable title="Stat.Value" data={VALUE_PROPS} />
             <PropsTable title="Stat.Trend" data={TREND_PROPS} />
+            <PropsTable title="Stat.Icon" data={ICON_PROPS} />
           </div>
         </ComponentSection>
 

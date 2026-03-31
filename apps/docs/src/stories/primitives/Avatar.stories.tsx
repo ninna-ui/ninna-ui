@@ -43,7 +43,7 @@ const meta: Meta<typeof Avatar> = {
       control: 'select',
       options: ['neutral', 'primary', 'secondary', 'accent', 'info', 'success', 'warning', 'danger'],
       description: 'Color theme for fallback background',
-      table: { defaultValue: { summary: 'default' } },
+      table: { defaultValue: { summary: 'neutral' } },
     },
     showRing: {
       control: 'boolean',
