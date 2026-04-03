@@ -11,7 +11,7 @@ import { Code, Heading } from '@ninna-ui/primitives';
 import { toastMeta } from './meta';
 
 import Basic from './demos/basic';
-import Types from './demos/types';
+import Colors from './demos/colors';
 import Variants from './demos/variants';
 import Positions from './demos/positions';
 import WithAction from './demos/withAction';
@@ -22,7 +22,7 @@ import SimpleMessages from './demos/simpleMessages';
 
 export const toastSections: ComponentSectionType[] = [
   { id: 'usage', title: 'Usage', level: 2 },
-  { id: 'types', title: 'Types', level: 3 },
+  { id: 'colors', title: 'Colors', level: 3 },
   { id: 'variants', title: 'Variants', level: 3 },
   { id: 'positions', title: 'Positions', level: 3 },
   { id: 'with-action', title: 'With Action', level: 3 },
@@ -92,10 +92,16 @@ const TOAST_OPTIONS: PropDefinition[] = [
     description: 'Toast description/message',
   },
   {
-    name: 'type',
-    type: "'default' | 'success' | 'danger' | 'warning' | 'info' | 'loading'",
-    defaultValue: "'default'",
-    description: 'Toast type/status',
+    name: 'color',
+    type: "'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'danger' | 'warning' | 'info'",
+    defaultValue: "'neutral'",
+    description: 'Color theme matching the notification type',
+  },
+  {
+    name: 'isLoading',
+    type: 'boolean',
+    defaultValue: 'false',
+    description: 'Show a spinning loader icon (used internally by toast.loading())',
   },
   {
     name: 'variant',
@@ -233,14 +239,14 @@ export function ToastView() {
         </ComponentSection>
 
         <ComponentSection
-          id="types"
-          title="Types"
-          description="Different toast types for various notification purposes."
+          id="colors"
+          title="Colors"
+          description="Different toast colors for various notification purposes."
           level={3}
         >
           <CodePreview
-            component={<Types />}
-            filePath="app/views/feedback/toast/demos/types.tsx"
+            component={<Colors />}
+            filePath="app/views/feedback/toast/demos/colors.tsx"
           />
         </ComponentSection>
 

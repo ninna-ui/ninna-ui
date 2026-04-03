@@ -13,7 +13,7 @@ describe('Toast', () => {
   it('renders danger toast as alert role', () => {
     render(
       <Toast
-        toast={{ id: 't1', title: 'Error', type: 'danger', closable: true }}
+        toast={{ id: 't1', title: 'Error', color: 'danger', closable: true }}
       />
     );
 
@@ -25,7 +25,7 @@ describe('Toast', () => {
     const onDismiss = vi.fn();
     render(
       <Toast
-        toast={{ id: 't1', title: 'Saved', type: 'success', closable: true }}
+        toast={{ id: 't1', title: 'Saved', color: 'success', closable: true }}
         onDismiss={onDismiss}
       />
     );
@@ -47,30 +47,50 @@ describe('Toast', () => {
     });
   });
 
-  it('soft variant applies left accent bar', () => {
+  it('soft variant applies tinted background', () => {
     render(
       <Toast
-        toast={{ id: 't-soft', title: 'Soft', type: 'success', variant: 'soft', closable: true }}
+        toast={{ id: 't-soft', title: 'Soft', color: 'success', variant: 'soft', closable: true }}
       />
     );
     const el = screen.getByRole('status');
-    expect(el.className).toContain('border-l-4');
-    expect(el.className).toContain('border-l-success');
+    expect(el.className).toContain('bg-success/10');
+    expect(el.className).toContain('text-success');
   });
 
-  it('outline variant does not have left accent bar', () => {
+  it('solid variant applies full background', () => {
     render(
       <Toast
-        toast={{ id: 't-outline', title: 'Outline', type: 'success', variant: 'outline', closable: true }}
+        toast={{ id: 't-solid', title: 'Solid', color: 'success', variant: 'solid', closable: true }}
       />
     );
     const el = screen.getByRole('status');
-    expect(el.className).not.toContain('border-l-4');
+    expect(el.className).toContain('bg-success');
+    expect(el.className).toContain('text-success-content');
+  });
+
+  it('outline variant applies transparent background', () => {
+    render(
+      <Toast
+        toast={{ id: 't-outline', title: 'Outline', color: 'success', variant: 'outline', closable: true }}
+      />
+    );
+    const el = screen.getByRole('status');
+    expect(el.className).toContain('bg-transparent');
+  });
+
+  it('loading toast shows isLoading flag', () => {
+    render(
+      <Toast
+        toast={{ id: 't-loading', title: 'Loading...', color: 'neutral', isLoading: true, closable: false }}
+      />
+    );
+    expect(screen.getByText('Loading...')).toBeInTheDocument();
   });
 
   it('has no accessibility violations', async () => {
     const { container } = render(
-      <Toast toast={{ id: 't1', title: 'Info', type: 'info', closable: true }} />
+      <Toast toast={{ id: 't1', title: 'Info', color: 'info', closable: true }} />
     );
     expect(await axe(container)).toHaveNoViolations();
   });

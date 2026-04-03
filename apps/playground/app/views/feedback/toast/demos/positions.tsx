@@ -23,7 +23,8 @@ export default function Positions() {
     toast.create({
       title: `Position: ${pos}`,
       description: 'Toast appears at this position.',
-      type: 'info',
+      color: 'primary',
+      variant: 'solid',
       duration: 3000,
       toasterId: pos,
     });
@@ -37,8 +38,7 @@ export default function Positions() {
       <div className="grid grid-cols-3 gap-2 w-full max-w-sm">
         {POSITIONS.map((pos) => (
           <Button
-            key={pos}
-            size="sm"
+            key={pos} 
             variant="outline"
             color="primary"
             onClick={() => showToast(pos)}

@@ -1,10 +1,10 @@
 import { createContext, useContext, useCallback, useState, useRef } from 'react';
 import type { ReactNode } from 'react';
+import { toast } from './toaster';
 import type { 
   ToastData, 
   CreateToastOptions, 
   ToastContextValue,
-  ToastType,
 } from './toast.types';
 
 let toastCount = 0;
@@ -31,7 +31,7 @@ export function ToastProvider({ children }: ToastProviderProps) {
     const id = generateId();
     const newToast: ToastData = {
       id,
-      type: 'default',
+      color: 'primary',
       variant: 'soft',
       duration: 5000,
       closable: true,
@@ -58,79 +58,12 @@ export function ToastProvider({ children }: ToastProviderProps) {
     );
   }, []);
 
-  const createTypedToast = useCallback(
-    (type: ToastType) => (options: CreateToastOptions | string): string => {
-      const toastOptions: CreateToastOptions =
-        typeof options === 'string'
-          ? { title: options, type }
-          : { ...options, type };
-      return addToast(toastOptions);
-    },
-    [addToast]
-  );
-
-  const promise = useCallback(
-    async <T,>(
-      promiseOrFn: Promise<T>,
-      options: {
-        loading: CreateToastOptions | string;
-        success: CreateToastOptions | string | ((data: T) => CreateToastOptions | string);
-        error: CreateToastOptions | string | ((error: unknown) => CreateToastOptions | string);
-      }
-    ): Promise<T> => {
-      const loadingOptions: CreateToastOptions =
-        typeof options.loading === 'string'
-          ? { title: options.loading, type: 'loading' }
-          : { ...options.loading, type: 'loading' };
-
-      const id = addToast({ ...loadingOptions, duration: 0 });
-
-      try {
-        const result = await promiseOrFn;
-        
-        const successOptions =
-          typeof options.success === 'function'
-            ? options.success(result)
-            : options.success;
-        
-        const successToast: CreateToastOptions =
-          typeof successOptions === 'string'
-            ? { title: successOptions, type: 'success' }
-            : { ...successOptions, type: 'success' };
-
-        update(id, { ...successToast, duration: 5000 });
-        
-        return result;
-      } catch (err) {
-        const errorOptions =
-          typeof options.error === 'function'
-            ? options.error(err)
-            : options.error;
-        
-        const errorToast: CreateToastOptions =
-          typeof errorOptions === 'string'
-            ? { title: errorOptions, type: 'danger' }
-            : { ...errorOptions, type: 'danger' };
-
-        update(id, { ...errorToast, duration: 5000 });
-        
-        throw err;
-      }
-    },
-    [addToast, update]
-  );
-
   const contextValue: ToastContextValue = {
     toast: addToast,
-    success: createTypedToast('success'),
-    error: createTypedToast('danger'),
-    warning: createTypedToast('warning'),
-    info: createTypedToast('info'),
-    loading: createTypedToast('loading'),
     dismiss,
     dismissAll,
     update,
-    promise,
+    promise: toast.promise,
   };
 
   return (
