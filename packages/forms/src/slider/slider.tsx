@@ -67,7 +67,6 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
     
     const safeValue = internalValue;
     
-    // Calculate mark positions
     const getMarkPositions = (): number[] => {
       if (!marks) return [];
       if (marks === true) {
@@ -83,10 +82,12 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
     const markPositions = getMarkPositions();
 
     const sliderElement = (
-      <div className={cn(sliderStyles.sliderRow, !isHorizontal && 'flex-col h-full min-h-[150px]')}>
+      <div 
+        className={cn(sliderStyles.sliderRow, !isHorizontal && 'flex-col h-full min-h-[150px]')}
+      >
         <SliderEngine.Root
           ref={ref}
-          data-slot="root"
+          data-slot="slider"
           value={value}
           defaultValue={defaultValue}
           onValueChange={handleValueChange}
@@ -99,6 +100,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
           orientation={orientation}
           inverted={inverted}
           name={name}
+          aria-labelledby={label ? generatedId : undefined}
           className={cn(
             sliderRootVariants({ orientation, size, disabled: !!disabled }),
             className
@@ -114,7 +116,6 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
               className={sliderRangeVariants({ variant, color, orientation })}
             />
             
-            {/* Render marks */}
             {markPositions.length > 0 && (
               <div className={sliderStyles.marksContainer}>
                 {markPositions.map((markValue) => {
@@ -139,12 +140,12 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
             )}
           </SliderEngine.Track>
 
-          {/* Render thumbs - using stable keys based on index since safeValue index is stable for SliderEngine */}
           {safeValue.map((_, index) => (
             <SliderEngine.Thumb
               key={`slider-thumb-${index}`}
               data-slot="thumb"
               className={sliderThumbVariants({ variant, color, size, orientation })}
+              aria-labelledby={label ? generatedId : undefined}
             />
           ))}
         </SliderEngine.Root>
@@ -166,7 +167,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 
     return (
       <div className={sliderStyles.wrapper}>
-        <label id={generatedId} className={sliderStyles.label} htmlFor={generatedId}>
+        <label id={generatedId} className={sliderStyles.label}>
           {label}
         </label>
         {sliderElement}

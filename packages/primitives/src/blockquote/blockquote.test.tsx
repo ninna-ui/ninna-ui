@@ -28,19 +28,20 @@ describe('Blockquote', () => {
     expect(screen.getByTestId('bq')).toBeInTheDocument();
   });
 
-  it('solid variant applies tinted background', () => {
+  it('solid variant applies solid background', () => {
     render(<Blockquote variant="solid" color="primary" data-testid="bq">Quote</Blockquote>);
     const el = screen.getByTestId('bq');
-    expect(el.className).toContain('bg-primary/15');
-    expect(el.className).toContain('border-l-4');
+    expect(el.className).toContain('bg-primary');
+    expect(el.className).toContain('text-primary-content');
+    expect(el.className).toContain('border-primary');
   });
 
-  it('soft variant applies border and background', () => {
+  it('soft variant applies tinted background', () => {
     render(<Blockquote variant="soft" color="primary" data-testid="bq">Quote</Blockquote>);
     const el = screen.getByTestId('bq');
-    expect(el.className).toContain('bg-primary/10');
-    expect(el.className).toContain('border-primary/30');
-    expect(el.className).toContain('rounded-lg');
+    expect(el.className).toContain('bg-primary/15');
+    expect(el.className).toContain('border-primary');
+    expect(el.className).toContain('rounded-r-lg');
   });
 
   it('outline variant has no background', () => {
