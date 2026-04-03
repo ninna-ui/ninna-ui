@@ -109,15 +109,19 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           )}
         >
           {indeterminate ? (
-            indeterminateIcon || <MinusIcon className={cn(CHECKBOX_ICON_SIZES[size], 'text-white')} />
+            indeterminateIcon
+              ? <span className="text-white flex items-center justify-center">{indeterminateIcon}</span>
+              : <MinusIcon className={cn(CHECKBOX_ICON_SIZES[size], 'text-white')} />
           ) : (
-            icon || <CheckIcon
-              className={cn(
-                CHECKBOX_ICON_SIZES[size],
-                'text-white transition-opacity',
-                isChecked ? 'opacity-100' : 'opacity-0'
-              )}
-            />
+            icon
+              ? <span className={cn('text-white flex items-center justify-center transition-opacity', isChecked ? 'opacity-100' : 'opacity-0')}>{icon}</span>
+              : <CheckIcon
+                  className={cn(
+                    CHECKBOX_ICON_SIZES[size],
+                    'text-white transition-opacity',
+                    isChecked ? 'opacity-100' : 'opacity-0'
+                  )}
+                />
           )}
         </span>
       </label>
