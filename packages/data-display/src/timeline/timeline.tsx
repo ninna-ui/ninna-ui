@@ -47,7 +47,7 @@ const TimelineItem = forwardRef<HTMLDivElement, TimelineItemProps>(
 TimelineItem.displayName = 'Timeline.Item';
 
 const TimelineIndicator = forwardRef<HTMLDivElement, TimelineIndicatorProps>(
-  ({ icon, status = 'default', className, children, ...props }, ref) => {
+  ({ icon, status = 'neutral', className, children, ...props }, ref) => {
     const hasIcon = !!icon || !!children;
     return (
       <div

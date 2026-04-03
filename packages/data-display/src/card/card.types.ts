@@ -1,12 +1,15 @@
 import type { ComponentPropsWithoutRef } from 'react';
+import type { Color } from '@ninna-ui/core';
 
 /** Variant options for the Card */
-export type CardVariant = 'outline' | 'elevated' | 'filled' | 'ghost';
+export type CardVariant = 'outline' | 'elevated' | 'filled' | 'ghost' | 'soft' | 'solid';
 
 /** Props for the Card root component */
 export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   /** Visual variant @default 'outline' */
   variant?: CardVariant;
+  /** Color theme of the card */
+  color?: Color;
   /** Whether the card is interactive (hover/focus styles) */
   interactive?: boolean;
 }

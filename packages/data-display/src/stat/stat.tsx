@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { statStyles, STAT_VALUE_SIZES } from './stat.styles';
+import { statStyles, STAT_VALUE_SIZES, STAT_ICON_COLORS } from './stat.styles';
 import type {
   StatProps,
   StatLabelProps,
@@ -91,9 +91,9 @@ const StatTrend = forwardRef<HTMLSpanElement, StatTrendProps>(
 StatTrend.displayName = 'Stat.Trend';
 
 const StatIcon = forwardRef<HTMLDivElement, StatIconProps>(
-  ({ className, children, ...props }, ref) => {
+  ({ color = 'primary', className, children, ...props }, ref) => {
     return (
-      <div ref={ref} data-slot="stat-icon" className={cn(statStyles.icon, className)} {...props}>
+      <div ref={ref} data-slot="stat-icon" className={cn(statStyles.icon, STAT_ICON_COLORS[color], className)} {...props}>
         {children}
       </div>
     );

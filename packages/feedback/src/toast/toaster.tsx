@@ -29,7 +29,7 @@ export const toast = {
     const id = generateId();
     const newToast: ToastData = {
       id,
-      type: 'default',
+      color: 'primary',
       variant: 'soft',
       duration: 5000,
       closable: true,
@@ -38,36 +38,6 @@ export const toast = {
     globalToasts = [...globalToasts, newToast];
     notifyListeners();
     return id;
-  },
-
-  success: (options: CreateToastOptions | string): string => {
-    const toastOptions: CreateToastOptions =
-      typeof options === 'string' ? { title: options } : options;
-    return toast.create({ ...toastOptions, type: 'success' });
-  },
-
-  error: (options: CreateToastOptions | string): string => {
-    const toastOptions: CreateToastOptions =
-      typeof options === 'string' ? { title: options } : options;
-    return toast.create({ ...toastOptions, type: 'danger' });
-  },
-
-  warning: (options: CreateToastOptions | string): string => {
-    const toastOptions: CreateToastOptions =
-      typeof options === 'string' ? { title: options } : options;
-    return toast.create({ ...toastOptions, type: 'warning' });
-  },
-
-  info: (options: CreateToastOptions | string): string => {
-    const toastOptions: CreateToastOptions =
-      typeof options === 'string' ? { title: options } : options;
-    return toast.create({ ...toastOptions, type: 'info' });
-  },
-
-  loading: (options: CreateToastOptions | string): string => {
-    const toastOptions: CreateToastOptions =
-      typeof options === 'string' ? { title: options } : options;
-    return toast.create({ ...toastOptions, type: 'loading', duration: 0 });
   },
 
   dismiss: (id?: string): void => {
@@ -99,38 +69,22 @@ export const toast = {
       error: CreateToastOptions | string | ((error: unknown) => CreateToastOptions | string);
     }
   ): Promise<T> => {
-    const loadingOptions: CreateToastOptions =
-      typeof options.loading === 'string'
-        ? { title: options.loading }
-        : options.loading;
-
-    const id = toast.loading(loadingOptions);
+    const loadingOpts: CreateToastOptions =
+      typeof options.loading === 'string' ? { title: options.loading } : options.loading;
+    const id = toast.create({ color: 'primary', ...loadingOpts, isLoading: true, duration: 0 });
 
     try {
       const result = await promise;
-
-      const successOptions =
-        typeof options.success === 'function'
-          ? options.success(result)
-          : options.success;
-
-      const successToast: Partial<CreateToastOptions> =
-        typeof successOptions === 'string'
-          ? { title: successOptions, type: 'success', duration: 5000 }
-          : { ...successOptions, type: 'success', duration: 5000 };
-
-      toast.update(id, successToast);
+      const successOpts = typeof options.success === 'function' ? options.success(result) : options.success;
+      const successData: Partial<CreateToastOptions> =
+        typeof successOpts === 'string' ? { title: successOpts, color: 'success' } : { ...successOpts, color: 'success' };
+      toast.update(id, { ...successData, isLoading: false, duration: 5000 });
       return result;
     } catch (err) {
-      const errorOptions =
-        typeof options.error === 'function' ? options.error(err) : options.error;
-
-      const errorToast: Partial<CreateToastOptions> =
-        typeof errorOptions === 'string'
-          ? { title: errorOptions, type: 'danger', duration: 5000 }
-          : { ...errorOptions, type: 'danger', duration: 5000 };
-
-      toast.update(id, errorToast);
+      const errorOpts = typeof options.error === 'function' ? options.error(err) : options.error;
+      const errorData: Partial<CreateToastOptions> =
+        typeof errorOpts === 'string' ? { title: errorOpts, color: 'danger' } : { ...errorOpts, color: 'danger' };
+      toast.update(id, { ...errorData, isLoading: false, duration: 5000 });
       throw err;
     }
   },

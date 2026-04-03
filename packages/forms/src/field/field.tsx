@@ -45,6 +45,7 @@ export const Field = forwardRef<HTMLDivElement, FieldProps>(
         const childProps = child.props as Record<string, unknown>;
         return cloneElement(child, {
           id: fieldId,
+          size: size || childProps.size,
           disabled: disabled || childProps.disabled,
           'aria-invalid': invalid || childProps['aria-invalid'],
           'aria-describedby': helperId || childProps['aria-describedby'],

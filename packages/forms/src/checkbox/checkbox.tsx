@@ -2,7 +2,7 @@ import { forwardRef, useId, createContext, useContext, useState, useCallback } f
 import { cn } from '@ninna-ui/utils';
 import type { Color } from '@ninna-ui/core';
 import type { CheckboxSize } from '../types';
-import { checkboxStyles, checkboxGroupStyles, checkboxBoxVariants, CHECKBOX_ICON_SIZES } from './checkbox.styles';
+import { checkboxStyles, checkboxGroupStyles, checkboxVariants, CHECKBOX_ICON_SIZES } from './checkbox.styles';
 import type { CheckboxProps, CheckboxGroupProps, CheckboxGroupItemProps, CheckboxVariant } from './checkbox.types';
 
 const CheckIcon = ({ className }: { className?: string }) => (
@@ -99,18 +99,29 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           className={checkboxStyles.input}
           aria-invalid={invalid || undefined}
           aria-checked={indeterminate ? 'mixed' : isChecked}
+          data-state={indeterminate ? 'indeterminate' : isChecked ? 'checked' : 'unchecked'}
           aria-describedby={description ? `${id}-description` : undefined}
         />
         <span
           data-slot="indicator"
           className={cn(
-            checkboxBoxVariants({ variant, color, size, invalid: !!invalid })
+            checkboxVariants({ variant, color, size })
           )}
         >
           {indeterminate ? (
-            indeterminateIcon || <MinusIcon className={cn(CHECKBOX_ICON_SIZES[size], checkboxStyles.indeterminateIcon)} />
+            indeterminateIcon
+              ? <span className="flex items-center justify-center">{indeterminateIcon}</span>
+              : <MinusIcon className={cn(CHECKBOX_ICON_SIZES[size])} />
           ) : (
-            icon || <CheckIcon className={cn(CHECKBOX_ICON_SIZES[size], checkboxStyles.icon, isChecked && 'opacity-100')} />
+            icon
+              ? <span className={cn('flex items-center justify-center transition-opacity', isChecked ? 'opacity-100' : 'opacity-0')}>{icon}</span>
+              : <CheckIcon
+                  className={cn(
+                    CHECKBOX_ICON_SIZES[size],
+                    'transition-opacity',
+                    isChecked ? 'opacity-100' : 'opacity-0'
+                  )}
+                />
           )}
         </span>
       </label>

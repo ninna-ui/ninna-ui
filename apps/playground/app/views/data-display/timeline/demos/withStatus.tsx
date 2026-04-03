@@ -1,44 +1,24 @@
 import { Timeline } from "@ninna-ui/data-display";
 
 export default function TimelineWithStatus() {
+  const statuses = ["neutral", "primary", "secondary", "accent", "info", "success", "warning", "danger"] as const;
+
   return (
-    <div className="w-[400px]">
+    <div className="w-[500px]">
       <Timeline>
-        <Timeline.Item>
-          <Timeline.Indicator status="success" />
-          <Timeline.Connector />
-          <Timeline.Content>
-            <Timeline.Heading>Build Passed</Timeline.Heading>
-            <Timeline.Description>All tests passed successfully.</Timeline.Description>
-            <Timeline.Time>2 hours ago</Timeline.Time>
-          </Timeline.Content>
-        </Timeline.Item>
-        <Timeline.Item>
-          <Timeline.Indicator status="danger" />
-          <Timeline.Connector />
-          <Timeline.Content>
-            <Timeline.Heading>Deploy Failed</Timeline.Heading>
-            <Timeline.Description>Deployment to staging failed.</Timeline.Description>
-            <Timeline.Time>1 hour ago</Timeline.Time>
-          </Timeline.Content>
-        </Timeline.Item>
-        <Timeline.Item>
-          <Timeline.Indicator status="warning" />
-          <Timeline.Connector />
-          <Timeline.Content>
-            <Timeline.Heading>Review Needed</Timeline.Heading>
-            <Timeline.Description>Code review requested.</Timeline.Description>
-            <Timeline.Time>30 min ago</Timeline.Time>
-          </Timeline.Content>
-        </Timeline.Item>
-        <Timeline.Item>
-          <Timeline.Indicator status="primary" />
-          <Timeline.Content>
-            <Timeline.Heading>In Progress</Timeline.Heading>
-            <Timeline.Description>Working on hotfix.</Timeline.Description>
-            <Timeline.Time>Just now</Timeline.Time>
-          </Timeline.Content>
-        </Timeline.Item>
+        {statuses.map((status, index) => (
+          <Timeline.Item key={status}>
+            <Timeline.Indicator status={status} />
+            {index < statuses.length - 1 && <Timeline.Connector />}
+            <Timeline.Content>
+              <Timeline.Heading className="capitalize">{status} Event</Timeline.Heading>
+              <Timeline.Description>
+                Example of a timeline item with {status} status indicator.
+              </Timeline.Description>
+              <Timeline.Time>{index + 1} day ago</Timeline.Time>
+            </Timeline.Content>
+          </Timeline.Item>
+        ))}
       </Timeline>
     </div>
   );

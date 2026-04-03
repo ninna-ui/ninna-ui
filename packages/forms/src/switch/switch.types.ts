@@ -3,7 +3,7 @@ import type { Color } from '@ninna-ui/core';
 import type { SwitchSize } from '../types';
 
 /** Switch variant styles */
-export type SwitchVariant = 'solid' | 'outline';
+export type SwitchVariant = 'solid' | 'soft' | 'outline';
 
 /**
  * Switch props

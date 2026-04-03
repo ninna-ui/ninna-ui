@@ -3,7 +3,7 @@ import type { Color } from '@ninna-ui/core';
 import type { SliderSize } from '../types';
 
 /** Slider variant styles */
-export type SliderVariant = 'solid' | 'outline';
+export type SliderVariant = 'solid' | 'soft';
 
 /** Slider mark definition */
 export interface SliderMark {

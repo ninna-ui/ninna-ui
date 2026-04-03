@@ -40,6 +40,7 @@ const NODE_PROPS: PropDefinition[] = [
   { name: "label", type: "string", required: true, description: "Display label for the node" },
   { name: "children", type: "TreeNode[]", description: "Child nodes (makes this a folder)" },
   { name: "icon", type: "ReactNode", description: "Custom icon for the node" },
+  { name: "disabled", type: "boolean", description: "Whether the node is interaction-disabled" },
 ];
 
 const USAGE = `import { Tree } from "@ninna-ui/data-display";

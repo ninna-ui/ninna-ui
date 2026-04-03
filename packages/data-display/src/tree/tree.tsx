@@ -1,6 +1,6 @@
 import { forwardRef, useState, useCallback } from 'react';
 import { cn } from '@ninna-ui/utils';
-import { treeStyles } from './tree.styles';
+import { treeStyles, treeItemVariants } from './tree.styles';
 import type { TreeProps, TreeItemProps, TreeNode } from './tree.types';
 
 function getAllNodeIds(nodes: TreeNode[]): string[] {
@@ -21,8 +21,9 @@ const TreeItem = ({
   const isExpanded = expandedIds.has(node.id);
   const isSelected = selectedId === node.id;
 
-  const handleClick = () => {
+  const handleClick = (e: React.MouseEvent) => {
     if (node.disabled) return;
+    e.stopPropagation();
     if (hasChildren) onToggle(node.id);
     onSelect?.(node.id);
   };
@@ -30,7 +31,9 @@ const TreeItem = ({
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' || e.key === ' ') {
       e.preventDefault();
-      handleClick();
+      if (node.disabled) return;
+      if (hasChildren) onToggle(node.id);
+      onSelect?.(node.id);
     }
     if (e.key === 'ArrowRight' && hasChildren && !isExpanded) {
       e.preventDefault();
@@ -45,43 +48,58 @@ const TreeItem = ({
   return (
     <div data-slot="tree-item" className={treeStyles.item}>
       <div
-        role="treeitem"
-        tabIndex={node.disabled ? -1 : 0}
-        aria-selected={isSelected}
-        aria-expanded={hasChildren ? isExpanded : undefined}
-        aria-disabled={node.disabled || undefined}
-        aria-level={level + 1}
-        className={cn(
-          treeStyles.itemContent,
-          isSelected && treeStyles.itemContentSelected,
-          node.disabled && treeStyles.itemContentDisabled
-        )}
-        style={{ paddingLeft: `${level * 20 + 8}px` }}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
+        className={treeStyles.itemWrapper}
+        style={{ paddingLeft: `${level * 24}px` }}
       >
-        {hasChildren ? (
-          <span
-            className={treeStyles.toggle}
-            aria-hidden="true"
-          >
-            <svg className="size-3.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-              {isExpanded ? (
-                <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              ) : (
-                <path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-              )}
-            </svg>
-          </span>
-        ) : (
-          <span className={treeStyles.togglePlaceholder} />
-        )}
-        {showIcons && node.icon && <span className={treeStyles.icon}>{node.icon}</span>}
-        <span className={treeStyles.label}>{node.label}</span>
+        <div
+          role="treeitem"
+          tabIndex={node.disabled ? -1 : 0}
+          aria-selected={isSelected}
+          aria-expanded={hasChildren ? isExpanded : undefined}
+          aria-disabled={node.disabled || undefined}
+          aria-level={level + 1}
+          className={cn(
+            treeItemVariants({ isSelected, disabled: !!node.disabled })
+          )}
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
+        >
+          {hasChildren ? (
+            <span
+              className={treeStyles.toggle}
+              aria-hidden="true"
+              onClick={(e) => {
+                e.stopPropagation();
+                onToggle(node.id);
+              }}
+            >
+              <svg className="size-3.5" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                {isExpanded ? (
+                  <path d="M4 6l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                ) : (
+                  <path d="M6 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                )}
+              </svg>
+            </span>
+          ) : (
+            <span className={treeStyles.togglePlaceholder} />
+          )}
+          {showIcons && node.icon && <span className={treeStyles.icon}>{node.icon}</span>}
+          <span className={treeStyles.label}>{node.label}</span>
+        </div>
       </div>
       {hasChildren && isExpanded && (
-        <div role="group" className={treeStyles.children}>
-          {showLines && <div className={treeStyles.line} aria-hidden="true" />}
+        <div
+          role="group"
+          className={treeStyles.children}
+        >
+          {showLines && (
+            <div
+              className={treeStyles.line}
+              aria-hidden="true"
+              style={{ left: `${level * 24 + 18}px` }}
+            />
+          )}
           {node.children!.map((child) => (
             <TreeItem
               key={child.id}
@@ -140,7 +158,7 @@ const TreeRoot = forwardRef<HTMLDivElement, TreeProps>(
         data-slot="tree"
         aria-label={ariaLabel}
         aria-labelledby={ariaLabelledBy}
-        className={cn(treeStyles.root, className)}
+        className={cn(treeStyles.root, "pl-4", className)}
         {...props}
       >
         {data.map((node) => (

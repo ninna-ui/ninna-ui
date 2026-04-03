@@ -2,27 +2,14 @@ import { Slider } from "@ninna-ui/forms";
 
 export default function Variants() {
   return (
-    <div className="flex flex-col gap-8 w-64">
+    <div className="flex flex-col gap-6 w-64">
       <div>
-        <p className="text-sm text-base-content/70 mb-2">Default</p>
-        <Slider defaultValue={[50]} />
+        <p className="text-sm text-base-content/70 mb-2">Solid (Default)</p>
+        <Slider variant="solid" defaultValue={[50]} color="primary" />
       </div>
       <div>
-        <p className="text-sm text-base-content/70 mb-2">With Label</p>
-        <Slider defaultValue={[50]} label="Volume" showValue />
-      </div>
-      <div>
-        <p className="text-sm text-base-content/70 mb-2">With Marks</p>
-        <Slider 
-          defaultValue={[50]} 
-          marks={[
-            { value: 0 },
-            { value: 25 },
-            { value: 50 },
-            { value: 75 },
-            { value: 100 },
-          ]} 
-        />
+        <p className="text-sm text-base-content/70 mb-2">Soft</p>
+        <Slider variant="soft" defaultValue={[70]} color="primary" />
       </div>
     </div>
   );

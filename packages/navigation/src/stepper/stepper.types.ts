@@ -1,5 +1,5 @@
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
-import type { CompactSize } from '@ninna-ui/core';
+import type { CompactSize, Color } from '@ninna-ui/core';
 
 /** Orientation of the Stepper */
 export type StepperOrientation = 'horizontal' | 'vertical';
@@ -15,6 +15,8 @@ export interface StepperProps extends ComponentPropsWithoutRef<'div'> {
   orientation?: StepperOrientation;
   /** Size @default 'md' */
   size?: CompactSize;
+  /** Color theme @default 'primary' */
+  color?: Color;
 }
 
 /** Props for a Step item */

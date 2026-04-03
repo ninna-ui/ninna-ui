@@ -11,14 +11,15 @@ import type {
 } from './card.types';
 
 const CardRoot = forwardRef<HTMLDivElement, CardProps>(
-  ({ variant = 'outline', interactive, className, children, ...props }, ref) => {
+  ({ variant = 'outline', color, interactive, className, children, ...props }, ref) => {
     return (
       <div
         ref={ref}
         data-slot="card"
         data-variant={variant}
+        data-color={color}
         className={cn(
-          cardVariants({ variant, interactive: !!interactive }),
+          cardVariants({ variant, color, interactive: !!interactive }),
           className
         )}
         {...(interactive ? { tabIndex: 0, role: 'button' } : {})}

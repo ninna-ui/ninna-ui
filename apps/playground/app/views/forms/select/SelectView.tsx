@@ -11,6 +11,7 @@ import { Code } from "@ninna-ui/primitives";
 import { selectMeta } from "./meta";
 
 import Basic from "./demos/basic";
+import Variants from "./demos/variants";
 import Sizes from "./demos/sizes";
 import Colors from "./demos/colors";
 import Clearable from "./demos/clearable";
@@ -22,6 +23,7 @@ import WithReactHookForm from "./demos/withReactHookForm";
 
 export const selectSections: ComponentSectionType[] = [
   { id: "usage", title: "Usage", level: 2 },
+  { id: "variants", title: "Variants", level: 3 },
   { id: "sizes", title: "Sizes", level: 3 },
   { id: "colors", title: "Colors", level: 3 },
   { id: "clearable", title: "Clearable", level: 3 },
@@ -178,6 +180,18 @@ export function SelectView() {
         </ComponentSection>
 
         <ComponentSection
+          id="variants"
+          title="Variants"
+          description="Select supports three visual variants: outline, filled, and flushed."
+          level={3}
+        >
+          <CodePreview
+            component={<Variants />}
+            filePath="app/views/forms/select/demos/variants.tsx"
+          />
+        </ComponentSection>
+
+        <ComponentSection
           id="sizes"
           title="Sizes"
           description="Select comes in 5 sizes: xs, sm, md, lg, and xl."
@@ -192,7 +206,7 @@ export function SelectView() {
         <ComponentSection
           id="colors"
           title="Colors"
-          description="Select supports multiple color themes for focus states."
+          description="Select supports multiple color themes. Each color affects the border, focus ring, and text color of the trigger."
           level={3}
         >
           <CodePreview

@@ -2,8 +2,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from '@ninna-ui/data-display';
 import { Button } from '@ninna-ui/primitives';
 
-const meta: Meta = {
+const meta: Meta<typeof Card> = {
   title: 'Data Display/Card',
+  component: Card,
   parameters: {
     layout: 'centered',
   },
@@ -11,9 +12,14 @@ const meta: Meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['outline', 'elevated', 'filled', 'ghost'],
+      options: ['outline', 'elevated', 'filled', 'ghost', 'soft', 'solid'],
       description: 'Visual style variant',
       table: { defaultValue: { summary: 'outline' } },
+    },
+    color: {
+      control: 'select',
+      options: ['primary', 'secondary', 'accent', 'neutral', 'success', 'danger', 'warning', 'info'],
+      description: 'Color theme of the card',
     },
     interactive: {
       control: 'boolean',
@@ -24,7 +30,7 @@ const meta: Meta = {
 };
 
 export default meta;
-type Story = StoryObj;
+type Story = StoryObj<typeof Card>;
 
 export const Default: Story = {
   render: () => (
@@ -48,9 +54,9 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => {
-    const variants = ['outline', 'elevated', 'filled', 'ghost'] as const;
+    const variants = ['outline', 'elevated', 'filled', 'ghost', 'soft', 'solid'] as const;
     return (
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
         {variants.map((variant) => (
           <Card key={variant} variant={variant} className="w-[250px]">
             <Card.Header>
@@ -61,6 +67,34 @@ export const Variants: Story = {
               <p className="text-sm text-base-content/70">Content goes here.</p>
             </Card.Body>
           </Card>
+        ))}
+      </div>
+    );
+  },
+};
+
+export const Colors: Story = {
+  render: () => {
+    const colors = ['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'] as const;
+    const variants = ['outline', 'soft', 'solid', 'elevated', 'ghost'] as const;
+    return (
+      <div className="flex flex-col gap-12 max-w-5xl">
+        {variants.map((variant) => (
+          <div key={variant} className="space-y-4">
+            <h4 className="text-xl font-bold capitalize border-b pb-1">{variant} Variant</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+              {colors.map((color) => (
+                <Card key={`${variant}-${color}`} variant={variant} color={color}>
+                  <Card.Header>
+                    <Card.Title className="text-base">{color}</Card.Title>
+                  </Card.Header>
+                  <Card.Body>
+                    <p className="text-xs opacity-80 italic italic">variant={variant} color={color}</p>
+                  </Card.Body>
+                </Card>
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     );

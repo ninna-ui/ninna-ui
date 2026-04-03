@@ -13,7 +13,7 @@ const meta: Meta<typeof Blockquote> = {
       control: 'select',
       options: ['neutral', 'primary', 'secondary', 'accent', 'info', 'success', 'warning', 'danger'],
       description: 'Color variant',
-      table: { defaultValue: { summary: 'default' } },
+      table: { defaultValue: { summary: 'primary' } },
     },
     variant: {
       control: 'select',
@@ -89,9 +89,9 @@ export const WithIcon: Story = {
 export const Variants: Story = {
   render: () => (
     <div className="space-y-6 max-w-lg">
-      <Blockquote variant="outline">Outline variant with left border only.</Blockquote>
-      <Blockquote variant="solid">Solid variant with background.</Blockquote>
-      <Blockquote variant="soft">Soft variant with full border.</Blockquote>
+      <Blockquote variant="outline" color="primary">Outline variant with left border only.</Blockquote>
+      <Blockquote variant="solid" color="primary">Solid variant with background.</Blockquote>
+      <Blockquote variant="soft" color="primary">Soft variant with full border.</Blockquote>
     </div>
   ),
 };

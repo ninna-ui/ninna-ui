@@ -4,32 +4,17 @@ import { Button } from '@ninna-ui/primitives';
 export default function SimpleMessagesDemo() {
   return (
     <div className="flex flex-wrap gap-2">
-      <Button
-        variant="soft"
-        color="success"
-        onClick={() => {
-          toast.success('File uploaded successfully!');
-        }}
-      >
-        Success Message
+      <Button variant="soft" color="success" onClick={() => toast.create({ title: 'File uploaded successfully!', color: 'success' })}>
+        Success
       </Button>
-      <Button
-        variant="soft"
-        color="danger"
-        onClick={() => {
-          toast.error('Failed to save changes.');
-        }}
-      >
-        Error Message
+      <Button variant="soft" color="danger" onClick={() => toast.create({ title: 'Failed to save changes.', color: 'danger' })}>
+        Error
       </Button>
-      <Button
-        variant="soft"
-        color="info"
-        onClick={() => {
-          toast.info('New updates available.');
-        }}
-      >
-        Info Message
+      <Button variant="soft" color="warning" onClick={() => toast.create({ title: 'Your session expires soon.', color: 'warning' })}>
+        Warning
+      </Button>
+      <Button variant="soft" color="info" onClick={() => toast.create({ title: 'New updates available.', color: 'info' })}>
+        Info
       </Button>
     </div>
   );

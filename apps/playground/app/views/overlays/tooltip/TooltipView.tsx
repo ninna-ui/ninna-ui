@@ -40,6 +40,7 @@ const CONTENT_PROPS: PropDefinition[] = [
   { name: "side", type: "'top' | 'right' | 'bottom' | 'left'", defaultValue: "'top'", description: "Which side to place the tooltip" },
   { name: "sideOffset", type: "number", defaultValue: "4", description: "Distance from trigger in pixels" },
   { name: "align", type: "'start' | 'center' | 'end'", defaultValue: "'center'", description: "Alignment along the side" },
+  { name: "color", type: "'neutral' | 'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info'", defaultValue: "'neutral'", description: "Color theme of the tooltip" },
   { name: "hasArrow", type: "boolean", defaultValue: "false", description: "Whether to show an arrow pointer" },
   { name: "avoidCollisions", type: "boolean", defaultValue: "true", description: "Whether to avoid collisions with viewport boundary" },
   { name: "className", type: "string", description: "Additional CSS classes" },

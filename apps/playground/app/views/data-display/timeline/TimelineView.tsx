@@ -21,7 +21,7 @@ export const timelineSections: ComponentSectionType[] = [
 ];
 
 const INDICATOR_PROPS: PropDefinition[] = [
-  { name: "status", type: "'primary' | 'success' | 'danger' | 'warning'", description: "Color variant for the indicator dot" },
+  { name: "status", type: "'neutral' | 'primary' | 'secondary' | 'accent' | 'success' | 'danger' | 'warning' | 'info'", description: "Color variant for the indicator dot (default: 'neutral')" },
   { name: "icon", type: "ReactNode", description: "Custom icon to replace the default dot" },
 ];
 

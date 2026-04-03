@@ -63,7 +63,7 @@ function App() {
 
       <Loading size="lg" color="primary" />
 
-      <button onClick={() => toast({ title: "Saved!", variant: "success" })}>
+      <button onClick={() => toast.create({ title: "Saved!", color: "success" })}>
         Save
       </button>
 

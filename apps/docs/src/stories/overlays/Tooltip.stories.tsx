@@ -32,6 +32,12 @@ const meta: Meta = {
       description: 'Whether to disable hoverable content',
       table: { defaultValue: { summary: 'false' } },
     },
+    color: {
+      control: 'select',
+      options: ['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'],
+      description: 'Color theme of the tooltip',
+      table: { defaultValue: { summary: 'neutral' } },
+    },
   },
 };
 
@@ -101,6 +107,24 @@ export const CustomDelay: Story = {
       </Tooltip>
     </div>
   ),
+};
+
+export const ColorVariants: Story = {
+  render: () => {
+    const colors = ['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'] as const;
+    return (
+      <div className="flex flex-wrap gap-4 p-16">
+        {colors.map((color) => (
+          <Tooltip key={color}>
+            <Tooltip.Trigger asChild>
+              <Button variant="outline">{color}</Button>
+            </Tooltip.Trigger>
+            <Tooltip.Content color={color}>Tooltip with {color} color</Tooltip.Content>
+          </Tooltip>
+        ))}
+      </div>
+    );
+  },
 };
 
 export const OnVariousElements: Story = {

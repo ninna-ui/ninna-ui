@@ -1,4 +1,5 @@
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
+import type { Color } from '@ninna-ui/core';
 
 /** Placement options for the Tooltip */
 export type TooltipPlacement = 'top' | 'right' | 'bottom' | 'left';
@@ -33,6 +34,8 @@ export interface TooltipContentProps extends ComponentPropsWithoutRef<'div'> {
   sideOffset?: number;
   /** Alignment along the side @default 'center' */
   align?: 'start' | 'center' | 'end';
+  /** Color theme @default 'neutral' */
+  color?: Color;
   /** Whether to show an arrow @default false */
   hasArrow?: boolean | undefined;
   /** Whether to avoid collisions with viewport boundary @default true */

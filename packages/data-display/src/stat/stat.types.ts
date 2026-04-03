@@ -1,5 +1,5 @@
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
-import type { CompactSize } from '@ninna-ui/core';
+import type { CompactSize, Color } from '@ninna-ui/core';
 
 /** Props for the Stat root component */
 export type StatProps = ComponentPropsWithoutRef<'dl'>;
@@ -26,5 +26,7 @@ export interface StatTrendProps extends ComponentPropsWithoutRef<'span'> {
 
 /** Props for Stat icon */
 export interface StatIconProps extends ComponentPropsWithoutRef<'div'> {
+  /** Color theme for the icon background @default 'primary' */
+  color?: Color;
   children: ReactNode;
 }

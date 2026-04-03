@@ -34,7 +34,7 @@ const DefaultQuoteIcon = () => (
 export const Blockquote = forwardRef<HTMLQuoteElement, BlockquoteProps>(
   (
     {
-      color = "neutral",
+      color = "primary",
       variant = "outline",
       cite,
       citeSource,

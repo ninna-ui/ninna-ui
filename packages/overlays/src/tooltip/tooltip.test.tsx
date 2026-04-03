@@ -108,6 +108,48 @@ describe('Tooltip', () => {
     expect(results).toHaveNoViolations();
   });
 
+  it('applies default color classes', async () => {
+    render(
+      <Tooltip open>
+        <Tooltip.Trigger>Hover me</Tooltip.Trigger>
+        <Tooltip.Content>Default tip</Tooltip.Content>
+      </Tooltip>
+    );
+    await waitFor(() => {
+      const content = document.querySelector('[data-slot="tooltip-content"]');
+      expect(content).toBeInTheDocument();
+      expect(content?.className).toContain('bg-neutral');
+    });
+  });
+
+  it('applies custom color classes', async () => {
+    render(
+      <Tooltip open>
+        <Tooltip.Trigger>Hover me</Tooltip.Trigger>
+        <Tooltip.Content color="success">Success tip</Tooltip.Content>
+      </Tooltip>
+    );
+    await waitFor(() => {
+      const content = document.querySelector('[data-slot="tooltip-content"]');
+      expect(content).toBeInTheDocument();
+      expect(content?.className).toContain('bg-success');
+      expect(content?.className).toContain('text-success-content');
+    });
+  });
+
+  it('applies secondary color', async () => {
+    render(
+      <Tooltip open>
+        <Tooltip.Trigger>Hover me</Tooltip.Trigger>
+        <Tooltip.Content color="secondary">Sec tip</Tooltip.Content>
+      </Tooltip>
+    );
+    await waitFor(() => {
+      const content = document.querySelector('[data-slot="tooltip-content"]');
+      expect(content?.className).toContain('bg-secondary');
+    });
+  });
+
   it('has no accessibility violations (open)', async () => {
     const { container } = render(
       <Tooltip open>

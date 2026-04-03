@@ -1,4 +1,5 @@
 import type { ReactNode, ComponentPropsWithoutRef } from 'react';
+import type { Color } from '@ninna-ui/core';
 
 /** Props for the Timeline root component */
 export interface TimelineProps extends ComponentPropsWithoutRef<'div'> {
@@ -13,8 +14,8 @@ export type TimelineItemProps = ComponentPropsWithoutRef<'div'>;
 export interface TimelineIndicatorProps extends ComponentPropsWithoutRef<'div'> {
   /** Custom icon to show instead of a dot */
   icon?: ReactNode;
-  /** Status color */
-  status?: 'default' | 'primary' | 'success' | 'danger' | 'warning';
+  /** Status color @default 'neutral' */
+  status?: Color;
 }
 
 /** Props for Timeline content */
