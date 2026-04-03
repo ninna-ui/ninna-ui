@@ -32,7 +32,7 @@ const BLOCKQUOTE_PROPS: PropDefinition[] = [
   {
     name: "color",
     type: "'neutral' | 'primary' | 'secondary' | 'accent' | 'info' | 'success' | 'warning' | 'danger'",
-    defaultValue: "'neutral'",
+    defaultValue: "'primary'",
     description: "Color variant of the blockquote",
   },
   {
