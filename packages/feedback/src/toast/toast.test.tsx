@@ -39,7 +39,7 @@ describe('Toast', () => {
   it('renders global toasts through Toaster', async () => {
     render(<Toaster />);
     act(() => {
-      toast.success('All good');
+      toast.create({ title: 'All good', color: 'success' });
     });
 
     await waitFor(() => {

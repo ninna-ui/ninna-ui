@@ -25,7 +25,7 @@ export interface ToastData {
   color?: Color;
   /** Visual variant */
   variant?: ToastVariant;
-  /** Show a spinning loading indicator (used by toast.loading()) */
+  /** Show a spinning loading indicator. Use with duration: 0 to keep the toast persistent until updated. */
   isLoading?: boolean;
   /** Duration in milliseconds (0 = persistent) */
   duration?: number;
