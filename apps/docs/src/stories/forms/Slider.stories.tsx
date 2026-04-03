@@ -62,6 +62,14 @@ const meta: Meta<typeof Slider> = {
         defaultValue: { summary: 'horizontal' },
       },
     },
+    variant: {
+      control: 'select',
+      options: ['solid', 'soft'],
+      description: 'Visual variant of the slider',
+      table: {
+        defaultValue: { summary: 'solid' },
+      },
+    },
     showValue: {
       control: 'boolean',
       description: 'Show current value',
@@ -124,6 +132,21 @@ export const Sizes: Story = {
       <div>
         <p className="text-sm text-base-content/70 mb-2">Large</p>
         <Slider size="lg" defaultValue={[70]} />
+      </div>
+    </div>
+  ),
+};
+
+export const Variants: Story = {
+  render: () => (
+    <div className="flex flex-col gap-6 w-64">
+      <div>
+        <p className="text-sm text-base-content/70 mb-2">Solid</p>
+        <Slider variant="solid" defaultValue={[50]} />
+      </div>
+      <div>
+        <p className="text-sm text-base-content/70 mb-2">Soft</p>
+        <Slider variant="soft" defaultValue={[70]} />
       </div>
     </div>
   ),

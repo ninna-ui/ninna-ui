@@ -1,7 +1,13 @@
-import { forwardRef, useId } from 'react';
+import { forwardRef, useId, useState, useEffect } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { SliderEngine } from '@ninna-ui/react-internal';
-import { SLIDER_SIZES, SLIDER_RANGE_COLORS, SLIDER_THUMB_COLORS, sliderStyles } from './slider.styles';
+import { 
+  sliderRootVariants, 
+  sliderTrackVariants, 
+  sliderRangeVariants, 
+  sliderThumbVariants, 
+  sliderStyles 
+} from './slider.styles';
 import type { SliderProps } from './slider.types';
 
 /**
@@ -19,6 +25,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
     {
       size = 'md',
       color = 'primary',
+      variant = 'solid',
       value,
       defaultValue = [50],
       onValueChange,
@@ -34,45 +41,55 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
       showValue,
       label,
       marks,
+      formatValue,
       className,
-      formatValue, // Add this prop
       ...props
     },
     ref
   ) => {
     const generatedId = useId();
     const isHorizontal = orientation === 'horizontal';
-    const rangeColor = SLIDER_RANGE_COLORS[color] ?? SLIDER_RANGE_COLORS.primary;
-    const thumbColor = SLIDER_THUMB_COLORS[color] ?? SLIDER_THUMB_COLORS.primary;
-    const sizeStyles = SLIDER_SIZES[size] ?? SLIDER_SIZES.md;
+    
+    // Internal state to track current values for showValue, especially when uncontrolled
+    const [internalValue, setInternalValue] = useState<number[]>(value ?? defaultValue);
 
-    const currentValue = value ?? defaultValue;
+    // Sync with external value if controlled
+    useEffect(() => {
+      if (value !== undefined) {
+        setInternalValue(value);
+      }
+    }, [value]);
 
+    const handleValueChange = (newValue: number[]) => {
+      setInternalValue(newValue);
+      onValueChange?.(newValue);
+    };
+    
+    const safeValue = internalValue;
+    
     // Calculate mark positions
     const getMarkPositions = (): number[] => {
       if (!marks) return [];
       if (marks === true) {
-        // Auto-generate marks at step intervals
         const positions: number[] = [];
         for (let i = min; i <= max; i += step) {
           positions.push(i);
         }
         return positions;
       }
-      // marks is an array of SliderMark objects
       return marks.map(m => m.value);
     };
 
     const markPositions = getMarkPositions();
 
     const sliderElement = (
-      <div className={cn(sliderStyles.sliderRow, !isHorizontal && 'flex-col h-full')}>
+      <div className={cn(sliderStyles.sliderRow, !isHorizontal && 'flex-col h-full min-h-[150px]')}>
         <SliderEngine.Root
           ref={ref}
-          data-slot="slider"
+          data-slot="root"
           value={value}
           defaultValue={defaultValue}
-          onValueChange={onValueChange}
+          onValueChange={handleValueChange}
           onValueCommit={onValueCommit}
           min={min}
           max={max}
@@ -82,49 +99,37 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
           orientation={orientation}
           inverted={inverted}
           name={name}
-          data-disabled={disabled || undefined}
-          data-orientation={orientation}
           className={cn(
-            sliderStyles.root,
-            isHorizontal ? sliderStyles.rootHorizontal : sliderStyles.rootVertical,
-            sizeStyles.root,
-            disabled && 'opacity-50 cursor-not-allowed',
+            sliderRootVariants({ orientation, size, disabled: !!disabled }),
             className
           )}
-          aria-labelledby={label ? generatedId : undefined}
-          aria-disabled={disabled || undefined}
-          {...(props as Omit<SliderProps, 'formatValue'>)}
+          {...props}
         >
           <SliderEngine.Track
             data-slot="track"
-            className={cn(
-              sliderStyles.track,
-              isHorizontal ? sliderStyles.trackHorizontal : sliderStyles.trackVertical,
-              sizeStyles.track
-            )}
+            className={sliderTrackVariants({ orientation, size })}
           >
             <SliderEngine.Range
               data-slot="range"
-              className={cn(
-                sliderStyles.range,
-                isHorizontal ? sliderStyles.rangeHorizontal : sliderStyles.rangeVertical,
-                rangeColor
-              )}
+              className={sliderRangeVariants({ variant, color, orientation })}
             />
+            
             {/* Render marks */}
             {markPositions.length > 0 && (
               <div className={sliderStyles.marksContainer}>
                 {markPositions.map((markValue) => {
                   const percent = ((markValue - min) / (max - min)) * 100;
+                  const isActive = safeValue.some(v => v >= markValue);
                   const style = isHorizontal
-                    ? { left: `${percent}%` }
-                    : { bottom: `${percent}%` };
+                    ? { left: `${percent}%`, top: '50%' }
+                    : { bottom: `${percent}%`, left: '50%' };
+                  
                   return (
                     <span
-                      key={markValue}
+                      key={`mark-${markValue}-${percent}`}
                       className={cn(
                         sliderStyles.mark,
-                        isHorizontal ? sliderStyles.markHorizontal : sliderStyles.markVertical
+                        isActive && sliderStyles.markActive
                       )}
                       style={style}
                     />
@@ -133,23 +138,22 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
               </div>
             )}
           </SliderEngine.Track>
-          {currentValue.map((value) => (
+
+          {/* Render thumbs - using stable keys based on index since safeValue index is stable for SliderEngine */}
+          {safeValue.map((_, index) => (
             <SliderEngine.Thumb
-              key={`slider-thumb-value-${value}`}
+              key={`slider-thumb-${index}`}
               data-slot="thumb"
-              className={cn(
-                sliderStyles.thumb,
-                sizeStyles.thumb,
-                thumbColor
-              )}
+              className={sliderThumbVariants({ variant, color, size, orientation })}
             />
           ))}
         </SliderEngine.Root>
+
         {showValue && (
-          <span className={sliderStyles.valueLabel}>
-            {currentValue.length === 1 
-              ? formatValue && currentValue[0] !== undefined ? formatValue(currentValue[0]) : currentValue[0]
-              : `${formatValue && currentValue[0] !== undefined ? formatValue(currentValue[0]) : currentValue[0]} - ${formatValue && currentValue[1] !== undefined ? formatValue(currentValue[1]) : currentValue[1]}`
+          <span className={sliderStyles.valueLabel} data-slot="value">
+            {safeValue.length === 1 
+              ? formatValue ? formatValue(safeValue[0] ?? min) : (safeValue[0] ?? min)
+              : `${formatValue ? formatValue(safeValue[0] ?? min) : (safeValue[0] ?? min)} - ${formatValue ? formatValue(safeValue[1] ?? max) : (safeValue[1] ?? max)}`
             }
           </span>
         )}
@@ -162,7 +166,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 
     return (
       <div className={sliderStyles.wrapper}>
-        <label id={generatedId} className={sliderStyles.label}>
+        <label id={generatedId} className={sliderStyles.label} htmlFor={generatedId}>
           {label}
         </label>
         {sliderElement}

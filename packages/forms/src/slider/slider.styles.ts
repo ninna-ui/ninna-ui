@@ -1,57 +1,144 @@
-import type { Color } from '@ninna-ui/core';
+import { cva, type VariantProps } from 'class-variance-authority';
 
-export const SLIDER_RANGE_COLORS: Record<Color, string> = {
-  primary:   "bg-primary",
-  secondary: "bg-secondary",
-  accent:    "bg-accent",
-  neutral:   "bg-neutral",
-  success:   "bg-success",
-  danger:    "bg-danger",
-  warning:   "bg-warning",
-  info:      "bg-info",
-};
+export const sliderRootVariants = cva(
+  "relative flex touch-none select-none items-center",
+  {
+    variants: {
+      orientation: {
+        horizontal: "w-full",
+        vertical: "h-full flex-col justify-center py-3",
+      },
+      size: {
+        sm: "h-4",
+        md: "h-5",
+        lg: "h-6",
+      },
+      disabled: {
+        true: "opacity-50 cursor-not-allowed",
+        false: "",
+      },
+    },
+    compoundVariants: [
+      { orientation: "vertical", size: "sm", class: "w-4 h-full" },
+      { orientation: "vertical", size: "md", class: "w-5 h-full" },
+      { orientation: "vertical", size: "lg", class: "w-6 h-full" },
+    ],
+    defaultVariants: {
+      orientation: "horizontal",
+      size: "md",
+      disabled: false,
+    },
+  }
+);
 
-export const SLIDER_THUMB_COLORS: Record<Color, string> = {
-  primary:   "bg-base-100 border-primary",
-  secondary: "bg-base-100 border-secondary",
-  accent:    "bg-base-100 border-accent",
-  neutral:   "bg-base-100 border-neutral",
-  success:   "bg-base-100 border-success",
-  danger:    "bg-base-100 border-danger",
-  warning:   "bg-base-100 border-warning",
-  info:      "bg-base-100 border-info",
-};
+export const sliderTrackVariants = cva(
+  "relative grow rounded-full bg-base-300 overflow-hidden",
+  {
+    variants: {
+      orientation: {
+        horizontal: "w-full",
+        vertical: "h-full",
+      },
+      size: {
+        sm: "h-1 w-1",
+        md: "h-1.5 w-1.5",
+        lg: "h-2 w-2",
+      },
+    },
+    compoundVariants: [
+      { orientation: "horizontal", size: "sm", class: "h-1" },
+      { orientation: "horizontal", size: "md", class: "h-1.5" },
+      { orientation: "horizontal", size: "lg", class: "h-2" },
+      { orientation: "vertical", size: "sm", class: "w-1" },
+      { orientation: "vertical", size: "md", class: "w-1.5" },
+      { orientation: "vertical", size: "lg", class: "w-2" },
+    ],
+    defaultVariants: {
+      orientation: "horizontal",
+      size: "md",
+    },
+  }
+);
 
-export const SLIDER_SIZES = {
-  sm: { root: "h-4", track: "h-1", thumb: "h-4 w-4" },
-  md: { root: "h-5", track: "h-2", thumb: "h-5 w-5" },
-  lg: { root: "h-6", track: "h-3", thumb: "h-6 w-6" },
-};
+export const sliderRangeVariants = cva(
+  "absolute rounded-full",
+  {
+    variants: {
+      variant: {
+        solid: "",
+        soft: "opacity-40",
+      },
+      color: {
+        primary: "bg-primary",
+        secondary: "bg-secondary",
+        accent: "bg-accent",
+        neutral: "bg-neutral",
+        success: "bg-success",
+        danger: "bg-danger",
+        warning: "bg-warning",
+        info: "bg-info",
+      },
+      orientation: {
+        horizontal: "h-full",
+        vertical: "w-full",
+      },
+    },
+    defaultVariants: {
+      variant: "solid",
+      color: "primary",
+      orientation: "horizontal",
+    },
+  }
+);
+
+export const sliderThumbVariants = cva(
+  "block rounded-full border-2 bg-base-100 shadow-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none before:absolute before:inset-[-8px] before:content-[''] hover:scale-110 active:scale-95",
+  {
+    variants: {
+      variant: {
+        solid: "border-primary",
+        soft: "border-primary",
+      },
+      color: {
+        primary: "border-primary focus-visible:ring-primary",
+        secondary: "border-secondary focus-visible:ring-secondary",
+        accent: "border-accent focus-visible:ring-accent",
+        neutral: "border-neutral focus-visible:ring-neutral",
+        success: "border-success focus-visible:ring-success",
+        danger: "border-danger focus-visible:ring-danger",
+        warning: "border-warning focus-visible:ring-warning",
+        info: "border-info focus-visible:ring-info",
+      },
+      size: {
+        sm: "h-4 w-4",
+        md: "h-5 w-5",
+        lg: "h-6 w-6",
+      },
+      orientation: {
+        horizontal: "-translate-x-1/2",
+        vertical: "translate-y-1/2",
+      },
+    },
+    defaultVariants: {
+      variant: "solid",
+      color: "primary",
+      size: "md",
+      orientation: "horizontal",
+    },
+  }
+);
 
 export const sliderStyles = {
-  root: 'relative flex touch-none select-none',
-  rootHorizontal: 'w-full items-center',
-  rootVertical: 'h-full flex-col items-center',
-  track: 'relative grow rounded-full bg-base-200',
-  trackHorizontal: 'h-2 w-full',
-  trackVertical: 'w-2 h-full',
-  range: 'absolute rounded-full',
-  rangeHorizontal: 'h-full',
-  rangeVertical: 'w-full',
-  thumb: 'relative block rounded-full border-2 bg-base-100 shadow-md transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 -translate-x-1/2 before:absolute before:inset-[-8px] before:content-[""]',
-  thumbVertical: '!translate-x-0 -translate-y-1/2',
-  label: 'text-sm font-medium text-base-content/80 mb-2',
-  valueLabel: 'text-sm text-base-content/80 ml-2',
-  wrapper: 'flex flex-col',
-  sliderRow: 'flex items-center',
-  
-  // Marks container
+  wrapper: 'flex flex-col gap-2',
+  sliderRow: 'flex items-center gap-3',
+  label: 'text-sm font-medium text-base-content/80',
+  valueLabel: 'text-sm font-semibold text-base-content tabular-nums min-w-[3rem] text-right',
   marksContainer: 'absolute inset-0 pointer-events-none',
-  marksContainerHorizontal: 'flex items-center',
-  marksContainerVertical: 'flex flex-col justify-between',
-  
-  // Individual mark
-  mark: 'absolute w-1 h-1 rounded-full bg-base-content/50',
-  markHorizontal: 'top-1/2 -translate-y-1/2 -translate-x-1/2',
-  markVertical: 'left-1/2 -translate-x-1/2 -translate-y-1/2',
+  mark: 'absolute w-1.5 h-1.5 rounded-full bg-base-content/20 -translate-x-1/2 -translate-y-1/2',
+  markActive: 'bg-primary ring-1 ring-primary/20',
 };
+
+export type SliderRootVariantsProps = VariantProps<typeof sliderRootVariants>;
+export type SliderTrackVariantsProps = VariantProps<typeof sliderTrackVariants>;
+export type SliderRangeVariantsProps = VariantProps<typeof sliderRangeVariants>;
+export type SliderThumbVariantsProps = VariantProps<typeof sliderThumbVariants>;
