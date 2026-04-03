@@ -11,12 +11,14 @@ import { statMeta } from "./meta";
 
 import Basic from "./demos/basic";
 import Sizes from "./demos/sizes";
+import Colors from "./demos/colors";
 import Trends from "./demos/trends";
 
 export const statSections: ComponentSectionType[] = [
   { id: "usage", title: "Usage", level: 2 },
   { id: "basic", title: "Basic", level: 3 },
   { id: "sizes", title: "Sizes", level: 3 },
+  { id: "colors", title: "Colors", level: 3 },
   { id: "trends", title: "Trends", level: 3 },
   { id: "api", title: "API Reference", level: 2 },
   { id: "accessibility", title: "Accessibility", level: 2 },
@@ -70,6 +72,10 @@ export function StatView() {
 
         <ComponentSection id="sizes" title="Sizes" description="Stat value comes in sm, md, and lg sizes." level={3}>
           <CodePreview component={<Sizes />} filePath="app/views/data-display/stat/demos/sizes.tsx" />
+        </ComponentSection>
+
+        <ComponentSection id="colors" title="Colors" description="Stat icons support all color themes." level={3}>
+          <CodePreview component={<Colors />} filePath="app/views/data-display/stat/demos/colors.tsx" />
         </ComponentSection>
 
         <ComponentSection id="trends" title="Trends" description="Show trend direction with automatic color coding." level={3}>
