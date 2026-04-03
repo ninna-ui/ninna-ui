@@ -4,11 +4,6 @@ export const checkboxBoxVariants = cva(
   "relative shrink-0 rounded border-2 flex items-center justify-center transition-all duration-200 cursor-pointer peer-focus-visible:ring-2 peer-focus-visible:ring-offset-2 peer-disabled:opacity-50 peer-disabled:cursor-not-allowed",
   {
     variants: {
-      variant: {
-        outline: "border-base-300 bg-base-100 peer-checked:border-current peer-checked:bg-current",
-        soft:    "border-transparent bg-base-200 peer-checked:border-transparent peer-checked:bg-current",
-        solid:   "border-base-300 bg-base-100 peer-checked:border-transparent peer-checked:bg-current",
-      },
       color: {
         primary:   "peer-focus-visible:ring-primary text-primary",
         secondary: "peer-focus-visible:ring-secondary text-secondary",
@@ -24,14 +19,32 @@ export const checkboxBoxVariants = cva(
         md: "w-5 h-5",
         lg: "w-6 h-6",
       },
-      invalid: {
-        true:  "border-danger peer-focus-visible:ring-danger",
-        false: "",
-      },
     },
-    defaultVariants: { variant: "outline", color: "primary", size: "md", invalid: false },
+    defaultVariants: { color: "primary", size: "md" },
   }
 );
+
+export const checkboxIndicatorClasses = (
+  variant: 'outline' | 'soft' | 'solid',
+  checked: boolean,
+  invalid: boolean
+): string => {
+  const base: Record<'outline' | 'soft' | 'solid', { unchecked: string; checked: string }> = {
+    outline: {
+      unchecked: invalid ? 'border-danger bg-base-100' : 'border-base-300 bg-base-100',
+      checked:   invalid ? 'border-danger bg-danger'   : 'border-current bg-current',
+    },
+    soft: {
+      unchecked: invalid ? 'border-transparent bg-danger/10' : 'border-transparent bg-current/15',
+      checked:   invalid ? 'border-transparent bg-danger'    : 'border-transparent bg-current',
+    },
+    solid: {
+      unchecked: invalid ? 'border-transparent bg-danger/25' : 'border-current/30 bg-current/20',
+      checked:   invalid ? 'border-transparent bg-danger'    : 'border-transparent bg-current',
+    },
+  };
+  return checked ? base[variant].checked : base[variant].unchecked;
+};
 
 export type CheckboxBoxVariantsProps = VariantProps<typeof checkboxBoxVariants>;
 
@@ -42,10 +55,8 @@ export const CHECKBOX_ICON_SIZES: Record<import('@ninna-ui/core').CompactSize, s
 };
 
 export const checkboxStyles = {
-  input:            "sr-only peer",
-  icon:             "text-white opacity-0 peer-checked:opacity-100 transition-opacity",
-  indeterminateIcon:"text-white",
-  wrapper:          "inline-flex items-start gap-3 min-h-[44px]",
+  input:   "sr-only peer",
+  wrapper: "inline-flex items-start gap-3 min-h-[44px]",
   wrapperReverse:   "flex-row-reverse",
   labelWrapper:     "flex flex-col gap-0.5",
   label:            "text-base-content font-medium cursor-pointer select-none",

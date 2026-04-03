@@ -163,9 +163,12 @@ export const Controlled: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <div className="space-y-4">
+    <div className="space-y-6">
       {(['outline', 'soft', 'solid'] as const).map((variant) => (
-        <Checkbox key={variant} variant={variant} label={`Variant ${variant}`} defaultChecked />
+        <div key={variant} className="flex items-center gap-8">
+          <Checkbox variant={variant} label={`${variant.charAt(0).toUpperCase() + variant.slice(1)}`} />
+          <Checkbox variant={variant} label={`${variant.charAt(0).toUpperCase() + variant.slice(1)} checked`} defaultChecked />
+        </div>
       ))}
     </div>
   ),

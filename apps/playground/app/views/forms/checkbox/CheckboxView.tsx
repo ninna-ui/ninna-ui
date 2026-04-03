@@ -273,7 +273,7 @@ export function CheckboxView() {
         >
           <div className="prose max-w-none">
             <ul className="space-y-2 text-base-content/70">
-              <li>Built on Radix UI Checkbox for full accessibility</li>
+              <li>Built on a native <Code>&lt;input type="checkbox"&gt;</Code> for full browser accessibility</li>
               <li>Proper focus states with visible outlines</li>
               <li>Supports keyboard navigation (<Code>Space</Code> to toggle)</li>
               <li>Labels are properly associated with checkboxes via <Code>htmlFor</Code></li>

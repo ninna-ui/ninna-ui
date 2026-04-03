@@ -2,7 +2,7 @@ import { forwardRef, useId, createContext, useContext, useState, useCallback } f
 import { cn } from '@ninna-ui/utils';
 import type { Color } from '@ninna-ui/core';
 import type { CheckboxSize } from '../types';
-import { checkboxStyles, checkboxGroupStyles, checkboxBoxVariants, CHECKBOX_ICON_SIZES } from './checkbox.styles';
+import { checkboxStyles, checkboxGroupStyles, checkboxBoxVariants, checkboxIndicatorClasses, CHECKBOX_ICON_SIZES } from './checkbox.styles';
 import type { CheckboxProps, CheckboxGroupProps, CheckboxGroupItemProps, CheckboxVariant } from './checkbox.types';
 
 const CheckIcon = ({ className }: { className?: string }) => (
@@ -104,13 +104,20 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         <span
           data-slot="indicator"
           className={cn(
-            checkboxBoxVariants({ variant, color, size, invalid: !!invalid })
+            checkboxBoxVariants({ color, size }),
+            checkboxIndicatorClasses(variant, indeterminate || isChecked, !!invalid)
           )}
         >
           {indeterminate ? (
-            indeterminateIcon || <MinusIcon className={cn(CHECKBOX_ICON_SIZES[size], checkboxStyles.indeterminateIcon)} />
+            indeterminateIcon || <MinusIcon className={cn(CHECKBOX_ICON_SIZES[size], 'text-white')} />
           ) : (
-            icon || <CheckIcon className={cn(CHECKBOX_ICON_SIZES[size], checkboxStyles.icon, isChecked && 'opacity-100')} />
+            icon || <CheckIcon
+              className={cn(
+                CHECKBOX_ICON_SIZES[size],
+                'text-white transition-opacity',
+                isChecked ? 'opacity-100' : 'opacity-0'
+              )}
+            />
           )}
         </span>
       </label>
