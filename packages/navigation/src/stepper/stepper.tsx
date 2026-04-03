@@ -78,7 +78,7 @@ StepperRoot.displayName = 'Stepper';
 
 const Step = forwardRef<HTMLDivElement, StepProps>(
   ({ label, description, icon, optional, className, ...domProps }, ref) => {
-    const { activeStep, orientation, size, color, totalSteps, registerStep } = useContext(StepperContext);
+    const { activeStep, orientation, size, totalSteps, registerStep } = useContext(StepperContext);
     const indexRef = useRef<number | null>(null);
     if (indexRef.current === null) {
       indexRef.current = registerStep();
@@ -194,8 +194,8 @@ const StepSeparator = forwardRef<HTMLDivElement, StepSeparatorProps>(
         className={cn(
           stepperStyles.separator.base,
           actualOrientation === 'horizontal'
-            ? (stepperStyles.separator.horizontal as any)[size]
-            : (stepperStyles.separator.vertical as any)[size],
+            ? (stepperStyles.separator.horizontal as Record<string, string>)[size]
+            : (stepperStyles.separator.vertical as Record<string, string>)[size],
           {
              'bg-primary':    finalIsComplete && color === 'primary',
              'bg-secondary':  finalIsComplete && color === 'secondary',
