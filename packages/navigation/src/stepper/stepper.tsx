@@ -10,6 +10,7 @@ import type {
   StepperProps,
   StepProps,
   StepIndicatorProps,
+  StepSeparatorProps,
   StepStatus,
   StepperOrientation,
 } from './stepper.types';
@@ -77,21 +78,17 @@ StepperRoot.displayName = 'Stepper';
 
 const Step = forwardRef<HTMLDivElement, StepProps>(
   ({ label, description, icon, optional, className, ...domProps }, ref) => {
-    const { activeStep, orientation, size, color, registerStep } = useContext(StepperContext);
+    const { activeStep, orientation, size, color, totalSteps, registerStep } = useContext(StepperContext);
     const indexRef = useRef<number | null>(null);
     if (indexRef.current === null) {
       indexRef.current = registerStep();
     }
     const index = indexRef.current;
+    const isLast = index === totalSteps - 1;
+    const isComplete = index < activeStep;
     
-    // Status logic:
-    // - complete if activeStep > index
-    // - current if activeStep === index
-    // - upcoming if activeStep < index
     const status: StepStatus =
       index < activeStep ? 'complete' : index === activeStep ? 'current' : 'upcoming';
-
-    const isComplete = index < activeStep;
 
     return (
       <div
@@ -107,33 +104,17 @@ const Step = forwardRef<HTMLDivElement, StepProps>(
         )}
         {...domProps}
       >
-        {/* New Spanning Separator - covers current step to handle continuity */}
-        <div
-          data-slot="step-separator"
-          className={cn(
-            stepperStyles.separator.base,
-            orientation === 'horizontal'
-              ? (stepperStyles.separator.horizontal as any)[size]
-              : (stepperStyles.separator.vertical as any)[size],
-            {
-               // Separator is colored if THIS step is complete
-               'bg-primary':    isComplete && color === 'primary',
-               'bg-secondary':  isComplete && color === 'secondary',
-               'bg-accent':     isComplete && color === 'accent',
-               'bg-neutral':    isComplete && color === 'neutral',
-               'bg-success':    isComplete && color === 'success',
-               'bg-danger':     isComplete && color === 'danger',
-               'bg-warning':    isComplete && color === 'warning',
-               'bg-info':       isComplete && color === 'info',
-               'bg-base-200':   !isComplete,
-            }
-          )}
-        />
+        {!isLast && (
+          <StepSeparator 
+            isComplete={isComplete} 
+            orientation={orientation} 
+          />
+        )}
         
         <StepIndicator status={status} stepNumber={index + 1} icon={icon} />
         
         <div className={cn(
-          'flex flex-col relative z-10', 
+          'flex flex-col relative z-20', 
           orientation === 'horizontal' ? 'mt-2 items-center text-center' : 'items-start text-left'
         )}>
           <span
@@ -199,7 +180,45 @@ const StepIndicator = forwardRef<HTMLDivElement, StepIndicatorProps>(
 
 StepIndicator.displayName = 'Stepper.Indicator';
 
+const StepSeparator = forwardRef<HTMLDivElement, StepSeparatorProps>(
+  ({ isComplete, orientation, className, ...props }, ref) => {
+    const context = useContext(StepperContext);
+    const actualOrientation = orientation || context.orientation;
+    const { size, color } = context;
+    const finalIsComplete = isComplete ?? (context.activeStep > 0); // fallback
+
+    return (
+      <div
+        ref={ref}
+        data-slot="step-separator"
+        className={cn(
+          stepperStyles.separator.base,
+          actualOrientation === 'horizontal'
+            ? (stepperStyles.separator.horizontal as any)[size]
+            : (stepperStyles.separator.vertical as any)[size],
+          {
+             'bg-primary':    finalIsComplete && color === 'primary',
+             'bg-secondary':  finalIsComplete && color === 'secondary',
+             'bg-accent':     finalIsComplete && color === 'accent',
+             'bg-neutral':    finalIsComplete && color === 'neutral',
+             'bg-success':    finalIsComplete && color === 'success',
+             'bg-danger':     finalIsComplete && color === 'danger',
+             'bg-warning':    finalIsComplete && color === 'warning',
+             'bg-info':       finalIsComplete && color === 'info',
+             'bg-base-200':   !finalIsComplete,
+          },
+          className
+        )}
+        {...props}
+      />
+    );
+  }
+);
+
+StepSeparator.displayName = 'Stepper.Separator';
+
 export const Stepper = Object.assign(StepperRoot, {
   Step,
   Indicator: StepIndicator,
+  Separator: StepSeparator,
 });
