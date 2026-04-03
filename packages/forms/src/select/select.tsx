@@ -56,6 +56,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
   ) => {
     const isInvalid = invalid;
     const hasValue = value !== undefined ? value !== '' : undefined;
+    const showClear = clearable && hasValue && !disabled;
 
     return (
       <SelectEngine.Root
@@ -69,39 +70,41 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
         required={required}
         name={name}
       >
-        <SelectEngine.Trigger
-          ref={ref}
-          data-slot="trigger"
-          data-invalid={isInvalid || undefined}
-          data-disabled={disabled || undefined}
-          data-variant={variant}
-          className={cn(
-            selectTriggerVariants({ selectVariant: variant as 'outline' | 'filled' | 'flushed', color, size, invalid: !!isInvalid, fullWidth: !!fullWidth }),
-            className
-          )}
-          aria-label={ariaLabel}
-          aria-labelledby={ariaLabelledBy}
-        >
-          <SelectEngine.Value placeholder={placeholder} />
-          <span className="flex items-center gap-1 shrink-0">
-            {clearable && hasValue && !disabled && (
-              <span
-                role="button"
-                aria-label="Clear selection"
-                tabIndex={-1}
-                className="h-4 w-4 flex items-center justify-center rounded-full hover:bg-base-300 text-base-content/50 hover:text-base-content transition-colors cursor-pointer"
-                onPointerDown={(e) => { e.preventDefault(); e.stopPropagation(); onClear?.(); }}
-              >
-                <svg viewBox="0 0 20 20" fill="currentColor" className="h-3 w-3">
-                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </span>
+        <div className={cn('relative flex items-center', fullWidth ? 'w-full' : 'w-auto')}>
+          <SelectEngine.Trigger
+            ref={ref}
+            data-slot="trigger"
+            data-invalid={isInvalid || undefined}
+            data-disabled={disabled || undefined}
+            data-variant={variant}
+            className={cn(
+              selectTriggerVariants({ selectVariant: variant as 'outline' | 'filled' | 'flushed', color, size, invalid: !!isInvalid, fullWidth: !!fullWidth }),
+              showClear && 'pr-8',
+              className
             )}
+            aria-label={ariaLabel}
+            aria-labelledby={ariaLabelledBy}
+          >
+            <SelectEngine.Value placeholder={placeholder} />
             <SelectEngine.Icon>
               <ChevronDownIcon className={selectStyles.icon} />
             </SelectEngine.Icon>
-          </span>
-        </SelectEngine.Trigger>
+          </SelectEngine.Trigger>
+          {showClear && (
+            <button
+              type="button"
+              aria-label="Clear selection"
+              tabIndex={-1}
+              className="absolute right-8 h-4 w-4 flex items-center justify-center rounded-full hover:bg-base-300 text-base-content/50 hover:text-base-content transition-colors cursor-pointer z-10"
+              onPointerDown={(e) => { e.preventDefault(); }}
+              onClick={(e) => { e.stopPropagation(); onClear?.(); }}
+            >
+              <svg viewBox="0 0 20 20" fill="currentColor" className="h-3 w-3">
+                <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </button>
+          )}
+        </div>
         <SelectEngine.Portal>
           <SelectEngine.Content data-slot="content" className={cn(selectStyles.content)} position="popper" sideOffset={4}>
             <SelectEngine.ScrollUpButton className={selectStyles.scrollButton}>
