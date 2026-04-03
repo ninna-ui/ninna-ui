@@ -263,7 +263,9 @@ export function CheckboxView() {
           title="API Reference"
           description="Complete list of props for the Checkbox component."
         >
-          <PropsTable data={CHECKBOX_PROPS} />
+          <div id="checkbox-props" className="scroll-mt-20">
+            <PropsTable data={CHECKBOX_PROPS} title="Checkbox Props" />
+          </div>
         </ComponentSection>
 
         <ComponentSection

@@ -51,7 +51,7 @@ const SWITCH_PROPS: PropDefinition[] = [
   },
   {
     name: "variant",
-    type: "'solid' | 'outline'",
+    type: "'solid' | 'soft' | 'outline'",
     defaultValue: "'solid'",
     description: "Visual variant of the switch",
   },
@@ -263,7 +263,9 @@ export function SwitchView() {
           title="API Reference"
           description="Complete list of props for the Switch component."
         >
-          <PropsTable data={SWITCH_PROPS} />
+          <div id="switch-props" className="scroll-mt-20">
+            <PropsTable data={SWITCH_PROPS} title="Switch Props" />
+          </div>
         </ComponentSection>
 
         <ComponentSection

@@ -5,19 +5,19 @@ export const radioItemVariants = cva(
   {
     variants: {
       variant: {
-        outline: "border-base-300 bg-base-100 data-[state=checked]:border-current",
-        soft:    "border-transparent bg-base-200",
-        solid:   "border-base-300 bg-base-100 data-[state=checked]:bg-current data-[state=checked]:border-current",
+        solid: "border-base-300 bg-base-100",
+        soft: "border-transparent bg-base-200",
+        outline: "border-base-300 bg-base-100",
       },
       color: {
-        primary:   "text-primary focus-visible:ring-primary data-[state=checked]:border-primary",
-        secondary: "text-secondary focus-visible:ring-secondary data-[state=checked]:border-secondary",
-        accent:    "text-accent focus-visible:ring-accent data-[state=checked]:border-accent",
-        neutral:   "text-neutral focus-visible:ring-neutral data-[state=checked]:border-neutral",
-        success:   "text-success focus-visible:ring-success data-[state=checked]:border-success",
-        danger:    "text-danger focus-visible:ring-danger data-[state=checked]:border-danger",
-        warning:   "text-warning focus-visible:ring-warning data-[state=checked]:border-warning",
-        info:      "text-info focus-visible:ring-info data-[state=checked]:border-info",
+        primary: "focus-visible:ring-primary",
+        secondary: "focus-visible:ring-secondary",
+        accent: "focus-visible:ring-accent",
+        neutral: "focus-visible:ring-neutral",
+        success: "focus-visible:ring-success",
+        danger: "focus-visible:ring-danger",
+        warning: "focus-visible:ring-warning",
+        info: "focus-visible:ring-info",
       },
       size: {
         sm: "h-4 w-4",
@@ -25,32 +25,89 @@ export const radioItemVariants = cva(
         lg: "h-6 w-6",
       },
       invalid: {
-        true:  "border-danger",
+        true: "border-danger",
         false: "",
       },
     },
-    defaultVariants: { variant: "outline", color: "primary", size: "md", invalid: false },
+    compoundVariants: [
+      // solid variants
+      { variant: "solid", color: "primary", class: "data-[state=checked]:bg-primary data-[state=checked]:border-primary" },
+      { variant: "solid", color: "secondary", class: "data-[state=checked]:bg-secondary data-[state=checked]:border-secondary" },
+      { variant: "solid", color: "accent", class: "data-[state=checked]:bg-accent data-[state=checked]:border-accent" },
+      { variant: "solid", color: "neutral", class: "data-[state=checked]:bg-neutral data-[state=checked]:border-neutral" },
+      { variant: "solid", color: "success", class: "data-[state=checked]:bg-success data-[state=checked]:border-success" },
+      { variant: "solid", color: "danger", class: "data-[state=checked]:bg-danger data-[state=checked]:border-danger" },
+      { variant: "solid", color: "warning", class: "data-[state=checked]:bg-warning data-[state=checked]:border-warning" },
+      { variant: "solid", color: "info", class: "data-[state=checked]:bg-info data-[state=checked]:border-info" },
+      
+      // soft variants
+      { variant: "soft", color: "primary", class: "data-[state=checked]:bg-primary/20 data-[state=checked]:border-transparent" },
+      { variant: "soft", color: "secondary", class: "data-[state=checked]:bg-secondary/20 data-[state=checked]:border-transparent" },
+      { variant: "soft", color: "accent", class: "data-[state=checked]:bg-accent/20 data-[state=checked]:border-transparent" },
+      { variant: "soft", color: "neutral", class: "data-[state=checked]:bg-neutral/20 data-[state=checked]:border-transparent" },
+      { variant: "soft", color: "success", class: "data-[state=checked]:bg-success/20 data-[state=checked]:border-transparent" },
+      { variant: "soft", color: "danger", class: "data-[state=checked]:bg-danger/20 data-[state=checked]:border-transparent" },
+      { variant: "soft", color: "warning", class: "data-[state=checked]:bg-warning/20 data-[state=checked]:border-transparent" },
+      { variant: "soft", color: "info", class: "data-[state=checked]:bg-info/20 data-[state=checked]:border-transparent" },
+
+      // outline variants
+      { variant: "outline", color: "primary", class: "data-[state=checked]:border-primary" },
+      { variant: "outline", color: "secondary", class: "data-[state=checked]:border-secondary" },
+      { variant: "outline", color: "accent", class: "data-[state=checked]:border-accent" },
+      { variant: "outline", color: "neutral", class: "data-[state=checked]:border-neutral" },
+      { variant: "outline", color: "success", class: "data-[state=checked]:border-success" },
+      { variant: "outline", color: "danger", class: "data-[state=checked]:border-danger" },
+      { variant: "outline", color: "warning", class: "data-[state=checked]:border-warning" },
+      { variant: "outline", color: "info", class: "data-[state=checked]:border-info" },
+    ],
+    defaultVariants: {
+      variant: "outline",
+      color: "primary",
+      size: "md",
+      invalid: false,
+    },
   }
 );
 
 export type RadioItemVariantsProps = VariantProps<typeof radioItemVariants>;
 
-export const RADIO_INDICATOR_SIZES: Record<import('@ninna-ui/core').CompactSize, string> = {
-  sm: "h-1.5 w-1.5",
-  md: "h-2 w-2",
-  lg: "h-2.5 w-2.5",
-};
+export const radioIndicatorVariants = cva(
+  "rounded-full transition-all duration-200 transform scale-0 data-[state=checked]:scale-100",
+  {
+    variants: {
+      variant: {
+        solid: "bg-base-100",
+        soft: "bg-current",
+        outline: "bg-current",
+      },
+      color: {
+        primary: "bg-primary",
+        secondary: "bg-secondary",
+        accent: "bg-accent",
+        neutral: "bg-neutral",
+        success: "bg-success",
+        danger: "bg-danger",
+        warning: "bg-warning",
+        info: "bg-info",
+      },
+      size: {
+        sm: "h-1.5 w-1.5",
+        md: "h-2 w-2",
+        lg: "h-2.5 w-2.5",
+      },
+    },
+    compoundVariants: [
+      { variant: "solid", class: "bg-base-100" }, // White dot for solid
+    ],
+    defaultVariants: {
+      variant: "outline",
+      color: "primary",
+      size: "md",
+    },
+  }
+);
 
-export const RADIO_INDICATOR_COLORS: Record<import('@ninna-ui/core').Color, string> = {
-  primary:   "bg-primary",
-  secondary: "bg-secondary",
-  accent:    "bg-accent",
-  neutral:   "bg-neutral",
-  success:   "bg-success",
-  danger:    "bg-danger",
-  warning:   "bg-warning",
-  info:      "bg-info",
-};
+export type RadioIndicatorVariantsProps = VariantProps<typeof radioIndicatorVariants>;
 
 export const radioGroupStyles = {
   root:               "flex",
@@ -58,8 +115,6 @@ export const radioGroupStyles = {
   vertical:           "flex-col",
   gap:                { sm: "gap-2", md: "gap-3", lg: "gap-4" },
   indicator:          "flex items-center justify-center",
-  indicatorDot:       "rounded-full",
-  indicatorDotSolid:  "rounded-full bg-white",
   itemWrapper:        "flex items-center gap-3 min-h-[44px]",
   itemWrapperReverse: "flex-row-reverse",
   labelWrapper:       "flex flex-col gap-0.5",

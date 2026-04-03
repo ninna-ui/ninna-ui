@@ -7,7 +7,7 @@ import {
   type PropDefinition,
   type ComponentSectionType,
 } from "~/components/docs";
-import { Code, Heading } from "@ninna-ui/primitives";
+import { Code } from "@ninna-ui/primitives";
 import { radioGroupMeta } from "./meta";
 
 import Basic from "./demos/basic";
@@ -270,13 +270,11 @@ export function RadioGroupView() {
           description="Complete list of props for RadioGroup and RadioCard components."
         >
           <div className="space-y-8">
-            <div>
-              <Heading as="h4" size="lg" weight="semibold" className="mb-4">RadioGroup Props</Heading>
-              <PropsTable data={RADIO_GROUP_PROPS} />
+            <div id="radiogroup-props" className="scroll-mt-20">
+              <PropsTable data={RADIO_GROUP_PROPS} title="RadioGroup Props" />
             </div>
-            <div>
-              <Heading as="h4" size="lg" weight="semibold" className="mb-4">RadioCard Props</Heading>
-              <PropsTable data={RADIO_CARD_PROPS} />
+            <div id="radiocard-props" className="scroll-mt-20">
+              <PropsTable data={RADIO_CARD_PROPS} title="RadioCard Props" />
             </div>
           </div>
         </ComponentSection>
