@@ -1,12 +1,12 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
 export const sliderRootVariants = cva(
-  "relative flex touch-none select-none items-center",
+  "relative flex touch-none select-none items-center self-stretch",
   {
     variants: {
       orientation: {
-        horizontal: "w-full",
-        vertical: "h-full flex-col justify-center py-3",
+        horizontal: "w-full h-5",
+        vertical: "h-full w-5 flex-col py-3",
       },
       size: {
         sm: "h-4",
@@ -19,9 +19,9 @@ export const sliderRootVariants = cva(
       },
     },
     compoundVariants: [
-      { orientation: "vertical", size: "sm", class: "w-4 h-full" },
-      { orientation: "vertical", size: "md", class: "w-5 h-full" },
-      { orientation: "vertical", size: "lg", class: "w-6 h-full" },
+      { orientation: "vertical", size: "sm", class: "w-4" },
+      { orientation: "vertical", size: "md", class: "w-5" },
+      { orientation: "vertical", size: "lg", class: "w-6" },
     ],
     defaultVariants: {
       orientation: "horizontal",
@@ -32,7 +32,7 @@ export const sliderRootVariants = cva(
 );
 
 export const sliderTrackVariants = cva(
-  "relative grow rounded-full bg-base-300 overflow-hidden",
+  "relative grow rounded-full bg-base-300 overflow-hidden min-w-0 min-h-0",
   {
     variants: {
       orientation: {
@@ -115,8 +115,8 @@ export const sliderThumbVariants = cva(
         lg: "h-6 w-6",
       },
       orientation: {
-        horizontal: "-translate-x-1/2",
-        vertical: "translate-y-1/2",
+        horizontal: "",
+        vertical: "",
       },
     },
     defaultVariants: {
@@ -130,7 +130,7 @@ export const sliderThumbVariants = cva(
 
 export const sliderStyles = {
   wrapper: 'flex flex-col gap-2',
-  sliderRow: 'flex items-center gap-3',
+  sliderRow: 'flex items-center gap-3 w-full',
   label: 'text-sm font-medium text-base-content/80',
   valueLabel: 'text-sm font-semibold text-base-content tabular-nums min-w-[3rem] text-right',
   marksContainer: 'absolute inset-0 pointer-events-none',
