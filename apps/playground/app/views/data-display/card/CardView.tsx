@@ -11,19 +11,22 @@ import { cardMeta } from "./meta";
 
 import Basic from "./demos/basic";
 import Variants from "./demos/variants";
+import Colors from "./demos/colors";
 import Interactive from "./demos/interactive";
 
 export const cardSections: ComponentSectionType[] = [
   { id: "usage", title: "Usage", level: 2 },
   { id: "basic", title: "Basic", level: 3 },
   { id: "variants", title: "Variants", level: 3 },
+  { id: "colors", title: "Colors", level: 3 },
   { id: "interactive", title: "Interactive", level: 3 },
   { id: "api", title: "API Reference", level: 2 },
   { id: "accessibility", title: "Accessibility", level: 2 },
 ];
 
 const CARD_PROPS: PropDefinition[] = [
-  { name: "variant", type: "'outline' | 'elevated' | 'filled' | 'ghost'", defaultValue: "'outline'", description: "Visual style variant" },
+  { name: "variant", type: "'outline' | 'elevated' | 'filled' | 'ghost' | 'soft' | 'solid'", defaultValue: "'outline'", description: "Visual style variant" },
+  { name: "color", type: "'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'danger' | 'warning' | 'info'", description: "Color theme of the card" },
   { name: "interactive", type: "boolean", defaultValue: "false", description: "Enable hover and focus styles for clickable cards" },
   { name: "className", type: "string", description: "Additional CSS classes" },
 ];
@@ -72,8 +75,12 @@ export function CardView() {
           <CodePreview component={<Basic />} filePath="app/views/data-display/card/demos/basic.tsx" />
         </ComponentSection>
 
-        <ComponentSection id="variants" title="Variants" description="Card supports outline, elevated, filled, and ghost styles." level={3}>
+        <ComponentSection id="variants" title="Variants" description="Card supports outline, elevated, soft, solid, and ghost styles." level={3}>
           <CodePreview component={<Variants />} filePath="app/views/data-display/card/demos/variants.tsx" />
+        </ComponentSection>
+
+        <ComponentSection id="colors" title="Colors" description="Card supports multiple color themes and applies patterns based on variant." level={3}>
+          <CodePreview component={<Colors />} filePath="app/views/data-display/card/demos/colors.tsx" />
         </ComponentSection>
 
         <ComponentSection id="interactive" title="Interactive" description="Cards with hover and focus styles for clickable use cases." level={3}>
