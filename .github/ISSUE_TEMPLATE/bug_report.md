@@ -12,7 +12,7 @@ assignees: ''
 <!-- Which package and component is affected? -->
 - **Package**: <!-- e.g. @ninna-ui/primitives -->
 - **Component**: <!-- e.g. Button, Select, Modal -->
-- **Version**: <!-- e.g. 0.4.1 - run `npm ls @ninna-ui/primitives` to check -->
+- **Version**: <!-- e.g. 0.5.0 - run `npm ls @ninna-ui/primitives` to check -->
 
 ### Environment
 - **Browser**: <!-- e.g. Chrome 131, Safari 18, Firefox 133 -->

@@ -1,4 +1,4 @@
-# Ninna UI v0.1.0 - Initial Release
+# Ninna UI v0.5.0 - Coordinated Release
 
 > **Full React UI library with zero runtime styling and native Tailwind CSS v4 support** - 69 accessible, production-ready components, 5 built-in theme presets, and zero JavaScript theming overhead.
 
@@ -89,7 +89,7 @@ All components work with any React 19+ framework - no framework-specific wrapper
 
 - `@ninna-ui/utils` is **bundled** into each component package (not published separately)
 - `@ninna-ui/react-internal` is an **internal dependency** - Radix engine wrappers auto-installed by component packages
-- Starter templates pin `^0.1.0` versions (not `workspace:*`)
+- Starter templates pin `^0.5.0` versions (not `workspace:*`)
 - All packages have `"sideEffects": false` except `core` (`"sideEffects": ["**/*.css"]`)
 
 ## License
