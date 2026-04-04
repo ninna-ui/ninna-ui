@@ -1,4 +1,4 @@
-# Ninna UI + React Router Starter
+# Ninna UI + React Router v7 Starter
 
 > **Production-ready React Router v7 project with Ninna UI** - 69 accessible React components, Vite bundling, Tailwind CSS v4, TypeScript strict mode, and automatic dark mode. SSR-ready out of the box.
 
