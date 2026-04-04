@@ -40,7 +40,7 @@ Most component libraries force a trade-off: **great components** (Chakra, Mantin
 | `data-slot` CSS targeting | **98 slots** | Yes | Yes | No | No |
 | Modular npm packages | **12 pkgs** | Copy-paste | 1 package | 1 package | 1 plugin |
 | No `'use client'` needed | **Yes** | Yes | No | No | N/A |
-| CLI project scaffolding | **3 templates** | Yes | No | No | No |
+| CLI project scaffolding | **4 templates** | Yes | No | No | No |
 | React 19 support | **Yes** | Yes | Yes | Yes | N/A |
 | Framework agnostic | **Yes** | Yes | Yes | Yes | Yes |
 
@@ -83,7 +83,7 @@ export function App() {
 npx @ninna-ui/cli init my-app
 ```
 
-Choose from **Vite + React**, **Next.js 15**, or **React Router v7** templates - pre-configured with your preferred theme preset, TypeScript strict mode, and all Ninna UI packages.
+Choose from **Vite + React**, **Next.js 15**, **React Router v7**, or **Astro** templates - pre-configured with your preferred theme preset, TypeScript strict mode, and all Ninna UI packages.
 
 ## Packages
 
@@ -105,7 +105,7 @@ Choose from **Vite + React**, **Next.js 15**, or **React Router v7** templates -
 | Package | What It Does |
 |---------|--------------|
 | [`@ninna-ui/core`](./packages/core) | Design system foundation - TypeScript tokens, Tailwind class mappings, 5 CSS theme presets with oklch colors and automatic dark mode |
-| [`@ninna-ui/cli`](./packages/cli) | Zero-config project scaffolding - 3 framework templates (Vite, Next.js, React Router) with theme selection |
+| [`@ninna-ui/cli`](./packages/cli) | Zero-config project scaffolding - 4 framework templates (Vite, Next.js, React Router v7, Astro) with theme selection |
 | [`@ninna-ui/utils`](./packages/utils) | Shared utility functions - `cn()` class merger, `composeRefs`, `createContext`, keyboard constants, SSR helpers |
 | [`@ninna-ui/react-internal`](./packages/react-internal) | Radix engine isolation layer - wraps 11 Radix primitives behind clean TypeScript interfaces so Radix never leaks to consumers |
 
@@ -132,6 +132,7 @@ Production-ready project in seconds - TypeScript strict, all packages pre-instal
 | [`vite-react`](./packages/cli/templates/vite-react) | React 19 | Vite 7 | `@tailwindcss/vite` |
 | [`nextjs`](./packages/cli/templates/nextjs) | Next.js 15 App Router | Webpack/Turbopack | `@tailwindcss/postcss` |
 | [`react-router`](./packages/cli/templates/react-router) | React Router v7 | Vite 7 | `@tailwindcss/vite` |
+| [`astro`](./packages/cli/templates/astro) | Astro 5 + React 19 | Vite 7 | `@tailwindcss/vite` |
 
 ```bash
 npx @ninna-ui/cli init my-app -t nextjs --preset ocean
@@ -167,7 +168,7 @@ ninna-ui/
 │   ├── navigation/        # 5 navigation components (2 Radix + 3 custom)
 │   ├── data-display/      # 7 data display components with semantic HTML
 │   ├── code-block/        # Lightweight syntax highlighter (regex, no Prism/Shiki)
-│   └── cli/               # Project scaffolding with 3 framework templates
+│   └── cli/               # Project scaffolding with 4 framework templates (Vite, Next.js, React Router v7, Astro)
 ├── apps/
 │   ├── playground/        # React Router v7 developer sandbox (SPA mode)
 │   └── docs/              # Storybook 10 - interactive component stories
