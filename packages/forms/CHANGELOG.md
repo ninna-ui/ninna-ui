@@ -1,5 +1,47 @@
 # @ninna-ui/forms
 
+## 0.5.0
+
+### Minor Changes
+
+- [`1446e5e4cb664310859a0c97b05df7200c024235`](https://github.com/ninna-ui/ninna-ui/commit/1446e5e4cb664310859a0c97b05df7200c024235) [#41](https://github.com/ninna-ui/ninna-ui/pull/41) Thanks [@chnkc41](https://github.com/chnkc41)! - # Design System Consistency and Component Refinements
+
+  This release focuses on standardizing visual continuity, theme support, layout alignment, and accessibility across core component packages.
+
+  ### Component Updates:
+  - **Stepper & Timeline**: Re-engineered connector line logic to ensure perfect center-to-center bridging between indicators. Fixed gaps in horizontal and vertical layouts and implemented full brand/semantic color support for indicators and separators.
+  - **Card**: Implemented comprehensive variant support including `solid`, `soft` (filled), and `outline`. Added cross-theme color propagation (primary, secondary, accent, neutral, success, danger, warning, info) and standardized header/footer alignment.
+  - **Tree**: Refined indentation logic and branch line connectivity for complex nested structures. Added support for `disabled` states and customized folder/file icons.
+  - **Checkbox & CheckboxGroup**: Standardized indeterminate state handling, uncontrolled/controlled synchronization, and consistent styling with the rest of the forms package.
+  - **Slider**: Fixed accessibility issues by correctly mapping `aria-labelledby` from labels to internal slider components. Standardized `data-slot` mappings for testing parity.
+  - **Blockquote**: Updated `solid` and `soft` variants for better visual distinction and WCAG contrast compliance.
+  - **Documentation**: Established the "Neutral First" convention for all component examples. Synchronized API references, sidebars, and interactive demos across the Playground, Documentation site, and ninna-ui-web.
+
+  ### Performance and Stability:
+  - Resolved multiple TypeScript and ESLint issues across the monorepo, including `Unexpected any` and unused variable warnings.
+  - Fixed unit test failures in the navigation and primitives packages related to component composition and variant styling.
+  - Optimized bundle size by refining internal component dependency mappings.
+
+### Patch Changes
+
+- [`81659d72a15fe8b6f6ff5a4733635bb63740a1cb`](https://github.com/ninna-ui/ninna-ui/commit/81659d72a15fe8b6f6ff5a4733635bb63740a1cb) [#39](https://github.com/ninna-ui/ninna-ui/pull/39) Thanks [@chnkc41](https://github.com/chnkc41)! - fix: upgrade all dependencies to latest stable versions and resolve security vulnerabilities
+  - Updated all packages to latest stable versions
+  - Fixed security vulnerabilities by upgrading direct dependencies
+  - Removed pnpm overrides as direct upgrades are sufficient
+  - Updated eslint, typescript, react, and all other dependencies
+  - All packages now report 0 vulnerabilities in pnpm audit
+  - Fixed vitest worker timeout issues with single-threaded execution
+  - All tests (708) now pass successfully after dependency upgrade
+
+- [`820a3bcd0a81fc9d4b049c658761ab02cd8780e9`](https://github.com/ninna-ui/ninna-ui/commit/820a3bcd0a81fc9d4b049c658761ab02cd8780e9) [#43](https://github.com/ninna-ui/ninna-ui/pull/43) Thanks [@chnkc41](https://github.com/chnkc41)! - updated some package versions to keep up date date and safeyt for security
+
+- [`2c160427b752236c316d3412e27a6301afb9da3e`](https://github.com/ninna-ui/ninna-ui/commit/2c160427b752236c316d3412e27a6301afb9da3e) [#37](https://github.com/ninna-ui/ninna-ui/pull/37) Thanks [@chnkc41](https://github.com/chnkc41)! - Major documentation overhaul: Enhanced README with refined positioning and messaging, updated all package READMEs and CHANGELOGs, improved theme presets documentation, enhanced security policy with CVSS scoring and severity classification, updated GitHub templates and workflows, and standardized documentation across all 12 packages and tooling.
+
+- Updated dependencies [[`81659d72a15fe8b6f6ff5a4733635bb63740a1cb`](https://github.com/ninna-ui/ninna-ui/commit/81659d72a15fe8b6f6ff5a4733635bb63740a1cb), [`1446e5e4cb664310859a0c97b05df7200c024235`](https://github.com/ninna-ui/ninna-ui/commit/1446e5e4cb664310859a0c97b05df7200c024235), [`820a3bcd0a81fc9d4b049c658761ab02cd8780e9`](https://github.com/ninna-ui/ninna-ui/commit/820a3bcd0a81fc9d4b049c658761ab02cd8780e9), [`2c160427b752236c316d3412e27a6301afb9da3e`](https://github.com/ninna-ui/ninna-ui/commit/2c160427b752236c316d3412e27a6301afb9da3e)]:
+  - @ninna-ui/react-internal@0.5.0
+  - @ninna-ui/utils@0.5.0
+  - @ninna-ui/core@0.5.0
+
 ## 0.4.1
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/react-internal",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Radix UI engine adapters for Ninna UI - isolates Radix dependencies behind clean TypeScript interfaces, prevents type leakage.",
   "license": "MIT",
   "author": "Ninna-UI Team",

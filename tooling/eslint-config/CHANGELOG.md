@@ -1,5 +1,20 @@
 # @ninna-ui/eslint-config
 
+## 0.4.1
+
+### Patch Changes
+
+- [`81659d72a15fe8b6f6ff5a4733635bb63740a1cb`](https://github.com/ninna-ui/ninna-ui/commit/81659d72a15fe8b6f6ff5a4733635bb63740a1cb) [#39](https://github.com/ninna-ui/ninna-ui/pull/39) Thanks [@chnkc41](https://github.com/chnkc41)! - fix: upgrade all dependencies to latest stable versions and resolve security vulnerabilities
+  - Updated all packages to latest stable versions
+  - Fixed security vulnerabilities by upgrading direct dependencies
+  - Removed pnpm overrides as direct upgrades are sufficient
+  - Updated eslint, typescript, react, and all other dependencies
+  - All packages now report 0 vulnerabilities in pnpm audit
+  - Fixed vitest worker timeout issues with single-threaded execution
+  - All tests (708) now pass successfully after dependency upgrade
+
+- [`2c160427b752236c316d3412e27a6301afb9da3e`](https://github.com/ninna-ui/ninna-ui/commit/2c160427b752236c316d3412e27a6301afb9da3e) [#37](https://github.com/ninna-ui/ninna-ui/pull/37) Thanks [@chnkc41](https://github.com/chnkc41)! - Major documentation overhaul: Enhanced README with refined positioning and messaging, updated all package READMEs and CHANGELOGs, improved theme presets documentation, enhanced security policy with CVSS scoring and severity classification, updated GitHub templates and workflows, and standardized documentation across all 12 packages and tooling.
+
 ## 0.4.0
 
 ### Minor Changes
