@@ -57,7 +57,10 @@
   },
   "pnpm": {
     "overrides": {
-      "@babel/runtime": "7.29.2"
+      "@babel/runtime": "7.29.2",
+      "brace-expansion": "^2.0.2",
+      "picomatch": "^4.0.2",
+      "lodash": "^4.17.21"
     }
   },
   "packageManager": "pnpm@9.15.4",
