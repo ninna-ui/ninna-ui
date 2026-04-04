@@ -18,8 +18,8 @@
     "@ninna-ui/navigation": "latest",
     "@ninna-ui/data-display": "latest",
     "@ninna-ui/code-block": "latest",
-    "@astrojs/react": "latest",
-    "astro": "latest",
+    "@astrojs/react": "^5.0.2",
+    "astro": "^6.1.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
