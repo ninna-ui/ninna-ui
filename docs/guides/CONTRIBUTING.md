@@ -81,7 +81,7 @@ pnpm changeset
 - **Release Workflow** automatically:
   - Creates a "Version Packages" PR
   - Updates all package versions
-  - Updates internal dependencies (`workspace:*` → `^0.1.0`)
+  - Updates internal dependencies (`workspace:*` → `^0.5.0`)
 
 **When Version PR is merged:**
 - **Release Workflow** automatically:
