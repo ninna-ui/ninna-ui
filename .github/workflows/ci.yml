@@ -4,10 +4,15 @@ on:
   pull_request:
     branches: [main]
 
+# Least-privilege permissions — fixes CodeQL "Workflow does not contain permissions"
+# Each permission is explicitly scoped to the minimum required.
+permissions:
+  contents: read       # checkout repo
+  pull-requests: read  # read PR metadata (changeset validation)
+
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
-
 
 jobs:
   validate:
@@ -18,6 +23,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history needed for changeset diff
 
       - name: Enable Corepack
         run: corepack enable
@@ -37,6 +44,19 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Verify CSS safelist is up-to-date
+        run: |
+          node packages/core/scripts/generate-safelist.mjs
+          if git diff --quiet packages/core/src/theme/tailwind.css; then
+            echo "✅ CSS safelist is up-to-date"
+          else
+            echo "❌ CSS safelist is out-of-date!"
+            echo "   Run: node packages/core/scripts/generate-safelist.mjs"
+            echo "   Then commit the updated packages/core/src/theme/tailwind.css"
+            git diff packages/core/src/theme/tailwind.css
+            exit 1
+          fi
+
       - name: Typecheck
         run: pnpm typecheck
 
@@ -55,7 +75,7 @@ jobs:
       - name: Validate package (dry run)
         run: pnpm check-pack
 
-      - name: Validate Changeset 
+      - name: Validate Changeset
         run: |
           chmod +x .github/scripts/validate-changeset.sh
           .github/scripts/validate-changeset.sh

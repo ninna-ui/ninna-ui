@@ -14,14 +14,17 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
+    # Explicit least-privilege permissions
     permissions:
-      contents: write
-      pull-requests: write
-      # id-token: write  # Temporarily disabled to force token usage
+      contents: write       # create release commits / tags
+      pull-requests: write  # create/update the version bump PR
+      id-token: write       # npm provenance (OIDC) — required for --provenance publish
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history needed for changeset
 
       - name: Enable Corepack
         run: corepack enable
@@ -45,13 +48,12 @@ jobs:
 
       - name: Verify CSS safelist is up-to-date
         run: |
-          cd packages/core
-          node scripts/generate-safelist.mjs
-          if git diff --quiet src/theme/tailwind.css; then
-            echo "✅ Safelist is up-to-date"
+          node packages/core/scripts/generate-safelist.mjs
+          if git diff --quiet packages/core/src/theme/tailwind.css; then
+            echo "✅ CSS safelist is up-to-date"
           else
-            echo "❌ Safelist is out-of-date - run 'node scripts/generate-safelist.mjs' and commit"
-            git diff src/theme/tailwind.css
+            echo "❌ CSS safelist is out-of-date — run 'node packages/core/scripts/generate-safelist.mjs' and commit"
+            git diff packages/core/src/theme/tailwind.css
             exit 1
           fi
 
@@ -69,10 +71,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
-          NPM_CONFIG_ALWAYS_AUTH: true 
+          NPM_CONFIG_ALWAYS_AUTH: true
 
       - name: Notify on Success
         if: ${{ steps.changesets.outputs.published == 'true' }}
         run: |
           echo "🎉 Published packages:"
-          echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | "- \(.name)@\(.version)"' 
+          echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | "- \(.name)@\(.version)"'

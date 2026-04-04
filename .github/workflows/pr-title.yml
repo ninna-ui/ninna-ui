@@ -4,11 +4,19 @@ on:
   pull_request:
     types: [opened, edited, synchronize]
 
+# Least-privilege permissions — fixes CodeQL "Workflow does not contain permissions"
+# actions/github-script only needs to read pull-request metadata to validate the title.
+permissions:
+  contents: read
+  pull-requests: read
+
 jobs:
   pr-title:
+    name: Validate PR Title
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check PR title
+      - name: Check PR title format
         uses: actions/github-script@v7
         with:
           script: |
@@ -18,6 +26,6 @@ jobs:
 
             if (!regex.test(title)) {
               core.setFailed(
-                "PR title must start with feat:, fix:, refactor:, docs:, chore:, perf:, test:, or style:"
+                `PR title must start with one of: feat:, fix:, refactor:, docs:, chore:, perf:, test:, or style:\n\nGot: "${title}"`
               );
             }
