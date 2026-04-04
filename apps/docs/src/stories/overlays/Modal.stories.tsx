@@ -36,25 +36,28 @@ export default meta;
 type Story = StoryObj;
 
 export const Default: Story = {
-  render: () => (
-    <Modal>
-      <Modal.Trigger asChild>
-        <Button>Open Modal</Button>
-      </Modal.Trigger>
-      <Modal.Content>
-        <Modal.Header>Modal Title</Modal.Header>
-        <Modal.Body>
-          <p className="text-base-content/70">This is a basic modal dialog with default settings.</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Modal.Close asChild>
-            <Button variant="ghost">Cancel</Button>
-          </Modal.Close>
-          <Button>Confirm</Button>
-        </Modal.Footer>
-      </Modal.Content>
-    </Modal>
-  ),
+  render: function ControlledModal() {
+    const [open, setOpen] = useState(false);
+    return (
+      <Modal open={open} onOpenChange={setOpen}>
+        <Modal.Trigger asChild>
+          <Button>Open Modal</Button>
+        </Modal.Trigger>
+        <Modal.Content>
+          <Modal.Header>Modal Title</Modal.Header>
+          <Modal.Body>
+            <p className="text-base-content/70">This is a basic modal dialog with default settings.</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Modal.Close asChild>
+              <Button variant="ghost">Cancel</Button>
+            </Modal.Close>
+            <Button>Confirm</Button>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
+    );
+  },
 };
 
 export const Sizes: Story = {
@@ -197,87 +200,87 @@ export const LongContent: Story = {
         <Modal.Header>Long Content</Modal.Header>
         <Modal.Body>
           {[
-  <p key="modal-paragraph-1" className="text-base-content/70 mb-4">
-    Paragraph 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-2" className="text-base-content/70 mb-4">
-    Paragraph 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-3" className="text-base-content/70 mb-4">
-    Paragraph 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-4" className="text-base-content/70 mb-4">
-    Paragraph 4: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-5" className="text-base-content/70 mb-4">
-    Paragraph 5: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-6" className="text-base-content/70 mb-4">
-    Paragraph 6: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-7" className="text-base-content/70 mb-4">
-    Paragraph 7: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-8" className="text-base-content/70 mb-4">
-    Paragraph 8: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-9" className="text-base-content/70 mb-4">
-    Paragraph 9: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-10" className="text-base-content/70 mb-4">
-    Paragraph 10: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-11" className="text-base-content/70 mb-4">
-    Paragraph 11: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-12" className="text-base-content/70 mb-4">
-    Paragraph 12: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-13" className="text-base-content/70 mb-4">
-    Paragraph 13: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-14" className="text-base-content/70 mb-4">
-    Paragraph 14: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-15" className="text-base-content/70 mb-4">
-    Paragraph 15: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-16" className="text-base-content/70 mb-4">
-    Paragraph 16: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-17" className="text-base-content/70 mb-4">
-    Paragraph 17: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-18" className="text-base-content/70 mb-4">
-    Paragraph 18: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-19" className="text-base-content/70 mb-4">
-    Paragraph 19: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>,
-  <p key="modal-paragraph-20" className="text-base-content/70 mb-4">
-    Paragraph 20: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-]}
+            <p key="modal-paragraph-1" className="text-base-content/70 mb-4">
+              Paragraph 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-2" className="text-base-content/70 mb-4">
+              Paragraph 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-3" className="text-base-content/70 mb-4">
+              Paragraph 3: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-4" className="text-base-content/70 mb-4">
+              Paragraph 4: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-5" className="text-base-content/70 mb-4">
+              Paragraph 5: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-6" className="text-base-content/70 mb-4">
+              Paragraph 6: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-7" className="text-base-content/70 mb-4">
+              Paragraph 7: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-8" className="text-base-content/70 mb-4">
+              Paragraph 8: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-9" className="text-base-content/70 mb-4">
+              Paragraph 9: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-10" className="text-base-content/70 mb-4">
+              Paragraph 10: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-11" className="text-base-content/70 mb-4">
+              Paragraph 11: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-12" className="text-base-content/70 mb-4">
+              Paragraph 12: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-13" className="text-base-content/70 mb-4">
+              Paragraph 13: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-14" className="text-base-content/70 mb-4">
+              Paragraph 14: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-15" className="text-base-content/70 mb-4">
+              Paragraph 15: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-16" className="text-base-content/70 mb-4">
+              Paragraph 16: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-17" className="text-base-content/70 mb-4">
+              Paragraph 17: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-18" className="text-base-content/70 mb-4">
+              Paragraph 18: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-19" className="text-base-content/70 mb-4">
+              Paragraph 19: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+            <p key="modal-paragraph-20" className="text-base-content/70 mb-4">
+              Paragraph 20: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>,
+          ]}
         </Modal.Body>
         <Modal.Footer>
           <Modal.Close asChild><Button variant="ghost">Close</Button></Modal.Close>

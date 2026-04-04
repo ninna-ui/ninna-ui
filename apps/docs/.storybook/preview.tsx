@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import type { Preview } from '@storybook/react';
 import { withThemeByClassName } from '@storybook/addon-themes';
 
@@ -36,32 +37,49 @@ const preview: Preview = {
     themePreset: 'default',
   },
   decorators: [
-    // Apply theme preset and mode with true full screen background
     (Story, context) => {
-      const { themePreset } = context.globals;
+      const { themePreset, theme: themeMode } = context.globals;
+      
+      useEffect(() => {
+        const root = document.documentElement;
+        // Sync theme preset (e.g., 'default', 'ocean')
+        root.setAttribute('data-theme', themePreset || 'default');
+        
+        // Sync theme mode (light/dark)
+        // Note: withThemeByClassName handles class on body, but we sync to root for safety
+        if (themeMode === 'dark' || themeMode === 'light') {
+          root.classList.remove('light', 'dark');
+          root.classList.add(themeMode);
+        }
+      }, [themePreset, themeMode]);
+
       return (
         <div 
-          data-theme={themePreset}
-          className="light" // Default to light mode
+          className="bg-base-50 text-base-content transition-all duration-200"
           style={{ 
-            width: '100vw',
-            height: '100vh',
+            width: '100%',
+            height: '100%',
             margin: 0,
             padding: 0,
-            backgroundColor: 'var(--color-base-50)', // Theme-aware background
-            color: 'var(--color-base-content)', // Theme-aware text
-            transition: 'all 0.2s ease-in-out',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0
+            minHeight: '100vh',
+            backgroundColor: 'var(--color-base-50)'
           }}
         >
-          <Story {...context} />
+          {/* Inner container with max-width for components */}
+          <div 
+            className="flex flex-col gap-8"
+            style={{
+              width: '100%',
+              maxWidth: '1200px', // Wider for better component display
+              padding: '2rem',
+              minHeight: '100vh'
+            }}
+          >
+            <Story {...context} />
+          </div>
         </div>
       );
     },

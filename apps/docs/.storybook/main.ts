@@ -1,5 +1,6 @@
 import type { StorybookConfig } from '@storybook/react-vite';
 import tailwindcss from '@tailwindcss/vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
@@ -16,7 +17,11 @@ const config: StorybookConfig = {
   },
   viteFinal: async (config) => ({
     ...config,
-    plugins: [...(config.plugins ?? []), tailwindcss()],
+    plugins: [
+      ...(config.plugins ?? []), 
+      tsconfigPaths(), // Add tsconfigPaths for @ninna-ui resolution
+      tailwindcss()
+    ],
   }),
   typescript: {
     reactDocgen: 'react-docgen',
