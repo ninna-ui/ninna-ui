@@ -32,7 +32,7 @@ export default function FeedbackOverview() {
     <PackageOverview
       packageName="@ninna-ui/feedback"
       title="Feedback"
-      description="User feedback components — alerts, toasts, progress indicators, loading states, and skeleton placeholders. Keep users informed about what's happening."
+      description="User feedback components - alerts, toasts, progress indicators, loading states, and skeleton placeholders. Keep users informed about what's happening."
       components={components}
       features={features}
     />

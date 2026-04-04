@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/primitives",
-  "version": "0.4.0",
-  "description": "14 primitive React UI components for Ninna UI — Button, Badge, Avatar, Text, Heading, Link, Code, Kbd, Divider, and more. Accessible, themeable, Tailwind CSS v4.",
+  "version": "0.4.1",
+  "description": "14 primitive React UI components for Ninna UI - Button, Badge, Avatar, Text, Heading, Link, Code, Kbd, Divider, and more. Accessible, themeable, Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -68,14 +68,14 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@ninna-ui/tsconfig": "workspace:*",
     "@ninna-ui/test-config": "workspace:*",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tsup": "^8.0.0",
-    "typescript": "^5.4.0",
-    "vitest": "^4.0.0"
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.2"
   }
 }

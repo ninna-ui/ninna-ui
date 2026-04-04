@@ -1,13 +1,13 @@
 # @ninna-ui/overlays
 
-> 5 overlay components for Ninna-UI — Modal, Drawer, Popover, Tooltip, and DropdownMenu.
+> **5 accessible React overlay components** - Modal, Drawer, Popover, Tooltip, and DropdownMenu with built-in focus trapping, scroll locking, and keyboard dismissal. Radix-powered accessibility with zero Radix API leakage.
 
 [![npm](https://img.shields.io/npm/v/@ninna-ui/overlays.svg)](https://www.npmjs.com/package/@ninna-ui/overlays)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 📖 **[Full Documentation →](https://www.ninna-ui.dev/overlays)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/overlays)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/overlays)**
 
-Overlay and portal components for [Ninna UI](../../README.md). All powered by [Radix UI](https://www.radix-ui.com/) under the hood for bulletproof accessibility — focus trapping, scroll locking, escape-to-close, and click-outside dismissal are all handled automatically. Radix types never leak into the public API.
+Production-ready overlay and portal components for [Ninna UI](../../README.md). Every component is powered by [Radix UI](https://www.radix-ui.com/) internally for bulletproof accessibility - focus trapping, scroll locking, escape-to-close, click-outside dismissal, and portal rendering are all handled automatically. **Radix types never leak into your code** - you get a clean, simple API.
 
 ## Installation
 
@@ -93,13 +93,13 @@ function App() {
 
 Overlay components include these accessibility features out of the box:
 
-- **Focus trapping** — Modal and Drawer trap keyboard focus
-- **Scroll locking** — Modal and Drawer lock background scroll while open
-- **Escape to close** — Press Escape to dismiss (component-configurable)
-- **Click outside** — Click outside to dismiss (component-configurable)
-- **Portal rendering** — Overlay content renders in a portal to avoid z-index conflicts
-- **Animation** — Enter/exit animations via CSS keyframes (ninna-enter, ninna-exit)
-- **z-index layering** — Tooltip > DropdownMenu > Popover > Modal/Drawer
+- **Focus trapping** - Modal and Drawer trap keyboard focus
+- **Scroll locking** - Modal and Drawer lock background scroll while open
+- **Escape to close** - Press Escape to dismiss (component-configurable)
+- **Click outside** - Click outside to dismiss (component-configurable)
+- **Portal rendering** - Overlay content renders in a portal to avoid z-index conflicts
+- **Animation** - Enter/exit animations via CSS keyframes (ninna-enter, ninna-exit)
+- **z-index layering** - Tooltip > DropdownMenu > Popover > Modal/Drawer
 
 ## All Exports
 
@@ -115,10 +115,10 @@ import {
 
 ## Related Packages
 
-- [`@ninna-ui/core`](../core/README.md) — Design tokens and theme presets (required)
-- [`@ninna-ui/primitives`](../primitives/README.md) — Button, Badge, and other trigger components
-- [`@ninna-ui/feedback`](../feedback/README.md) — Toast notifications for overlay actions
-- [All packages](../../README.md#packages) — Complete package list
+- [`@ninna-ui/core`](../core/README.md) - Design tokens and theme presets (required)
+- [`@ninna-ui/primitives`](../primitives/README.md) - Button, Badge, and other trigger components
+- [`@ninna-ui/feedback`](../feedback/README.md) - Toast notifications for overlay actions
+- [All packages](../../README.md#packages) - Complete package list
 
 ## License
 

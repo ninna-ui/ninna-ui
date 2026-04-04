@@ -1,5 +1,27 @@
 # @ninna-ui/core
 
+## 0.4.1
+
+### Patch Changes
+
+- [`d4f6b998dbe79e6e3b4cd76be3f8742602b07c31`](https://github.com/ninna-ui/ninna-ui/commit/d4f6b998dbe79e6e3b4cd76be3f8742602b07c31) [#34](https://github.com/ninna-ui/ninna-ui/pull/34) Thanks [@chnkc41](https://github.com/chnkc41)! - Fixes critical modal centering issue on ninna-ui.dev production site. The modal was not properly centered due to missing negative translate CSS classes in the safelist.
+
+  **Changes:**
+  - Added missing negative translate classes: `-translate-x-1/2`, `-translate-y-1/2`, `sm:-translate-x-1/2`, `sm:-translate-y-1/2`
+  - Fixed generator logic to properly categorize negative translate classes with variant prefixes
+  - Manual safelist update applied due to generator priority bug
+  - Rebuilt core package with updated CSS safelist
+
+  **Impact:**
+  - Modals now properly centered on both playground and production documentation
+  - Resolves visual inconsistency between development and production environments
+
+- [`72e08d9eade52c6f3f0fa94199517753a5732cee`](https://github.com/ninna-ui/ninna-ui/commit/72e08d9eade52c6f3f0fa94199517753a5732cee) [#32](https://github.com/ninna-ui/ninna-ui/pull/32) Thanks [@chnkc41](https://github.com/chnkc41)! - docs: fix documentation consistency and version references
+  - Add missing HTML setup sections with data-theme attribute to package READMEs
+  - Update CLI template version references for consistency
+  - Fix version constant documentation
+  - Ensure all documentation accurately reflects theme setup requirements
+
 ## 0.4.0
 
 ### Minor Changes
@@ -9,7 +31,7 @@
   Introduce the new public internal architecture and coordinated package release.
   - Publish **@ninna-ui/utils** and **@ninna-ui/react-internal** as public npm packages.
   - All Ninna UI packages are now versioned together using a **Changesets fixed group**.
-  - Consumers no longer need to install Radix UI dependencies directly — all Radix adapters are bundled inside **@ninna-ui/react-internal**.
+  - Consumers no longer need to install Radix UI dependencies directly - all Radix adapters are bundled inside **@ninna-ui/react-internal**.
   - Updated architecture documentation and contribution guidelines.
   - Fixed missing `react` and `react-dom` devDependencies in the overlays package.
   - Updated documentation and component counts to reflect the new public package structure.
@@ -63,13 +85,13 @@
 
 ### Minor Changes
 
-- [`fc5592107862b77fdc212034135bb6262a5c647d`](https://github.com/ninna-ui/ninna-ui/commit/fc5592107862b77fdc212034135bb6262a5c647d) [#13](https://github.com/ninna-ui/ninna-ui/pull/13) Thanks [@chnkc41](https://github.com/chnkc41)! - feat: v0.3.0 — component regression fixes and improvements
+- [`fc5592107862b77fdc212034135bb6262a5c647d`](https://github.com/ninna-ui/ninna-ui/commit/fc5592107862b77fdc212034135bb6262a5c647d) [#13](https://github.com/ninna-ui/ninna-ui/pull/13) Thanks [@chnkc41](https://github.com/chnkc41)! - feat: v0.3.0 - component regression fixes and improvements
 
   ### Bug Fixes
-  - **Tabs**: Fix vertical tabs — orientation now propagates via context to CVA variants; line variant renders `border-r` when vertical
-  - **Input/Textarea/Select**: Fix double focus border — remove browser default outline with `outline-none focus:outline-none focus-visible:outline-none`; compound variants own the full focus ring
-  - **Toast**: Fix viewport blocking clicks — add `pointer-events-none` to viewport container
-  - **Loading dots**: Fix dots appearing as vertical lines — use `inline-flex` wrapper, proper `size-*` classes for round dots, `gap-1.5` spacing
+  - **Tabs**: Fix vertical tabs - orientation now propagates via context to CVA variants; line variant renders `border-r` when vertical
+  - **Input/Textarea/Select**: Fix double focus border - remove browser default outline with `outline-none focus:outline-none focus-visible:outline-none`; compound variants own the full focus ring
+  - **Toast**: Fix viewport blocking clicks - add `pointer-events-none` to viewport container
+  - **Loading dots**: Fix dots appearing as vertical lines - use `inline-flex` wrapper, proper `size-*` classes for round dots, `gap-1.5` spacing
 
   ### Improvements
   - **Loading dots**: Increased dot sizes across all breakpoints for better visibility
@@ -144,7 +166,7 @@
 - [`c04c5910c7596071b77a9e3df4e51b3071633544`](https://github.com/ninna-ui/ninna-ui/commit/c04c5910c7596071b77a9e3df4e51b3071633544) [#4](https://github.com/ninna-ui/ninna-ui/pull/4) Thanks [@chnkc41](https://github.com/chnkc41)! - fix: production CSS purge, theme fallback, safelist hardening
 
   ### @ninna-ui/core (minor)
-  - **Filesystem `@source` scanning in `tailwind.css`**: Added `@source` directives pointing to core's own dist and all 8 sibling `@ninna-ui` package dist files. Tailwind now automatically scans every component's JS output when a consumer imports any theme preset — no manual `@source` directive needed.
+  - **Filesystem `@source` scanning in `tailwind.css`**: Added `@source` directives pointing to core's own dist and all 8 sibling `@ninna-ui` package dist files. Tailwind now automatically scans every component's JS output when a consumer imports any theme preset - no manual `@source` directive needed.
   - **Hardened `@source inline()` safelist**: Removed redundant layout/sizing/typography/radius inlines that the filesystem scanner already detects. Kept only patterns the Tailwind v4 scanner cannot extract from JS: opacity modifiers (`bg-primary/10`), variant prefixes (`hover:`, `focus:`, `peer-checked:`, `data-[]`, `marker:`), stroke utilities, and custom `@utility` names. Added clear documentation explaining why each category exists.
   - **`:root` fallback on `default.css` only**: Removed `:root` from ocean/sunset/forest/minimal presets to prevent CSS cascade conflicts when multiple presets are imported.
   - **Toast animation utilities**: Added `slide-in-from-{top,bottom,left}-full` and `slide-out-to-{top,bottom,left}-full` `@utility` definitions.

@@ -12,6 +12,12 @@ const meta: Meta = {
       control: 'text',
       description: 'Additional CSS classes',
     },
+    status: {
+      control: 'select',
+      options: ['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'],
+      description: 'Status color for Timeline.Indicator',
+      table: { defaultValue: { summary: 'neutral' } },
+    },
   },
 };
 
@@ -130,6 +136,27 @@ export const WithCustomIcons: Story = {
             <Timeline.Description>Default indicator with dot.</Timeline.Description>
           </Timeline.Content>
         </Timeline.Item>
+      </Timeline>
+    );
+  },
+};
+
+export const ColorVariants: Story = {
+  render: () => {
+    const colors = ['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'] as const;
+    return (
+      <Timeline className="w-[400px]">
+        {colors.map((color, index) => (
+          <Timeline.Item key={color}>
+            <Timeline.Indicator status={color} />
+            <Timeline.Connector />
+            <Timeline.Content>
+              <Timeline.Heading>{color.charAt(0).toUpperCase() + color.slice(1)} Status</Timeline.Heading>
+              <Timeline.Description>Timeline item with {color} status color.</Timeline.Description>
+              <Timeline.Time>Item {index + 1}</Timeline.Time>
+            </Timeline.Content>
+          </Timeline.Item>
+        ))}
       </Timeline>
     );
   },

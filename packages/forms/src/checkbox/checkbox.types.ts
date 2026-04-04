@@ -1,9 +1,9 @@
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import type { Color, ColorVariant } from '@ninna-ui/core';
+import type { Color } from '@ninna-ui/core';
 import type { CheckboxSize } from '../types';
 
-/** Checkbox variant — uses core ColorVariant for consistency */
-export type CheckboxVariant = ColorVariant;
+/** Checkbox variant styles */
+export type CheckboxVariant = 'solid' | 'soft' | 'outline';
 
 /**
  * Checkbox props

@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import type { Color, ColorVariant, Radius, Size } from '@ninna-ui/core';
 
-/** Badge variant — uses core ColorVariant for consistency */
+/** Badge variant - uses core ColorVariant for consistency */
 export type BadgeVariant = ColorVariant;
 
 /**

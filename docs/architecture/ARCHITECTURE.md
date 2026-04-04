@@ -1,20 +1,20 @@
-# Ninna-UI Architecture
+# Ninna UI Architecture
 
-> **Version:** 2.0.0  
-> **Last Updated:** February 2026  
-> **Audit Status:** Full monorepo audit completed
+> **Complete system architecture for the Ninna UI monorepo** - 12 packages, 69 components, Tailwind CSS v4 theme system, Radix isolation layer, canonical component patterns, and build infrastructure. This is the definitive technical reference for understanding how everything fits together.
+>
+> **Version:** 2.0.0 · **Last Updated:** February 2026 · **Audit Status:** Full monorepo audit completed
 
 ## Design Philosophy
 
-Component quality of shadcn/Chakra UI/Mantine combined with the theming simplicity of DaisyUI. 100% accessibility. Radix primitives for complex interactive components via an internal engine layer. Zero `'use client'` directives. Zero `dark:` prefixes in component styles — all theming via CSS custom properties.
+Chakra/Mantine-level component quality combined with DaisyUI-simple theming. 100% WCAG 2.1 AA accessibility. Radix primitives powering complex interactive components via an internal engine isolation layer. Zero `'use client'` directives - every component works in React Server Components. Zero `dark:` prefixes in component styles - all theming via CSS custom properties with automatic dark mode.
 
 ### Core Principles
 
-1. **DaisyUI-style theming** — One CSS import, instant theme. No JS config files.
-2. **shadcn-level quality** — `forwardRef`, `displayName`, `data-slot`, `cn()` on every component.
-3. **Radix isolation** — Radix lives in `react-internal`, never leaks to public API.
-4. **Token-driven** — All colors are semantic (`primary`, `danger`), never hardcoded (`text-red-500`).
-5. **Tree-shakeable** — Named exports, `sideEffects: false`, ESM-only distribution.
+1. **DaisyUI-style theming** - One CSS import, instant theme. No JS config files.
+2. **shadcn-level quality** - `forwardRef`, `displayName`, `data-slot`, `cn()` on every component.
+3. **Radix isolation** - Radix lives in `react-internal`, never leaks to public API.
+4. **Token-driven** - All colors are semantic (`primary`, `danger`), never hardcoded (`text-red-500`).
+5. **Tree-shakeable** - Named exports, `sideEffects: false`, ESM-only distribution.
 
 ---
 
@@ -123,9 +123,9 @@ core/src/theme/
 ```
 
 Each preset imports `tailwind.css` (no duplication of `@theme inline`). Presets define:
-- **Light mode:** `[data-theme="preset-name"]` — activates when `data-theme` matches
-- **Explicit dark:** `.dark [data-theme="preset-name"], [data-theme="preset-name"].dark` — `.dark` class on `<html>` or ancestor
-- **System dark:** `@media (prefers-color-scheme: dark) { [data-theme="preset-name"]:not(.light):not(.dark) }` — OS preference, no class set
+- **Light mode:** `[data-theme="preset-name"]` - activates when `data-theme` matches
+- **Explicit dark:** `.dark [data-theme="preset-name"], [data-theme="preset-name"].dark` - `.dark` class on `<html>` or ancestor
+- **System dark:** `@media (prefers-color-scheme: dark) { [data-theme="preset-name"]:not(.light):not(.dark) }` - OS preference, no class set
 
 The `data-theme` attribute is always required on `<html>` (or an ancestor element) for theme variables to activate.
 
@@ -173,7 +173,7 @@ component-name/
 ```
 
 **Exceptions (acceptable):**
-- `toast/` has 4 files: `toast.tsx`, `toaster.tsx`, `use-toast.tsx`, `toast.types.ts` — compound component
+- `toast/` has 4 files: `toast.tsx`, `toaster.tsx`, `use-toast.tsx`, `toast.types.ts` - compound component
 - `hidden-field/` has 2 files: no `.styles.ts` or `.types.ts` needed (trivial wrapper)
 - Compound components (Card, Modal, Tabs, etc.) use `Object.assign(Root, { Sub1, Sub2 })` pattern
 
@@ -187,7 +187,7 @@ component-name/
 
 ## Package Inventory
 
-### `@ninna-ui/core` — Types, Tokens & Theme CSS
+### `@ninna-ui/core` - Types, Tokens & Theme CSS
 
 | Layer | Contents |
 |-------|----------|
@@ -197,49 +197,49 @@ component-name/
 
 **No JSX, no React.** Pure TypeScript + CSS.
 
-### `@ninna-ui/utils` — Utility Functions
+### `@ninna-ui/utils` - Utility Functions
 
 `cn()` (clsx + tailwind-merge), `composeRefs`, `composeEventHandlers`, `createContext`, `KEYS` (keyboard constants), `canUseDOM`, `isBrowser`, `getOwnerDocument`, `getOwnerWindow`, plus utility types (`Nullable`, `PropsOf`, `PolymorphicProps`, `Prettify`, `Merge`, etc.).
 
-### `@ninna-ui/react-internal` — Radix Engines (Private)
+### `@ninna-ui/react-internal` - Radix Engines (Private)
 
 11 engine wrappers: `CheckboxEngine`, `SwitchEngine`, `RadioEngine`, `SelectEngine`, `SliderEngine`, `DialogEngine`, `DropdownEngine`, `PopoverEngine`, `TooltipEngine`, `TabsEngine`, `AccordionEngine`. Plus `Slot` + `Slottable` for polymorphic rendering.
 
-### `@ninna-ui/primitives` — 15 Components
+### `@ninna-ui/primitives` - 15 Components
 
 Avatar (+AvatarGroup), Badge, Blockquote, Button, Code, Divider, Heading, IconButton, Kbd, Link, LinkOverlay (+LinkBox), List (+ListItem), Mark, Text.
 
-### `@ninna-ui/feedback` — 9 Components + useToast
+### `@ninna-ui/feedback` - 9 Components + useToast
 
 Alert, CircularProgress, EmptyState, Loading, Progress, Skeleton (+SkeletonCircle, +SkeletonText), Status, Toast, Toaster (+toast function, +ToastProvider, +useToast).
 
-### `@ninna-ui/layout` — 10 Components
+### `@ninna-ui/layout` - 10 Components
 
 AspectRatio, Box, Center, Container, Flex, Grid, Separator, SimpleGrid, Stack (+HStack, +VStack), Wrap.
 
-### `@ninna-ui/forms` — 17 Components
+### `@ninna-ui/forms` - 17 Components
 
 Checkbox (+CheckboxGroup, +CheckboxGroupItem), Field, FileUpload (+FileUploadItem), FormControl (+useFormControl, +useFormControlProps), FormGroup, FormLabel, FormMessage, HiddenField, Input, InputGroup (+InputAddon), NumberInput, PinInput, RadioGroup (+RadioGroupItem, +RadioCard), Select (+SelectItem, +SelectGroup, +SelectSeparator), Slider, Switch, Textarea.
 
-### `@ninna-ui/overlays` — 5 Components
+### `@ninna-ui/overlays` - 5 Components
 
 Modal (.Trigger, .Content, .Header, .Body, .Footer, .Close), Drawer (.Trigger, .Content, .Header, .Body, .Footer, .Close), Popover (.Trigger, .Content, .Close), Tooltip (.Trigger, .Content), DropdownMenu (.Trigger, .Content, .Item, .CheckboxItem, .RadioItem, .Sub, .SubTrigger, .SubContent, .Separator, .Label, .Group).
 
-### `@ninna-ui/navigation` — 5 Components
+### `@ninna-ui/navigation` - 5 Components
 
 Tabs (.List, .Trigger, .Content), Accordion (.Item, .Trigger, .Content), Breadcrumbs (.Item, .Link, .Separator, .Ellipsis), Pagination (.Content, .Item, .Link, .Previous, .Next, .Ellipsis), Stepper (.Step, .Indicator, .Separator).
 
-### `@ninna-ui/data-display` — 7 Components
+### `@ninna-ui/data-display` - 7 Components
 
 Card (.Header, .Body, .Footer, .Title, .Description), Stat (.Label, .Value, .HelpText, .Trend, .Icon), Table (.Header, .Body, .Footer, .Row, .Head, .Cell, .Caption), DataTable (sortable, loading, empty state), Timeline (.Item, .Indicator, .Content, .Connector, .Heading, .Description, .Time), Tree (keyboard navigation, expand/collapse), Calendar (date selection, month navigation).
 
-### `@ninna-ui/code-block` — 1 Component
+### `@ninna-ui/code-block` - 1 Component
 
 CodeBlock with regex-based TSX/CSS/bash syntax highlighting, copy-to-clipboard, optional line numbers. No Prism/Shiki dependency.
 
-### `@ninna-ui/cli` — Scaffolding Tool
+### `@ninna-ui/cli` - Scaffolding Tool
 
-`npx @ninna-ui/cli init [name]` — interactive project scaffolding with 3 framework templates and 5 theme presets.
+`npx @ninna-ui/cli init [name]` - interactive project scaffolding with 3 framework templates and 5 theme presets.
 
 ---
 
@@ -260,7 +260,7 @@ CodeBlock with regex-based TSX/CSS/bash syntax highlighting, copy-to-clipboard, 
 - Theme switching across all 5 presets + dark mode
 - Uses `@ninna-ui/utils` `cn()` exclusively
 - `react-hook-form` included for form integration demos
-- **Internal developer sandbox only** — not the public documentation site
+- **Internal developer sandbox only** - not the public documentation site
 - Public documentation website: **https://ninna-ui.dev** (separate `ninna-ui-web` project)
 
 ---
@@ -283,5 +283,5 @@ CodeBlock with regex-based TSX/CSS/bash syntax highlighting, copy-to-clipboard, 
 
 - Root `vitest.config.ts` includes both `packages/**/__tests__/**/*.test.{ts,tsx}` and `packages/**/src/**/*.test.{ts,tsx}`
 - Setup: `@testing-library/jest-dom/vitest` + `vitest-axe` matchers
-- **51 test files, 708 tests** — all packages covered including layout, navigation, data-display, code-block, overlays
+- **51 test files, 708 tests** - all packages covered including layout, navigation, data-display, code-block, overlays
 - Coverage: v8 provider, excludes stories/tests/index files

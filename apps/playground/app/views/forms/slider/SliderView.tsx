@@ -57,7 +57,7 @@ const SLIDER_PROPS: PropDefinition[] = [
   },
   {
     name: "variant",
-    type: "'solid' | 'outline'",
+    type: "'solid' | 'soft'",
     defaultValue: "'solid'",
     description: "Visual variant of the slider",
   },
@@ -351,7 +351,9 @@ export function SliderView() {
           title="API Reference"
           description="Complete list of props for the Slider component."
         >
-          <PropsTable data={SLIDER_PROPS} />
+          <div id="slider-props" className="scroll-mt-20">
+            <PropsTable data={SLIDER_PROPS} title="Slider Props" />
+          </div>
         </ComponentSection>
 
         <ComponentSection

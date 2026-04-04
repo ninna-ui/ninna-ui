@@ -19,7 +19,7 @@ import MainLayout from "./components/layout";
 
 export const meta: MetaFunction = () => [
   { title: "Ninna UI Playground" },
-  { name: "description", content: "Developer playground for Ninna UI — live component sandbox." },
+  { name: "description", content: "Developer playground for Ninna UI - live component sandbox." },
 ];
 
 export const links: LinksFunction = () => [

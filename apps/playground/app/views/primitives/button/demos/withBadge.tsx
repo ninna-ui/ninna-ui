@@ -4,7 +4,7 @@ import { Bell, Mail, ShoppingBag } from "lucide-react";
 export default function WithBadge() {
   return (
     <div className="flex flex-col gap-4">
-      {/* Notification badges — contrasting colors for visibility */}
+      {/* Notification badges - contrasting colors for visibility */}
       <div className="flex flex-wrap gap-3">
         <Button color="primary" className="relative">
           Notifications

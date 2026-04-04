@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/cli",
-  "version": "0.4.0",
-  "description": "CLI tool for scaffolding Ninna UI projects — Vite + React, Next.js 15, React Router v7 templates with 5 theme presets. Tailwind CSS v4.",
+  "version": "0.4.1",
+  "description": "CLI tool for scaffolding Ninna UI projects - Vite + React, Next.js 15, React Router v7 templates with 5 theme presets. Tailwind CSS v4.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -53,17 +53,17 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "commander": "^12.0.0",
+    "commander": "^14.0.3",
     "prompts": "^2.4.2",
     "picocolors": "^1.1.0",
-    "fs-extra": "^11.2.0"
+    "fs-extra": "^11.3.4"
   },
   "devDependencies": {
     "@ninna-ui/tsconfig": "workspace:*",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.14.0",
     "@types/prompts": "^2.4.9",
-    "tsup": "^8.0.0",
-    "typescript": "^5.4.0"
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
   }
 }

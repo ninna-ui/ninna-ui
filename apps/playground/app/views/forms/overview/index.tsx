@@ -41,7 +41,7 @@ export default function FormsOverview() {
     <PackageOverview
       packageName="@ninna-ui/forms"
       title="Forms"
-      description="Accessible form components powered by Radix UI primitives — inputs, selects, checkboxes, sliders, file uploads, and form infrastructure."
+      description="Accessible form components powered by Radix UI primitives - inputs, selects, checkboxes, sliders, file uploads, and form infrastructure."
       components={components}
       features={features}
     />

@@ -1,13 +1,14 @@
-# Ninna-UI Accessibility Standards
+# Ninna UI Accessibility Standards
 
-> **Version:** 1.0.0  
-> **Last Updated:** February 2026
+> **WCAG 2.1 Level AA compliance for every component** - ARIA patterns, keyboard navigation, focus management, color contrast, and screen reader compatibility. Accessibility is not optional in Ninna UI - it's a core quality gate enforced by automated vitest-axe audits on every PR.
+>
+> **Version:** 1.0.0 · **Last Updated:** February 2026
 
 ---
 
 ## Overview
 
-All Ninna-UI components MUST meet WCAG 2.1 Level AA standards. Accessibility is not optional—it's a core requirement for every component.
+All Ninna UI components MUST meet WCAG 2.1 Level AA standards. Accessibility is not optional - it's a core requirement for every component, enforced by automated testing and code review.
 
 ## Testing
 
@@ -19,9 +20,9 @@ All components are tested with `vitest-axe` to catch common accessibility violat
 
 ### 1.1 Required Patterns
 
-- ✅ **`forwardRef` always** — Consumers must be able to attach refs for focus management
-- ✅ **`className` always supported** — Consumers need styling flexibility
-- ✅ **Semantic HTML elements** — Use `<button>`, `<nav>`, `<table>`, not `<div>` with `role`
+- ✅ **`forwardRef` always** - Consumers must be able to attach refs for focus management
+- ✅ **`className` always supported** - Consumers need styling flexibility
+- ✅ **Semantic HTML elements** - Use `<button>`, `<nav>`, `<table>`, not `<div>` with `role`
 
 ### 1.2 Why Semantic HTML?
 
@@ -382,6 +383,6 @@ For each component:
 
 ## 10. Related Documents
 
-- [COMPONENT_STANDARD.md](./COMPONENT_STANDARD.md) — Component implementation patterns
-- [TESTING_STRATEGY.md](./TESTING_STRATEGY.md) — vitest-axe integration
-- [Architecture](../architecture/ARCHITECTURE.md) — Radix engine strategy and package isolation
+- [COMPONENT_STANDARD.md](./COMPONENT_STANDARD.md) - Component implementation patterns
+- [TESTING_STRATEGY.md](./TESTING_STRATEGY.md) - vitest-axe integration
+- [Architecture](../architecture/ARCHITECTURE.md) - Radix engine strategy and package isolation

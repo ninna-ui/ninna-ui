@@ -2,7 +2,7 @@ import type { ComponentPropsWithoutRef, ReactNode } from 'react';
 import type { Color, ColorVariant } from '@ninna-ui/core';
 import type { RadioSize } from '../types';
 
-/** Radio variant — uses core ColorVariant for consistency */
+/** Radio variant - uses core ColorVariant for consistency */
 export type RadioVariant = ColorVariant;
 
 /**

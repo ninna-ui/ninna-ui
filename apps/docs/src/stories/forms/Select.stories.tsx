@@ -16,6 +16,12 @@ const meta: Meta<typeof Select> = {
       description: 'Size of the select',
       table: { defaultValue: { summary: 'md' } },
     },
+    color: {
+      control: 'select',
+      options: ['neutral', 'primary', 'secondary', 'accent', 'info', 'success', 'warning', 'danger'],
+      description: 'Color theme',
+      table: { defaultValue: { summary: 'primary' } },
+    },
     variant: {
       control: 'select',
       options: ['outline', 'filled', 'flushed'],
@@ -217,11 +223,24 @@ export const AllVariants: Story = {
       {(['outline', 'filled', 'flushed'] as const).map((variant) => (
         <div key={variant}>
           <p className="text-sm text-base-content/70 mb-1">variant="{variant}"</p>
-          <Select variant={variant} placeholder={`Variant ${variant}`}>
+          <Select variant={variant} placeholder={`${variant.charAt(0).toUpperCase() + variant.slice(1)} variant`}>
             <SelectItem value="option1">Option 1</SelectItem>
             <SelectItem value="option2">Option 2</SelectItem>
           </Select>
         </div>
+      ))}
+    </div>
+  ),
+};
+
+export const AllColors: Story = {
+  render: () => (
+    <div className="space-y-3 max-w-xs">
+      {(['neutral', 'primary', 'secondary', 'accent', 'info', 'success', 'warning', 'danger'] as const).map((color) => (
+        <Select key={color} color={color} placeholder={`${color.charAt(0).toUpperCase() + color.slice(1)}`}>
+          <SelectItem value="option1">Option 1</SelectItem>
+          <SelectItem value="option2">Option 2</SelectItem>
+        </Select>
       ))}
     </div>
   ),

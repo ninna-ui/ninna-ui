@@ -7,12 +7,13 @@ import { fileURLToPath } from "node:url";
 
 // Resolve the package root: dist/commands/init.js → dist/commands → dist → package root
 const __filename = fileURLToPath(import.meta.url);
-const PKG_ROOT = path.resolve(path.dirname(__filename), "..", "..");
+const PKG_ROOT = path.resolve(path.dirname(__filename), "..");
 
 const TEMPLATES = [
   { title: "Vite + React", value: "vite-react", description: "Vite 7, React 19, TypeScript" },
   { title: "Next.js", value: "nextjs", description: "Next.js 15 App Router, TypeScript" },
   { title: "React Router", value: "react-router", description: "React Router v7 + Vite, TypeScript" },
+  { title: "Astro", value: "astro", description: "Astro 5, React 19, TypeScript" },
 ];
 
 const PRESETS = [
@@ -31,7 +32,7 @@ interface InitOptions {
 
 export async function init(name: string | undefined, options: InitOptions) {
   console.log();
-  console.log(pc.bold(pc.cyan("  Ninna UI") + " — Create a new project"));
+  console.log(pc.bold(pc.cyan("  Ninna UI") + " - Create a new project"));
   console.log();
 
   const response = await prompts(
@@ -177,7 +178,7 @@ function findCssFiles(dir: string): string[] {
 
 function findMarkupFiles(dir: string): string[] {
   const results: string[] = [];
-  const markupExts = [".html", ".tsx", ".jsx"];
+  const markupExts = [".html", ".tsx", ".jsx", ".astro"];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   for (const entry of entries) {
     const fullPath = path.join(dir, entry.name);

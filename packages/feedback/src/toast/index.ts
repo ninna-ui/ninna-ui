@@ -6,6 +6,7 @@ export type {
   ToasterProps,
   ToastData,
   ToastVariant,
+  ToastPosition,
   CreateToastOptions,
   ToastContextValue,
 } from './toast.types';

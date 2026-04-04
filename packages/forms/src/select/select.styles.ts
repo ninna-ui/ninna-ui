@@ -5,9 +5,19 @@ export const selectTriggerVariants = cva(
   {
     variants: {
       selectVariant: {
-        outline: "rounded-md border border-base-300 bg-base-100 focus:ring-2 focus:ring-primary/20 focus:border-primary disabled:bg-base-50",
-        filled:  "rounded-md border border-transparent bg-base-200 focus:bg-base-100 focus:ring-2 focus:border-primary",
-        flushed: "rounded-none border-x-0 border-t-0 border-b-2 border-base-300 bg-transparent px-0 focus:border-primary",
+        outline: "rounded-md border border-base-300 bg-base-100 disabled:bg-base-50",
+        filled:  "rounded-md border border-transparent bg-base-200 focus:bg-base-100",
+        flushed: "rounded-none border-x-0 border-t-0 border-b-2 border-base-300 bg-transparent px-0",
+      },
+      color: {
+        primary:   "text-primary",
+        secondary: "text-secondary",
+        accent:    "text-accent",
+        neutral:   "text-neutral",
+        success:   "text-success",
+        danger:    "text-danger",
+        warning:   "text-warning",
+        info:      "text-info",
       },
       size: {
         xs: "h-7 px-2 text-xs",
@@ -26,11 +36,39 @@ export const selectTriggerVariants = cva(
       },
     },
     compoundVariants: [
-      { selectVariant: "outline", invalid: true, class: "border-danger focus:border-danger focus:ring-danger/20" },
-      { selectVariant: "filled",  invalid: true, class: "bg-danger/10 border-danger focus:border-danger" },
+      // outline + color: colored border at rest + focus ring
+      { selectVariant: "outline", color: "primary",   class: "border-primary/40 focus:ring-2 focus:ring-primary/30 focus:border-primary" },
+      { selectVariant: "outline", color: "secondary", class: "border-secondary/40 focus:ring-2 focus:ring-secondary/30 focus:border-secondary" },
+      { selectVariant: "outline", color: "accent",    class: "border-accent/40 focus:ring-2 focus:ring-accent/30 focus:border-accent" },
+      { selectVariant: "outline", color: "neutral",   class: "border-neutral/40 focus:ring-2 focus:ring-neutral/30 focus:border-neutral" },
+      { selectVariant: "outline", color: "success",   class: "border-success/40 focus:ring-2 focus:ring-success/30 focus:border-success" },
+      { selectVariant: "outline", color: "danger",    class: "border-danger/40 focus:ring-2 focus:ring-danger/30 focus:border-danger" },
+      { selectVariant: "outline", color: "warning",   class: "border-warning/40 focus:ring-2 focus:ring-warning/30 focus:border-warning" },
+      { selectVariant: "outline", color: "info",      class: "border-info/40 focus:ring-2 focus:ring-info/30 focus:border-info" },
+      // filled + color: tinted bg at rest + focus ring
+      { selectVariant: "filled", color: "primary",   class: "bg-primary/10 focus:bg-base-100 focus:ring-2 focus:ring-primary/30 focus:border-primary" },
+      { selectVariant: "filled", color: "secondary", class: "bg-secondary/10 focus:bg-base-100 focus:ring-2 focus:ring-secondary/30 focus:border-secondary" },
+      { selectVariant: "filled", color: "accent",    class: "bg-accent/10 focus:bg-base-100 focus:ring-2 focus:ring-accent/30 focus:border-accent" },
+      { selectVariant: "filled", color: "neutral",   class: "bg-neutral/10 focus:bg-base-100 focus:ring-2 focus:ring-neutral/30 focus:border-neutral" },
+      { selectVariant: "filled", color: "success",   class: "bg-success/10 focus:bg-base-100 focus:ring-2 focus:ring-success/30 focus:border-success" },
+      { selectVariant: "filled", color: "danger",    class: "bg-danger/10 focus:bg-base-100 focus:ring-2 focus:ring-danger/30 focus:border-danger" },
+      { selectVariant: "filled", color: "warning",   class: "bg-warning/10 focus:bg-base-100 focus:ring-2 focus:ring-warning/30 focus:border-warning" },
+      { selectVariant: "filled", color: "info",      class: "bg-info/10 focus:bg-base-100 focus:ring-2 focus:ring-info/30 focus:border-info" },
+      // flushed + color: colored bottom border at rest + focus
+      { selectVariant: "flushed", color: "primary",   class: "border-primary/40 focus:border-primary" },
+      { selectVariant: "flushed", color: "secondary", class: "border-secondary/40 focus:border-secondary" },
+      { selectVariant: "flushed", color: "accent",    class: "border-accent/40 focus:border-accent" },
+      { selectVariant: "flushed", color: "neutral",   class: "border-neutral/40 focus:border-neutral" },
+      { selectVariant: "flushed", color: "success",   class: "border-success/40 focus:border-success" },
+      { selectVariant: "flushed", color: "danger",    class: "border-danger/40 focus:border-danger" },
+      { selectVariant: "flushed", color: "warning",   class: "border-warning/40 focus:border-warning" },
+      { selectVariant: "flushed", color: "info",      class: "border-info/40 focus:border-info" },
+      // invalid states (override color)
+      { selectVariant: "outline", invalid: true, class: "border-danger focus:ring-2 focus:ring-danger/30 focus:border-danger" },
+      { selectVariant: "filled",  invalid: true, class: "bg-danger/10 border-danger focus:ring-2 focus:ring-danger/30 focus:border-danger" },
       { selectVariant: "flushed", invalid: true, class: "border-danger focus:border-danger" },
     ],
-    defaultVariants: { selectVariant: "outline", size: "md", invalid: false, fullWidth: true },
+    defaultVariants: { selectVariant: "outline", color: "primary", size: "md", invalid: false, fullWidth: true },
   }
 );
 

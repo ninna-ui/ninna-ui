@@ -1,8 +1,8 @@
-# Ninna UI + React Router Starter
+# Ninna UI + React Router v7 Starter
 
-A minimal starter template with [Ninna UI](https://github.com/ninna-ui/ninna-ui), React Router v7, Vite, and Tailwind CSS v4.
+> **Production-ready React Router v7 project with Ninna UI** - 69 accessible React components, Vite bundling, Tailwind CSS v4, TypeScript strict mode, and automatic dark mode. SSR-ready out of the box.
 
-> Generated with `npx @ninna-ui/cli init my-app -t react-router`
+Generated with `npx @ninna-ui/cli init my-app -t react-router`
 
 ## Getting Started
 
@@ -16,12 +16,14 @@ pnpm build      # Build for production
 
 - **React Router v7** with Vite and TypeScript strict mode
 - **Tailwind CSS v4.1** with `@tailwindcss/vite` plugin
-- **Ninna UI v0.4.0** — All 9 packages: primitives, feedback, forms, layout, overlays, navigation, data-display, code-block, core
-- **Default theme preset** with automatic dark mode + 4 additional presets
+- **Ninna UI** - All 9 component packages pre-installed: primitives, feedback, forms, layout, overlays, navigation, data-display, code-block, core
+- **Default theme preset** with automatic dark mode via CSS custom properties + 4 additional presets available
 
 ## Customization
 
 ### Change Theme Preset
+
+Swap your entire design system with one CSS import change - no JavaScript configuration needed:
 
 1. Edit `app/index.css`:
 
@@ -36,18 +38,18 @@ pnpm build      # Build for production
 <html lang="en" data-theme="ocean">
 ```
 
-### Enable Dark Mode
+### Dark Mode
 
-Dark mode activates automatically via `prefers-color-scheme`. For manual toggle in `app/root.tsx`:
+Dark mode activates **automatically** via `prefers-color-scheme` - no setup needed. For manual toggle, add `.dark` class in `app/root.tsx`:
 
 ```tsx
 <html lang="en" data-theme="default" className="dark">
 ```
 
-> **SSR note:** This template uses React Router v7 SSR mode (`ssr: true`). The `Layout` export in `root.tsx` wraps every page — Tailwind utility classes are on a wrapper `<div>` inside `<body>` to avoid hydration mismatches.
+> **SSR note:** This template uses React Router v7 SSR mode (`ssr: true`). The `Layout` export in `root.tsx` wraps every page - Tailwind utility classes are on a wrapper `<div>` inside `<body>` to avoid hydration mismatches.
 
 ## Learn More
 
-- [Ninna UI Documentation](https://github.com/ninna-ui/ninna-ui)
-- [All Packages](https://github.com/ninna-ui/ninna-ui#packages)
-- [React Router Documentation](https://reactrouter.com/)
+- [Ninna UI Documentation](https://ninna-ui.dev) - Full docs with live component demos
+- [GitHub](https://github.com/ninna-ui/ninna-ui) - Source code and all packages
+- [React Router Documentation](https://reactrouter.com/) - React Router v7 reference

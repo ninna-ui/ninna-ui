@@ -68,13 +68,13 @@ Previously, developers could modify public packages without creating changesets,
 
 ## Type of Change
 
-- [x] `feat` — Enhanced CI validation and documentation
-- [x] `docs` — Updated all documentation files
-- [x] `refactor` — Moved inline scripts to external files
-- [ ] `fix` — Bug fix
-- [ ] `perf` — Performance improvement
-- [ ] `test` — Adding or updating tests
-- [ ] `chore` — Build process, tooling, or dependency changes
+- [x] `feat` - Enhanced CI validation and documentation
+- [x] `docs` - Updated all documentation files
+- [x] `refactor` - Moved inline scripts to external files
+- [ ] `fix` - Bug fix
+- [ ] `perf` - Performance improvement
+- [ ] `test` - Adding or updating tests
+- [ ] `chore` - Build process, tooling, or dependency changes
 
 ## Related Issues
 
@@ -85,7 +85,7 @@ Previously, developers could modify public packages without creating changesets,
 ## Breaking Changes
 
 - [x] No breaking changes
-- [ ] Yes — described below:
+- [ ] Yes - described below:
 
 ## Packages Affected
 

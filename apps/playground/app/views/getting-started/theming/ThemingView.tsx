@@ -30,7 +30,7 @@ const DARK_MODE_CLASS_CODE = `<!-- Forced dark mode -->
 <!-- Forced light mode (blocks OS preference) -->
 <html data-theme="default" class="light">
 
-<!-- System preference (auto) — no class, follows OS -->
+<!-- System preference (auto) - no class, follows OS -->
 <html data-theme="default">
 
 <!-- Note: data-theme is always required -->
@@ -46,7 +46,7 @@ function setTheme(mode) {
   } else if (mode === 'light') {
     root.classList.add('light');     // forces light, blocks @media query
   }
-  // 'system': no class — @media (prefers-color-scheme: dark) handles it
+  // 'system': no class - @media (prefers-color-scheme: dark) handles it
 
   localStorage.setItem('theme', mode);
 }
@@ -81,7 +81,7 @@ const CODEBLOCK_TOKEN_OVERRIDE_CODE = `/* Override individual token colors globa
   --ninna-cb-punctuation: oklch(0.50 0.04 264); /* muted punctuation */
 }
 
-/* Scope overrides to a specific wrapper — leave other blocks unchanged */
+/* Scope overrides to a specific wrapper - leave other blocks unchanged */
 .my-docs-section [data-slot="code-block"] {
   --ninna-cb-keyword: oklch(0.55 0.28 160); /* green theme for this section */
 }`;
@@ -101,7 +101,7 @@ const CUSTOM_THEME_CODE = `/* ===== Light Theme (default) ===== */
 [data-theme="my-brand"] {
   color-scheme: light;
 
-  /* Primary — your brand color */
+  /* Primary - your brand color */
   --color-primary: oklch(0.49 0.27 250);
   --color-primary-content: oklch(0.93 0.04 250);
 
@@ -117,7 +117,7 @@ const CUSTOM_THEME_CODE = `/* ===== Light Theme (default) ===== */
   --color-neutral: oklch(0.21 0.03 265);
   --color-neutral-content: oklch(0.93 0.01 265);
 
-  /* Base surfaces — light (L: 0.98 → 0.20) */
+  /* Base surfaces - light (L: 0.98 → 0.20) */
   --color-base-50:  oklch(0.985 0.006 260);
   --color-base-100: oklch(0.970 0.008 260);
   --color-base-200: oklch(0.940 0.010 260);
@@ -139,7 +139,7 @@ const CUSTOM_THEME_CODE = `/* ===== Light Theme (default) ===== */
   --color-neutral: oklch(0.70 0.03 265);
   --color-neutral-content: oklch(0.15 0.01 265);
 
-  /* Base surfaces — dark (L: 0.14 → 0.93) */
+  /* Base surfaces - dark (L: 0.14 → 0.93) */
   --color-base-50:  oklch(0.140 0.012 260);
   --color-base-100: oklch(0.180 0.014 260);
   --color-base-200: oklch(0.230 0.016 260);
@@ -210,7 +210,7 @@ export function ThemingView() {
               <Code>sunset.css</Code>,{" "}
               <Code>forest.css</Code>,{" "}
               <Code>minimal.css</Code>{" "}
-              — all can be imported together for per-section theming.
+              - all can be imported together for per-section theming.
             </Text>
           </div>
         </ComponentSection>
@@ -226,7 +226,7 @@ export function ThemingView() {
               <Text size="sm" className="text-base-content/70 mb-3">
                 Every built-in theme includes both light and dark color definitions. The dark mode
                 CSS selector uses <Code>{'.dark [data-theme="default"]'}</Code> or <Code>{'[data-theme="default"].dark'}</Code> to
-                redefine all CSS variables — no <Code>dark:</Code> utility classes needed anywhere.
+                redefine all CSS variables - no <Code>dark:</Code> utility classes needed anywhere.
                 A <Code>data-theme</Code> attribute is always required on <Code>{'<html>'}</Code> (or any ancestor element).
               </Text>
             </div>
@@ -345,7 +345,7 @@ export function ThemingView() {
               <Heading as="h3" size="base" weight="semibold" className="mb-2">Color Scheme Prop</Heading>
               <Text size="sm" className="text-base-content/70 mb-3">
                 Each <Code>CodeBlock</Code> can independently control its light/dark syntax colors via the
-                <Code>colorScheme</Code> prop — useful when embedding code inside a dark hero section on an
+                <Code>colorScheme</Code> prop - useful when embedding code inside a dark hero section on an
                 otherwise light page, or vice versa.
               </Text>
               <UsageExample code={CODEBLOCK_SCHEME_CODE} />

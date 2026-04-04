@@ -26,6 +26,12 @@ const meta: Meta = {
       description: 'Size of the stepper',
       table: { defaultValue: { summary: 'md' } },
     },
+    color: {
+      control: 'select',
+      options: ['primary', 'secondary', 'accent', 'neutral', 'success', 'danger', 'warning', 'info'],
+      description: 'Color theme of the stepper',
+      table: { defaultValue: { summary: 'primary' } },
+    },
   },
 };
 
@@ -143,6 +149,23 @@ export const WithOptionalStep: Story = {
         <Stepper.Step label="Avatar" description="Optional" optional />
         <Stepper.Step label="Confirm" description="Required" />
       </Stepper>
+    </div>
+  ),
+};
+
+export const Colors: Story = {
+  render: () => (
+    <div className="flex flex-col gap-12 w-[600px]">
+      {(['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'] as const).map((color) => (
+        <div key={color} className="flex flex-col gap-3">
+          <h4 className="text-xs font-semibold uppercase text-base-content/50 px-1 tracking-wider">{color}</h4>
+          <Stepper activeStep={1} color={color}>
+            <Stepper.Step label="Step One" />
+            <Stepper.Step label="Step Two" />
+            <Stepper.Step label="Step Three" />
+          </Stepper>
+        </div>
+      ))}
     </div>
   ),
 };

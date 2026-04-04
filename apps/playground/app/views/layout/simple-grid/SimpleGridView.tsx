@@ -26,8 +26,8 @@ export const simpleGridSections: ComponentSectionType[] = [
 ];
 
 const SIMPLE_GRID_PROPS: PropDefinition[] = [
-  { name: "columns", type: "number", defaultValue: "1", description: "Fixed number of columns (uses inline style — mutually exclusive with minChildWidth)" },
-  { name: "minChildWidth", type: "string", description: "Minimum child width for auto-fit responsive columns (e.g., '200px'). Uses inline style — dynamic values cannot be statically extracted by Tailwind JIT." },
+  { name: "columns", type: "number", defaultValue: "1", description: "Fixed number of columns (uses inline style - mutually exclusive with minChildWidth)" },
+  { name: "minChildWidth", type: "string", description: "Minimum child width for auto-fit responsive columns (e.g., '200px'). Uses inline style - dynamic values cannot be statically extracted by Tailwind JIT." },
   { name: "gap", type: "'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16'", defaultValue: "'4'", description: "Gap between items (uses Tailwind gap-* classes)" },
   { name: "className", type: "string", description: "Additional CSS classes" },
 ];

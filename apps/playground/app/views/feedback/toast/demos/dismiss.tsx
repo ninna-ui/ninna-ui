@@ -7,9 +7,9 @@ export default function DismissDemo() {
       <Button
         variant="soft"
         onClick={() => {
-          toast.success('Toast 1');
-          toast.info('Toast 2');
-          toast.warning('Toast 3');
+          toast.create({ title: 'Toast 1', color: 'success' });
+          toast.create({ title: 'Toast 2', color: 'info' });
+          toast.create({ title: 'Toast 3', color: 'warning' });
         }}
       >
         Show Multiple

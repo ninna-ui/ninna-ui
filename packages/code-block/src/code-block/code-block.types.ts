@@ -17,9 +17,9 @@ export interface CodeBlockProps extends ComponentPropsWithoutRef<'div'> {
   copyButtonAlwaysVisible?: boolean;
   /**
    * Force a specific color scheme for syntax highlighting, independent of the page theme.
-   * - `"auto"` (default) — follows the nearest `.dark` ancestor class
-   * - `"light"` — always uses light syntax colors
-   * - `"dark"`  — always uses dark syntax colors
+   * - `"auto"` (default) - follows the nearest `.dark` ancestor class
+   * - `"light"` - always uses light syntax colors
+   * - `"dark"`  - always uses dark syntax colors
    */
   colorScheme?: CodeBlockColorScheme;
   /** Additional class name for the root container */

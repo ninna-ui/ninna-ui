@@ -6,7 +6,7 @@ import { NINNA_UI_VERSION } from "~/constants/version";
 
 const installationMeta = {
   title: "Installation",
-  description: "Step-by-step installation guides for Vite, Next.js, and React Router. Set up Ninna UI in under 2 minutes.",
+  description: "Step-by-step installation guides for Vite, Next.js, React Router v7, and Astro. Set up Ninna UI in under 2 minutes.",
   category: "Getting Started",
   version: NINNA_UI_VERSION,
   status: "stable" as const,
@@ -59,6 +59,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="light" data-theme="default" suppressHydrationWarning>
       <head>
+        <meta charSet="utf-8" />
         <Meta />
         <Links />
       </head>
@@ -74,6 +75,30 @@ export function Layout({ children }: { children: React.ReactNode }) {
 export default function App() {
   return <Outlet />;
 }`;
+
+const ASTRO_CONFIG_CODE = `// astro.config.mjs
+import { defineConfig } from 'astro/config';
+import react from '@astrojs/react';
+import tailwindv4 from '@tailwindcss/vite';
+
+export default defineConfig({
+  integrations: [react()],
+  vite: {
+    plugins: [tailwindv4()],
+  },
+});`;
+
+const ASTRO_LAYOUT_CODE = `// src/layouts/Layout.astro
+<html lang="en" data-theme="default">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-base-50 text-base-content antialiased">
+    <slot />
+  </body>
+</html>`;
 
 export function InstallationView() {
   return (
@@ -93,14 +118,14 @@ export function InstallationView() {
               copyButtonAlwaysVisible
             />
             <Text size="sm" className="text-base-content/70">
-              The CLI prompts you to choose a framework (Vite, Next.js, or React Router) and a theme preset,
+              The CLI prompts you to choose a framework (Vite, Next.js, React Router v7, or Astro) and a theme preset,
               then creates a ready-to-run project with all dependencies configured.
             </Text>
             <div className="bg-base-200 border border-base-300 rounded-lg p-4 space-y-2">
               <Text size="xs" weight="semibold" className="uppercase tracking-widest text-base-content/50">Options</Text>
               <div className="space-y-1">
                 <div className="flex items-start gap-3 text-sm">
-                  <Code className="shrink-0">-t vite-react|nextjs|react-router</Code>
+                  <Code className="shrink-0">-t vite-react|nextjs|react-router|astro</Code>
                   <Text size="sm" className="text-base-content/70">Choose framework without prompt</Text>
                 </div>
                 <div className="flex items-start gap-3 text-sm">
@@ -125,7 +150,8 @@ export function InstallationView() {
             <Tabs.List>
               <Tabs.Trigger value="vite">Vite + React</Tabs.Trigger>
               <Tabs.Trigger value="nextjs">Next.js</Tabs.Trigger>
-              <Tabs.Trigger value="react-router">React Router</Tabs.Trigger>
+              <Tabs.Trigger value="react-router">React Router v7</Tabs.Trigger>
+              <Tabs.Trigger value="astro">Astro</Tabs.Trigger>
             </Tabs.List>
               {/* ── Vite ── */}
               <Tabs.Content value="vite">
@@ -157,7 +183,7 @@ export default defineConfig({
                   <div>
                     <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Add data-theme to index.html</Heading>
                     <CodeBlock code={VITE_HTML_CODE} language="html" copyButtonAlwaysVisible />
-                    <Text size="sm" className="text-base-content/60 mt-2">Required — theme CSS variables only activate when <Code>data-theme</Code> matches the preset name.</Text>
+                    <Text size="sm" className="text-base-content/60 mt-2">Required - theme CSS variables only activate when <Code>data-theme</Code> matches the preset name.</Text>
                   </div>
 
                   <div>
@@ -247,7 +273,40 @@ export default defineConfig({
                   </div>
                 </div>
               </Tabs.Content>
-          </Tabs>
+
+              {/* ── Astro ── */}
+              <Tabs.Content value="astro">
+                <div className="space-y-6 pt-4">
+                  <div>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">1. Install packages</Heading>
+                    <div className="space-y-2">
+                      <CodeBlock code="pnpm add @ninna-ui/primitives @ninna-ui/feedback @ninna-ui/forms @ninna-ui/layout" language="bash" copyButtonAlwaysVisible />
+                      <CodeBlock code="pnpm add -D tailwindcss @tailwindcss/vite @astrojs/react" language="bash" copyButtonAlwaysVisible />
+                    </div>
+                  </div>
+
+                  <div>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">2. Configure astro.config.mjs</Heading>
+                    <UsageExample code={ASTRO_CONFIG_CODE} />
+                  </div>
+
+                  <div>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">3. Configure src/styles/globals.css</Heading>
+                    <UsageExample code={CSS_CODE("src/styles/globals.css")} />
+                  </div>
+
+                  <div>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">4. Set up src/layouts/Layout.astro</Heading>
+                    <UsageExample code={ASTRO_LAYOUT_CODE} />
+                  </div>
+
+                  <div>
+                    <Heading as="h3" size="sm" weight="semibold" className="mb-3 text-base-content/70 uppercase tracking-widest text-xs">5. Verify it works</Heading>
+                    <UsageExample code={VERIFY_CODE} />
+                  </div>
+                </div>
+              </Tabs.Content>
+            </Tabs>
         </ComponentSection>
 
         <ComponentSection
@@ -332,7 +391,7 @@ export default defineConfig({
                     </tr>
                     <tr>
                       <td className="py-2.5 pr-4"><Code color="primary">@ninna-ui/cli</Code></td>
-                      <td className="py-2.5 pr-4">Project scaffolding CLI — <Code>npx @ninna-ui/cli init</Code></td>
+                      <td className="py-2.5 pr-4">Project scaffolding CLI - <Code>npx @ninna-ui/cli init</Code></td>
                       <td className="py-2.5"><Code >npx @ninna-ui/cli init my-app</Code></td>
                     </tr>
                   </tbody>

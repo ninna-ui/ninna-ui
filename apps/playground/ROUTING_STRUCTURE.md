@@ -1,8 +1,10 @@
 # Routing Structure
 
+> **Flat file-based routing for the Ninna UI developer sandbox** - React Router v7 SPA mode with dot-notation routes mapping to ~55 component pages. Add a new component route in one file.
+
 ## Overview
 
-The developer sandbox uses **React Router v7** in SPA mode with **flat file-based routing** via `@react-router/fs-routes`. Routes use dot notation for nested URLs — all route files live in a single `app/routes/` directory.
+The developer sandbox uses **React Router v7** in SPA mode with **flat file-based routing** via `@react-router/fs-routes`. Routes use dot notation for nested URLs - all route files live in a single `app/routes/` directory. No nested folders, no layout nesting - just simple, predictable URL mapping.
 
 Route configuration is defined in `app/routes.ts`:
 

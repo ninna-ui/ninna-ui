@@ -1,8 +1,8 @@
-# Ninna-UI Testing Strategy
+# Ninna UI Testing Strategy
 
-> **Version:** 1.0.0  
-> **Last Updated:** February 2026  
-> **Defines what must be tested, what should not, and how.**
+> **700+ automated tests across 51 test files** - priority-based coverage, vitest-axe accessibility audits, co-located test files, and clear guidelines on what to test and what to skip. This document defines the testing philosophy and requirements for every Ninna UI component.
+>
+> **Version:** 1.0.0 · **Last Updated:** February 2026
 
 ---
 
@@ -14,20 +14,20 @@
 | **@testing-library/react 16.x** | Component rendering and interaction |
 | **@testing-library/user-event 14.x** | Realistic user interaction simulation |
 | **@testing-library/jest-dom** | DOM assertion matchers (`toBeInTheDocument`, `toHaveClass`, etc.) |
-| **vitest-axe 1.0.0-pre.5** | Automated accessibility auditing (axe-core) — chosen over `@axe-core/react` because it runs in CI, catches regressions, and tests every component in isolation |
+| **vitest-axe 1.0.0-pre.5** | Automated accessibility auditing (axe-core) - chosen over `@axe-core/react` because it runs in CI, catches regressions, and tests every component in isolation |
 
 ### Configuration
 
-- **Root config:** `vitest.config.ts` — jsdom, react plugin, css: true
-- **Setup file:** `vitest.setup.ts` — jest-dom matchers + vitest-axe matchers + afterEach cleanup
-- **Type augmentation:** `vitest.d.ts` — AxeMatchers on Vitest Assertion interface
+- **Root config:** `vitest.config.ts` - jsdom, react plugin, css: true
+- **Setup file:** `vitest.setup.ts` - jest-dom matchers + vitest-axe matchers + afterEach cleanup
+- **Type augmentation:** `vitest.d.ts` - AxeMatchers on Vitest Assertion interface
 - **Include patterns:** `packages/**/__tests__/**/*.test.{ts,tsx}` + `packages/**/src/**/*.test.{ts,tsx}`
 
 ---
 
 ## 2. Test Placement
 
-### 2.1 Component Tests — Co-located
+### 2.1 Component Tests - Co-located
 
 Component tests live **inside the component folder**, next to the implementation:
 
@@ -42,7 +42,7 @@ packages/primitives/src/button/
 
 **Rationale:** Co-location makes it obvious which components have tests and which don't. When you delete a component, the test goes with it.
 
-### 2.2 Utility Tests — `__tests__/` folder
+### 2.2 Utility Tests - `__tests__/` folder
 
 Same pattern for utilities:
 
@@ -69,7 +69,7 @@ Always `.tsx` for components (JSX needed), `.ts` for utils (no JSX).
 
 ## 3. What MUST Be Tested
 
-### 3.1 Every Component — Mandatory Tests
+### 3.1 Every Component - Mandatory Tests
 
 | Test Category | What to Assert | Example |
 |---------------|----------------|---------|
@@ -80,7 +80,7 @@ Always `.tsx` for components (JSX needed), `.ts` for utils (no JSX).
 | **Ref forwarding** | ref is forwarded to root DOM element | `const ref = createRef(); render(<Button ref={ref} />)` |
 | **Default rendering** | Correct HTML element and default classes | Check tag name, default variant classes |
 
-### 3.2 Interactive Components — Additional Tests
+### 3.2 Interactive Components - Additional Tests
 
 | Test Category | What to Assert |
 |---------------|----------------|
@@ -89,7 +89,7 @@ Always `.tsx` for components (JSX needed), `.ts` for utils (no JSX).
 | **Keyboard** | Enter/Space triggers action, Escape closes overlay, Arrow keys navigate |
 | **Focus** | `focus-visible` ring appears on keyboard focus |
 
-### 3.3 Form Components — Additional Tests
+### 3.3 Form Components - Additional Tests
 
 | Test Category | What to Assert |
 |---------------|----------------|
@@ -99,7 +99,7 @@ Always `.tsx` for components (JSX needed), `.ts` for utils (no JSX).
 | **Required** | `aria-required` or `required` attribute |
 | **Label association** | `htmlFor`/`id` pairing or `aria-label` |
 
-### 3.4 Variant/Color/Size — Parametric Tests
+### 3.4 Variant/Color/Size - Parametric Tests
 
 Use `it.each` for exhaustive variant coverage:
 
@@ -118,7 +118,7 @@ it.each(colors)('renders %s color', (color) => {
 });
 ```
 
-### 3.5 Accessibility — axe Audit
+### 3.5 Accessibility - axe Audit
 
 Every component MUST have at least one axe audit:
 
@@ -132,7 +132,7 @@ it('passes axe accessibility audit', async () => {
 });
 ```
 
-### 3.7 Utilities — Mandatory Tests
+### 3.7 Utilities - Mandatory Tests
 
 | Test Category | What to Assert |
 |---------------|----------------|
@@ -146,13 +146,13 @@ it('passes axe accessibility audit', async () => {
 
 ### 4.1 Do NOT Test
 
-- **Tailwind class strings** — Don't assert exact class names like `"bg-primary text-primary-content"`. These are implementation details that change frequently. Test behavior and attributes instead.
-- **Internal state** — Don't reach into component internals. Test through the public API (props, events, DOM output).
-- **Style objects** — Don't unit test `.styles.ts` files in isolation. They're tested implicitly through component tests.
-- **Third-party libraries** — Don't test that Radix works. Test that YOUR wrapper passes the right props.
-- **Storybook stories** — Stories are documentation, not tests. Don't use stories as test substitutes.
-- **Layout components** — Box, Flex, Grid, Stack, etc. are thin wrappers around `<div>` with className. A basic render + className merge test is sufficient. Don't over-test.
-- **CSS rendering** — jsdom doesn't render CSS. Don't assert visual appearance.
+- **Tailwind class strings** - Don't assert exact class names like `"bg-primary text-primary-content"`. These are implementation details that change frequently. Test behavior and attributes instead.
+- **Internal state** - Don't reach into component internals. Test through the public API (props, events, DOM output).
+- **Style objects** - Don't unit test `.styles.ts` files in isolation. They're tested implicitly through component tests.
+- **Third-party libraries** - Don't test that Radix works. Test that YOUR wrapper passes the right props.
+- **Storybook stories** - Stories are documentation, not tests. Don't use stories as test substitutes.
+- **Layout components** - Box, Flex, Grid, Stack, etc. are thin wrappers around `<div>` with className. A basic render + className merge test is sufficient. Don't over-test.
+- **CSS rendering** - jsdom doesn't render CSS. Don't assert visual appearance.
 
 ### 4.2 Over-Testing Indicators
 
@@ -171,7 +171,7 @@ it('passes axe accessibility audit', async () => {
 |---------|------------|
 | `primitives` | Button, IconButton, Link, Avatar |
 | `feedback` | Alert, Toast/Toaster, Progress |
-| `forms` | ALL — Input, Checkbox, Switch, RadioGroup, Select, Slider, Textarea, NumberInput, PinInput, FileUpload, Field, FormControl |
+| `forms` | ALL - Input, Checkbox, Switch, RadioGroup, Select, Slider, Textarea, NumberInput, PinInput, FileUpload, Field, FormControl |
 | `overlays` | Modal, Drawer, Tooltip, Popover, DropdownMenu |
 | `navigation` | Tabs, Accordion, Pagination |
 | `utils` | cn, createContext, composeRefs |
@@ -190,8 +190,8 @@ it('passes axe accessibility audit', async () => {
 
 | Package | Components | Reason |
 |---------|------------|--------|
-| `layout` | Box, Flex, Grid, Stack, Center, Container, Wrap, SimpleGrid, AspectRatio, Separator | Thin wrappers — basic render test sufficient |
-| `forms` | FormGroup, FormLabel, FormMessage, HiddenField, InputGroup | Infrastructure components — tested implicitly through Field/FormControl tests |
+| `layout` | Box, Flex, Grid, Stack, Center, Container, Wrap, SimpleGrid, AspectRatio, Separator | Thin wrappers - basic render test sufficient |
+| `forms` | FormGroup, FormLabel, FormMessage, HiddenField, InputGroup | Infrastructure components - tested implicitly through Field/FormControl tests |
 
 ---
 
@@ -218,7 +218,7 @@ All P0 and P1 gaps have been resolved. Remaining P2 gaps:
 
 | Missing Test | Priority | Reason |
 |-------------|----------|--------|
-| `forms/input-group` | P2 | Infrastructure component — tested implicitly through Field/FormControl |
+| `forms/input-group` | P2 | Infrastructure component - tested implicitly through Field/FormControl |
 | `navigation/stepper` axe audit | P2 | Stepper uses custom list pattern, axe audit would add confidence |
 
 ---

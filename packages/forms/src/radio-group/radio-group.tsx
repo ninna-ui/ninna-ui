@@ -1,7 +1,7 @@
 import { forwardRef, createContext, useContext, useId } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { RadioEngine } from '@ninna-ui/react-internal';
-import { radioItemVariants, RADIO_INDICATOR_SIZES, RADIO_INDICATOR_COLORS, radioGroupStyles, radioCardStyles } from './radio-group.styles';
+import { radioItemVariants, radioIndicatorVariants, radioGroupStyles, radioCardStyles } from './radio-group.styles';
 import type { Color } from '@ninna-ui/core';
 import type { RadioSize } from '../types';
 import type { RadioGroupProps, RadioGroupItemProps, RadioCardProps, RadioVariant } from './radio-group.types';
@@ -124,9 +124,7 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
         <RadioEngine.Indicator className={radioGroupStyles.indicator}>
           <span
             className={cn(
-              variant === 'solid' ? radioGroupStyles.indicatorDotSolid : radioGroupStyles.indicatorDot,
-              RADIO_INDICATOR_SIZES[size],
-              variant !== 'solid' && RADIO_INDICATOR_COLORS[color]
+              radioIndicatorVariants({ variant, color, size })
             )}
           />
         </RadioEngine.Indicator>

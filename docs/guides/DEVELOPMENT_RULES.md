@@ -1,6 +1,6 @@
-# Ninna-UI Development Rules
+# Ninna UI Development Rules
 
-> These rules MUST be followed when working on this codebase.
+> **Enforced conventions and patterns for the Ninna UI codebase** - naming, file structure, Radix isolation, Tailwind CSS rules, data attributes, and accessibility requirements. These rules MUST be followed by all contributors.
 
 ---
 
@@ -39,7 +39,7 @@ component-name/
 3. Import order: `react` → `@ninna-ui/*` → local `./`
 4. JSDoc on exported props interfaces
 5. Default prop values documented in JSDoc and set in destructuring
-6. No deprecated props — remove immediately
+6. No deprecated props - remove immediately
 7. Accessibility: `focus-visible` ring, ARIA attributes, keyboard navigation
 
 ### 2.3 Props Design
@@ -107,9 +107,9 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 | **Compound children** | Each gets its own root slot (e.g., `list-item` inside `list`) |
 
 ### `data-state`, `data-disabled`, `data-loading`, `data-invalid`
-- `data-disabled={disabled || undefined}` — only when true
-- `data-loading={loading || undefined}` — only when true
-- `data-invalid={invalid || undefined}` — only when true
+- `data-disabled={disabled || undefined}` - only when true
+- `data-loading={loading || undefined}` - only when true
+- `data-invalid={invalid || undefined}` - only when true
 - Radix engines provide `data-state` automatically
 
 ---
@@ -152,7 +152,7 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 
 ### `@ninna-ui/react-internal`
 - ✅ Radix engine wrappers only (Radix is bundled, not a consumer dependency)
-- ❌ NEVER imported by apps directly — only `@ninna-ui/*` packages may import this
+- ❌ NEVER imported by apps directly - only `@ninna-ui/*` packages may import this
 
 ### `@ninna-ui/primitives`
 - ✅ Simple, stateless components
@@ -182,7 +182,7 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 ### `@ninna-ui/navigation`
 - ✅ Navigation components: Tabs, Accordion, Breadcrumbs, Pagination, Stepper
 - ✅ Tabs/Accordion may import `@ninna-ui/react-internal` engines (TabsEngine, AccordionEngine)
-- ✅ Breadcrumbs/Pagination/Stepper are custom — no Radix needed
+- ✅ Breadcrumbs/Pagination/Stepper are custom - no Radix needed
 - ❌ NO direct `@radix-ui/*` imports
 - Arrow key navigation where applicable (Tabs, Accordion)
 - Semantic HTML: `<nav>`, `<ol>`, `role="tablist"`, `aria-current`
@@ -197,7 +197,7 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 
 ## 8. Tailwind CSS Rules
 
-- **Tailwind CSS v4.1 CSS-first only** — no `tailwind.config.ts` anywhere
+- **Tailwind CSS v4.1 CSS-first only** - no `tailwind.config.ts` anywhere
 - Theme via CSS presets in `packages/core/src/theme/presets/`
 - `@source` directives for tree-shaking in each app CSS
 - `@variant dark (&:is(.dark *))` for dark mode

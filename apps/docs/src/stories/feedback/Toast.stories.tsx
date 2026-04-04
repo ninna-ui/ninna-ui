@@ -66,80 +66,18 @@ export const Default: Story = {
   ),
 };
 
-export const Types: Story = {
+export const Colors: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
-      <Button
-        variant="soft"
-        onClick={() => {
-          toast.create({
-            title: 'Default',
-            description: 'This is a default toast.',
-            type: 'default',
-          });
-        }}
-      >
-        Default
-      </Button>
-      <Button
-        variant="soft"
-        color="success"
-        onClick={() => {
-          toast.success({
-            title: 'Success!',
-            description: 'Your action was successful.',
-          });
-        }}
-      >
-        Success
-      </Button>
-      <Button
-        variant="soft"
-        color="danger"
-        onClick={() => {
-          toast.error({
-            title: 'Error!',
-            description: 'Something went wrong.',
-          });
-        }}
-      >
-        Error
-      </Button>
-      <Button
-        variant="soft"
-        color="warning"
-        onClick={() => {
-          toast.warning({
-            title: 'Warning',
-            description: 'Please be careful.',
-          });
-        }}
-      >
-        Warning
-      </Button>
-      <Button
-        variant="soft"
-        color="info"
-        onClick={() => {
-          toast.info({
-            title: 'Info',
-            description: 'Here is some information.',
-          });
-        }}
-      >
-        Info
-      </Button>
-      <Button
-        variant="soft"
-        onClick={() => {
-          toast.loading({
-            title: 'Loading...',
-            description: 'Please wait while we process.',
-          });
-        }}
-      >
-        Loading
-      </Button>
+      <Button variant="soft" onClick={() => toast.create({ title: 'Neutral', description: 'A neutral notification.', color: 'neutral' })}>Neutral</Button>
+      <Button variant="soft" color="primary" onClick={() => toast.create({ title: 'Primary', description: 'A primary notification.', color: 'primary' })}>Primary</Button>
+      <Button variant="soft" color="secondary" onClick={() => toast.create({ title: 'Secondary', description: 'A secondary notification.', color: 'secondary' })}>Secondary</Button>
+      <Button variant="soft" color="accent" onClick={() => toast.create({ title: 'Accent', description: 'An accent notification.', color: 'accent' })}>Accent</Button>
+      <Button variant="soft" color="success" onClick={() => toast.create({ title: 'Success!', description: 'Your action was successful.', color: 'success' })}>Success</Button>
+      <Button variant="soft" color="danger" onClick={() => toast.create({ title: 'Error!', description: 'Something went wrong.', color: 'danger' })}>Error</Button>
+      <Button variant="soft" color="warning" onClick={() => toast.create({ title: 'Warning', description: 'Please be careful.', color: 'warning' })}>Warning</Button>
+      <Button variant="soft" color="info" onClick={() => toast.create({ title: 'Info', description: 'Here is some information.', color: 'info' })}>Info</Button>
+      <Button variant="soft" onClick={() => toast.create({ title: 'Loading...', description: 'Please wait.', color: 'primary', isLoading: true, duration: 0 })}>Loading</Button>
     </div>
   ),
 };
@@ -147,40 +85,13 @@ export const Types: Story = {
 export const Variants: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
-      <Button
-        variant="soft"
-        onClick={() => {
-          toast.success({
-            title: 'Soft Variant',
-            description: 'This toast uses the soft variant.',
-            variant: 'soft',
-          });
-        }}
-      >
+      <Button variant="soft" color="success" onClick={() => toast.create({ title: 'Soft', description: 'Soft variant toast.', color: 'success', variant: 'soft' })}>
         Soft
       </Button>
-      <Button
-        variant="solid"
-        onClick={() => {
-          toast.success({
-            title: 'Solid Variant',
-            description: 'This toast uses the solid variant.',
-            variant: 'solid',
-          });
-        }}
-      >
+      <Button variant="solid" color="success" onClick={() => toast.create({ title: 'Solid', description: 'Solid variant toast.', color: 'success', variant: 'solid' })}>
         Solid
       </Button>
-      <Button
-        variant="outline"
-        onClick={() => {
-          toast.success({
-            title: 'Outline Variant',
-            description: 'This toast uses the outline variant.',
-            variant: 'outline',
-          });
-        }}
-      >
+      <Button variant="outline" color="success" onClick={() => toast.create({ title: 'Outline', description: 'Outline variant toast.', color: 'success', variant: 'outline' })}>
         Outline
       </Button>
     </div>
@@ -209,23 +120,17 @@ export const WithAction: Story = {
 export const SimpleMessages: Story = {
   render: () => (
     <div className="flex flex-wrap gap-2">
-      <Button
-        variant="soft"
-        color="success"
-        onClick={() => {
-          toast.success('File uploaded successfully!');
-        }}
-      >
-        Success Message
+      <Button variant="soft" color="success" onClick={() => toast.create({ title: 'File uploaded successfully!', color: 'success' })}>
+        Success
       </Button>
-      <Button
-        variant="soft"
-        color="danger"
-        onClick={() => {
-          toast.error('Failed to save changes.');
-        }}
-      >
-        Error Message
+      <Button variant="soft" color="danger" onClick={() => toast.create({ title: 'Failed to save changes.', color: 'danger' })}>
+        Error
+      </Button>
+      <Button variant="soft" color="warning" onClick={() => toast.create({ title: 'Your session expires soon.', color: 'warning' })}>
+        Warning
+      </Button>
+      <Button variant="soft" color="info" onClick={() => toast.create({ title: 'New updates available.', color: 'info' })}>
+        Info
       </Button>
     </div>
   ),
@@ -302,9 +207,9 @@ export const DismissAll: Story = {
       <Button
         variant="soft"
         onClick={() => {
-          toast.success('Toast 1');
-          toast.info('Toast 2');
-          toast.warning('Toast 3');
+          toast.create({ title: 'Toast 1', color: 'success' });
+          toast.create({ title: 'Toast 2', color: 'info' });
+          toast.create({ title: 'Toast 3', color: 'warning' });
         }}
       >
         Show Multiple
@@ -341,7 +246,7 @@ export const Positions: Story = {
               variant="outline"
               size="sm"
               onClick={() => {
-                toast.info({ title: `Position: ${pos}`, description: 'Toast appears here.', toasterId: pos });
+                toast.create({ title: `Position: ${pos}`, description: 'Toast appears here.', color: 'primary', variant: 'solid', toasterId: pos });
               }}
             >
               {pos}
@@ -353,45 +258,27 @@ export const Positions: Story = {
   },
 };
 
-export const AllTypes: Story = {
+export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
       <div>
-        <h4 className="text-lg font-semibold mb-3">Toast Types</h4>
+        <h4 className="text-lg font-semibold mb-3">Colors</h4>
         <div className="flex flex-wrap gap-2">
-          <Button variant="soft" onClick={() => toast.create({ title: 'Default Toast', description: 'A default notification.' })}>
-            Default
-          </Button>
-          <Button variant="soft" color="success" onClick={() => toast.success({ title: 'Success!', description: 'Operation completed.' })}>
-            Success
-          </Button>
-          <Button variant="soft" color="danger" onClick={() => toast.error({ title: 'Error!', description: 'Something went wrong.' })}>
-            Error
-          </Button>
-          <Button variant="soft" color="warning" onClick={() => toast.warning({ title: 'Warning', description: 'Be careful!' })}>
-            Warning
-          </Button>
-          <Button variant="soft" color="info" onClick={() => toast.info({ title: 'Info', description: 'Here is some info.' })}>
-            Info
-          </Button>
-          <Button variant="soft" onClick={() => toast.loading({ title: 'Loading...', description: 'Please wait.' })}>
-            Loading
-          </Button>
+          <Button variant="soft" onClick={() => toast.create({ title: 'Neutral', description: 'A neutral notification.', color: 'neutral' })}>Neutral</Button>
+          <Button variant="soft" color="success" onClick={() => toast.create({ title: 'Success!', description: 'Operation completed.', color: 'success' })}>Success</Button>
+          <Button variant="soft" color="danger" onClick={() => toast.create({ title: 'Error!', description: 'Something went wrong.', color: 'danger' })}>Error</Button>
+          <Button variant="soft" color="warning" onClick={() => toast.create({ title: 'Warning', description: 'Be careful!', color: 'warning' })}>Warning</Button>
+          <Button variant="soft" color="info" onClick={() => toast.create({ title: 'Info', description: 'Here is some info.', color: 'info' })}>Info</Button>
+          <Button variant="soft" onClick={() => toast.create({ title: 'Loading...', description: 'Please wait.', color: 'primary', isLoading: true, duration: 0 })}>Loading</Button>
         </div>
       </div>
 
       <div>
         <h4 className="text-lg font-semibold mb-3">Variants</h4>
         <div className="flex flex-wrap gap-2">
-          <Button variant="soft" onClick={() => toast.success({ title: 'Soft', variant: 'soft' })}>
-            Soft
-          </Button>
-          <Button variant="solid" onClick={() => toast.success({ title: 'Solid', variant: 'solid' })}>
-            Solid
-          </Button>
-          <Button variant="outline" onClick={() => toast.success({ title: 'Outline', variant: 'outline' })}>
-            Outline
-          </Button>
+          <Button variant="soft" color="success" onClick={() => toast.create({ title: 'Soft', color: 'success', variant: 'soft' })}>Soft</Button>
+          <Button variant="solid" color="success" onClick={() => toast.create({ title: 'Solid', color: 'success', variant: 'solid' })}>Solid</Button>
+          <Button variant="outline" color="success" onClick={() => toast.create({ title: 'Outline', color: 'success', variant: 'outline' })}>Outline</Button>
         </div>
       </div>
     </div>

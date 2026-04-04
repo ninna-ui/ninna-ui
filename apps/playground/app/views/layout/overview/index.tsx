@@ -8,7 +8,7 @@ export const layoutOverviewSections: ComponentSectionType[] = [
 ];
 
 const components = [
-  { name: "Box", description: "Base layout primitive — a styled div with all layout props.", href: "/layout/box" },
+  { name: "Box", description: "Base layout primitive - a styled div with all layout props.", href: "/layout/box" },
   { name: "Container", description: "Centered content wrapper with responsive max-width presets.", href: "/layout/container" },
   { name: "Stack", description: "Vertical stack with consistent spacing between children.", href: "/layout/stack" },
   { name: "Flex", description: "Flexbox container with direction, alignment, and gap control.", href: "/layout/flex" },
@@ -26,7 +26,7 @@ const features = [
   "CSS Grid and Flexbox abstractions",
   "Container with 6 max-width presets",
   "AspectRatio for media embeds",
-  "Zero runtime — pure Tailwind class composition",
+  "Zero runtime - pure Tailwind class composition",
 ];
 
 export default function LayoutOverview() {
@@ -34,7 +34,7 @@ export default function LayoutOverview() {
     <PackageOverview
       packageName="@ninna-ui/layout"
       title="Layout"
-      description="Responsive layout primitives — stacks, grids, containers, and spacing utilities. Build any layout with semantic, composable components."
+      description="Responsive layout primitives - stacks, grids, containers, and spacing utilities. Build any layout with semantic, composable components."
       components={components}
       features={features}
     />

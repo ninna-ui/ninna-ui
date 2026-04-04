@@ -16,7 +16,7 @@ const meta: Meta<typeof Link> = {
     size: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      description: 'Text size — matches Text component sizes',
+      description: 'Text size - matches Text component sizes',
       table: { defaultValue: { summary: 'inherited' } },
     },
     color: {

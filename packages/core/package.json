@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/core",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Design tokens, Tailwind CSS v4 class mappings, and 5 oklch CSS theme presets with automatic dark mode for Ninna UI",
   "license": "MIT",
   "author": "Ninna-UI Team",
@@ -67,8 +67,8 @@
   "devDependencies": {
     "@ninna-ui/tsconfig": "workspace:*",
     "@ninna-ui/test-config": "workspace:*",
-    "tsup": "^8.0.0",
-    "typescript": "^5.4.0",
-    "vitest": "^4.0.0"
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.2"
   }
 }

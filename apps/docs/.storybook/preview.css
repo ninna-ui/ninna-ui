@@ -14,7 +14,7 @@
 @import "@ninna-ui/code-block/styles";
 
 /* Dark mode support for Tailwind v4 */
-@variant dark (&:is(.dark *)); 
+@variant dark (&:is(.dark *));
 
 /* Reset Storybook's default UI elements for full screen theme */
 .sb-show-main,

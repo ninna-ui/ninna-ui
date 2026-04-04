@@ -1,0 +1,5 @@
+@import "tailwindcss";
+@import "@ninna-ui/core/theme/presets/default.css";
+
+/* Enable dark mode support */
+@variant dark (&:is(.dark *));

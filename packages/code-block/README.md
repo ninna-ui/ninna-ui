@@ -1,15 +1,15 @@
 # @ninna-ui/code-block
 
-> Syntax-highlighted code block component for Ninna-UI with copy-to-clipboard, line numbers, and automatic dark mode.
+> **Lightweight React syntax highlighter** - copy-to-clipboard, line numbers, and automatic dark mode. Zero heavy dependencies - no Prism, no Shiki, just a fast regex tokenizer with oklch theme-aware colors.
 
 [![npm](https://img.shields.io/npm/v/@ninna-ui/code-block.svg)](https://www.npmjs.com/package/@ninna-ui/code-block)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 📖 **[Full Documentation →](https://www.ninna-ui.dev/code-block)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/code-block)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/code-block)**
 
-A standalone code display component for [Ninna UI](../../README.md) — built-in syntax highlighting for TSX/JSX/CSS/HTML and more, copy-to-clipboard button, optional line numbers, and automatic light/dark mode theming via oklch colors.
+A standalone code display component for [Ninna UI](../../README.md) - built-in syntax highlighting for TSX, JSX, TypeScript, JavaScript, CSS, HTML, JSON, Bash, and Markdown. Includes one-click copy-to-clipboard, optional line numbers, and automatic light/dark mode theming via oklch colors.
 
-**No external syntax highlighting library required.** The component uses a lightweight regex-based tokenizer — no Prism, no Shiki, no heavy dependencies.
+**No external syntax highlighting library required.** The component uses a lightweight regex-based tokenizer - no Prism, no Shiki, no WASM, no heavy dependencies. Ships under 5KB.
 
 ## Installation
 
@@ -58,12 +58,12 @@ export function App() {
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `code` | `string` | — | The source code to display |
+| `code` | `string` | - | The source code to display |
 | `language` | `CodeBlockLanguage` | `"tsx"` | Syntax highlighting language |
 | `showLineNumbers` | `boolean` | `false` | Show line numbers |
 | `showCopyButton` | `boolean` | `true` | Show copy-to-clipboard button |
 | `copyButtonAlwaysVisible` | `boolean` | `false` | Keep copy button visible (vs hover-only) |
-| `className` | `string` | — | Additional CSS classes |
+| `className` | `string` | - | Additional CSS classes |
 
 ### Supported Languages
 
@@ -78,11 +78,11 @@ Set `language="plaintext"` to disable syntax highlighting entirely.
 
 ## Features
 
-- **Lightweight tokenizer** — Regex-based, no Prism/Shiki dependency
-- **Automatic dark mode** — oklch syntax colors adapt to light/dark theme
-- **Copy to clipboard** — One-click copy with visual feedback
-- **Line numbers** — Optional, styled to not interfere with code selection
-- **`data-slot` API** — Target `code-block`, `code-content`, `copy-button` for CSS overrides
+- **Lightweight tokenizer** - Regex-based, no Prism/Shiki dependency
+- **Automatic dark mode** - oklch syntax colors adapt to light/dark theme
+- **Copy to clipboard** - One-click copy with visual feedback
+- **Line numbers** - Optional, styled to not interfere with code selection
+- **`data-slot` API** - Target `code-block`, `code-content`, `copy-button` for CSS overrides
 
 ## All Exports
 
@@ -96,9 +96,9 @@ import {
 
 ## Related Packages
 
-- [`@ninna-ui/core`](../core/README.md) — Design tokens and theme presets (required)
-- [`@ninna-ui/primitives`](../primitives/README.md) — Inline `Code` component for short snippets
-- [All packages](../../README.md#packages) — Complete package list
+- [`@ninna-ui/core`](../core/README.md) - Design tokens and theme presets (required)
+- [`@ninna-ui/primitives`](../primitives/README.md) - Inline `Code` component for short snippets
+- [All packages](../../README.md#packages) - Complete package list
 
 ## License
 

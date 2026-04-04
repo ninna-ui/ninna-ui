@@ -11,7 +11,7 @@ import { Code, Heading } from '@ninna-ui/primitives';
 import { toastMeta } from './meta';
 
 import Basic from './demos/basic';
-import Types from './demos/types';
+import Colors from './demos/colors';
 import Variants from './demos/variants';
 import Positions from './demos/positions';
 import WithAction from './demos/withAction';
@@ -22,7 +22,7 @@ import SimpleMessages from './demos/simpleMessages';
 
 export const toastSections: ComponentSectionType[] = [
   { id: 'usage', title: 'Usage', level: 2 },
-  { id: 'types', title: 'Types', level: 3 },
+  { id: 'colors', title: 'Colors', level: 3 },
   { id: 'variants', title: 'Variants', level: 3 },
   { id: 'positions', title: 'Positions', level: 3 },
   { id: 'with-action', title: 'With Action', level: 3 },
@@ -47,7 +47,7 @@ const TOASTER_PROPS: PropDefinition[] = [
   {
     name: 'id',
     type: 'string',
-    description: 'Unique identifier — only toasts created with a matching toasterId will be shown by this Toaster. Omit for the default global Toaster.',
+    description: 'Unique identifier - only toasts created with a matching toasterId will be shown by this Toaster. Omit for the default global Toaster.',
   },
   {
     name: 'max',
@@ -92,10 +92,16 @@ const TOAST_OPTIONS: PropDefinition[] = [
     description: 'Toast description/message',
   },
   {
-    name: 'type',
-    type: "'default' | 'success' | 'danger' | 'warning' | 'info' | 'loading'",
-    defaultValue: "'default'",
-    description: 'Toast type/status',
+    name: 'color',
+    type: "'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'danger' | 'warning' | 'info'",
+    defaultValue: "'primary'",
+    description: 'Color theme of the toast',
+  },
+  {
+    name: 'isLoading',
+    type: 'boolean',
+    defaultValue: 'false',
+    description: 'Show a spinning loader icon. Use with duration: 0 to keep the toast persistent until updated.',
   },
   {
     name: 'variant',
@@ -136,37 +142,12 @@ const TOAST_METHODS: PropDefinition[] = [
   {
     name: 'toast.create(options)',
     type: 'string',
-    description: 'Create a new toast, returns toast ID',
-  },
-  {
-    name: 'toast.success(options | string)',
-    type: 'string',
-    description: 'Create a success toast',
-  },
-  {
-    name: 'toast.error(options | string)',
-    type: 'string',
-    description: 'Create an error toast',
-  },
-  {
-    name: 'toast.warning(options | string)',
-    type: 'string',
-    description: 'Create a warning toast',
-  },
-  {
-    name: 'toast.info(options | string)',
-    type: 'string',
-    description: 'Create an info toast',
-  },
-  {
-    name: 'toast.loading(options | string)',
-    type: 'string',
-    description: 'Create a loading toast (persistent)',
+    description: 'Create a new toast. Pass color to indicate type (e.g. success, danger). Returns the toast ID.',
   },
   {
     name: 'toast.dismiss(id?)',
     type: 'void',
-    description: 'Dismiss a toast by ID, or all if no ID',
+    description: 'Dismiss a specific toast by ID, or dismiss all toasts if no ID is provided',
   },
   {
     name: 'toast.dismissAll()',
@@ -176,12 +157,12 @@ const TOAST_METHODS: PropDefinition[] = [
   {
     name: 'toast.update(id, options)',
     type: 'void',
-    description: 'Update an existing toast',
+    description: 'Update an existing toast by ID',
   },
   {
     name: 'toast.promise(promise, options)',
     type: 'Promise<T>',
-    description: 'Show loading/success/error based on promise state',
+    description: 'Show a loading toast while the promise is pending, then update to success or danger on resolution',
   },
 ];
 
@@ -200,7 +181,7 @@ export default function App() {
 // Use toast anywhere in your app
 function MyComponent() {
   return (
-    <button onClick={() => toast.success("Saved!")}>
+    <button onClick={() => toast.create({ title: "Saved!", color: "success" })}>
       Save
     </button>
   );
@@ -233,14 +214,14 @@ export function ToastView() {
         </ComponentSection>
 
         <ComponentSection
-          id="types"
-          title="Types"
-          description="Different toast types for various notification purposes."
+          id="colors"
+          title="Colors"
+          description="Different toast colors for various notification purposes."
           level={3}
         >
           <CodePreview
-            component={<Types />}
-            filePath="app/views/feedback/toast/demos/types.tsx"
+            component={<Colors />}
+            filePath="app/views/feedback/toast/demos/colors.tsx"
           />
         </ComponentSection>
 
@@ -333,30 +314,36 @@ export function ToastView() {
           title="API Reference"
           description="Complete API documentation for Toast components."
         >
-          <div className="space-y-8">
-            <div>
-              <Heading as="h4" size="lg" weight="semibold" className="mb-4" id="toaster-props">Toaster Props</Heading>
-              <PropsTable data={TOASTER_PROPS} />
+            <div className="space-y-8">
+              <div id="toaster-props" className="scroll-mt-20">
+                <PropsTable 
+                  data={TOASTER_PROPS} 
+                  title="Toaster Props" 
+                />
+              </div>
+              <div id="toast-options" className="scroll-mt-20">
+                <PropsTable 
+                  data={TOAST_OPTIONS} 
+                  title="Toast Options" 
+                />
+              </div>
+              <div id="toast-methods" className="scroll-mt-20">
+                <PropsTable 
+                  data={TOAST_METHODS} 
+                  title="Toast Methods" 
+                />
+              </div>
             </div>
-            <div>
-              <Heading as="h4" size="lg" weight="semibold" className="mb-4" id="toast-options">Toast Options</Heading>
-              <PropsTable data={TOAST_OPTIONS} />
-            </div>
-            <div>
-              <Heading as="h4" size="lg" weight="semibold" className="mb-4" id="toast-methods">Toast Methods</Heading>
-              <PropsTable data={TOAST_METHODS} />
-            </div>
-          </div>
         </ComponentSection>
 
         <ComponentSection id="accessibility" title="Accessibility" level={2}>
           <div className="prose max-w-none">
             <Heading as="h4" size="base" weight="semibold" className="mb-3">ARIA Support</Heading>
             <ul className="space-y-2 text-base-content/70 mb-6">
-              <li>role="status": Used for non-critical toasts (default, success, info, warning, loading)</li>
-              <li>role="alert": Used for error toasts to ensure immediate announcement</li>
-              <li>aria-live="polite": For non-critical notifications</li>
-              <li>aria-live="assertive": For error notifications</li>
+              <li>role="status": Used for non-critical toasts (neutral, primary, secondary, accent, success, info, warning)</li>
+              <li>role="alert": Used for error toasts (danger) to ensure immediate announcement</li>
+              <li>aria-live="polite": Default for non-critical notifications</li>
+              <li>aria-live="assertive": Automatically set for error notifications</li>
               <li>aria-atomic="true": Ensures the entire toast is announced</li>
             </ul>
             

@@ -1,5 +1,5 @@
 /**
- * Source registry — uses Vite's import.meta.glob with ?raw to bundle all demo
+ * Source registry - uses Vite's import.meta.glob with ?raw to bundle all demo
  * source files at build time so CodePreview can display them in SPA mode.
  */
 

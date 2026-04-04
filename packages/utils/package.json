@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/utils",
-  "version": "0.4.0",
-  "description": "Shared utility functions for Ninna UI — cn (class merging), composeRefs, createContext, keyboard constants, and SSR helpers.",
+  "version": "0.4.1",
+  "description": "Shared utility functions for Ninna UI - cn (class merging), composeRefs, createContext, keyboard constants, and SSR helpers.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -51,20 +51,20 @@
     "clean": "rimraf dist"
   },
   "dependencies": {
-    "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.0"
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.0"
   },
   "peerDependencies": {
     "react": ">=19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@ninna-ui/tsconfig": "workspace:*",
     "@ninna-ui/test-config": "workspace:*",
-    "react": "^19.0.0",
-    "tsup": "^8.0.0",
-    "typescript": "^5.4.0",
-    "vitest": "^4.0.0"
+    "react": "^19.2.4",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.2"
   }
 }

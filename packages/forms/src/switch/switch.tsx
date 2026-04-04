@@ -1,7 +1,7 @@
 import { forwardRef, useId } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { SwitchEngine } from '@ninna-ui/react-internal';
-import { switchStyles, switchRootVariants, SWITCH_THUMB_SIZES } from './switch.styles';
+import { switchStyles, switchRootVariants, switchThumbVariants } from './switch.styles';
 import type { SwitchProps } from './switch.types';
 
 const LoadingSpinner = ({ className }: { className?: string }) => (
@@ -51,7 +51,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
   ) => {
     const generatedId = useId();
     const id = idProp ?? generatedId;
-    const thumbSize = SWITCH_THUMB_SIZES[size] ?? SWITCH_THUMB_SIZES.md;
+
     const isDisabled = disabled || loading;
 
     const switchElement = (
@@ -87,9 +87,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
         <SwitchEngine.Thumb
           data-slot="thumb"
           className={cn(
-            switchStyles.thumb,
-            thumbSize,
-            variant === 'outline' && switchStyles.thumbOutline
+            switchThumbVariants({ variant: variant as 'solid' | 'soft' | 'outline', color, size })
           )}
         >
           {loading ? (

@@ -1,8 +1,5 @@
 import type { ReactNode } from 'react';
-import type { ColorVariant } from '@ninna-ui/core';
-
-/** Toast type/status */
-export type ToastType = 'default' | 'success' | 'danger' | 'warning' | 'info' | 'loading';
+import type { Color, ColorVariant } from '@ninna-ui/core';
 
 /** Toast position on screen */
 export type ToastPosition =
@@ -13,7 +10,7 @@ export type ToastPosition =
   | 'bottom-center'
   | 'bottom-right';
 
-/** Toast variant — uses core ColorVariant for consistency */
+/** Toast variant - uses core ColorVariant for consistency */
 export type ToastVariant = ColorVariant;
 
 /** Toast data structure for creating toasts */
@@ -24,10 +21,12 @@ export interface ToastData {
   title?: ReactNode;
   /** Toast description/message */
   description?: ReactNode;
-  /** Toast type/status */
-  type?: ToastType;
+  /** Color theme */
+  color?: Color;
   /** Visual variant */
   variant?: ToastVariant;
+  /** Show a spinning loading indicator. Use with duration: 0 to keep the toast persistent until updated. */
+  isLoading?: boolean;
   /** Duration in milliseconds (0 = persistent) */
   duration?: number;
   /** Whether the toast can be dismissed */
@@ -57,7 +56,7 @@ export interface ToastProps {
   toast: ToastData;
   /** Callback to dismiss the toast */
   onDismiss?: (id: string) => void;
-  /** Position of the toaster — used for correct enter/exit animations */
+  /** Position of the toaster - used for correct enter/exit animations */
   position?: ToastPosition;
   /** Additional CSS classes */
   className?: string;
@@ -75,7 +74,7 @@ export interface ToasterProps {
   offset?: string | number;
   /** Pause auto-dismiss on hover */
   pauseOnHover?: boolean;
-  /** Unique id — only toasts created with this toasterId will be shown */
+  /** Unique id - only toasts created with this toasterId will be shown */
   id?: string;
   /** Additional CSS classes for viewport */
   className?: string;
@@ -87,23 +86,13 @@ export interface ToasterProps {
 export interface ToastContextValue {
   /** Create a new toast */
   toast: (options: CreateToastOptions) => string;
-  /** Create a success toast */
-  success: (options: CreateToastOptions | string) => string;
-  /** Create an error toast */
-  error: (options: CreateToastOptions | string) => string;
-  /** Create a warning toast */
-  warning: (options: CreateToastOptions | string) => string;
-  /** Create an info toast */
-  info: (options: CreateToastOptions | string) => string;
-  /** Create a loading toast */
-  loading: (options: CreateToastOptions | string) => string;
-  /** Dismiss a toast by id */
+  /** Dismiss a toast by id, or all if no id provided */
   dismiss: (id?: string) => void;
   /** Dismiss all toasts */
   dismissAll: () => void;
   /** Update an existing toast */
   update: (id: string, options: Partial<CreateToastOptions>) => void;
-  /** Promise-based toast */
+  /** Promise-based toast - shows loading spinner, then success/error on resolution */
   promise: <T>(
     promise: Promise<T>,
     options: {

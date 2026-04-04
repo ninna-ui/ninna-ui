@@ -1,15 +1,15 @@
 # @ninna-ui/primitives
 
-> 15 base UI components for the Ninna-UI design system — buttons, typography, badges, avatars, and more.
+> **15 essential React UI building blocks** - accessible buttons, typography, badges, avatars, and more. Pure React with zero Radix dependency, `forwardRef` on every component, and full Tailwind CSS v4 theming.
 
 [![npm](https://img.shields.io/npm/v/@ninna-ui/primitives.svg)](https://www.npmjs.com/package/@ninna-ui/primitives)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
 
 📖 **[Full Documentation →](https://www.ninna-ui.dev/primitives)** &nbsp;|&nbsp; 📦 **[npm →](https://www.npmjs.com/package/@ninna-ui/primitives)** &nbsp;|&nbsp; 🐙 **[GitHub →](https://github.com/ninna-ui/ninna-ui/tree/main/packages/primitives)**
 
-The foundational component set of [Ninna UI](../../README.md) — simple, accessible, and composable. Every component supports `forwardRef`, `className`, `data-slot` targeting, and `focus-visible` accessibility out of the box.
+The foundational component set of [Ninna UI](../../README.md) - the building blocks every React app needs. Simple, accessible, and composable. Every component ships with `forwardRef`, `className` merging, `data-slot` targeting for surgical CSS overrides, and `focus-visible` keyboard accessibility out of the box.
 
-**No Radix dependency.** All primitives are pure React — lightweight and stateless.
+**Pure React - no Radix dependency.** Lightweight, stateless, and tree-shakeable.
 
 ## Installation
 
@@ -41,17 +41,17 @@ Add the `data-theme` attribute to your `<html>` element:
 | `Button` | Primary action element | solid, soft, outline, ghost, text | 8 | 5 |
 | `IconButton` | Icon-only button | solid, soft, outline, ghost | 8 | 5 |
 | `Badge` | Status/count indicator | solid, soft, outline | 8 | 3 |
-| `Avatar` | User image with fallback | — | 8 | 5 |
-| `AvatarGroup` | Grouped avatar stack | — | — | — |
-| `Text` | Paragraph/span text | — | — | 8 sizes |
-| `Heading` | h1–h6 with consistent scale | — | — | 8 sizes |
-| `Link` | Styled anchor element | — | — | — |
-| `LinkOverlay` / `LinkBox` | Clickable card pattern | — | — | — |
+| `Avatar` | User image with fallback | - | 8 | 5 |
+| `AvatarGroup` | Grouped avatar stack | - | - | - |
+| `Text` | Paragraph/span text | - | - | 8 sizes |
+| `Heading` | h1–h6 with consistent scale | - | - | 8 sizes |
+| `Link` | Styled anchor element | - | - | - |
+| `LinkOverlay` / `LinkBox` | Clickable card pattern | - | - | - |
 | `Code` | Inline code highlight | solid, soft, outline, ghost | 8 | 3 |
-| `Blockquote` | Styled quotation block | bordered, filled, plain | 8 | — |
-| `List` / `ListItem` | Ordered/unordered lists | — | — | — |
-| `Kbd` | Keyboard shortcut indicator | — | — | 3 |
-| `Mark` | Highlighted text | — | 8 | — |
+| `Blockquote` | Styled quotation block | bordered, filled, plain | 8 | - |
+| `List` / `ListItem` | Ordered/unordered lists | - | - | - |
+| `Kbd` | Keyboard shortcut indicator | - | - | 3 |
+| `Mark` | Highlighted text | - | 8 | - |
 | `Divider` | Horizontal/vertical separator | solid, dashed, dotted | 8 | 3 weights |
 
 ## Quick Start
@@ -105,10 +105,10 @@ Every primitive includes:
 
 ## Related Packages
 
-- [`@ninna-ui/core`](../core/README.md) — Design tokens and theme presets (required)
-- [`@ninna-ui/layout`](../layout/README.md) — Layout components (Box, Stack, Grid)
-- [`@ninna-ui/feedback`](../feedback/README.md) — Feedback components (Alert, Toast, Loading)
-- [All packages](../../README.md#packages) — Complete package list
+- [`@ninna-ui/core`](../core/README.md) - Design tokens and theme presets (required)
+- [`@ninna-ui/layout`](../layout/README.md) - Layout components (Box, Stack, Grid)
+- [`@ninna-ui/feedback`](../feedback/README.md) - Feedback components (Alert, Toast, Loading)
+- [All packages](../../README.md#packages) - Complete package list
 
 ## License
 

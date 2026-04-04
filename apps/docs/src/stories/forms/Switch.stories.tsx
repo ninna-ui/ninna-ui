@@ -24,7 +24,7 @@ const meta: Meta<typeof Switch> = {
     },
     variant: {
       control: 'select',
-      options: ['solid', 'outline'],
+      options: ['solid', 'soft', 'outline'],
       description: 'Visual variant',
       table: { defaultValue: { summary: 'solid' } },
     },
@@ -132,6 +132,7 @@ export const AllVariants: Story = {
   render: () => (
     <div className="space-y-4">
       <Switch variant="solid" label="Solid variant (default)" defaultChecked />
+      <Switch variant="soft" label="Soft variant" defaultChecked />
       <Switch variant="outline" label="Outline variant" defaultChecked />
     </div>
   ),

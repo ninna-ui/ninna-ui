@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useRef, useCallback } from 'react';
+import { toastStyles, toastVariants, TOAST_ICON_COLORS, TOAST_ANIMATIONS } from './toast.styles';
+import type { ToastProps, ToastVariant, ToastPosition } from './toast.types';
 import { cn } from '@ninna-ui/utils';
-import { toastContentStyles, toastVariants, TOAST_ICON_COLORS, TOAST_ANIMATIONS } from './toast.styles';
-import type { ToastProps, ToastVariant, ToastType, ToastPosition } from './toast.types';
 
 function getEnteringClass(position?: ToastPosition): string {
   if (!position) return TOAST_ANIMATIONS.entering;
@@ -17,15 +17,15 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       id,
       title,
       description,
-      type = 'default' as ToastType,
+      color = 'neutral',
       variant = 'soft' as ToastVariant,
       closable = true,
       icon,
+      isLoading = false,
       action,
     } = toastData;
 
     const toastRef = useRef<HTMLDivElement>(null);
-    const isLoading = type === 'loading';
 
     const handleDismiss = useCallback(() => {
       if (onDismiss) {
@@ -49,9 +49,9 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       return undefined;
     }, [closable, handleDismiss]);
 
-    // Determine ARIA role based on type
-    const role = type === 'danger' ? 'alert' : 'status';
-    const ariaLive = type === 'danger' ? 'assertive' : 'polite';
+    // Determine ARIA role based on color/type
+    const role = color === 'danger' ? 'alert' : 'status';
+    const ariaLive = color === 'danger' ? 'assertive' : 'polite';
 
     return (
       <div
@@ -69,32 +69,33 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         aria-atomic="true"
         tabIndex={-1}
         className={cn(
-          toastVariants({ variant, type }),
+          toastVariants({ variant, color }),
           getEnteringClass(position),
           className
         )}
         data-slot="toast"
         data-toast-id={id}
-        data-toast-type={type}
+        data-toast-color={color}
       >
         <div className="flex items-start gap-3 flex-1">
           {icon && (
             <span className={cn(
-              isLoading ? toastContentStyles.loadingIcon : toastContentStyles.icon,
-              TOAST_ICON_COLORS[type]
+              isLoading ? toastStyles.loadingIcon : toastStyles.icon,
+              TOAST_ICON_COLORS[color],
+              variant === 'solid' && 'text-current'
             )}>
               {icon}
             </span>
           )}
-          
-          <div data-slot="content" className={toastContentStyles.content}>
+
+          <div data-slot="content" className={toastStyles.content}>
             {title && (
-              <div data-slot="title" className={toastContentStyles.title}>
+              <div data-slot="title" className={toastStyles.title}>
                 {title}
               </div>
             )}
             {description && (
-              <div className={toastContentStyles.description}>
+              <div className={toastStyles.description}>
                 {description}
               </div>
             )}
@@ -106,7 +107,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
             <button
               type="button"
               onClick={action.onClick}
-              className={toastContentStyles.actionButton}
+              className={toastStyles.actionButton}
               aria-label={action.altText || action.label}
             >
               {action.label}
@@ -118,7 +119,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
               type="button"
               onClick={handleDismiss}
               className={cn(
-                toastContentStyles.closeButton,
+                toastStyles.closeButton,
                 'opacity-70 hover:opacity-100'
               )}
               aria-label="Close notification"
