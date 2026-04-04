@@ -1,5 +1,26 @@
 # @ninna-ui/cli
 
+## 0.5.0
+
+### Patch Changes
+
+- [`81659d72a15fe8b6f6ff5a4733635bb63740a1cb`](https://github.com/ninna-ui/ninna-ui/commit/81659d72a15fe8b6f6ff5a4733635bb63740a1cb) [#39](https://github.com/ninna-ui/ninna-ui/pull/39) Thanks [@chnkc41](https://github.com/chnkc41)! - fix: upgrade all dependencies to latest stable versions and resolve security vulnerabilities
+  - Updated all packages to latest stable versions
+  - Fixed security vulnerabilities by upgrading direct dependencies
+  - Removed pnpm overrides as direct upgrades are sufficient
+  - Updated eslint, typescript, react, and all other dependencies
+  - All packages now report 0 vulnerabilities in pnpm audit
+  - Fixed vitest worker timeout issues with single-threaded execution
+  - All tests (708) now pass successfully after dependency upgrade
+
+- [`3cae336bbec97cc9ee4eac668c096496967d0aef`](https://github.com/ninna-ui/ninna-ui/commit/3cae336bbec97cc9ee4eac668c096496967d0aef) [#42](https://github.com/ninna-ui/ninna-ui/pull/42) Thanks [@chnkc41](https://github.com/chnkc41)! - Added Astro framework template, updated React Router template to v7, and fixed theme-aware data-theme injection in the CLI for .astro files.
+
+- [`820a3bcd0a81fc9d4b049c658761ab02cd8780e9`](https://github.com/ninna-ui/ninna-ui/commit/820a3bcd0a81fc9d4b049c658761ab02cd8780e9) [#43](https://github.com/ninna-ui/ninna-ui/pull/43) Thanks [@chnkc41](https://github.com/chnkc41)! - updated some package versions to keep up date date and safeyt for security
+
+- [`028ecd015e15cd55034ba0bbe4b04ac87ee7018b`](https://github.com/ninna-ui/ninna-ui/commit/028ecd015e15cd55034ba0bbe4b04ac87ee7018b) [#45](https://github.com/ninna-ui/ninna-ui/pull/45) Thanks [@chnkc41](https://github.com/chnkc41)! - updated versions to v0.5.0
+
+- [`2c160427b752236c316d3412e27a6301afb9da3e`](https://github.com/ninna-ui/ninna-ui/commit/2c160427b752236c316d3412e27a6301afb9da3e) [#37](https://github.com/ninna-ui/ninna-ui/pull/37) Thanks [@chnkc41](https://github.com/chnkc41)! - Major documentation overhaul: Enhanced README with refined positioning and messaging, updated all package READMEs and CHANGELOGs, improved theme presets documentation, enhanced security policy with CVSS scoring and severity classification, updated GitHub templates and workflows, and standardized documentation across all 12 packages and tooling.
+
 ## 0.4.1
 
 ## 0.4.0
