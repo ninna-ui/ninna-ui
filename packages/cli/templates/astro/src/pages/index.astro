@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Showcase } from '../components/Showcase';
+---
+
+<Layout title="Ninna UI + Astro">
+	<main class="min-h-screen grid place-items-center bg-base-50">
+		<Showcase client:load />
+	</main>
+</Layout>

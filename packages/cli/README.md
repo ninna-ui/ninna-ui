@@ -1,6 +1,6 @@
 # @ninna-ui/cli
 
-> **Zero-config project scaffolding for Ninna UI** - choose your framework (Vite, Next.js, React Router), pick a theme preset, and get a production-ready React app in seconds. TypeScript strict, Tailwind CSS v4, all 69 components pre-installed.
+> **Zero-config project scaffolding for Ninna UI** - choose your framework (Vite, Next.js, React Router v7, or Astro), pick a theme preset, and get a production-ready React app in seconds. TypeScript strict, Tailwind CSS v4, all 69 components pre-installed.
 
 [![npm](https://img.shields.io/npm/v/@ninna-ui/cli.svg)](https://www.npmjs.com/package/@ninna-ui/cli)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](../../LICENSE)
@@ -17,7 +17,7 @@ npx @ninna-ui/cli init my-app
 
 The interactive prompt will ask you to choose:
 
-1. **Template** - Vite + React, Next.js 15, or React Router v7
+1. **Template** - Vite + React, Next.js 15, React Router v7, or Astro
 2. **Theme preset** - Default (Purple), Ocean (Blue), Sunset (Orange), Forest (Green), or Minimal (Monochrome)
 
 ## Options
@@ -26,7 +26,7 @@ The interactive prompt will ask you to choose:
 npx @ninna-ui/cli init [name] [options]
 
 Options:
-  -t, --template <template>   Template: vite-react, nextjs, react-router
+  -t, --template <template>   Template: vite-react, nextjs, react-router, astro
   --preset <preset>           Theme: default, ocean, sunset, forest, minimal
   --skip-install              Skip dependency installation
 ```
@@ -51,6 +51,7 @@ npx @ninna-ui/cli init my-app -t vite-react --skip-install
 | `vite-react` | React 19 + TypeScript | Vite 7 | `@tailwindcss/vite` |
 | `nextjs` | Next.js 15 App Router | Webpack/Turbopack | `@tailwindcss/postcss` |
 | `react-router` | React Router v7 + TypeScript | Vite 7 | `@tailwindcss/vite` |
+| `astro` | Astro 5 + React 19 + TypeScript | Vite 7 | `@tailwindcss/vite` |
 
 Every template includes:
 
