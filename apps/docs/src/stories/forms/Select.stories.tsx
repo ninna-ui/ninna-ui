@@ -28,6 +28,18 @@ const meta: Meta<typeof Select> = {
       description: 'Visual variant',
       table: { defaultValue: { summary: 'outline' } },
     },
+    onValueChange: {
+      action: 'onValueChange',
+      description: 'Callback when selected value changes',
+    },
+    defaultValue: {
+      control: 'text',
+      description: 'Default selected value (uncontrolled)',
+    },
+    onOpenChange: {
+      action: 'onOpenChange',
+      description: 'Callback when open state changes',
+    },
     disabled: {
       control: 'boolean',
       description: 'Whether the select is disabled',
@@ -42,6 +54,10 @@ const meta: Meta<typeof Select> = {
       control: 'boolean',
       description: 'Whether the select can be cleared',
       table: { defaultValue: { summary: 'false' } },
+    },
+    onClear: {
+      action: 'onClear',
+      description: 'Callback when clear button is clicked',
     },
     placeholder: {
       control: 'text',

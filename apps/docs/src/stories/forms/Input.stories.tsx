@@ -62,6 +62,15 @@ const meta: Meta<typeof Input> = {
       control: 'text',
       description: 'Floating label text',
     },
+    readOnly: {
+      control: 'boolean',
+      description: 'Whether the input is read-only',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    onClear: {
+      action: 'onClear',
+      description: 'Callback when clear button is clicked',
+    },
     placeholder: {
       control: 'text',
       description: 'Placeholder text',

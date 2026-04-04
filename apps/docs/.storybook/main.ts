@@ -17,6 +17,13 @@ const config: StorybookConfig = {
   },
   viteFinal: async (config) => ({
     ...config,
+    resolve: {
+      ...config.resolve,
+      alias: {
+        ...config.resolve?.alias,
+        'react-dom/client': 'react-dom/client',
+      },
+    },
     plugins: [
       ...(config.plugins ?? []), 
       tsconfigPaths(), // Add tsconfigPaths for @ninna-ui resolution

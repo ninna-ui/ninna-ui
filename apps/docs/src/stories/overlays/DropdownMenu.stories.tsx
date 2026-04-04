@@ -2,8 +2,35 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { DropdownMenu } from '@ninna-ui/overlays';
 import { Button } from '@ninna-ui/primitives';
 
-const meta: Meta = {
+const meta: Meta<any> = {
   title: 'Overlays/DropdownMenu',
+  component: DropdownMenu,
+  subcomponents: {
+    // @ts-ignore
+    Trigger: DropdownMenu.Trigger,
+    // @ts-ignore
+    Content: DropdownMenu.Content,
+    // @ts-ignore
+    Group: DropdownMenu.Group,
+    // @ts-ignore
+    Item: DropdownMenu.Item,
+    // @ts-ignore
+    CheckboxItem: DropdownMenu.CheckboxItem,
+    // @ts-ignore
+    RadioGroup: DropdownMenu.RadioGroup,
+    // @ts-ignore
+    RadioItem: DropdownMenu.RadioItem,
+    // @ts-ignore
+    Label: DropdownMenu.Label,
+    // @ts-ignore
+    Separator: DropdownMenu.Separator,
+    // @ts-ignore
+    Sub: DropdownMenu.Sub,
+    // @ts-ignore
+    SubTrigger: DropdownMenu.SubTrigger,
+    // @ts-ignore
+    SubContent: DropdownMenu.SubContent,
+  },
   parameters: {
     layout: 'centered',
   },
@@ -32,6 +59,22 @@ const meta: Meta = {
       options: ['ltr', 'rtl'],
       description: 'Reading direction',
       table: { defaultValue: { summary: 'ltr' } },
+    },
+    // Item props
+    destructive: {
+      control: 'boolean',
+      description: '(Item Prop) Whether the item is destructive',
+      table: { category: 'Item' },
+    },
+    disabled: {
+      control: 'boolean',
+      description: '(Item Prop) Whether the item is disabled',
+      table: { category: 'Item' },
+    },
+    onSelect: {
+      action: 'onSelect',
+      description: '(Item Prop) Callback when item is selected',
+      table: { category: 'Item' },
     },
   },
 };

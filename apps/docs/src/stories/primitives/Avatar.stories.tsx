@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Avatar, AvatarGroup } from '@ninna-ui/primitives';
 
-const meta: Meta<typeof Avatar> = {
+const meta: Meta<any> = {
   title: 'Primitives/Avatar',
   component: Avatar,
   parameters: {
@@ -65,6 +65,18 @@ const meta: Meta<typeof Avatar> = {
       options: ['eager', 'lazy'],
       description: 'Image loading attribute',
       table: { defaultValue: { summary: 'lazy' } },
+    },
+    // AvatarGroup props
+    spacing: {
+      control: 'select',
+      options: ['tight', 'normal', 'loose'],
+      description: '(Group Prop) Spacing between avatars',
+      table: { category: 'AvatarGroup', defaultValue: { summary: 'normal' } },
+    },
+    max: {
+      control: 'number',
+      description: '(Group Prop) Maximum number of avatars to show',
+      table: { category: 'AvatarGroup' },
     },
   },
 };

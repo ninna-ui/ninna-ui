@@ -2,8 +2,23 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Drawer } from '@ninna-ui/overlays';
 import { Button } from '@ninna-ui/primitives';
 
-const meta: Meta = {
+const meta: Meta<any> = {
   title: 'Overlays/Drawer',
+  component: Drawer,
+  subcomponents: {
+    // @ts-ignore - Storybook handles these attached components
+    Trigger: Drawer.Trigger,
+    // @ts-ignore
+    Content: Drawer.Content,
+    // @ts-ignore
+    Header: Drawer.Header,
+    // @ts-ignore
+    Body: Drawer.Body,
+    // @ts-ignore
+    Footer: Drawer.Footer,
+    // @ts-ignore
+    Close: Drawer.Close,
+  },
   parameters: {
     layout: 'centered',
   },
@@ -27,6 +42,30 @@ const meta: Meta = {
       control: 'boolean',
       description: 'Whether the drawer blocks interaction with the rest of the page',
       table: { defaultValue: { summary: 'true' } },
+    },
+    // Documenting Content props here for convenience
+    // in the root argTypes table as well
+    placement: {
+      control: 'select',
+      options: ['left', 'right', 'top', 'bottom'],
+      description: '(Content Prop) Which edge the drawer slides from',
+      table: { category: 'Content' },
+    },
+    size: {
+      control: 'select',
+      options: ['xs', 'sm', 'md', 'lg', 'xl', 'full'],
+      description: '(Content Prop) Size of the drawer',
+      table: { category: 'Content' },
+    },
+    closeOnOverlayClick: {
+      control: 'boolean',
+      description: '(Content Prop) Whether clicking overlay closes the drawer',
+      table: { category: 'Content' },
+    },
+    closeOnEscape: {
+      control: 'boolean',
+      description: '(Content Prop) Whether pressing Escape closes the drawer',
+      table: { category: 'Content' },
     },
   },
 };

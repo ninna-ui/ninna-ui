@@ -32,6 +32,20 @@ const meta: Meta<typeof Switch> = {
       control: 'boolean',
       description: 'Whether the switch is on',
     },
+    onCheckedChange: {
+      action: 'onCheckedChange',
+      description: 'Callback when checked state changes',
+    },
+    defaultChecked: {
+      control: 'boolean',
+      description: 'Default checked state (uncontrolled)',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    required: {
+      control: 'boolean',
+      description: 'Whether the switch is required',
+      table: { defaultValue: { summary: 'false' } },
+    },
     disabled: {
       control: 'boolean',
       description: 'Whether the switch is disabled',

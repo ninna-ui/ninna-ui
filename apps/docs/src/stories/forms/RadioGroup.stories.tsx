@@ -41,6 +41,19 @@ const meta: Meta<typeof RadioGroup> = {
       description: 'Gap between items',
       table: { defaultValue: { summary: 'md' } },
     },
+    onValueChange: {
+      action: 'onValueChange',
+      description: 'Callback when selected value changes',
+    },
+    defaultValue: {
+      control: 'text',
+      description: 'Default selected value (uncontrolled)',
+    },
+    required: {
+      control: 'boolean',
+      description: 'Whether a selection is required',
+      table: { defaultValue: { summary: 'false' } },
+    },
     invalid: {
       control: 'boolean',
       description: 'Whether the group is in an invalid state',
