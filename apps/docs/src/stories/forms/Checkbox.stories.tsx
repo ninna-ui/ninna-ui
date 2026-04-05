@@ -28,19 +28,32 @@ const meta: Meta<typeof Checkbox> = {
       description: 'Visual variant',
       table: { defaultValue: { summary: 'outline' } },
     },
-    checked: {
-      control: 'boolean',
-      description: 'Whether the checkbox is checked',
+    onCheckedChange: {
+      action: 'onCheckedChange',
+      description: 'Callback when checked state changes',
     },
-    disabled: {
+    defaultChecked: {
       control: 'boolean',
-      description: 'Whether the checkbox is disabled',
+      description: 'Default checked state (uncontrolled)',
       table: { defaultValue: { summary: 'false' } },
     },
-    invalid: {
+    required: {
       control: 'boolean',
-      description: 'Whether the checkbox is in an invalid state',
+      description: 'Whether the checkbox is required',
       table: { defaultValue: { summary: 'false' } },
+    },
+    indeterminate: {
+      control: 'boolean',
+      description: 'Whether the checkbox is in indeterminate state',
+      table: { defaultValue: { summary: 'false' } },
+    },
+    icon: {
+      control: false,
+      description: 'Custom check icon',
+    },
+    indeterminateIcon: {
+      control: false,
+      description: 'Custom indeterminate icon',
     },
     labelPosition: {
       control: 'select',
@@ -54,7 +67,7 @@ const meta: Meta<typeof Checkbox> = {
     },
     description: {
       control: 'text',
-      description: 'Description text',
+      description: 'Description text (NOTE: Deprecated, use Field wrapper instead)',
     },
   },
 };

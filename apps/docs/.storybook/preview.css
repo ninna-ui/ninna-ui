@@ -1,13 +1,47 @@
 @import "tailwindcss";
 
-/* Import all theme presets for theme switching */
+/* Import theme CSS that defines Tailwind utilities */
+@import "@ninna-ui/core/theme/tailwind.css";
+
+/* Import all theme presets for dynamic switching */
 @import "@ninna-ui/core/theme/presets/default.css";
 @import "@ninna-ui/core/theme/presets/ocean.css";
 @import "@ninna-ui/core/theme/presets/sunset.css";
 @import "@ninna-ui/core/theme/presets/forest.css";
 @import "@ninna-ui/core/theme/presets/minimal.css";
 
+/* Code block syntax token colors (static — no runtime style injection) */
+@import "@ninna-ui/code-block/styles";
+
+/* Dark mode support for Tailwind v4 */
 @variant dark (&:is(.dark *));
 
-/* Code block syntax token colors (static - no runtime style injection) */
-@import "@ninna-ui/code-block/styles";
+/* Reset Storybook's default UI elements for full screen theme */
+.sb-show-main,
+.sb-show-main.sb-main-centered,
+#storybook-root,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Hide Storybook's default background and borders */
+.sb-show-main.sb-main-centered::before {
+  display: none !important;
+}
+
+/* Restore Storybook's main container positioning */
+.sb-show-main {
+  position: relative !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Ensure story content is properly contained */
+#storybook-root {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+}

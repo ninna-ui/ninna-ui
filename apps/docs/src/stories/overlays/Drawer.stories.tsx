@@ -2,8 +2,18 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Drawer } from '@ninna-ui/overlays';
 import { Button } from '@ninna-ui/primitives';
 
-const meta: Meta = {
+const meta: Meta<typeof Drawer> = {
   title: 'Overlays/Drawer',
+  component: Drawer,
+  subcomponents: {
+    // Storybook handles these attached components
+    Trigger: Drawer.Trigger,
+    Content: Drawer.Content,
+    Header: Drawer.Header,
+    Body: Drawer.Body,
+    Footer: Drawer.Footer,
+    Close: Drawer.Close,
+  },
   parameters: {
     layout: 'centered',
   },

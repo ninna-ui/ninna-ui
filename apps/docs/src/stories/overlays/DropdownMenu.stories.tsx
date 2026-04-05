@@ -2,8 +2,23 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { DropdownMenu } from '@ninna-ui/overlays';
 import { Button } from '@ninna-ui/primitives';
 
-const meta: Meta = {
+const meta: Meta<typeof DropdownMenu> = {
   title: 'Overlays/DropdownMenu',
+  component: DropdownMenu,
+  subcomponents: {
+    Trigger: DropdownMenu.Trigger,
+    Content: DropdownMenu.Content,
+    Group: DropdownMenu.Group,
+    Item: DropdownMenu.Item,
+    CheckboxItem: DropdownMenu.CheckboxItem,
+    RadioGroup: DropdownMenu.RadioGroup,
+    RadioItem: DropdownMenu.RadioItem,
+    Label: DropdownMenu.Label,
+    Separator: DropdownMenu.Separator,
+    Sub: DropdownMenu.Sub,
+    SubTrigger: DropdownMenu.SubTrigger,
+    SubContent: DropdownMenu.SubContent,
+  },
   parameters: {
     layout: 'centered',
   },

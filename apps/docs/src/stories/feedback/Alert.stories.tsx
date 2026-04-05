@@ -1,6 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "@ninna-ui/feedback";
 import { Button } from "@ninna-ui/primitives";
+import { 
+  Terminal,
+  ShieldCheck,
+  Zap
+} from "lucide-react";
 
 const meta: Meta<typeof Alert> = {
   title: "Feedback/Alert",
@@ -21,21 +26,44 @@ const meta: Meta<typeof Alert> = {
     },
     title: {
       control: "text",
-      description: "Alert title",
+      description: "Alert title text",
     },
     description: {
       control: "text",
-      description: "Alert description/message",
+      description: "Alert description/message text",
+    },
+    icon: {
+      control: "text",
+      description: "Custom icon to display (ReactNode)",
     },
     showIcon: {
       control: "boolean",
-      description: "Whether to show the default icon",
+      description: "Whether to show the default icon based on color",
       table: { defaultValue: { summary: "true" } },
     },
     dismissible: {
       control: "boolean",
       description: "Whether the alert can be dismissed",
       table: { defaultValue: { summary: "false" } },
+    },
+    onDismiss: {
+      action: "onDismiss",
+      description: "Callback when alert is dismissed",
+    },
+    action: {
+      control: "text",
+      description: "Action element (button, link, etc.)",
+    },
+    size: {
+      control: "select",
+      options: ["sm", "md", "lg"],
+      description: "Size of the alert",
+      table: { defaultValue: { summary: "md" } },
+    },
+    role: {
+      control: "text",
+      description: "ARIA role",
+      table: { defaultValue: { summary: "alert" } },
     },
   },
 };
@@ -45,155 +73,124 @@ type Story = StoryObj<typeof Alert>;
 
 export const Default: Story = {
   args: {
-    title: "Alert Title",
-    description: "This is an alert message with some important information.",
-    variant: "soft",
-    color: "neutral",
-  },
-};
-
-export const Solid: Story = {
-  args: {
-    title: "Solid Alert",
-    description: "This is a solid alert with high emphasis.",
-    variant: "solid",
-    color: "primary",
-  },
-};
-
-export const Soft: Story = {
-  args: {
-    title: "Soft Alert",
-    description: "This is a soft alert with subtle emphasis.",
+    title: "System Update",
+    description: "A new version of the dashboard is available. Please refresh your browser to see the latest changes.",
     variant: "soft",
     color: "primary",
   },
 };
 
-export const Outline: Story = {
-  args: {
-    title: "Outline Alert",
-    description: "This is an outline alert with border emphasis.",
-    variant: "outline",
-    color: "primary",
-  },
+export const StatusVariants: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4 w-[600px]">
+      <Alert 
+        color="info" 
+        title="Information" 
+        description="Your subscription will renew automatically on May 1st."
+      />
+      <Alert 
+        color="success" 
+        title="Payment Successful" 
+        description="We've processed your payment. Your receipt has been sent to your email."
+      />
+      <Alert 
+        color="warning" 
+        title="Storage Limit Reached" 
+        description="You have used 90% of your available storage. Consider upgrading your plan."
+      />
+      <Alert 
+        color="danger" 
+        title="Connection Error" 
+        description="Unable to connect to the database. Please check your network settings."
+      />
+    </div>
+  ),
 };
 
-export const Success: Story = {
-  args: {
-    title: "Success!",
-    description: "Your changes have been saved successfully.",
-    variant: "soft",
-    color: "success",
-  },
-};
-
-export const Danger: Story = {
-  args: {
-    title: "Error",
-    description: "There was an error processing your request.",
-    variant: "soft",
-    color: "danger",
-  },
-};
-
-export const Warning: Story = {
-  args: {
-    title: "Warning",
-    description: "Please review your information before continuing.",
-    variant: "soft",
-    color: "warning",
-  },
-};
-
-export const Info: Story = {
-  args: {
-    title: "Information",
-    description: "A new version is available for download.",
-    variant: "soft",
-    color: "info",
-  },
+export const WithCustomIcons: Story = {
+  render: () => (
+    <div className="flex flex-col gap-4 w-[600px]">
+      <Alert 
+        variant="outline"
+        color="neutral"
+        icon={<Terminal size={18} />}
+        title="Ready to deploy"
+        description="Successfully built 14 packages in 2.3 seconds."
+      />
+      <Alert 
+        variant="soft"
+        color="accent"
+        icon={<Zap size={18} />}
+        title="Performance Boost"
+        description="Optimized image delivery for all assets in the playground."
+      />
+      <Alert 
+        variant="soft"
+        color="secondary"
+        icon={<ShieldCheck size={18} />}
+        title="Security Audit"
+        description="No vulnerabilities found in your dependency tree."
+      />
+    </div>
+  ),
 };
 
 export const Dismissible: Story = {
   args: {
-    title: "Dismissible Alert",
-    description: "Click the X button to dismiss this alert.",
+    title: "Update Available",
+    description: "Version 0.5.0 is now live with enhanced Storybook support.",
     variant: "soft",
     color: "info",
     dismissible: true,
   },
 };
 
-export const WithoutIcon: Story = {
-  args: {
-    title: "No Icon",
-    description: "This alert has no icon displayed.",
-    variant: "soft",
-    color: "neutral",
-    showIcon: false,
-  },
-};
-
 export const WithAction: Story = {
   render: () => (
-    <Alert
-      variant="soft"
-      color="warning"
-      title="Session Expiring"
-      description="Your session will expire in 5 minutes."
-      action={
-        <Button size="sm" color="warning">
-          Extend Session
-        </Button>
-      }
-    />
+    <div className="flex flex-col gap-4 w-[600px]">
+       <Alert
+        variant="soft"
+        color="danger"
+        title="Critical Vulnerability"
+        description="A known security issue was found in one of your dependencies."
+        action={
+          <Button size="sm" color="danger" variant="solid">
+            View Report
+          </Button>
+        }
+      />
+      <Alert
+        variant="outline"
+        color="primary"
+        title="Feature Discovery"
+        description="Try out the new Timeline component with custom icons."
+        action={
+          <div className="flex gap-2">
+            <Button size="sm" variant="ghost">Learn More</Button>
+            <Button size="sm" variant="soft">Try Now</Button>
+          </div>
+        }
+      />
+    </div>
   ),
 };
 
-export const AllVariants: Story = {
+export const AllVisuals: Story = {
   render: () => (
-    <div className="flex flex-col gap-8">
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Solid Variant</h3>
-        <div className="flex flex-col gap-3">
-          <Alert variant="solid" color="neutral" title="Neutral" description="Neutral solid alert" />
-          <Alert variant="solid" color="primary" title="Primary" description="Primary solid alert" />
-          <Alert variant="solid" color="secondary" title="Secondary" description="Secondary solid alert" />
-          <Alert variant="solid" color="accent" title="Accent" description="Accent solid alert" />
-          <Alert variant="solid" color="info" title="Info" description="Info solid alert" />
-          <Alert variant="solid" color="success" title="Success" description="Success solid alert" />
-          <Alert variant="solid" color="warning" title="Warning" description="Warning solid alert" />
-          <Alert variant="solid" color="danger" title="Danger" description="Danger solid alert" />
-        </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-5xl">
+      <div className="space-y-4">
+        <h3 className="text-xs font-bold uppercase tracking-widest text-base-content/40">Solid</h3>
+        <Alert variant="solid" color="primary" title="Primary" description="Solid primary alert" />
+        <Alert variant="solid" color="success" title="Success" description="Solid success alert" />
+        <Alert variant="solid" color="warning" title="Warning" description="Solid warning alert" />
+        <Alert variant="solid" color="danger" title="Danger" description="Solid danger alert" />
       </div>
-
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Soft Variant</h3>
-        <div className="flex flex-col gap-3">
-          <Alert variant="soft" color="neutral" title="Neutral" description="Neutral soft alert" />
-          <Alert variant="soft" color="primary" title="Primary" description="Primary soft alert" />
-          <Alert variant="soft" color="secondary" title="Secondary" description="Secondary soft alert" />
-          <Alert variant="soft" color="accent" title="Accent" description="Accent soft alert" />
-          <Alert variant="soft" color="info" title="Info" description="Info soft alert" />
-          <Alert variant="soft" color="success" title="Success" description="Success soft alert" />
-          <Alert variant="soft" color="warning" title="Warning" description="Warning soft alert" />
-          <Alert variant="soft" color="danger" title="Danger" description="Danger soft alert" />
-        </div>
-      </div>
-
-      <div>
-        <h3 className="text-lg font-semibold mb-4">Outline Variant</h3>
-        <div className="flex flex-col gap-3">
-          <Alert variant="outline" color="neutral" title="Neutral" description="Neutral outline alert" />
-          <Alert variant="outline" color="primary" title="Primary" description="Primary outline alert" />
-          <Alert variant="outline" color="secondary" title="Secondary" description="Secondary outline alert" />
-          <Alert variant="outline" color="accent" title="Accent" description="Accent outline alert" />
-          <Alert variant="outline" color="info" title="Info" description="Info outline alert" />
-          <Alert variant="outline" color="success" title="Success" description="Success outline alert" />
-          <Alert variant="outline" color="warning" title="Warning" description="Warning outline alert" />
-          <Alert variant="outline" color="danger" title="Danger" description="Danger outline alert" />
-        </div>
+      <div className="space-y-4">
+        <h3 className="text-xs font-bold uppercase tracking-widest text-base-content/40">Soft</h3>
+        <Alert variant="soft" color="primary" title="Primary" description="Soft primary alert" />
+        <Alert variant="soft" color="success" title="Success" description="Soft success alert" />
+        <Alert variant="soft" color="warning" title="Warning" description="Soft warning alert" />
+        <Alert variant="soft" color="danger" title="Danger" description="Soft danger alert" />
       </div>
     </div>
   ),
