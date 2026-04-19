@@ -49,10 +49,18 @@ export const inputGroupStyles = {
 
   elementEnd: 'right-0 pr-3',
 
-  // CRITICAL: pointer-events-none allows clicks to pass through to input
+  // Wrapper is transparent to pointer events so clicks fall through to the
+  // underlying input, but any interactive descendants (button, anchor, input,
+  // or explicit role="button") opt back in via a descendant selector. This
+  // removes the need for React-level heuristics and handles wrapped
+  // components (e.g. `<IconButton>`) correctly.
+  elementPointerSmart:
+    'pointer-events-none [&_button]:pointer-events-auto [&_a]:pointer-events-auto [&_input]:pointer-events-auto [&_[role="button"]]:pointer-events-auto',
 
-  elementPointerNone: 'pointer-events-none [&>*]:pointer-events-none',
+  // Force-disable all pointer events (including on interactive descendants).
+  elementPointerNone: 'pointer-events-none [&_*]:pointer-events-none',
 
+  // Force-enable pointer events on the wrapper and its subtree.
   elementPointerAuto: 'pointer-events-auto',
 
   

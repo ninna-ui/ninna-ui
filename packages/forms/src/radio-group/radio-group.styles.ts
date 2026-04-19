@@ -110,18 +110,29 @@ export const radioIndicatorVariants = cva(
 export type RadioIndicatorVariantsProps = VariantProps<typeof radioIndicatorVariants>;
 
 export const radioGroupStyles = {
-  root:               "flex",
-  horizontal:         "flex-row flex-wrap",
-  vertical:           "flex-col",
-  gap:                { sm: "gap-2", md: "gap-3", lg: "gap-4" },
-  indicator:          "flex items-center justify-center",
-  itemWrapper:        "flex items-center gap-3 min-h-[44px]",
-  itemWrapperReverse: "flex-row-reverse",
-  labelWrapper:       "flex flex-col gap-0.5",
-  label:              "text-base-content font-medium cursor-pointer select-none",
-  labelSizes:         { sm: "text-sm", md: "text-base", lg: "text-lg" },
-  labelDisabled:      "opacity-50 cursor-not-allowed",
-  description:        "text-base-content/70 text-sm",
+  root:                     "flex",
+  horizontal:               "flex-row flex-wrap",
+  vertical:                 "flex-col",
+  gap:                      { sm: "gap-2", md: "gap-3", lg: "gap-4" },
+  indicator:                "flex items-center justify-center",
+  // See checkbox.styles.ts for the rationale: `items-center` by default so
+  // the radio button sits on the same visual line as its label;
+  // `items-start` only when a description is stacked below so the radio
+  // aligns with the first line of the label block. `min-h-[44px]` was
+  // dropped because it produced a tall empty row that visually detached
+  // the radio from its label.
+  itemWrapper:              "inline-flex items-center gap-3",
+  itemWrapperWithDescription: "inline-flex items-start gap-3",
+  itemWrapperReverse:       "flex-row-reverse",
+  // `leading-none` on the label collapses the text line-box to the
+  // font-size so the glyph-optical-centre aligns with the radio dot's
+  // centre under `items-center`. See checkbox.styles.ts for the full
+  // explanation.
+  labelWrapper:             "flex flex-col gap-0.5",
+  label:                    "text-base-content font-medium cursor-pointer select-none leading-none",
+  labelSizes:               { sm: "text-sm", md: "text-base", lg: "text-lg" },
+  labelDisabled:            "opacity-50 cursor-not-allowed",
+  description:              "text-base-content/70 text-sm leading-tight",
 };
 
 export const radioCardStyles = {

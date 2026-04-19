@@ -12,13 +12,39 @@ export function useFormControl(): FormControlContextValue | null {
 }
 
 /**
- * Hook to get form control props for an input element
+ * Fields that `useFormControlProps` may inject from a surrounding
+ * `<FormControl>`. Kept in sync with `FormControlContextValue` — the hook
+ * always returns these keys (typed as optional) so consumers can read them
+ * without unsafe casts.
  */
-export function useFormControlProps<T extends Record<string, unknown>>(props: T) {
+export interface FormControlDerivedProps {
+  id?: string;
+  disabled?: boolean;
+  readOnly?: boolean;
+  required?: boolean;
+  'aria-invalid'?: boolean;
+  'aria-required'?: boolean;
+  'aria-disabled'?: boolean;
+  'aria-describedby'?: string;
+  'aria-labelledby'?: string;
+}
+
+/**
+ * Hook to get form control props for an input element.
+ *
+ * Returns the original props merged with any fields derived from a
+ * surrounding `<FormControl>`. Context fields **win** over the user's raw
+ * props — that is the whole point of `<FormControl>`. Consumers should spread
+ * the result first and only override fields they must control themselves
+ * (e.g. a wrapped `onChange`, a computed `className`, etc.).
+ */
+export function useFormControlProps<T extends Record<string, unknown>>(
+  props: T
+): T & FormControlDerivedProps {
   const context = useFormControl();
-  
+
   if (!context) {
-    return props;
+    return props as T & FormControlDerivedProps;
   }
 
   return {

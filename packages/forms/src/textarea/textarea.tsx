@@ -96,18 +96,27 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
       [value, onChange, autoResize, adjustHeight]
     );
 
+    // See the note in `input.tsx` for the spread order rationale: spread
+    // `formControlProps` (which already contains `props` merged with
+    // FormControl context overrides) FIRST so context wins, then layer the
+    // attributes we must control ourselves. The previous implementation
+    // spread `{...props}` last, silently clobbering `disabled`, `required`,
+    // `aria-*`, and `id` values injected by `<FormControl>`.
+    const resolvedId = formControlProps.id ?? textareaId;
+
     const textareaElement = (
       <textarea
+        {...formControlProps}
         ref={textareaRef}
         data-slot="textarea"
-        id={textareaId}
+        id={resolvedId}
         rows={autoResize ? minRows : (rows ?? 3)}
         value={value}
         defaultValue={value === undefined ? defaultValue : undefined}
         onChange={handleChange}
         maxLength={maxLength}
         data-invalid={isInvalid || undefined}
-        data-disabled={props.disabled || undefined}
+        data-disabled={formControlProps.disabled || undefined}
         className={cn(
           variant === 'unstyled' && textareaStyles.unstyled,
           variant !== 'unstyled' && textareaVariants({ size, resize: autoResize ? 'none' : resize }),
@@ -116,8 +125,6 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           className
         )}
         aria-invalid={isInvalid || undefined}
-        {...formControlProps}
-        {...props}
       />
     );
 

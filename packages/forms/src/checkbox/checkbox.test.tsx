@@ -155,3 +155,57 @@ describe('CheckboxGroup', () => {
     expect(results).toHaveNoViolations();
   });
 });
+
+// ── Size / layout regression (visual bug reported by the user:
+//    "checkboxes of different sizes don't look like different sizes and
+//    don't share a line with their label") ──────────────────────────────
+describe('Checkbox sizes', () => {
+  it('applies distinct w/h utility classes for sm / md / lg on the indicator', () => {
+    const { container: smContainer } = render(<Checkbox size="sm" label="sm" />);
+    const { container: mdContainer } = render(<Checkbox size="md" label="md" />);
+    const { container: lgContainer } = render(<Checkbox size="lg" label="lg" />);
+
+    const sm = smContainer.querySelector('[data-slot="indicator"]')!;
+    const md = mdContainer.querySelector('[data-slot="indicator"]')!;
+    const lg = lgContainer.querySelector('[data-slot="indicator"]')!;
+
+    expect(sm.className).toMatch(/\bw-4\b/);
+    expect(sm.className).toMatch(/\bh-4\b/);
+    expect(md.className).toMatch(/\bw-5\b/);
+    expect(md.className).toMatch(/\bh-5\b/);
+    expect(lg.className).toMatch(/\bw-6\b/);
+    expect(lg.className).toMatch(/\bh-6\b/);
+  });
+
+  it('scales the label typography with the checkbox size', () => {
+    render(
+      <>
+        <Checkbox size="sm" label="sm" />
+        <Checkbox size="md" label="md" />
+        <Checkbox size="lg" label="lg" />
+      </>
+    );
+    expect(screen.getByText('sm').className).toMatch(/\btext-sm\b/);
+    expect(screen.getByText('md').className).toMatch(/\btext-base\b/);
+    expect(screen.getByText('lg').className).toMatch(/\btext-lg\b/);
+  });
+
+  it('centre-aligns the checkbox with its label by default (no description)', () => {
+    const { container } = render(<Checkbox label="single-line" />);
+    // Wrapper is the outermost div around checkboxElement + labelWrapper.
+    const wrapper = container.firstElementChild as HTMLElement;
+    expect(wrapper.className).toContain('items-center');
+    expect(wrapper.className).not.toContain('items-start');
+    // Regression: drop the 44px min-height that visually detached the box.
+    expect(wrapper.className).not.toMatch(/min-h-\[44px\]/);
+  });
+
+  it('top-aligns the checkbox with the first label line when a description is present', () => {
+    const { container } = render(
+      <Checkbox label="with desc" description="explanatory text" />
+    );
+    const wrapper = container.firstElementChild as HTMLElement;
+    expect(wrapper.className).toContain('items-start');
+    expect(wrapper.className).not.toContain('items-center');
+  });
+});

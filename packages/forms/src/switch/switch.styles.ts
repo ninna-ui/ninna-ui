@@ -122,10 +122,19 @@ export const switchStyles = {
   trackLabelOn: "left-1.5 text-base-100 opacity-0 data-[state=checked]:opacity-100 transition-opacity",
   trackLabelOff: "right-1.5 text-base-content/80 opacity-100 data-[state=checked]:opacity-0 transition-opacity",
   spinner: "animate-spin h-3 w-3 text-base-content/70",
-  wrapper: "flex items-start gap-3",
+  // See checkbox.styles.ts for the rationale. `items-center` by default so
+  // the switch sits on the same visual line as its label; `items-start`
+  // only when a description is stacked below the label.
+  wrapper: "inline-flex items-center gap-3",
+  wrapperWithDescription: "inline-flex items-start gap-3",
   wrapperReverse: "flex-row-reverse",
+  // `leading-none` on the label collapses the text line-box to the
+  // font-size so the glyph-optical-centre aligns with the switch's
+  // centre under `items-center`. See checkbox.styles.ts for the full
+  // explanation.
   labelWrapper: "flex flex-col gap-0.5",
-  label: "text-base-content font-medium cursor-pointer select-none",
+  label: "text-base-content font-medium cursor-pointer select-none leading-none",
+  labelSizes: { sm: "text-sm", md: "text-base", lg: "text-lg" },
   labelDisabled: "opacity-50 cursor-not-allowed",
-  description: "text-base-content/70 text-sm",
+  description: "text-base-content/70 text-sm leading-tight",
 };

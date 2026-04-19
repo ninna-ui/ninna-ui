@@ -145,13 +145,17 @@ const PasswordInputExample = () => {
     const [show, setShow] = useState(false);
     return (
       <div className="max-w-md">
-        <InputGroup 
+        <InputGroup
           endElement={
-            <button onClick={() => setShow(!show)} className="focus:outline-none">
+            <button
+              type="button"
+              aria-label={show ? 'Hide password' : 'Show password'}
+              onClick={() => setShow(!show)}
+              className="focus:outline-none"
+            >
               {show ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
             </button>
           }
-          endElementPointerEvents="auto"
         >
           <Input
             type={show ? 'text' : 'password'}

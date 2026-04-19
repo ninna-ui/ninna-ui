@@ -47,14 +47,16 @@ const INPUT_GROUP_PROPS: PropDefinition[] = [
   {
     name: 'startElementPointerEvents',
     type: "'none' | 'auto'",
-    defaultValue: "'none'",
-    description: 'Whether start element receives pointer events',
+    defaultValue: 'smart',
+    description:
+      "Override pointer-events on the start slot. By default, decorative content is inert but interactive descendants (button, a, input, [role='button']) receive clicks automatically.",
   },
   {
     name: 'endElementPointerEvents',
     type: "'none' | 'auto'",
-    defaultValue: "'none'",
-    description: 'Whether end element receives pointer events',
+    defaultValue: 'smart',
+    description:
+      "Override pointer-events on the end slot. See startElementPointerEvents.",
   },
 ];
 
@@ -140,7 +142,7 @@ export function InputGroupView() {
         <ComponentSection
           id="with-button"
           title="With Button"
-          description="Add interactive elements with endElementPointerEvents='auto'."
+          description="Interactive descendants (button, a, input, [role='button']) are clickable out of the box — no extra props required."
           level={3}
         >
           <CodePreview

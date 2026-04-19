@@ -76,18 +76,30 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     const showClearButton = clearable && currentValue.length > 0 && !props.disabled && !props.readOnly;
 
+    // NOTE: `formControlProps` already contains the original `props` merged
+    // with FormControl context overrides (disabled, required, aria-*, id…).
+    // Spread it FIRST, then layer our computed attributes so that:
+    //  - context-provided fields win over the user's raw props (the whole
+    //    point of `<FormControl>`),
+    //  - our wrapped `onChange`, computed className, and size/variant-based
+    //    attributes still take precedence where we actually need control.
+    //  - `id` falls back to the locally computed `inputId` only when neither
+    //    the context nor the caller provided one.
+    const resolvedId = formControlProps.id ?? inputId;
+
     const inputElement = (
       <input
+        {...formControlProps}
         ref={ref}
         data-slot="input"
-        id={inputId}
+        id={resolvedId}
         value={value}
         defaultValue={value === undefined ? defaultValue : undefined}
         onChange={handleChange}
         maxLength={maxLength}
         placeholder={floatingLabel ? ' ' : placeholder}
         data-invalid={isInvalid || undefined}
-        data-disabled={props.disabled || undefined}
+        data-disabled={formControlProps.disabled || undefined}
         className={cn(
           variant === 'unstyled' && inputStyles.unstyled,
           variant !== 'unstyled' && inputVariants({ inputVariant: variant as 'outline' | 'filled' | 'flushed', color, size, invalid: !!isInvalid }),
@@ -96,8 +108,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           className
         )}
         aria-invalid={isInvalid || undefined}
-        {...formControlProps}
-        {...props}
       />
     );
 
