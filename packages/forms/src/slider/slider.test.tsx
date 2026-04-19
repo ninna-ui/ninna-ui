@@ -39,4 +39,9 @@ describe('Slider', () => {
     const sliderRoot = container.querySelector('[data-slot="slider"]');
     expect(sliderRoot).toHaveAttribute('aria-labelledby');
   });
+
+  it('passes axe accessibility audit', async () => {
+    const { container } = render(<Slider label="Volume level" defaultValue={[50]} />);
+    await expect(container).toBeAccessible();
+  });
 });

@@ -38,4 +38,9 @@ describe('FileUpload', () => {
     expect(dropzone).toHaveAttribute('tabindex', '0');
     expect(dropzone).toHaveAttribute('aria-disabled', 'false');
   });
+
+  it('passes axe accessibility audit', async () => {
+    const { container } = render(<FileUpload label="Upload document" helperText="PDF only" />);
+    await expect(container).toBeAccessible();
+  });
 });
