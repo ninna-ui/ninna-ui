@@ -1,42 +1,42 @@
 {
-    "name": "@ninna-ui/test-config",
-    "version": "0.6.0",
-    "private": true,
-    "type": "module",
-    "exports": {
-        ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.js",
-            "default": "./dist/index.js"
-        },
-        "./setup": {
-            "types": "./dist/setup.d.ts",
-            "import": "./dist/setup.js",
-            "default": "./dist/setup.js"
-        },
-        "./vitest.d.ts": "./vitest.d.ts"
+  "name": "@ninna-ui/test-config",
+  "version": "0.6.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
-    "files": [
-        "dist",
-        "vitest.d.ts"
-    ],
-    "scripts": {
-        "build": "tsup",
-        "dev": "tsup --watch",
-        "typecheck": "tsc --noEmit"
+    "./setup": {
+      "types": "./dist/setup.d.ts",
+      "import": "./dist/setup.js",
+      "default": "./dist/setup.js"
     },
-    "peerDependencies": {
-        "@testing-library/jest-dom": ">=6.0.0",
-        "@testing-library/react": ">=16.0.0",
-        "@testing-library/user-event": ">=14.0.0",
-        "@vitejs/plugin-react": ">=5.0.0",
-        "jsdom": ">=25.0.0",
-        "vitest": "^4.1.2"
-    },
-    "devDependencies": {
-        "@sa11y/vitest": "^8.0.27",
-        "@types/node": "^22.14.0",
-        "tsup": "^8.5.1",
-        "typescript": "^5.9.3"
-    }
+    "./vitest.d.ts": "./vitest.d.ts"
+  },
+  "files": [
+    "dist",
+    "vitest.d.ts"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "@testing-library/jest-dom": ">=6.0.0",
+    "@testing-library/react": ">=16.0.0",
+    "@testing-library/user-event": ">=14.0.0",
+    "@vitejs/plugin-react": ">=5.0.0",
+    "jsdom": ">=25.0.0",
+    "vitest": "^4.1.4"
+  },
+  "devDependencies": {
+    "@sa11y/vitest": "^8.0.27",
+    "@types/node": "^22.14.0",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  }
 }
