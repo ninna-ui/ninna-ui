@@ -1,4 +1,5 @@
 import { forwardRef, Children, isValidElement, cloneElement } from 'react';
+import type { ReactNode } from 'react';
 import { cn } from '@ninna-ui/utils';
 import { inputGroupStyles, inputAddonStyles, INPUT_GROUP_SIZES } from './input-group.styles';
 import type { InputGroupProps, InputAddonProps } from './input-group.types';
@@ -39,6 +40,17 @@ export const InputAddon = forwardRef<HTMLDivElement, InputAddonProps>(
 
 InputAddon.displayName = 'InputAddon';
 
+const isInteractiveElement = (element: ReactNode): boolean => {
+  if (!isValidElement(element)) return false;
+  
+  const props = element.props as Record<string, unknown>;
+  const isInteractiveType = element.type === 'button' || element.type === 'a';
+  const hasInteractiveProps = !!(props.onClick || props.onMouseDown || props.onMouseUp);
+  
+  return isInteractiveType || hasInteractiveProps;
+};
+
+
 /**
  * InputGroup component for adding elements inside the input (icons, text, buttons)
  *
@@ -69,8 +81,8 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroupProps>(
       size = 'md',
       startElement,
       endElement,
-      startElementPointerEvents = 'none',
-      endElementPointerEvents = 'none',
+      startElementPointerEvents,
+      endElementPointerEvents,
       children,
       className,
       ...props
@@ -78,6 +90,9 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroupProps>(
     ref
   ) => {
     const sizeStyles = INPUT_GROUP_SIZES[size];
+
+    const finalStartPointerEvents = startElementPointerEvents ?? (isInteractiveElement(startElement) ? 'auto' : 'none');
+    const finalEndPointerEvents = endElementPointerEvents ?? (isInteractiveElement(endElement) ? 'auto' : 'none');
 
     // Clone child input to add padding for elements
     const enhancedChildren = Children.map(children, (child) => {
@@ -104,7 +119,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroupProps>(
                 inputGroupStyles.element,
                 inputGroupStyles.elementStart,
                 sizeStyles.element,
-                startElementPointerEvents === 'none'
+                finalStartPointerEvents === 'none'
                   ? inputGroupStyles.elementPointerNone
                   : inputGroupStyles.elementPointerAuto
               )}
@@ -119,7 +134,7 @@ export const InputGroup = forwardRef<HTMLDivElement, InputGroupProps>(
                 inputGroupStyles.element,
                 inputGroupStyles.elementEnd,
                 sizeStyles.element,
-                endElementPointerEvents === 'none'
+                finalEndPointerEvents === 'none'
                   ? inputGroupStyles.elementPointerNone
                   : inputGroupStyles.elementPointerAuto
               )}
