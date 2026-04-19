@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { axe } from 'vitest-axe';
 import { InputAddon, InputGroup } from './input-group';
 
@@ -65,6 +66,85 @@ describe('InputGroup', () => {
       </InputGroup>
     );
     expect(screen.getByText('USD')).toBeInTheDocument();
+  });
+
+  // The following three tests assert the *CSS strategy* applied to each
+  // adornment wrapper. We cannot meaningfully exercise CSS `pointer-events`
+  // via events because jsdom does not perform CSS-driven hit-testing — see
+  // https://github.com/jsdom/jsdom/issues/1742. In the browser, the combined
+  // `pointer-events-none` on the wrapper plus the descendant selector
+  // re-enabling `button`, `a`, `input` and `[role="button"]` produces the
+  // user-facing behaviour (decorative icons transparent, interactive
+  // children clickable) described in the component docs.
+  it('applies the smart pointer-events strategy to decorative adornments by default', () => {
+    render(
+      <InputGroup startElement={<svg data-testid="icon" aria-hidden="true" />}>
+        <input aria-label="search" />
+      </InputGroup>
+    );
+    const slot = screen.getByTestId('icon').parentElement!;
+    expect(slot).toHaveAttribute('data-slot', 'start-element');
+    expect(slot.className).toContain('pointer-events-none');
+    // Interactive descendants opt back in via a descendant selector.
+    expect(slot.className).toMatch(/\[&_button\]:pointer-events-auto/);
+    expect(slot.className).toMatch(/\[&_a\]:pointer-events-auto/);
+    expect(slot.className).toMatch(/\[&_input\]:pointer-events-auto/);
+  });
+
+  it('still routes synthetic clicks to interactive children in tests (event bubbling path)', async () => {
+    // Even though jsdom does not enforce CSS hit-testing, this confirms the
+    // event path is wired normally when the user lands directly on an
+    // interactive child. Regression guard in case we ever stopPropagation.
+    const user = userEvent.setup();
+    const onButtonClick = vi.fn();
+    render(
+      <InputGroup
+        endElement={
+          <button type="button" onClick={onButtonClick} aria-label="toggle">
+            toggle
+          </button>
+        }
+      >
+        <input aria-label="password" />
+      </InputGroup>
+    );
+    await user.click(screen.getByRole('button', { name: 'toggle' }));
+    expect(onButtonClick).toHaveBeenCalledTimes(1);
+  });
+
+  it('applies the fully-inert class when endElementPointerEvents="none"', () => {
+    render(
+      <InputGroup
+        endElementPointerEvents="none"
+        endElement={
+          <button type="button" aria-label="toggle" data-testid="btn">
+            toggle
+          </button>
+        }
+      >
+        <input aria-label="password" />
+      </InputGroup>
+    );
+    const slot = screen.getByTestId('btn').parentElement!;
+    expect(slot).toHaveAttribute('data-slot', 'end-element');
+    // Explicit "none" uses a variant that disables ALL descendants, so no
+    // `[&_button]:pointer-events-auto` rule should be present.
+    expect(slot.className).toContain('pointer-events-none');
+    expect(slot.className).not.toMatch(/\[&_button\]:pointer-events-auto/);
+  });
+
+  it('applies the fully-enabled class when startElementPointerEvents="auto"', () => {
+    render(
+      <InputGroup
+        startElementPointerEvents="auto"
+        startElement={<span data-testid="start">@</span>}
+      >
+        <input aria-label="username" />
+      </InputGroup>
+    );
+    const slot = screen.getByTestId('start').parentElement!;
+    expect(slot.className).toContain('pointer-events-auto');
+    expect(slot.className).not.toMatch(/pointer-events-none/);
   });
 
   it('has no accessibility violations', async () => {

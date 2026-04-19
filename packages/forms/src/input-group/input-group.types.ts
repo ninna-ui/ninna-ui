@@ -11,9 +11,16 @@ export interface InputGroupProps extends Omit<HTMLAttributes<HTMLDivElement>, 'c
   startElement?: ReactNode;
   /** Element to display at the end of the input (inside border) */
   endElement?: ReactNode;
-  /** Whether start element allows pointer events */
+  /**
+   * Override pointer-events behaviour for the start slot.
+   *
+   * - `undefined` (default): smart — wrapper is inert, but interactive
+   *   descendants (`button`, `a`, `input`, `[role="button"]`) receive clicks.
+   * - `'auto'`: the entire slot receives pointer events.
+   * - `'none'`: the entire slot (including interactive descendants) is inert.
+   */
   startElementPointerEvents?: 'none' | 'auto';
-  /** Whether end element allows pointer events */
+  /** See {@link InputGroupProps.startElementPointerEvents}. */
   endElementPointerEvents?: 'none' | 'auto';
   /** Children (typically Input component) */
   children: ReactNode;

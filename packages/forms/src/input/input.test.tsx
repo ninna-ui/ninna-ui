@@ -3,6 +3,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { axe } from 'vitest-axe';
 import { Input } from './input';
+import { FormControl } from '../form-control';
 
 describe('Input', () => {
   // ── Rendering ──────────────────────────────────────────────
@@ -136,5 +137,27 @@ describe('Input', () => {
   it('merges custom className', () => {
     render(<Input className="custom-class" data-testid="input" />);
     expect(screen.getByTestId('input').className).toContain('custom-class');
+  });
+
+  // ── FormControl context integration ────────────────────────
+  it('inherits disabled, required and aria-invalid from a surrounding FormControl', () => {
+    render(
+      <FormControl isDisabled isRequired isInvalid>
+        <Input data-testid="input" />
+      </FormControl>
+    );
+    const input = screen.getByTestId('input');
+    expect(input).toBeDisabled();
+    expect(input).toHaveAttribute('aria-required', 'true');
+    expect(input).toHaveAttribute('aria-invalid', 'true');
+  });
+
+  it('adopts the id provided by FormControl context (so <FormLabel htmlFor> matches)', () => {
+    render(
+      <FormControl id="ctx-id">
+        <Input data-testid="input" />
+      </FormControl>
+    );
+    expect(screen.getByTestId('input')).toHaveAttribute('id', 'ctx-id');
   });
 });
