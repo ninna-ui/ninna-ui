@@ -201,6 +201,7 @@ export const RadioCard = forwardRef<HTMLButtonElement, RadioCardProps>(
         disabled={disabled}
         data-invalid={invalid || undefined}
         className={cn(
+          'group',
           radioCardStyles.card,
           'border-base-200 bg-base-100',
           'data-[state=checked]:border-primary data-[state=checked]:bg-primary/5',
@@ -210,10 +211,11 @@ export const RadioCard = forwardRef<HTMLButtonElement, RadioCardProps>(
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedBy}
       >
-        <div className="absolute top-3 right-3 w-5 h-5 rounded-full border-2 border-base-300 flex items-center justify-center transition-colors">
-          <RadioEngine.Indicator>
-            <span className="w-2.5 h-2.5 rounded-full bg-primary" />
-          </RadioEngine.Indicator>
+        <div className={cn(
+          radioCardStyles.indicator,
+          "transition-colors group-data-[state=checked]:border-primary group-data-[state=checked]:bg-primary"
+        )}>
+          <RadioEngine.Indicator className={cn(radioCardStyles.indicatorDot, "block")} />
         </div>
         
         {icon && (
