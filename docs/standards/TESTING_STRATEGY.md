@@ -2,7 +2,7 @@
 
 > **700+ automated tests across 51 test files** - priority-based coverage, vitest-axe accessibility audits, co-located test files, and clear guidelines on what to test and what to skip. This document defines the testing philosophy and requirements for every Ninna UI component.
 >
-> **Version:** 1.0.0 · **Last Updated:** February 2026
+> **Version:** 0.6.0 · **Last Updated:** April 2026
 
 ---
 

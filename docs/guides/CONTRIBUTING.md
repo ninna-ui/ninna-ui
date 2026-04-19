@@ -2,7 +2,7 @@
 
 > **Everything you need to contribute to the Ninna UI monorepo** - from your first PR to publishing packages on npm. Fork, build, add components, ship.
 >
-> **Version:** 2.0.0 · **Last Updated:** February 2026
+> **Version:** 0.6.0 · **Last Updated:** April 2026
 
 ---
 

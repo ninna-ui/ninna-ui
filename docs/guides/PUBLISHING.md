@@ -2,7 +2,7 @@
 
 > **Complete npm publishing workflow for the Ninna UI monorepo** - Changesets-based version management, automated CI/CD publishing, fixed versioning across all 12 packages, and emergency rollback procedures.
 >
-> **Version:** 1.0.0 · **Last Updated:** February 2026
+> **Version:** 0.6.0 · **Last Updated:** April 2026
 
 ---
 

@@ -2,7 +2,7 @@
 
 > **WCAG 2.1 Level AA compliance for every component** - ARIA patterns, keyboard navigation, focus management, color contrast, and screen reader compatibility. Accessibility is not optional in Ninna UI - it's a core quality gate enforced by automated vitest-axe audits on every PR.
 >
-> **Version:** 1.0.0 · **Last Updated:** February 2026
+> **Version:** 0.6.0 · **Last Updated:** April 2026
 
 ---
 
