@@ -103,7 +103,10 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
 
     return (
       <div className={cn(
-        switchStyles.wrapper,
+        // See switch.styles.ts for the rationale: centre-align by default
+        // so the switch shares a line with its label; switch to
+        // top-alignment only when a description is stacked below.
+        description ? switchStyles.wrapperWithDescription : switchStyles.wrapper,
         labelPosition === 'start' && switchStyles.wrapperReverse
       )}>
         {switchElement}
@@ -113,6 +116,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
               htmlFor={id}
               className={cn(
                 switchStyles.label,
+                switchStyles.labelSizes[size],
                 isDisabled && switchStyles.labelDisabled
               )}
             >

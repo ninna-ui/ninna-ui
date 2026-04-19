@@ -133,7 +133,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <div className={cn(
-        checkboxStyles.wrapper,
+        // When a description is present we align the checkbox with the first
+        // line of the label block (items-start). Otherwise we centre-align
+        // so the box sits on the same visual line as its label — see the
+        // comment in checkbox.styles.ts for the full rationale.
+        description ? checkboxStyles.wrapperWithDescription : checkboxStyles.wrapper,
         labelPosition === 'start' && checkboxStyles.wrapperReverse
       )}>
         {checkboxElement}
@@ -143,6 +147,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               htmlFor={id}
               className={cn(
                 checkboxStyles.label,
+                // Scale the label typography with the checkbox size so
+                // sm/md/lg rows look visibly distinct in a Sizes demo —
+                // the 4px box-size step alone is too subtle to read.
+                checkboxStyles.labelSizes[size],
                 disabled && checkboxStyles.labelDisabled
               )}
             >

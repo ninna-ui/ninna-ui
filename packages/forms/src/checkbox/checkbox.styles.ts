@@ -74,12 +74,30 @@ export const CHECKBOX_ICON_SIZES: Record<import('@ninna-ui/core').CompactSize, s
 
 export const checkboxStyles = {
   input: "sr-only peer",
-  wrapper: "inline-flex items-start gap-3 min-h-[44px]",
+  // NOTE: We use `items-center` for the common (label-only) case so the
+  // checkbox visually sits on the same line as its label. When a description
+  // is present we switch to `items-start` so the checkbox aligns with the
+  // first line of the label block rather than being centred between label
+  // and description. The previous `min-h-[44px]` was dropped: it forced
+  // every checkbox row to be 44px tall which (a) disconnected the box from
+  // the label visually and (b) added large empty space between stacked
+  // checkboxes. Touch-target size is already adequate because the label
+  // element wrapping the input is the click target and expands with text.
+  wrapper: "inline-flex items-center gap-3",
+  wrapperWithDescription: "inline-flex items-start gap-3",
   wrapperReverse: "flex-row-reverse",
-  labelWrapper: "flex flex-col gap-0.5",
-  label: "text-base-content font-medium cursor-pointer select-none",
+  labelWrapper: "flex flex-col gap-0.5 leading-tight",
+  label: "text-base-content font-medium cursor-pointer select-none leading-tight",
+  // Keep label typography proportional to the checkbox size, otherwise the
+  // sm/md/lg variants look deceptively similar on the page (the 4px step
+  // between boxes alone is hard to read next to a fixed-size label).
+  labelSizes: {
+    sm: "text-sm",
+    md: "text-base",
+    lg: "text-lg",
+  },
   labelDisabled: "opacity-50 cursor-not-allowed",
-  description: "text-base-content/70 text-sm",
+  description: "text-base-content/70 text-sm leading-tight",
 };
 
 export const checkboxGroupStyles = {

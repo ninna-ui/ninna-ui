@@ -137,7 +137,10 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
 
     return (
       <div className={cn(
-        radioGroupStyles.itemWrapper,
+        // See radio-group.styles.ts: centre-align by default so the radio
+        // shares a line with its label; switch to top-alignment only when
+        // a description is stacked below.
+        description ? radioGroupStyles.itemWrapperWithDescription : radioGroupStyles.itemWrapper,
         labelPosition === 'start' && radioGroupStyles.itemWrapperReverse
       )}>
         {radioElement}
