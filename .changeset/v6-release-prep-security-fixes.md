@@ -11,5 +11,5 @@
 '@ninna-ui/overlays': patch
 ---
 
-- Migrated accessibility testing suite from `vitest-axe` to `@sa11y/vitest` for improved security and Vite 8+ compatibility.
+- Migrated accessibility testing suite from `@sa11y/vitest` to `@sa11y/vitest` for improved security and Vite 8+ compatibility.
 - Applied security patches for Vite Dev Server vulnerabilities via dependency overrides.

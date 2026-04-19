@@ -16,8 +16,7 @@ export default defineConfig({
         '@testing-library/jest-dom/vitest',
         '@testing-library/react',
         '@testing-library/user-event',
-        'vitest-axe',
-        'vitest-axe/matchers',
+        '@sa11y/vitest',
         'jsdom',
     ],
 });

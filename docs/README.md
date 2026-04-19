@@ -17,7 +17,7 @@ docs/
 │   ├── README.md              # Standards overview
 │   ├── ACCESSIBILITY.md       # WCAG 2.1 AA compliance, ARIA, keyboard nav
 │   ├── COMPONENT_STANDARD.md  # Component file structure, props, patterns
-│   └── TESTING_STRATEGY.md    # Test coverage, vitest-axe, test patterns
+│   └── TESTING_STRATEGY.md    # Test coverage, @sa11y/vitest, test patterns
 └── guides/                     # Developer guides and workflows
     ├── README.md              # Guides overview
     ├── GETTING_STARTED.md     # Quick start for new users
