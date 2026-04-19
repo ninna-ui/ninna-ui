@@ -1,13 +1,18 @@
-import { forwardRef } from "react";
+import { forwardRef, type ElementType, type ReactElement } from "react";
 import { cn } from "@ninna-ui/utils";
 import { simpleGridStyles } from "./simple-grid.styles";
 import { GAP_SIZES } from "@ninna-ui/core";
 import type { SimpleGridProps } from "./simple-grid.types";
-import { simpleGridDefaults } from "./simple-grid.types";
+import type { GapSize } from '@ninna-ui/core';
+
+const SIMPLE_GRID_DEFAULT_COLUMNS = 1;
+const SIMPLE_GRID_DEFAULT_GAP: GapSize = '4';
 
 /**
- * SimpleGrid component - A responsive grid with auto-fit columns.
- * Either specify fixed columns or minChildWidth for auto-responsive behavior.
+ * SimpleGrid — a grid with either fixed columns or auto-fit responsive columns.
+ *
+ * Either specify `columns` for a fixed layout, or `minChildWidth` for automatic
+ * responsive behavior (auto-fit). Use `as` for semantic HTML (e.g. `<ul>`).
  *
  * @example
  * ```tsx
@@ -17,28 +22,36 @@ import { simpleGridDefaults } from "./simple-grid.types";
  *   <Card />
  *   <Card />
  * </SimpleGrid>
- * 
+ *
  * // Auto-fit with minimum width
  * <SimpleGrid minChildWidth="200px" gap="4">
  *   <Card />
  *   <Card />
  *   <Card />
  * </SimpleGrid>
+ *
+ * // Semantic list grid
+ * <SimpleGrid as="ul" columns={3} gap="4">
+ *   <li><Card /></li>
+ * </SimpleGrid>
  * ```
  */
-export const SimpleGrid = forwardRef<HTMLDivElement, SimpleGridProps>(
+export const SimpleGrid = forwardRef<HTMLElement, SimpleGridProps>(
   (
     {
+      as,
       children,
-      columns = simpleGridDefaults.columns,
+      columns = SIMPLE_GRID_DEFAULT_COLUMNS,
       minChildWidth,
-      gap = simpleGridDefaults.gap,
+      gap = SIMPLE_GRID_DEFAULT_GAP,
       className,
       style,
       ...props
     },
     ref
   ) => {
+    const Component = (as ?? "div") as ElementType;
+
     const gridStyle = minChildWidth
       ? {
           gridTemplateColumns: `repeat(auto-fit, minmax(${minChildWidth}, 1fr))`,
@@ -50,7 +63,7 @@ export const SimpleGrid = forwardRef<HTMLDivElement, SimpleGridProps>(
         };
 
     return (
-      <div
+      <Component
         ref={ref}
         data-slot="simple-grid"
         className={cn(simpleGridStyles.base, GAP_SIZES[gap], className)}
@@ -58,9 +71,9 @@ export const SimpleGrid = forwardRef<HTMLDivElement, SimpleGridProps>(
         {...props}
       >
         {children}
-      </div>
+      </Component>
     );
   }
-);
+) as <C extends ElementType = "div">(props: SimpleGridProps<C>) => ReactElement | null;
 
-SimpleGrid.displayName = "SimpleGrid";
+(SimpleGrid as { displayName?: string }).displayName = "SimpleGrid";

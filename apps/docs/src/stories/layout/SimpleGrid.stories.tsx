@@ -9,6 +9,10 @@ const meta: Meta<typeof SimpleGrid> = {
   },
   tags: ['autodocs'],
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'Semantic HTML element to render',
+    },
     columns: {
       control: 'number',
       description: 'Fixed number of columns',

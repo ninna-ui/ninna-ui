@@ -24,6 +24,7 @@ export const separatorSections: ComponentSectionType[] = [
 ];
 
 const SEPARATOR_PROPS: PropDefinition[] = [
+  { name: "as", type: "ElementType", defaultValue: '"hr"', description: "Semantic HTML element to render" },
   { name: "orientation", type: "'horizontal' | 'vertical'", defaultValue: "'horizontal'", description: "Orientation of the separator" },
   { name: "decorative", type: "boolean", defaultValue: "true", description: "If true, separator has no semantic meaning" },
   { name: "className", type: "string", description: "Additional CSS classes" },

@@ -9,6 +9,10 @@ const meta: Meta<typeof Container> = {
   },
   tags: ['autodocs'],
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'Semantic HTML element to render',
+    },
     maxWidth: {
       control: 'select',
       options: ['sm', 'md', 'lg', 'xl', '2xl', 'full', 'none'],

@@ -1,14 +1,4 @@
-/**
- * Center styles configuration
- */
 export const centerStyles = {
-  /**
-   * Base styles - flex centering
-   */
-  base: "flex items-center justify-center",
-
-  /**
-   * Inline variant
-   */
+  base:   "flex items-center justify-center",
   inline: "inline-flex items-center justify-center",
 };

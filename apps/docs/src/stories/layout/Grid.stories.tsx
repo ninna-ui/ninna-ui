@@ -9,6 +9,10 @@ const meta: Meta<typeof Grid> = {
   },
   tags: ['autodocs'],
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'Semantic HTML element to render',
+    },
     columns: {
       control: 'select',
       options: [1, 2, 3, 4, 5, 6, 12],
@@ -30,6 +34,11 @@ const meta: Meta<typeof Grid> = {
       control: 'select',
       options: ['row', 'column', 'dense', 'row-dense', 'column-dense'],
       description: 'Grid flow direction',
+    },
+    align: {
+      control: 'select',
+      options: ['start', 'center', 'end', 'stretch', 'baseline'],
+      description: 'Align grid items on the cross axis',
     },
   },
 };

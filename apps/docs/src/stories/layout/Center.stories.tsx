@@ -9,6 +9,10 @@ const meta: Meta<typeof Center> = {
   },
   tags: ['autodocs'],
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'Semantic HTML element to render',
+    },
     inline: {
       control: 'boolean',
       description: 'Use inline-flex instead of flex',

@@ -9,6 +9,10 @@ const meta: Meta<typeof Stack> = {
   },
   tags: ['autodocs'],
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'Semantic HTML element to render',
+    },
     direction: {
       control: 'select',
       options: ['row', 'column', 'row-reverse', 'column-reverse'],

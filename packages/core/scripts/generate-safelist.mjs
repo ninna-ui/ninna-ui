@@ -38,7 +38,15 @@ const TAILWIND_CSS_PATH = resolve(
   'tailwind.css'
 );
 
-// Marker comments in tailwind.css - everything between these is replaced
+const SAFELIST_CSS_PATH = resolve(
+  import.meta.dirname,
+  '..',
+  'src',
+  'theme',
+  'safelist.css'
+);
+
+// Marker comments used inside safelist.css
 const SAFELIST_START = '/* === AUTO-GENERATED SAFELIST START === */';
 const SAFELIST_END = '/* === AUTO-GENERATED SAFELIST END === */';
 
@@ -392,34 +400,9 @@ function main() {
 
   const safelistBlock = lines.join('\n');
 
-  // ── Write to tailwind.css ─────────────────────────────────────
-  let css = readFileSync(TAILWIND_CSS_PATH, 'utf-8');
-
-  const startIdx = css.indexOf(SAFELIST_START);
-  const endIdx = css.indexOf(SAFELIST_END);
-
-  if (startIdx !== -1 && endIdx !== -1) {
-    // Replace existing safelist block
-    css = css.slice(0, startIdx) + safelistBlock + css.slice(endIdx + SAFELIST_END.length);
-    console.log('\n✅ Replaced existing safelist block in tailwind.css');
-  } else {
-    // Insert before @theme inline - find the right spot
-    // Look for the old manual safelist section or insert before @theme
-    const themeIdx = css.indexOf('@theme inline');
-    if (themeIdx !== -1) {
-      // Find a good insertion point - right before @theme inline
-      // Look backward for a blank line
-      let insertIdx = themeIdx;
-      while (insertIdx > 0 && css[insertIdx - 1] !== '\n') insertIdx--;
-      css = css.slice(0, insertIdx) + safelistBlock + '\n\n' + css.slice(insertIdx);
-      console.log('\n✅ Inserted new safelist block in tailwind.css (before @theme)');
-    } else {
-      console.error('❌ Could not find insertion point in tailwind.css');
-      process.exit(1);
-    }
-  }
-
-  writeFileSync(TAILWIND_CSS_PATH, css, 'utf-8');
+  // ── Write to safelist.css ────────────────────────────────────
+  writeFileSync(SAFELIST_CSS_PATH, safelistBlock + '\n', 'utf-8');
+  console.log('\n✅ Written safelist.css');
 
   // ── Print summary ─────────────────────────────────────────────
   console.log('\n📋 Safelist groups:');
@@ -428,7 +411,7 @@ function main() {
       console.log(`   ${name}: ${classes.length}`);
     }
   }
-  console.log('\n✨ Done! tailwind.css updated with complete safelist.\n');
+  console.log('\n✨ Done! safelist.css updated with complete safelist.\n');
 }
 
 main();

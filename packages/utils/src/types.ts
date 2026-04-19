@@ -19,18 +19,33 @@ export type PropsOf<
 > = React.ComponentPropsWithoutRef<C>;
 
 /**
- * Polymorphic component props
+ * Distributive Omit — works correctly with union types.
+ * Prevents TypeScript from collapsing union types when omitting keys.
+ */
+export type DistributiveOmit<T, K extends keyof any> = T extends any
+  ? Omit<T, K>
+  : never;
+
+/**
+ * Polymorphic component props.
+ * Merges custom Props with the intrinsic element props of `C`,
+ * omitting any conflicting keys from the element's own props.
+ * The `as` prop determines the rendered element type.
+ *
+ * @example
+ * type BoxProps<C extends ElementType = 'div'> = PolymorphicProps<C, { shadow?: boolean }>;
  */
 export type PolymorphicProps<
   C extends React.ElementType,
   Props = object
 > = Props &
-  Omit<React.ComponentPropsWithoutRef<C>, keyof Props> & {
+  DistributiveOmit<React.ComponentPropsWithRef<C>, keyof Props | 'as'> & {
+    /** Element or component to render as */
     as?: C;
   };
 
 /**
- * Polymorphic component ref
+ * Polymorphic component ref — the ref type for element `C`.
  */
 export type PolymorphicRef<C extends React.ElementType> =
   React.ComponentPropsWithRef<C>['ref'];

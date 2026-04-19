@@ -3,8 +3,38 @@
  * Spacing, grid, and flex type definitions shared across layout components
  */
 
+/**
+ * Breakpoint keys for responsive props.
+ * Maps to Tailwind's default breakpoint scale.
+ */
+export type Breakpoint = 'base' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+
+/**
+ * A single value or a responsive object keyed by breakpoint.
+ * Allows components to accept both simple and responsive values:
+ *
+ * @example
+ * columns={3}               // fixed
+ * columns={{ base: 1, md: 2, lg: 3 }}  // responsive
+ */
+export type ResponsiveValue<T> = T | Partial<Record<Breakpoint, T>>;
+
 /** Gap size options (spacing scale) */
-export type GapSize = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16';
+export type GapSize =
+  | '0'
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '8'
+  | '10'
+  | '12'
+  | '14'
+  | '16'
+  | '20'
+  | '24';
 
 /** Grid columns options */
 export type GridColumns = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 'none';

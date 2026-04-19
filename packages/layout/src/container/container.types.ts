@@ -1,12 +1,11 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import type { ContainerMaxWidth } from '../types';
+import type { ElementType } from "react";
+import type { PolymorphicProps } from "@ninna-ui/utils";
+import type { ContainerMaxWidth } from '@ninna-ui/core';
 
 /**
- * Container component props
+ * Base owned props for the Container component.
  */
-export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
-  /** Content to render */
-  children?: ReactNode;
+export interface ContainerBaseProps {
   
   /** Maximum width of the container */
   maxWidth?: ContainerMaxWidth;
@@ -22,10 +21,6 @@ export interface ContainerProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Default props for Container
+ * Container component props
  */
-export const containerDefaults = {
-  maxWidth: "lg" as ContainerMaxWidth,
-  center: true,
-  padding: true,
-};
+export type ContainerProps<C extends ElementType = "div"> = PolymorphicProps<C, ContainerBaseProps>;

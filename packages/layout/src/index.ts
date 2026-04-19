@@ -1,37 +1,53 @@
 /**
  * @ninna-ui/layout
- * Layout components for building responsive layouts
+ * Layout components for building responsive, semantic layouts.
+ *
+ * All components are fully polymorphic via the `as` prop and forward refs correctly.
  */
 
-// Box
+// Box — foundational layout primitive
 export { Box, type BoxProps } from "./box";
 
-// Container
+// Container — max-width page wrapper
 export { Container, type ContainerProps } from "./container";
 
-// Stack
+// Stack — vertical/horizontal flex layout
 export { Stack, HStack, VStack, type StackProps } from "./stack";
 
-// Flex
+// Flex — explicit flexbox container
 export { Flex, type FlexProps } from "./flex";
 
-// Grid
-export { Grid, type GridProps } from "./grid";
+// Grid — CSS Grid container with responsive columns
+export { Grid, type GridProps, type ResponsiveColumns } from "./grid";
 
-// Center
+// Center — horizontally + vertically centered content
 export { Center, type CenterProps } from "./center";
 
-// Wrap
+// Wrap — flex-wrap container for tag/chip lists
 export { Wrap, type WrapProps } from "./wrap";
 
-// SimpleGrid
+// SimpleGrid — auto-responsive grid via minChildWidth
 export { SimpleGrid, type SimpleGridProps } from "./simple-grid";
 
-// AspectRatio
+// AspectRatio — fixed aspect ratio wrapper
 export { AspectRatio, type AspectRatioProps } from "./aspect-ratio";
 
-// Separator
+// Separator — visual content divider
 export { Separator, type SeparatorProps } from "./separator";
 
-// Layout types
-export type { ContainerMaxWidth, FlexDirection, FlexAlign, FlexJustify, FlexWrap, GapSize, GridColumns, GridRows, GridFlow, AspectRatioPreset, SeparatorOrientation } from './types';
+// Layout types — design tokens and responsive helpers
+export type {
+  Breakpoint,
+  ResponsiveValue,
+  ContainerMaxWidth,
+  FlexDirection,
+  FlexAlign,
+  FlexJustify,
+  FlexWrap,
+  GapSize,
+  GridColumns,
+  GridRows,
+  GridFlow,
+  AspectRatioPreset,
+  SeparatorOrientation,
+} from './types';

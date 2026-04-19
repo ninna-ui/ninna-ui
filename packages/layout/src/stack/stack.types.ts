@@ -1,12 +1,11 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import type { FlexDirection, FlexAlign, FlexJustify, GapSize } from '../types';
+import type { ElementType } from "react";
+import type { PolymorphicProps } from "@ninna-ui/utils";
+import type { FlexDirection, FlexAlign, FlexJustify, GapSize } from '@ninna-ui/core';
 
 /**
- * Stack component props
+ * Base owned props for the Stack component.
  */
-export interface StackProps extends HTMLAttributes<HTMLDivElement> {
-  /** Content to render */
-  children?: ReactNode;
+export interface StackBaseProps {
   
   /** Stack direction */
   direction?: FlexDirection;
@@ -28,9 +27,6 @@ export interface StackProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 /**
- * Default props for Stack
+ * Stack component props
  */
-export const stackDefaults = {
-  direction: "column" as FlexDirection,
-  gap: "4" as GapSize,
-};
+export type StackProps<C extends ElementType = "div"> = PolymorphicProps<C, StackBaseProps>;

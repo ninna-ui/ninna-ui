@@ -1,29 +1,31 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import type { FlexAlign, FlexJustify, GapSize } from '../types';
+import type { ElementType } from "react";
+import type { PolymorphicProps } from "@ninna-ui/utils";
+import type { FlexAlign, FlexJustify, GapSize } from '@ninna-ui/core';
 
 /**
- * Wrap component props
+ * Base owned props for the Wrap component.
  */
-export interface WrapProps extends HTMLAttributes<HTMLDivElement> {
-  /** Content to render */
-  children?: ReactNode;
-  
-  /** Gap between items */
+export interface WrapBaseProps {
+
+  /** Gap between wrapped items */
   gap?: GapSize;
-  
-  /** Align items on cross axis */
+
+  /** Align items on the cross axis */
   align?: FlexAlign;
-  
-  /** Justify items on main axis */
+
+  /** Justify items on the main axis */
   justify?: FlexJustify;
-  
-  /** Additional CSS classes */
+
+  /** Additional CSS class names */
   className?: string;
 }
 
 /**
- * Default props for Wrap
+ * Wrap component props — polymorphic.
+ * Renders a flex-wrap container. Defaults to `<div>`.
+ *
+ * @example
+ * <Wrap gap="2"><Badge /><Badge /></Wrap>
+ * <Wrap as="ul" gap="3"><li>...</li></Wrap>
  */
-export const wrapDefaults = {
-  gap: "4" as GapSize,
-};
+export type WrapProps<C extends ElementType = "div"> = PolymorphicProps<C, WrapBaseProps>;

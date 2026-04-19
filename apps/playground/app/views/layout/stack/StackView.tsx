@@ -34,6 +34,11 @@ export const stackSections: ComponentSectionType[] = [
 
 const STACK_PROPS: PropDefinition[] = [
   {
+    name: "as",
+    type: "ElementType",
+    description: "Semantic HTML element to render",
+  },
+  {
     name: "direction",
     type: "'row' | 'column' | 'row-reverse' | 'column-reverse'",
     defaultValue: "'column'",

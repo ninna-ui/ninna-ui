@@ -22,6 +22,7 @@ export const centerSections: ComponentSectionType[] = [
 ];
 
 const CENTER_PROPS: PropDefinition[] = [
+  { name: "as", type: "ElementType", description: "Semantic HTML element to render" },
   { name: "inline", type: "boolean", defaultValue: "false", description: "Use inline-flex instead of flex" },
   { name: "className", type: "string", description: "Additional CSS classes" },
   { name: "children", type: "React.ReactNode", description: "Content to center" },

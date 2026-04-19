@@ -1,24 +1,40 @@
-import type { HTMLAttributes } from "react";
-import type { SeparatorOrientation } from '../types';
+import type { ElementType } from "react";
+import type { PolymorphicProps } from "@ninna-ui/utils";
+import type { SeparatorOrientation } from '@ninna-ui/core';
+import type { SeparatorVariantsProps } from './separator.styles';
 
 /**
- * Separator component props
+ * Base owned props for the Separator component.
  */
-export interface SeparatorProps extends HTMLAttributes<HTMLDivElement> {
-  /** Orientation of the separator */
+export interface SeparatorBaseProps {
+  /** Visual orientation of the separator */
   orientation?: SeparatorOrientation;
-  
-  /** Whether the separator is purely decorative (no semantic meaning) */
+
+  /**
+   * Color variant.
+   * @default "default"
+   */
+  color?: SeparatorVariantsProps["color"];
+
+  /**
+   * When true, the separator is purely decorative (no semantic role).
+   * When false, adds `role="separator"` and `aria-orientation`.
+   * @default true
+   */
   decorative?: boolean;
-  
-  /** Additional CSS classes */
+
+  /** Additional CSS class names */
   className?: string;
 }
 
 /**
- * Default props for Separator
+ * Separator component props — polymorphic.
+ * Defaults to rendering an `<hr>` element (semantically correct).
+ *
+ * @example
+ * <Separator />
+ * <Separator orientation="vertical" className="h-6" />
+ * <Separator color="primary" />
+ * <Separator decorative={false} aria-label="Section divider" />
  */
-export const separatorDefaults = {
-  orientation: "horizontal" as SeparatorOrientation,
-  decorative: true,
-};
+export type SeparatorProps<C extends ElementType = "hr"> = PolymorphicProps<C, SeparatorBaseProps>;

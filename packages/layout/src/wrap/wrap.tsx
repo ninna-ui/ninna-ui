@@ -1,37 +1,32 @@
-import { forwardRef } from "react";
+import { forwardRef, type ElementType, type ReactElement } from "react";
 import { cn } from "@ninna-ui/utils";
 import { wrapStyles } from "./wrap.styles";
 import { GAP_SIZES } from "@ninna-ui/core";
 import type { WrapProps } from "./wrap.types";
-import { wrapDefaults } from "./wrap.types";
+import type { GapSize } from '@ninna-ui/core';
+
+const WRAP_DEFAULT_GAP: GapSize = '4';
 
 /**
- * Wrap component - A flex container that wraps items.
- * Useful for tag lists, button groups, or any collection that should wrap.
+ * Wrap — a flex-wrap container for items that flow onto multiple lines.
+ *
+ * Ideal for tag clouds, button groups, or any collection that should wrap.
  *
  * @example
  * ```tsx
  * <Wrap gap="2">
- *   <Badge>Tag 1</Badge>
- *   <Badge>Tag 2</Badge>
- *   <Badge>Tag 3</Badge>
+ *   <Badge>React</Badge>
+ *   <Badge>TypeScript</Badge>
+ *   <Badge>Design Systems</Badge>
  * </Wrap>
  * ```
  */
-export const Wrap = forwardRef<HTMLDivElement, WrapProps>(
-  (
-    {
-      children,
-      gap = wrapDefaults.gap,
-      align,
-      justify,
-      className,
-      ...props
-    },
-    ref
-  ) => {
+export const Wrap = forwardRef<HTMLElement, WrapProps>(
+  ({ as, children, gap = WRAP_DEFAULT_GAP, align, justify, className, ...props }, ref) => {
+    const Component = (as ?? "div") as ElementType;
+
     return (
-      <div
+      <Component
         ref={ref}
         data-slot="wrap"
         className={cn(
@@ -44,9 +39,9 @@ export const Wrap = forwardRef<HTMLDivElement, WrapProps>(
         {...props}
       >
         {children}
-      </div>
+      </Component>
     );
   }
-);
+) as <C extends ElementType = "div">(props: WrapProps<C>) => ReactElement | null;
 
-Wrap.displayName = "Wrap";
+(Wrap as { displayName?: string }).displayName = "Wrap";

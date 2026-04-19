@@ -325,9 +325,9 @@ describe('Separator', () => {
   });
 
   it('forwards ref', () => {
-    const ref = createRef<HTMLDivElement>();
+    const ref = createRef<HTMLHRElement>();
     render(<Separator ref={ref} />);
-    expect(ref.current).toBeInstanceOf(HTMLDivElement);
+    expect(ref.current).toBeInstanceOf(HTMLHRElement);
   });
 
   it('has displayName', () => {
