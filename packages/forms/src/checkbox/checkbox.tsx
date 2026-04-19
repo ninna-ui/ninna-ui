@@ -1,5 +1,6 @@
 import { forwardRef, useId, createContext, useContext, useState, useCallback } from 'react';
 import { cn } from '@ninna-ui/utils';
+import { useFormControlProps } from '../form-control';
 import type { Color } from '@ninna-ui/core';
 import type { CheckboxSize } from '../types';
 import { checkboxStyles, checkboxGroupStyles, checkboxVariants, CHECKBOX_ICON_SIZES } from './checkbox.styles';
@@ -66,7 +67,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ref
   ) => {
     const generatedId = useId();
-    const id = idProp ?? generatedId;
+    const formControlProps = useFormControlProps({
+      id: idProp,
+      disabled,
+      required,
+      invalid,
+    });
+
+    const id = formControlProps.id ?? generatedId;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
     const [internalChecked, setInternalChecked] = useState(defaultChecked ?? false);
     const isControlled = checked !== undefined;
     const isChecked = isControlled ? checked : internalChecked;
@@ -82,9 +91,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       [isControlled, onCheckedChange]
     );
 
-
     const checkboxElement = (
-      <label data-slot="checkbox" className={cn('relative inline-flex', className)}>
+      <div data-slot="checkbox" className={cn('relative inline-flex items-center', className)}>
         <input
           data-slot="control"
           ref={ref}
@@ -93,14 +101,18 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           name={name}
           value={value}
           checked={isChecked}
-          disabled={disabled}
-          required={required}
+          disabled={formControlProps.disabled}
+          required={formControlProps.required}
           onChange={handleChange}
           className={checkboxStyles.input}
-          aria-invalid={invalid || undefined}
+          aria-invalid={isInvalid || undefined}
           aria-checked={indeterminate ? 'mixed' : isChecked}
           data-state={indeterminate ? 'indeterminate' : isChecked ? 'checked' : 'unchecked'}
-          aria-describedby={description ? `${id}-description` : undefined}
+          aria-describedby={
+            description
+              ? `${id}-description`
+              : formControlProps['aria-describedby']
+          }
         />
         <span
           data-slot="indicator"
@@ -124,7 +136,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                 />
           )}
         </span>
-      </label>
+      </div>
     );
 
     if (!label && !description) {
@@ -133,10 +145,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <div className={cn(
-        // When a description is present we align the checkbox with the first
-        // line of the label block (items-start). Otherwise we centre-align
-        // so the box sits on the same visual line as its label — see the
-        // comment in checkbox.styles.ts for the full rationale.
         description ? checkboxStyles.wrapperWithDescription : checkboxStyles.wrapper,
         labelPosition === 'start' && checkboxStyles.wrapperReverse
       )}>
@@ -147,11 +155,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               htmlFor={id}
               className={cn(
                 checkboxStyles.label,
-                // Scale the label typography with the checkbox size so
-                // sm/md/lg rows look visibly distinct in a Sizes demo —
-                // the 4px box-size step alone is too subtle to read.
                 checkboxStyles.labelSizes[size],
-                disabled && checkboxStyles.labelDisabled
+                formControlProps.disabled && checkboxStyles.labelDisabled
               )}
             >
               {label}

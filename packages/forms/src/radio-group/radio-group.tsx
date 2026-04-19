@@ -1,5 +1,6 @@
 import { forwardRef, createContext, useContext, useId } from 'react';
 import { cn } from '@ninna-ui/utils';
+import { useFormControlProps } from '../form-control';
 import { RadioEngine } from '@ninna-ui/react-internal';
 import { radioItemVariants, radioIndicatorVariants, radioGroupStyles, radioCardStyles } from './radio-group.styles';
 import type { Color } from '@ninna-ui/core';
@@ -101,24 +102,31 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
     const size = context?.size ?? 'md';
     const color = context?.color ?? 'primary';
     const variant = context?.variant ?? 'outline';
-    const disabled = disabledProp ?? context?.disabled;
-    const invalid = context?.invalid;
-    
     const generatedId = useId();
-    const id = idProp ?? generatedId;
+    const formControlProps = useFormControlProps({
+      id: idProp,
+      disabled: disabledProp,
+      invalid: context?.invalid,
+    });
 
+    const id = formControlProps.id ?? generatedId;
+    const isDisabled = disabledProp || formControlProps.disabled;
+    const isInvalid = context?.invalid || !!formControlProps['aria-invalid'];
+    
     const radioElement = (
       <RadioEngine.Item
         ref={ref}
         data-slot="radio"
         id={id}
         value={value}
-        disabled={disabled}
-        data-invalid={invalid || undefined}
+        disabled={isDisabled}
+        aria-invalid={isInvalid || undefined}
+        data-invalid={isInvalid || undefined}
         className={cn(
-          radioItemVariants({ variant, color, size, invalid: !!invalid }),
+          radioItemVariants({ variant, color, size, invalid: isInvalid }),
           className
         )}
+        aria-describedby={description ? `${id}-description` : formControlProps['aria-describedby']}
         {...props}
       >
         <RadioEngine.Indicator 
@@ -133,9 +141,6 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
 
     return (
       <div className={cn(
-        // See radio-group.styles.ts: centre-align by default so the radio
-        // shares a line with its label; switch to top-alignment only when
-        // a description is stacked below.
         description ? radioGroupStyles.itemWrapperWithDescription : radioGroupStyles.itemWrapper,
         labelPosition === 'start' && radioGroupStyles.itemWrapperReverse
       )}>
@@ -147,14 +152,14 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
               className={cn(
                 radioGroupStyles.label,
                 radioGroupStyles.labelSizes[size],
-                disabled && radioGroupStyles.labelDisabled
+                isDisabled && radioGroupStyles.labelDisabled
               )}
             >
               {label}
             </label>
           )}
           {description && (
-            <span className={radioGroupStyles.description}>{description}</span>
+            <span id={`${id}-description`} className={radioGroupStyles.description}>{description}</span>
           )}
         </div>
       </div>

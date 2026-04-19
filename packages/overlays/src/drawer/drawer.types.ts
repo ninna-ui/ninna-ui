@@ -32,7 +32,11 @@ export interface DrawerContentProps extends ComponentPropsWithoutRef<'div'> {
   placement?: DrawerPlacement;
   /** Size of the drawer @default 'md' */
   size?: DrawerSize;
-  /** Accessible description for the drawer. Only rendered when provided. */
+  /** Accessible title for the drawer dialog. Used as a visually-hidden label
+   * when no Drawer.Header is rendered. When Drawer.Header IS rendered it
+   * provides the title visually, so this can be omitted. */
+  title?: string;
+  /** Accessible description for the drawer. Rendered visually-hidden. */
   description?: string;
   /** Whether clicking the overlay closes the drawer @default true */
   closeOnOverlayClick?: boolean | undefined;

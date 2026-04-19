@@ -69,6 +69,7 @@ const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
     {
       placement = 'right',
       size = 'md',
+      title,
       description,
       closeOnOverlayClick = true,
       closeOnEscape = true,
@@ -107,7 +108,12 @@ const DrawerContent = forwardRef<HTMLDivElement, DrawerContentProps>(
           aria-modal="true"
           {...props}
         >
-          <DialogEngine.Title className="sr-only">Drawer</DialogEngine.Title>
+          {/* Radix Dialog requires a DialogTitle — either provide the title prop
+              for headless usage (renders sr-only), or use Drawer.Header which
+              renders the title visually via DialogEngine.Title. */}
+          {title && (
+            <DialogEngine.Title className="sr-only">{title}</DialogEngine.Title>
+          )}
           {description && (
             <DialogEngine.Description className="sr-only">
               {description}
