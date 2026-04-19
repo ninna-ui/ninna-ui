@@ -26,6 +26,7 @@ export const wrapSections: ComponentSectionType[] = [
 ];
 
 const WRAP_PROPS: PropDefinition[] = [
+  { name: "as", type: "ElementType", description: "Semantic HTML element to render" },
   { name: "gap", type: "'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16'", defaultValue: "'4'", description: "Gap between items" },
   { name: "align", type: "'start' | 'center' | 'end' | 'stretch' | 'baseline'", description: "Align items on cross axis" },
   { name: "justify", type: "'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'", description: "Justify items on main axis" },

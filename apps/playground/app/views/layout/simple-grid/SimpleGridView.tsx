@@ -12,6 +12,7 @@ import Basic from "./demos/basic";
 import Columns from "./demos/columns";
 import MinChildWidth from "./demos/minChildWidth";
 import Gap from "./demos/gap";
+import AsElement from "./demos/asElement";
 import UseCases from "./demos/useCases";
 
 export const simpleGridSections: ComponentSectionType[] = [
@@ -20,12 +21,14 @@ export const simpleGridSections: ComponentSectionType[] = [
   { id: "columns", title: "Columns", level: 3 },
   { id: "min-child-width", title: "Min Child Width", level: 3 },
   { id: "gap", title: "Gap Spacing", level: 3 },
+  { id: "polymorphic", title: "Polymorphic", level: 3 },
   { id: "use-cases", title: "Use Cases", level: 3 },
   { id: "api", title: "API Reference", level: 2 },
   { id: "accessibility", title: "Accessibility", level: 2 },
 ];
 
 const SIMPLE_GRID_PROPS: PropDefinition[] = [
+  { name: "as", type: "ElementType", description: "Semantic HTML element to render (e.g., 'ul')" },
   { name: "columns", type: "number", defaultValue: "1", description: "Fixed number of columns (uses inline style - mutually exclusive with minChildWidth)" },
   { name: "minChildWidth", type: "string", description: "Minimum child width for auto-fit responsive columns (e.g., '200px'). Uses inline style - dynamic values cannot be statically extracted by Tailwind JIT." },
   { name: "gap", type: "'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16'", defaultValue: "'4'", description: "Gap between items (uses Tailwind gap-* classes)" },
@@ -66,6 +69,10 @@ export function SimpleGridView() {
 
         <ComponentSection id="gap" title="Gap Spacing" description="Control spacing between grid items." level={3}>
           <CodePreview component={<Gap />} filePath="app/views/layout/simple-grid/demos/gap.tsx" />
+        </ComponentSection>
+
+        <ComponentSection id="polymorphic" title="Polymorphic" description="Render as a different HTML element." level={3}>
+          <CodePreview component={<AsElement />} filePath="app/views/layout/simple-grid/demos/asElement.tsx" />
         </ComponentSection>
 
         <ComponentSection id="use-cases" title="Use Cases" description="Common patterns using SimpleGrid." level={3}>

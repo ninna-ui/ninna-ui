@@ -9,6 +9,10 @@ const meta: Meta<typeof Separator> = {
   },
   tags: ['autodocs'],
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'Semantic HTML element to render',
+    },
     orientation: {
       control: 'select',
       options: ['horizontal', 'vertical'],

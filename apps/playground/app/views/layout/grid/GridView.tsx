@@ -28,12 +28,14 @@ export const gridSections: ComponentSectionType[] = [
 ];
 
 const GRID_PROPS: PropDefinition[] = [
-  { name: "columns", type: "1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 'none'", defaultValue: "1", description: "Number of columns" },
+  { name: "as", type: "ElementType", description: "Semantic HTML element to render" },
+  { name: "columns", type: "GridColumns | ResponsiveValue<GridColumns>", defaultValue: "1", description: "Number of columns or breakpoint map" },
   { name: "rows", type: "1 | 2 | 3 | 4 | 5 | 6 | 'none'", description: "Number of rows" },
   { name: "gap", type: "'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16'", defaultValue: "'4'", description: "Gap between items" },
   { name: "rowGap", type: "'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16'", description: "Row gap (overrides gap)" },
   { name: "columnGap", type: "'0' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16'", description: "Column gap (overrides gap)" },
   { name: "flow", type: "'row' | 'column' | 'dense' | 'row-dense' | 'column-dense'", description: "Grid flow direction" },
+  { name: "align", type: "'start' | 'center' | 'end' | 'stretch' | 'baseline'", description: "Align grid items on the cross axis" },
   { name: "className", type: "string", description: "Additional CSS classes" },
 ];
 

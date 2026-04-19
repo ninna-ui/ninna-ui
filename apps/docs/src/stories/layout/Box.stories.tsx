@@ -9,6 +9,10 @@ const meta: Meta<typeof Box> = {
   },
   tags: ['autodocs'],
   argTypes: {
+    as: {
+      control: 'text',
+      description: 'Semantic HTML element to render',
+    },
     className: {
       control: 'text',
       description: 'CSS classes to apply',

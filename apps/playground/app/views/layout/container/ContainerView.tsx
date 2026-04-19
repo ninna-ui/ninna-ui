@@ -26,7 +26,8 @@ export const containerSections: ComponentSectionType[] = [
 ];
 
 const CONTAINER_PROPS: PropDefinition[] = [
-  { name: "maxWidth", type: "'sm' | 'md' | 'lg' | 'xl' | '2xl' | 'full' | 'none'", defaultValue: "'lg'", description: "Maximum width of the container" },
+  { name: "as", type: "ElementType", description: "Semantic HTML element to render" },
+  { name: "maxWidth", type: "ContainerMaxWidth", defaultValue: "'lg'", description: "Maximum width of the container" },
   { name: "center", type: "boolean", defaultValue: "true", description: "Center the container horizontally" },
   { name: "padding", type: "boolean", defaultValue: "true", description: "Add horizontal padding" },
   { name: "className", type: "string", description: "Additional CSS classes" },

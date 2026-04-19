@@ -24,7 +24,8 @@ export const boxSections: ComponentSectionType[] = [
 ];
 
 const BOX_PROPS: PropDefinition[] = [
-    { name: "className", type: "string", description: "CSS classes to apply" },
+  { name: "as", type: "ElementType", description: "Semantic HTML element to render (e.g., 'main', 'section')" },
+  { name: "className", type: "string", description: "CSS classes to apply" },
   { name: "children", type: "React.ReactNode", description: "Content to render" },
 ];
 

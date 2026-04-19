@@ -33,6 +33,7 @@ export const flexSections: ComponentSectionType[] = [
 ];
 
 const FLEX_PROPS: PropDefinition[] = [
+  { name: "as", type: "ElementType", description: "Semantic HTML element to render" },
   {
     name: "direction",
     type: "'row' | 'column' | 'row-reverse' | 'column-reverse'",
