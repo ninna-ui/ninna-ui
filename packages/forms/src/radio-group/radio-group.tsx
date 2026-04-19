@@ -121,13 +121,9 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
         )}
         {...props}
       >
-        <RadioEngine.Indicator className={radioGroupStyles.indicator}>
-          <span
-            className={cn(
-              radioIndicatorVariants({ variant, color, size })
-            )}
-          />
-        </RadioEngine.Indicator>
+        <RadioEngine.Indicator 
+          className={cn(radioIndicatorVariants({ variant, color, size }))}
+        />
       </RadioEngine.Item>
     );
 
