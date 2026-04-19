@@ -51,7 +51,7 @@ ninna-ui/
 │
 ├─ tasks/                    # Phase tracking markdown files (historical)
 ├─ vitest.config.ts          # Root test config (jsdom, react plugin)
-├─ vitest.setup.ts           # jest-dom + vitest-axe matchers
+├─ vitest.setup.ts           # jest-dom + sa11y matchers
 ├─ pnpm-workspace.yaml
 └─ turbo.json
 ```
@@ -275,13 +275,13 @@ CodeBlock with regex-based TSX/CSS/bash syntax highlighting, copy-to-clipboard, 
 | **TypeScript** | 5.4+ | Type checking (`tsc --noEmit`) |
 | **Vitest** | 4.x | Unit testing (jsdom environment) |
 | **@testing-library/react** | 16.x | Component testing |
-| **vitest-axe** | 1.0.0-pre.5 | Accessibility testing |
+| **@sa11y/vitest** | ^8.0.27 | Accessibility testing |
 | **Storybook** | 10.x | Component documentation |
 | **Changesets** | 2.27+ | Version management |
 
 ### Test Configuration
 
 - Root `vitest.config.ts` includes both `packages/**/__tests__/**/*.test.{ts,tsx}` and `packages/**/src/**/*.test.{ts,tsx}`
-- Setup: `@testing-library/jest-dom/vitest` + `vitest-axe` matchers
+- Setup: `@testing-library/jest-dom/vitest` + `@sa11y/vitest` matchers
 - **51 test files, 708 tests** - all packages covered including layout, navigation, data-display, code-block, overlays
 - Coverage: v8 provider, excludes stories/tests/index files

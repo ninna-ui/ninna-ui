@@ -1,6 +1,6 @@
 # Ninna UI Accessibility Standards
 
-> **WCAG 2.1 Level AA compliance for every component** - ARIA patterns, keyboard navigation, focus management, color contrast, and screen reader compatibility. Accessibility is not optional in Ninna UI - it's a core quality gate enforced by automated vitest-axe audits on every PR.
+> **WCAG 2.1 Level AA compliance for every component** - ARIA patterns, keyboard navigation, focus management, color contrast, and screen reader compatibility. Accessibility is not optional in Ninna UI - it's a core quality gate enforced by automated @sa11y/vitest audits on every PR.
 >
 > **Version:** 1.0.0 · **Last Updated:** February 2026
 
@@ -12,7 +12,7 @@ All Ninna UI components MUST meet WCAG 2.1 Level AA standards. Accessibility is 
 
 ## Testing
 
-All components are tested with `vitest-axe` to catch common accessibility violations. Manual testing with screen readers is recommended for complex components.
+All components are tested with `@sa11y/vitest` to catch common accessibility violations. Manual testing with screen readers is recommended for complex components.
 
 ---
 
@@ -293,7 +293,7 @@ All semantic color tokens meet WCAG AA:
 
 Verified via:
 - Manual testing with contrast checkers
-- vitest-axe automated tests
+- @sa11y/vitest automated tests
 - Visual inspection in light/dark modes
 
 ---
@@ -384,5 +384,5 @@ For each component:
 ## 10. Related Documents
 
 - [COMPONENT_STANDARD.md](./COMPONENT_STANDARD.md) - Component implementation patterns
-- [TESTING_STRATEGY.md](./TESTING_STRATEGY.md) - vitest-axe integration
+- [TESTING_STRATEGY.md](./TESTING_STRATEGY.md) - @sa11y/vitest integration
 - [Architecture](../architecture/ARCHITECTURE.md) - Radix engine strategy and package isolation

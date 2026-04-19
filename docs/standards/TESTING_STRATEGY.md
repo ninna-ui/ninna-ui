@@ -1,6 +1,6 @@
 # Ninna UI Testing Strategy
 
-> **700+ automated tests across 51 test files** - priority-based coverage, vitest-axe accessibility audits, co-located test files, and clear guidelines on what to test and what to skip. This document defines the testing philosophy and requirements for every Ninna UI component.
+> **700+ automated tests across 51 test files** - priority-based coverage, @sa11y/vitest accessibility audits, co-located test files, and clear guidelines on what to test and what to skip. This document defines the testing philosophy and requirements for every Ninna UI component.
 >
 > **Version:** 1.0.0 · **Last Updated:** February 2026
 
@@ -14,13 +14,13 @@
 | **@testing-library/react 16.x** | Component rendering and interaction |
 | **@testing-library/user-event 14.x** | Realistic user interaction simulation |
 | **@testing-library/jest-dom** | DOM assertion matchers (`toBeInTheDocument`, `toHaveClass`, etc.) |
-| **vitest-axe 1.0.0-pre.5** | Automated accessibility auditing (axe-core) - chosen over `@axe-core/react` because it runs in CI, catches regressions, and tests every component in isolation |
+| **@sa11y/vitest ^8.0.27** | Automated accessibility auditing (axe-core) - chosen for its Salesforce-backed stability and native support for Vite 8+ environment. |
 
 ### Configuration
 
 - **Root config:** `vitest.config.ts` - jsdom, react plugin, css: true
-- **Setup file:** `vitest.setup.ts` - jest-dom matchers + vitest-axe matchers + afterEach cleanup
-- **Type augmentation:** `vitest.d.ts` - AxeMatchers on Vitest Assertion interface
+- **Setup file:** `vitest.setup.ts` - jest-dom matchers + sa11y matchers + afterEach cleanup
+- **Type augmentation:** `vitest.d.ts` - Sa11yMatchers on Vitest Assertion interface
 - **Include patterns:** `packages/**/__tests__/**/*.test.{ts,tsx}` + `packages/**/src/**/*.test.{ts,tsx}`
 
 ---
@@ -123,12 +123,9 @@ it.each(colors)('renders %s color', (color) => {
 Every component MUST have at least one axe audit:
 
 ```typescript
-import { axe } from 'vitest-axe';
-
 it('passes axe accessibility audit', async () => {
   const { container } = render(<Button>Click me</Button>);
-  const results = await axe(container);
-  expect(results).toHaveNoViolations();
+  await expect(container).toBeAccessible();
 });
 ```
 

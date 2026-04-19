@@ -222,7 +222,6 @@ See [standards/TESTING_STRATEGY.md](../standards/TESTING_STRATEGY.md) for what m
 ```typescript
 // my-component.test.tsx
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
 import { MyComponent } from './my-component';
 
 describe('MyComponent', () => {
@@ -231,19 +230,9 @@ describe('MyComponent', () => {
     expect(screen.getByText('Content')).toBeInTheDocument();
   });
 
-  it('has correct data-slot', () => {
-    render(<MyComponent>Content</MyComponent>);
-    expect(screen.getByText('Content').closest('[data-slot]'))
-      .toHaveAttribute('data-slot', 'my-component');
-  });
-
-  it('has correct displayName', () => {
-    expect(MyComponent.displayName).toBe('MyComponent');
-  });
-
   it('passes axe audit', async () => {
     const { container } = render(<MyComponent>Content</MyComponent>);
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });
 ```
