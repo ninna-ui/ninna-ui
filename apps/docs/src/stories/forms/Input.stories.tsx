@@ -141,9 +141,7 @@ export const WithIcons: Story = {
     </div>
   ),
 };
-
-export const PasswordInput: Story = {
-  render: function PasswordInputStory() {
+const PasswordInputExample = () => {
     const [show, setShow] = useState(false);
     return (
       <div className="max-w-md">
@@ -162,11 +160,12 @@ export const PasswordInput: Story = {
         </InputGroup>
       </div>
     );
-  },
-};
+  };
 
-export const Clearable: Story = {
-  render: function ClearableStory() {
+export const PasswordInput: Story = {
+  render: PasswordInputExample,
+};
+const ClearableExample = () => {
     const [value, setValue] = useState('Type something here');
     return (
       <div className="max-w-md space-y-4">
@@ -182,7 +181,10 @@ export const Clearable: Story = {
         </div>
       </div>
     );
-  },
+  };
+
+export const Clearable: Story = {
+  render: ClearableExample,
 };
 
 export const CharacterCounter: Story = {

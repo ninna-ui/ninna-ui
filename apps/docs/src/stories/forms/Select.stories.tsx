@@ -156,9 +156,7 @@ export const Disabled: Story = {
     </div>
   ),
 };
-
-export const Controlled: Story = {
-  render: function ControlledStory() {
+const ControlledExample = () => {
     const [value, setValue] = useState('');
     return (
       <div className="space-y-4 max-w-xs">
@@ -173,7 +171,10 @@ export const Controlled: Story = {
         </p>
       </div>
     );
-  },
+  };
+
+export const Controlled: Story = {
+  render: ControlledExample,
 };
 
 export const WithFormControl: Story = {

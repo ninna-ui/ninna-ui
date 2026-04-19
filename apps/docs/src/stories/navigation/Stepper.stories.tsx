@@ -106,9 +106,7 @@ export const Vertical: Story = {
     </div>
   ),
 };
-
-export const Interactive: Story = {
-  render: function InteractiveStepper() {
+const InteractiveExample = () => {
     const [step, setStep] = useState(0);
     const steps = ['Account', 'Profile', 'Preferences', 'Review'];
     return (
@@ -138,7 +136,10 @@ export const Interactive: Story = {
         </p>
       </div>
     );
-  },
+  };
+
+export const Interactive: Story = {
+  render: InteractiveExample,
 };
 
 export const WithOptionalStep: Story = {

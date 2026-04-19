@@ -34,9 +34,7 @@ const meta: Meta = {
 
 export default meta;
 type Story = StoryObj;
-
-export const Default: Story = {
-  render: function ControlledModal() {
+const DefaultExample = () => {
     const [open, setOpen] = useState(false);
     return (
       <Modal open={open} onOpenChange={setOpen}>
@@ -57,7 +55,10 @@ export const Default: Story = {
         </Modal.Content>
       </Modal>
     );
-  },
+  };
+
+export const Default: Story = {
+  render: DefaultExample,
 };
 
 export const Sizes: Story = {
@@ -124,9 +125,7 @@ export const Centered: Story = {
     </div>
   ),
 };
-
-export const Controlled: Story = {
-  render: function ControlledModal() {
+const ControlledExample = () => {
     const [open, setOpen] = useState(false);
     return (
       <div className="flex flex-col items-center gap-4">
@@ -146,7 +145,10 @@ export const Controlled: Story = {
         </Modal>
       </div>
     );
-  },
+  };
+
+export const Controlled: Story = {
+  render: ControlledExample,
 };
 
 export const PreventClose: Story = {

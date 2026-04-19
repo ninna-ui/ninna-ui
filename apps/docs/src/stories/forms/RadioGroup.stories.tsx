@@ -166,9 +166,7 @@ export const Disabled: Story = {
     </div>
   ),
 };
-
-export const Controlled: Story = {
-  render: function ControlledStory() {
+const ControlledExample = () => {
     const [value, setValue] = useState('option1');
     return (
       <div className="space-y-4">
@@ -182,7 +180,10 @@ export const Controlled: Story = {
         </p>
       </div>
     );
-  },
+  };
+
+export const Controlled: Story = {
+  render: ControlledExample,
 };
 
 export const AllVariants: Story = {
@@ -242,9 +243,7 @@ export const LabelPosition: Story = {
     </div>
   ),
 };
-
-export const RadioCardExample: Story = {
-  render: function RadioCardStory() {
+const RadioCardExampleExample = () => {
     const [value, setValue] = useState('card');
 
     return (
@@ -272,11 +271,12 @@ export const RadioCardExample: Story = {
         </RadioGroup>
       </div>
     );
-  },
-};
+  };
 
-export const PlanSelector: Story = {
-  render: function PlanSelectorStory() {
+export const RadioCardExample: Story = {
+  render: RadioCardExampleExample,
+};
+const PlanSelectorExample = () => {
     const [plan, setPlan] = useState('pro');
     
     const plans = [
@@ -322,5 +322,8 @@ export const PlanSelector: Story = {
         </RadioGroup>
       </div>
     );
-  },
+  };
+
+export const PlanSelector: Story = {
+  render: PlanSelectorExample,
 };

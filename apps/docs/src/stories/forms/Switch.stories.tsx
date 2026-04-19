@@ -123,9 +123,7 @@ export const Disabled: Story = {
     </div>
   ),
 };
-
-export const Controlled: Story = {
-  render: function ControlledStory() {
+const ControlledExample = () => {
     const [enabled, setEnabled] = useState(false);
     return (
       <div className="space-y-4">
@@ -139,7 +137,10 @@ export const Controlled: Story = {
         </p>
       </div>
     );
-  },
+  };
+
+export const Controlled: Story = {
+  render: ControlledExample,
 };
 
 export const AllVariants: Story = {
@@ -196,9 +197,7 @@ export const WithTrackLabels: Story = {
     </div>
   ),
 };
-
-export const SettingsExample: Story = {
-  render: function SettingsStory() {
+const SettingsExampleExample = () => {
     const [settings, setSettings] = useState({
       notifications: true,
       marketing: false,
@@ -234,7 +233,10 @@ export const SettingsExample: Story = {
         </div>
       </div>
     );
-  },
+  };
+
+export const SettingsExample: Story = {
+  render: SettingsExampleExample,
 };
 
 export const WithThumbIcon: Story = {

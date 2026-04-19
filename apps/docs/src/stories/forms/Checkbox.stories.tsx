@@ -108,9 +108,7 @@ export const WithDescription: Story = {
     description: 'Receive emails about new products, features, and more.',
   },
 };
-
-export const Indeterminate: Story = {
-  render: function IndeterminateStory() {
+const IndeterminateExample = () => {
     const [checked, setChecked] = useState(false);
     const [indeterminate, setIndeterminate] = useState(true);
     return (
@@ -144,7 +142,10 @@ export const Indeterminate: Story = {
         </div>
       </div>
     );
-  },
+  };
+
+export const Indeterminate: Story = {
+  render: IndeterminateExample,
 };
 
 export const Disabled: Story = {
@@ -155,9 +156,7 @@ export const Disabled: Story = {
     </div>
   ),
 };
-
-export const Controlled: Story = {
-  render: function ControlledStory() {
+const ControlledExample = () => {
     const [checked, setChecked] = useState(false);
     return (
       <div className="space-y-4">
@@ -171,7 +170,10 @@ export const Controlled: Story = {
         </p>
       </div>
     );
-  },
+  };
+
+export const Controlled: Story = {
+  render: ControlledExample,
 };
 
 export const AllVariants: Story = {
@@ -204,9 +206,7 @@ export const InvalidState: Story = {
     </div>
   ),
 };
-
-export const CheckboxGroupExample: Story = {
-  render: function CheckboxGroupStory() {
+const CheckboxGroupExampleExample = () => {
     const [selected, setSelected] = useState<string[]>(['email']);
 
     return (
@@ -239,11 +239,12 @@ export const CheckboxGroupExample: Story = {
         </p>
       </div>
     );
-  },
-};
+  };
 
-export const CheckboxGroupHorizontal: Story = {
-  render: function HorizontalGroupStory() {
+export const CheckboxGroupExample: Story = {
+  render: CheckboxGroupExampleExample,
+};
+const CheckboxGroupHorizontalExample = () => {
     const [selected, setSelected] = useState<string[]>(['react']);
 
     return (
@@ -262,11 +263,12 @@ export const CheckboxGroupHorizontal: Story = {
         </CheckboxGroup>
       </div>
     );
-  },
-};
+  };
 
-export const CheckboxGroupWithColors: Story = {
-  render: function ColoredGroupStory() {
+export const CheckboxGroupHorizontal: Story = {
+  render: CheckboxGroupHorizontalExample,
+};
+const CheckboxGroupWithColorsExample = () => {
     const [selected, setSelected] = useState<string[]>(['success']);
 
     return (
@@ -284,5 +286,8 @@ export const CheckboxGroupWithColors: Story = {
         </CheckboxGroup>
       </div>
     );
-  },
+  };
+
+export const CheckboxGroupWithColors: Story = {
+  render: CheckboxGroupWithColorsExample,
 };
