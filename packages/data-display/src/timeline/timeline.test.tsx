@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Timeline } from './timeline';
 
 describe('Timeline', () => {
@@ -92,7 +92,6 @@ describe('Timeline', () => {
         </Timeline.Item>
       </Timeline>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

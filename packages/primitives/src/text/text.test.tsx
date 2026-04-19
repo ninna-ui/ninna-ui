@@ -1,7 +1,7 @@
 import { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { axe } from 'vitest-axe';
+
 import { Text } from './text';
 
 describe('Text', () => {
@@ -68,7 +68,6 @@ describe('Text', () => {
 
   it('passes axe accessibility audit', async () => {
     const { container } = render(<Text>Accessible text content</Text>);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

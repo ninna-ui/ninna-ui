@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { RadioGroup, RadioGroupItem, RadioCard } from './radio-group';
 
 describe('RadioGroup', () => {
@@ -50,6 +50,6 @@ describe('RadioGroup', () => {
         <RadioGroupItem value="b" label="Option B" />
       </RadioGroup>
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

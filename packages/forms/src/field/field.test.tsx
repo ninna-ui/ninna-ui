@@ -1,7 +1,7 @@
 import { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { axe } from 'vitest-axe';
+
 import { Field } from './field';
 
 describe('Field', () => {
@@ -130,8 +130,7 @@ describe('Field', () => {
         <input type="email" />
       </Field>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('passes axe audit with error state', async () => {
@@ -140,7 +139,6 @@ describe('Field', () => {
         <input type="email" />
       </Field>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

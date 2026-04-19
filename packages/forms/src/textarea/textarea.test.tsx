@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Textarea } from './textarea';
 
 describe('Textarea', () => {
@@ -37,6 +37,6 @@ describe('Textarea', () => {
         <Textarea id="message" />
       </label>
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

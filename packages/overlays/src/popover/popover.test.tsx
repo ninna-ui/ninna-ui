@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createRef } from 'react';
-import { axe } from 'vitest-axe';
+
 import { Popover } from './popover';
 
 describe('Popover', () => {
@@ -145,7 +145,7 @@ describe('Popover', () => {
         <Popover.Content>Popover body</Popover.Content>
       </Popover>
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('has no accessibility violations (open)', async () => {
@@ -156,6 +156,6 @@ describe('Popover', () => {
       </Popover>
     );
     await waitFor(() => expect(screen.getByText('Popover body')).toBeInTheDocument());
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

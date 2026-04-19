@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Tooltip } from './tooltip';
 
 describe('Tooltip', () => {
@@ -104,8 +104,7 @@ describe('Tooltip', () => {
         <Tooltip.Content>Helpful tip</Tooltip.Content>
       </Tooltip>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('applies default color classes', async () => {
@@ -160,7 +159,6 @@ describe('Tooltip', () => {
     await waitFor(() => {
       expect(document.querySelector('[data-slot="tooltip-content"]')).toBeInTheDocument();
     });
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

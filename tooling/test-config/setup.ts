@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
-import { afterEach, vi, expect } from 'vitest';
-import * as matchers from 'vitest-axe/matchers';
+import { afterEach, vi } from 'vitest';
+import { setup } from '@sa11y/vitest';
 
-// Extend vitest matchers with axe a11y assertions
-expect.extend(matchers);
+// Initialize sa11y accessible matchers
+setup();
 
 // All mocks are guarded behind `typeof window` so this file is safe to
 // import in Node-only test suites (hooks, utils) even though jsdom is the

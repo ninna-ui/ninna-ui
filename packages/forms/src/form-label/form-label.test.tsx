@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { FormLabel } from './form-label';
 
 describe('FormLabel', () => {
@@ -46,7 +46,6 @@ describe('FormLabel', () => {
         <input id="email" type="email" />
       </div>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

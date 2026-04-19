@@ -1,7 +1,7 @@
 import { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { axe } from 'vitest-axe';
+
 import { Breadcrumbs } from './breadcrumbs';
 
 describe('Breadcrumbs', () => {
@@ -112,7 +112,6 @@ describe('Breadcrumbs', () => {
       </Breadcrumbs>
     );
     // Disable list/listitem rules - separator spans inside <ol> is a known pattern
-    const results = await axe(container, { rules: { list: { enabled: false }, listitem: { enabled: false } } });
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

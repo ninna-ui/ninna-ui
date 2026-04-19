@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor, fireEvent } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Checkbox, CheckboxGroup, CheckboxGroupItem } from './checkbox';
 
 describe('Checkbox', () => {
@@ -94,14 +94,12 @@ describe('Checkbox', () => {
   // ── A11y: axe audit ────────────────────────────────────────
   it('has no accessibility violations', async () => {
     const { container } = render(<Checkbox label="Accept terms" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('has no accessibility violations (checked)', async () => {
     const { container } = render(<Checkbox label="Accept terms" defaultChecked />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });
 
@@ -151,8 +149,7 @@ describe('CheckboxGroup', () => {
         <CheckboxGroupItem value="b" label="Option B" />
       </CheckboxGroup>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });
 

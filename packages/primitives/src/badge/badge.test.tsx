@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Badge } from './badge';
 
 describe('Badge', () => {
@@ -62,8 +62,7 @@ describe('Badge', () => {
   // ── A11y: axe audit ────────────────────────────────────────
   it('has no accessibility violations', async () => {
     const { container } = render(<Badge color="primary">Active</Badge>);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   // ── className merge ────────────────────────────────────────

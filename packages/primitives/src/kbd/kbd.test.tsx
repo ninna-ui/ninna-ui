@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Kbd } from './kbd';
 
 describe('Kbd', () => {
@@ -46,7 +46,6 @@ describe('Kbd', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<Kbd>Ctrl</Kbd>);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

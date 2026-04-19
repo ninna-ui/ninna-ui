@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Progress } from './progress';
 
 describe('Progress', () => {
@@ -129,14 +129,12 @@ describe('Progress', () => {
   // ── A11y: axe audit ────────────────────────────────────────
   it('has no accessibility violations', async () => {
     const { container } = render(<Progress value={50} color="primary" showValue />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('has no accessibility violations (indeterminate)', async () => {
     const { container } = render(<Progress indeterminate />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   // ── className merge ────────────────────────────────────────

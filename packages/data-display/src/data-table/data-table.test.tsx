@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { DataTable } from './data-table';
 
 type Row = { id: number; name: string; score: number };
@@ -41,6 +41,6 @@ describe('DataTable', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<DataTable<Row> data={rows} columns={columns as never} />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

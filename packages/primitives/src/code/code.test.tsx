@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Code } from './code';
 
 describe('Code', () => {
@@ -49,7 +49,6 @@ describe('Code', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<Code>const x = 1;</Code>);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

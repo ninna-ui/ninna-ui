@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Switch } from './switch';
 
 describe('Switch', () => {
@@ -95,14 +95,12 @@ describe('Switch', () => {
   // ── A11y: axe audit ────────────────────────────────────────
   it('has no accessibility violations', async () => {
     const { container } = render(<Switch label="Enable feature" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('has no accessibility violations (without label, with aria-label)', async () => {
     const { container } = render(<Switch aria-label="Toggle feature" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   // ── className merge ────────────────────────────────────────

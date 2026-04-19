@@ -1,7 +1,7 @@
 import { createRef } from 'react';
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { axe } from 'vitest-axe';
+
 import { Table } from './table';
 
 describe('Table', () => {
@@ -189,7 +189,6 @@ describe('Table accessibility', () => {
         </Table.Body>
       </Table>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });
