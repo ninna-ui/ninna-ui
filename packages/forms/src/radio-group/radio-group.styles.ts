@@ -31,34 +31,34 @@ export const radioItemVariants = cva(
     },
     compoundVariants: [
       // solid variants
-      { variant: "solid", color: "primary", class: "data-[state=checked]:bg-primary data-[state=checked]:border-primary" },
-      { variant: "solid", color: "secondary", class: "data-[state=checked]:bg-secondary data-[state=checked]:border-secondary" },
-      { variant: "solid", color: "accent", class: "data-[state=checked]:bg-accent data-[state=checked]:border-accent" },
-      { variant: "solid", color: "neutral", class: "data-[state=checked]:bg-neutral data-[state=checked]:border-neutral" },
-      { variant: "solid", color: "success", class: "data-[state=checked]:bg-success data-[state=checked]:border-success" },
-      { variant: "solid", color: "danger", class: "data-[state=checked]:bg-danger data-[state=checked]:border-danger" },
-      { variant: "solid", color: "warning", class: "data-[state=checked]:bg-warning data-[state=checked]:border-warning" },
-      { variant: "solid", color: "info", class: "data-[state=checked]:bg-info data-[state=checked]:border-info" },
+      { variant: "solid", color: "primary", class: "data-[state=checked]:bg-primary data-[state=checked]:border-primary data-[state=checked]:text-primary-content" },
+      { variant: "solid", color: "secondary", class: "data-[state=checked]:bg-secondary data-[state=checked]:border-secondary data-[state=checked]:text-secondary-content" },
+      { variant: "solid", color: "accent", class: "data-[state=checked]:bg-accent data-[state=checked]:border-accent data-[state=checked]:text-accent-content" },
+      { variant: "solid", color: "neutral", class: "data-[state=checked]:bg-neutral data-[state=checked]:border-neutral data-[state=checked]:text-neutral-content" },
+      { variant: "solid", color: "success", class: "data-[state=checked]:bg-success data-[state=checked]:border-success data-[state=checked]:text-success-content" },
+      { variant: "solid", color: "danger", class: "data-[state=checked]:bg-danger data-[state=checked]:border-danger data-[state=checked]:text-danger-content" },
+      { variant: "solid", color: "warning", class: "data-[state=checked]:bg-warning data-[state=checked]:border-warning data-[state=checked]:text-warning-content" },
+      { variant: "solid", color: "info", class: "data-[state=checked]:bg-info data-[state=checked]:border-info data-[state=checked]:text-info-content" },
       
       // soft variants
-      { variant: "soft", color: "primary", class: "data-[state=checked]:bg-primary/20 data-[state=checked]:border-transparent" },
-      { variant: "soft", color: "secondary", class: "data-[state=checked]:bg-secondary/20 data-[state=checked]:border-transparent" },
-      { variant: "soft", color: "accent", class: "data-[state=checked]:bg-accent/20 data-[state=checked]:border-transparent" },
-      { variant: "soft", color: "neutral", class: "data-[state=checked]:bg-neutral/20 data-[state=checked]:border-transparent" },
-      { variant: "soft", color: "success", class: "data-[state=checked]:bg-success/20 data-[state=checked]:border-transparent" },
-      { variant: "soft", color: "danger", class: "data-[state=checked]:bg-danger/20 data-[state=checked]:border-transparent" },
-      { variant: "soft", color: "warning", class: "data-[state=checked]:bg-warning/20 data-[state=checked]:border-transparent" },
-      { variant: "soft", color: "info", class: "data-[state=checked]:bg-info/20 data-[state=checked]:border-transparent" },
+      { variant: "soft", color: "primary", class: "data-[state=checked]:bg-primary/20 data-[state=checked]:border-transparent data-[state=checked]:text-primary" },
+      { variant: "soft", color: "secondary", class: "data-[state=checked]:bg-secondary/20 data-[state=checked]:border-transparent data-[state=checked]:text-secondary" },
+      { variant: "soft", color: "accent", class: "data-[state=checked]:bg-accent/20 data-[state=checked]:border-transparent data-[state=checked]:text-accent" },
+      { variant: "soft", color: "neutral", class: "data-[state=checked]:bg-neutral/20 data-[state=checked]:border-transparent data-[state=checked]:text-neutral" },
+      { variant: "soft", color: "success", class: "data-[state=checked]:bg-success/20 data-[state=checked]:border-transparent data-[state=checked]:text-success" },
+      { variant: "soft", color: "danger", class: "data-[state=checked]:bg-danger/20 data-[state=checked]:border-transparent data-[state=checked]:text-danger" },
+      { variant: "soft", color: "warning", class: "data-[state=checked]:bg-warning/20 data-[state=checked]:border-transparent data-[state=checked]:text-warning" },
+      { variant: "soft", color: "info", class: "data-[state=checked]:bg-info/20 data-[state=checked]:border-transparent data-[state=checked]:text-info" },
 
       // outline variants
-      { variant: "outline", color: "primary", class: "data-[state=checked]:border-primary" },
-      { variant: "outline", color: "secondary", class: "data-[state=checked]:border-secondary" },
-      { variant: "outline", color: "accent", class: "data-[state=checked]:border-accent" },
-      { variant: "outline", color: "neutral", class: "data-[state=checked]:border-neutral" },
-      { variant: "outline", color: "success", class: "data-[state=checked]:border-success" },
-      { variant: "outline", color: "danger", class: "data-[state=checked]:border-danger" },
-      { variant: "outline", color: "warning", class: "data-[state=checked]:border-warning" },
-      { variant: "outline", color: "info", class: "data-[state=checked]:border-info" },
+      { variant: "outline", color: "primary", class: "data-[state=checked]:border-primary data-[state=checked]:text-primary" },
+      { variant: "outline", color: "secondary", class: "data-[state=checked]:border-secondary data-[state=checked]:text-secondary" },
+      { variant: "outline", color: "accent", class: "data-[state=checked]:border-accent data-[state=checked]:text-accent" },
+      { variant: "outline", color: "neutral", class: "data-[state=checked]:border-neutral data-[state=checked]:text-neutral" },
+      { variant: "outline", color: "success", class: "data-[state=checked]:border-success data-[state=checked]:text-success" },
+      { variant: "outline", color: "danger", class: "data-[state=checked]:border-danger data-[state=checked]:text-danger" },
+      { variant: "outline", color: "warning", class: "data-[state=checked]:border-warning data-[state=checked]:text-warning" },
+      { variant: "outline", color: "info", class: "data-[state=checked]:border-info data-[state=checked]:text-info" },
     ],
     defaultVariants: {
       variant: "outline",
@@ -76,7 +76,7 @@ export const radioIndicatorVariants = cva(
   {
     variants: {
       variant: {
-        solid: "bg-base-100",
+        solid: "bg-current",
         soft: "bg-current",
         outline: "bg-current",
       },
@@ -96,9 +96,7 @@ export const radioIndicatorVariants = cva(
         lg: "h-2.5 w-2.5",
       },
     },
-    compoundVariants: [
-      { variant: "solid", class: "bg-base-100" }, // White dot for solid
-    ],
+    compoundVariants: [],
     defaultVariants: {
       variant: "outline",
       color: "primary",
