@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Divider } from './divider';
 
 describe('Divider', () => {
@@ -51,7 +51,6 @@ describe('Divider', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<Divider />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

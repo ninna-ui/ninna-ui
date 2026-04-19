@@ -37,6 +37,7 @@
     "@changesets/cli": "^2.29.8",
     "@ninna-ui/eslint-config": "workspace:*",
     "@ninna-ui/test-config": "workspace:*",
+    "@sa11y/vitest": "^8.0.27",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -54,16 +55,14 @@
     "typescript": "^5.9.3",
     "undici": "^7.24.4",
     "vite": "^8.0.5",
-    "vitest": "^4.1.0",
-    "vitest-axe": ">=1.0.0-pre.5"
+    "vitest": "^4.1.0"
   },
   "pnpm": {
     "overrides": {
       "@babel/runtime": "7.28.2",
       "lodash": "^4.18.1",
       "lodash-es": "^4.18.1",
-      "yaml": "^2.8.3",
-      "vite": ">=8.0.5"
+      "yaml": "^2.8.3"
     }
   },
   "packageManager": "pnpm@9.15.4",

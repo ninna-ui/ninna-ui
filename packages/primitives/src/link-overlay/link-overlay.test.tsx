@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { LinkBox, LinkOverlay } from './link-overlay';
 
 describe('LinkOverlay', () => {
@@ -32,6 +32,6 @@ describe('LinkOverlay', () => {
         </h3>
       </LinkBox>
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Alert } from './alert';
 
 describe('Alert', () => {
@@ -121,16 +121,14 @@ describe('Alert', () => {
     const { container } = render(
       <Alert variant="soft" color="info" title="Info" description="Information alert" />
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('has no accessibility violations (dismissible)', async () => {
     const { container } = render(
       <Alert title="Dismissible" dismissible onDismiss={() => {}} />
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   // ── className merge ────────────────────────────────────────

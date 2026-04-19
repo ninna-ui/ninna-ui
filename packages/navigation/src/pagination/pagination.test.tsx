@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Pagination } from './pagination';
 
 describe('Pagination', () => {
@@ -43,6 +43,6 @@ describe('Pagination', () => {
         </Pagination.Content>
       </Pagination>
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { FormGroup } from './form-group';
 
 describe('FormGroup', () => {
@@ -96,7 +96,6 @@ describe('FormGroup', () => {
         <input type="email" aria-label="Email" />
       </FormGroup>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

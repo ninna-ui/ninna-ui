@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Accordion } from './accordion';
 
 describe('Accordion', () => {
@@ -31,6 +31,6 @@ describe('Accordion', () => {
         </Accordion.Item>
       </Accordion>
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

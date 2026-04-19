@@ -1,7 +1,7 @@
 import { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { axe } from 'vitest-axe';
+
 import { EmptyState } from './empty-state';
 
 describe('EmptyState', () => {
@@ -66,7 +66,6 @@ describe('EmptyState', () => {
     const { container } = render(
       <EmptyState title="No results found" description="Try adjusting your search" />
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

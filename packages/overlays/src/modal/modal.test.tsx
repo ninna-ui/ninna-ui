@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Modal } from './modal';
 
 describe('Modal', () => {
@@ -155,7 +155,6 @@ describe('Modal', () => {
     await waitFor(() => {
       expect(screen.getByText('Dialog content')).toBeInTheDocument();
     });
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

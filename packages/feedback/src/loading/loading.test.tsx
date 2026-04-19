@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Loading } from './loading';
 
 describe('Loading', () => {
@@ -81,14 +81,12 @@ describe('Loading', () => {
   // ── A11y: axe audit ────────────────────────────────────────
   it('has no accessibility violations (spin)', async () => {
     const { container } = render(<Loading variant="spin" color="primary" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('has no accessibility violations (dots)', async () => {
     const { container } = render(<Loading variant="dots" color="success" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   // ── className merge ────────────────────────────────────────

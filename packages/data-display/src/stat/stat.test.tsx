@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Stat } from './stat';
 
 describe('Stat', () => {
@@ -97,7 +97,6 @@ describe('Stat', () => {
         <Stat.Value>$12,000</Stat.Value>
       </Stat>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

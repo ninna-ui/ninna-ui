@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Drawer } from './drawer';
 
 describe('Drawer', () => {
@@ -171,7 +171,6 @@ describe('Drawer', () => {
     await waitFor(() => {
       expect(screen.getByText('Drawer content')).toBeInTheDocument();
     });
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

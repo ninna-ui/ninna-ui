@@ -1,7 +1,7 @@
 import { createRef } from 'react';
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { axe } from 'vitest-axe';
+
 import { Card } from './card';
 
 describe('Card', () => {
@@ -132,7 +132,6 @@ describe('Card composition', () => {
         <Card.Body>Body content here</Card.Body>
       </Card>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

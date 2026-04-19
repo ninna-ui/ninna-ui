@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { IconButton } from './icon-button';
 
 describe('IconButton', () => {
@@ -29,6 +29,6 @@ describe('IconButton', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<IconButton icon={<span>+</span>} aria-label="Add item" />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

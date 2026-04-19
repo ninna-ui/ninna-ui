@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Toast } from './toast';
 import { Toaster, toast } from './toaster';
 
@@ -92,6 +92,6 @@ describe('Toast', () => {
     const { container } = render(
       <Toast toast={{ id: 't1', title: 'Info', color: 'info', closable: true }} />
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });
