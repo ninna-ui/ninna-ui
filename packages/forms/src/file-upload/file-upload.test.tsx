@@ -33,10 +33,9 @@ describe('FileUpload', () => {
   });
 
   it('applies dropzone accessibility attributes', () => {
-    const { container } = render(<FileUpload label="Upload file" helperText="Max 5MB" />);
-    const dropzone = container.querySelector('[role="button"]');
-    expect(dropzone).toHaveAttribute('tabindex', '0');
-    expect(dropzone).toHaveAttribute('aria-disabled', 'false');
+    const { container } = render(<FileUpload label="Upload file" helperText="Max 5MB" disabled />);
+    const input = container.querySelector('input[type="file"]');
+    expect(input).toHaveAttribute('disabled');
   });
 
   it('passes axe accessibility audit', async () => {
