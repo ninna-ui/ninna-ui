@@ -128,8 +128,12 @@ export const switchStyles = {
   wrapper: "inline-flex items-center gap-3",
   wrapperWithDescription: "inline-flex items-start gap-3",
   wrapperReverse: "flex-row-reverse",
-  labelWrapper: "flex flex-col gap-0.5 leading-tight",
-  label: "text-base-content font-medium cursor-pointer select-none leading-tight",
+  // `leading-none` on the label collapses the text line-box to the
+  // font-size so the glyph-optical-centre aligns with the switch's
+  // centre under `items-center`. See checkbox.styles.ts for the full
+  // explanation.
+  labelWrapper: "flex flex-col gap-0.5",
+  label: "text-base-content font-medium cursor-pointer select-none leading-none",
   labelSizes: { sm: "text-sm", md: "text-base", lg: "text-lg" },
   labelDisabled: "opacity-50 cursor-not-allowed",
   description: "text-base-content/70 text-sm leading-tight",

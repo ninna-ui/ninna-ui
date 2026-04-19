@@ -86,8 +86,15 @@ export const checkboxStyles = {
   wrapper: "inline-flex items-center gap-3",
   wrapperWithDescription: "inline-flex items-start gap-3",
   wrapperReverse: "flex-row-reverse",
-  labelWrapper: "flex flex-col gap-0.5 leading-tight",
-  label: "text-base-content font-medium cursor-pointer select-none leading-tight",
+  // `leading-none` collapses the text line-box down to the font-size so
+  // the glyph-optical-centre and the line-box-centre coincide — without
+  // this, `items-center` on the wrapper centres the line-box (which has
+  // ~25% top/bottom padding from leading-tight) against the checkbox,
+  // and the glyphs then visually sit *below* the checkbox centre
+  // because ascenders/descenders are asymmetric. The parent `gap-0.5`
+  // re-introduces a little breathing room for the (optional) description.
+  labelWrapper: "flex flex-col gap-0.5",
+  label: "text-base-content font-medium cursor-pointer select-none leading-none",
   // Keep label typography proportional to the checkbox size, otherwise the
   // sm/md/lg variants look deceptively similar on the page (the 4px step
   // between boxes alone is hard to read next to a fixed-size label).
