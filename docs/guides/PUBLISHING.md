@@ -109,7 +109,7 @@ Changeset automatically updates internal dependencies:
 "@ninna-ui/core": "workspace:*"
 
 // After version-packages
-"@ninna-ui/core": "^0.5.0"
+"@ninna-ui/core": "^0.6.0"
 ```
 
 ## Troubleshooting
@@ -166,7 +166,7 @@ If something goes wrong:
 
 1. **Unpublish** (within 72 hours):
 ```bash
-npm unpublish @ninna-ui/core@0.5.0
+npm unpublish @ninna-ui/core@0.6.0
 ```
 
 2. **Republish** fixed version:

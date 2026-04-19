@@ -12,7 +12,7 @@ The current version is defined in a single file:
 
 ```typescript
 // apps/playground/app/constants/version.ts
-export const NINNA_UI_VERSION = "0.5.0" as const;
+export const NINNA_UI_VERSION = "0.6.0" as const;
 ```
 
 ## How to Use
