@@ -38,9 +38,37 @@ const TAILWIND_CSS_PATH = resolve(
   'tailwind.css'
 );
 
-// Marker comments in tailwind.css - everything between these is replaced
+const SAFELIST_CSS_PATH = resolve(
+  import.meta.dirname,
+  '..',
+  'src',
+  'theme',
+  'safelist.css'
+);
+
+// Marker comments used inside safelist.css
 const SAFELIST_START = '/* === AUTO-GENERATED SAFELIST START === */';
 const SAFELIST_END = '/* === AUTO-GENERATED SAFELIST END === */';
+
+// ─── Runtime safelist (classes built at runtime, not detectable by scanner) ─
+// These are placed AFTER SAFELIST_END and are not touched by this script.
+const RUNTIME_SAFELIST_START = '/* === RUNTIME SAFELIST START === */';
+const RUNTIME_SAFELIST_END = '/* === RUNTIME SAFELIST END === */';
+const RUNTIME_SAFELIST_BLOCK = `${RUNTIME_SAFELIST_START}
+/*
+ * Classes generated at runtime (e.g. getResponsiveGridCols) that Tailwind's
+ * static scanner cannot detect. DO NOT REMOVE — these are required for production.
+ */
+
+/* --- Responsive grid columns (78) --- */
+@source inline("grid-cols-1 grid-cols-2 grid-cols-3 grid-cols-4 grid-cols-5 grid-cols-6 grid-cols-7 grid-cols-8 grid-cols-9 grid-cols-10 grid-cols-11 grid-cols-12 grid-cols-none");
+@source inline("sm:grid-cols-1 sm:grid-cols-2 sm:grid-cols-3 sm:grid-cols-4 sm:grid-cols-5 sm:grid-cols-6 sm:grid-cols-7 sm:grid-cols-8 sm:grid-cols-9 sm:grid-cols-10 sm:grid-cols-11 sm:grid-cols-12");
+@source inline("md:grid-cols-1 md:grid-cols-2 md:grid-cols-3 md:grid-cols-4 md:grid-cols-5 md:grid-cols-6 md:grid-cols-7 md:grid-cols-8 md:grid-cols-9 md:grid-cols-10 md:grid-cols-11 md:grid-cols-12");
+@source inline("lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6 lg:grid-cols-7 lg:grid-cols-8 lg:grid-cols-9 lg:grid-cols-10 lg:grid-cols-11 lg:grid-cols-12");
+@source inline("xl:grid-cols-1 xl:grid-cols-2 xl:grid-cols-3 xl:grid-cols-4 xl:grid-cols-5 xl:grid-cols-6 xl:grid-cols-7 xl:grid-cols-8 xl:grid-cols-9 xl:grid-cols-10 xl:grid-cols-11 xl:grid-cols-12");
+@source inline("2xl:grid-cols-1 2xl:grid-cols-2 2xl:grid-cols-3 2xl:grid-cols-4 2xl:grid-cols-5 2xl:grid-cols-6 2xl:grid-cols-7 2xl:grid-cols-8 2xl:grid-cols-9 2xl:grid-cols-10 2xl:grid-cols-11 2xl:grid-cols-12");
+
+${RUNTIME_SAFELIST_END}`;
 
 // ─── Helpers ─────────────────────────────────────────────────────
 
@@ -392,34 +420,9 @@ function main() {
 
   const safelistBlock = lines.join('\n');
 
-  // ── Write to tailwind.css ─────────────────────────────────────
-  let css = readFileSync(TAILWIND_CSS_PATH, 'utf-8');
-
-  const startIdx = css.indexOf(SAFELIST_START);
-  const endIdx = css.indexOf(SAFELIST_END);
-
-  if (startIdx !== -1 && endIdx !== -1) {
-    // Replace existing safelist block
-    css = css.slice(0, startIdx) + safelistBlock + css.slice(endIdx + SAFELIST_END.length);
-    console.log('\n✅ Replaced existing safelist block in tailwind.css');
-  } else {
-    // Insert before @theme inline - find the right spot
-    // Look for the old manual safelist section or insert before @theme
-    const themeIdx = css.indexOf('@theme inline');
-    if (themeIdx !== -1) {
-      // Find a good insertion point - right before @theme inline
-      // Look backward for a blank line
-      let insertIdx = themeIdx;
-      while (insertIdx > 0 && css[insertIdx - 1] !== '\n') insertIdx--;
-      css = css.slice(0, insertIdx) + safelistBlock + '\n\n' + css.slice(insertIdx);
-      console.log('\n✅ Inserted new safelist block in tailwind.css (before @theme)');
-    } else {
-      console.error('❌ Could not find insertion point in tailwind.css');
-      process.exit(1);
-    }
-  }
-
-  writeFileSync(TAILWIND_CSS_PATH, css, 'utf-8');
+  // ── Write to safelist.css ────────────────────────────────────
+  writeFileSync(SAFELIST_CSS_PATH, safelistBlock + '\n', 'utf-8');
+  console.log('\n✅ Written safelist.css');
 
   // ── Print summary ─────────────────────────────────────────────
   console.log('\n📋 Safelist groups:');
@@ -428,7 +431,7 @@ function main() {
       console.log(`   ${name}: ${classes.length}`);
     }
   }
-  console.log('\n✨ Done! tailwind.css updated with complete safelist.\n');
+  console.log('\n✨ Done! safelist.css updated with complete safelist.\n');
 }
 
 main();

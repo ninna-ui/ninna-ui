@@ -1,8 +1,16 @@
 import { forwardRef } from "react";
 import { cn } from "@ninna-ui/utils";
-import type { AspectRatioPreset } from '../types';
+import type { AspectRatioPreset } from '@ninna-ui/core';
 import type { AspectRatioProps } from "./aspect-ratio.types";
-import { aspectRatioDefaults, ASPECT_RATIO_PRESETS } from "./aspect-ratio.types";
+
+const ASPECT_RATIO_PRESETS: Record<AspectRatioPreset, number> = {
+  square:   1,
+  video:    16 / 9,
+  portrait: 3 / 4,
+  wide:     21 / 9,
+};
+
+const ASPECT_RATIO_DEFAULT = 1;
 
 /**
  * Get numeric ratio from preset or number
@@ -32,7 +40,7 @@ export const AspectRatio = forwardRef<HTMLDivElement, AspectRatioProps>(
   (
     {
       children,
-      ratio = aspectRatioDefaults.ratio,
+      ratio = ASPECT_RATIO_DEFAULT,
       className,
       style,
       ...props

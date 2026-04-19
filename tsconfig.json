@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "target": "ES2022",
+    "strict": true,
+    "skipLibCheck": true,
+    "paths": {
+      "@ninna-ui/core":           ["./packages/core/src/index.ts"],
+      "@ninna-ui/utils":          ["./packages/utils/src/index.ts"],
+      "@ninna-ui/primitives":     ["./packages/primitives/src/index.ts"],
+      "@ninna-ui/layout":         ["./packages/layout/src/index.ts"],
+      "@ninna-ui/forms":          ["./packages/forms/src/index.ts"],
+      "@ninna-ui/feedback":       ["./packages/feedback/src/index.ts"],
+      "@ninna-ui/overlays":       ["./packages/overlays/src/index.ts"],
+      "@ninna-ui/navigation":     ["./packages/navigation/src/index.ts"],
+      "@ninna-ui/data-display":   ["./packages/data-display/src/index.ts"],
+      "@ninna-ui/code-block":     ["./packages/code-block/src/index.ts"],
+      "@ninna-ui/react-internal": ["./packages/react-internal/src/index.ts"]
+    }
+  },
+  "files": []
+}

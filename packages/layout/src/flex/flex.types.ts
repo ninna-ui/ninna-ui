@@ -1,38 +1,36 @@
-import type { HTMLAttributes, ReactNode } from "react";
-import type { FlexDirection, FlexAlign, FlexJustify, FlexWrap, GapSize } from '../types';
+import type { ElementType } from "react";
+import type { PolymorphicProps } from "@ninna-ui/utils";
+import type { FlexDirection, FlexAlign, FlexJustify, FlexWrap, GapSize } from '@ninna-ui/core';
 
 /**
- * Flex component props
+ * Base owned props for the Flex component.
  */
-export interface FlexProps extends HTMLAttributes<HTMLDivElement> {
-  /** Content to render */
-  children?: ReactNode;
-  
+export interface FlexBaseProps {
+
   /** Flex direction */
   direction?: FlexDirection;
-  
+
   /** Gap between items */
   gap?: GapSize;
-  
-  /** Align items on cross axis */
+
+  /** Align items on the cross axis */
   align?: FlexAlign;
-  
-  /** Justify items on main axis */
+
+  /** Justify items on the main axis */
   justify?: FlexJustify;
-  
+
   /** Wrap behavior */
   wrap?: FlexWrap;
-  
-  /** Make flex container inline */
+
+  /** Render as inline-flex instead of flex */
   inline?: boolean;
-  
-  /** Additional CSS classes */
+
+  /** Additional CSS class names */
   className?: string;
 }
 
 /**
- * Default props for Flex
+ * Flex component props — polymorphic.
+ * Defaults to rendering a `<div>`.
  */
-export const flexDefaults = {
-  direction: "row" as FlexDirection,
-};
+export type FlexProps<C extends ElementType = "div"> = PolymorphicProps<C, FlexBaseProps>;

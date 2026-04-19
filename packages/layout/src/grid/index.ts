@@ -1,2 +1,2 @@
 export { Grid } from "./grid";
-export type { GridProps } from "./grid.types";
+export type { GridProps, ResponsiveColumns } from "./grid.types";

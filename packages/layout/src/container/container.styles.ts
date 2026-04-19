@@ -1,28 +1,14 @@
-import type { ContainerMaxWidth } from '../types';
+import type { ContainerMaxWidth } from '@ninna-ui/core';
 
 /**
  * Container styles configuration
  */
 export const containerStyles = {
-  /**
-   * Base styles
-   */
-  base: "w-full",
-
-  /**
-   * Center styles
-   */
-  center: "mx-auto",
-
-  /**
-   * Padding styles
-   */
+  base:    "w-full",
+  center:  "mx-auto",
   padding: "px-4 sm:px-6 lg:px-8",
 };
 
-/**
- * Max width class mappings
- */
 export const MAX_WIDTHS: Record<ContainerMaxWidth, string> = {
   sm: 'max-w-screen-sm',
   md: 'max-w-screen-md',

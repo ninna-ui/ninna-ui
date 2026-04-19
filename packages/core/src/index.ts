@@ -18,4 +18,4 @@
 export * from './tokens';
 
 // Class mappings
-export * from './classes';  
+export * from './classes';

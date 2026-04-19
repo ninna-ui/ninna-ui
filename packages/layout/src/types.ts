@@ -1,8 +1,15 @@
 /**
- * Shared layout component types
- * Re-exported from @ninna-ui/core for single source of truth.
+ * Layout package — public type re-exports.
+ *
+ * All layout types originate in @ninna-ui/core (single source of truth).
+ * This barrel exists so the layout package's own index.ts has one import
+ * point, and so external consumers can import from "@ninna-ui/layout" directly.
+ *
+ * Internal component files import directly from '@ninna-ui/core' — not this barrel.
  */
 export type {
+  Breakpoint,
+  ResponsiveValue,
   ContainerMaxWidth,
   FlexDirection,
   FlexAlign,

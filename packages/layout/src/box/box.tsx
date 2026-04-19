@@ -1,25 +1,35 @@
-import { forwardRef } from "react";
-import { cn } from "@ninna-ui/utils";
+import { forwardRef, type ElementType, type ReactElement } from "react";
 import type { BoxProps } from "./box.types";
 
 /**
- * Box component - A basic container component.
- * The base building block for layout composition.
+ * Box — the foundational layout primitive.
+ *
+ * A transparent wrapper that renders any HTML element or React component
+ * while passing through all native element props + ref.
+ * Use `as` to change the rendered element for semantic HTML.
  *
  * @example
  * ```tsx
  * <Box>Default div</Box>
- * <Box className="p-4">Box with padding</Box>
+ * <Box as="section" className="p-4">Semantic section</Box>
+ * <Box as="article" aria-label="Post">Article element</Box>
  * ```
  */
-export const Box = forwardRef<HTMLDivElement, BoxProps>(
-  ({ children, className, ...props }, ref) => {
+export const Box = forwardRef<HTMLElement, BoxProps>(
+  ({ as, children, className, ...props }, ref) => {
+    const Component = (as ?? "div") as ElementType;
+
     return (
-      <div ref={ref} data-slot="box" className={cn(className)} {...props}>
+      <Component
+        ref={ref}
+        data-slot="box"
+        className={className}
+        {...props}
+      >
         {children}
-      </div>
+      </Component>
     );
   }
-);
+) as <C extends ElementType = "div">(props: BoxProps<C>) => ReactElement | null;
 
-Box.displayName = "Box";
+(Box as { displayName?: string }).displayName = "Box";
