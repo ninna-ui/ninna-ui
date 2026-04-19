@@ -70,6 +70,7 @@ const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
     {
       size = 'md',
       centered = true,
+      title,
       description,
       closeOnOverlayClick = true,
       closeOnEscape = true,
@@ -103,9 +104,18 @@ const ModalContent = forwardRef<HTMLDivElement, ModalContentProps>(
           }}
           onInteractOutside={onInteractOutside ? (event) => onInteractOutside(event) : undefined}
           aria-modal="true"
+          // Explicitly set aria-describedby to suppress Radix's missing
+          // description warning when no description prop is provided
+          aria-describedby={description ? undefined : undefined}
           {...props}
         >
-          <DialogEngine.Title className="sr-only">Dialog</DialogEngine.Title>
+          {/* Radix Dialog requires a DialogTitle for screen readers.
+              If Modal.Header is used, it provides the title visually via DialogEngine.Title.
+              If only a `title` prop is given (headless usage), we render it visually-hidden.
+              This satisfies both WCAG and Radix's accessibility requirements. */}
+          {title && (
+            <DialogEngine.Title className="sr-only">{title}</DialogEngine.Title>
+          )}
           {description && (
             <DialogEngine.Description className="sr-only">
               {description}

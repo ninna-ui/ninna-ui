@@ -62,9 +62,9 @@ See individual package changelogs:
 - **Tailwind CSS v4** integration with `@tailwindcss/vite` and `@tailwindcss/postcss`
 - **Radix primitives** for complex form components (Select, Checkbox, RadioGroup, Slider)
 - **ESM-only distribution** with `sideEffects: false` on all packages for optimal tree-shaking
-- **WCAG 2.1 AA compliance** - all components pass vitest-axe audits; `aria-label` props exposed on Stepper, Calendar, DataTable, Tree, Breadcrumbs, Pagination
+- **WCAG 2.1 AA compliance** - all components pass @sa11y/vitest audits; `aria-label` props exposed on Stepper, Calendar, DataTable, Tree, Breadcrumbs, Pagination
 - **Stepper** refactored to context-based step index (no `cloneElement`)
-- **708 tests** across 51 test files with vitest + @testing-library/react + vitest-axe
+- **708 tests** across 51 test files with vitest + @testing-library/react + @sa11y/vitest
 - **CLI** with template path fix, `workspace:*` → `latest` swap, and tsup-based build with template copy
 - **pnpm 9.15.4**, React 19.2, TypeScript 5.4, Vitest 4
 

@@ -230,16 +230,8 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
-          role="button"
-          tabIndex={disabled ? -1 : 0}
           aria-disabled={disabled}
           aria-invalid={invalid}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              inputRef.current?.click();
-            }
-          }}
         >
           <input
             ref={ref || inputRef}

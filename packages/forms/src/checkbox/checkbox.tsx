@@ -1,5 +1,6 @@
 import { forwardRef, useId, createContext, useContext, useState, useCallback } from 'react';
 import { cn } from '@ninna-ui/utils';
+import { useFormControlProps } from '../form-control';
 import type { Color } from '@ninna-ui/core';
 import type { CheckboxSize } from '../types';
 import { checkboxStyles, checkboxGroupStyles, checkboxVariants, CHECKBOX_ICON_SIZES } from './checkbox.styles';
@@ -22,6 +23,7 @@ interface CheckboxGroupContextValue {
   value: string[];
   onChange: (itemValue: string, checked: boolean) => void;
   disabled?: boolean;
+  invalid?: boolean;
   size?: CheckboxSize;
   color?: Color;
   variant?: CheckboxVariant;
@@ -66,7 +68,15 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ref
   ) => {
     const generatedId = useId();
-    const id = idProp ?? generatedId;
+    const formControlProps = useFormControlProps({
+      id: idProp,
+      disabled,
+      required,
+      invalid,
+    });
+
+    const id = formControlProps.id ?? generatedId;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
     const [internalChecked, setInternalChecked] = useState(defaultChecked ?? false);
     const isControlled = checked !== undefined;
     const isChecked = isControlled ? checked : internalChecked;
@@ -82,9 +92,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       [isControlled, onCheckedChange]
     );
 
-
     const checkboxElement = (
-      <label data-slot="checkbox" className={cn('relative inline-flex', className)}>
+      <div data-slot="checkbox" className={cn('relative inline-flex items-center', className)}>
         <input
           data-slot="control"
           ref={ref}
@@ -93,14 +102,17 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           name={name}
           value={value}
           checked={isChecked}
-          disabled={disabled}
-          required={required}
+          disabled={formControlProps.disabled}
+          required={formControlProps.required}
           onChange={handleChange}
           className={checkboxStyles.input}
-          aria-invalid={invalid || undefined}
+          aria-invalid={isInvalid || undefined}
           aria-checked={indeterminate ? 'mixed' : isChecked}
           data-state={indeterminate ? 'indeterminate' : isChecked ? 'checked' : 'unchecked'}
-          aria-describedby={description ? `${id}-description` : undefined}
+          aria-describedby={cn(
+            description && `${id}-description`,
+            formControlProps['aria-describedby']
+          ) || undefined}
         />
         <span
           data-slot="indicator"
@@ -124,7 +136,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                 />
           )}
         </span>
-      </label>
+      </div>
     );
 
     if (!label && !description) {
@@ -133,10 +145,6 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <div className={cn(
-        // When a description is present we align the checkbox with the first
-        // line of the label block (items-start). Otherwise we centre-align
-        // so the box sits on the same visual line as its label — see the
-        // comment in checkbox.styles.ts for the full rationale.
         description ? checkboxStyles.wrapperWithDescription : checkboxStyles.wrapper,
         labelPosition === 'start' && checkboxStyles.wrapperReverse
       )}>
@@ -147,11 +155,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               htmlFor={id}
               className={cn(
                 checkboxStyles.label,
-                // Scale the label typography with the checkbox size so
-                // sm/md/lg rows look visibly distinct in a Sizes demo —
-                // the 4px box-size step alone is too subtle to read.
                 checkboxStyles.labelSizes[size],
-                disabled && checkboxStyles.labelDisabled
+                formControlProps.disabled && checkboxStyles.labelDisabled
               )}
             >
               {label}
@@ -186,6 +191,8 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
       defaultValue = [],
       onValueChange,
       disabled,
+      required,
+      invalid,
       size = 'md',
       color = 'primary',
       variant = 'outline',
@@ -197,6 +204,14 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
     },
     ref
   ) => {
+    const formControlProps = useFormControlProps({
+      disabled,
+      required,
+      invalid,
+    });
+
+    const isDisabled = disabled || formControlProps.disabled;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
     const [internalValue, setInternalValue] = useState<string[]>(defaultValue);
     const value = controlledValue ?? internalValue;
 
@@ -215,11 +230,13 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
     );
 
     return (
-      <CheckboxGroupContext.Provider value={{ value, onChange: handleChange, disabled, size, color, variant }}>
+      <CheckboxGroupContext.Provider value={{ value, onChange: handleChange, disabled: isDisabled, invalid: isInvalid, size, color, variant }}>
         <div
           ref={ref}
           data-slot="checkbox-group"
           role="group"
+          aria-labelledby={formControlProps['aria-labelledby']}
+          aria-describedby={formControlProps['aria-describedby']}
           className={cn(
             checkboxGroupStyles.root,
             orientation === 'vertical' ? checkboxGroupStyles.vertical : checkboxGroupStyles.horizontal,
@@ -258,7 +275,7 @@ export const CheckboxGroupItem = forwardRef<HTMLInputElement, CheckboxGroupItemP
       throw new Error('CheckboxGroupItem must be used within a CheckboxGroup');
     }
 
-    const { value: groupValue, onChange, disabled: groupDisabled, size, color, variant } = context;
+    const { value: groupValue, onChange, disabled: groupDisabled, invalid: groupInvalid, size, color, variant } = context;
     const isChecked = groupValue.includes(value);
 
     return (
@@ -267,6 +284,7 @@ export const CheckboxGroupItem = forwardRef<HTMLInputElement, CheckboxGroupItemP
         checked={isChecked}
         onCheckedChange={(checked) => onChange(value, checked)}
         disabled={disabledProp ?? groupDisabled}
+        invalid={props.invalid ?? groupInvalid}
         size={sizeProp ?? size}
         color={colorProp ?? color}
         variant={variantProp ?? variant}

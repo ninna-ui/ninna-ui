@@ -1,10 +1,13 @@
 import '@testing-library/jest-dom/vitest';
 import { cleanup } from '@testing-library/react';
-import { afterEach, vi } from 'vitest';
-import { setup } from '@sa11y/vitest';
+import { afterEach, expect, vi } from 'vitest';
+import { toBeAccessible } from '@sa11y/vitest';
 
-// Initialize sa11y accessible matchers
-setup();
+// Register toBeAccessible using OUR vitest 4 expect instance.
+// @sa11y/vitest ships with peer dep vitest@^3.x - its registerSa11yMatcher()
+// extends the wrong vitest's expect. We import the raw matcher function and
+// extend the correct expect ourselves.
+expect.extend({ toBeAccessible });
 
 // All mocks are guarded behind `typeof window` so this file is safe to
 // import in Node-only test suites (hooks, utils) even though jsdom is the

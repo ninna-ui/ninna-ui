@@ -43,6 +43,7 @@ const MODAL_PROPS: PropDefinition[] = [
 const CONTENT_PROPS: PropDefinition[] = [
   { name: "size", type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'", defaultValue: "'md'", description: "Size of the modal content panel" },
   { name: "centered", type: "boolean", defaultValue: "true", description: "Whether the modal is vertically centered" },
+  { name: "title", type: "string", description: "Accessible title for the modal. Rendered as sr-only if Modal.Header is not used." },
   { name: "description", type: "string", description: "Accessible description for the modal. Rendered as sr-only when provided." },
   { name: "closeOnOverlayClick", type: "boolean", defaultValue: "true", description: "Whether clicking the overlay closes the modal" },
   { name: "closeOnEscape", type: "boolean", defaultValue: "true", description: "Whether pressing Escape closes the modal" },

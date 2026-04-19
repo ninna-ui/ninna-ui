@@ -12,6 +12,10 @@ export interface SelectProps {
   'aria-label'?: string;
   /** ID of element that labels the select */
   'aria-labelledby'?: string;
+  /** ID of element that describes the select */
+  'aria-describedby'?: string;
+  /** ID for the select trigger */
+  id?: string;
   /** Size of the select */
   size?: Size;
   /** Color theme */

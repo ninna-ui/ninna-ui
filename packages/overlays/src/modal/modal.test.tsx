@@ -95,7 +95,8 @@ describe('Modal', () => {
   it('renders close button', async () => {
     render(
       <Modal open>
-        <Modal.Content>
+        {/* title prop provides the sr-only label since we have no Modal.Header */}
+        <Modal.Content title="Close this dialog">
           <Modal.Close />
           <Modal.Body>Content</Modal.Body>
         </Modal.Content>
@@ -113,7 +114,7 @@ describe('Modal', () => {
     render(
       <Modal onOpenChange={onOpenChange}>
         <Modal.Trigger>Open</Modal.Trigger>
-        <Modal.Content>
+        <Modal.Content title="Action required">
           <Modal.Body>Content</Modal.Body>
         </Modal.Content>
       </Modal>
@@ -128,7 +129,7 @@ describe('Modal', () => {
   it('has aria-modal="true" when open', async () => {
     render(
       <Modal open>
-        <Modal.Content>
+        <Modal.Content title="Status update">
           <Modal.Body>Content</Modal.Body>
         </Modal.Content>
       </Modal>
@@ -136,6 +137,20 @@ describe('Modal', () => {
     await waitFor(() => {
       const content = document.querySelector('[data-slot="modal-content"]');
       expect(content).toHaveAttribute('aria-modal', 'true');
+    });
+  });
+
+  it('dialog role is applied when open', async () => {
+    render(
+      <Modal open>
+        <Modal.Content>
+          <Modal.Header>Confirm Action</Modal.Header>
+          <Modal.Body>Are you sure?</Modal.Body>
+        </Modal.Content>
+      </Modal>
+    );
+    await waitFor(() => {
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
     });
   });
 

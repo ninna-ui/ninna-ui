@@ -29,7 +29,11 @@ export interface ModalContentProps extends ComponentPropsWithoutRef<'div'> {
   size?: ModalSize;
   /** Whether the modal is centered vertically */
   centered?: boolean;
-  /** Accessible description for the modal. Only rendered when provided. */
+  /** Accessible title for the modal dialog. Used as a visually-hidden label
+   * when no Modal.Header is rendered. When Modal.Header IS rendered it
+   * provides the title visually, so this can be omitted. */
+  title?: string;
+  /** Accessible description for the modal. Rendered visually-hidden. */
   description?: string;
   /** Whether clicking the overlay closes the modal @default true */
   closeOnOverlayClick?: boolean | undefined;

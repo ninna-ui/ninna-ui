@@ -64,4 +64,16 @@ describe('Select', () => {
     expect(trigger.className).toContain('focus:ring-accent/30');
     expect(trigger.className).toContain('focus:border-accent');
   });
+
+  it('passes axe accessibility audit', async () => {
+    const { container } = render(
+      <label htmlFor="test-select">
+        Choose an option
+        <Select id="test-select" placeholder="Pick one">
+          <SelectItem value="a">A</SelectItem>
+        </Select>
+      </label>
+    );
+    await expect(container).toBeAccessible();
+  });
 });

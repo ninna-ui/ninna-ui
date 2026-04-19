@@ -186,7 +186,7 @@ ninna-ui/
 - **[Contributing Guide](./docs/guides/CONTRIBUTING.md)** - Development workflow, package boundaries, PR process, component checklist
 - **[Component Standards](./docs/standards/COMPONENT_STANDARD.md)** - File structure, props design, accessibility, testing requirements
 - **[Accessibility Standards](./docs/standards/ACCESSIBILITY.md)** - WCAG 2.1 AA compliance, ARIA patterns, keyboard navigation
-- **[Testing Strategy](./docs/standards/TESTING_STRATEGY.md)** - 700+ tests, vitest-axe integration, priority-based coverage
+- **[Testing Strategy](./docs/standards/TESTING_STRATEGY.md)** - 700+ tests, @sa11y/vitest integration, priority-based coverage
 - **[Development Rules](./docs/guides/DEVELOPMENT_RULES.md)** - Naming conventions, Tailwind CSS rules, Radix isolation, data attributes
 
 ## License

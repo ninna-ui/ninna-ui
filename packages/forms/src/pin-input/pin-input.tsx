@@ -1,5 +1,6 @@
 import { forwardRef, useCallback, useRef, useState, useEffect } from 'react';
 import { cn } from '@ninna-ui/utils';
+import { useFormControlProps } from '../form-control';
 import { pinInputStyles, PIN_INPUT_SIZES } from './pin-input.styles';
 import type { PinInputProps } from './pin-input.types';
 
@@ -31,10 +32,19 @@ export const PinInput = forwardRef<HTMLDivElement, PinInputProps>(
       name,
       className,
       'aria-label': ariaLabel = 'PIN input',
+      'aria-labelledby': ariaLabelledBy,
+      'aria-describedby': ariaDescribedBy,
       ...props
     },
     ref
   ) => {
+    const formControlProps = useFormControlProps({
+      disabled,
+      invalid,
+    });
+
+    const isDisabled = disabled || formControlProps.disabled;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
     const [values, setValues] = useState<string[]>(() => {
       const initial = controlledValue || defaultValue;
       return initial.split('').slice(0, length).concat(Array(length - initial.length).fill(''));
@@ -147,6 +157,8 @@ export const PinInput = forwardRef<HTMLDivElement, PinInputProps>(
         className={cn(pinInputStyles.container, sizeStyles.gap, className)}
         role="group"
         aria-label={ariaLabel}
+        aria-labelledby={ariaLabelledBy || formControlProps['aria-labelledby']}
+        aria-describedby={ariaDescribedBy || formControlProps['aria-describedby']}
         {...props}
       >
         {Array.from({ length }).map((_, index) => (
@@ -158,7 +170,7 @@ export const PinInput = forwardRef<HTMLDivElement, PinInputProps>(
             pattern={type === 'number' ? '[0-9]*' : undefined}
             autoComplete={otp ? 'one-time-code' : 'off'}
             autoFocus={autoFocus && index === 0}
-            disabled={disabled}
+            disabled={isDisabled}
             value={values[index]}
             placeholder={placeholder}
             onChange={(e) => handleChange(index, e.target.value)}
@@ -168,12 +180,12 @@ export const PinInput = forwardRef<HTMLDivElement, PinInputProps>(
             className={cn(
               pinInputStyles.input,
               sizeStyles.input,
-              disabled && pinInputStyles.inputDisabled,
-              invalid && pinInputStyles.inputInvalid
+              isDisabled && pinInputStyles.inputDisabled,
+              isInvalid && pinInputStyles.inputInvalid
             )}
-            aria-label={`Pin digit ${index + 1} of ${length}`}
-            aria-invalid={invalid || undefined}
-            aria-disabled={disabled || undefined}
+            aria-label={`Digit ${index + 1} of ${length}`}
+            aria-invalid={isInvalid || undefined}
+            aria-disabled={isDisabled || undefined}
           />
         ))}
         {name && (

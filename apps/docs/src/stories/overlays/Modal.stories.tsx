@@ -29,6 +29,14 @@ const meta: Meta = {
       description: 'Whether the modal blocks interaction with the rest of the page',
       table: { defaultValue: { summary: 'true' } },
     },
+    title: {
+      control: 'text',
+      description: 'Accessible title for the modal (sr-only if no header)',
+    },
+    description: {
+      control: 'text',
+      description: 'Accessible description for the modal (sr-only)',
+    },
   },
 };
 
@@ -286,6 +294,25 @@ export const LongContent: Story = {
         </Modal.Body>
         <Modal.Footer>
           <Modal.Close asChild><Button variant="ghost">Close</Button></Modal.Close>
+        </Modal.Footer>
+      </Modal.Content>
+    </Modal>
+  ),
+};
+export const Headless: Story = {
+  render: () => (
+    <Modal>
+      <Modal.Trigger asChild>
+        <Button>Open Headless Modal</Button>
+      </Modal.Trigger>
+      <Modal.Content title="Accessible Title" description="This modal uses the title prop for accessibility instead of Modal.Header.">
+        <Modal.Body>
+          <p className="text-base-content/70">
+            This modal has no header but remains accessible via the <code className="text-primary font-mono">title</code> prop.
+          </p>
+        </Modal.Body>
+        <Modal.Footer>
+          <Modal.Close asChild><Button>Dismiss</Button></Modal.Close>
         </Modal.Footer>
       </Modal.Content>
     </Modal>

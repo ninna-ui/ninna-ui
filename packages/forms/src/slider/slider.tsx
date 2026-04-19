@@ -1,5 +1,6 @@
 import { forwardRef, useId, useState, useEffect } from 'react';
 import { cn } from '@ninna-ui/utils';
+import { useFormControlProps } from '../form-control';
 import { SliderEngine } from '@ninna-ui/react-internal';
 import { 
   sliderRootVariants, 
@@ -43,12 +44,23 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
       marks,
       formatValue,
       className,
+      id: idProp,
+      invalid,
       ...props
     },
     ref
   ) => {
     const generatedId = useId();
+    const formControlProps = useFormControlProps({
+      id: idProp,
+      disabled,
+      invalid,
+    });
+
     const isHorizontal = orientation === 'horizontal';
+    const id = formControlProps.id ?? generatedId;
+    const isDisabled = disabled || formControlProps.disabled;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
     
     // Internal state to track current values for showValue, especially when uncontrolled
     const [internalValue, setInternalValue] = useState<number[]>(value ?? defaultValue);
@@ -96,13 +108,15 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
           max={max}
           step={step}
           minStepsBetweenThumbs={minStepsBetweenThumbs}
-          disabled={disabled}
+          disabled={isDisabled}
           orientation={orientation}
           inverted={inverted}
           name={name}
-          aria-labelledby={label ? generatedId : undefined}
+          aria-invalid={isInvalid || undefined}
+          aria-labelledby={label ? `${id}-label` : formControlProps['aria-labelledby']}
+          aria-describedby={formControlProps['aria-describedby']}
           className={cn(
-            sliderRootVariants({ orientation, size, disabled: !!disabled }),
+            sliderRootVariants({ orientation, size, disabled: !!isDisabled }),
             className
           )}
           {...props}
@@ -145,7 +159,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
               key={`slider-thumb-${index}`}
               data-slot="thumb"
               className={sliderThumbVariants({ variant, color, size, orientation })}
-              aria-labelledby={label ? generatedId : undefined}
+              aria-labelledby={label ? `${id}-label` : formControlProps['aria-labelledby']}
             />
           ))}
         </SliderEngine.Root>
@@ -167,7 +181,7 @@ export const Slider = forwardRef<HTMLDivElement, SliderProps>(
 
     return (
       <div className={sliderStyles.wrapper}>
-        <label id={generatedId} className={sliderStyles.label}>
+        <label id={`${id}-label`} className={sliderStyles.label}>
           {label}
         </label>
         {sliderElement}

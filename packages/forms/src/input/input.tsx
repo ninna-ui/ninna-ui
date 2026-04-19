@@ -124,7 +124,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           
           {floatingLabel && (
             <label
-              htmlFor={inputId}
+              htmlFor={resolvedId}
               className={cn(
                 inputStyles.floatingLabel,
                 inputStyles.floatingLabelSizes[size]

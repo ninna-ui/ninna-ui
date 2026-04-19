@@ -40,6 +40,7 @@ const DRAWER_PROPS: PropDefinition[] = [
 const CONTENT_PROPS: PropDefinition[] = [
   { name: "placement", type: "'left' | 'right' | 'top' | 'bottom'", defaultValue: "'right'", description: "Which edge the drawer slides from" },
   { name: "size", type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'full'", defaultValue: "'md'", description: "Size of the drawer panel" },
+  { name: "title", type: "string", description: "Accessible title for the drawer. Rendered as sr-only if Drawer.Header is not used." },
   { name: "description", type: "string", description: "Accessible description for the drawer. Rendered as sr-only when provided." },
   { name: "closeOnOverlayClick", type: "boolean", defaultValue: "true", description: "Whether clicking the overlay closes the drawer" },
   { name: "closeOnEscape", type: "boolean", defaultValue: "true", description: "Whether pressing Escape closes the drawer" },

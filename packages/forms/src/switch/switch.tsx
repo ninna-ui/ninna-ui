@@ -1,5 +1,6 @@
 import { forwardRef, useId } from 'react';
 import { cn } from '@ninna-ui/utils';
+import { useFormControlProps } from '../form-control';
 import { SwitchEngine } from '@ninna-ui/react-internal';
 import { switchStyles, switchRootVariants, switchThumbVariants } from './switch.styles';
 import type { SwitchProps } from './switch.types';
@@ -50,9 +51,16 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
     ref
   ) => {
     const generatedId = useId();
-    const id = idProp ?? generatedId;
+    const formControlProps = useFormControlProps({
+      id: idProp,
+      disabled,
+      required,
+      invalid,
+    });
 
-    const isDisabled = disabled || loading;
+    const id = formControlProps.id ?? generatedId;
+    const isDisabled = disabled || formControlProps.disabled || loading;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
 
     const switchElement = (
       <SwitchEngine.Root
@@ -63,15 +71,19 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
         defaultChecked={defaultChecked}
         onCheckedChange={onCheckedChange}
         disabled={isDisabled}
-        required={required}
+        required={formControlProps.required}
         name={name}
         value={value}
-        data-invalid={invalid || undefined}
+        data-invalid={isInvalid || undefined}
         data-loading={loading || undefined}
         className={cn(
-          switchRootVariants({ variant: variant as 'solid' | 'outline', color, size, invalid: !!invalid }),
+          switchRootVariants({ variant: variant as 'solid' | 'outline', color, size, invalid: isInvalid }),
           className
         )}
+        aria-describedby={cn(
+          description && `${id}-description`,
+          formControlProps['aria-describedby']
+        ) || undefined}
         {...props}
       >
         {trackLabels && (
@@ -103,9 +115,6 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
 
     return (
       <div className={cn(
-        // See switch.styles.ts for the rationale: centre-align by default
-        // so the switch shares a line with its label; switch to
-        // top-alignment only when a description is stacked below.
         description ? switchStyles.wrapperWithDescription : switchStyles.wrapper,
         labelPosition === 'start' && switchStyles.wrapperReverse
       )}>
@@ -124,7 +133,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
             </label>
           )}
           {description && (
-            <span className={switchStyles.description}>{description}</span>
+            <span id={`${id}-description`} className={switchStyles.description}>{description}</span>
           )}
         </div>
       </div>

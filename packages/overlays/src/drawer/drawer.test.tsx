@@ -24,6 +24,7 @@ describe('Drawer', () => {
       <Drawer>
         <Drawer.Trigger>Open</Drawer.Trigger>
         <Drawer.Content>
+          <Drawer.Header>Title</Drawer.Header>
           <Drawer.Body>Content</Drawer.Body>
         </Drawer.Content>
       </Drawer>
@@ -50,7 +51,8 @@ describe('Drawer', () => {
     render(
       <Drawer>
         <Drawer.Trigger>Open</Drawer.Trigger>
-        <Drawer.Content>
+        {/* title prop provides sr-only label since no Drawer.Header is rendered */}
+        <Drawer.Content title="Navigation drawer">
           <Drawer.Body>Drawer content</Drawer.Body>
         </Drawer.Content>
       </Drawer>
@@ -95,7 +97,7 @@ describe('Drawer', () => {
     async (placement) => {
       render(
         <Drawer open>
-          <Drawer.Content placement={placement}>
+          <Drawer.Content placement={placement} title={`${placement} panel`}>
             <Drawer.Body>Content</Drawer.Body>
           </Drawer.Content>
         </Drawer>
@@ -111,7 +113,7 @@ describe('Drawer', () => {
   it('renders close button', async () => {
     render(
       <Drawer open>
-        <Drawer.Content>
+        <Drawer.Content title="Settings panel">
           <Drawer.Close />
           <Drawer.Body>Content</Drawer.Body>
         </Drawer.Content>
@@ -129,7 +131,7 @@ describe('Drawer', () => {
     render(
       <Drawer onOpenChange={onOpenChange}>
         <Drawer.Trigger>Open</Drawer.Trigger>
-        <Drawer.Content>
+        <Drawer.Content title="Navigation menu">
           <Drawer.Body>Content</Drawer.Body>
         </Drawer.Content>
       </Drawer>
@@ -144,7 +146,7 @@ describe('Drawer', () => {
   it('has aria-modal="true" when open', async () => {
     render(
       <Drawer open>
-        <Drawer.Content>
+        <Drawer.Content title="User preferences">
           <Drawer.Body>Content</Drawer.Body>
         </Drawer.Content>
       </Drawer>
@@ -152,6 +154,21 @@ describe('Drawer', () => {
     await waitFor(() => {
       const content = document.querySelector('[data-slot="drawer-content"]');
       expect(content).toHaveAttribute('aria-modal', 'true');
+    });
+  });
+
+  it('dialog role and label are applied when open', async () => {
+    render(
+      <Drawer open>
+        <Drawer.Content>
+          <Drawer.Header>Account Settings</Drawer.Header>
+          <Drawer.Body>Content</Drawer.Body>
+        </Drawer.Content>
+      </Drawer>
+    );
+    await waitFor(() => {
+      // The dialog should be accessible by its label
+      expect(screen.getByRole('dialog', { name: 'Account Settings' })).toBeInTheDocument();
     });
   });
 
