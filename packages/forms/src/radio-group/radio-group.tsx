@@ -47,24 +47,39 @@ export const RadioGroup = forwardRef<HTMLDivElement, RadioGroupProps>(
       gap = 'md',
       className,
       children,
+      id: idProp,
     },
     ref
   ) => {
+    const formControlProps = useFormControlProps({
+      id: idProp,
+      disabled,
+      required,
+      invalid,
+    });
+
+    const id = formControlProps.id || useId();
+    const isDisabled = disabled || formControlProps.disabled;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
+
     return (
-      <RadioGroupContext.Provider value={{ size, color, variant, disabled, invalid, value }}>
+      <RadioGroupContext.Provider value={{ size, color, variant, disabled: isDisabled, invalid: isInvalid, value }}>
         <RadioEngine.Root
           ref={ref}
           data-slot="radio-group"
+          id={id}
           value={value}
           defaultValue={defaultValue}
           onValueChange={onValueChange}
-          disabled={disabled}
-          required={required}
+          disabled={isDisabled}
+          required={formControlProps.required}
           name={name}
           orientation={orientation}
           loop={loop}
-          data-invalid={invalid || undefined}
-          data-disabled={disabled || undefined}
+          data-invalid={isInvalid || undefined}
+          data-disabled={isDisabled || undefined}
+          aria-labelledby={formControlProps['aria-labelledby']}
+          aria-describedby={formControlProps['aria-describedby']}
           className={cn(
             radioGroupStyles.root,
             orientation === 'horizontal' ? radioGroupStyles.horizontal : radioGroupStyles.vertical,
@@ -126,7 +141,10 @@ export const RadioGroupItem = forwardRef<HTMLButtonElement, RadioGroupItemProps>
           radioItemVariants({ variant, color, size, invalid: isInvalid }),
           className
         )}
-        aria-describedby={description ? `${id}-description` : formControlProps['aria-describedby']}
+        aria-describedby={cn(
+          description && `${id}-description`,
+          formControlProps['aria-describedby']
+        ) || undefined}
         {...props}
       >
         <RadioEngine.Indicator 

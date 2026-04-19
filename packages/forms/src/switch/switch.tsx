@@ -80,7 +80,10 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
           switchRootVariants({ variant: variant as 'solid' | 'outline', color, size, invalid: isInvalid }),
           className
         )}
-        aria-describedby={description ? `${id}-description` : formControlProps['aria-describedby']}
+        aria-describedby={cn(
+          description && `${id}-description`,
+          formControlProps['aria-describedby']
+        ) || undefined}
         {...props}
       >
         {trackLabels && (

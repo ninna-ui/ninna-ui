@@ -23,6 +23,7 @@ interface CheckboxGroupContextValue {
   value: string[];
   onChange: (itemValue: string, checked: boolean) => void;
   disabled?: boolean;
+  invalid?: boolean;
   size?: CheckboxSize;
   color?: Color;
   variant?: CheckboxVariant;
@@ -108,11 +109,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           aria-invalid={isInvalid || undefined}
           aria-checked={indeterminate ? 'mixed' : isChecked}
           data-state={indeterminate ? 'indeterminate' : isChecked ? 'checked' : 'unchecked'}
-          aria-describedby={
-            description
-              ? `${id}-description`
-              : formControlProps['aria-describedby']
-          }
+          aria-describedby={cn(
+            description && `${id}-description`,
+            formControlProps['aria-describedby']
+          ) || undefined}
         />
         <span
           data-slot="indicator"
@@ -191,6 +191,8 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
       defaultValue = [],
       onValueChange,
       disabled,
+      required,
+      invalid,
       size = 'md',
       color = 'primary',
       variant = 'outline',
@@ -202,6 +204,14 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
     },
     ref
   ) => {
+    const formControlProps = useFormControlProps({
+      disabled,
+      required,
+      invalid,
+    });
+
+    const isDisabled = disabled || formControlProps.disabled;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
     const [internalValue, setInternalValue] = useState<string[]>(defaultValue);
     const value = controlledValue ?? internalValue;
 
@@ -220,11 +230,13 @@ export const CheckboxGroup = forwardRef<HTMLDivElement, CheckboxGroupProps>(
     );
 
     return (
-      <CheckboxGroupContext.Provider value={{ value, onChange: handleChange, disabled, size, color, variant }}>
+      <CheckboxGroupContext.Provider value={{ value, onChange: handleChange, disabled: isDisabled, invalid: isInvalid, size, color, variant }}>
         <div
           ref={ref}
           data-slot="checkbox-group"
           role="group"
+          aria-labelledby={formControlProps['aria-labelledby']}
+          aria-describedby={formControlProps['aria-describedby']}
           className={cn(
             checkboxGroupStyles.root,
             orientation === 'vertical' ? checkboxGroupStyles.vertical : checkboxGroupStyles.horizontal,
@@ -263,7 +275,7 @@ export const CheckboxGroupItem = forwardRef<HTMLInputElement, CheckboxGroupItemP
       throw new Error('CheckboxGroupItem must be used within a CheckboxGroup');
     }
 
-    const { value: groupValue, onChange, disabled: groupDisabled, size, color, variant } = context;
+    const { value: groupValue, onChange, disabled: groupDisabled, invalid: groupInvalid, size, color, variant } = context;
     const isChecked = groupValue.includes(value);
 
     return (
@@ -272,6 +284,7 @@ export const CheckboxGroupItem = forwardRef<HTMLInputElement, CheckboxGroupItemP
         checked={isChecked}
         onCheckedChange={(checked) => onChange(value, checked)}
         disabled={disabledProp ?? groupDisabled}
+        invalid={props.invalid ?? groupInvalid}
         size={sizeProp ?? size}
         color={colorProp ?? color}
         variant={variantProp ?? variant}

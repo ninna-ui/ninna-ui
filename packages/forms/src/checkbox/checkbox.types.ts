@@ -60,6 +60,10 @@ export interface CheckboxGroupProps extends Omit<ComponentPropsWithoutRef<'div'>
   onValueChange?: (value: string[]) => void;
   /** Whether the entire group is disabled */
   disabled?: boolean;
+  /** Whether a selection is required */
+  required?: boolean;
+  /** Whether the group is in an invalid state */
+  invalid?: boolean;
   /** Size for all checkboxes in the group */
   size?: CheckboxSize;
   /** Color for all checkboxes in the group */

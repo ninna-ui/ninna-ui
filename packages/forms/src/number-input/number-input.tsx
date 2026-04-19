@@ -1,5 +1,6 @@
 import { forwardRef, useCallback, useId, useState, useEffect } from 'react';
 import { cn } from '@ninna-ui/utils';
+import { useFormControlProps } from '../form-control';
 import { numberInputStyles, NUMBER_INPUT_SIZES } from './number-input.styles';
 import type { NumberInputProps } from './number-input.types';
 
@@ -38,13 +39,27 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
       stepperPosition = 'right',
       format,
       parse,
-      id,
+      id: idProp,
+      'aria-label': ariaLabel,
+      'aria-labelledby': ariaLabelledBy,
+      'aria-describedby': ariaDescribedBy,
       ...props
     },
     ref
   ) => {
     const generatedId = useId();
-    const inputId = id || generatedId;
+    const formControlProps = useFormControlProps({
+      id: idProp,
+      disabled,
+      required,
+      invalid,
+      readOnly,
+    });
+
+    const inputId = formControlProps.id ?? generatedId;
+    const isDisabled = disabled || formControlProps.disabled;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
+    const isReadOnly = readOnly || formControlProps.readOnly;
     
     const [internalValue, setInternalValue] = useState<number | undefined>(
       controlledValue ?? defaultValue
@@ -148,8 +163,8 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
       numberInputStyles.input,
       NUMBER_INPUT_SIZES[size],
       numberInputStyles.inputDefault,
-      disabled && numberInputStyles.inputDisabled,
-      invalid && numberInputStyles.inputInvalid,
+      isDisabled && numberInputStyles.inputDisabled,
+      isInvalid && numberInputStyles.inputInvalid,
       showStepper && stepperPosition === 'right' && numberInputStyles.inputWithStepperRight,
       showStepper && stepperPosition === 'sides' && 'rounded-none',
       className
@@ -172,6 +187,7 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             </svg>
           </button>
           <input
+            {...formControlProps}
             ref={ref}
             data-slot="input"
             id={inputId}
@@ -183,17 +199,20 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
             onChange={handleChange}
             onBlur={handleBlur}
             onKeyDown={handleKeyDown}
-            disabled={disabled}
-            readOnly={readOnly || !allowKeyboardInput}
-            required={required}
+            disabled={isDisabled}
+            readOnly={isReadOnly || !allowKeyboardInput}
+            required={formControlProps.required}
             placeholder={placeholder}
             className={inputClasses}
-            aria-invalid={invalid || undefined}
-            aria-disabled={disabled || undefined}
-            aria-required={required || undefined}
+            aria-invalid={isInvalid || undefined}
+            aria-disabled={isDisabled || undefined}
+            aria-required={formControlProps.required || undefined}
+            aria-labelledby={ariaLabelledBy || formControlProps['aria-labelledby']}
+            aria-describedby={ariaDescribedBy || formControlProps['aria-describedby']}
+            aria-label={ariaLabel}
             aria-valuemin={min}
             aria-valuemax={max}
-            aria-valuenow={currentValue}
+            aria-valuenow={currentValue ?? undefined}
             {...props}
           />
           <button
@@ -216,27 +235,32 @@ export const NumberInput = forwardRef<HTMLInputElement, NumberInputProps>(
     return (
       <div data-slot="number-input" className={numberInputStyles.container}>
         <input
+          {...formControlProps}
           ref={ref}
           data-slot="input"
           id={inputId}
           type="text"
           inputMode="decimal"
+          role="spinbutton"
           name={name}
           value={displayValue}
           onChange={handleChange}
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
-          disabled={disabled}
-          readOnly={readOnly || !allowKeyboardInput}
-          required={required}
+          disabled={isDisabled}
+          readOnly={isReadOnly || !allowKeyboardInput}
+          required={formControlProps.required}
           placeholder={placeholder}
           className={inputClasses}
-          aria-invalid={invalid || undefined}
-          aria-disabled={disabled || undefined}
-          aria-required={required || undefined}
+          aria-invalid={isInvalid || undefined}
+          aria-disabled={isDisabled || undefined}
+          aria-required={formControlProps.required || undefined}
+          aria-labelledby={ariaLabelledBy || formControlProps['aria-labelledby']}
+          aria-describedby={ariaDescribedBy || formControlProps['aria-describedby']}
+          aria-label={ariaLabel}
           aria-valuemin={min}
           aria-valuemax={max}
-          aria-valuenow={currentValue}
+          aria-valuenow={currentValue ?? undefined}
           {...props}
         />
         {showStepper && (

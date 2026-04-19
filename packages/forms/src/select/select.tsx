@@ -1,5 +1,6 @@
-import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { forwardRef, useId, type ComponentPropsWithoutRef } from 'react';
 import { cn } from '@ninna-ui/utils';
+import { useFormControlProps } from '../form-control';
 import { SelectEngine } from '@ninna-ui/react-internal';
 import { selectStyles, selectTriggerVariants } from './select.styles';
 import type { SelectProps, SelectItemProps, SelectGroupProps } from './select.types';
@@ -49,14 +50,27 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
       onClear,
       'aria-label': ariaLabel,
       'aria-labelledby': ariaLabelledBy,
+      'aria-describedby': ariaDescribedBy,
+      id: idProp,
       className,
       children,
+      ...props
     },
     ref
   ) => {
-    const isInvalid = invalid;
+    const generatedId = useId();
+    const formControlProps = useFormControlProps({
+      id: idProp,
+      disabled,
+      required,
+      invalid,
+    });
+
+    const id = formControlProps.id ?? generatedId;
+    const isDisabled = disabled || formControlProps.disabled;
+    const isInvalid = invalid || !!formControlProps['aria-invalid'];
     const hasValue = value !== undefined ? value !== '' : undefined;
-    const showClear = clearable && hasValue && !disabled;
+    const showClear = clearable && hasValue && !isDisabled;
 
     return (
       <SelectEngine.Root
@@ -66,16 +80,17 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
         open={open}
         defaultOpen={defaultOpen}
         onOpenChange={onOpenChange}
-        disabled={disabled}
-        required={required}
+        disabled={isDisabled}
+        required={formControlProps.required}
         name={name}
       >
         <div className={cn('relative flex items-center', fullWidth ? 'w-full' : 'w-auto')}>
           <SelectEngine.Trigger
             ref={ref}
+            id={id}
             data-slot="trigger"
             data-invalid={isInvalid || undefined}
-            data-disabled={disabled || undefined}
+            data-disabled={isDisabled || undefined}
             data-variant={variant}
             className={cn(
               selectTriggerVariants({ selectVariant: variant as 'outline' | 'filled' | 'flushed', color, size, invalid: !!isInvalid, fullWidth: !!fullWidth }),
@@ -83,7 +98,9 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
               className
             )}
             aria-label={ariaLabel}
-            aria-labelledby={ariaLabelledBy}
+            aria-labelledby={ariaLabelledBy || formControlProps['aria-labelledby']}
+            aria-describedby={ariaDescribedBy || formControlProps['aria-describedby']}
+            {...props}
           >
             <SelectEngine.Value placeholder={placeholder} />
             <SelectEngine.Icon>

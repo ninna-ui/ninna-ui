@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Drawer } from '@ninna-ui/overlays';
+import { Drawer, type DrawerProps, type DrawerContentProps } from '@ninna-ui/overlays';
 import { Button } from '@ninna-ui/primitives';
 
-const meta: Meta<typeof Drawer> = {
+const meta: Meta<DrawerProps & Pick<DrawerContentProps, 'title' | 'description'>> = {
   title: 'Overlays/Drawer',
   component: Drawer,
   subcomponents: {
@@ -37,6 +37,14 @@ const meta: Meta<typeof Drawer> = {
       control: 'boolean',
       description: 'Whether the drawer blocks interaction with the rest of the page',
       table: { defaultValue: { summary: 'true' } },
+    },
+    title: {
+      control: 'text',
+      description: 'Accessible title for the drawer (sr-only if no header)',
+    },
+    description: {
+      control: 'text',
+      description: 'Accessible description for the drawer (sr-only)',
     },
   },
 };
@@ -172,6 +180,22 @@ export const WithForm: Story = {
           </Drawer.Close>
           <Button>Save Changes</Button>
         </Drawer.Footer>
+      </Drawer.Content>
+    </Drawer>
+  ),
+};
+export const Headless: Story = {
+  render: () => (
+    <Drawer>
+      <Drawer.Trigger asChild>
+        <Button>Open Headless Drawer</Button>
+      </Drawer.Trigger>
+      <Drawer.Content title="Navigation Menu" description="Main navigation options for the application.">
+        <Drawer.Body>
+          <p className="text-base-content/70">
+            This drawer uses the <code className="text-primary font-mono">title</code> prop for accessibility.
+          </p>
+        </Drawer.Body>
       </Drawer.Content>
     </Drawer>
   ),
