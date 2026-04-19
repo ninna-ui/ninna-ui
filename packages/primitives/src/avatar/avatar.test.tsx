@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Avatar } from './avatar';
 
 describe('Avatar', () => {
@@ -105,14 +105,12 @@ describe('Avatar', () => {
   // ── A11y: axe audit ────────────────────────────────────────
   it('has no accessibility violations (with name)', async () => {
     const { container } = render(<Avatar name="John Doe" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('has no accessibility violations (with image)', async () => {
     const { container } = render(<Avatar src="/user.jpg" alt="John Doe" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   // ── className merge ────────────────────────────────────────

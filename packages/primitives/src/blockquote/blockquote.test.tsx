@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Blockquote } from './blockquote';
 
 describe('Blockquote', () => {
@@ -78,7 +78,6 @@ describe('Blockquote', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<Blockquote>This is a quote</Blockquote>);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

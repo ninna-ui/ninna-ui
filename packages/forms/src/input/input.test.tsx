@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { Input } from './input';
 import { FormControl } from '../form-control';
 
@@ -118,8 +118,7 @@ describe('Input', () => {
         <Input id="email" placeholder="Enter email" />
       </label>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   it('has no accessibility violations (clearable)', async () => {
@@ -129,8 +128,7 @@ describe('Input', () => {
         <Input id="search" placeholder="Search" clearable />
       </label>
     );
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 
   // ── className merge ────────────────────────────────────────

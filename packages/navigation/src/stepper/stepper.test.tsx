@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Stepper } from './stepper';
 
 describe('Stepper', () => {
@@ -25,6 +25,6 @@ describe('Stepper', () => {
         <Stepper.Step label="Profile" />
       </Stepper>
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

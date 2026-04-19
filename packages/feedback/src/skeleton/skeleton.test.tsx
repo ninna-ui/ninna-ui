@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Skeleton, SkeletonCircle, SkeletonText } from './skeleton';
 
 describe('Skeleton', () => {
@@ -91,8 +91,7 @@ describe('Skeleton', () => {
   // ── A11y: axe audit ────────────────────────────────────────
   it('has no accessibility violations', async () => {
     const { container } = render(<Skeleton width="200px" height="20px" />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });
 
@@ -133,8 +132,7 @@ describe('SkeletonCircle', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<SkeletonCircle size={48} />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });
 
@@ -174,7 +172,6 @@ describe('SkeletonText', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<SkeletonText noOfLines={3} />);
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

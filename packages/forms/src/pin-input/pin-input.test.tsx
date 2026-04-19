@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { axe } from 'vitest-axe';
+
 import { PinInput } from './pin-input';
 
 describe('PinInput', () => {
@@ -26,6 +26,6 @@ describe('PinInput', () => {
 
   it('has no accessibility violations', async () => {
     const { container } = render(<PinInput length={4} />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

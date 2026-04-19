@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { Tabs } from './tabs';
 
 describe('Tabs', () => {
@@ -44,6 +44,6 @@ describe('Tabs', () => {
         <Tabs.Content value="one">Panel One</Tabs.Content>
       </Tabs>
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { axe } from 'vitest-axe';
+
 import { FormControl, useFormControlProps } from './form-control';
 
 function ControlInput() {
@@ -36,6 +36,6 @@ describe('FormControl', () => {
         <p id="name-message">Required field</p>
       </FormControl>
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expect(container).toBeAccessible();
   });
 });
