@@ -100,9 +100,8 @@ export const InlineText: Story = {
     </p>
   ),
 };
-
-export const AllVariants: Story = {
-  render: () => (
+const AllVariantsExample = () => {
+  return (
     <div className="space-y-6">
       <div>
         <h4 className="text-lg font-semibold mb-3">Colors</h4>
@@ -136,5 +135,9 @@ export const AllVariants: Story = {
         </p>
       </div>
     </div>
-  ),
+  );
+};
+
+export const AllVariants: Story = {
+  render: AllVariantsExample,
 };

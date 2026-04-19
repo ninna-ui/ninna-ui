@@ -101,9 +101,7 @@ export const Default: Story = {
     </div>
   ),
 };
-
-export const WithSelection: Story = {
-  render: function WithSelectionTree() {
+const WithSelectionExample = () => {
     const [selected, setSelected] = useState('button');
     return (
       <div className="w-[350px] flex flex-col gap-4">
@@ -115,7 +113,10 @@ export const WithSelection: Story = {
         </div>
       </div>
     );
-  },
+  };
+
+export const WithSelection: Story = {
+  render: WithSelectionExample,
 };
 
 export const ExplorerMode: Story = {

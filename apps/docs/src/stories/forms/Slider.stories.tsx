@@ -204,9 +204,7 @@ export const Disabled: Story = {
     ),
   ],
 };
-
-export const Controlled: Story = {
-  render: function ControlledSlider() {
+const ControlledExample = () => {
     const [value, setValue] = useState([50]);
     return (
       <div className="w-64 space-y-4">
@@ -216,11 +214,12 @@ export const Controlled: Story = {
         </p>
       </div>
     );
-  },
-};
+  };
 
-export const VolumeControl: Story = {
-  render: function VolumeControlExample() {
+export const Controlled: Story = {
+  render: ControlledExample,
+};
+const VolumeControlExample = () => {
     const [volume, setVolume] = useState([50]);
     return (
       <div className="w-64 p-4 bg-base-200 rounded-lg">
@@ -240,7 +239,10 @@ export const VolumeControl: Story = {
         </div>
       </div>
     );
-  },
+  };
+
+export const VolumeControl: Story = {
+  render: VolumeControlExample,
 };
 
 export const WithMarks: Story = {

@@ -31,9 +31,7 @@ export const Default: Story = {
     <Calendar className="w-[280px] rounded-lg border border-base-200" />
   ),
 };
-
-export const Controlled: Story = {
-  render: function ControlledCalendar() {
+const ControlledExample = () => {
     const [date, setDate] = useState<Date>(new Date(2024, 5, 15));
     return (
       <div className="flex flex-col items-center gap-4">
@@ -47,7 +45,10 @@ export const Controlled: Story = {
         </p>
       </div>
     );
-  },
+  };
+
+export const Controlled: Story = {
+  render: ControlledExample,
 };
 
 export const WithMinMax: Story = {

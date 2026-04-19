@@ -19,6 +19,7 @@ const config: StorybookConfig = {
     ...config,
     resolve: {
       ...config.resolve,
+      dedupe: ['react', 'react-dom'],
       alias: {
         ...config.resolve?.alias,
         'react-dom/client': 'react-dom/client',
