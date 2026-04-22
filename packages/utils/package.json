@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/utils",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Shared utility functions for Ninna UI - cn (class merging), composeRefs, createContext, keyboard constants, and SSR helpers.",
   "license": "MIT",
   "author": "Ninna-UI Team",
