@@ -1,5 +1,54 @@
 # @ninna-ui/forms
 
+## 0.6.0
+
+### Minor Changes
+
+- [`6037883480129db2137250699251a322411c2985`](https://github.com/ninna-ui/ninna-ui/commit/6037883480129db2137250699251a322411c2985) [#50](https://github.com/ninna-ui/ninna-ui/pull/50) Thanks [@chnkc41](https://github.com/chnkc41)! - **`<InputGroup>`**: decorative and interactive adornments now just work — no more `endElementPointerEvents="auto"` boilerplate for show/hide-password, clear, or send-inside-input patterns.
+
+  Internally the slot wrapper is still `pointer-events: none` so clicks fall through to the underlying input, but interactive descendants (`<button>`, `<a>`, `<input>`, `[role="button"]`) are re-enabled via a descendant selector rather than a React-level heuristic. This covers wrapped components (e.g. `<IconButton>` whose rendered element is a `<button>`) which the previous heuristic missed because `element.type` was a function, not the string `'button'`.
+
+  `startElementPointerEvents` and `endElementPointerEvents` are kept as optional overrides — set them to `'auto'` to force-enable or `'none'` to force-disable (including on interactive children).
+
+  **`<Input>` / `<Textarea>`**: fix a silent bug where `<FormControl>` context values (`disabled`, `required`, `aria-invalid`, `aria-describedby`, `id`…) were being clobbered by a redundant trailing `{...props}` spread. The components now correctly inherit all of these when wrapped in `<FormControl>`.
+
+  **`useFormControlProps`**: return type now includes the injected `FormControlDerivedProps` fields so consumers can read them without unsafe casts.
+
+### Patch Changes
+
+- [`6037883480129db2137250699251a322411c2985`](https://github.com/ninna-ui/ninna-ui/commit/6037883480129db2137250699251a322411c2985) [#50](https://github.com/ninna-ui/ninna-ui/pull/50) Thanks [@chnkc41](https://github.com/chnkc41)! - **`<Checkbox>`, `<Radio>` (`<CheckboxGroup>` / `<RadioGroup>`), `<Switch>`**: fix two long-standing layout issues reported in Sizes demos:
+  1. **Row alignment**: the wrapper used `items-start` + `min-h-[44px]` unconditionally, which pushed the control to the top of a tall empty row while the label sat at its natural text baseline lower down — visually the control and its label did not share a line. The `min-h-[44px]` is also an anti-pattern for touch-targets: it makes the row 44px tall but the empty vertical space isn't clickable (the `<label>` is). The wrapper now uses `items-center` by default so the control sits on the same visual line as its label, and falls back to `items-start` only when a `description` is stacked below the label (so the control aligns with the first line of the block).
+  2. **Size readability**: the size variants already applied distinct `w-4/w-5/w-6` utilities to the indicator, but the label text stayed the same size for all three sizes, so the 4-px box-size step between `sm`/`md`/`lg` was hard to perceive at a glance. Labels now scale with the control: `text-sm` / `text-base` / `text-lg` for `sm` / `md` / `lg` respectively.
+
+  Regression tests added for `Checkbox` that lock in:
+  - distinct `w-4`/`w-5`/`w-6` indicator classes per size,
+  - size-scaled label typography,
+  - `items-center` by default (no `min-h-[44px]`),
+  - `items-start` when a description is present.
+
+- [`56e6f27c0ce12151ffdd2288c90e3cb66ad616b3`](https://github.com/ninna-ui/ninna-ui/commit/56e6f27c0ce12151ffdd2288c90e3cb66ad616b3) [#51](https://github.com/ninna-ui/ninna-ui/pull/51) Thanks [@chnkc41](https://github.com/chnkc41)! - fix(forms): properly apply visual color payloads and dynamic selection state to `RadioGroupItem` and `RadioCard` inner indicators to ensure visibly colored checked states.
+
+- [`3e5269037ab994ad930d95fd75b84fa04b36f5c1`](https://github.com/ninna-ui/ninna-ui/commit/3e5269037ab994ad930d95fd75b84fa04b36f5c1) [#54](https://github.com/ninna-ui/ninna-ui/pull/54) Thanks [@chnkc41](https://github.com/chnkc41)! - Improved semantic structure and accessibility integration for interactive primitives.
+  - Integrated all form primitives (`Input`, `Textarea`, `Select`, `Checkbox`, `RadioGroup`, `Switch`, `Slider`, `NumberInput`, `PinInput`) with `FormControl` for automatic state inheritance (invalid, disabled, required) and labeling synchronization.
+  - Added `title` prop to `Modal.Content` and `Drawer.Content` to support accessible labeling for headless overlays.
+  - Improved `aria-describedby` logic to merge internal descriptions with `FormControl` validation messages.
+  - Unified ARIA attribute mapping across the forms package.
+  - Removed redundant placeholder titles in Modal and Drawer to prevent duplicate screen reader announcements.
+
+- [`3e5269037ab994ad930d95fd75b84fa04b36f5c1`](https://github.com/ninna-ui/ninna-ui/commit/3e5269037ab994ad930d95fd75b84fa04b36f5c1) [#54](https://github.com/ninna-ui/ninna-ui/pull/54) Thanks [@chnkc41](https://github.com/chnkc41)! - Updated `vitest` dependency to `4.1.4` across all packages for improved stability and security.
+
+- [`ee48eaea1caec5d95587d9bf42063bbbe7b00ae7`](https://github.com/ninna-ui/ninna-ui/commit/ee48eaea1caec5d95587d9bf42063bbbe7b00ae7) [#52](https://github.com/ninna-ui/ninna-ui/pull/52) Thanks [@chnkc41](https://github.com/chnkc41)! - Release v0.6.0 Coordinated Update:
+  - Synchronized repository-wide version constants to 0.6.0.
+  - Updated documentation, guides, and release notes to reflect internal dependency changes.
+  - Finalized package release configurations for the coordinated monorepo release.
+
+- [`2cbc9877d8577d6b056e9142e9302e58ce18cf6a`](https://github.com/ninna-ui/ninna-ui/commit/2cbc9877d8577d6b056e9142e9302e58ce18cf6a) [#53](https://github.com/ninna-ui/ninna-ui/pull/53) Thanks [@chnkc41](https://github.com/chnkc41)! - - Migrated accessibility testing suite from `@sa11y/vitest` to `@sa11y/vitest` for improved security and Vite 8+ compatibility.
+  - Applied security patches for Vite Dev Server vulnerabilities via dependency overrides.
+- Updated dependencies [[`7cc72f04f4ed6fde3c39223d1f9aa3c0f4b1aa54`](https://github.com/ninna-ui/ninna-ui/commit/7cc72f04f4ed6fde3c39223d1f9aa3c0f4b1aa54), [`3e5269037ab994ad930d95fd75b84fa04b36f5c1`](https://github.com/ninna-ui/ninna-ui/commit/3e5269037ab994ad930d95fd75b84fa04b36f5c1), [`ee48eaea1caec5d95587d9bf42063bbbe7b00ae7`](https://github.com/ninna-ui/ninna-ui/commit/ee48eaea1caec5d95587d9bf42063bbbe7b00ae7), [`2cbc9877d8577d6b056e9142e9302e58ce18cf6a`](https://github.com/ninna-ui/ninna-ui/commit/2cbc9877d8577d6b056e9142e9302e58ce18cf6a)]:
+  - @ninna-ui/core@0.6.0
+  - @ninna-ui/utils@0.6.0
+  - @ninna-ui/react-internal@0.6.0
+
 ## 0.5.0
 
 ### Minor Changes

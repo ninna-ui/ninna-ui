@@ -1,5 +1,22 @@
 # @ninna-ui/primitives
 
+## 0.6.0
+
+### Patch Changes
+
+- [`3e5269037ab994ad930d95fd75b84fa04b36f5c1`](https://github.com/ninna-ui/ninna-ui/commit/3e5269037ab994ad930d95fd75b84fa04b36f5c1) [#54](https://github.com/ninna-ui/ninna-ui/pull/54) Thanks [@chnkc41](https://github.com/chnkc41)! - Updated `vitest` dependency to `4.1.4` across all packages for improved stability and security.
+
+- [`ee48eaea1caec5d95587d9bf42063bbbe7b00ae7`](https://github.com/ninna-ui/ninna-ui/commit/ee48eaea1caec5d95587d9bf42063bbbe7b00ae7) [#52](https://github.com/ninna-ui/ninna-ui/pull/52) Thanks [@chnkc41](https://github.com/chnkc41)! - Release v0.6.0 Coordinated Update:
+  - Synchronized repository-wide version constants to 0.6.0.
+  - Updated documentation, guides, and release notes to reflect internal dependency changes.
+  - Finalized package release configurations for the coordinated monorepo release.
+
+- [`2cbc9877d8577d6b056e9142e9302e58ce18cf6a`](https://github.com/ninna-ui/ninna-ui/commit/2cbc9877d8577d6b056e9142e9302e58ce18cf6a) [#53](https://github.com/ninna-ui/ninna-ui/pull/53) Thanks [@chnkc41](https://github.com/chnkc41)! - - Migrated accessibility testing suite from `@sa11y/vitest` to `@sa11y/vitest` for improved security and Vite 8+ compatibility.
+  - Applied security patches for Vite Dev Server vulnerabilities via dependency overrides.
+- Updated dependencies [[`7cc72f04f4ed6fde3c39223d1f9aa3c0f4b1aa54`](https://github.com/ninna-ui/ninna-ui/commit/7cc72f04f4ed6fde3c39223d1f9aa3c0f4b1aa54), [`3e5269037ab994ad930d95fd75b84fa04b36f5c1`](https://github.com/ninna-ui/ninna-ui/commit/3e5269037ab994ad930d95fd75b84fa04b36f5c1), [`ee48eaea1caec5d95587d9bf42063bbbe7b00ae7`](https://github.com/ninna-ui/ninna-ui/commit/ee48eaea1caec5d95587d9bf42063bbbe7b00ae7), [`2cbc9877d8577d6b056e9142e9302e58ce18cf6a`](https://github.com/ninna-ui/ninna-ui/commit/2cbc9877d8577d6b056e9142e9302e58ce18cf6a)]:
+  - @ninna-ui/core@0.6.0
+  - @ninna-ui/utils@0.6.0
+
 ## 0.5.0
 
 ### Minor Changes

@@ -1,5 +1,34 @@
 # @ninna-ui/core
 
+## 0.6.0
+
+### Minor Changes
+
+- [`7cc72f04f4ed6fde3c39223d1f9aa3c0f4b1aa54`](https://github.com/ninna-ui/ninna-ui/commit/7cc72f04f4ed6fde3c39223d1f9aa3c0f4b1aa54) [#47](https://github.com/ninna-ui/ninna-ui/pull/47) Thanks [@chnkc41](https://github.com/chnkc41)! - Standardize polymorphic pattern in layout components:
+  - Refactored all layout components to correctly use `PolymorphicProps` without redundant `React` imports or casts.
+  - Added polymorphic `as` prop support to `SimpleGrid` for semantic HTML rendering.
+  - Updated `getResponsiveGridCols` to use the unified `ResponsiveValue<GridColumns>` type.
+  - Fixed an issue where runtime-generated responsive grid classes were purged by Tailwind v4 by injecting a permanent runtime safelist block into `tailwind.css`.
+  - Removed redundant `ReactNode` imports and `children` props from all layout component type definitions.
+
+  Code quality and build improvements:
+  - Extracted auto-generated safelist into dedicated `safelist.css` file; `tailwind.css` now imports it and stays stable between builds.
+  - Created root `tsconfig.json` with workspace `paths` mapping all packages to their source files, fixing IDE "no declaration file" errors.
+  - Removed no-op `cn()` wrapping in `Box` component and cleaned up unused import.
+  - Cleaned verbose JSDoc comments from all `*.styles.ts` files for a cleaner, self-documenting codebase.
+
+### Patch Changes
+
+- [`3e5269037ab994ad930d95fd75b84fa04b36f5c1`](https://github.com/ninna-ui/ninna-ui/commit/3e5269037ab994ad930d95fd75b84fa04b36f5c1) [#54](https://github.com/ninna-ui/ninna-ui/pull/54) Thanks [@chnkc41](https://github.com/chnkc41)! - Updated `vitest` dependency to `4.1.4` across all packages for improved stability and security.
+
+- [`ee48eaea1caec5d95587d9bf42063bbbe7b00ae7`](https://github.com/ninna-ui/ninna-ui/commit/ee48eaea1caec5d95587d9bf42063bbbe7b00ae7) [#52](https://github.com/ninna-ui/ninna-ui/pull/52) Thanks [@chnkc41](https://github.com/chnkc41)! - Release v0.6.0 Coordinated Update:
+  - Synchronized repository-wide version constants to 0.6.0.
+  - Updated documentation, guides, and release notes to reflect internal dependency changes.
+  - Finalized package release configurations for the coordinated monorepo release.
+
+- [`2cbc9877d8577d6b056e9142e9302e58ce18cf6a`](https://github.com/ninna-ui/ninna-ui/commit/2cbc9877d8577d6b056e9142e9302e58ce18cf6a) [#53](https://github.com/ninna-ui/ninna-ui/pull/53) Thanks [@chnkc41](https://github.com/chnkc41)! - - Migrated accessibility testing suite from `@sa11y/vitest` to `@sa11y/vitest` for improved security and Vite 8+ compatibility.
+  - Applied security patches for Vite Dev Server vulnerabilities via dependency overrides.
+
 ## 0.5.0
 
 ### Minor Changes
