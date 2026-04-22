@@ -2,7 +2,7 @@
 
 > **Complete system architecture for the Ninna UI monorepo** - 12 packages, 69 components, Tailwind CSS v4 theme system, Radix isolation layer, canonical component patterns, and build infrastructure. This is the definitive technical reference for understanding how everything fits together.
 >
-> **Version:** 2.0.0 · **Last Updated:** February 2026 · **Audit Status:** Full monorepo audit completed
+> **Version:** 0.6.0 · **Last Updated:** April 2026 · **Audit Status:** Full monorepo audit completed
 
 ## Design Philosophy
 

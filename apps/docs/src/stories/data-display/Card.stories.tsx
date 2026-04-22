@@ -47,12 +47,12 @@ export const Default: Story = {
       </Card.Header>
       <Card.Body>
         <p className="text-sm text-base-content/70 leading-relaxed">
-          The Pegasus initiative focuses on sub-orbital transportation efficiency. 
-          Currently in phase 2 of prototype validation with 85% success rate in 
+          The Pegasus initiative focuses on sub-orbital transportation efficiency.
+          Currently in phase 2 of prototype validation with 85% success rate in
           simulated environments.
         </p>
         <div className="mt-4 flex -space-x-2">
-          {[1,2,3,4].map(i => (
+          {[1, 2, 3, 4].map(i => (
             <Avatar key={i} size="sm" className="border-2 border-base-100" />
           ))}
           <div className="w-8 h-8 rounded-full bg-base-200 border-2 border-base-100 flex items-center justify-center text-[10px] font-bold">+12</div>
@@ -150,11 +150,11 @@ export const SocialPost: Story = {
       </Card.Header>
       <Card.Body>
         <p className="mb-4">
-          Just exploring the new Ninna UI components! The design system feels extremely premium 
+          Just exploring the new Ninna UI components! The design system feels extremely premium
           and the performance is top-notch. Can't wait to ship this to production. 🚀
         </p>
         <div className="aspect-video rounded-lg bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-2xl shadow-inner">
-          Ninna UI 0.5.0
+          Ninna UI 0.6.0
         </div>
       </Card.Body>
       <Card.Footer className="gap-4 pt-2">
@@ -186,10 +186,10 @@ export const Interactive: Story = {
           </p>
         </Card.Body>
         <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-           <Badge color="success">Selectable</Badge>
+          <Badge color="success">Selectable</Badge>
         </div>
       </Card>
-      
+
       <Card interactive variant="soft" color="primary">
         <Card.Header>
           <Card.Title>Primary Action</Card.Title>
@@ -215,7 +215,7 @@ export const DashboardWidget: Story = {
         </div>
         <div className="text-3xl font-bold mb-1">$45,231.89</div>
         <p className="text-xs text-base-content/50">Compared to last month ($39,122.45)</p>
-        
+
         <div className="mt-6 h-1 w-full bg-base-200 rounded-full overflow-hidden">
           <div className="h-full bg-primary w-[70%] rounded-full" />
         </div>

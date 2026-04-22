@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "@ninna-ui/feedback";
 import { Button } from "@ninna-ui/primitives";
-import { 
+import {
   Terminal,
   ShieldCheck,
   Zap
@@ -83,24 +83,24 @@ export const Default: Story = {
 export const StatusVariants: Story = {
   render: () => (
     <div className="flex flex-col gap-4 w-[600px]">
-      <Alert 
-        color="info" 
-        title="Information" 
+      <Alert
+        color="info"
+        title="Information"
         description="Your subscription will renew automatically on May 1st."
       />
-      <Alert 
-        color="success" 
-        title="Payment Successful" 
+      <Alert
+        color="success"
+        title="Payment Successful"
         description="We've processed your payment. Your receipt has been sent to your email."
       />
-      <Alert 
-        color="warning" 
-        title="Storage Limit Reached" 
+      <Alert
+        color="warning"
+        title="Storage Limit Reached"
         description="You have used 90% of your available storage. Consider upgrading your plan."
       />
-      <Alert 
-        color="danger" 
-        title="Connection Error" 
+      <Alert
+        color="danger"
+        title="Connection Error"
         description="Unable to connect to the database. Please check your network settings."
       />
     </div>
@@ -110,21 +110,21 @@ export const StatusVariants: Story = {
 export const WithCustomIcons: Story = {
   render: () => (
     <div className="flex flex-col gap-4 w-[600px]">
-      <Alert 
+      <Alert
         variant="outline"
         color="neutral"
         icon={<Terminal size={18} />}
         title="Ready to deploy"
         description="Successfully built 14 packages in 2.3 seconds."
       />
-      <Alert 
+      <Alert
         variant="soft"
         color="accent"
         icon={<Zap size={18} />}
         title="Performance Boost"
         description="Optimized image delivery for all assets in the playground."
       />
-      <Alert 
+      <Alert
         variant="soft"
         color="secondary"
         icon={<ShieldCheck size={18} />}
@@ -138,7 +138,7 @@ export const WithCustomIcons: Story = {
 export const Dismissible: Story = {
   args: {
     title: "Update Available",
-    description: "Version 0.5.0 is now live with enhanced Storybook support.",
+    description: "Version 0.6.0 is now live with enhanced Storybook support.",
     variant: "soft",
     color: "info",
     dismissible: true,
@@ -148,7 +148,7 @@ export const Dismissible: Story = {
 export const WithAction: Story = {
   render: () => (
     <div className="flex flex-col gap-4 w-[600px]">
-       <Alert
+      <Alert
         variant="soft"
         color="danger"
         title="Critical Vulnerability"

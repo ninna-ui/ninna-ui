@@ -2,7 +2,7 @@
 
 > **Product identity, competitive positioning, and brand guidelines** - defines what Ninna UI is, who it's for, and how it stands apart from shadcn/ui, Chakra UI, Mantine, and DaisyUI.
 >
-> **Version:** 1.0.0 · **Last Updated:** February 2026
+> **Version:** 0.6.0 · **Last Updated:** April 2026
 
 ---
 
