@@ -1,6 +1,6 @@
 # 11 — Root CHANGELOG catch-up (0.3.0 → 0.6.0)
 
-Status: TODO
+Status: DONE
 Phase: 1 · Priority: High · Size: S
 
 ## Context
@@ -30,9 +30,9 @@ reading the root changelog see a stale history.
 
 ## Acceptance criteria
 
-- [ ] Root `CHANGELOG.md` documents 0.4.0, 0.5.0, and 0.6.0.
-- [ ] Every entry traces to a real per-package changelog entry or commit.
-- [ ] Existing 0.3.0 / 0.1.0 sections unchanged.
+- [x] Root `CHANGELOG.md` documents 0.4.0, 0.5.0, and 0.6.0.
+- [x] Every entry traces to a real per-package changelog entry or commit.
+- [x] Existing 0.3.0 / 0.1.0 sections unchanged.
 
 ## Verification
 
@@ -43,5 +43,5 @@ git diff --stat CHANGELOG.md
 
 ## Sync checklist
 
-- [ ] `ninna-ui-web/app/views/docs/changelog/ChangelogView.tsx` — mirror the new
+- [x] `ninna-ui-web/app/views/docs/changelog/ChangelogView.tsx` — mirror the new
       version sections so the public changelog page matches.
