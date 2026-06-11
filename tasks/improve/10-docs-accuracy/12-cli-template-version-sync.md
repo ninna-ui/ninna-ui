@@ -1,6 +1,6 @@
 # 12 — CLI template version sync + drift guard
 
-Status: TODO
+Status: DONE
 Phase: 1 · Priority: High · Size: S
 
 ## Context
@@ -45,9 +45,9 @@ This drift recurs on every release because nothing enforces it.
 
 ## Acceptance criteria
 
-- [ ] All 4 templates report version 0.6.0.
-- [ ] `node scripts/check-template-versions.js` exits 0 now, exits 1 if a template is stale.
-- [ ] Release workflow runs the check.
+- [x] All 4 templates report version 0.6.0.
+- [x] `node scripts/check-template-versions.js` exits 0 now, exits 1 if a template is stale.
+- [x] Release workflow runs the check.
 
 ## Verification
 
