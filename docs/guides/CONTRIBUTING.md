@@ -13,7 +13,7 @@
 git clone https://github.com/YOUR_USERNAME/ninna-ui.git
 cd ninna-ui
 
-# 2. Install (requires pnpm 9+ and Node 20+)
+# 2. Install (requires pnpm 10+ and Node 20+)
 pnpm install
 
 # 3. Build all packages
@@ -23,7 +23,28 @@ pnpm build
 git checkout -b feature/your-feature
 ```
 
-## Publishing
+## Toolchain
+
+| Tool | Version | Notes |
+|------|---------|-------|
+| **Node.js** | ≥ 20 | Required by all packages |
+| **pnpm** | ≥ 10 (`10.28.2` pinned) | Both `ninna-ui` monorepo and `ninna-ui-web` use pnpm 10 |
+
+### Setup with corepack (recommended)
+
+```bash
+corepack enable          # ships with Node 20+ — reads packageManager field automatically
+pnpm install
+```
+
+### Version split rationale
+
+- **vite** — The monorepo root uses `vite ^8.0.5` (required by `vitest ^4`). The `ninna-ui-web` docs site
+  uses `vite ^7.3.2` (pinned by `@react-router/dev`). These serve different roles and the split
+  is intentional; do **not** force-align them.
+- **tailwindcss** — Each package/app pins its own Tailwind version; `@ninna-ui/core` requires `>=4.0.0`
+  as a peer dep, `ninna-ui-web` pins `^4.2.2`.
+
 
 ### Automated Release Workflow
 
