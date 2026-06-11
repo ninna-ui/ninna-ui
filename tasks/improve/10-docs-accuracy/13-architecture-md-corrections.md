@@ -1,6 +1,6 @@
 # 13 — ARCHITECTURE.md corrections
 
-Status: TODO
+Status: DONE
 Phase: 1 · Priority: High · Size: S
 
 ## Context
@@ -49,10 +49,10 @@ Phase: 1 · Priority: High · Size: S
 
 ## Acceptance criteria
 
-- [ ] Story count consistent in all mentions and matches the actual file count.
-- [ ] CLI documented as 4 templates everywhere in the file.
-- [ ] Monorepo tree matches the real directory layout.
-- [ ] Theme section accurately describes `:root` fallback + optional `data-theme`.
+- [x] Story count consistent in all mentions and matches the actual file count.
+- [x] CLI documented as 4 templates everywhere in the file.
+- [x] Monorepo tree matches the real directory layout.
+- [x] Theme section accurately describes `:root` fallback + optional `data-theme`.
 
 ## Verification
 
@@ -65,3 +65,9 @@ Select-String -Path docs/architecture/ARCHITECTURE.md -Pattern "3 framework temp
 ## Sync checklist
 
 - N/A (internal docs only).
+
+## Findings
+
+- A3, A4, A8 fixed (story count = 65; CLI = 4 templates; tree corrected; safelist.css added to theme tree).
+- A10 DISPROVEN: presets/default.css has NO :root fallback - selectors are [data-theme=...] only, so 'data-theme is always required' in ARCHITECTURE.md is CORRECT and was left unchanged.
+

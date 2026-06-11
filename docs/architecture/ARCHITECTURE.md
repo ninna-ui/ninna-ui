@@ -2,7 +2,7 @@
 
 > **Complete system architecture for the Ninna UI monorepo** - 12 packages, 69 components, Tailwind CSS v4 theme system, Radix isolation layer, canonical component patterns, and build infrastructure. This is the definitive technical reference for understanding how everything fits together.
 >
-> **Version:** 0.6.0 · **Last Updated:** April 2026 · **Audit Status:** Full monorepo audit completed
+> **Version:** 0.6.0 · **Last Updated:** June 2026 · **Audit Status:** Full monorepo audit completed
 
 ## Design Philosophy
 
@@ -23,7 +23,7 @@ Chakra/Mantine-level component quality combined with DaisyUI-simple theming. 100
 ```
 ninna-ui/
 ├─ apps/
-│  ├─ docs/                  # Storybook 10 documentation (54 story files)
+│  ├─ docs/                  # Storybook 10 documentation (65 story files)
 │  └─ playground/            # React Router v7 developer sandbox (SPA mode, 69 component views)
 │
 ├─ packages/
@@ -39,17 +39,13 @@ ninna-ui/
 │  ├─ data-display/          # 7 data display components (NO Radix)
 │  ├─ code-block/            # Syntax-highlighted code block (regex tokenizer)
 │  └─ cli/                   # Project scaffolding CLI (commander + prompts)
-│
-├─ templates/
-│  ├─ vite-react/            # Vite 7 + React 19 + @tailwindcss/vite
-│  ├─ nextjs/                # Next.js 15 App Router + @tailwindcss/postcss
-│  └─ react-router/          # React Router v7 + Vite + @tailwindcss/vite
+│     └─ templates/          # 4 starter templates: vite-react, nextjs, react-router, astro
 │
 ├─ tooling/
 │  ├─ eslint-config/         # Shared ESLint config
 │  └─ tsconfig/              # Shared TypeScript configs (app.json, library.json)
 │
-├─ tasks/                    # Phase tracking markdown files (historical)
+├─ tasks/                    # Improvement task plans (tasks/improve/, gitignored on main)
 ├─ vitest.config.ts          # Root test config (jsdom, react plugin)
 ├─ vitest.setup.ts           # jest-dom + sa11y matchers
 ├─ pnpm-workspace.yaml
@@ -114,6 +110,7 @@ All styling uses **Tailwind CSS v4.1 CSS-first configuration**. No `tailwind.con
 ```
 core/src/theme/
 ├── tailwind.css              # @theme inline (31 CSS variables) + keyframes + animation utilities
+├── safelist.css              # Auto-generated @source inline() safelist (imported by tailwind.css)
 └── presets/
     ├── default.css           # @import "../tailwind.css" + light/dark variable definitions
     ├── ocean.css
@@ -239,7 +236,7 @@ CodeBlock with regex-based TSX/CSS/bash syntax highlighting, copy-to-clipboard, 
 
 ### `@ninna-ui/cli` - Scaffolding Tool
 
-`npx @ninna-ui/cli init [name]` - interactive project scaffolding with 3 framework templates and 5 theme presets.
+`npx @ninna-ui/cli init [name]` - interactive project scaffolding with 4 framework templates (vite-react, nextjs, react-router, astro) and 5 theme presets.
 
 ---
 
