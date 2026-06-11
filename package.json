@@ -29,7 +29,8 @@
     "release": "turbo run build && changeset publish",
     "check-exports": "publint packages/core && publint packages/utils && publint packages/react-internal && publint packages/primitives && publint packages/feedback && publint packages/layout && publint packages/forms && publint packages/overlays && publint packages/navigation && publint packages/data-display && publint packages/code-block && publint packages/cli",
     "check-pack": "node scripts/check-pack.js",
-    "check-internal-deps": "node scripts/check-internal-deps.js"
+    "check-internal-deps": "node scripts/check-internal-deps.js",
+    "prepare": "husky"
   },
   "devDependencies": {
     "@arethetypeswrong/cli": "^0.18.2",
@@ -45,7 +46,9 @@
     "@types/react-dom": "^19.2.3",
     "@vitejs/plugin-react": "^5.1.4",
     "eslint": "^9.39.4",
+    "husky": "^9.1.7",
     "jsdom": "^29.0.0",
+    "lint-staged": "^17.0.7",
     "prettier": "^3.8.0",
     "publint": "^0.3.18",
     "react": "^19.2.4",
