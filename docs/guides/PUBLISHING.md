@@ -13,7 +13,7 @@ Ninna UI uses Changesets for version management and publishing to npm. This guid
 ## Prerequisites
 
 - **Node.js**: >=20.0.0
-- **pnpm**: >=9.0.0
+- **pnpm**: >=10.0.0
 - **npm token**: Configured in `.npmrc`
 - **GitHub access**: For changelog generation
 
