@@ -42,6 +42,10 @@ component-name/
 6. No deprecated props - remove immediately
 7. Accessibility: `focus-visible` ring, ARIA attributes, keyboard navigation
 
+> **forwardRef policy**: All components use `forwardRef` + `displayName`, even though React 19
+> supports `ref`-as-prop. This preserves React 18 compatibility and API uniformity.
+> Do **not** migrate individual components to ref-as-prop.
+
 ### 2.3 Props Design
 
 ```typescript
