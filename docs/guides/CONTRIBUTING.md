@@ -29,6 +29,7 @@ git checkout -b feature/your-feature
 |------|---------|-------|
 | **Node.js** | ≥ 20 | Required by all packages |
 | **pnpm** | ≥ 10 (`10.28.2` pinned) | Both `ninna-ui` monorepo and `ninna-ui-web` use pnpm 10 |
+| **vite** | 8.x | Both the monorepo (vitest) and `ninna-ui-web` use vite 8 |
 
 ### Setup with corepack (recommended)
 
@@ -39,9 +40,6 @@ pnpm install
 
 ### Version split rationale
 
-- **vite** — The monorepo root uses `vite ^8.0.5` (required by `vitest ^4`). The `ninna-ui-web` docs site
-  uses `vite ^7.3.2` (pinned by `@react-router/dev`). These serve different roles and the split
-  is intentional; do **not** force-align them.
 - **tailwindcss** — Each package/app pins its own Tailwind version; `@ninna-ui/core` requires `>=4.0.0`
   as a peer dep, `ninna-ui-web` pins `^4.2.2`.
 
