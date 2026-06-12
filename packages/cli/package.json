@@ -48,6 +48,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup src/index.ts --format esm --watch",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"src/**/*.ts\"",
     "clean": "rimraf dist"
@@ -64,6 +65,7 @@
     "@types/node": "^22.14.0",
     "@types/prompts": "^2.4.9",
     "tsup": "^8.5.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.4"
   }
 }

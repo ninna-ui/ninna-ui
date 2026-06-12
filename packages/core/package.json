@@ -48,7 +48,7 @@
     "build": "node scripts/generate-safelist.mjs && tsup && node scripts/copy-css.mjs",
     "verify-classes": "node scripts/verify-classes.mjs",
     "dev": "tsup --watch",
-    "test": "vitest run --passWithNoTests",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"src/**/*.ts\"",
     "clean": "rimraf dist"
