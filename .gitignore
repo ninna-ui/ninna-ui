@@ -40,3 +40,6 @@ Desktop.ini
 tmp/
 temp/
 *.tmp
+
+# Improvement task plans (committed only on task branches via git add -f)
+tasks/
