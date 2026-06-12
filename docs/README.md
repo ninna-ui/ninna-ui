@@ -22,7 +22,8 @@ docs/
     ├── README.md              # Guides overview
     ├── GETTING_STARTED.md     # Quick start for new users
     ├── CONTRIBUTING.md        # PR workflow, commit conventions
-    └── DEVELOPMENT_RULES.md   # Development rules and naming conventions
+    ├── DEVELOPMENT_RULES.md   # Development rules and naming conventions
+    └── PUBLISHING.md          # Release and npm publishing workflow
 ```
 
 ## Quick Navigation
@@ -42,6 +43,7 @@ docs/
 ### For Maintainers
 1. [Accessibility Standards](standards/ACCESSIBILITY.md) - WCAG compliance checklist
 2. [Testing Strategy](standards/TESTING_STRATEGY.md) - Test coverage requirements
+3. [Publishing](guides/PUBLISHING.md) - Release and npm publishing workflow
 
 ## Root Documentation
 

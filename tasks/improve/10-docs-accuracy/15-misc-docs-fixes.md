@@ -1,6 +1,6 @@
 # 15 — Misc documentation fixes (docs index, version doc, web routing doc)
 
-Status: TODO
+Status: DONE
 Phase: 1 · Priority: Medium · Size: S
 
 ## Context
@@ -45,9 +45,9 @@ Three smaller verified drift items:
 
 ## Acceptance criteria
 
-- [ ] `docs/README.md` tree matches `docs/guides/` contents exactly.
-- [ ] `VERSION_CONSTANT.md` reflects the existing web constant and the dual-bump rule.
-- [ ] `ROUTING_STRUCTURE.md` contains zero stale `_marketing` references (unless files
+- [x] `docs/README.md` tree matches `docs/guides/` contents exactly.
+- [x] `VERSION_CONSTANT.md` reflects the existing web constant and the dual-bump rule.
+- [x] `ROUTING_STRUCTURE.md` contains zero stale `_marketing` references (unless files
       genuinely still use that prefix) and matches the live `app/routes/` listing.
 
 ## Verification
@@ -60,3 +60,4 @@ Select-String -Path "d:\projects\ninna-ui\ninna-ui-web\ROUTING_STRUCTURE.md" -Pa
 ## Sync checklist
 
 - N/A (internal docs only).
+
