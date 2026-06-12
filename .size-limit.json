@@ -1,0 +1,68 @@
+[
+  {
+    "name": "@ninna-ui/core (full bundle)",
+    "path": "packages/core/dist/index.js",
+    "limit": "30 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/utils (full bundle)",
+    "path": "packages/utils/dist/index.js",
+    "limit": "10 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/react-internal (full bundle)",
+    "path": "packages/react-internal/dist/index.js",
+    "limit": "15 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/primitives (full bundle)",
+    "path": "packages/primitives/dist/index.js",
+    "limit": "25 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/feedback (full bundle)",
+    "path": "packages/feedback/dist/index.js",
+    "limit": "25 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/layout (full bundle)",
+    "path": "packages/layout/dist/index.js",
+    "limit": "15 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/forms (full bundle)",
+    "path": "packages/forms/dist/index.js",
+    "limit": "60 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/overlays (full bundle)",
+    "path": "packages/overlays/dist/index.js",
+    "limit": "25 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/navigation (full bundle)",
+    "path": "packages/navigation/dist/index.js",
+    "limit": "30 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/data-display (full bundle)",
+    "path": "packages/data-display/dist/index.js",
+    "limit": "40 kB",
+    "gzip": true
+  },
+  {
+    "name": "@ninna-ui/code-block (full bundle)",
+    "path": "packages/code-block/dist/index.js",
+    "limit": "20 kB",
+    "gzip": true
+  }
+]
