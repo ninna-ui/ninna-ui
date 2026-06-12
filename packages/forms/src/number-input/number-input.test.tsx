@@ -31,4 +31,60 @@ describe('NumberInput', () => {
     const { container } = render(<NumberInput defaultValue={5} aria-label="Percentage" />);
     await expect(container).toBeAccessible();
   });
+
+  describe('keyboard navigation', () => {
+    it('ArrowUp increments value by step', async () => {
+      const user = userEvent.setup();
+      const onChange = vi.fn();
+      render(<NumberInput defaultValue={5} step={1} onChange={onChange} aria-label="Count" />);
+      const input = screen.getByRole('spinbutton');
+      input.focus();
+      await user.keyboard('{ArrowUp}');
+      await waitFor(() => {
+        expect(onChange).toHaveBeenCalledWith(6);
+      });
+    });
+
+    it('ArrowDown decrements value by step', async () => {
+      const user = userEvent.setup();
+      const onChange = vi.fn();
+      render(<NumberInput defaultValue={5} step={1} onChange={onChange} aria-label="Count" />);
+      const input = screen.getByRole('spinbutton');
+      input.focus();
+      await user.keyboard('{ArrowDown}');
+      await waitFor(() => {
+        expect(onChange).toHaveBeenCalledWith(4);
+      });
+    });
+
+    it('clamps at max when ArrowUp would exceed it', async () => {
+      const user = userEvent.setup();
+      const onChange = vi.fn();
+      render(<NumberInput defaultValue={10} max={10} step={1} onChange={onChange} aria-label="Score" />);
+      const input = screen.getByRole('spinbutton');
+      input.focus();
+      await user.keyboard('{ArrowUp}');
+      await waitFor(() => {
+        expect(onChange).toHaveBeenCalledWith(10);
+      });
+    });
+
+    it('clamps at min when ArrowDown would go below it', async () => {
+      const user = userEvent.setup();
+      const onChange = vi.fn();
+      render(<NumberInput defaultValue={0} min={0} step={1} onChange={onChange} aria-label="Score" />);
+      const input = screen.getByRole('spinbutton');
+      input.focus();
+      await user.keyboard('{ArrowDown}');
+      await waitFor(() => {
+        expect(onChange).toHaveBeenCalledWith(0);
+      });
+    });
+
+    it('aria-valuenow reflects current value', () => {
+      render(<NumberInput defaultValue={7} aria-label="Seats" />);
+      const input = screen.getByRole('spinbutton');
+      expect(input).toHaveAttribute('aria-valuenow', '7');
+    });
+  });
 });
