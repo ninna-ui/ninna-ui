@@ -10,7 +10,7 @@
 
 **Testing hygiene (tasks 31–35) — no public API changes.**
 
-- **core**: contract tests for all 26 class-map objects; removes `--passWithNoTests`
+- **core**: contract tests for all 26 class-map objects and generates CSS safelist for theme utilities; removes `--passWithNoTests`
 - **utils**: backfill tests for `composeEventHandlers`, `canUseDOM`, `getOwnerWindow`, and `KEYS` constants; removes `--passWithNoTests`
 - **react-internal**: 36 new tests covering all 11 Radix engine wrappers and `Slot`/`Slottable`; adds `vitest.config.ts`
 - **cli**: 14 new tests for `init` helper logic (workspace:* dep-swap, CSS preset swap, data-theme swap, template directory existence); adds vitest infrastructure
