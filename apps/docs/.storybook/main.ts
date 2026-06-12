@@ -1,12 +1,14 @@
-import type { StorybookConfig } from "@storybook/react-vite";
-import tailwindcss from "@tailwindcss/vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+import type { StorybookConfig } from '@storybook/react-vite';
+import tailwindcss from '@tailwindcss/vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 const config: StorybookConfig = {
-  stories: ["../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  addons: ["@storybook/addon-themes"],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  addons: [
+    '@storybook/addon-themes',
+  ],
   framework: {
-    name: "@storybook/react-vite",
+    name: '@storybook/react-vite',
     options: {
       builder: {
         viteConfigPath: undefined,
@@ -17,20 +19,20 @@ const config: StorybookConfig = {
     ...config,
     resolve: {
       ...config.resolve,
-      dedupe: ["react", "react-dom"],
+      dedupe: ['react', 'react-dom'],
       alias: {
         ...config.resolve?.alias,
-        "react-dom/client": "react-dom/client",
+        'react-dom/client': 'react-dom/client',
       },
     },
     plugins: [
-      ...(config.plugins ?? []),
+      ...(config.plugins ?? []), 
       tsconfigPaths(), // Add tsconfigPaths for @ninna-ui resolution
-      tailwindcss(),
+      tailwindcss()
     ],
   }),
   typescript: {
-    reactDocgen: "react-docgen",
+    reactDocgen: 'react-docgen',
   },
 };
 
