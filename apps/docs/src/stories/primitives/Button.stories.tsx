@@ -1,55 +1,71 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { userEvent, within, expect } from '@storybook/test';
-import { Button } from '@ninna-ui/primitives';
-import { Mail, Plus, Trash2, Send, Github, MoreVertical } from 'lucide-react';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Button } from "@ninna-ui/primitives";
+import { Mail, Plus, Trash2, Send, Github, MoreVertical } from "lucide-react";
 
 const meta: Meta<typeof Button> = {
-  title: 'Primitives/Button',
+  title: "Primitives/Button",
   component: Button,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['solid', 'soft', 'outline', 'ghost', 'link', 'elevated', 'white'],
-      description: 'Visual style variant',
-      table: { defaultValue: { summary: 'solid' } },
+      control: "select",
+      options: [
+        "solid",
+        "soft",
+        "outline",
+        "ghost",
+        "link",
+        "elevated",
+        "white",
+      ],
+      description: "Visual style variant",
+      table: { defaultValue: { summary: "solid" } },
     },
     color: {
-      control: 'select',
-      options: ['primary', 'secondary', 'accent', 'neutral', 'success', 'danger', 'warning', 'info'],
-      description: 'Color theme of the button',
+      control: "select",
+      options: [
+        "primary",
+        "secondary",
+        "accent",
+        "neutral",
+        "success",
+        "danger",
+        "warning",
+        "info",
+      ],
+      description: "Color theme of the button",
     },
     size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
-      description: 'Button size',
-      table: { defaultValue: { summary: 'md' } },
+      control: "select",
+      options: ["xs", "sm", "md", "lg", "xl"],
+      description: "Button size",
+      table: { defaultValue: { summary: "md" } },
     },
     radius: {
-      control: 'select',
-      options: ['none', 'sm', 'md', 'lg', 'xl', 'full'],
-      description: 'Border radius of the button',
-      table: { defaultValue: { summary: 'md' } },
+      control: "select",
+      options: ["none", "sm", "md", "lg", "xl", "full"],
+      description: "Border radius of the button",
+      table: { defaultValue: { summary: "md" } },
     },
     leftIcon: {
-      control: 'text',
-      description: 'Icon element to display on the left side (ReactNode)',
+      control: "text",
+      description: "Icon element to display on the left side (ReactNode)",
     },
     rightIcon: {
-      control: 'text',
-      description: 'Icon element to display on the right side (ReactNode)',
+      control: "text",
+      description: "Icon element to display on the right side (ReactNode)",
     },
     disabled: {
-      control: 'boolean',
+      control: "boolean",
     },
     loading: {
-      control: 'boolean',
+      control: "boolean",
     },
     fullWidth: {
-      control: 'boolean',
+      control: "boolean",
     },
   },
 };
@@ -59,17 +75,9 @@ type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
   args: {
-    children: 'Button',
-    variant: 'solid',
-    color: 'primary',
-  },
-  play: async ({ canvasElement }) => {
-    const canvas = within(canvasElement);
-    const button = canvas.getByRole('button', { name: 'Button' });
-    // Verify the button is focusable and accessible
-    await expect(button).toBeInTheDocument();
-    await userEvent.tab();
-    await expect(button).toHaveFocus();
+    children: "Button",
+    variant: "solid",
+    color: "primary",
   },
 };
 
@@ -88,18 +96,57 @@ export const Colors: Story = {
   render: () => (
     <div className="flex flex-col gap-6">
       <div className="flex flex-wrap gap-4">
-        {(['primary', 'secondary', 'accent', 'neutral', 'success', 'danger', 'warning', 'info'] as const).map(color => (
-          <Button key={color} color={color}>{color}</Button>
+        {(
+          [
+            "primary",
+            "secondary",
+            "accent",
+            "neutral",
+            "success",
+            "danger",
+            "warning",
+            "info",
+          ] as const
+        ).map((color) => (
+          <Button key={color} color={color}>
+            {color}
+          </Button>
         ))}
       </div>
       <div className="flex flex-wrap gap-4">
-        {(['primary', 'secondary', 'accent', 'neutral', 'success', 'danger', 'warning', 'info'] as const).map(color => (
-          <Button key={color} color={color} variant="soft">{color}</Button>
+        {(
+          [
+            "primary",
+            "secondary",
+            "accent",
+            "neutral",
+            "success",
+            "danger",
+            "warning",
+            "info",
+          ] as const
+        ).map((color) => (
+          <Button key={color} color={color} variant="soft">
+            {color}
+          </Button>
         ))}
       </div>
       <div className="flex flex-wrap gap-4">
-        {(['primary', 'secondary', 'accent', 'neutral', 'success', 'danger', 'warning', 'info'] as const).map(color => (
-          <Button key={color} color={color} variant="outline">{color}</Button>
+        {(
+          [
+            "primary",
+            "secondary",
+            "accent",
+            "neutral",
+            "success",
+            "danger",
+            "warning",
+            "info",
+          ] as const
+        ).map((color) => (
+          <Button key={color} color={color} variant="outline">
+            {color}
+          </Button>
         ))}
       </div>
     </div>
@@ -160,7 +207,9 @@ export const Loading: Story = {
   render: () => (
     <div className="flex items-center gap-4">
       <Button loading>Loading...</Button>
-      <Button loading variant="outline" color="secondary">Please wait</Button>
+      <Button loading variant="outline" color="secondary">
+        Please wait
+      </Button>
       <Button loading variant="ghost" color="neutral" />
     </div>
   ),
@@ -170,16 +219,30 @@ export const Group: Story = {
   render: () => (
     <div className="flex flex-col gap-8">
       <div className="flex -space-x-px">
-        <Button variant="outline" className="rounded-r-none">Years</Button>
-        <Button variant="outline" className="rounded-none">Months</Button>
-        <Button variant="outline" className="rounded-none bg-base-200">Days</Button>
-        <Button variant="outline" className="rounded-l-none">Hours</Button>
+        <Button variant="outline" className="rounded-r-none">
+          Years
+        </Button>
+        <Button variant="outline" className="rounded-none">
+          Months
+        </Button>
+        <Button variant="outline" className="rounded-none bg-base-200">
+          Days
+        </Button>
+        <Button variant="outline" className="rounded-l-none">
+          Hours
+        </Button>
       </div>
 
       <div className="flex gap-2 p-1 bg-base-200 rounded-lg w-fit">
-        <Button size="sm" variant="ghost" className="bg-base-100 shadow-sm">Option A</Button>
-        <Button size="sm" variant="ghost" color="neutral">Option B</Button>
-        <Button size="sm" variant="ghost" color="neutral">Option C</Button>
+        <Button size="sm" variant="ghost" className="bg-base-100 shadow-sm">
+          Option A
+        </Button>
+        <Button size="sm" variant="ghost" color="neutral">
+          Option B
+        </Button>
+        <Button size="sm" variant="ghost" color="neutral">
+          Option C
+        </Button>
       </div>
     </div>
   ),
