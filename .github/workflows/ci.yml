@@ -44,6 +44,9 @@ jobs:
       - name: Build
         run: pnpm build
 
+      - name: Check bundle sizes
+        run: pnpm size
+
       - name: Verify CSS safelist is up-to-date
         run: |
           node packages/core/scripts/generate-safelist.mjs
@@ -79,3 +82,44 @@ jobs:
         run: |
           chmod +x .github/scripts/validate-changeset.sh
           .github/scripts/validate-changeset.sh
+
+  storybook-a11y:
+    name: Storybook A11y & Interaction Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: validate
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build packages
+        run: pnpm build
+
+      - name: Build Storybook
+        run: pnpm --filter @ninna-ui/docs build
+        env:
+          CI: true
+
+      - name: Run Storybook test-runner (a11y + interactions)
+        run: |
+          pnpm --filter @ninna-ui/docs exec npx http-server storybook-static --port 6006 --silent &
+          sleep 3
+          pnpm --filter @ninna-ui/docs test-storybook --url http://localhost:6006
+        env:
+          CI: true

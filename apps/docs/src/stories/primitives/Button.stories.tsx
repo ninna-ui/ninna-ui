@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { userEvent, within, expect } from '@storybook/test';
 import { Button } from '@ninna-ui/primitives';
 import { Mail, Plus, Trash2, Send, Github, MoreVertical } from 'lucide-react';
 
@@ -61,6 +62,14 @@ export const Default: Story = {
     children: 'Button',
     variant: 'solid',
     color: 'primary',
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole('button', { name: 'Button' });
+    // Verify the button is focusable and accessible
+    await expect(button).toBeInTheDocument();
+    await userEvent.tab();
+    await expect(button).toHaveFocus();
   },
 };
 
