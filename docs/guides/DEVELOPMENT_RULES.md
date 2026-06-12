@@ -41,6 +41,7 @@ component-name/
 5. Default prop values documented in JSDoc and set in destructuring
 6. No deprecated props - remove immediately
 7. Accessibility: `focus-visible` ring, ARIA attributes, keyboard navigation
+8. When adding/removing a component, run `node scripts/count-components.js` and update the counts in `README.md` and `docs/architecture/ARCHITECTURE.md`
 
 ### 2.3 Props Design
 

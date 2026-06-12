@@ -1,6 +1,6 @@
 # Ninna UI Architecture
 
-> **Complete system architecture for the Ninna UI monorepo** - 12 packages, 69 components, Tailwind CSS v4 theme system, Radix isolation layer, canonical component patterns, and build infrastructure. This is the definitive technical reference for understanding how everything fits together.
+> **Complete system architecture for the Ninna UI monorepo** - 12 packages, 67 components, Tailwind CSS v4 theme system, Radix isolation layer, canonical component patterns, and build infrastructure. This is the definitive technical reference for understanding how everything fits together.
 >
 > **Version:** 0.6.0 · **Last Updated:** June 2026 · **Audit Status:** Full monorepo audit completed
 
@@ -24,7 +24,7 @@ Chakra/Mantine-level component quality combined with DaisyUI-simple theming. 100
 ninna-ui/
 ├─ apps/
 │  ├─ docs/                  # Storybook 10 documentation (65 story files)
-│  └─ playground/            # React Router v7 developer sandbox (SPA mode, 69 component views)
+│  └─ playground/            # React Router v7 developer sandbox (SPA mode, 70 component views)
 │
 ├─ packages/
 │  ├─ core/                  # Types, tokens, Tailwind class mappings, CSS presets (NO JSX)
@@ -202,11 +202,11 @@ component-name/
 
 11 engine wrappers: `CheckboxEngine`, `SwitchEngine`, `RadioEngine`, `SelectEngine`, `SliderEngine`, `DialogEngine`, `DropdownEngine`, `PopoverEngine`, `TooltipEngine`, `TabsEngine`, `AccordionEngine`. Plus `Slot` + `Slottable` for polymorphic rendering.
 
-### `@ninna-ui/primitives` - 15 Components
+### `@ninna-ui/primitives` - 14 Components
 
 Avatar (+AvatarGroup), Badge, Blockquote, Button, Code, Divider, Heading, IconButton, Kbd, Link, LinkOverlay (+LinkBox), List (+ListItem), Mark, Text.
 
-### `@ninna-ui/feedback` - 9 Components + useToast
+### `@ninna-ui/feedback` - 8 Components + useToast
 
 Alert, CircularProgress, EmptyState, Loading, Progress, Skeleton (+SkeletonCircle, +SkeletonText), Status, Toast, Toaster (+toast function, +ToastProvider, +useToast).
 
@@ -253,7 +253,7 @@ CodeBlock with regex-based TSX/CSS/bash syntax highlighting, copy-to-clipboard, 
 ### Playground (`apps/playground`)
 
 - React Router v7 in **SPA mode** (`ssr: false`) + Vite + Tailwind CSS v4.1
-- 69 component view files with: ComponentHeader, Usage, Examples, PropsTable, Accessibility
+- 70 component view files with: ComponentHeader, Usage, Examples, PropsTable, Accessibility
 - Theme switching across all 5 presets + dark mode
 - Uses `@ninna-ui/utils` `cn()` exclusively
 - `react-hook-form` included for form integration demos

@@ -1,6 +1,6 @@
 # 14 — Component-count audit: single source of truth
 
-Status: TODO
+Status: DONE
 Phase: 1 · Priority: Medium · Size: M
 
 ## Context
@@ -48,9 +48,9 @@ There is no script that derives these counts, so drift is inevitable.
 
 ## Acceptance criteria
 
-- [ ] `node scripts/count-components.js` prints per-package + total counts.
-- [ ] README, ARCHITECTURE, and package descriptions all match the script output.
-- [ ] Counting rule documented in the script header comment.
+- [x] `node scripts/count-components.js` prints per-package + total counts.
+- [x] README, ARCHITECTURE, and package descriptions all match the script output.
+- [x] Counting rule documented in the script header comment.
 
 ## Verification
 
@@ -62,6 +62,13 @@ pnpm check-exports
 
 ## Sync checklist
 
-- [ ] `ninna-ui-web`: marketing pages cite component counts
+- [x] `ninna-ui-web`: marketing pages cite component counts
       (e.g. `app/views/marketing/*`, comparison page, `llms.txt`). Grep for the old
       total ("69") in `d:\projects\ninna-ui\ninna-ui-web\app` and `public/` and update.
+
+## Baseline (from node scripts/count-components.js)
+
+primitives 14, feedback 8, layout 10, forms 17, overlays 5, navigation 5, data-display 7, code-block 1 - TOTAL 67.
+Package.json descriptions were already correct (14/8/10/17/5/5/7). Updated README headline, ARCHITECTURE header + inventory headings (primitives 15->14, feedback 9->8), playground views 69->70.
+Web repo: replaced 69->67 in llms.txt, comparison-registry, ComparisonView, AlternativeView, StatsSection, FrameworkLandingView, vite getting-started route; block demo mock content intentionally left unchanged.
+
