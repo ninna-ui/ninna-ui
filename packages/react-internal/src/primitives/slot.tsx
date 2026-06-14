@@ -11,9 +11,9 @@ import React, {
   type ReactNode,
   type HTMLAttributes,
   type ReactElement,
-} from 'react';
+} from "react";
 
-import { composeRefs } from '@ninna-ui/utils';
+import { composeRefs } from "@ninna-ui/utils";
 
 export interface SlotProps extends HTMLAttributes<HTMLElement> {
   children?: ReactNode;
@@ -44,7 +44,7 @@ function buildMergedProps(
   slotProps: SlotProps,
   childProps: SlotProps,
   childRef: React.Ref<HTMLElement> | undefined,
-  forwardedRef: React.ForwardedRef<HTMLElement>
+  forwardedRef: React.ForwardedRef<HTMLElement>,
 ): Record<string, unknown> {
   const merged = mergeProps(slotProps, childProps);
   const composedRef = forwardedRef
@@ -78,7 +78,7 @@ export const Slot = forwardRef<HTMLElement, SlotProps>(
           slotProps,
           newElement.props as SlotProps,
           getChildRef(newElement),
-          forwardedRef
+          forwardedRef,
         );
         return cloneElement(newElement, props, newChildren);
       }
@@ -90,16 +90,16 @@ export const Slot = forwardRef<HTMLElement, SlotProps>(
         slotProps,
         children.props as SlotProps,
         getChildRef(children),
-        forwardedRef
+        forwardedRef,
       );
       return cloneElement(children, props);
     }
 
     return <>{children}</>;
-  }
+  },
 );
 
-Slot.displayName = 'Slot';
+Slot.displayName = "Slot";
 
 interface SlottableProps {
   children: ReactNode;
@@ -110,7 +110,7 @@ export function Slottable({ children }: SlottableProps): ReactElement {
 }
 
 function isSlottable(
-  child: ReactNode
+  child: ReactNode,
 ): child is ReactElement<SlottableProps, typeof Slottable> {
   return isValidElement(child) && child.type === Slottable;
 }
@@ -135,15 +135,15 @@ function mergeProps(slotProps: SlotProps, childProps: SlotProps): SlotProps {
       } else if (slotPropValue) {
         overrideProps[propName as keyof SlotProps] = slotPropValue;
       }
-    } else if (propName === 'style') {
-      overrideProps.style = { ...slotPropValue, ...childPropValue } as Record<
-        string,
-        unknown
-      >;
-    } else if (propName === 'className') {
+    } else if (propName === "style") {
+      overrideProps.style = {
+        ...slotPropValue,
+        ...childPropValue,
+      } as React.CSSProperties;
+    } else if (propName === "className") {
       overrideProps.className = [slotPropValue, childPropValue]
         .filter(Boolean)
-        .join(' ');
+        .join(" ");
     }
   }
 

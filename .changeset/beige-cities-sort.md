@@ -14,4 +14,4 @@
 "@ninna-ui/cli": patch
 ---
 
-vitest version bump from 4.1.4 to 4.1.8
+vitest version bump from 4.1.4 to 4.1.8, react-router bump to 7.15. 0, and other package updates

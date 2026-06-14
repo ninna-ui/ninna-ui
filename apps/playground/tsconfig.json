@@ -4,7 +4,7 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": false,
     "exactOptionalPropertyTypes": false,
-    "baseUrl": ".",
+
     "rootDirs": [".", ".react-router/types"],
     "paths": {
       "~/*": ["./app/*"]
