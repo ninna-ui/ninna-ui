@@ -6,13 +6,13 @@
 
 ## 1. Naming Conventions
 
-| Type | Convention | Example |
-|------|------------|---------|
+| Type                   | Convention             | Example                        |
+| ---------------------- | ---------------------- | ------------------------------ |
 | **Exported constants** | `SCREAMING_SNAKE_CASE` | `BUTTON_SIZES`, `INPUT_COLORS` |
-| **Style objects** | `camelCase` | `buttonStyles`, `inputStyles` |
-| **Types / Interfaces** | `PascalCase` | `Size`, `Color`, `ButtonProps` |
-| **Component names** | `PascalCase` | `Button`, `RadioGroup` |
-| **File names** | `kebab-case` | `radio-group.styles.ts` |
+| **Style objects**      | `camelCase`            | `buttonStyles`, `inputStyles`  |
+| **Types / Interfaces** | `PascalCase`           | `Size`, `Color`, `ButtonProps` |
+| **Component names**    | `PascalCase`           | `Button`, `RadioGroup`         |
+| **File names**         | `kebab-case`           | `radio-group.styles.ts`        |
 
 ---
 
@@ -43,12 +43,16 @@ component-name/
 7. Accessibility: `focus-visible` ring, ARIA attributes, keyboard navigation
 8. When adding/removing a component, run `node scripts/count-components.js` and update the counts in `README.md` and `docs/architecture/ARCHITECTURE.md`
 
+> **forwardRef policy**: All components use `forwardRef` + `displayName`, even though React 19
+> supports `ref`-as-prop. This preserves React 18 compatibility and API uniformity.
+> Do **not** migrate individual components to ref-as-prop.
+
 ### 2.3 Props Design
 
 ```typescript
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   /** Visual style variant */
-  variant?: 'solid' | 'soft' | 'outline' | 'ghost' | 'text';
+  variant?: "solid" | "soft" | "outline" | "ghost" | "text";
   /** Color theme */
   color?: Color;
   /** Size of the button */
@@ -80,16 +84,17 @@ export const buttonStyles = {
 
 ### Token Rules
 
-| Token type | Location | Example |
-|-----------|----------|---------|
-| **Shared across packages** | `@ninna-ui/core` | `Color`, `Size`, `BG_COLORS`, `RADIUS_CLASSES` |
-| **Component-specific** | `.styles.ts` in component folder | `CHECKBOX_COLORS`, `INPUT_SIZES` |
+| Token type                 | Location                         | Example                                        |
+| -------------------------- | -------------------------------- | ---------------------------------------------- |
+| **Shared across packages** | `@ninna-ui/core`                 | `Color`, `Size`, `BG_COLORS`, `RADIUS_CLASSES` |
+| **Component-specific**     | `.styles.ts` in component folder | `CHECKBOX_COLORS`, `INPUT_SIZES`               |
 
 ---
 
 ## 4. Data Attributes
 
 ### `data-slot`
+
 Every component root and meaningful sub-element MUST have a `data-slot` attribute for CSS targeting and component introspection:
 
 ```tsx
@@ -100,14 +105,15 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 </button>
 ```
 
-| Guideline | Rule |
-|-----------|------|
-| **Root element** | `data-slot="component-name"` (kebab-case) |
-| **Sub-elements** | Descriptive name: `icon`, `content`, `title`, `indicator`, `track`, `thumb` |
-| **Hidden inputs** | Skip (not visible, no CSS targeting needed) |
-| **Compound children** | Each gets its own root slot (e.g., `list-item` inside `list`) |
+| Guideline             | Rule                                                                        |
+| --------------------- | --------------------------------------------------------------------------- |
+| **Root element**      | `data-slot="component-name"` (kebab-case)                                   |
+| **Sub-elements**      | Descriptive name: `icon`, `content`, `title`, `indicator`, `track`, `thumb` |
+| **Hidden inputs**     | Skip (not visible, no CSS targeting needed)                                 |
+| **Compound children** | Each gets its own root slot (e.g., `list-item` inside `list`)               |
 
 ### `data-state`, `data-disabled`, `data-loading`, `data-invalid`
+
 - `data-disabled={disabled || undefined}` - only when true
 - `data-loading={loading || undefined}` - only when true
 - `data-invalid={invalid || undefined}` - only when true
@@ -118,12 +124,14 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 ## 5. Accessibility Rules
 
 ### All Components
+
 - `forwardRef` always
 - `className` always supported
 - `disabled` + `aria-disabled` for disabled state
 - `aria-busy` + `data-loading` for loading state
 
 ### Interactive Components
+
 - `focus-visible:ring-2 focus-visible:ring-offset-2`
 - Keyboard navigation (`onKeyDown`)
 - `aria-label` / `aria-labelledby`
@@ -143,36 +151,44 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 ## 7. Package-Specific Rules
 
 ### `@ninna-ui/core`
+
 - ✅ Pure TypeScript types, Tailwind class maps, theme CSS presets
 - ❌ NO JSX, NO React, NO Radix
 
 ### `@ninna-ui/utils`
+
 - ✅ Pure functions: `cn()`, `KEYS`, `canUseDOM`; React-aware: `composeRefs`, `createContext`
 - ✅ React is an optional peer dependency (for `createContext`, `composeRefs`)
 - ❌ NO DOM APIs, NO @ninna-ui imports
 
 ### `@ninna-ui/react-internal`
+
 - ✅ Radix engine wrappers only (Radix is bundled, not a consumer dependency)
 - ❌ NEVER imported by apps directly - only `@ninna-ui/*` packages may import this
 
 ### `@ninna-ui/primitives`
+
 - ✅ Simple, stateless components
 - ❌ NO Radix, NO react-internal
 
 ### `@ninna-ui/feedback`
+
 - ✅ User feedback components
 - ❌ NO direct Radix imports, NO primitives
 
 ### `@ninna-ui/layout`
+
 - ✅ Structural layout components
 - ❌ NO Radix, NO react-internal
 
 ### `@ninna-ui/forms`
+
 - ✅ Form inputs and controls
 - ✅ May import `@ninna-ui/react-internal` engines
 - ❌ NO direct `@radix-ui/*` imports
 
 ### `@ninna-ui/overlays`
+
 - ✅ Overlay/portal components: Modal, Drawer, Popover, Tooltip, DropdownMenu
 - ✅ May import `@ninna-ui/react-internal` engines (DialogEngine, PopoverEngine, TooltipEngine, DropdownEngine)
 - ❌ NO direct `@radix-ui/*` imports
@@ -181,6 +197,7 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 - Escape key closes, click-outside closes (configurable)
 
 ### `@ninna-ui/navigation`
+
 - ✅ Navigation components: Tabs, Accordion, Breadcrumbs, Pagination, Stepper
 - ✅ Tabs/Accordion may import `@ninna-ui/react-internal` engines (TabsEngine, AccordionEngine)
 - ✅ Breadcrumbs/Pagination/Stepper are custom - no Radix needed
@@ -189,6 +206,7 @@ Every component root and meaningful sub-element MUST have a `data-slot` attribut
 - Semantic HTML: `<nav>`, `<ol>`, `role="tablist"`, `aria-current`
 
 ### `@ninna-ui/data-display`
+
 - ✅ Data display components: Card, Stat, Table, DataTable, Timeline, Tree, Calendar
 - ❌ NO Radix, NO react-internal
 - Semantic HTML: `<table>`, `<th scope>`, `<caption>`, `role="grid"`, `role="tree"`

@@ -82,20 +82,20 @@ ninna-ui/
 
 ### Dependency Rules (Enforced)
 
-| Package | Can Depend On | MUST NOT Depend On |
-|---------|---------------|-------------------|
-| `core` | Nothing | React, JSX, Radix |
-| `utils` | `clsx`, `tailwind-merge` | React (peer only), core |
-| `react-internal` | `core`, `utils`, Radix | Radix type leakage |
-| `primitives` | `core`, `utils` | Radix, react-internal |
-| `feedback` | `core`, `utils` | Radix, react-internal, primitives |
-| `layout` | `core`, `utils` | Radix, react-internal |
-| `forms` | `core`, `utils`, `react-internal` | Radix directly |
-| `overlays` | `core`, `utils`, `react-internal` | Radix directly |
-| `navigation` | `core`, `utils`, `react-internal` | Radix directly |
-| `data-display` | `core`, `utils` | Radix, react-internal |
-| `code-block` | `core`, `utils` | Radix, react-internal |
-| `cli` | `commander`, `prompts`, `fs-extra` | Any @ninna-ui package at runtime |
+| Package          | Can Depend On                      | MUST NOT Depend On                |
+| ---------------- | ---------------------------------- | --------------------------------- |
+| `core`           | Nothing                            | React, JSX, Radix                 |
+| `utils`          | `clsx`, `tailwind-merge`           | React (peer only), core           |
+| `react-internal` | `core`, `utils`, Radix             | Radix type leakage                |
+| `primitives`     | `core`, `utils`                    | Radix, react-internal             |
+| `feedback`       | `core`, `utils`                    | Radix, react-internal, primitives |
+| `layout`         | `core`, `utils`                    | Radix, react-internal             |
+| `forms`          | `core`, `utils`, `react-internal`  | Radix directly                    |
+| `overlays`       | `core`, `utils`, `react-internal`  | Radix directly                    |
+| `navigation`     | `core`, `utils`, `react-internal`  | Radix directly                    |
+| `data-display`   | `core`, `utils`                    | Radix, react-internal             |
+| `code-block`     | `core`, `utils`                    | Radix, react-internal             |
+| `cli`            | `commander`, `prompts`, `fs-extra` | Any @ninna-ui package at runtime  |
 
 **Verified:** All `@radix-ui/*` imports exist only in `packages/react-internal/src/engines/` (11 files). Zero leakage.
 
@@ -120,6 +120,7 @@ core/src/theme/
 ```
 
 Each preset imports `tailwind.css` (no duplication of `@theme inline`). Presets define:
+
 - **Light mode:** `[data-theme="preset-name"]` - activates when `data-theme` matches
 - **Explicit dark:** `.dark [data-theme="preset-name"], [data-theme="preset-name"].dark` - `.dark` class on `<html>` or ancestor
 - **System dark:** `@media (prefers-color-scheme: dark) { [data-theme="preset-name"]:not(.light):not(.dark) }` - OS preference, no class set
@@ -128,13 +129,13 @@ The `data-theme` attribute is always required on `<html>` (or an ancestor elemen
 
 ### CSS Variable Contract (31 variables)
 
-| Category | Variables |
-|----------|-----------|
+| Category            | Variables                                                                |
+| ------------------- | ------------------------------------------------------------------------ |
 | **Semantic colors** | `--color-{primary,secondary,accent,neutral,success,danger,warning,info}` |
-| **Content colors** | `--color-{primary,secondary,...}-content` (guaranteed WCAG AA contrast) |
-| **Base surfaces** | `--color-base-{50,100,200,300,400,500,600,700,800,900}` |
-| **Base text** | `--color-base-content` |
-| **Borders** | `--color-border`, `--color-border-{hover,active,disabled}` |
+| **Content colors**  | `--color-{primary,secondary,...}-content` (guaranteed WCAG AA contrast)  |
+| **Base surfaces**   | `--color-base-{50,100,200,300,400,500,600,700,800,900}`                  |
+| **Base text**       | `--color-base-content`                                                   |
+| **Borders**         | `--color-border`, `--color-border-{hover,active,disabled}`               |
 
 ### Color Strategy (oklch)
 
@@ -170,11 +171,13 @@ component-name/
 ```
 
 **Exceptions (acceptable):**
+
 - `toast/` has 4 files: `toast.tsx`, `toaster.tsx`, `use-toast.tsx`, `toast.types.ts` - compound component
 - `hidden-field/` has 2 files: no `.styles.ts` or `.types.ts` needed (trivial wrapper)
 - Compound components (Card, Modal, Tabs, etc.) use `Object.assign(Root, { Sub1, Sub2 })` pattern
 
 **Rules:**
+
 - **No** separate `.sizes.ts`, `.colors.ts`, `.tokens.ts`, `.class-maps.ts`
 - **No** `'use client'` directives in library code (verified: zero instances)
 - **No** style exports from barrel `index.ts`
@@ -186,11 +189,11 @@ component-name/
 
 ### `@ninna-ui/core` - Types, Tokens & Theme CSS
 
-| Layer | Contents |
-|-------|----------|
-| `tokens/` | `Color`, `Size`, `CompactSize`, `SpinnerSize`, `Radius`, `TextSize`, `TextWeight`, `HeadingLevel`, `ColorVariant`, `ButtonVariant`, `InputVariant` |
+| Layer      | Contents                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `tokens/`  | `Color`, `Size`, `CompactSize`, `SpinnerSize`, `Radius`, `TextSize`, `TextWeight`, `HeadingLevel`, `ColorVariant`, `ButtonVariant`, `InputVariant`                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | `classes/` | `BG_COLORS`, `TEXT_COLORS`, `BORDER_COLORS`, `RING_COLORS`, `STROKE_COLORS`, `SOFT_BG_COLORS`, `MUTED_BG_COLORS`, `MUTED_BORDER_COLORS`, `HOVER_TEXT_COLORS`, `MARKER_COLORS`, `SOLID_VARIANTS`, `SOFT_VARIANTS`, `OUTLINE_VARIANTS`, `GHOST_VARIANTS`, `TEXT_VARIANTS`, `RADIUS_CLASSES`, `TEXT_SIZE_CLASSES`, `TEXT_WEIGHT_CLASSES`, `FOCUS_RING_COLORS`, `FOCUS_BORDER_COLORS`, `INPUT_FOCUS_COLORS`, `CHECKED_BG_COLORS`, `CHECKED_BORDER_COLORS`, `PEER_CHECKED_BG_COLORS`, `PEER_CHECKED_BORDER_COLORS`, `FOCUS_VISIBLE_RING_COLORS`, `PEER_FOCUS_VISIBLE_RING_COLORS` |
-| `theme/` | `tailwind.css` + 5 preset CSS files |
+| `theme/`   | `tailwind.css` + 5 preset CSS files                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 **No JSX, no React.** Pure TypeScript + CSS.
 
@@ -264,17 +267,17 @@ CodeBlock with regex-based TSX/CSS/bash syntax highlighting, copy-to-clipboard, 
 
 ## Build & Test Infrastructure
 
-| Tool | Version | Purpose |
-|------|---------|---------|
-| **pnpm** | 9.x | Package manager (workspaces) |
-| **Turborepo** | 2.x | Build orchestration (`turbo run build`) |
-| **tsup** | 8.x | Package bundling (ESM + DTS) |
-| **TypeScript** | 5.4+ | Type checking (`tsc --noEmit`) |
-| **Vitest** | 4.x | Unit testing (jsdom environment) |
-| **@testing-library/react** | 16.x | Component testing |
-| **@sa11y/vitest** | ^8.0.27 | Accessibility testing |
-| **Storybook** | 10.x | Component documentation |
-| **Changesets** | 2.27+ | Version management |
+| Tool                       | Version | Purpose                                 |
+| -------------------------- | ------- | --------------------------------------- |
+| **pnpm**                   | 9.x     | Package manager (workspaces)            |
+| **Turborepo**              | 2.x     | Build orchestration (`turbo run build`) |
+| **tsup**                   | 8.x     | Package bundling (ESM + DTS)            |
+| **TypeScript**             | 5.4+    | Type checking (`tsc --noEmit`)          |
+| **Vitest**                 | 4.x     | Unit testing (jsdom environment)        |
+| **@testing-library/react** | 16.x    | Component testing                       |
+| **@sa11y/vitest**          | ^8.0.27 | Accessibility testing                   |
+| **Storybook**              | 10.x    | Component documentation                 |
+| **Changesets**             | 2.27+   | Version management                      |
 
 ### Test Configuration
 

@@ -24,23 +24,23 @@
     "@ninna-ui/navigation": "workspace:*",
     "@ninna-ui/overlays": "workspace:*",
     "@ninna-ui/primitives": "workspace:*",
-    "lucide-react": "^0.468.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "lucide-react": "^1.18.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
     "@ninna-ui/tsconfig": "workspace:*",
-    "@storybook/addon-themes": "^10.2.16",
-    "@storybook/react": "^10.2.16",
-    "@storybook/react-vite": "^10.2.16",
-    "@tailwindcss/vite": "^4.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "@vitejs/plugin-react": "^5.0.0",
-    "storybook": "^10.2.16",
-    "tailwindcss": "^4.0.0",
-    "typescript": "^5.4.0",
-    "vite": "^7.3.2",
-    "vite-tsconfig-paths": "^5.0.0"
+    "@storybook/addon-themes": "^10.4.4",
+    "@storybook/react": "^10.4.4",
+    "@storybook/react-vite": "^10.4.4",
+    "@tailwindcss/vite": "^4.3.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "storybook": "^10.4.4",
+    "tailwindcss": "^4.3.1",
+    "typescript": "^5.9.3",
+    "vite": "^8.0.16",
+    "vite-tsconfig-paths": "^6.1.1"
   }
 }
