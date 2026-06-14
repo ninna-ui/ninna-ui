@@ -2,7 +2,7 @@
 
 **Full React UI library with zero runtime styling and native Tailwind CSS v4 support.**
 
-The open-source React component library that combines **Chakra-level component quality** with **DaisyUI-simple theming** - 69 accessible, production-ready components, 5 built-in theme presets, and zero JavaScript theming overhead. One CSS import. Instant design system.
+The open-source React component library that combines **Chakra-level component quality** with **DaisyUI-simple theming** - 67 accessible, production-ready components, 5 built-in theme presets, and zero JavaScript theming overhead. One CSS import. Instant design system.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue.svg)](https://www.typescriptlang.org/)
