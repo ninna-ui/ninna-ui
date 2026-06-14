@@ -55,10 +55,10 @@ causes wasted work.
 
 ## Acceptance criteria
 
-- [ ] `## Findings` section added below documenting per-component results
+- [x] `## Findings` section added below documenting per-component results
       (even if the finding is "already optimal — no change").
-- [ ] Any applied memoization covered by a render-count regression test.
-- [ ] All existing tests green, zero API/visual changes.
+- [x] Any applied memoization covered by a render-count regression test.
+- [x] All existing tests green, zero API/visual changes.
 
 ## Verification
 
@@ -74,4 +74,6 @@ pnpm build && pnpm test && pnpm lint
 
 ## Findings
 
-_(filled in by executor)_
+- **DataTable**: `getSortedData` is already appropriately memoized using `useMemo` keyed on `[data, columns, currentSort]`. No unnecessary O(n log n) sorting occurs on unrelated re-renders. No changes needed.
+- **Calendar**: `getCalendarDays` is already memoized using `useMemo` keyed on `[year, monthIndex, weekStartsOn]`. The day grid computation is not wasted. No changes needed.
+- **Tree**: `TreeItem` does re-render recursively because `expandedIds` (a `Set`) is cloned on every toggle. However, wrapping `TreeItem` in `React.memo` would block the propagation of the new `expandedIds` reference to its children unless complex custom equality checks and state restructuring are introduced. Given the constraints of no API/behavior changes and the current tree sizes, the recursive render is left as-is since a simple `memo` does not cleanly apply without risking stale state in deeply nested children. No changes applied.
