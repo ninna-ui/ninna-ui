@@ -14,25 +14,25 @@ interface TokenSegment {
   italic?: boolean;
 }
 
-function tokenizeTsx(code: string): TokenSegment[][] {
-  const TOKEN_REGEX = new RegExp(
-    [
-      "(?<blockComment>\\/\\*[\\s\\S]*?\\*\\/)",
-      "(?<lineComment>\\/\\/[^\\n]*)",
-      "(?<templateString>`[^`]*`)",
-      "(?<quotedString>\"(?:\\\\.|[^\"\\\\])*\"|'(?:\\\\.|[^'\\\\])*')",
-      "\\b(?<keyword>import|export|from|default|const|let|var|function|return|if|else|switch|case|break|for|while|do|try|catch|finally|throw|new|typeof|instanceof|void|delete|in|of|async|await|class|extends|super|this|static|get|set|yield|interface|type|enum|namespace|declare|as|is|keyof|readonly|abstract|implements|private|protected|public)\\b",
-      "\\b(?<booleanLike>true|false|null|undefined|NaN|Infinity)\\b",
-      "(?<numberLike>\\b\\d+(?:\\.\\d+)?\\b)",
-      "(?<jsxClose>\\/>)",
-      "(?<jsxGt>>)",
-      "(?<tagOpen><\\/?)(?<tagName>[A-Za-z][\\w.-]*)",
-      "\\b(?<attrName>[A-Za-z_:][\\w:.-]*)(?=\\s*=)",
-      "\\b(?<componentName>[A-Z][A-Za-z0-9_]*)\\b(?=\\s*(?:\\(|<))",
-    ].join("|"),
-    "g"
-  );
+const TOKEN_REGEX = new RegExp(
+  [
+    "(?<blockComment>\\/\\*[\\s\\S]*?\\*\\/)",
+    "(?<lineComment>\\/\\/[^\\n]*)",
+    "(?<templateString>`[^`]*`)",
+    "(?<quotedString>\"(?:\\\\.|[^\"\\\\])*\"|'(?:\\\\.|[^'\\\\])*')",
+    "\\b(?<keyword>import|export|from|default|const|let|var|function|return|if|else|switch|case|break|for|while|do|try|catch|finally|throw|new|typeof|instanceof|void|delete|in|of|async|await|class|extends|super|this|static|get|set|yield|interface|type|enum|namespace|declare|as|is|keyof|readonly|abstract|implements|private|protected|public)\\b",
+    "\\b(?<booleanLike>true|false|null|undefined|NaN|Infinity)\\b",
+    "(?<numberLike>\\b\\d+(?:\\.\\d+)?\\b)",
+    "(?<jsxClose>\\/>)",
+    "(?<jsxGt>>)",
+    "(?<tagOpen><\\/?)(?<tagName>[A-Za-z][\\w.-]*)",
+    "\\b(?<attrName>[A-Za-z_:][\\w:.-]*)(?=\\s*=)",
+    "\\b(?<componentName>[A-Z][A-Za-z0-9_]*)\\b(?=\\s*(?:\\(|<))",
+  ].join("|"),
+  "g",
+);
 
+function tokenizeTsx(code: string): TokenSegment[][] {
   const lines = code.split("\n");
   return lines.map((line) => {
     const segments: TokenSegment[] = [];
@@ -60,7 +60,9 @@ function tokenizeTsx(code: string): TokenSegment[][] {
       } else if (groups.jsxClose || groups.jsxGt) {
         segments.push({ text: match[0], type: "punctuation" });
       } else if (groups.tagOpen && groups.tagName) {
-        const tagClass: TokenType = /^[A-Z]/.test(groups.tagName) ? "component" : "tag";
+        const tagClass: TokenType = /^[A-Z]/.test(groups.tagName)
+          ? "component"
+          : "tag";
         segments.push({ text: groups.tagOpen, type: "punctuation" });
         segments.push({ text: groups.tagName, type: tagClass });
       } else if (groups.attrName) {
@@ -100,8 +102,18 @@ function tokenizeTsx(code: string): TokenSegment[][] {
  */
 export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
   function CodeBlock(
-    { code, language = "tsx", showLineNumbers = false, showCopyButton = true, copyButtonAlwaysVisible = false, colorScheme = "auto", className, style, ...props },
-    ref
+    {
+      code,
+      language = "tsx",
+      showLineNumbers = false,
+      showCopyButton = true,
+      copyButtonAlwaysVisible = false,
+      colorScheme = "auto",
+      className,
+      style,
+      ...props
+    },
+    ref,
   ) {
     const [copied, setCopied] = useState(false);
 
@@ -113,8 +125,19 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
 
     const shouldHighlight = language !== "text" && language !== "bash";
     const tokenizedLines = useMemo(
-      () => shouldHighlight ? tokenizeTsx(code) : code.split("\n").map(line => [{ text: line || "\n", type: null as TokenType | null, italic: false }]),
-      [code, shouldHighlight]
+      () =>
+        shouldHighlight
+          ? tokenizeTsx(code)
+          : code
+              .split("\n")
+              .map((line) => [
+                {
+                  text: line || "\n",
+                  type: null as TokenType | null,
+                  italic: false,
+                },
+              ]),
+      [code, shouldHighlight],
     );
 
     return (
@@ -133,13 +156,14 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
         }}
         {...props}
       >
-
         {showCopyButton && (
           <div
             data-slot="code-block-copy"
             className={cn(
               "absolute top-2 right-2 z-10 transition-opacity",
-              copyButtonAlwaysVisible ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+              copyButtonAlwaysVisible
+                ? "opacity-100"
+                : "opacity-0 group-hover:opacity-100",
             )}
           >
             <button
@@ -221,7 +245,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
                       </span>
                     ) : (
                       <span key={segIdx}>{seg.text}</span>
-                    )
+                    ),
                   )}
                 </span>
               </div>
@@ -230,7 +254,7 @@ export const CodeBlock = forwardRef<HTMLDivElement, CodeBlockProps>(
         </pre>
       </div>
     );
-  }
+  },
 );
 
-CodeBlock.displayName = 'CodeBlock';
+CodeBlock.displayName = "CodeBlock";

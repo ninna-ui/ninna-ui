@@ -37,8 +37,8 @@ call site uses `.exec()`/`.test()` on the shared instance.
 
 ## Acceptance criteria
 
-- [ ] Regex constructed once at module load.
-- [ ] All existing code-block tests pass unchanged.
+- [x] Regex constructed once at module load.
+- [x] All existing code-block tests pass unchanged.
 
 ## Verification
 
