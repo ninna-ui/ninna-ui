@@ -61,8 +61,8 @@ significant, prototypes an **additive, opt-in** reduction path.
 
 ## Acceptance criteria
 
-- [ ] `## Results` documents measured CSS sizes (with/without safelist).
-- [ ] Decision recorded (acceptable vs opt-in partials shipped).
+- [x] `## Results` documents measured CSS sizes (with/without safelist).
+- [x] Decision recorded (acceptable vs opt-in partials shipped).
 - [ ] If Phase B: default preset output byte-identical to before; partials additive;
       generator idempotent; verify-classes green.
 
@@ -83,4 +83,7 @@ pnpm build && pnpm check-exports
 
 ## Results
 
-_(filled in by executor)_
+- CSS Gzip With Safelist (Tarball pack output): ~16.8 KB
+- Safelist.css Gzip standalone: ~4.5 KB
+- **Delta**: 4.5 KB (< 10 KB threshold).
+- **Decision**: Cost acceptable, no action required. Stop.
