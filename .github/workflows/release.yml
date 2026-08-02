@@ -57,6 +57,9 @@ jobs:
             exit 1
           fi
 
+      - name: Verify CLI template versions are in sync
+        run: node scripts/check-template-versions.js
+
       - name: Run tests before release
         run: pnpm test
 
