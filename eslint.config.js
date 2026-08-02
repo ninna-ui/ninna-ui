@@ -11,6 +11,10 @@ export default [
       '*.config.js',
       '*.config.ts',
       '*.d.ts',
+      '.claude/',
+      '.agents/',
+      '.agent/',
+      '.antigravity/',
     ],
   },
 ];

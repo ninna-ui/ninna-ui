@@ -12,7 +12,7 @@ The complete feedback toolkit for [Ninna UI](../../README.md) - everything you n
 ## Installation
 
 ```bash
-pnpm add @ninna-ui/feedback @ninna-ui/core
+pnpm add @ninna-ui/feedback@latest @ninna-ui/core@latest
 ```
 
 ## CSS Setup
@@ -29,21 +29,21 @@ pnpm add @ninna-ui/feedback @ninna-ui/core
 Add the `data-theme` attribute to your `<html>` element:
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
 ## Components
 
-| Component | Description | Variants | Colors |
-|-----------|-------------|----------|--------|
-| `Alert` | Contextual feedback messages with optional dismiss | solid, soft, outline | 8 |
-| `Toast` / `Toaster` | Ephemeral notifications with promise support | solid, soft, outline | 8 |
-| `Loading` | Spinner loading indicator | - | 8 |
-| `Progress` | Linear progress bar with optional label | solid, soft | 8 |
-| `CircularProgress` | Circular/radial progress indicator | - | 8 |
-| `Status` | Dot indicator for online/offline/busy states | - | 8 |
-| `Skeleton` | Content placeholder during loading | - | - |
-| `EmptyState` | Placeholder for empty data states | - | - |
+| Component           | Description                                        | Variants             | Colors |
+| ------------------- | -------------------------------------------------- | -------------------- | ------ |
+| `Alert`             | Contextual feedback messages with optional dismiss | solid, soft, outline | 8      |
+| `Toast` / `Toaster` | Ephemeral notifications with promise support       | solid, soft, outline | 8      |
+| `Loading`           | Spinner loading indicator                          | -                    | 8      |
+| `Progress`          | Linear progress bar with optional label            | solid, soft          | 8      |
+| `CircularProgress`  | Circular/radial progress indicator                 | -                    | 8      |
+| `Status`            | Dot indicator for online/offline/busy states       | -                    | 8      |
+| `Skeleton`          | Content placeholder during loading                 | -                    | -      |
+| `EmptyState`        | Placeholder for empty data states                  | -                    | -      |
 
 > `Skeleton` also exports `SkeletonCircle` and `SkeletonText` for common placeholder shapes.
 
@@ -63,7 +63,9 @@ function App() {
 
       <Loading size="lg" color="primary" />
 
-      <button onClick={() => toast.create({ title: "Saved!", color: "success" })}>
+      <button
+        onClick={() => toast.create({ title: "Saved!", color: "success" })}
+      >
         Save
       </button>
 
@@ -77,16 +79,32 @@ function App() {
 
 ```typescript
 import {
-  Alert, type AlertProps,
-  Toast, Toaster, ToastProvider, toast, useToast,
-  type ToastProps, type ToasterProps, type ToastData,
-  Loading, type LoadingProps,
-  Progress, type ProgressProps,
-  CircularProgress, type CircularProgressProps,
-  Status, type StatusProps,
-  Skeleton, SkeletonCircle, SkeletonText,
-  type SkeletonProps, type SkeletonCircleProps, type SkeletonTextProps,
-  EmptyState, type EmptyStateProps,
+  Alert,
+  type AlertProps,
+  Toast,
+  Toaster,
+  ToastProvider,
+  toast,
+  useToast,
+  type ToastProps,
+  type ToasterProps,
+  type ToastData,
+  Loading,
+  type LoadingProps,
+  Progress,
+  type ProgressProps,
+  CircularProgress,
+  type CircularProgressProps,
+  Status,
+  type StatusProps,
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
+  type SkeletonProps,
+  type SkeletonCircleProps,
+  type SkeletonTextProps,
+  EmptyState,
+  type EmptyStateProps,
 } from "@ninna-ui/feedback";
 ```
 

@@ -12,7 +12,7 @@ Data presentation components for [Ninna UI](../../README.md) - everything you ne
 ## Installation
 
 ```bash
-pnpm add @ninna-ui/data-display @ninna-ui/core
+pnpm add @ninna-ui/data-display@latest @ninna-ui/core@latest
 ```
 
 ## CSS Setup
@@ -29,20 +29,20 @@ pnpm add @ninna-ui/data-display @ninna-ui/core
 Add the `data-theme` attribute to your `<html>` element:
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
 ## Components
 
-| Component | Description | Key Features |
-|-----------|-------------|-------------|
-| `Card` | Content container with header, body, footer | Variants, padding control, clickable |
-| `Stat` | Key metric display (label, value, delta) | Trend indicators, color-coded deltas |
-| `Table` | Semantic HTML table with styling | Striped, hoverable, compact modes |
-| `DataTable` | Feature-rich data grid | Sorting, pagination, column resize |
-| `Timeline` | Chronological event display | Vertical layout, icon markers |
-| `Tree` | Hierarchical tree view | Expandable nodes, keyboard navigation |
-| `Calendar` | Date display/selection | Month view, date range, keyboard nav |
+| Component   | Description                                 | Key Features                          |
+| ----------- | ------------------------------------------- | ------------------------------------- |
+| `Card`      | Content container with header, body, footer | Variants, padding control, clickable  |
+| `Stat`      | Key metric display (label, value, delta)    | Trend indicators, color-coded deltas  |
+| `Table`     | Semantic HTML table with styling            | Striped, hoverable, compact modes     |
+| `DataTable` | Feature-rich data grid                      | Sorting, pagination, column resize    |
+| `Timeline`  | Chronological event display                 | Vertical layout, icon markers         |
+| `Tree`      | Hierarchical tree view                      | Expandable nodes, keyboard navigation |
+| `Calendar`  | Date display/selection                      | Month view, date range, keyboard nav  |
 
 ## Quick Start
 
@@ -56,7 +56,12 @@ function Dashboard() {
       <Card>
         <Card.Header>Revenue</Card.Header>
         <Card.Body>
-          <Stat value="$12,450" label="Total Revenue" delta="+12.5%" trend="up" />
+          <Stat
+            value="$12,450"
+            label="Total Revenue"
+            delta="+12.5%"
+            trend="up"
+          />
         </Card.Body>
       </Card>
 

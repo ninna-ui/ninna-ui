@@ -12,7 +12,7 @@ Navigation patterns for [Ninna UI](../../README.md). Tabs and Accordion are powe
 ## Installation
 
 ```bash
-pnpm add @ninna-ui/navigation @ninna-ui/core
+pnpm add @ninna-ui/navigation@latest @ninna-ui/core@latest
 ```
 
 ## CSS Setup
@@ -29,18 +29,18 @@ pnpm add @ninna-ui/navigation @ninna-ui/core
 Add the `data-theme` attribute to your `<html>` element:
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
 ## Components
 
-| Component | Description | Engine |
-|-----------|-------------|--------|
-| `Tabs` | Tabbed content panels with keyboard arrow navigation | TabsEngine (Radix) |
-| `Accordion` | Collapsible content sections (single or multiple open) | AccordionEngine (Radix) |
-| `Breadcrumbs` | Path navigation with semantic `<nav>` / `<ol>` | Custom |
-| `Pagination` | Page navigation with first/prev/next/last controls | Custom |
-| `Stepper` | Multi-step progress indicator | Custom |
+| Component     | Description                                            | Engine                  |
+| ------------- | ------------------------------------------------------ | ----------------------- |
+| `Tabs`        | Tabbed content panels with keyboard arrow navigation   | TabsEngine (Radix)      |
+| `Accordion`   | Collapsible content sections (single or multiple open) | AccordionEngine (Radix) |
+| `Breadcrumbs` | Path navigation with semantic `<nav>` / `<ol>`         | Custom                  |
+| `Pagination`  | Page navigation with first/prev/next/last controls     | Custom                  |
+| `Stepper`     | Multi-step progress indicator                          | Custom                  |
 
 ## Quick Start
 

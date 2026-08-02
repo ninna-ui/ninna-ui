@@ -12,7 +12,7 @@ The structural foundation for [Ninna UI](../../README.md) apps - responsive layo
 ## Installation
 
 ```bash
-pnpm add @ninna-ui/layout @ninna-ui/core
+pnpm add @ninna-ui/layout@latest @ninna-ui/core@latest
 ```
 
 ## CSS Setup
@@ -29,25 +29,25 @@ pnpm add @ninna-ui/layout @ninna-ui/core
 Add the `data-theme` attribute to your `<html>` element:
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
 ## Components
 
-| Component | Description | Key Props |
-|-----------|-------------|-----------|
-| `Box` | Base layout element with polymorphic `as` prop | `as`, `className` |
-| `Container` | Centered content wrapper with max-width | `maxWidth` (sm, md, lg, xl, 2xl, full) |
-| `Stack` | Vertical stack with gap control | `gap`, `align`, `justify` |
-| `HStack` | Horizontal stack (shorthand for `Stack direction="horizontal"`) | `gap`, `align`, `justify` |
-| `VStack` | Vertical stack (shorthand for `Stack direction="vertical"`) | `gap`, `align`, `justify` |
-| `Flex` | Flexbox container with full flex control | `direction`, `align`, `justify`, `wrap`, `gap` |
-| `Grid` | CSS Grid container | `columns`, `rows`, `gap`, `flow` |
-| `SimpleGrid` | Auto-responsive grid with equal columns | `columns`, `minChildWidth`, `gap` |
-| `Center` | Centers content horizontally and vertically | - |
-| `Wrap` | Flex wrap with gap control | `gap`, `align`, `justify` |
-| `AspectRatio` | Maintains a fixed aspect ratio | `ratio` (square, video, portrait, etc.) |
-| `Separator` | Visual separator line | `orientation` (horizontal, vertical) |
+| Component     | Description                                                     | Key Props                                      |
+| ------------- | --------------------------------------------------------------- | ---------------------------------------------- |
+| `Box`         | Base layout element with polymorphic `as` prop                  | `as`, `className`                              |
+| `Container`   | Centered content wrapper with max-width                         | `maxWidth` (sm, md, lg, xl, 2xl, full)         |
+| `Stack`       | Vertical stack with gap control                                 | `gap`, `align`, `justify`                      |
+| `HStack`      | Horizontal stack (shorthand for `Stack direction="horizontal"`) | `gap`, `align`, `justify`                      |
+| `VStack`      | Vertical stack (shorthand for `Stack direction="vertical"`)     | `gap`, `align`, `justify`                      |
+| `Flex`        | Flexbox container with full flex control                        | `direction`, `align`, `justify`, `wrap`, `gap` |
+| `Grid`        | CSS Grid container                                              | `columns`, `rows`, `gap`, `flow`               |
+| `SimpleGrid`  | Auto-responsive grid with equal columns                         | `columns`, `minChildWidth`, `gap`              |
+| `Center`      | Centers content horizontally and vertically                     | -                                              |
+| `Wrap`        | Flex wrap with gap control                                      | `gap`, `align`, `justify`                      |
+| `AspectRatio` | Maintains a fixed aspect ratio                                  | `ratio` (square, video, portrait, etc.)        |
+| `Separator`   | Visual separator line                                           | `orientation` (horizontal, vertical)           |
 
 ## Quick Start
 
@@ -60,7 +60,9 @@ function Dashboard() {
     <Container maxWidth="xl">
       <VStack gap="lg">
         <HStack gap="md" justify="between">
-          <Heading as="h1" size="2xl">Dashboard</Heading>
+          <Heading as="h1" size="2xl">
+            Dashboard
+          </Heading>
           <Button color="primary">New Item</Button>
         </HStack>
 
@@ -79,16 +81,28 @@ function Dashboard() {
 
 ```typescript
 import {
-  Box, type BoxProps,
-  Container, type ContainerProps,
-  Stack, HStack, VStack, type StackProps,
-  Flex, type FlexProps,
-  Grid, type GridProps,
-  SimpleGrid, type SimpleGridProps,
-  Center, type CenterProps,
-  Wrap, type WrapProps,
-  AspectRatio, type AspectRatioProps,
-  Separator, type SeparatorProps,
+  Box,
+  type BoxProps,
+  Container,
+  type ContainerProps,
+  Stack,
+  HStack,
+  VStack,
+  type StackProps,
+  Flex,
+  type FlexProps,
+  Grid,
+  type GridProps,
+  SimpleGrid,
+  type SimpleGridProps,
+  Center,
+  type CenterProps,
+  Wrap,
+  type WrapProps,
+  AspectRatio,
+  type AspectRatioProps,
+  Separator,
+  type SeparatorProps,
 } from "@ninna-ui/layout";
 ```
 
