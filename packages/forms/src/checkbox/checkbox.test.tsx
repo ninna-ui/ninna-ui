@@ -55,6 +55,32 @@ describe('Checkbox', () => {
     });
   });
 
+  it('toggles when the visible indicator is clicked', async () => {
+    const { container } = render(<Checkbox label="Test" />);
+    const input = screen.getByRole('checkbox');
+    const indicator = container.querySelector('[data-slot="indicator"]')!;
+
+    fireEvent.click(indicator);
+
+    await waitFor(() => {
+      expect(input).toBeChecked();
+    });
+  });
+
+  it('does not toggle a disabled checkbox when the indicator is clicked', () => {
+    const onChange = vi.fn();
+    const { container } = render(
+      <Checkbox label="Test" disabled onCheckedChange={onChange} />
+    );
+    const input = screen.getByRole('checkbox');
+    const indicator = container.querySelector('[data-slot="indicator"]')!;
+
+    fireEvent.click(indicator);
+
+    expect(input).not.toBeChecked();
+    expect(onChange).not.toHaveBeenCalled();
+  });
+
   // ── Disabled ───────────────────────────────────────────────
   it('is disabled when disabled prop is true', () => {
     render(<Checkbox label="Test" disabled />);
@@ -136,7 +162,8 @@ describe('CheckboxGroup', () => {
         <CheckboxGroupItem value="b" label="Option B" />
       </CheckboxGroup>
     );
-    fireEvent.click(screen.getAllByRole('checkbox')[0]!);
+    const indicators = document.querySelectorAll('[data-slot="indicator"]');
+    fireEvent.click(indicators[0]!);
     await waitFor(() => {
       expect(onChange).toHaveBeenCalledWith(['a']);
     });

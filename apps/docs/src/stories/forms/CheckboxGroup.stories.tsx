@@ -62,6 +62,20 @@ export const Default: Story = {
   ),
 };
 
+export const IndicatorAndLabelClicks: Story = {
+  render: () => (
+    <div className="space-y-3">
+      <p className="text-sm text-base-content/70">
+        Each item toggles from either its visible box or its label.
+      </p>
+      <CheckboxGroup>
+        <CheckboxGroupItem value="docs" label="Documentation" />
+        <CheckboxGroupItem value="playground" label="Playground" />
+      </CheckboxGroup>
+    </div>
+  ),
+};
+
 export const Horizontal: Story = {
   render: () => (
     <CheckboxGroup defaultValue={['react']} orientation="horizontal">

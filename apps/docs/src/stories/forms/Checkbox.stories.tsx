@@ -82,6 +82,17 @@ export const Default: Story = {
   },
 };
 
+export const IndicatorAndLabelClicks: Story = {
+  render: () => (
+    <div className="space-y-3">
+      <p className="text-sm text-base-content/70">
+        Click either the visible box or its label to toggle the checkbox.
+      </p>
+      <Checkbox label="Email me product updates" />
+    </div>
+  ),
+};
+
 export const AllSizes: Story = {
   render: () => (
     <div className="space-y-4">

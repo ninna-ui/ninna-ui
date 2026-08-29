@@ -93,7 +93,11 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     );
 
     const checkboxElement = (
-      <div data-slot="checkbox" className={cn('relative inline-flex items-center', className)}>
+      <label
+        data-slot="checkbox"
+        htmlFor={id}
+        className={cn('relative inline-flex items-center', className)}
+      >
         <input
           data-slot="control"
           ref={ref}
@@ -136,7 +140,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                 />
           )}
         </span>
-      </div>
+      </label>
     );
 
     if (!label && !description) {
