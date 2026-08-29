@@ -141,7 +141,7 @@ export function CheckboxView() {
         <ComponentSection
           id="basic"
           title="Basic"
-          description="Basic checkbox with label."
+          description="Click either the visible box or its label to toggle the native checkbox."
           level={3}
         >
           <CodePreview
@@ -278,6 +278,7 @@ export function CheckboxView() {
               <li>Built on a native <Code>&lt;input type="checkbox"&gt;</Code> for full browser accessibility</li>
               <li>Proper focus states with visible outlines</li>
               <li>Supports keyboard navigation (<Code>Space</Code> to toggle)</li>
+              <li>The visible box and text label both activate the native checkbox</li>
               <li>Labels are properly associated with checkboxes via <Code>htmlFor</Code></li>
               <li>Indeterminate state uses <Code>aria-checked="mixed"</Code> for screen readers</li>
             </ul>

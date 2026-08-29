@@ -108,7 +108,7 @@ export function CheckboxGroupView() {
         <ComponentSection
           id="basic"
           title="Basic"
-          description="Basic checkbox group with vertical layout."
+          description="Each item toggles when its visible box or associated label is clicked."
           level={3}
         >
           <CodePreview
@@ -156,6 +156,7 @@ export function CheckboxGroupView() {
               <li>Supports <Code>aria-label</Code> and other ARIA attributes via props spread</li>
               <li>Each checkbox is keyboard accessible (Space to toggle)</li>
               <li>Supports disabled state for entire group</li>
+              <li>Each visible box and its label activate the native checkbox</li>
               <li>Labels are properly associated with checkboxes</li>
             </ul>
           </div>
