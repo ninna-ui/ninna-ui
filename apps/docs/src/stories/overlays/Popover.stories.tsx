@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
 import { Popover } from '@ninna-ui/overlays';
 import { Button } from '@ninna-ui/primitives';
+import { Input } from '@ninna-ui/forms';
+
+const searchItems = ['Button', 'Checkbox', 'Input', 'Popover', 'Tooltip'];
 
 const meta: Meta = {
   title: 'Overlays/Popover',
@@ -150,4 +154,49 @@ export const RichContent: Story = {
       </Popover.Content>
     </Popover>
   ),
+};
+
+export const PreserveInputFocus: Story = {
+  render: () => {
+    const [query, setQuery] = useState('');
+    const results = searchItems.filter((item) =>
+      item.toLowerCase().includes(query.toLowerCase())
+    );
+
+    return (
+      <Popover open={query.length > 0}>
+        <Popover.Trigger asChild>
+          <Input
+            type="search"
+            aria-label="Search components"
+            placeholder="Search components..."
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            className="w-72"
+          />
+        </Popover.Trigger>
+        <Popover.Content
+          align="start"
+          className="w-72"
+          onOpenAutoFocus={(event) => event.preventDefault()}
+        >
+          <div className="flex flex-col gap-1">
+            {results.length > 0 ? (
+              results.map((item) => (
+                <button
+                  key={item}
+                  type="button"
+                  className="rounded-md px-2 py-1.5 text-left text-sm hover:bg-base-200"
+                >
+                  {item}
+                </button>
+              ))
+            ) : (
+              <p className="px-2 py-1.5 text-sm text-base-content/70">No results found.</p>
+            )}
+          </div>
+        </Popover.Content>
+      </Popover>
+    );
+  },
 };
