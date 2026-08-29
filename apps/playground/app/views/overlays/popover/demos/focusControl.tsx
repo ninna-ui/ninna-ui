@@ -5,20 +5,25 @@ import { Popover } from "@ninna-ui/overlays";
 const components = ["Button", "Checkbox", "Input", "Popover", "Tooltip"];
 
 export default function FocusControl() {
+  const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const results = components.filter((component) =>
     component.toLowerCase().includes(query.toLowerCase())
   );
 
   return (
-    <Popover open={query.length > 0}>
+    <Popover open={open} onOpenChange={setOpen}>
       <Popover.Trigger asChild>
         <Input
           type="search"
           aria-label="Search components"
           placeholder="Search components..."
           value={query}
-          onChange={(event) => setQuery(event.target.value)}
+          onChange={(event) => {
+            const value = event.target.value;
+            setQuery(value);
+            setOpen(value.length > 0);
+          }}
           className="w-72"
         />
       </Popover.Trigger>

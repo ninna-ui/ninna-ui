@@ -143,9 +143,10 @@ describe('Popover', () => {
     );
 
     const trigger = screen.getByRole('searchbox', { name: 'Search' });
-    await user.click(trigger);
+    await user.type(trigger, 'popover');
 
     await waitFor(() => expect(onOpenAutoFocus).toHaveBeenCalledOnce());
+    expect(trigger).toHaveValue('popover');
     expect(trigger).toHaveFocus();
   });
 
