@@ -72,6 +72,7 @@ const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
       sideOffset = 4,
       align = 'center',
       avoidCollisions = true,
+      onOpenAutoFocus,
       onEscapeKeyDown,
       onPointerDownOutside,
       onFocusOutside,
@@ -90,6 +91,7 @@ const PopoverContent = forwardRef<HTMLDivElement, PopoverContentProps>(
           sideOffset={sideOffset}
           align={align}
           avoidCollisions={avoidCollisions}
+          onOpenAutoFocus={onOpenAutoFocus}
           onEscapeKeyDown={onEscapeKeyDown ? (event) => onEscapeKeyDown(event) : undefined}
           onPointerDownOutside={onPointerDownOutside ? (event) => onPointerDownOutside(event) : undefined}
           onFocusOutside={onFocusOutside ? (event) => onFocusOutside(event) : undefined}

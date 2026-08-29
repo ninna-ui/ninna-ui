@@ -36,6 +36,8 @@ export interface PopoverContentProps extends ComponentPropsWithoutRef<'div'> {
   align?: PopoverAlign;
   /** Whether to avoid collisions with viewport boundary @default true */
   avoidCollisions?: boolean | undefined;
+  /** Callback before focus moves into the popover when it opens. Prevent the event to keep the current focus. */
+  onOpenAutoFocus?: ((event: Event) => void) | undefined;
   /** Callback when escape key is pressed */
   onEscapeKeyDown?: ((event: KeyboardEvent) => void) | undefined;
   /** Callback when pointer clicks outside content */
