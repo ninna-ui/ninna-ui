@@ -25,11 +25,11 @@ git checkout -b feature/your-feature
 
 ## Toolchain
 
-| Tool | Version | Notes |
-|------|---------|-------|
-| **Node.js** | ≥ 20 | Required by all packages |
-| **pnpm** | ≥ 10 (`10.28.2` pinned) | Both `ninna-ui` monorepo and `ninna-ui-web` use pnpm 10 |
-| **vite** | 8.x | Both the monorepo (vitest) and `ninna-ui-web` use vite 8 |
+| Tool        | Version                 | Notes                                                    |
+| ----------- | ----------------------- | -------------------------------------------------------- |
+| **Node.js** | ≥ 20                    | Required by all packages                                 |
+| **pnpm**    | ≥ 10 (`10.28.2` pinned) | Both `ninna-ui` monorepo and `ninna-ui-web` use pnpm 10  |
+| **vite**    | 8.x                     | Both the monorepo (vitest) and `ninna-ui-web` use vite 8 |
 
 ### Setup with corepack (recommended)
 
@@ -42,7 +42,6 @@ pnpm install
 
 - **tailwindcss** — Each package/app pins its own Tailwind version; `@ninna-ui/core` requires `>=4.0.0`
   as a peer dep, `ninna-ui-web` pins `^4.2.2`.
-
 
 ### Automated Release Workflow
 
@@ -59,10 +58,11 @@ pnpm changeset
 **Important:** When prompted for packages, **exclude private packages**:
 
 **Public Packages (✓ include):**
+
 - @ninna-ui/core
 - @ninna-ui/utils
 - @ninna-ui/react-internal
-- @ninna-ui/primitives  
+- @ninna-ui/primitives
 - @ninna-ui/cli
 - @ninna-ui/code-block
 - @ninna-ui/data-display
@@ -73,16 +73,19 @@ pnpm changeset
 - @ninna-ui/overlays
 
 **Private Packages (❌ exclude):**
+
 - @ninna-ui/eslint-config
 - @ninna-ui/test-config
 - @ninna-ui/tsconfig
 
 **What happens if you skip changeset?**
+
 - ❌ CI will **automatically fail** with "Public package changed but no changeset found"
 - ❌ PR **cannot be merged** until changeset is added
 - ❌ Release process will be blocked
 
 **Exceptions (no changeset needed):**
+
 - Only private packages modified
 - Only documentation changes
 - Only test files updated
@@ -91,18 +94,21 @@ pnpm changeset
 #### 2. Automated Process
 
 **When you create a PR:**
+
 - **CI Workflow** validates:
   - Build, lint, test, typecheck pass
   - Changeset exists if public packages changed
   - Package exports are valid
 
 **When PR is merged to main:**
+
 - **Release Workflow** automatically:
   - Creates a "Version Packages" PR
   - Updates all package versions
   - Updates internal dependencies (`workspace:*` → `^0.6.0`)
 
 **When Version PR is merged:**
+
 - **Release Workflow** automatically:
   - Builds all packages
   - Publishes to npm
@@ -112,6 +118,7 @@ pnpm changeset
 #### 3. Version Types
 
 Choose based on your changes:
+
 - **minor**: New features, initial releases
 - **patch**: Bug fixes
 - **major**: Breaking changes
@@ -125,6 +132,7 @@ Choose based on your changes:
 ### Important: Private Packages
 
 Private packages are automatically excluded from publishing:
+
 - Only used in development (`devDependencies`)
 - Not published to npm (`private: true`)
 - Internal workspace tools
@@ -133,7 +141,9 @@ Private packages are automatically excluded from publishing:
 ### Troubleshooting
 
 #### CI Fails - No Changeset
+
 If CI fails with "Public package changed but no changeset found":
+
 ```bash
 pnpm changeset  # Create changeset for your changes
 git add .changeset/*.md
@@ -142,7 +152,9 @@ git push
 ```
 
 #### Release Fails
+
 Check that:
+
 - All packages build: `pnpm build`
 - All tests pass: `pnpm vitest run`
 - NPM_TOKEN is configured in repository secrets
@@ -166,13 +178,13 @@ pnpm --filter @ninna-ui/docs dev         # Storybook (port 6006)
 
 ## Reference Documents
 
-| Document | Purpose |
-|----------|---------|
-| [architecture/ARCHITECTURE.md](../architecture/ARCHITECTURE.md) | System mental model, package graph, theme system |
+| Document                                                              | Purpose                                            |
+| --------------------------------------------------------------------- | -------------------------------------------------- |
+| [architecture/ARCHITECTURE.md](../architecture/ARCHITECTURE.md)       | System mental model, package graph, theme system   |
 | [standards/COMPONENT_STANDARD.md](../standards/COMPONENT_STANDARD.md) | File structure, naming, props, accessibility rules |
-| [standards/TESTING_STRATEGY.md](../standards/TESTING_STRATEGY.md) | What to test, what not to test, test placement |
-| [brand/PRODUCT_BRAND.md](../brand/PRODUCT_BRAND.md) | Target audience, differentiation, positioning |
-| [DEVELOPMENT_RULES.md](./DEVELOPMENT_RULES.md) | Development rules (naming, styles, Radix, git) |
+| [standards/TESTING_STRATEGY.md](../standards/TESTING_STRATEGY.md)     | What to test, what not to test, test placement     |
+| [brand/PRODUCT_BRAND.md](../brand/PRODUCT_BRAND.md)                   | Target audience, differentiation, positioning      |
+| [DEVELOPMENT_RULES.md](./DEVELOPMENT_RULES.md)                        | Development rules (naming, styles, Radix, git)     |
 
 ---
 
@@ -180,19 +192,19 @@ pnpm --filter @ninna-ui/docs dev         # Storybook (port 6006)
 
 Every package has strict dependency rules. See [architecture/ARCHITECTURE.md](../architecture/ARCHITECTURE.md) for the full dependency graph.
 
-| Package | Can Import From | MUST NOT Import |
-|---------|-----------------|-----------------|
-| `core` | Nothing | React, JSX, Radix |
-| `utils` | `clsx`, `tailwind-merge` | React (peer only), core |
-| `react-internal` | `core`, `utils`, Radix | Never published to npm |
-| `primitives` | `core`, `utils` | Radix, react-internal |
-| `feedback` | `core`, `utils` | Radix, react-internal, primitives |
-| `layout` | `core`, `utils` | Radix, react-internal |
-| `forms` | `core`, `utils`, `react-internal` | Radix directly |
-| `overlays` | `core`, `utils`, `react-internal` | Radix directly |
-| `navigation` | `core`, `utils`, `react-internal` | Radix directly |
-| `data-display` | `core`, `utils` | Radix, react-internal |
-| `code-block` | `core`, `utils` | Radix, react-internal |
+| Package          | Can Import From                   | MUST NOT Import                   |
+| ---------------- | --------------------------------- | --------------------------------- |
+| `core`           | Nothing                           | React, JSX, Radix                 |
+| `utils`          | `clsx`, `tailwind-merge`          | React (peer only), core           |
+| `react-internal` | `core`, `utils`, Radix            | Never published to npm            |
+| `primitives`     | `core`, `utils`                   | Radix, react-internal             |
+| `feedback`       | `core`, `utils`                   | Radix, react-internal, primitives |
+| `layout`         | `core`, `utils`                   | Radix, react-internal             |
+| `forms`          | `core`, `utils`, `react-internal` | Radix directly                    |
+| `overlays`       | `core`, `utils`, `react-internal` | Radix directly                    |
+| `navigation`     | `core`, `utils`, `react-internal` | Radix directly                    |
+| `data-display`   | `core`, `utils`                   | Radix, react-internal             |
+| `code-block`     | `core`, `utils`                   | Radix, react-internal             |
 
 **Key rule:** No `@radix-ui/*` imports anywhere except `packages/react-internal/src/engines/`. Components that need Radix use engine wrappers from `react-internal`.
 
@@ -230,8 +242,8 @@ packages/<package>/src/component-name/
 
 ```typescript
 // packages/<package>/src/index.ts
-export { MyComponent } from './my-component';
-export type { MyComponentProps } from './my-component';
+export { MyComponent } from "./my-component";
+export type { MyComponentProps } from "./my-component";
 ```
 
 ### Step 4: Add tests
@@ -260,24 +272,36 @@ describe('MyComponent', () => {
 
 ```typescript
 // apps/docs/src/stories/<category>/MyComponent.stories.tsx
-import type { Meta, StoryObj } from '@storybook/react';
-import { MyComponent } from '@ninna-ui/<package>';
+import type { Meta, StoryObj } from "@storybook/react";
+import { MyComponent } from "@ninna-ui/<package>";
 
 const meta: Meta<typeof MyComponent> = {
-  title: '<Category>/MyComponent',
+  title: "<Category>/MyComponent",
   component: MyComponent,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
-    variant: { control: 'select', options: ['solid', 'soft', 'outline'] },
-    color: { control: 'select', options: ['primary', 'secondary', 'accent', 'neutral', 'success', 'danger', 'warning', 'info'] },
-    size: { control: 'select', options: ['xs', 'sm', 'md', 'lg', 'xl'] },
+    variant: { control: "select", options: ["solid", "soft", "outline"] },
+    color: {
+      control: "select",
+      options: [
+        "primary",
+        "secondary",
+        "accent",
+        "neutral",
+        "success",
+        "danger",
+        "warning",
+        "info",
+      ],
+    },
+    size: { control: "select", options: ["xs", "sm", "md", "lg", "xl"] },
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = { args: { children: 'Example' } };
+export const Default: Story = { args: { children: "Example" } };
 ```
 
 ### Step 6: Add playground view

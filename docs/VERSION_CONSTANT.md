@@ -48,7 +48,9 @@ const installationMeta = {
 ## How to Update Versions
 
 1. Update the version in `apps/playground/app/constants/version.ts`
-2. The change will automatically be reflected wherever the constant is imported
+2. Update the version in `ninna-ui-web/app/constants/version.ts` (separate repo) - both
+   constants must be bumped together on each release
+3. The change will automatically be reflected wherever the constant is imported
 
 ## Files Using the Constant
 
@@ -57,9 +59,10 @@ const installationMeta = {
 - All `meta.ts` files in `apps/playground/app/views/*/`
 - Getting started views in `apps/playground/app/views/getting-started/`
 
-### Web Docs (Future)
-- Can be added to `ninna-ui-web/app/constants/version.ts`
+### Web Docs
+- `ninna-ui-web/app/constants/version.ts` - exports the same `NINNA_UI_VERSION` constant
 - Used in getting started views and component documentation
+- Must be bumped together with the playground constant on each release
 
 ## Benefits
 
@@ -71,8 +74,8 @@ const installationMeta = {
 
 ## Implementation Notes
 
-- The constant is exported from the core package
-- Each app can re-export it for easier local imports
+- The constant is defined locally in each app (`apps/playground` and `ninna-ui-web`);
+  it is NOT exported from any published package
 - TypeScript provides type safety with the `as const` assertion
 - No build-time generation required - it's just an import
 
