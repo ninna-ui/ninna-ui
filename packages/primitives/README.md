@@ -14,7 +14,7 @@ The foundational component set of [Ninna UI](../../README.md) - the building blo
 ## Installation
 
 ```bash
-pnpm add @ninna-ui/primitives @ninna-ui/core
+pnpm add @ninna-ui/primitives@latest @ninna-ui/core@latest
 ```
 
 ## CSS Setup
@@ -31,28 +31,28 @@ pnpm add @ninna-ui/primitives @ninna-ui/core
 Add the `data-theme` attribute to your `<html>` element:
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
 ## Components
 
-| Component | Description | Variants | Colors | Sizes |
-|-----------|-------------|----------|--------|-------|
-| `Button` | Primary action element | solid, soft, outline, ghost, text | 8 | 5 |
-| `IconButton` | Icon-only button | solid, soft, outline, ghost | 8 | 5 |
-| `Badge` | Status/count indicator | solid, soft, outline | 8 | 3 |
-| `Avatar` | User image with fallback | - | 8 | 5 |
-| `AvatarGroup` | Grouped avatar stack | - | - | - |
-| `Text` | Paragraph/span text | - | - | 8 sizes |
-| `Heading` | h1–h6 with consistent scale | - | - | 8 sizes |
-| `Link` | Styled anchor element | - | - | - |
-| `LinkOverlay` / `LinkBox` | Clickable card pattern | - | - | - |
-| `Code` | Inline code highlight | solid, soft, outline, ghost | 8 | 3 |
-| `Blockquote` | Styled quotation block | bordered, filled, plain | 8 | - |
-| `List` / `ListItem` | Ordered/unordered lists | - | - | - |
-| `Kbd` | Keyboard shortcut indicator | - | - | 3 |
-| `Mark` | Highlighted text | - | 8 | - |
-| `Divider` | Horizontal/vertical separator | solid, dashed, dotted | 8 | 3 weights |
+| Component                 | Description                   | Variants                          | Colors | Sizes     |
+| ------------------------- | ----------------------------- | --------------------------------- | ------ | --------- |
+| `Button`                  | Primary action element        | solid, soft, outline, ghost, text | 8      | 5         |
+| `IconButton`              | Icon-only button              | solid, soft, outline, ghost       | 8      | 5         |
+| `Badge`                   | Status/count indicator        | solid, soft, outline              | 8      | 3         |
+| `Avatar`                  | User image with fallback      | -                                 | 8      | 5         |
+| `AvatarGroup`             | Grouped avatar stack          | -                                 | -      | -         |
+| `Text`                    | Paragraph/span text           | -                                 | -      | 8 sizes   |
+| `Heading`                 | h1–h6 with consistent scale   | -                                 | -      | 8 sizes   |
+| `Link`                    | Styled anchor element         | -                                 | -      | -         |
+| `LinkOverlay` / `LinkBox` | Clickable card pattern        | -                                 | -      | -         |
+| `Code`                    | Inline code highlight         | solid, soft, outline, ghost       | 8      | 3         |
+| `Blockquote`              | Styled quotation block        | bordered, filled, plain           | 8      | -         |
+| `List` / `ListItem`       | Ordered/unordered lists       | -                                 | -      | -         |
+| `Kbd`                     | Keyboard shortcut indicator   | -                                 | -      | 3         |
+| `Mark`                    | Highlighted text              | -                                 | 8      | -         |
+| `Divider`                 | Horizontal/vertical separator | solid, dashed, dotted             | 8      | 3 weights |
 
 ## Quick Start
 
@@ -62,12 +62,18 @@ import { Button, Badge, Heading, Text, Avatar } from "@ninna-ui/primitives";
 function Hero() {
   return (
     <div>
-      <Badge color="primary" variant="soft">New</Badge>
-      <Heading as="h1" size="4xl">Welcome</Heading>
+      <Badge color="primary" variant="soft">
+        New
+      </Badge>
+      <Heading as="h1" size="4xl">
+        Welcome
+      </Heading>
       <Text size="lg" className="text-base-content/70">
         Build beautiful interfaces with Ninna UI
       </Text>
-      <Button color="primary" size="lg">Get Started</Button>
+      <Button color="primary" size="lg">
+        Get Started
+      </Button>
     </div>
   );
 }
@@ -77,26 +83,47 @@ function Hero() {
 
 ```typescript
 import {
-  Button, type ButtonProps,
-  IconButton, type IconButtonProps,
-  Badge, type BadgeProps,
-  Avatar, AvatarGroup, type AvatarProps, type AvatarGroupProps,
-  Text, type TextProps,
-  Heading, type HeadingProps,
-  Link, type LinkProps,
-  LinkOverlay, LinkBox, type LinkOverlayProps, type LinkBoxProps,
-  Code, type CodeProps,
-  Blockquote, type BlockquoteProps,
-  List, ListItem, type ListProps, type ListItemProps,
-  Kbd, type KbdProps,
-  Mark, type MarkProps,
-  Divider, type DividerProps,
+  Button,
+  type ButtonProps,
+  IconButton,
+  type IconButtonProps,
+  Badge,
+  type BadgeProps,
+  Avatar,
+  AvatarGroup,
+  type AvatarProps,
+  type AvatarGroupProps,
+  Text,
+  type TextProps,
+  Heading,
+  type HeadingProps,
+  Link,
+  type LinkProps,
+  LinkOverlay,
+  LinkBox,
+  type LinkOverlayProps,
+  type LinkBoxProps,
+  Code,
+  type CodeProps,
+  Blockquote,
+  type BlockquoteProps,
+  List,
+  ListItem,
+  type ListProps,
+  type ListItemProps,
+  Kbd,
+  type KbdProps,
+  Mark,
+  type MarkProps,
+  Divider,
+  type DividerProps,
 } from "@ninna-ui/primitives";
 ```
 
 ## Accessibility
 
 Every primitive includes:
+
 - **`forwardRef`** + `displayName` on all components
 - **`data-slot`** attributes for surgical CSS targeting
 - **`focus-visible`** ring styles for keyboard users

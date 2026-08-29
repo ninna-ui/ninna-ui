@@ -1,8 +1,10 @@
-# Ninna UI
+# Ninna UI v0.6.0
 
 **Full React UI library with zero runtime styling and native Tailwind CSS v4 support.**
 
-The open-source React component library that combines **Chakra-level component quality** with **DaisyUI-simple theming** - 67 accessible, production-ready components, 5 built-in theme presets, and zero JavaScript theming overhead. One CSS import. Instant design system.
+> **Current version: 0.6.0** — All `@ninna-ui/*` packages are at v0.6.0 on npm. Always install with `@latest` (e.g. `pnpm add @ninna-ui/core@latest`). Do NOT use 0.1.0 — it is an obsolete early release with a different API.
+
+The open-source React component library that combines **Chakra-level component quality** with **DaisyUI-simple theming** - 69 accessible, production-ready components, 5 built-in theme presets, and zero JavaScript theming overhead. One CSS import. Instant design system.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](./LICENSE)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue.svg)](https://www.typescriptlang.org/)
@@ -29,20 +31,20 @@ Most component libraries force a trade-off: **great components** (Chakra, Mantin
 
 ## How Ninna UI Compares
 
-| Feature | Ninna UI | shadcn/ui | Chakra UI | Mantine | DaisyUI |
-|---------|:--------:|:---------:|:---------:|:-------:|:-------:|
-| Tailwind CSS v4 native | **Yes** | Yes | No | No | Yes |
-| Zero JS runtime theming | **Yes** | Yes | No | No | Yes |
-| Built-in theme presets | **5** | 0 | 0 | 0 | 30+ |
-| One-line theme switch | **Yes** | No | No | No | Yes |
-| oklch perceptual colors | **Yes** | Partial | No | No | Yes |
-| Radix accessibility | **Yes** | Yes | No | No | No |
-| `data-slot` CSS targeting | **98 slots** | Yes | Yes | No | No |
-| Modular npm packages | **12 pkgs** | Copy-paste | 1 package | 1 package | 1 plugin |
-| No `'use client'` needed | **Yes** | Yes | No | No | N/A |
-| CLI project scaffolding | **4 templates** | Yes | No | No | No |
-| React 19 support | **Yes** | Yes | Yes | Yes | N/A |
-| Framework agnostic | **Yes** | Yes | Yes | Yes | Yes |
+| Feature                   |    Ninna UI     | shadcn/ui  | Chakra UI |  Mantine  | DaisyUI  |
+| ------------------------- | :-------------: | :--------: | :-------: | :-------: | :------: |
+| Tailwind CSS v4 native    |     **Yes**     |    Yes     |    No     |    No     |   Yes    |
+| Zero JS runtime theming   |     **Yes**     |    Yes     |    No     |    No     |   Yes    |
+| Built-in theme presets    |      **5**      |     0      |     0     |     0     |   30+    |
+| One-line theme switch     |     **Yes**     |     No     |    No     |    No     |   Yes    |
+| oklch perceptual colors   |     **Yes**     |  Partial   |    No     |    No     |   Yes    |
+| Radix accessibility       |     **Yes**     |    Yes     |    No     |    No     |    No    |
+| `data-slot` CSS targeting |  **98 slots**   |    Yes     |    Yes    |    No     |    No    |
+| Modular npm packages      |   **12 pkgs**   | Copy-paste | 1 package | 1 package | 1 plugin |
+| No `'use client'` needed  |     **Yes**     |    Yes     |    No     |    No     |   N/A    |
+| CLI project scaffolding   | **4 templates** |    Yes     |    No     |    No     |    No    |
+| React 19 support          |     **Yes**     |    Yes     |    Yes    |    Yes    |   N/A    |
+| Framework agnostic        |     **Yes**     |    Yes     |    Yes    |    Yes    |   Yes    |
 
 > **In short:** Ninna UI delivers the **component depth and accessibility** of Chakra/Mantine with the **CSS-variable theming simplicity** of DaisyUI - built natively on Tailwind CSS v4.
 
@@ -51,7 +53,7 @@ Most component libraries force a trade-off: **great components** (Chakra, Mantin
 ### 1. Install
 
 ```bash
-pnpm add @ninna-ui/core @ninna-ui/primitives
+pnpm add @ninna-ui/core@latest @ninna-ui/primitives@latest
 ```
 
 ### 2. Add a theme to your CSS (one line)
@@ -70,8 +72,12 @@ import { VStack } from "@ninna-ui/layout";
 export function App() {
   return (
     <VStack gap="md">
-      <Button color="primary" variant="solid">Get Started</Button>
-      <Button color="secondary" variant="outline">Learn More</Button>
+      <Button color="primary" variant="solid">
+        Get Started
+      </Button>
+      <Button color="secondary" variant="outline">
+        Learn More
+      </Button>
     </VStack>
   );
 }
@@ -89,36 +95,36 @@ Choose from **Vite + React**, **Next.js 15**, **React Router v7**, or **Astro** 
 
 ### Component Packages
 
-| Package | Components | What It Does |
-|---------|:----------:|--------------|
-| [`@ninna-ui/primitives`](./packages/primitives) | 14 | Essential building blocks - Button, Badge, Avatar, Text, Heading, Link, Code, Kbd, Divider, and more |
-| [`@ninna-ui/feedback`](./packages/feedback) | 8 | User feedback and status communication - Alert, Toast, Progress, Loading, Skeleton, EmptyState |
-| [`@ninna-ui/forms`](./packages/forms) | 17 | Complete form toolkit with validation - Input, Select, Checkbox, Switch, RadioGroup, Slider, FileUpload |
-| [`@ninna-ui/layout`](./packages/layout) | 10 | Responsive layout primitives - Box, Stack, Flex, Grid, Container, Center, SimpleGrid, AspectRatio |
-| [`@ninna-ui/overlays`](./packages/overlays) | 5 | Accessible overlay components with focus trapping - Modal, Drawer, Popover, Tooltip, DropdownMenu |
-| [`@ninna-ui/navigation`](./packages/navigation) | 5 | App navigation patterns - Tabs, Accordion, Breadcrumbs, Pagination, Stepper |
-| [`@ninna-ui/data-display`](./packages/data-display) | 7 | Data visualization components - Card, Stat, Table, DataTable, Timeline, Tree, Calendar |
-| [`@ninna-ui/code-block`](./packages/code-block) | 1 | Lightweight syntax-highlighted code block with copy-to-clipboard - no Prism or Shiki dependency |
+| Package                                             | Components | What It Does                                                                                            |
+| --------------------------------------------------- | :--------: | ------------------------------------------------------------------------------------------------------- |
+| [`@ninna-ui/primitives`](./packages/primitives)     |     14     | Essential building blocks - Button, Badge, Avatar, Text, Heading, Link, Code, Kbd, Divider, and more    |
+| [`@ninna-ui/feedback`](./packages/feedback)         |     8      | User feedback and status communication - Alert, Toast, Progress, Loading, Skeleton, EmptyState          |
+| [`@ninna-ui/forms`](./packages/forms)               |     17     | Complete form toolkit with validation - Input, Select, Checkbox, Switch, RadioGroup, Slider, FileUpload |
+| [`@ninna-ui/layout`](./packages/layout)             |     10     | Responsive layout primitives - Box, Stack, Flex, Grid, Container, Center, SimpleGrid, AspectRatio       |
+| [`@ninna-ui/overlays`](./packages/overlays)         |     5      | Accessible overlay components with focus trapping - Modal, Drawer, Popover, Tooltip, DropdownMenu       |
+| [`@ninna-ui/navigation`](./packages/navigation)     |     5      | App navigation patterns - Tabs, Accordion, Breadcrumbs, Pagination, Stepper                             |
+| [`@ninna-ui/data-display`](./packages/data-display) |     7      | Data visualization components - Card, Stat, Table, DataTable, Timeline, Tree, Calendar                  |
+| [`@ninna-ui/code-block`](./packages/code-block)     |     1      | Lightweight syntax-highlighted code block with copy-to-clipboard - no Prism or Shiki dependency         |
 
 ### Infrastructure Packages
 
-| Package | What It Does |
-|---------|--------------|
-| [`@ninna-ui/core`](./packages/core) | Design system foundation - TypeScript tokens, Tailwind class mappings, 5 CSS theme presets with oklch colors and automatic dark mode |
-| [`@ninna-ui/cli`](./packages/cli) | Zero-config project scaffolding - 4 framework templates (Vite, Next.js, React Router v7, Astro) with theme selection |
-| [`@ninna-ui/utils`](./packages/utils) | Shared utility functions - `cn()` class merger, `composeRefs`, `createContext`, keyboard constants, SSR helpers |
-| [`@ninna-ui/react-internal`](./packages/react-internal) | Radix engine isolation layer - wraps 11 Radix primitives behind clean TypeScript interfaces so Radix never leaks to consumers |
+| Package                                                 | What It Does                                                                                                                         |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| [`@ninna-ui/core`](./packages/core)                     | Design system foundation - TypeScript tokens, Tailwind class mappings, 5 CSS theme presets with oklch colors and automatic dark mode |
+| [`@ninna-ui/cli`](./packages/cli)                       | Zero-config project scaffolding - 4 framework templates (Vite, Next.js, React Router v7, Astro) with theme selection                 |
+| [`@ninna-ui/utils`](./packages/utils)                   | Shared utility functions - `cn()` class merger, `composeRefs`, `createContext`, keyboard constants, SSR helpers                      |
+| [`@ninna-ui/react-internal`](./packages/react-internal) | Radix engine isolation layer - wraps 11 Radix primitives behind clean TypeScript interfaces so Radix never leaks to consumers        |
 
 ## Theme Presets
 
 Switch your entire design system with a single CSS import - no JavaScript configuration, no provider wrappers, no build step:
 
 ```css
-@import "@ninna-ui/core/theme/presets/default.css";  /* Electric Purple / Magenta */
-@import "@ninna-ui/core/theme/presets/ocean.css";     /* Cool Blue / Cyan */
-@import "@ninna-ui/core/theme/presets/sunset.css";    /* Warm Orange / Rose */
-@import "@ninna-ui/core/theme/presets/forest.css";    /* Natural Green / Amber */
-@import "@ninna-ui/core/theme/presets/minimal.css";   /* Clean Monochrome */
+@import "@ninna-ui/core/theme/presets/default.css"; /* Electric Purple / Magenta */
+@import "@ninna-ui/core/theme/presets/ocean.css"; /* Cool Blue / Cyan */
+@import "@ninna-ui/core/theme/presets/sunset.css"; /* Warm Orange / Rose */
+@import "@ninna-ui/core/theme/presets/forest.css"; /* Natural Green / Amber */
+@import "@ninna-ui/core/theme/presets/minimal.css"; /* Clean Monochrome */
 ```
 
 Every preset includes **automatic dark mode** via `prefers-color-scheme`, plus manual toggle with a `.dark` class. All colors use the **oklch** color space for perceptually uniform, vibrant palettes with guaranteed WCAG AA contrast.
@@ -127,12 +133,12 @@ Every preset includes **automatic dark mode** via `prefers-color-scheme`, plus m
 
 Production-ready project in seconds - TypeScript strict, all packages pre-installed, theme configured:
 
-| Template | Framework | Bundler | CSS Integration |
-|----------|-----------|---------|-----------------|
-| [`vite-react`](./packages/cli/templates/vite-react) | React 19 | Vite 7 | `@tailwindcss/vite` |
-| [`nextjs`](./packages/cli/templates/nextjs) | Next.js 15 App Router | Webpack/Turbopack | `@tailwindcss/postcss` |
-| [`react-router`](./packages/cli/templates/react-router) | React Router v7 | Vite 7 | `@tailwindcss/vite` |
-| [`astro`](./packages/cli/templates/astro) | Astro 5 + React 19 | Vite 7 | `@tailwindcss/vite` |
+| Template                                                | Framework             | Bundler           | CSS Integration        |
+| ------------------------------------------------------- | --------------------- | ----------------- | ---------------------- |
+| [`vite-react`](./packages/cli/templates/vite-react)     | React 19              | Vite 7            | `@tailwindcss/vite`    |
+| [`nextjs`](./packages/cli/templates/nextjs)             | Next.js 15 App Router | Webpack/Turbopack | `@tailwindcss/postcss` |
+| [`react-router`](./packages/cli/templates/react-router) | React Router v7       | Vite 7            | `@tailwindcss/vite`    |
+| [`astro`](./packages/cli/templates/astro)               | Astro 5 + React 19    | Vite 7            | `@tailwindcss/vite`    |
 
 ```bash
 npx @ninna-ui/cli init my-app -t nextjs --preset ocean

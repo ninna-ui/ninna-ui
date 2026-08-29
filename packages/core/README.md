@@ -14,7 +14,7 @@
 ## Installation
 
 ```bash
-pnpm add @ninna-ui/core
+pnpm add @ninna-ui/core@latest
 ```
 
 ## CSS Setup
@@ -29,24 +29,25 @@ Add one of the 5 theme presets to your app's CSS entry point, then set `data-the
 ```
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
 > **No `@source` needed** - each theme preset automatically scans all `@ninna-ui` package dist files via built-in `@source` directives. Every preset requires a `data-theme` attribute to activate. This allows multiple presets to be safely imported for per-section theming without CSS conflicts.
 
-| Preset | Colors | Character |
-|--------|--------|-----------|
-| `default.css` | Purple / Magenta | Vibrant, electric |
-| `ocean.css` | Blue / Cyan | Cool, professional |
-| `sunset.css` | Orange / Rose | Warm, bold |
-| `forest.css` | Green / Amber | Natural, earthy |
-| `minimal.css` | Monochrome | Clean, understated |
+| Preset        | Colors           | Character          |
+| ------------- | ---------------- | ------------------ |
+| `default.css` | Purple / Magenta | Vibrant, electric  |
+| `ocean.css`   | Blue / Cyan      | Cool, professional |
+| `sunset.css`  | Orange / Rose    | Warm, bold         |
+| `forest.css`  | Green / Amber    | Natural, earthy    |
+| `minimal.css` | Monochrome       | Clean, understated |
 
 **Switch themes by changing one line** - no JavaScript configuration, no provider wrappers, no build step. All presets can be imported simultaneously for per-section theming using nested `data-theme` attributes.
 
 ### Framework-Specific Setup
 
 **Vite / React Router** - use `@tailwindcss/vite`:
+
 ```ts
 // vite.config.ts
 import tailwindcss from "@tailwindcss/vite";
@@ -54,6 +55,7 @@ export default { plugins: [tailwindcss()] };
 ```
 
 **Next.js** - use `@tailwindcss/postcss`:
+
 ```js
 // postcss.config.mjs
 export default { plugins: { "@tailwindcss/postcss": {} } };
@@ -65,15 +67,18 @@ Every preset includes **automatic dark mode** via `@media (prefers-color-scheme:
 
 ```css
 /* Light (default when no class set) */
-[data-theme="preset"] { }
+[data-theme="preset"] {
+}
 
 /* Explicit dark - .dark class on <html> or ancestor */
 .dark [data-theme="preset"],
-[data-theme="preset"].dark { }
+[data-theme="preset"].dark {
+}
 
 /* System dark - no class, follows OS preference */
 @media (prefers-color-scheme: dark) {
-  [data-theme="preset"]:not(.light):not(.dark) { }
+  [data-theme="preset"]:not(.light):not(.dark) {
+  }
 }
 ```
 
@@ -82,12 +87,12 @@ For manual toggle, add the `.dark` or `.light` class to your root element:
 ```html
 <!-- Forced dark -->
 <html data-theme="default" class="dark">
-
-<!-- Forced light (blocks OS preference) -->
-<html data-theme="default" class="light">
-
-<!-- System preference auto (no class) -->
-<html data-theme="default">
+  <!-- Forced light (blocks OS preference) -->
+  <html data-theme="default" class="light">
+    <!-- System preference auto (no class) -->
+    <html data-theme="default"></html>
+  </html>
+</html>
 ```
 
 All colors use the **oklch** color space - perceptually uniform, vibrant, and WCAG AA compliant.
@@ -97,50 +102,58 @@ All colors use the **oklch** color space - perceptually uniform, vibrant, and WC
 Type definitions for the design system's foundational values - consumed by every component package:
 
 ```typescript
-import type { Color, Size, Radius, ColorVariant } from '@ninna-ui/core';
+import type { Color, Size, Radius, ColorVariant } from "@ninna-ui/core";
 ```
 
-| Token | Values |
-|-------|--------|
-| `Color` | `neutral`, `primary`, `secondary`, `accent`, `info`, `success`, `warning`, `danger` |
-| `Size` | `xs`, `sm`, `md`, `lg`, `xl` |
-| `CompactSize` | `sm`, `md`, `lg` |
-| `Radius` | `none`, `sm`, `md`, `lg`, `xl`, `2xl`, `full` |
-| `TextSize` | `base`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl` |
-| `TextWeight` | `light`, `normal`, `medium`, `semibold`, `bold` |
-| `TextAs` | `p`, `span`, `div`, `h1`–`h6` |
-| `HeadingLevel` | `h1`, `h2`, `h3`, `h4`, `h5`, `h6` |
-| `ColorVariant` | `solid`, `soft`, `outline` |
-| `ButtonVariant` | `solid`, `soft`, `outline`, `ghost`, `text` |
-| `InputVariant` | `outline`, `filled`, `flushed`, `unstyled` |
+| Token           | Values                                                                              |
+| --------------- | ----------------------------------------------------------------------------------- |
+| `Color`         | `neutral`, `primary`, `secondary`, `accent`, `info`, `success`, `warning`, `danger` |
+| `Size`          | `xs`, `sm`, `md`, `lg`, `xl`                                                        |
+| `CompactSize`   | `sm`, `md`, `lg`                                                                    |
+| `Radius`        | `none`, `sm`, `md`, `lg`, `xl`, `2xl`, `full`                                       |
+| `TextSize`      | `base`, `xs`, `sm`, `md`, `lg`, `xl`, `2xl`, `3xl`, `4xl`, `5xl`, `6xl`             |
+| `TextWeight`    | `light`, `normal`, `medium`, `semibold`, `bold`                                     |
+| `TextAs`        | `p`, `span`, `div`, `h1`–`h6`                                                       |
+| `HeadingLevel`  | `h1`, `h2`, `h3`, `h4`, `h5`, `h6`                                                  |
+| `ColorVariant`  | `solid`, `soft`, `outline`                                                          |
+| `ButtonVariant` | `solid`, `soft`, `outline`, `ghost`, `text`                                         |
+| `InputVariant`  | `outline`, `filled`, `flushed`, `unstyled`                                          |
 
 ## Tailwind Class Mappings
 
 Pre-built maps from design tokens to Tailwind CSS classes - used internally by component `.styles.ts` files:
 
 ```typescript
-import { BG_COLORS, TEXT_COLORS, RADIUS_CLASSES, SOLID_VARIANTS } from '@ninna-ui/core';
+import {
+  BG_COLORS,
+  TEXT_COLORS,
+  RADIUS_CLASSES,
+  SOLID_VARIANTS,
+} from "@ninna-ui/core";
 
-BG_COLORS.primary      // "bg-primary"
-TEXT_COLORS.danger      // "text-danger"
-RADIUS_CLASSES.lg       // "rounded-lg"
-SOLID_VARIANTS.primary  // Complete solid variant class set for primary
+BG_COLORS.primary; // "bg-primary"
+TEXT_COLORS.danger; // "text-danger"
+RADIUS_CLASSES.lg; // "rounded-lg"
+SOLID_VARIANTS.primary; // Complete solid variant class set for primary
 ```
 
 ### Available Maps
 
 **Color maps:**
+
 - `BG_COLORS`, `TEXT_COLORS`, `BORDER_COLORS` - Semantic color classes
 - `SOFT_BG_COLORS`, `MUTED_BG_COLORS`, `MUTED_BORDER_COLORS` - Opacity-based variants
 - `SOLID_VARIANTS`, `SOFT_VARIANTS`, `OUTLINE_VARIANTS`, `GHOST_VARIANTS`, `TEXT_VARIANTS` - Complete variant class sets per color
 - `RING_COLORS`, `STROKE_COLORS`, `MARKER_COLORS`, `HOVER_TEXT_COLORS` - Additional utility maps
 
 **State maps:**
+
 - `FOCUS_RING_COLORS`, `FOCUS_BORDER_COLORS`, `INPUT_FOCUS_COLORS`, `FOCUS_VISIBLE_RING_COLORS`
 - `CHECKED_BG_COLORS`, `CHECKED_BORDER_COLORS`
 - `PEER_CHECKED_BG_COLORS`, `PEER_CHECKED_BORDER_COLORS`, `PEER_FOCUS_VISIBLE_RING_COLORS`
 
 **Typography & radius:**
+
 - `TEXT_SIZE_CLASSES`, `TEXT_WEIGHT_CLASSES`
 - `RADIUS_CLASSES`
 
@@ -148,13 +161,13 @@ SOLID_VARIANTS.primary  // Complete solid variant class set for primary
 
 Each theme preset defines ~31 CSS custom properties:
 
-| Category | Properties |
-|----------|-----------|
-| **Semantic** | `--color-primary`, `--color-secondary`, `--color-accent`, `--color-neutral` |
-| **Status** | `--color-success`, `--color-danger`, `--color-warning`, `--color-info` |
-| **Content** | `--color-primary-content`, `--color-secondary-content`, `--color-base-content`, etc. |
-| **Surfaces** | `--color-base-50` through `--color-base-900` |
-| **Borders** | `--color-base-200`, `--color-base-300` |
+| Category     | Properties                                                                           |
+| ------------ | ------------------------------------------------------------------------------------ |
+| **Semantic** | `--color-primary`, `--color-secondary`, `--color-accent`, `--color-neutral`          |
+| **Status**   | `--color-success`, `--color-danger`, `--color-warning`, `--color-info`               |
+| **Content**  | `--color-primary-content`, `--color-secondary-content`, `--color-base-content`, etc. |
+| **Surfaces** | `--color-base-50` through `--color-base-900`                                         |
+| **Borders**  | `--color-base-200`, `--color-base-300`                                               |
 
 ## Package Structure
 

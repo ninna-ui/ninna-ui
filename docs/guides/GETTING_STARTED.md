@@ -1,6 +1,8 @@
-# Getting Started with Ninna UI
+# Getting Started with Ninna UI v0.6.0
 
 > **From zero to a fully themed React app in under 2 minutes.** Install a package, import one CSS file, and start building with 69 accessible, production-ready components.
+>
+> **Current version: 0.6.0** — All `@ninna-ui/*` packages are at v0.6.0 on npm. Always install with `@latest` (e.g. `pnpm add @ninna-ui/core@latest`). Do NOT use 0.1.0 — it is an obsolete early release with a different API.
 
 **Full documentation with live demos:** [ninna-ui.dev](https://ninna-ui.dev) - interactive component reference, framework guides, and API documentation.
 
@@ -11,11 +13,11 @@
 ### 1. Install the Core Package
 
 ```bash
-npm install @ninna-ui/core @ninna-ui/primitives
+npm install @ninna-ui/core@latest @ninna-ui/primitives@latest
 # or
-pnpm add @ninna-ui/core @ninna-ui/primitives
+pnpm add @ninna-ui/core@latest @ninna-ui/primitives@latest
 # or
-yarn add @ninna-ui/core @ninna-ui/primitives
+yarn add @ninna-ui/core@latest @ninna-ui/primitives@latest
 ```
 
 ### 2. Import the Theme CSS
@@ -32,12 +34,13 @@ Add this to your main CSS file:
 ### 3. Set `data-theme` on your root element
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
-> **Required:** Theme variables only activate when `data-theme` matches the preset name. No `@source` directive needed - each preset automatically scans `@ninna-ui` package dist files.
+> **Required:** The `data-theme` attribute must match the preset name. Theme variables only activate when `data-theme` matches the preset name. No `@source` directive needed - each preset automatically scans `@ninna-ui` package dist files.
 
 **Available theme presets:**
+
 - `default.css` → `data-theme="default"` - Electric purple + magenta
 - `ocean.css` → `data-theme="ocean"` - Blue + cyan
 - `sunset.css` → `data-theme="sunset"` - Orange + rose
@@ -53,15 +56,15 @@ Tailwind CSS v4 uses CSS-first configuration - no `tailwind.config.ts` needed.
 ### Import Components
 
 ```typescript
-import { Button } from '@ninna-ui/primitives';
-import { Input, Field } from '@ninna-ui/forms';
-import { Modal } from '@ninna-ui/overlays';
+import { Button } from "@ninna-ui/primitives";
+import { Input, Field } from "@ninna-ui/forms";
+import { Modal } from "@ninna-ui/overlays";
 ```
 
 ### Use in Your App
 
 ```tsx
-import { Button } from '@ninna-ui/primitives';
+import { Button } from "@ninna-ui/primitives";
 
 export default function App() {
   return (
@@ -76,18 +79,18 @@ export default function App() {
 
 ## Available Packages
 
-| Package | Purpose | Install |
-|---------|---------|---------|
-| `@ninna-ui/core` | Design tokens and CSS themes | `npm install @ninna-ui/core` |
-| `@ninna-ui/primitives` | Basic components (Button, Badge, Avatar, etc.) | `npm install @ninna-ui/primitives` |
-| `@ninna-ui/forms` | Form components (Input, Select, Checkbox, etc.) | `npm install @ninna-ui/forms` |
-| `@ninna-ui/feedback` | Feedback components (Alert, Toast, Progress, etc.) | `npm install @ninna-ui/feedback` |
-| `@ninna-ui/layout` | Layout components (Stack, Flex, Grid, etc.) | `npm install @ninna-ui/layout` |
-| `@ninna-ui/overlays` | Overlay components (Modal, Drawer, Popover, etc.) | `npm install @ninna-ui/overlays` |
-| `@ninna-ui/navigation` | Navigation components (Tabs, Accordion, Breadcrumbs, etc.) | `npm install @ninna-ui/navigation` |
-| `@ninna-ui/data-display` | Data display components (Card, Table, Timeline, etc.) | `npm install @ninna-ui/data-display` |
-| `@ninna-ui/cli` | Command-line interface for Ninna-UI | `npm install @ninna-ui/cli` |
-| `@ninna-ui/code-block` | Syntax-highlighted code block | `npm install @ninna-ui/code-block` |
+| Package                  | Purpose                                                    | Install                                     |
+| ------------------------ | ---------------------------------------------------------- | ------------------------------------------- |
+| `@ninna-ui/core`         | Design tokens and CSS themes                               | `npm install @ninna-ui/core@latest`         |
+| `@ninna-ui/primitives`   | Basic components (Button, Badge, Avatar, etc.)             | `npm install @ninna-ui/primitives@latest`   |
+| `@ninna-ui/forms`        | Form components (Input, Select, Checkbox, etc.)            | `npm install @ninna-ui/forms@latest`        |
+| `@ninna-ui/feedback`     | Feedback components (Alert, Toast, Progress, etc.)         | `npm install @ninna-ui/feedback@latest`     |
+| `@ninna-ui/layout`       | Layout components (Stack, Flex, Grid, etc.)                | `npm install @ninna-ui/layout@latest`       |
+| `@ninna-ui/overlays`     | Overlay components (Modal, Drawer, Popover, etc.)          | `npm install @ninna-ui/overlays@latest`     |
+| `@ninna-ui/navigation`   | Navigation components (Tabs, Accordion, Breadcrumbs, etc.) | `npm install @ninna-ui/navigation@latest`   |
+| `@ninna-ui/data-display` | Data display components (Card, Table, Timeline, etc.)      | `npm install @ninna-ui/data-display@latest` |
+| `@ninna-ui/cli`          | Command-line interface for Ninna-UI                        | `npx @ninna-ui/cli init my-app`             |
+| `@ninna-ui/code-block`   | Syntax-highlighted code block                              | `npm install @ninna-ui/code-block@latest`   |
 
 ---
 
@@ -104,7 +107,7 @@ Switch themes by importing a different CSS file and updating `data-theme` on `<h
 
 ```html
 <!-- 2. Update data-theme on your root element -->
-<html data-theme="ocean">
+<html data-theme="ocean"></html>
 ```
 
 ### Override Colors
@@ -163,4 +166,3 @@ Target specific component parts for styling:
 - **GitHub Issues:** [Report bugs](https://github.com/ninna-ui/ninna-ui/issues)
 - **npm:** [npmjs.com/org/ninna-ui](https://www.npmjs.com/org/ninna-ui)
 - **Contributing:** [CONTRIBUTING.md](./CONTRIBUTING.md)
-

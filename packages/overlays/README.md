@@ -12,7 +12,7 @@ Production-ready overlay and portal components for [Ninna UI](../../README.md). 
 ## Installation
 
 ```bash
-pnpm add @ninna-ui/overlays @ninna-ui/core
+pnpm add @ninna-ui/overlays@latest @ninna-ui/core@latest
 ```
 
 ## CSS Setup
@@ -29,18 +29,18 @@ pnpm add @ninna-ui/overlays @ninna-ui/core
 Add the `data-theme` attribute to your `<html>` element:
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
 ## Components
 
-| Component | Description | Radix Engine |
-|-----------|-------------|-------------|
-| `Modal` | Dialog with backdrop overlay, focus trap, and scroll lock | DialogEngine |
-| `Drawer` | Slide-in panel from any edge (top, right, bottom, left) | DialogEngine |
-| `Popover` | Floating content anchored to a trigger element | PopoverEngine |
-| `Tooltip` | Lightweight hover/focus hint | TooltipEngine |
-| `DropdownMenu` | Accessible dropdown menu with keyboard navigation | DropdownEngine |
+| Component      | Description                                               | Radix Engine   |
+| -------------- | --------------------------------------------------------- | -------------- |
+| `Modal`        | Dialog with backdrop overlay, focus trap, and scroll lock | DialogEngine   |
+| `Drawer`       | Slide-in panel from any edge (top, right, bottom, left)   | DialogEngine   |
+| `Popover`      | Floating content anchored to a trigger element            | PopoverEngine  |
+| `Tooltip`      | Lightweight hover/focus hint                              | TooltipEngine  |
+| `DropdownMenu` | Accessible dropdown menu with keyboard navigation         | DropdownEngine |
 
 ## Quick Start
 

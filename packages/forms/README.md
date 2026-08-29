@@ -14,7 +14,7 @@ Every component ships with `forwardRef`, `className` merging, `data-slot` CSS ta
 ## Installation
 
 ```bash
-pnpm add @ninna-ui/forms @ninna-ui/core
+pnpm add @ninna-ui/forms@latest @ninna-ui/core@latest
 ```
 
 ## CSS Setup
@@ -31,57 +31,64 @@ pnpm add @ninna-ui/forms @ninna-ui/core
 Add the `data-theme` attribute to your `<html>` element:
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
 ## Components
 
 ### Form Infrastructure
 
-| Component | Description |
-|-----------|-------------|
-| `FormControl` | Context provider for label/message/input association |
-| `FormLabel` | Accessible label linked to its control |
-| `FormMessage` | Validation/helper message with error/success states |
-| `Field` | All-in-one: label + input + message in a single component |
-| `FormGroup` | Groups related form fields |
+| Component     | Description                                               |
+| ------------- | --------------------------------------------------------- |
+| `FormControl` | Context provider for label/message/input association      |
+| `FormLabel`   | Accessible label linked to its control                    |
+| `FormMessage` | Validation/helper message with error/success states       |
+| `Field`       | All-in-one: label + input + message in a single component |
+| `FormGroup`   | Groups related form fields                                |
 
 ### Simple Inputs
 
-| Component | Description | Variants | Colors |
-|-----------|-------------|----------|--------|
-| `Input` | Text input field | outline, filled, flushed | 8 |
-| `Textarea` | Multi-line text input | outline, filled, flushed | 8 |
-| `NumberInput` | Numeric input with increment/decrement | outline, filled, flushed | 8 |
-| `PinInput` | PIN/OTP code input | outline, filled, flushed | 8 |
-| `InputGroup` / `InputAddon` | Input with prefix/suffix addons | - | - |
-| `HiddenField` | Hidden form input | - | - |
+| Component                   | Description                            | Variants                 | Colors |
+| --------------------------- | -------------------------------------- | ------------------------ | ------ |
+| `Input`                     | Text input field                       | outline, filled, flushed | 8      |
+| `Textarea`                  | Multi-line text input                  | outline, filled, flushed | 8      |
+| `NumberInput`               | Numeric input with increment/decrement | outline, filled, flushed | 8      |
+| `PinInput`                  | PIN/OTP code input                     | outline, filled, flushed | 8      |
+| `InputGroup` / `InputAddon` | Input with prefix/suffix addons        | -                        | -      |
+| `HiddenField`               | Hidden form input                      | -                        | -      |
 
 ### Radix-Powered Controls
 
-| Component | Description | Variants | Colors |
-|-----------|-------------|----------|--------|
-| `Switch` | Toggle switch | outline, soft, solid | 8 |
-| `RadioGroup` / `RadioCard` | Radio selection with card variant | outline, soft, solid | 8 |
-| `Select` | Dropdown select with search | - | 8 |
-| `Slider` | Range slider with marks | outline, soft, solid | 8 |
+| Component                  | Description                       | Variants             | Colors |
+| -------------------------- | --------------------------------- | -------------------- | ------ |
+| `Switch`                   | Toggle switch                     | outline, soft, solid | 8      |
+| `RadioGroup` / `RadioCard` | Radio selection with card variant | outline, soft, solid | 8      |
+| `Select`                   | Dropdown select with search       | -                    | 8      |
+| `Slider`                   | Range slider with marks           | outline, soft, solid | 8      |
 
 ### Native Controls
 
-| Component | Description | Variants | Colors |
-|-----------|-------------|----------|--------|
-| `Checkbox` / `CheckboxGroup` | Native checkbox with indeterminate support | outline, soft, solid | 8 |
+| Component                    | Description                                | Variants             | Colors |
+| ---------------------------- | ------------------------------------------ | -------------------- | ------ |
+| `Checkbox` / `CheckboxGroup` | Native checkbox with indeterminate support | outline, soft, solid | 8      |
 
 ### Advanced
 
-| Component | Description |
-|-----------|-------------|
+| Component                       | Description                               |
+| ------------------------------- | ----------------------------------------- |
 | `FileUpload` / `FileUploadItem` | Drag-and-drop file upload with validation |
 
 ## Quick Start
 
 ```tsx
-import { Field, Input, Select, SelectItem, Checkbox, Switch } from "@ninna-ui/forms";
+import {
+  Field,
+  Input,
+  Select,
+  SelectItem,
+  Checkbox,
+  Switch,
+} from "@ninna-ui/forms";
 import { VStack } from "@ninna-ui/layout";
 import { Button } from "@ninna-ui/primitives";
 
@@ -104,7 +111,9 @@ function SignupForm() {
 
         <Switch color="primary">Enable notifications</Switch>
 
-        <Button type="submit" color="primary">Sign Up</Button>
+        <Button type="submit" color="primary">
+          Sign Up
+        </Button>
       </VStack>
     </form>
   );
@@ -116,34 +125,65 @@ function SignupForm() {
 ```typescript
 import {
   // Form Infrastructure
-  FormControl, useFormControl, useFormControlProps,
-  FormLabel, FormMessage, Field, FormGroup,
-  type FormControlProps, type FormLabelProps,
-  type FormMessageProps, type FieldProps, type FormGroupProps,
+  FormControl,
+  useFormControl,
+  useFormControlProps,
+  FormLabel,
+  FormMessage,
+  Field,
+  FormGroup,
+  type FormControlProps,
+  type FormLabelProps,
+  type FormMessageProps,
+  type FieldProps,
+  type FormGroupProps,
 
   // Simple Inputs
-  Input, type InputProps,
-  Textarea, type TextareaProps,
-  NumberInput, type NumberInputProps,
-  PinInput, type PinInputProps,
-  InputGroup, InputAddon, type InputGroupProps, type InputAddonProps,
-  HiddenField, type HiddenFieldProps,
+  Input,
+  type InputProps,
+  Textarea,
+  type TextareaProps,
+  NumberInput,
+  type NumberInputProps,
+  PinInput,
+  type PinInputProps,
+  InputGroup,
+  InputAddon,
+  type InputGroupProps,
+  type InputAddonProps,
+  HiddenField,
+  type HiddenFieldProps,
 
   // Native Controls
-  Checkbox, CheckboxGroup, CheckboxGroupItem,
-  type CheckboxProps, type CheckboxGroupProps,
+  Checkbox,
+  CheckboxGroup,
+  CheckboxGroupItem,
+  type CheckboxProps,
+  type CheckboxGroupProps,
 
   // Radix-Powered Controls
-  Switch, type SwitchProps,
-  RadioGroup, RadioGroupItem, RadioCard,
-  type RadioGroupProps, type RadioGroupItemProps, type RadioCardProps,
-  Select, SelectItem, SelectGroup, SelectSeparator,
-  type SelectProps, type SelectItemProps,
-  Slider, type SliderProps,
+  Switch,
+  type SwitchProps,
+  RadioGroup,
+  RadioGroupItem,
+  RadioCard,
+  type RadioGroupProps,
+  type RadioGroupItemProps,
+  type RadioCardProps,
+  Select,
+  SelectItem,
+  SelectGroup,
+  SelectSeparator,
+  type SelectProps,
+  type SelectItemProps,
+  Slider,
+  type SliderProps,
 
   // Advanced
-  FileUpload, FileUploadItem,
-  type FileUploadProps, type FileRejection,
+  FileUpload,
+  FileUploadItem,
+  type FileUploadProps,
+  type FileRejection,
 } from "@ninna-ui/forms";
 ```
 

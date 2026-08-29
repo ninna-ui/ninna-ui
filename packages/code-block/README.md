@@ -14,7 +14,7 @@ A standalone code display component for [Ninna UI](../../README.md) - built-in s
 ## Installation
 
 ```bash
-pnpm add @ninna-ui/code-block @ninna-ui/core
+pnpm add @ninna-ui/code-block@latest @ninna-ui/core@latest
 ```
 
 ## CSS Setup
@@ -31,7 +31,7 @@ pnpm add @ninna-ui/code-block @ninna-ui/core
 Add the `data-theme` attribute to your `<html>` element:
 
 ```html
-<html data-theme="default">
+<html data-theme="default"></html>
 ```
 
 ## Quick Start
@@ -56,22 +56,29 @@ export function App() {
 
 ## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `code` | `string` | - | The source code to display |
-| `language` | `CodeBlockLanguage` | `"tsx"` | Syntax highlighting language |
-| `showLineNumbers` | `boolean` | `false` | Show line numbers |
-| `showCopyButton` | `boolean` | `true` | Show copy-to-clipboard button |
-| `copyButtonAlwaysVisible` | `boolean` | `false` | Keep copy button visible (vs hover-only) |
-| `className` | `string` | - | Additional CSS classes |
+| Prop                      | Type                | Default | Description                              |
+| ------------------------- | ------------------- | ------- | ---------------------------------------- |
+| `code`                    | `string`            | -       | The source code to display               |
+| `language`                | `CodeBlockLanguage` | `"tsx"` | Syntax highlighting language             |
+| `showLineNumbers`         | `boolean`           | `false` | Show line numbers                        |
+| `showCopyButton`          | `boolean`           | `true`  | Show copy-to-clipboard button            |
+| `copyButtonAlwaysVisible` | `boolean`           | `false` | Keep copy button visible (vs hover-only) |
+| `className`               | `string`            | -       | Additional CSS classes                   |
 
 ### Supported Languages
 
 ```typescript
 type CodeBlockLanguage =
-  | "tsx" | "jsx" | "typescript" | "javascript"
-  | "css" | "html" | "json" | "bash"
-  | "markdown" | "plaintext";
+  | "tsx"
+  | "jsx"
+  | "typescript"
+  | "javascript"
+  | "css"
+  | "html"
+  | "json"
+  | "bash"
+  | "markdown"
+  | "plaintext";
 ```
 
 Set `language="plaintext"` to disable syntax highlighting entirely.
