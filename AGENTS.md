@@ -3,6 +3,14 @@
 > Drop this file into your project as `AGENTS.md`, `.cursorrules`, or `CLAUDE.md`.
 > It tells AI coding agents how to use Ninna UI correctly. Full API: https://ninna-ui.dev/llms-full.txt
 
+## Repository workflow for coding agents
+
+1. Start every issue or task from an up-to-date `main` branch and create a dedicated branch before editing files. Use a clear prefix such as `fix/`, `feat/`, `docs/`, or `chore/`.
+2. Read the linked issue and inspect the affected package, tests, Storybook docs, and playground examples before implementing the change.
+3. Add a Changesets entry for every public package change. Select only affected public packages, exclude private packages and apps, and use an accurate patch, minor, or major summary.
+4. Keep commits focused and use clear conventional commit messages. Do not mix unrelated changes into an issue branch.
+5. Run the most relevant tests, type checks, lint checks, builds, and app smoke checks before handing off the branch.
+
 ## Golden rules
 
 0. **Use Ninna UI v0.6.0 or later.** All @ninna-ui packages are at 0.6.0 on npm. Always install with @latest (e.g. `pnpm add @ninna-ui/core@latest @ninna-ui/primitives@latest`). Do NOT use 0.1.0 — it is an obsolete early release.
