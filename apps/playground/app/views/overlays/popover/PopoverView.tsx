@@ -15,6 +15,7 @@ import Placements from "./demos/placements";
 import Alignment from "./demos/alignment";
 import WithArrow from "./demos/withArrow";
 import RichContent from "./demos/richContent";
+import FocusControl from "./demos/focusControl";
 
 export const popoverSections: ComponentSectionType[] = [
   { id: "usage", title: "Usage", level: 2 },
@@ -23,6 +24,7 @@ export const popoverSections: ComponentSectionType[] = [
   { id: "alignment", title: "Alignment", level: 3 },
   { id: "with-arrow", title: "With Arrow", level: 3 },
   { id: "rich-content", title: "Rich Content", level: 3 },
+  { id: "focus-control", title: "Focus Control", level: 3 },
   { id: "api", title: "API Reference", level: 2 },
   { id: "accessibility", title: "Accessibility", level: 2 },
 ];
@@ -40,6 +42,7 @@ const CONTENT_PROPS: PropDefinition[] = [
   { name: "sideOffset", type: "number", defaultValue: "4", description: "Distance from trigger in pixels" },
   { name: "align", type: "'start' | 'center' | 'end'", defaultValue: "'center'", description: "Alignment along the side" },
   { name: "avoidCollisions", type: "boolean", defaultValue: "true", description: "Whether to avoid collisions with viewport boundary" },
+  { name: "onOpenAutoFocus", type: "(event: Event) => void", description: "Callback before focus moves into the popover; prevent the event to keep the current focus" },
   { name: "onEscapeKeyDown", type: "(event: KeyboardEvent) => void", description: "Callback when Escape key is pressed" },
   { name: "onPointerDownOutside", type: "(event: Event) => void", description: "Callback when pointer clicks outside content" },
   { name: "onFocusOutside", type: "(event: Event) => void", description: "Callback when focus moves outside content" },
@@ -151,6 +154,18 @@ export function PopoverView() {
         </ComponentSection>
 
         <ComponentSection
+          id="focus-control"
+          title="Focus Control"
+          description="Prevent the default open autofocus when a live results popover should keep focus on its search input."
+          level={3}
+        >
+          <CodePreview
+            component={<FocusControl />}
+            filePath="app/views/overlays/popover/demos/focusControl.tsx"
+          />
+        </ComponentSection>
+
+        <ComponentSection
           id="api"
           title="API Reference"
           description="Complete list of props for the Popover component and its sub-components."
@@ -169,6 +184,7 @@ export function PopoverView() {
             <ul className="space-y-2 text-base-content/70">
               <li>Popover content is associated with trigger via <Code>aria-controls</Code></li>
               <li>Focus moves to content when opened and returns to trigger when closed</li>
+              <li>Prevent <Code>onOpenAutoFocus</Code> to keep focus on the current element</li>
               <li>Escape key dismisses the popover</li>
               <li>Clicking outside the popover dismisses it</li>
               <li>Arrow keys navigate focusable elements within the popover</li>

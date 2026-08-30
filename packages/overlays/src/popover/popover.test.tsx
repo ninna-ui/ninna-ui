@@ -128,6 +128,28 @@ describe('Popover', () => {
     await waitFor(() => expect(onOpenChange).toHaveBeenCalledWith(true));
   });
 
+  it('keeps focus on the trigger when open autofocus is prevented', async () => {
+    const user = userEvent.setup();
+    const onOpenAutoFocus = vi.fn((event: Event) => event.preventDefault());
+    render(
+      <Popover>
+        <Popover.Trigger asChild>
+          <input type="search" aria-label="Search" />
+        </Popover.Trigger>
+        <Popover.Content onOpenAutoFocus={onOpenAutoFocus}>
+          <button type="button">First result</button>
+        </Popover.Content>
+      </Popover>
+    );
+
+    const trigger = screen.getByRole('searchbox', { name: 'Search' });
+    await user.type(trigger, 'popover');
+
+    await waitFor(() => expect(onOpenAutoFocus).toHaveBeenCalledOnce());
+    expect(trigger).toHaveValue('popover');
+    expect(trigger).toHaveFocus();
+  });
+
   // ── displayNames ───────────────────────────────────────────
   it('has displayNames', () => {
     expect(Popover.displayName).toBe('Popover');
