@@ -1,5 +1,28 @@
 # @ninna-ui/navigation
 
+## 0.7.0
+
+### Patch Changes
+
+- [#62](https://github.com/ninna-ui/ninna-ui/pull/62) [`98367b6`](https://github.com/ninna-ui/ninna-ui/commit/98367b6ef5ca317fa3f8d942b4ebad45a2d77612) Thanks [@chnkc41](https://github.com/chnkc41)! - vitest version bump from 4.1.4 to 4.1.8, react-router bump to 7.15. 0, and other package updates
+
+- [#68](https://github.com/ninna-ui/ninna-ui/pull/68) [`65647df`](https://github.com/ninna-ui/ninna-ui/commit/65647df80e2d2f18afcb023c5b40f5d97ba98da6) Thanks [@chnkc41](https://github.com/chnkc41)! - Update public packages with the latest repository improvements.
+
+- [#61](https://github.com/ninna-ui/ninna-ui/pull/61) [`0019a10`](https://github.com/ninna-ui/ninna-ui/commit/0019a10f8974a771a23a46a770eac18a966619d8) Thanks [@chnkc41](https://github.com/chnkc41)! - **Testing hygiene (tasks 31–35) — no public API changes.**
+
+  - **core**: contract tests for all 26 class-map objects and generates CSS safelist for theme utilities; removes `--passWithNoTests`
+  - **utils**: backfill tests for `composeEventHandlers`, `canUseDOM`, `getOwnerWindow`, and `KEYS` constants; removes `--passWithNoTests`
+  - **react-internal**: 36 new tests covering all 11 Radix engine wrappers and `Slot`/`Slottable`; adds `vitest.config.ts`
+  - **cli**: 14 new tests for `init` helper logic (workspace:\* dep-swap, CSS preset swap, data-theme swap, template directory existence); adds vitest infrastructure
+  - **forms**: keyboard-navigation test suites for `PinInput` (focus advance, Backspace retreat, ArrowLeft/Right, paste, numeric type guard) and `NumberInput` (ArrowUp/Down, min/max clamp, `aria-valuenow`)
+  - **data-display**: keyboard-navigation test suites for `Tree` (ArrowRight expand, ArrowLeft collapse, Space select, `aria-selected`) and `Calendar` (Enter/Space select, `aria-pressed`, disabled date guard)
+  - **navigation**: keyboard-navigation test suites for `Pagination` (`aria-current="page"`, Enter/Space activate, tab order) and `Stepper` (`data-status` per step, accessible `aria-label`)
+
+- Updated dependencies [[`98367b6`](https://github.com/ninna-ui/ninna-ui/commit/98367b6ef5ca317fa3f8d942b4ebad45a2d77612), [`65647df`](https://github.com/ninna-ui/ninna-ui/commit/65647df80e2d2f18afcb023c5b40f5d97ba98da6), [`34af89e`](https://github.com/ninna-ui/ninna-ui/commit/34af89ee25c996ee15c47306f6b6b1a574b4fdb2), [`0019a10`](https://github.com/ninna-ui/ninna-ui/commit/0019a10f8974a771a23a46a770eac18a966619d8)]:
+  - @ninna-ui/react-internal@0.7.0
+  - @ninna-ui/utils@0.7.0
+  - @ninna-ui/core@0.7.0
+
 ## 0.6.0
 
 ### Patch Changes
