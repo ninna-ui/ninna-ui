@@ -36,6 +36,7 @@
   "devDependencies": {
     "@sa11y/vitest": "^8.0.27",
     "@types/node": "^25.9.3",
+    "@vitejs/plugin-react": "^6.0.2",
     "tsup": "^8.5.1",
     "typescript": "^5.9.3"
   }

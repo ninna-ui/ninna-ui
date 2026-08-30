@@ -1,4 +1,16 @@
 packages:
-  - 'packages/*'
-  - 'apps/*'
-  - 'tooling/*'
+  - "packages/*"
+  - "apps/*"
+  - "tooling/*"
+
+overrides:
+  "@babel/runtime": 7.28.2
+  esbuild: ^0.28.2
+  lodash: ^4.18.1
+  lodash-es: ^4.18.1
+  yaml: ^2.8.3
+allowedDeprecatedVersions:
+  eslint: 9.39.4
+
+onlyBuiltDependencies:
+  - esbuild
