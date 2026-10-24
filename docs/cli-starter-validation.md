@@ -17,11 +17,12 @@ All starters use React/React DOM 19.3.1, Tailwind CSS 4.3.3, TypeScript 6.0.3, a
 
 ## Checks performed
 
-- 31 CLI tests passed, covering actual generation for all 20 framework/preset combinations, invalid arguments, existing directories, interactive choices, package-manager guidance, and installation recovery.
+- 31 CLI tests passed in both the package and root test configurations, covering actual generation for all 20 framework/preset combinations, invalid arguments, existing directories, interactive choices, package-manager guidance, and installation recovery. CLI tests explicitly use the Node environment.
 - CLI build, TypeScript, ESLint, template-version validation, and whitespace checks passed.
 - Packed the actual CLI tarball and generated four isolated projects outside the workspace. All four installed published dependencies with strict peer checks, type-checked, and built for production: 12 successful phases.
 - Rebuilt all four projects after the final CodeBlock styling adjustment.
 - Checked production pages in a browser: form submission and reset, keyboard tabs, code preview/copy, dialog labeling, focus containment, Escape dismissal, and focus restoration. No hydration warnings or console errors appeared.
+- Repeated the browser interaction checks on all four development servers, after the first dependency optimization and island hydration completed. No hydration warnings or console errors appeared in development either.
 - Checked all four layouts at 375px wide: no horizontal document overflow.
 - Verified the Forest preset and system dark mode, including CodeBlock's background. The generator tests check the CSS import and document theme for every preset.
 - Verified that the compiled CLI prompts for a preset when `--preset` is omitted, writes the selected Ocean preset to both CSS and document markup, and exits without waiting for stdin to close. `--version` reads release-managed package metadata.

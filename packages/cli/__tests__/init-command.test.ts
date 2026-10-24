@@ -1,3 +1,4 @@
+// @vitest-environment node
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
@@ -8,7 +9,11 @@ import prompts from "prompts";
 import { init } from "../src/commands/init";
 
 vi.mock("prompts", () => ({ default: vi.fn() }));
-vi.mock("node:child_process", () => ({ execSync: vi.fn() }));
+vi.mock("node:child_process", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("node:child_process")>();
+  const execSync = vi.fn();
+  return { ...actual, default: { ...actual, execSync }, execSync };
+});
 
 const roots: string[] = [];
 afterEach(() => {
