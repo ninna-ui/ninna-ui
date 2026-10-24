@@ -1,7 +1,7 @@
 {
   "name": "@ninna-ui/cli",
   "version": "0.6.0",
-  "description": "CLI tool for scaffolding Ninna UI projects - Vite + React, Next.js 15, React Router v7 templates with 5 theme presets. Tailwind CSS v4.",
+  "description": "Scaffold Ninna UI projects with Vite, Next.js, React Router, or Astro and five CSS theme presets.",
   "license": "MIT",
   "author": "Ninna-UI Team",
   "repository": {
@@ -67,5 +67,8 @@
     "tsup": "^8.5.1",
     "typescript": "^5.9.3",
     "vitest": "^4.1.8"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }

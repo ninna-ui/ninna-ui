@@ -1,164 +1,129 @@
-import { describe, it, expect } from "vitest";
-import { existsSync } from "node:fs";
-import { join, resolve, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { afterEach, describe, expect, it } from "vitest";
+import {
+  existsSync,
+  mkdtempSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  writeFileSync,
+} from "node:fs";
+import { join } from "node:path";
+import { tmpdir } from "node:os";
+import {
+  CLI_VERSION,
+  createProject,
+  PACKAGE_ROOT,
+  PRESETS,
+  TEMPLATES,
+} from "../src/project";
 
-// ---------------------------------------------------------------------------
-// Inline helpers extracted from init.ts (pure logic — no side effects, no CLI)
-// ---------------------------------------------------------------------------
-
-/** Swap workspace:* → latest for all dep fields in a package.json object */
-function swapWorkspaceDeps(
-  pkg: Record<string, unknown>,
-): Record<string, unknown> {
-  const depFields = [
-    "dependencies",
-    "devDependencies",
-    "peerDependencies",
-  ] as const;
-  for (const field of depFields) {
-    const deps = pkg[field] as Record<string, string> | undefined;
-    if (deps) {
-      for (const [dep, ver] of Object.entries(deps)) {
-        if (ver === "workspace:*") {
-          deps[dep] = "latest";
-        }
-      }
-    }
-  }
-  return pkg;
+const roots: string[] = [];
+function sandbox() {
+  const root = mkdtempSync(join(tmpdir(), "ninna-cli-test-"));
+  roots.push(root);
+  return root;
 }
-
-/** Replace preset CSS import in content string */
-function swapPresetInCss(content: string, preset: string): string {
-  return content.replace(
-    "@ninna-ui/core/theme/presets/default.css",
-    `@ninna-ui/core/theme/presets/${preset}.css`,
-  );
-}
-
-/** Replace data-theme attribute in markup content string */
-function swapDataTheme(content: string, preset: string): string {
-  return content.replace(/data-theme="default"/g, `data-theme="${preset}"`);
-}
-
-// ---------------------------------------------------------------------------
-// Template directory resolution (pointing at the real templates/ folder)
-// ---------------------------------------------------------------------------
-const TEMPLATES_DIR = resolve(
-  dirname(fileURLToPath(import.meta.url)),
-  "..",
-  "templates",
+afterEach(() =>
+  roots
+    .splice(0)
+    .forEach((root) => rmSync(root, { recursive: true, force: true })),
 );
 
-// ---------------------------------------------------------------------------
-// Tests
-// ---------------------------------------------------------------------------
+const entries = {
+  "vite-react": ["src/index.css", "index.html"],
+  nextjs: ["app/globals.css", "app/layout.tsx"],
+  "react-router": ["app/index.css", "app/root.tsx"],
+  astro: ["src/styles/globals.css", "src/layouts/Layout.astro"],
+} as const;
 
-describe("workspace:* → latest dependency swap", () => {
-  it("replaces workspace:* with latest in dependencies", () => {
-    const pkg = {
-      dependencies: { "@ninna-ui/core": "workspace:*", react: "^19.0.0" },
-    };
-    swapWorkspaceDeps(pkg);
-    expect((pkg.dependencies as Record<string, string>)["@ninna-ui/core"]).toBe(
-      "latest",
+describe("starter generation", () => {
+  it.each(
+    TEMPLATES.flatMap(({ value }) => PRESETS.map((preset) => [value, preset])),
+  )("generates the real %s template with the %s preset", (template, preset) => {
+    const target = createProject("my-starter", template!, preset!, sandbox());
+    const manifest = JSON.parse(
+      readFileSync(join(target, "package.json"), "utf8"),
     );
-    expect((pkg.dependencies as Record<string, string>)["react"]).toBe(
-      "^19.0.0",
-    );
-  });
-
-  it("replaces workspace:* in devDependencies", () => {
-    const pkg = {
-      devDependencies: { "@ninna-ui/utils": "workspace:*", vitest: "^4.0.0" },
-    };
-    swapWorkspaceDeps(pkg);
+    expect(manifest.name).toBe("my-starter");
+    expect(manifest.private).toBe(true);
+    expect(manifest.version).toBe("0.0.0");
+    expect(manifest.scripts.typecheck).toBeTruthy();
+    expect(manifest.engines.node).toBeTruthy();
     expect(
-      (pkg.devDependencies as Record<string, string>)["@ninna-ui/utils"],
-    ).toBe("latest");
-    expect((pkg.devDependencies as Record<string, string>)["vitest"]).toBe(
-      "^4.0.0",
-    );
-  });
-
-  it("replaces workspace:* in peerDependencies", () => {
-    const pkg = {
-      peerDependencies: { "@ninna-ui/react-internal": "workspace:*" },
-    };
-    swapWorkspaceDeps(pkg);
-    expect(
-      (pkg.peerDependencies as Record<string, string>)[
-        "@ninna-ui/react-internal"
-      ],
-    ).toBe("latest");
-  });
-
-  it("leaves non-workspace:* versions unchanged", () => {
-    const pkg = {
-      dependencies: { react: "^19.0.0", typescript: "workspace:^" },
-    };
-    swapWorkspaceDeps(pkg);
-    // only exact 'workspace:*' is swapped
-    expect((pkg.dependencies as Record<string, string>)["react"]).toBe(
-      "^19.0.0",
-    );
-    expect((pkg.dependencies as Record<string, string>)["typescript"]).toBe(
-      "workspace:^",
-    );
-  });
-
-  it("handles package with no dep fields gracefully", () => {
-    const pkg = { name: "empty" };
-    expect(() => swapWorkspaceDeps(pkg)).not.toThrow();
-  });
-});
-
-describe("CSS preset import swap", () => {
-  it("replaces default.css with the selected preset", () => {
-    const css = `@import "@ninna-ui/core/theme/presets/default.css";`;
-    expect(swapPresetInCss(css, "ocean")).toBe(
-      `@import "@ninna-ui/core/theme/presets/ocean.css";`,
-    );
-  });
-
-  it("leaves files without the default import unchanged", () => {
-    const css = `body { margin: 0; }`;
-    expect(swapPresetInCss(css, "sunset")).toBe(css);
-  });
-
-  it("supports all 4 non-default presets", () => {
-    const template = `@import "@ninna-ui/core/theme/presets/default.css";`;
-    for (const preset of ["ocean", "sunset", "forest", "minimal"]) {
-      expect(swapPresetInCss(template, preset)).toContain(
-        `presets/${preset}.css`,
-      );
+      Object.entries(manifest.dependencies).filter(([name]) =>
+        name.startsWith("@ninna-ui/"),
+      ),
+    ).toHaveLength(9);
+    for (const [name, version] of Object.entries(manifest.dependencies)) {
+      if (name.startsWith("@ninna-ui/")) expect(version).toBe("latest");
     }
+    expect(JSON.stringify(manifest)).not.toContain("workspace:");
+    expect(readFileSync(join(target, ".gitignore"), "utf8")).toContain(
+      "node_modules/",
+    );
+    expect(existsSync(join(target, "_gitignore"))).toBe(false);
+    expect(existsSync(join(target, "public/favicon.svg"))).toBe(true);
+    const [cssPath, documentPath] = entries[template as keyof typeof entries];
+    const css = readFileSync(join(target, cssPath), "utf8");
+    const document = readFileSync(join(target, documentPath), "utf8");
+    expect(css).toContain(`@ninna-ui/core/theme/presets/${preset}.css`);
+    expect(css).toContain('@import "@ninna-ui/code-block/styles"');
+    expect(document).toContain(`data-theme="${preset}"`);
+    expect(document).not.toContain("suppressHydrationWarning");
+    expect(document).not.toContain('className="light"');
   });
-});
 
-describe("data-theme attribute swap", () => {
-  it('replaces data-theme="default" with selected preset', () => {
-    const html = `<html data-theme="default">`;
-    expect(swapDataTheme(html, "forest")).toBe(`<html data-theme="forest">`);
+  it.each([
+    ["../outside", "vite-react", "default"],
+    ["/outside", "vite-react", "default"],
+    ["", "vite-react", "default"],
+    ["my-app", "../nextjs", "default"],
+    ["my-app", "vite-react", "../forest"],
+  ])(
+    "rejects invalid arguments before creating files: %s / %s / %s",
+    (name, template, preset) => {
+      const root = sandbox();
+      expect(() => createProject(name!, template!, preset!, root)).toThrow();
+      expect(readdirSync(root)).toEqual([]);
+    },
+  );
+
+  it("does not overwrite an existing project", () => {
+    const root = sandbox();
+    const target = createProject("existing", "vite-react", "default", root);
+    writeFileSync(join(target, "keep.txt"), "existing work");
+    expect(() => createProject("existing", "nextjs", "ocean", root)).toThrow(
+      /already exists/,
+    );
+    expect(readFileSync(join(target, "keep.txt"), "utf8")).toBe(
+      "existing work",
+    );
   });
 
-  it("replaces all occurrences", () => {
-    const html = `<div data-theme="default"><span data-theme="default"></span></div>`;
-    const result = swapDataTheme(html, "ocean");
-    expect(result).not.toContain('data-theme="default"');
-    expect(result.match(/data-theme="ocean"/g)).toHaveLength(2);
+  it("reads the CLI version from release-managed package metadata", () => {
+    const manifest = JSON.parse(
+      readFileSync(join(PACKAGE_ROOT, "package.json"), "utf8"),
+    );
+    expect(CLI_VERSION).toBe(manifest.version);
   });
-});
 
-describe("template directories exist", () => {
-  for (const template of ["vite-react", "nextjs", "react-router", "astro"]) {
-    it(`templates/${template}/package.json exists`, () => {
-      const pkgPath = join(TEMPLATES_DIR, template, "package.json");
-      expect(
-        existsSync(pkgPath),
-        `${template}/package.json not found at ${pkgPath}`,
-      ).toBe(true);
-    });
-  }
+  it("includes the React Router production server with matching framework versions", () => {
+    const target = createProject(
+      "router-app",
+      "react-router",
+      "default",
+      sandbox(),
+    );
+    const { dependencies, devDependencies } = JSON.parse(
+      readFileSync(join(target, "package.json"), "utf8"),
+    );
+    for (const name of ["@react-router/node", "@react-router/serve"])
+      expect(dependencies[name]).toBe(dependencies["react-router"]);
+    expect(devDependencies["@react-router/dev"]).toBe(
+      dependencies["react-router"],
+    );
+    expect(devDependencies["@react-router/fs-routes"]).toBe(
+      dependencies["react-router"],
+    );
+  });
 });

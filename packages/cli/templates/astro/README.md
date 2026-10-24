@@ -1,80 +1,45 @@
-# Ninna UI + Astro Starter
+# Ninna UI + Astro
 
-> **Production-ready Astro 5 project with Ninna UI** — 69 accessible React components, island architecture, Tailwind CSS v4, TypeScript strict mode, and automatic dark mode.
+A TypeScript starter with Astro 7 and its React 19 integration, Tailwind CSS 4, and published Ninna UI packages.
 
-Generated with `npx @ninna-ui/cli init my-app -t astro`
+## Run the project
 
-## Getting Started
+Requires Node.js 22.23.4+. Node.js 24 LTS is recommended for all templates.
 
-```bash
-pnpm install    # Install dependencies
-pnpm dev        # Start development server (http://localhost:4321)
-pnpm build      # Build for production
-pnpm preview    # Preview production build
+```sh
+npm install
+npm run dev
+npm run typecheck
+npm run build
+npm run preview
 ```
 
-## What's Included
+You can also use pnpm, Yarn, or Bun. Use the same package manager for installation and scripts. Commit its generated lockfile. The private application's version starts at 0.0.0 independently of the CLI release.
 
-- **Astro 5** with React 19 integration via `@astrojs/react`
-- **Tailwind CSS v4** with `@tailwindcss/vite` plugin for fastest builds
-- **Vite 7 override** — pinned via `overrides` to ensure Astro compatibility
-- **Ninna UI** — All 9 component packages pre-installed: primitives, feedback, forms, layout, overlays, navigation, data-display, code-block, core
-- **Default theme preset** with automatic dark mode via CSS custom properties + 4 additional presets available
+## Structure
 
-## Using React Components
+- `src/layouts/Layout.astro`: document, metadata, and the selected theme attribute.
+- `src/styles/globals.css`: Tailwind, the Ninna preset, and CodeBlock styles.
+- `src/components/Showcase.tsx`: a labeled form, alert, color examples, code panel, and keyboard-accessible dialog.
+- `public/favicon.svg`: local icon.
 
-Ninna UI components are React components. In Astro, add a `client:` directive to enable interactivity:
+## Rendering and hydration
 
-```astro
----
-import { Button } from "@ninna-ui/primitives";
----
-<!-- Static (no JS) -->
-<Button color="primary">Static</Button>
+Astro pre-renders the page. One React island uses client:load to hydrate the interactive Showcase. Keep React state and event handlers in .tsx components; callbacks cannot be passed from .astro markup.
 
-<!-- Interactive (with JS) -->
-<Button client:load color="primary" onclick="...">Interactive</Button>
-```
+The initial render is deterministic: no random IDs, dates, browser storage, or system-theme checks during React rendering. Styling the body is supported; moving CSS classes into a wrapper does not fix a server/client rendering mismatch.
 
-Or create a `.tsx` component file and import it:
+## Choose a theme
 
-```astro
----
-import MyComponent from '../components/MyComponent';
----
-<MyComponent client:load />
-```
-
-## Customization
-
-### Change Theme Preset
-
-Swap your entire design system with one CSS import change — no JavaScript configuration needed:
-
-1. Edit `src/styles/globals.css`:
+The CLI configures your selected preset. To switch later, update both the preset import in `src/styles/globals.css` and `data-theme` in `src/layouts/Layout.astro` to the same name: `default`, `ocean`, `sunset`, `forest`, or `minimal`.
 
 ```css
-/* Replace default with any preset: ocean, sunset, forest, minimal */
+@import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/ocean.css";
+@import "@ninna-ui/code-block/styles";
+@variant dark (&:is(.dark *));
 ```
 
-2. Update `data-theme` in `src/layouts/Layout.astro`:
+Without a root light/dark class, CSS follows the system color scheme. For a fixed mode, set `class="dark"` or `class="light"` on the root html element. Keep the server and first client render consistent when adding a persisted theme switcher.
 
-```html
-<html lang="en" data-theme="ocean">
-```
-
-### Dark Mode
-
-Dark mode activates **automatically** via `prefers-color-scheme` — no setup needed. For manual toggle, add `.dark` class to `<html>`:
-
-```html
-<html lang="en" data-theme="default" class="dark">
-```
-
-## Learn More
-
-- [Ninna UI Documentation](https://ninna-ui.dev) — Full docs with live component demos
-- [GitHub](https://github.com/ninna-ui/ninna-ui) — Source code and all packages
-- [Astro Documentation](https://docs.astro.build/) — Astro reference
-- [Astro React Integration](https://docs.astro.build/en/guides/integrations-guide/react/) — React in Astro
+[Ninna UI documentation](https://ninna-ui.dev/getting-started/installation)

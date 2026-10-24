@@ -1,55 +1,45 @@
-# Ninna UI + React Router v7 Starter
+# Ninna UI + React Router
 
-> **Production-ready React Router v7 project with Ninna UI** - 69 accessible React components, Vite bundling, Tailwind CSS v4, TypeScript strict mode, and automatic dark mode. SSR-ready out of the box.
+A TypeScript starter with React Router 8, Vite 8, and React 19, Tailwind CSS 4, and published Ninna UI packages.
 
-Generated with `npx @ninna-ui/cli init my-app -t react-router`
+## Run the project
 
-## Getting Started
+Requires Node.js 22.22+. Node.js 24 LTS is recommended for all templates.
 
-```bash
-pnpm install    # Install dependencies
-pnpm dev        # Start development server
-pnpm build      # Build for production
+```sh
+npm install
+npm run dev
+npm run typecheck
+npm run build
+npm run start
 ```
 
-## What's Included
+You can also use pnpm, Yarn, or Bun. Use the same package manager for installation and scripts. Commit its generated lockfile. The private application's version starts at 0.0.0 independently of the CLI release.
 
-- **React Router v7** with Vite and TypeScript strict mode
-- **Tailwind CSS v4.1** with `@tailwindcss/vite` plugin
-- **Ninna UI** - All 9 component packages pre-installed: primitives, feedback, forms, layout, overlays, navigation, data-display, code-block, core
-- **Default theme preset** with automatic dark mode via CSS custom properties + 4 additional presets available
+## Structure
 
-## Customization
+- `app/root.tsx`: document, metadata, and the selected theme attribute.
+- `app/index.css`: Tailwind, the Ninna preset, and CodeBlock styles.
+- `app/components/Showcase.tsx`: a labeled form, alert, color examples, code panel, and keyboard-accessible dialog.
+- `public/favicon.svg`: local icon.
 
-### Change Theme Preset
+## Rendering and hydration
 
-Swap your entire design system with one CSS import change - no JavaScript configuration needed:
+SSR is enabled. The root Layout owns the document and framework scripts; the route renders the same initial Showcase on the server and client. @react-router/serve is included for the production start command.
 
-1. Edit `app/index.css`:
+The initial render is deterministic: no random IDs, dates, browser storage, or system-theme checks during React rendering. Styling the body is supported; moving CSS classes into a wrapper does not fix a server/client rendering mismatch.
+
+## Choose a theme
+
+The CLI configures your selected preset. To switch later, update both the preset import in `app/index.css` and `data-theme` in `app/root.tsx` to the same name: `default`, `ocean`, `sunset`, `forest`, or `minimal`.
 
 ```css
-/* Replace default with any preset: ocean, sunset, forest, minimal */
+@import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/ocean.css";
+@import "@ninna-ui/code-block/styles";
+@variant dark (&:is(.dark *));
 ```
 
-2. Update `data-theme` in `app/root.tsx`:
+Without a root light/dark class, CSS follows the system color scheme. For a fixed mode, set `className="dark"` or `className="light"` on the root html element. Keep the server and first client render consistent when adding a persisted theme switcher.
 
-```tsx
-<html lang="en" data-theme="ocean">
-```
-
-### Dark Mode
-
-Dark mode activates **automatically** via `prefers-color-scheme` - no setup needed. For manual toggle, add `.dark` class in `app/root.tsx`:
-
-```tsx
-<html lang="en" data-theme="default" className="dark">
-```
-
-> **SSR note:** This template uses React Router v7 SSR mode (`ssr: true`). The `Layout` export in `root.tsx` wraps every page - Tailwind utility classes are on a wrapper `<div>` inside `<body>` to avoid hydration mismatches.
-
-## Learn More
-
-- [Ninna UI Documentation](https://ninna-ui.dev) - Full docs with live component demos
-- [GitHub](https://github.com/ninna-ui/ninna-ui) - Source code and all packages
-- [React Router Documentation](https://reactrouter.com/) - React Router v7 reference
+[Ninna UI documentation](https://ninna-ui.dev/getting-started/installation)
