@@ -1,0 +1,2 @@
+# Keep the generated lockfile in pnpm's canonical format.
+pnpm-lock.yaml

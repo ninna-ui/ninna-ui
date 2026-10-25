@@ -7,8 +7,8 @@ on:
 # Least-privilege permissions — fixes CodeQL "Workflow does not contain permissions"
 # Each permission is explicitly scoped to the minimum required.
 permissions:
-  contents: read       # checkout repo
-  pull-requests: read  # read PR metadata (changeset validation)
+  contents: read # checkout repo
+  pull-requests: read # read PR metadata (changeset validation)
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # full history needed for changeset diff
+          fetch-depth: 0 # full history needed for changeset diff
 
       - name: Enable Corepack
         run: corepack enable
@@ -35,7 +35,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: pnpm
 
       - name: Install dependencies

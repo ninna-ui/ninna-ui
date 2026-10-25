@@ -146,6 +146,10 @@ npx @ninna-ui/cli init my-app -t nextjs --preset ocean
 
 ## Development
 
+Use Node.js 24 LTS (see `.nvmrc`) and the pinned pnpm version in `package.json`.
+The repository's test tooling requires this runtime; public packages declare
+their own application runtime requirements.
+
 ```bash
 pnpm install           # Install all dependencies
 pnpm dev               # Start all dev watchers

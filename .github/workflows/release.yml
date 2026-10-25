@@ -16,15 +16,15 @@ jobs:
 
     # Explicit least-privilege permissions
     permissions:
-      contents: write       # create release commits / tags
-      pull-requests: write  # create/update the version bump PR
-      id-token: write       # npm provenance (OIDC) — required for --provenance publish
+      contents: write # create release commits / tags
+      pull-requests: write # create/update the version bump PR
+      id-token: write # npm provenance (OIDC) — required for --provenance publish
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # full history needed for changeset
+          fetch-depth: 0 # full history needed for changeset
 
       - name: Enable Corepack
         run: corepack enable
@@ -35,10 +35,10 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version-file: .nvmrc
           cache: pnpm
           registry-url: https://registry.npmjs.org
-          scope: '@ninna-ui'
+          scope: "@ninna-ui"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -57,11 +57,11 @@ jobs:
             exit 1
           fi
 
-      - name: Verify CLI template versions are in sync
+      - name: Verify CLI template portability
         run: node scripts/check-template-versions.js
 
       - name: Run tests before release
-        run: pnpm test
+        run: pnpm vitest run
 
       - name: Create Release Pull Request or Publish
         id: changesets
