@@ -1,5 +1,31 @@
 # @ninna-ui/cli
 
+## 0.7.0
+
+### Minor Changes
+
+- [#78](https://github.com/ninna-ui/ninna-ui/pull/78) [`a220dc7`](https://github.com/ninna-ui/ninna-ui/commit/a220dc7b9731195d15895d58f2ac2e965054b99a) Thanks [@chnkc41](https://github.com/chnkc41)! - Refresh the Vite, Next.js, React Router, and Astro starters with compatible current dependencies, explicit Node requirements, complete type-check and production scripts, and deterministic SSR/React-island examples. Include CodeBlock styles and local assets, preserve system color mode and preset selection, validate scaffolding arguments, release the interactive input handle after generation, and derive the CLI version from release-managed metadata. Generated private apps start at version 0.0.0 independently of the CLI release.
+
+### Patch Changes
+
+- [#73](https://github.com/ninna-ui/ninna-ui/pull/73) [`2264784`](https://github.com/ninna-ui/ninna-ui/commit/22647840ed82383d97f773cae62c7693a8b795ff) Thanks [@chnkc41](https://github.com/chnkc41)! - Refresh stable dependencies and build configuration across public packages.
+
+- [#62](https://github.com/ninna-ui/ninna-ui/pull/62) [`98367b6`](https://github.com/ninna-ui/ninna-ui/commit/98367b6ef5ca317fa3f8d942b4ebad45a2d77612) Thanks [@chnkc41](https://github.com/chnkc41)! - vitest version bump from 4.1.4 to 4.1.8, react-router bump to 7.15. 0, and other package updates
+
+- [#68](https://github.com/ninna-ui/ninna-ui/pull/68) [`65647df`](https://github.com/ninna-ui/ninna-ui/commit/65647df80e2d2f18afcb023c5b40f5d97ba98da6) Thanks [@chnkc41](https://github.com/chnkc41)! - Update public packages with the latest repository improvements.
+
+- [#80](https://github.com/ninna-ui/ninna-ui/pull/80) [`4b65561`](https://github.com/ninna-ui/ninna-ui/commit/4b65561cc49e4c8a496111d4c88b72d36a9b46b5) Thanks [@chnkc41](https://github.com/chnkc41)! - Require Vitest 4.1.11 or newer within the supported 4.x line for package development tests, matching the patched version already used by the repository lockfile.
+
+- [#61](https://github.com/ninna-ui/ninna-ui/pull/61) [`0019a10`](https://github.com/ninna-ui/ninna-ui/commit/0019a10f8974a771a23a46a770eac18a966619d8) Thanks [@chnkc41](https://github.com/chnkc41)! - **Testing hygiene (tasks 31–35) — no public API changes.**
+
+  - **core**: contract tests for all 26 class-map objects and generates CSS safelist for theme utilities; removes `--passWithNoTests`
+  - **utils**: backfill tests for `composeEventHandlers`, `canUseDOM`, `getOwnerWindow`, and `KEYS` constants; removes `--passWithNoTests`
+  - **react-internal**: 36 new tests covering all 11 Radix engine wrappers and `Slot`/`Slottable`; adds `vitest.config.ts`
+  - **cli**: 14 new tests for `init` helper logic (workspace:\* dep-swap, CSS preset swap, data-theme swap, template directory existence); adds vitest infrastructure
+  - **forms**: keyboard-navigation test suites for `PinInput` (focus advance, Backspace retreat, ArrowLeft/Right, paste, numeric type guard) and `NumberInput` (ArrowUp/Down, min/max clamp, `aria-valuenow`)
+  - **data-display**: keyboard-navigation test suites for `Tree` (ArrowRight expand, ArrowLeft collapse, Space select, `aria-selected`) and `Calendar` (Enter/Space select, `aria-pressed`, disabled date guard)
+  - **navigation**: keyboard-navigation test suites for `Pagination` (`aria-current="page"`, Enter/Space activate, tab order) and `Stepper` (`data-status` per step, accessible `aria-label`)
+
 ## 0.6.0
 
 ### Patch Changes

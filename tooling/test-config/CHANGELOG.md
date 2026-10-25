@@ -1,5 +1,11 @@
 # @ninna-ui/test-config
 
+## 0.6.1
+
+### Patch Changes
+
+- [#62](https://github.com/ninna-ui/ninna-ui/pull/62) [`98367b6`](https://github.com/ninna-ui/ninna-ui/commit/98367b6ef5ca317fa3f8d942b4ebad45a2d77612) Thanks [@chnkc41](https://github.com/chnkc41)! - vitest version bump from 4.1.4 to 4.1.8, react-router bump to 7.15. 0, and other package updates
+
 ## 0.4.1
 
 ### Patch Changes
