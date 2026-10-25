@@ -1,5 +1,21 @@
 # @ninna-ui/layout
 
+## 0.7.0
+
+### Patch Changes
+
+- [#73](https://github.com/ninna-ui/ninna-ui/pull/73) [`2264784`](https://github.com/ninna-ui/ninna-ui/commit/22647840ed82383d97f773cae62c7693a8b795ff) Thanks [@chnkc41](https://github.com/chnkc41)! - Refresh stable dependencies and build configuration across public packages.
+
+- [#62](https://github.com/ninna-ui/ninna-ui/pull/62) [`98367b6`](https://github.com/ninna-ui/ninna-ui/commit/98367b6ef5ca317fa3f8d942b4ebad45a2d77612) Thanks [@chnkc41](https://github.com/chnkc41)! - vitest version bump from 4.1.4 to 4.1.8, react-router bump to 7.15. 0, and other package updates
+
+- [#68](https://github.com/ninna-ui/ninna-ui/pull/68) [`65647df`](https://github.com/ninna-ui/ninna-ui/commit/65647df80e2d2f18afcb023c5b40f5d97ba98da6) Thanks [@chnkc41](https://github.com/chnkc41)! - Update public packages with the latest repository improvements.
+
+- [#80](https://github.com/ninna-ui/ninna-ui/pull/80) [`4b65561`](https://github.com/ninna-ui/ninna-ui/commit/4b65561cc49e4c8a496111d4c88b72d36a9b46b5) Thanks [@chnkc41](https://github.com/chnkc41)! - Require Vitest 4.1.11 or newer within the supported 4.x line for package development tests, matching the patched version already used by the repository lockfile.
+
+- Updated dependencies [[`2264784`](https://github.com/ninna-ui/ninna-ui/commit/22647840ed82383d97f773cae62c7693a8b795ff), [`98367b6`](https://github.com/ninna-ui/ninna-ui/commit/98367b6ef5ca317fa3f8d942b4ebad45a2d77612), [`65647df`](https://github.com/ninna-ui/ninna-ui/commit/65647df80e2d2f18afcb023c5b40f5d97ba98da6), [`34af89e`](https://github.com/ninna-ui/ninna-ui/commit/34af89ee25c996ee15c47306f6b6b1a574b4fdb2), [`4b65561`](https://github.com/ninna-ui/ninna-ui/commit/4b65561cc49e4c8a496111d4c88b72d36a9b46b5), [`0019a10`](https://github.com/ninna-ui/ninna-ui/commit/0019a10f8974a771a23a46a770eac18a966619d8)]:
+  - @ninna-ui/core@0.7.0
+  - @ninna-ui/utils@0.7.0
+
 ## 0.6.0
 
 ### Minor Changes

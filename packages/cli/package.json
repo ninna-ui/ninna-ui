@@ -1,6 +1,6 @@
 {
   "name": "@ninna-ui/cli",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Scaffold Ninna UI projects with Vite, Next.js, React Router, or Astro and five CSS theme presets.",
   "license": "MIT",
   "author": "Ninna-UI Team",
