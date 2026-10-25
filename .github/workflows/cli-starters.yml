@@ -1,0 +1,40 @@
+name: CLI starters
+
+on:
+  pull_request:
+    paths:
+      - "packages/cli/**"
+      - "scripts/check-template-versions.js"
+      - "scripts/smoke-cli-templates.mjs"
+      - "scripts/check-cli-interactive.mjs"
+      - ".github/workflows/cli-starters.yml"
+  push:
+    branches: [main]
+    paths:
+      - "packages/cli/**"
+      - "scripts/check-template-versions.js"
+      - "scripts/smoke-cli-templates.mjs"
+      - "scripts/check-cli-interactive.mjs"
+      - ".github/workflows/cli-starters.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cli-starters-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  packed-starters:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: node scripts/check-template-versions.js
+      - run: node scripts/smoke-cli-templates.mjs

@@ -1,5 +1,32 @@
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
+@import "@ninna-ui/code-block/styles";
 
-/* Enable dark mode support */
 @variant dark (&:is(.dark *));
+
+/* Follow preset and system mode through the documented CodeBlock variables. */
+.starter-code[data-slot="code-block"] {
+  --ninna-cb-bg: var(--color-base-100);
+  --ninna-cb-border: var(--color-base-200);
+  --ninna-cb-text: var(--color-base-content);
+  --ninna-cb-line-num: color-mix(
+    in oklch,
+    var(--color-base-content) 70%,
+    transparent
+  );
+  --ninna-cb-copy-bg: var(--color-base-200);
+  --ninna-cb-copy-border: var(--color-base-300);
+  --ninna-cb-comment: color-mix(
+    in oklch,
+    var(--color-base-content) 70%,
+    transparent
+  );
+  --ninna-cb-string: var(--color-secondary);
+  --ninna-cb-keyword: var(--color-primary);
+  --ninna-cb-boolean: var(--color-primary);
+  --ninna-cb-number: var(--color-primary);
+  --ninna-cb-punctuation: var(--color-base-content);
+  --ninna-cb-tag: var(--color-primary);
+  --ninna-cb-attr: var(--color-base-content);
+  --ninna-cb-component: var(--color-primary);
+}

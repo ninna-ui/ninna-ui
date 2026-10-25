@@ -1,54 +1,45 @@
-# Ninna UI + Vite + React Starter
+# Ninna UI + Vite + React
 
-> **Production-ready Vite + React 19 SPA with Ninna UI** - 69 accessible React components, Tailwind CSS v4, TypeScript strict mode, and automatic dark mode. The fastest way to start building.
+A TypeScript starter with Vite 8 and React 19, Tailwind CSS 4, and published Ninna UI packages.
 
-Generated with `npx @ninna-ui/cli init my-app -t vite-react`
+## Run the project
 
-## Getting Started
+Requires Node.js 20.19+ or 22.12+. Node.js 24 LTS is recommended for all templates.
 
-```bash
-pnpm install    # Install dependencies
-pnpm dev        # Start development server
-pnpm build      # Build for production
+```sh
+npm install
+npm run dev
+npm run typecheck
+npm run build
+npm run preview
 ```
 
-## What's Included
+You can also use pnpm, Yarn, or Bun. Use the same package manager for installation and scripts. Commit its generated lockfile. The private application's version starts at 0.0.0 independently of the CLI release.
 
-- **React 19** with TypeScript strict mode
-- **Vite 7** with `@tailwindcss/vite` plugin - instant HMR, lightning-fast builds
-- **Tailwind CSS v4.1** - CSS-first configuration, no `tailwind.config.ts`
-- **Ninna UI** - All 9 component packages pre-installed: primitives, feedback, forms, layout, overlays, navigation, data-display, code-block, core
-- **Default theme preset** with automatic dark mode via CSS custom properties + 4 additional presets available
+## Structure
 
-## Customization
+- `index.html`: document, metadata, and the selected theme attribute.
+- `src/index.css`: Tailwind, the Ninna preset, and CodeBlock styles.
+- `src/components/Showcase.tsx`: a labeled form, alert, color examples, code panel, and keyboard-accessible dialog.
+- `public/favicon.svg`: local icon.
 
-### Change Theme Preset
+## Rendering and hydration
 
-Swap your entire design system with one CSS import change - no JavaScript configuration needed:
+This is a client-rendered single-page app. React mounts into the empty root with createRoot; it does not hydrate server HTML.
 
-1. Edit `src/index.css`:
+The initial render is deterministic: no random IDs, dates, browser storage, or system-theme checks during React rendering. Styling the body is supported; moving CSS classes into a wrapper does not fix a server/client rendering mismatch.
+
+## Choose a theme
+
+The CLI configures your selected preset. To switch later, update both the preset import in `src/index.css` and `data-theme` in `index.html` to the same name: `default`, `ocean`, `sunset`, `forest`, or `minimal`.
 
 ```css
-/* Replace default with any preset: ocean, sunset, forest, minimal */
+@import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/ocean.css";
+@import "@ninna-ui/code-block/styles";
+@variant dark (&:is(.dark *));
 ```
 
-2. Update `data-theme` in `index.html`:
+Without a root light/dark class, CSS follows the system color scheme. For a fixed mode, set `class="dark"` or `class="light"` on the root html element. Keep the server and first client render consistent when adding a persisted theme switcher.
 
-```html
-<html lang="en" data-theme="ocean">
-```
-
-### Dark Mode
-
-Dark mode activates **automatically** via `prefers-color-scheme` - no setup needed. For manual toggle:
-
-```html
-<html lang="en" data-theme="default" class="dark">
-```
-
-## Learn More
-
-- [Ninna UI Documentation](https://ninna-ui.dev) - Full docs with live component demos
-- [GitHub](https://github.com/ninna-ui/ninna-ui) - Source code and all packages
-- [Vite Documentation](https://vite.dev/) - Vite build tool reference
+[Ninna UI documentation](https://ninna-ui.dev/getting-started/installation)

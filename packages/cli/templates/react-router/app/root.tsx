@@ -1,23 +1,18 @@
-import type React from "react";
-import {
-  Links,
-  Meta,
-  Outlet,
-  Scripts,
-  ScrollRestoration,
-} from "react-router";
+import type { ReactNode } from "react";
+import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import "./index.css";
 
-export function Layout({ children }: { children: React.ReactNode }) {
+export function Layout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="light" data-theme="default" suppressHydrationWarning>
+    <html lang="en" data-theme="default">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <Meta />
-        <Links /> 
+        <Links />
       </head>
-      <body className="min-h-screen bg-base-50 text-base-content antialiased" suppressHydrationWarning>
+      <body className="min-h-screen bg-base-50 text-base-content antialiased">
         {children}
         <ScrollRestoration />
         <Scripts />

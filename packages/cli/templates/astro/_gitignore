@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+.next/
+.astro/
+.react-router/
+.vercel/
+.env*
+!.env.example
+*.tsbuildinfo
+.DS_Store
+*-debug.log*

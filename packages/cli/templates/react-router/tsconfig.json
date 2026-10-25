@@ -13,6 +13,10 @@
     "noEmit": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "paths": { "~/*": ["./app/*"] }
+    "paths": {
+      "~/*": ["./app/*"]
+    },
+    "types": ["vite/client", "node"],
+    "rootDirs": [".", "./.react-router/types"]
   }
 }
