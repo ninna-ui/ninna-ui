@@ -90,10 +90,10 @@ export function InstallationView() {
             <Text size="sm" className="text-base-content/70">
               CLI 0.7 includes Vite 8, Next.js 16, React Router 8, and Astro 7
               starters with type-check and production scripts. Check your
-              installed CLI with <Code>npx @ninna-ui/cli@latest --version</Code>.
-              The generated <Code>package.json</Code> lists the exact framework
-              versions and commands. The manual guides below also work with
-              existing applications.
+              installed CLI with <Code>npx @ninna-ui/cli@latest --version</Code>
+              . The generated <Code>package.json</Code> lists the exact
+              framework versions and commands. The manual guides below also work
+              with existing applications.
             </Text>
             <div className="bg-base-50 border border-base-200 rounded-lg p-5 space-y-2">
               <Text
@@ -168,12 +168,12 @@ export function InstallationView() {
                     as="h3"
                     size="lg"
                     weight="semibold"
-                    className="group-hover:text-primary transition-colors"
+                    className="group-hover:text-primary-text transition-colors"
                   >
                     {fw.name}
                   </Heading>
                   {fw.badge && (
-                    <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary">
+                    <span className="rounded-full bg-primary/10 px-2 py-0.5 text-xs font-medium text-primary-text">
                       {fw.badge}
                     </span>
                   )}
@@ -181,7 +181,7 @@ export function InstallationView() {
                 <Text size="sm" className="text-base-content/70">
                   {fw.description}
                 </Text>
-                <div className="mt-auto pt-3 flex items-center gap-1 text-sm font-medium text-primary  transition-opacity">
+                <div className="mt-auto pt-3 flex items-center gap-1 text-sm font-medium text-primary-text  transition-opacity">
                   View guide <ArrowRight className="size-3.5" />
                 </div>
               </Link>
@@ -213,7 +213,7 @@ export function InstallationView() {
           </Text>
           <Link
             to="/getting-started/theming"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline underline-offset-4"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary-text hover:underline underline-offset-4"
           >
             Theme configuration{" "}
             <ArrowRight className="size-3.5" aria-hidden="true" />
@@ -229,7 +229,7 @@ export function InstallationView() {
           />
           <Link
             to="/primitives"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline underline-offset-4"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary-text hover:underline underline-offset-4"
           >
             Browse components{" "}
             <ArrowRight className="size-3.5" aria-hidden="true" />

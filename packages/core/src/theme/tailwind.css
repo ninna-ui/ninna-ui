@@ -45,6 +45,17 @@
 
 
 @theme inline {
+  /* Readable semantic text on base surfaces and soft tints. Presets supply
+     the tone; custom themes may override it independently of the solid fill. */
+  --color-primary-text: var(--color-primary-text, var(--color-primary));
+  --color-secondary-text: var(--color-secondary-text, var(--color-secondary));
+  --color-accent-text: var(--color-accent-text, var(--color-accent));
+  --color-neutral-text: var(--color-neutral-text, var(--color-neutral));
+  --color-success-text: var(--color-success-text, var(--color-success));
+  --color-danger-text: var(--color-danger-text, var(--color-danger));
+  --color-warning-text: var(--color-warning-text, var(--color-warning));
+  --color-info-text: var(--color-info-text, var(--color-info));
+
   /* Semantic color tokens */
   --color-neutral: var(--color-neutral);
   --color-neutral-content: var(--color-neutral-content);

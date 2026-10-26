@@ -31,6 +31,7 @@
     "check-pack": "node scripts/check-pack.js",
     "check-internal-deps": "node scripts/check-internal-deps.js",
     "check-template-versions": "node scripts/check-template-versions.js",
+    "check-theme-contrast": "node scripts/check-theme-contrast.mjs",
     "size": "size-limit",
     "prepare": "husky"
   },
@@ -48,6 +49,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
     "@vitejs/plugin-react": "^6.1.1",
+    "colorjs.io": "^0.7.1",
     "eslint": "9.39.4",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",

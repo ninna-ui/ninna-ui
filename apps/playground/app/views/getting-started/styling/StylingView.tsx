@@ -1,5 +1,10 @@
-import { ComponentHeader, ComponentSection, UsageExample, type ComponentSectionType } from "~/components/docs";
-import { Heading, Text , Code } from "@ninna-ui/primitives";
+import {
+  ComponentHeader,
+  ComponentSection,
+  UsageExample,
+  type ComponentSectionType,
+} from "~/components/docs";
+import { Heading, Text, Code } from "@ninna-ui/primitives";
 import { stylingMeta } from "./meta";
 
 export const stylingSections: ComponentSectionType[] = [
@@ -117,10 +122,10 @@ export function StylingView() {
         >
           <div className="space-y-4">
             <Text className="text-base-content/70 leading-relaxed">
-              All components spread <Code>...props</Code> on their root element, 
-              so any standard HTML attribute works - including <Code>className</Code>, 
-              <Code>style</Code>, 
-              <Code>id</Code>, and event handlers.
+              All components spread <Code>...props</Code> on their root element,
+              so any standard HTML attribute works - including{" "}
+              <Code>className</Code>,<Code>style</Code>,<Code>id</Code>, and
+              event handlers.
             </Text>
             <UsageExample code={CLASSNAME_CODE} />
           </div>
@@ -133,13 +138,17 @@ export function StylingView() {
         >
           <div className="space-y-6">
             <Text className="text-base-content/70 leading-relaxed">
-              Every Ninna UI component renders <Code>data-slot</Code> attributes 
-              on its root and meaningful sub-elements. There are <strong>98 data-slot attributes</strong> across all components. 
-              This gives you deep CSS customization without modifying component internals.
+              Every Ninna UI component renders <Code>data-slot</Code> attributes
+              on its root and meaningful sub-elements. There are{" "}
+              <strong>98 data-slot attributes</strong> across all components.
+              This gives you deep CSS customization without modifying component
+              internals.
             </Text>
 
             <div>
-              <Heading as="h3" size="base" weight="semibold" className="mb-2">CSS Targeting</Heading>
+              <Heading as="h3" size="base" weight="semibold" className="mb-2">
+                CSS Targeting
+              </Heading>
               <UsageExample
                 title="Style inner elements with data-slot selectors"
                 code={DATA_SLOT_CODE}
@@ -147,7 +156,9 @@ export function StylingView() {
             </div>
 
             <div>
-              <Heading as="h4" size="base" weight="semibold" className="mb-2">Slot Structure Examples</Heading>
+              <Heading as="h4" size="base" weight="semibold" className="mb-2">
+                Slot Structure Examples
+              </Heading>
               <UsageExample
                 title="data-slot attribute structure"
                 code={DATA_SLOT_LIST_CODE}
@@ -155,16 +166,11 @@ export function StylingView() {
             </div>
 
             <div className="bg-info/10 border border-info/20 rounded-lg p-4">
-              <Text size="sm" className="text-info">
-                <strong>Common slots:</strong>{" "}
-                <Code>icon</Code>,{" "}
-                <Code>content</Code>,{" "}
-                <Code>title</Code>,{" "}
-                <Code>description</Code>,{" "}
-                <Code>indicator</Code>,{" "}
-                <Code>track</Code>,{" "}
-                <Code>thumb</Code>,{" "}
-                <Code>close</Code>,{" "}
+              <Text size="sm" className="text-info-text">
+                <strong>Common slots:</strong> <Code>icon</Code>,{" "}
+                <Code>content</Code>, <Code>title</Code>,{" "}
+                <Code>description</Code>, <Code>indicator</Code>,{" "}
+                <Code>track</Code>, <Code>thumb</Code>, <Code>close</Code>,{" "}
                 <Code>label</Code>
               </Text>
             </div>
@@ -178,8 +184,9 @@ export function StylingView() {
         >
           <div className="space-y-4">
             <Text className="text-base-content/70 leading-relaxed">
-              The <Code>@theme inline</Code> block in each theme 
-              exposes all 31 CSS variables as Tailwind utilities. Use them anywhere in your Tailwind classes.
+              The <Code>@theme inline</Code> block in each theme exposes all 31
+              CSS variables as Tailwind utilities. Use them anywhere in your
+              Tailwind classes.
             </Text>
             <UsageExample
               title="Use Ninna UI variables in your own styles"
@@ -195,8 +202,8 @@ export function StylingView() {
         >
           <div className="space-y-4">
             <Text className="text-base-content/70 leading-relaxed">
-              Combine <Code>data-slot</Code> with other data attributes 
-              to create custom variants without modifying component source code.
+              Combine <Code>data-slot</Code> with other data attributes to
+              create custom variants without modifying component source code.
             </Text>
             <UsageExample
               title="Custom variant examples"

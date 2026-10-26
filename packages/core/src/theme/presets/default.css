@@ -80,6 +80,16 @@
   --color-border-hover: oklch(0.690 0.018 270);
   --color-border-active: oklch(0.550 0.020 270);
   --color-border-disabled: oklch(0.900 0.014 270);
+
+  /* Readable text tones: same hue/chroma, lightness adjusted for base surfaces. */
+  --color-primary-text: oklch(0.449 0.31 275);
+  --color-secondary-text: oklch(0.450 0.28 342);
+  --color-accent-text: oklch(0.467 0.18 183);
+  --color-neutral-text: var(--color-neutral);
+  --color-success-text: oklch(0.460 0.22 155);
+  --color-danger-text: oklch(0.484 0.22 25);
+  --color-warning-text: oklch(0.500 0.2 84);
+  --color-info-text: oklch(0.469 0.19 232);
 }
 
 /* ============================================
@@ -140,6 +150,16 @@
   --color-border-hover: oklch(0.400 0.018 270);
   --color-border-active: oklch(0.500 0.018 270);
   --color-border-disabled: oklch(0.230 0.016 270);
+
+  /* Readable text tones: same hue/chroma, lightness adjusted for base surfaces. */
+  --color-primary-text: var(--color-primary);
+  --color-secondary-text: oklch(0.676 0.26 342);
+  --color-accent-text: var(--color-accent);
+  --color-neutral-text: oklch(0.711 0.03 265);
+  --color-success-text: var(--color-success);
+  --color-danger-text: oklch(0.727 0.24 25);
+  --color-warning-text: var(--color-warning);
+  --color-info-text: var(--color-info);
 }
 
 /* ============================================
@@ -193,5 +213,15 @@
     --color-border-hover: oklch(0.400 0.018 270);
     --color-border-active: oklch(0.500 0.018 270);
     --color-border-disabled: oklch(0.230 0.016 270);
-  }
+
+  /* Readable text tones: same hue/chroma, lightness adjusted for base surfaces. */
+  --color-primary-text: var(--color-primary);
+  --color-secondary-text: oklch(0.676 0.26 342);
+  --color-accent-text: var(--color-accent);
+  --color-neutral-text: oklch(0.711 0.03 265);
+  --color-success-text: var(--color-success);
+  --color-danger-text: oklch(0.727 0.24 25);
+  --color-warning-text: var(--color-warning);
+  --color-info-text: var(--color-info);
+}
 }

@@ -1,42 +1,51 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Tooltip } from '@ninna-ui/overlays';
-import { Button } from '@ninna-ui/primitives';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Tooltip } from "@ninna-ui/overlays";
+import { Button } from "@ninna-ui/primitives";
 
 const meta: Meta = {
-  title: 'Overlays/Tooltip',
+  title: "Overlays/Tooltip",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     open: {
-      control: 'boolean',
-      description: 'Controlled open state',
+      control: "boolean",
+      description: "Controlled open state",
     },
     defaultOpen: {
-      control: 'boolean',
-      description: 'Default open state (uncontrolled)',
-      table: { defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Default open state (uncontrolled)",
+      table: { defaultValue: { summary: "false" } },
     },
     onOpenChange: {
-      action: 'onOpenChange',
-      description: 'Callback when open state changes',
+      action: "onOpenChange",
+      description: "Callback when open state changes",
     },
     delayDuration: {
-      control: 'number',
-      description: 'Delay in ms before showing the tooltip',
-      table: { defaultValue: { summary: '200' } },
+      control: "number",
+      description: "Delay in ms before showing the tooltip",
+      table: { defaultValue: { summary: "200" } },
     },
     disableHoverableContent: {
-      control: 'boolean',
-      description: 'Whether to disable hoverable content',
-      table: { defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Whether to disable hoverable content",
+      table: { defaultValue: { summary: "false" } },
     },
     color: {
-      control: 'select',
-      options: ['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'],
-      description: 'Color theme of the tooltip',
-      table: { defaultValue: { summary: 'neutral' } },
+      control: "select",
+      options: [
+        "neutral",
+        "primary",
+        "secondary",
+        "accent",
+        "success",
+        "danger",
+        "warning",
+        "info",
+      ],
+      description: "Color theme of the tooltip",
+      table: { defaultValue: { summary: "neutral" } },
     },
   },
 };
@@ -57,7 +66,7 @@ export const Default: Story = {
 
 export const Placements: Story = {
   render: () => {
-    const placements = ['top', 'right', 'bottom', 'left'] as const;
+    const placements = ["top", "right", "bottom", "left"] as const;
     return (
       <div className="flex flex-wrap gap-4 p-16">
         {placements.map((side) => (
@@ -111,7 +120,16 @@ export const CustomDelay: Story = {
 
 export const ColorVariants: Story = {
   render: () => {
-    const colors = ['neutral', 'primary', 'secondary', 'accent', 'success', 'danger', 'warning', 'info'] as const;
+    const colors = [
+      "neutral",
+      "primary",
+      "secondary",
+      "accent",
+      "success",
+      "danger",
+      "warning",
+      "info",
+    ] as const;
     return (
       <div className="flex flex-wrap gap-4 p-16">
         {colors.map((color) => (
@@ -119,7 +137,9 @@ export const ColorVariants: Story = {
             <Tooltip.Trigger asChild>
               <Button variant="outline">{color}</Button>
             </Tooltip.Trigger>
-            <Tooltip.Content color={color}>Tooltip with {color} color</Tooltip.Content>
+            <Tooltip.Content color={color}>
+              Tooltip with {color} color
+            </Tooltip.Content>
           </Tooltip>
         ))}
       </div>
@@ -138,13 +158,15 @@ export const OnVariousElements: Story = {
       </Tooltip>
       <Tooltip>
         <Tooltip.Trigger asChild>
-          <span className="text-primary underline cursor-help">Hover this text</span>
+          <span className="text-primary-text underline cursor-help">
+            Hover this text
+          </span>
         </Tooltip.Trigger>
         <Tooltip.Content>Tooltip on inline text</Tooltip.Content>
       </Tooltip>
       <Tooltip>
         <Tooltip.Trigger asChild>
-          <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center cursor-help text-primary font-bold text-sm">
+          <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center cursor-help text-primary-text font-bold text-sm">
             ?
           </div>
         </Tooltip.Trigger>

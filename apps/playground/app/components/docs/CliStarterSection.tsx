@@ -23,7 +23,7 @@ export function CliStarterSection({ template }: { template: Template }) {
         command installs the published CLI; see the{" "}
         <Link
           to="/getting-started/installation#cli"
-          className="text-primary underline underline-offset-4"
+          className="text-primary-text underline underline-offset-4"
         >
           installation guide
         </Link>{" "}

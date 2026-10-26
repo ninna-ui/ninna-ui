@@ -67,6 +67,9 @@ jobs:
       - name: Test
         run: pnpm vitest run
 
+      - name: Check theme color contrast
+        run: pnpm check-theme-contrast
+
       - name: Check internal deps not exposed
         run: pnpm check-internal-deps
 

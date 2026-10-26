@@ -1,4 +1,10 @@
-import { useRef, useState, useCallback, useEffect, type ComponentType } from "react";
+import {
+  useRef,
+  useState,
+  useCallback,
+  useEffect,
+  type ComponentType,
+} from "react";
 import {
   ChevronDown,
   Palette,
@@ -9,7 +15,11 @@ import {
   Check,
   type LucideProps,
 } from "lucide-react";
-import { useTheme, THEME_PRESETS, type ThemePreset } from "~/context/ThemeContext";
+import {
+  useTheme,
+  THEME_PRESETS,
+  type ThemePreset,
+} from "~/context/ThemeContext";
 
 const PRESET_ICONS: Record<ThemePreset, ComponentType<LucideProps>> = {
   default: Palette,
@@ -47,7 +57,8 @@ export function ThemePresetSwitcher() {
   useEffect(() => {
     if (!isOpen) return;
     const handler = (e: MouseEvent) => {
-      if (!(e.target as HTMLElement).closest("[data-preset-switcher]")) close(false);
+      if (!(e.target as HTMLElement).closest("[data-preset-switcher]"))
+        close(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -103,7 +114,8 @@ export function ThemePresetSwitcher() {
 
   const listboxId = "theme-preset-listbox";
 
-  const currentPreset = THEME_PRESETS.find((p) => p.value === preset) ?? THEME_PRESETS[0];
+  const currentPreset =
+    THEME_PRESETS.find((p) => p.value === preset) ?? THEME_PRESETS[0];
   const CurrentIcon = PRESET_ICONS[preset];
 
   return (
@@ -120,8 +132,18 @@ export function ThemePresetSwitcher() {
         aria-haspopup="listbox"
         aria-controls={isOpen ? listboxId : undefined}
       >
-        <CurrentIcon className="size-4" aria-hidden="true" suppressHydrationWarning />
-        <span className="hidden sm:inline" aria-hidden="true" suppressHydrationWarning>{currentPreset?.label}</span>
+        <CurrentIcon
+          className="size-4"
+          aria-hidden="true"
+          suppressHydrationWarning
+        />
+        <span
+          className="hidden sm:inline"
+          aria-hidden="true"
+          suppressHydrationWarning
+        >
+          {currentPreset?.label}
+        </span>
         <ChevronDown
           className={`size-3.5 transition-transform duration-150 ${isOpen ? "rotate-180" : ""}`}
           aria-hidden="true"
@@ -135,7 +157,11 @@ export function ThemePresetSwitcher() {
           role="listbox"
           tabIndex={0}
           aria-label="Theme presets"
-          aria-activedescendant={focusedIndex >= 0 ? `preset-option-${THEME_PRESETS[focusedIndex]?.value}` : undefined}
+          aria-activedescendant={
+            focusedIndex >= 0
+              ? `preset-option-${THEME_PRESETS[focusedIndex]?.value}`
+              : undefined
+          }
           className="absolute right-0 top-full mt-1 w-44 rounded-lg border border-base-200 bg-base-100 py-1 shadow-lg ring-1 ring-base-content/5"
         >
           {THEME_PRESETS.map((presetOption, index) => {
@@ -146,7 +172,9 @@ export function ThemePresetSwitcher() {
             return (
               <button
                 key={presetOption.value}
-                ref={(el) => { optionRefs.current[index] = el; }}
+                ref={(el) => {
+                  optionRefs.current[index] = el;
+                }}
                 id={`preset-option-${presetOption.value}`}
                 type="button"
                 role="option"
@@ -158,14 +186,15 @@ export function ThemePresetSwitcher() {
                   isSelected
                     ? "text-base-content font-medium"
                     : "text-base-content/70"
-                } ${
-                  isFocused ? "bg-base-200" : "hover:bg-base-200"
-                }`}
+                } ${isFocused ? "bg-base-200" : "hover:bg-base-200"}`}
               >
                 <Icon className="size-4 shrink-0" aria-hidden="true" />
                 <span className="flex-1">{presetOption.label}</span>
                 {isSelected && (
-                  <Check className="size-3.5 text-primary shrink-0" aria-hidden="true" />
+                  <Check
+                    className="size-3.5 text-primary-text shrink-0"
+                    aria-hidden="true"
+                  />
                 )}
               </button>
             );

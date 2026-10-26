@@ -74,6 +74,16 @@
   --color-border-hover: oklch(0.690 0.016 130);
   --color-border-active: oklch(0.550 0.016 130);
   --color-border-disabled: oklch(0.900 0.014 130);
+
+  /* Readable text tones: same hue/chroma, lightness adjusted for base surfaces. */
+  --color-primary-text: var(--color-primary);
+  --color-secondary-text: var(--color-secondary);
+  --color-accent-text: oklch(0.459 0.16 185);
+  --color-neutral-text: var(--color-neutral);
+  --color-success-text: oklch(0.461 0.22 155);
+  --color-danger-text: oklch(0.485 0.22 25);
+  --color-warning-text: oklch(0.501 0.2 84);
+  --color-info-text: oklch(0.469 0.19 232);
 }
 
 /* ============================================
@@ -88,8 +98,8 @@
   --color-primary: oklch(0.74 0.18 155);
   --color-primary-content: oklch(0.15 0.03 155);
 
-  /* Secondary - Bright Amber (dark text for WCAG AA contrast on L=0.58 bg) */
-  --color-secondary: oklch(0.58 0.14 85);
+  /* Secondary - Bright Amber (dark content, AA at rest and on hover) */
+  --color-secondary: oklch(0.628 0.14 85);
   --color-secondary-content: oklch(0.15 0.03 85);
 
   /* Accent - Bright Teal */
@@ -134,6 +144,16 @@
   --color-border-hover: oklch(0.400 0.014 130);
   --color-border-active: oklch(0.500 0.014 130);
   --color-border-disabled: oklch(0.230 0.014 130);
+
+  /* Readable text tones: same hue/chroma, lightness adjusted for base surfaces. */
+  --color-primary-text: var(--color-primary);
+  --color-secondary-text: oklch(0.694 0.14 85);
+  --color-accent-text: var(--color-accent);
+  --color-neutral-text: oklch(0.709 0.04 125);
+  --color-success-text: var(--color-success);
+  --color-danger-text: oklch(0.728 0.24 25);
+  --color-warning-text: var(--color-warning);
+  --color-info-text: var(--color-info);
 }
 
 /* ============================================
@@ -149,7 +169,7 @@
 
     --color-primary: oklch(0.74 0.18 155);
     --color-primary-content: oklch(0.15 0.03 155);
-    --color-secondary: oklch(0.58 0.14 85);
+    --color-secondary: oklch(0.628 0.14 85);
     --color-secondary-content: oklch(0.15 0.03 85);
     --color-accent: oklch(0.74 0.14 185);
     --color-accent-content: oklch(0.15 0.03 185);
@@ -178,5 +198,15 @@
     --color-border-hover: oklch(0.400 0.014 130);
     --color-border-active: oklch(0.500 0.014 130);
     --color-border-disabled: oklch(0.230 0.014 130);
-  }
+
+  /* Readable text tones: same hue/chroma, lightness adjusted for base surfaces. */
+  --color-primary-text: var(--color-primary);
+  --color-secondary-text: oklch(0.694 0.14 85);
+  --color-accent-text: var(--color-accent);
+  --color-neutral-text: oklch(0.709 0.04 125);
+  --color-success-text: var(--color-success);
+  --color-danger-text: oklch(0.728 0.24 25);
+  --color-warning-text: var(--color-warning);
+  --color-info-text: var(--color-info);
+}
 }

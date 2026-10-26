@@ -149,7 +149,7 @@ export function Showcase() {
           </Modal>
           <a
             href="https://ninna-ui.dev/getting-started/installation"
-            className="text-sm text-primary underline underline-offset-4"
+            className="text-sm text-primary-text underline underline-offset-4"
           >
             Read the documentation
           </a>

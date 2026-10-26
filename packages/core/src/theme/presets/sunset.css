@@ -30,7 +30,7 @@
   color-scheme: light;
 
   /* Primary - Deep Orange (bold CTA - white text) */
-  --color-primary: oklch(0.52 0.20 40);
+  --color-primary: oklch(0.489 0.2 40);
   --color-primary-content: oklch(0.93 0.03 40);
 
   /* Secondary - Deep Rose (bold - white text, consistent with primary) */
@@ -79,6 +79,16 @@
   --color-border-hover: oklch(0.690 0.016 45);
   --color-border-active: oklch(0.550 0.016 45);
   --color-border-disabled: oklch(0.900 0.014 45);
+
+  /* Readable text tones: same hue/chroma, lightness adjusted for base surfaces. */
+  --color-primary-text: oklch(0.460 0.2 40);
+  --color-secondary-text: oklch(0.449 0.24 350);
+  --color-accent-text: oklch(0.476 0.28 330);
+  --color-neutral-text: var(--color-neutral);
+  --color-success-text: oklch(0.459 0.22 155);
+  --color-danger-text: oklch(0.485 0.22 25);
+  --color-warning-text: oklch(0.501 0.2 84);
+  --color-info-text: oklch(0.468 0.19 232);
 }
 
 /* ============================================
@@ -139,6 +149,16 @@
   --color-border-hover: oklch(0.400 0.014 45);
   --color-border-active: oklch(0.500 0.014 45);
   --color-border-disabled: oklch(0.230 0.014 45);
+
+  /* Readable text tones: same hue/chroma, lightness adjusted for base surfaces. */
+  --color-primary-text: oklch(0.729 0.2 40);
+  --color-secondary-text: oklch(0.673 0.22 350);
+  --color-accent-text: var(--color-accent);
+  --color-neutral-text: oklch(0.712 0.04 50);
+  --color-success-text: var(--color-success);
+  --color-danger-text: oklch(0.730 0.24 25);
+  --color-warning-text: var(--color-warning);
+  --color-info-text: var(--color-info);
 }
 
 /* ============================================
@@ -183,5 +203,15 @@
     --color-border-hover: oklch(0.400 0.014 45);
     --color-border-active: oklch(0.500 0.014 45);
     --color-border-disabled: oklch(0.230 0.014 45);
-  }
+
+  /* Readable text tones: same hue/chroma, lightness adjusted for base surfaces. */
+  --color-primary-text: oklch(0.729 0.2 40);
+  --color-secondary-text: oklch(0.673 0.22 350);
+  --color-accent-text: var(--color-accent);
+  --color-neutral-text: oklch(0.712 0.04 50);
+  --color-success-text: var(--color-success);
+  --color-danger-text: oklch(0.730 0.24 25);
+  --color-warning-text: var(--color-warning);
+  --color-info-text: var(--color-info);
+}
 }

@@ -1,27 +1,27 @@
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva, type VariantProps } from "class-variance-authority";
 
 export const codeVariants = cva(
   "inline-block px-1.5 py-0.5 rounded font-mono",
   {
     variants: {
       color: {
-        primary:   "bg-primary/10 text-primary",
-        secondary: "bg-secondary/10 text-secondary",
-        accent:    "bg-accent/10 text-accent",
-        neutral:   "bg-neutral/10 text-neutral",
-        success:   "bg-success/10 text-success",
-        danger:    "bg-danger/10 text-danger",
-        warning:   "bg-warning/10 text-warning",
-        info:      "bg-info/10 text-info",
-        default:   "bg-base-200 text-base-content",
+        primary: "bg-primary/10 text-primary-text",
+        secondary: "bg-secondary/10 text-secondary-text",
+        accent: "bg-accent/10 text-accent-text",
+        neutral: "bg-neutral/10 text-neutral-text",
+        success: "bg-success/10 text-success-text",
+        danger: "bg-danger/10 text-danger-text",
+        warning: "bg-warning/10 text-warning-text",
+        info: "bg-info/10 text-info-text",
+        default: "bg-base-200 text-base-content",
       },
       size: {
-        xs:   "text-xs",
-        sm:   "text-sm",
+        xs: "text-xs",
+        sm: "text-sm",
         base: "text-base",
-        md:   "text-base",
-        lg:   "text-lg",
-        xl:   "text-xl",
+        md: "text-base",
+        lg: "text-lg",
+        xl: "text-xl",
         "2xl": "text-2xl",
         "3xl": "text-3xl",
         "4xl": "text-4xl",
@@ -30,7 +30,7 @@ export const codeVariants = cva(
       },
     },
     defaultVariants: { color: "neutral" },
-  }
+  },
 );
 
 export type CodeVariantsProps = VariantProps<typeof codeVariants>;

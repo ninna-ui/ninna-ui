@@ -159,15 +159,34 @@ SOLID_VARIANTS.primary; // Complete solid variant class set for primary
 
 ## CSS Custom Properties
 
-Each theme preset defines ~31 CSS custom properties:
+Use three distinct semantic roles:
 
-| Category     | Properties                                                                           |
-| ------------ | ------------------------------------------------------------------------------------ |
-| **Semantic** | `--color-primary`, `--color-secondary`, `--color-accent`, `--color-neutral`          |
-| **Status**   | `--color-success`, `--color-danger`, `--color-warning`, `--color-info`               |
-| **Content**  | `--color-primary-content`, `--color-secondary-content`, `--color-base-content`, etc. |
-| **Surfaces** | `--color-base-50` through `--color-base-900`                                         |
-| **Borders**  | `--color-base-200`, `--color-base-300`                                               |
+- `bg-primary text-primary-content`: content on a solid semantic fill.
+- `text-primary-text`: colored text on base surfaces (`base-50` through `base-200`).
+- `bg-primary/10 text-primary-text`: colored text on a soft tint.
+
+The same roles exist for secondary, accent, neutral and all status colors. Each
+preset supplies an explicit text tone, retaining the fill's hue and chroma while
+adjusting lightness only where contrast requires it. Some tones can reuse the
+fill directly. A raw fill such as `text-warning` is not an accessible text color
+on a pale surface. Keep `-content` for its matching solid fill. Component consumers
+still use the same `color="primary"` prop; the component selects the right role.
+
+Run `pnpm check-theme-contrast` to measure all five bundled presets in light and dark
+mode. It checks 4.5:1 for solid/content rest and hover pairs and text tones on base
+surfaces with 0–20% semantic tints. Custom palettes, nested tints, opacity overrides, gradients
+and other backgrounds still need contrast checks in their rendered context.
+
+Each theme preset defines solid, content, text, surface and border properties:
+
+| Category       | Properties                                                                           |
+| -------------- | ------------------------------------------------------------------------------------ |
+| **Semantic**   | `--color-primary`, `--color-secondary`, `--color-accent`, `--color-neutral`          |
+| **Status**     | `--color-success`, `--color-danger`, `--color-warning`, `--color-info`               |
+| **Content**    | `--color-primary-content`, `--color-secondary-content`, `--color-base-content`, etc. |
+| **Text tones** | `--color-primary-text`, `--color-secondary-text`, `--color-success-text`, etc.       |
+| **Surfaces**   | `--color-base-50` through `--color-base-900`                                         |
+| **Borders**    | `--color-base-200`, `--color-base-300`                                               |
 
 ## Package Structure
 

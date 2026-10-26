@@ -14,7 +14,7 @@ interface CodePreviewProps {
   full?: boolean;
   className?: string;
   previewClassName?: string;
-  /** Whether to show diagonal lines background pattern (default: true) */
+  /** Use an alternate base surface for the preview (default: false). */
   showPattern?: boolean;
 }
 
@@ -27,7 +27,7 @@ export function CodePreview({
   full = false,
   className,
   previewClassName,
-  showPattern = true,
+  showPattern = false,
 }: CodePreviewProps) {
   const [showCode, setShowCode] = useState(false);
   const codeRef = useRef<HTMLDivElement>(null);
@@ -63,9 +63,9 @@ export function CodePreview({
   return (
     <div
       className={cn(
-        "relative bg-base-50 border border-base-200 rounded-lg overflow-hidden",
+        "relative bg-base-100 border border-base-200 rounded-lg overflow-hidden",
         full && "col-span-full",
-        className
+        className,
       )}
     >
       {(title || canShowCode) && (
@@ -77,7 +77,7 @@ export function CodePreview({
               </Heading>
             )}
           </div>
-          
+
           <div className="flex items-center gap-2">
             {canShowCode && (
               <Button
@@ -85,7 +85,9 @@ export function CodePreview({
                 size="xs"
                 onClick={() => setShowCode(!showCode)}
                 className="text-base-content/70"
-                aria-label={showCode ? "Hide code example" : "Show code example"}
+                aria-label={
+                  showCode ? "Hide code example" : "Show code example"
+                }
                 aria-expanded={showCode}
               >
                 <Code className="size-4 mr-1.5" aria-hidden="true" />
@@ -96,33 +98,17 @@ export function CodePreview({
         </div>
       )}
 
-      <div className="p-6 relative">
-        {/* Dynamic diagonal lines - can be disabled for components with striped patterns */}
-        {showPattern && (
-          <div
-            className="absolute inset-0 pointer-events-none opacity-40"
-            style={{
-              zIndex: 0,
-              backgroundImage: `repeating-linear-gradient(
-                -45deg,
-                transparent,
-                transparent 14px,
-                var(--color-base-300) 14px,
-                var(--color-base-300) 14.5px
-              )`,
-            }}
-          />
-        )}
+      <div className={cn("p-6 relative", showPattern && "bg-base-50")}>
         {description && (
           <p className="text-sm text-base-content/70 mb-4 relative z-10">
             {description}
           </p>
         )}
-        
+
         <div
           className={cn(
             "w-full relative z-10 flex flex-col items-stretch gap-4 min-h-[80px]",
-            previewClassName
+            previewClassName,
           )}
         >
           {component}
@@ -135,15 +121,21 @@ export function CodePreview({
           style={{ maxHeight: codeHeight }}
           className="overflow-hidden transition-all duration-300 ease-in-out border-t border-base-200"
         >
-          <div style={{ maxWidth: '0', minWidth: '100%' }}>
+          <div style={{ maxWidth: "0", minWidth: "100%" }}>
             {isLoading ? (
-              <div className="p-4 text-base-content/70 text-sm">Loading code...</div>
+              <div className="p-4 text-base-content/70 text-sm">
+                Loading code...
+              </div>
             ) : sourceCode ? (
               <CodeBlock code={sourceCode} showLineNumbers />
             ) : loadError ? (
-              <div className="p-4 text-danger text-sm">Error: {loadError}</div>
+              <div className="p-4 text-danger-text text-sm">
+                Error: {loadError}
+              </div>
             ) : (
-              <div className="p-4 text-base-content/70 text-sm">No source code available</div>
+              <div className="p-4 text-base-content/70 text-sm">
+                No source code available
+              </div>
             )}
           </div>
         </div>

@@ -196,7 +196,7 @@ export default function Page() {
             components.
           </Text>
           <div className="bg-success/10 border border-success/20 rounded-lg p-4">
-            <Text size="sm" className="text-success">
+            <Text size="sm" className="text-success-text">
               <strong>SSR Ready:</strong> All Ninna UI components are fully SSR
               compatible. A client component can still be server-rendered and
               hydrated; its initial output must match the server output.

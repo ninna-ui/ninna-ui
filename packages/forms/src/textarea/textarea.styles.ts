@@ -1,4 +1,4 @@
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva, type VariantProps } from "class-variance-authority";
 
 export const textareaVariants = cva(
   "w-full rounded-md border bg-base-100 text-base-content placeholder:text-base-content/70 transition-all duration-200 focus:outline-none focus-visible:outline-none !outline-none disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-base-50 read-only:bg-base-50 read-only:cursor-default",
@@ -12,22 +12,22 @@ export const textareaVariants = cva(
         xl: "min-h-40 px-5 py-3.5 text-base",
       },
       resize: {
-        none:       "!resize-none",
-        vertical:   "!resize-y",
+        none: "!resize-none",
+        vertical: "!resize-y",
         horizontal: "!resize-x",
-        both:       "!resize",
+        both: "!resize",
       },
     },
     defaultVariants: { size: "md", resize: "vertical" },
-  }
+  },
 );
 
 export type TextareaVariantsProps = VariantProps<typeof textareaVariants>;
 
 export const textareaStyles = {
-  wrapper:    "relative w-full",
-  unstyled:   "border-0 bg-transparent focus:ring-0 p-0",
-  counter:    "text-xs text-base-content/70 mt-1 text-right",
-  counterError: "text-danger",
+  wrapper: "relative w-full",
+  unstyled: "border-0 bg-transparent focus:ring-0 p-0",
+  counter: "text-xs text-base-content/70 mt-1 text-right",
+  counterError: "text-danger-text",
   autoResize: "overflow-hidden resize-none",
 };
