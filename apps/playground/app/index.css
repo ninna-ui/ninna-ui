@@ -34,8 +34,7 @@ html {
    Uses primary color with offset for all interactive elements.
    Components can override with their own focus-visible styles. */
 :focus-visible {
-  outline: 2px solid;
-  @apply outline-primary-text;
+  outline: 2px solid var(--color-primary-text, var(--color-primary));
   outline-offset: 2px;
   border-radius: 4px;
 }
