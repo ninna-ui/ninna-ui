@@ -1,13 +1,19 @@
-import { forwardRef, useEffect, useRef, useCallback } from 'react';
-import { toastStyles, toastVariants, TOAST_ICON_COLORS, TOAST_ANIMATIONS } from './toast.styles';
-import type { ToastProps, ToastVariant, ToastPosition } from './toast.types';
-import { cn } from '@ninna-ui/utils';
+import { forwardRef, useEffect, useRef, useCallback } from "react";
+import {
+  toastStyles,
+  toastVariants,
+  TOAST_ICON_COLORS,
+  TOAST_ANIMATIONS,
+} from "./toast.styles";
+import type { ToastProps, ToastVariant, ToastPosition } from "./toast.types";
+import { cn } from "@ninna-ui/utils";
 
 function getEnteringClass(position?: ToastPosition): string {
   if (!position) return TOAST_ANIMATIONS.entering;
-  if (position === 'top-center' || position === 'bottom-center') return TOAST_ANIMATIONS.enteringCenter;
-  if (position.startsWith('top-')) return TOAST_ANIMATIONS.enteringTop;
-  if (position.endsWith('-left')) return TOAST_ANIMATIONS.enteringLeft;
+  if (position === "top-center" || position === "bottom-center")
+    return TOAST_ANIMATIONS.enteringCenter;
+  if (position.startsWith("top-")) return TOAST_ANIMATIONS.enteringTop;
+  if (position.endsWith("-left")) return TOAST_ANIMATIONS.enteringLeft;
   return TOAST_ANIMATIONS.enteringRight;
 }
 
@@ -17,8 +23,8 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       id,
       title,
       description,
-      color = 'neutral',
-      variant = 'soft' as ToastVariant,
+      color = "neutral",
+      variant = "soft" as ToastVariant,
       closable = true,
       icon,
       isLoading = false,
@@ -36,29 +42,30 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
     // Handle Escape key to dismiss
     useEffect(() => {
       const handleKeyDown = (event: KeyboardEvent) => {
-        if (event.key === 'Escape' && closable) {
+        if (event.key === "Escape" && closable) {
           handleDismiss();
         }
       };
 
       const element = toastRef.current;
       if (element) {
-        element.addEventListener('keydown', handleKeyDown);
-        return () => element.removeEventListener('keydown', handleKeyDown);
+        element.addEventListener("keydown", handleKeyDown);
+        return () => element.removeEventListener("keydown", handleKeyDown);
       }
       return undefined;
     }, [closable, handleDismiss]);
 
     // Determine ARIA role based on color/type
-    const role = color === 'danger' ? 'alert' : 'status';
-    const ariaLive = color === 'danger' ? 'assertive' : 'polite';
+    const role = color === "danger" ? "alert" : "status";
+    const ariaLive = color === "danger" ? "assertive" : "polite";
 
     return (
       <div
         ref={(node) => {
           // Handle both refs
-          (toastRef as React.MutableRefObject<HTMLDivElement | null>).current = node;
-          if (typeof ref === 'function') {
+          (toastRef as React.MutableRefObject<HTMLDivElement | null>).current =
+            node;
+          if (typeof ref === "function") {
             ref(node);
           } else if (ref) {
             ref.current = node;
@@ -71,7 +78,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
         className={cn(
           toastVariants({ variant, color }),
           getEnteringClass(position),
-          className
+          className,
         )}
         data-slot="toast"
         data-toast-id={id}
@@ -79,11 +86,13 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
       >
         <div className="flex items-start gap-3 flex-1">
           {icon && (
-            <span className={cn(
-              isLoading ? toastStyles.loadingIcon : toastStyles.icon,
-              TOAST_ICON_COLORS[color],
-              variant === 'solid' && 'text-current'
-            )}>
+            <span
+              className={cn(
+                isLoading ? toastStyles.loadingIcon : toastStyles.icon,
+                TOAST_ICON_COLORS[color],
+                variant === "solid" && "text-current",
+              )}
+            >
               {icon}
             </span>
           )}
@@ -95,9 +104,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
               </div>
             )}
             {description && (
-              <div className={toastStyles.description}>
-                {description}
-              </div>
+              <div className={toastStyles.description}>{description}</div>
             )}
           </div>
         </div>
@@ -120,7 +127,7 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
               onClick={handleDismiss}
               className={cn(
                 toastStyles.closeButton,
-                'opacity-70 hover:opacity-100'
+                "opacity-100 hover:bg-current/10",
               )}
               aria-label="Close notification"
             >
@@ -132,14 +139,18 @@ export const Toast = forwardRef<HTMLDivElement, ToastProps>(
                 strokeWidth={2}
                 aria-hidden="true"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
               </svg>
             </button>
           )}
         </div>
       </div>
     );
-  }
+  },
 );
 
-Toast.displayName = 'Toast';
+Toast.displayName = "Toast";

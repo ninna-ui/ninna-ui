@@ -9,7 +9,7 @@
 
 `@ninna-ui/core` is the zero-dependency foundation of [Ninna UI](../../README.md). It ships **no React code, no JSX, and no component logic** - only the shared design language that every component package consumes. This is the package that makes one-line theme switching possible.
 
-**Why this matters:** Unlike libraries that bundle theming into a JavaScript runtime (Chakra UI, Mantine), Ninna UI's entire theme system lives in pure CSS custom properties. Your app ships **zero theming JavaScript** - the browser resolves colors and tokens natively, with zero hydration cost.
+Ninna UI's palette lives in CSS custom properties. A CSS import supplies the colors, and the browser resolves light/dark values without a React theme provider. An optional theme switcher still needs consistent server and client initialization.
 
 ## Installation
 
@@ -18,6 +18,8 @@ pnpm add @ninna-ui/core@latest
 ```
 
 ## CSS Setup
+
+Use Tailwind CSS 4.1 or later. The included CSS safelist uses `@source inline()`, introduced in Tailwind 4.1.
 
 Add one of the 5 theme presets to your app's CSS entry point, then set `data-theme` on your root element:
 
@@ -85,17 +87,19 @@ Every preset includes **automatic dark mode** via `@media (prefers-color-scheme:
 For manual toggle, add the `.dark` or `.light` class to your root element:
 
 ```html
-<!-- Forced dark -->
+<!-- Choose one root configuration. -->
 <html data-theme="default" class="dark">
-  <!-- Forced light (blocks OS preference) -->
-  <html data-theme="default" class="light">
-    <!-- System preference auto (no class) -->
-    <html data-theme="default"></html>
-  </html>
+  ...
+</html>
+<html data-theme="default" class="light">
+  ...
+</html>
+<html data-theme="default">
+  ...
 </html>
 ```
 
-All colors use the **oklch** color space - perceptually uniform, vibrant, and WCAG AA compliant.
+Colors use the **oklch** color space. The bundled foreground/background combinations are contrast-tested; choosing oklch alone does not guarantee accessibility.
 
 ## Design Tokens
 
@@ -124,17 +128,11 @@ import type { Color, Size, Radius, ColorVariant } from "@ninna-ui/core";
 Pre-built maps from design tokens to Tailwind CSS classes - used internally by component `.styles.ts` files:
 
 ```typescript
-import {
-  BG_COLORS,
-  TEXT_COLORS,
-  RADIUS_CLASSES,
-  SOLID_VARIANTS,
-} from "@ninna-ui/core";
+import { BG_COLORS, TEXT_COLORS, BORDER_COLORS } from "@ninna-ui/core";
 
 BG_COLORS.primary; // "bg-primary"
 TEXT_COLORS.danger; // "text-danger"
-RADIUS_CLASSES.lg; // "rounded-lg"
-SOLID_VARIANTS.primary; // Complete solid variant class set for primary
+BORDER_COLORS.primary; // "border-primary"
 ```
 
 ### Available Maps
@@ -142,32 +140,45 @@ SOLID_VARIANTS.primary; // Complete solid variant class set for primary
 **Color maps:**
 
 - `BG_COLORS`, `TEXT_COLORS`, `BORDER_COLORS` - Semantic color classes
-- `SOFT_BG_COLORS`, `MUTED_BG_COLORS`, `MUTED_BORDER_COLORS` - Opacity-based variants
-- `SOLID_VARIANTS`, `SOFT_VARIANTS`, `OUTLINE_VARIANTS`, `GHOST_VARIANTS`, `TEXT_VARIANTS` - Complete variant class sets per color
-- `RING_COLORS`, `STROKE_COLORS`, `MARKER_COLORS`, `HOVER_TEXT_COLORS` - Additional utility maps
+- `STROKE_COLORS`, `MARKER_COLORS` - Semantic SVG stroke and list marker classes
 
-**State maps:**
+**Layout maps:**
 
-- `FOCUS_RING_COLORS`, `FOCUS_BORDER_COLORS`, `INPUT_FOCUS_COLORS`, `FOCUS_VISIBLE_RING_COLORS`
-- `CHECKED_BG_COLORS`, `CHECKED_BORDER_COLORS`
-- `PEER_CHECKED_BG_COLORS`, `PEER_CHECKED_BORDER_COLORS`, `PEER_FOCUS_VISIBLE_RING_COLORS`
+- Gap, grid and flex maps, plus `getResponsiveGridCols`, are exported from `classes/layout`.
 
-**Typography & radius:**
-
-- `TEXT_SIZE_CLASSES`, `TEXT_WEIGHT_CLASSES`
-- `RADIUS_CLASSES`
+Component variant and state class sets live with their component packages. Core
+exposes shared tokens and maps without a second variant framework.
 
 ## CSS Custom Properties
 
-Each theme preset defines ~31 CSS custom properties:
+Use the native shared color and its matching content color:
 
-| Category     | Properties                                                                           |
-| ------------ | ------------------------------------------------------------------------------------ |
-| **Semantic** | `--color-primary`, `--color-secondary`, `--color-accent`, `--color-neutral`          |
-| **Status**   | `--color-success`, `--color-danger`, `--color-warning`, `--color-info`               |
-| **Content**  | `--color-primary-content`, `--color-secondary-content`, `--color-base-content`, etc. |
-| **Surfaces** | `--color-base-50` through `--color-base-900`                                         |
-| **Borders**  | `--color-base-200`, `--color-base-300`                                               |
+- `bg-primary text-primary-content`: content on a solid semantic fill.
+- `text-primary`: colored text on base surfaces (`base-50` through `base-200`).
+- `bg-primary/10 text-primary`: colored text on a soft tint.
+
+The same pattern applies to secondary, accent, neutral and all status colors.
+`text-primary`, `bg-primary`, `border-primary` and `ring-primary` resolve to the
+same CSS variable. There are no separate text aliases or utility overrides.
+Light palettes use deeper colors; dark palettes use lighter colors. Their
+matching `-content` colors provide contrast on solid fills. Component consumers
+continue to use `color="primary"`.
+
+Run `pnpm check-theme-contrast` to measure all five bundled presets in light and dark
+mode. It checks 4.5:1 for solid/content rest and hover pairs and semantic text on
+base surfaces with 0–20% tints, and 3:1 for control boundary tokens. Custom palettes,
+nested tints, opacity overrides, gradients
+and other backgrounds still need contrast checks in their rendered context.
+
+Each theme preset retains the original 31 semantic, content, surface and border properties:
+
+| Category     | Properties                                                                                   |
+| ------------ | -------------------------------------------------------------------------------------------- |
+| **Semantic** | `--color-primary`, `--color-secondary`, `--color-accent`, `--color-neutral`                  |
+| **Status**   | `--color-success`, `--color-danger`, `--color-warning`, `--color-info`                       |
+| **Content**  | `--color-primary-content`, `--color-secondary-content`, `--color-base-content`, etc.         |
+| **Surfaces** | `--color-base-50` through `--color-base-900`                                                 |
+| **Borders**  | `--color-border`, `--color-border-hover`, `--color-border-active`, `--color-border-disabled` |
 
 ## Package Structure
 
@@ -183,13 +194,10 @@ core/
 │   │   └── variants.ts        # ColorVariant, InputVariant
 │   ├── classes/
 │   │   ├── colors/
-│   │   │   ├── base.ts        # BG_COLORS, TEXT_COLORS, BORDER_COLORS
-│   │   │   ├── variants.ts    # SOLID_VARIANTS, SOFT_VARIANTS, etc.
-│   │   │   └── states.ts      # FOCUS_RING_COLORS, CHECKED_BG_COLORS, etc.
-│   │   ├── typography.ts      # TEXT_SIZE_CLASSES, TEXT_WEIGHT_CLASSES
-│   │   └── radius.ts          # RADIUS_CLASSES
+│   │   │   └── base.ts        # Background, text, border, stroke and marker maps
+│   │   └── layout.ts          # Gap, grid, flex and responsive maps
 │   └── theme/
-│       ├── tailwind.css        # Shared @theme + animations + @variant dark
+│       ├── tailwind.css        # Shared @theme + animations + package sources
 │       └── presets/
 │           ├── default.css     # Purple / Magenta
 │           ├── ocean.css       # Blue / Cyan

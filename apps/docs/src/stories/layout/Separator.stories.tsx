@@ -1,28 +1,28 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Separator, VStack, HStack } from '@ninna-ui/layout';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Separator, VStack, HStack } from "@ninna-ui/layout";
 
 const meta: Meta<typeof Separator> = {
-  title: 'Layout/Separator',
+  title: "Layout/Separator",
   component: Separator,
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     as: {
-      control: 'text',
-      description: 'Semantic HTML element to render',
+      control: "text",
+      description: "Semantic HTML element to render",
     },
     orientation: {
-      control: 'select',
-      options: ['horizontal', 'vertical'],
-      description: 'Separator orientation',
-      table: { defaultValue: { summary: 'horizontal' } },
+      control: "select",
+      options: ["horizontal", "vertical"],
+      description: "Separator orientation",
+      table: { defaultValue: { summary: "horizontal" } },
     },
     decorative: {
-      control: 'boolean',
-      description: 'If true, separator has no semantic meaning',
-      table: { defaultValue: { summary: 'true' } },
+      control: "boolean",
+      description: "If true, separator has no semantic meaning",
+      table: { defaultValue: { summary: "true" } },
     },
   },
 };
@@ -54,11 +54,17 @@ export const Vertical: Story = {
 export const InNavigation: Story = {
   render: () => (
     <HStack gap="4" align="center">
-      <a href="/" className="text-base-content/70 hover:text-primary">Home</a>
+      <a href="/" className="text-base-content/70 hover:text-primary">
+        Home
+      </a>
       <Separator orientation="vertical" className="h-4" />
-      <a href="/" className="text-base-content/70 hover:text-primary">About</a>
+      <a href="/" className="text-base-content/70 hover:text-primary">
+        About
+      </a>
       <Separator orientation="vertical" className="h-4" />
-      <a href="/" className="text-base-content/70 hover:text-primary">Contact</a>
+      <a href="/" className="text-base-content/70 hover:text-primary">
+        Contact
+      </a>
     </HStack>
   ),
 };

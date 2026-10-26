@@ -1,61 +1,58 @@
-import { cva, type VariantProps } from 'class-variance-authority';
-import type { HeadingLevel } from '@ninna-ui/core';
+import { cva, type VariantProps } from "class-variance-authority";
+import type { HeadingLevel } from "@ninna-ui/core";
 
-export const headingVariants = cva(
-  "scroll-m-20",
-  {
-    variants: {
-      size: {
-        xs:   "text-xs",
-        sm:   "text-sm",
-        base: "text-base",
-        md:   "text-base",
-        lg:   "text-lg",
-        xl:   "text-xl",
-        "2xl": "text-2xl",
-        "3xl": "text-3xl",
-        "4xl": "text-4xl",
-        "5xl": "text-5xl",
-        "6xl": "text-6xl",
-      },
-      weight: {
-        thin:       "font-thin",
-        extralight: "font-extralight",
-        light:      "font-light",
-        normal:     "font-normal",
-        medium:     "font-medium",
-        semibold:   "font-semibold",
-        bold:       "font-bold",
-        extrabold:  "font-extrabold",
-        black:      "font-black",
-      },
-      color: {
-        primary:   "text-primary",
-        secondary: "text-secondary",
-        accent:    "text-accent",
-        neutral:   "text-neutral",
-        success:   "text-success",
-        danger:    "text-danger",
-        warning:   "text-warning",
-        info:      "text-info",
-      },
-      align: {
-        left:   "text-left",
-        center: "text-center",
-        right:  "text-right",
-      },
-      truncate: {
-        true:  "truncate",
-        false: "",
-      },
-      noWrap: {
-        true:  "whitespace-nowrap",
-        false: "",
-      },
+export const headingVariants = cva("scroll-m-20", {
+  variants: {
+    size: {
+      xs: "text-xs",
+      sm: "text-sm",
+      base: "text-base",
+      md: "text-base",
+      lg: "text-lg",
+      xl: "text-xl",
+      "2xl": "text-2xl",
+      "3xl": "text-3xl",
+      "4xl": "text-4xl",
+      "5xl": "text-5xl",
+      "6xl": "text-6xl",
     },
-    defaultVariants: { truncate: false, noWrap: false },
-  }
-);
+    weight: {
+      thin: "font-thin",
+      extralight: "font-extralight",
+      light: "font-light",
+      normal: "font-normal",
+      medium: "font-medium",
+      semibold: "font-semibold",
+      bold: "font-bold",
+      extrabold: "font-extrabold",
+      black: "font-black",
+    },
+    color: {
+      primary: "text-primary",
+      secondary: "text-secondary",
+      accent: "text-accent",
+      neutral: "text-neutral",
+      success: "text-success",
+      danger: "text-danger",
+      warning: "text-warning",
+      info: "text-info",
+    },
+    align: {
+      left: "text-left",
+      center: "text-center",
+      right: "text-right",
+    },
+    truncate: {
+      true: "truncate",
+      false: "",
+    },
+    noWrap: {
+      true: "whitespace-nowrap",
+      false: "",
+    },
+  },
+  defaultVariants: { truncate: false, noWrap: false },
+});
 
 export type HeadingVariantsProps = VariantProps<typeof headingVariants>;
 

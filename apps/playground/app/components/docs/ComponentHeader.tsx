@@ -15,7 +15,6 @@ const CATEGORY_PACKAGES: Record<string, string> = {
   "Code Block": "@ninna-ui/code-block",
 };
 
-
 function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
   const handleCopy = async () => {
@@ -29,7 +28,11 @@ function CopyButton({ text }: { text: string }) {
       className="ml-2 inline-flex items-center text-base-content/70 hover:text-base-content/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1 rounded-sm"
       aria-label={copied ? "Copied" : "Copy to clipboard"}
     >
-      {copied ? <Check className="size-3.5 text-success" /> : <Copy className="size-3.5" />}
+      {copied ? (
+        <Check className="size-3.5 text-success" />
+      ) : (
+        <Copy className="size-3.5" />
+      )}
     </button>
   );
 }
@@ -60,7 +63,7 @@ export function ComponentHeader({ meta }: ComponentHeaderProps) {
           </Badge>
         )}
       </div>
-      
+
       <Text size="lg" className="text-base-content/70 max-w-3xl">
         {meta.description}
       </Text>
@@ -69,20 +72,36 @@ export function ComponentHeader({ meta }: ComponentHeaderProps) {
         <div className="space-y-3">
           <div className="flex flex-wrap items-center gap-2">
             <div className="flex items-center gap-2 bg-base-200 border border-base-300 rounded-md px-3 py-1.5">
-              <Terminal className="size-3.5 text-base-content/70" aria-hidden="true" />
+              <Terminal
+                className="size-3.5 text-base-content/70"
+                aria-hidden="true"
+              />
               <Code className="bg-transparent">{installCmd}</Code>
               <CopyButton text={installCmd} />
             </div>
             <div className="flex items-center gap-2 bg-base-200 border border-base-300 rounded-md px-3 py-1.5">
-              <Package className="size-3.5 text-base-content/70" aria-hidden="true" />
+              <Package
+                className="size-3.5 text-base-content/70"
+                aria-hidden="true"
+              />
               <Code className="bg-transparent">
                 import {"{"} {importName} {"}"} from &quot;{packageName}&quot;
               </Code>
-              <CopyButton text={`import { ${importName} } from "${packageName}";`} />
+              <CopyButton
+                text={`import { ${importName} } from "${packageName}";`}
+              />
             </div>
           </div>
           <Text size="sm" className="text-base-content/70">
-            Requires <Code color="primary" size="xs">@ninna-ui/core</Code> (auto-installed) + <Link href="/getting-started/installation" color="primary">CSS setup</Link>.
+            Requires{" "}
+            <Code color="primary" size="xs">
+              @ninna-ui/core
+            </Code>{" "}
+            (auto-installed) +{" "}
+            <Link href="/getting-started/installation" color="primary">
+              CSS setup
+            </Link>
+            .
           </Text>
         </div>
       )}

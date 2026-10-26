@@ -1,12 +1,12 @@
-import { forwardRef } from 'react';
-import { cn } from '@ninna-ui/utils';
-import { formLabelVariants } from './form-label.styles';
-import { useFormControl } from '../form-control';
-import type { FormLabelProps } from './form-label.types';
+import { forwardRef } from "react";
+import { cn } from "@ninna-ui/utils";
+import { formLabelVariants } from "./form-label.styles";
+import { useFormControl } from "../form-control";
+import type { FormLabelProps } from "./form-label.types";
 
 /**
  * FormLabel renders an accessible label for form fields
- * 
+ *
  * @example
  * ```tsx
  * <FormControl isRequired>
@@ -18,14 +18,14 @@ import type { FormLabelProps } from './form-label.types';
 export const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(
   (
     {
-      size = 'md',
+      size = "md",
       showRequired = true,
-      requiredIndicator = '*',
+      requiredIndicator = "*",
       className,
       children,
       ...props
     },
-    ref
+    ref,
   ) => {
     const formControl = useFormControl();
     const isRequired = formControl?.isRequired ?? false;
@@ -40,8 +40,8 @@ export const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(
         htmlFor={htmlFor}
         className={cn(
           formLabelVariants({ size }),
-          isDisabled && 'opacity-50 cursor-not-allowed',
-          className
+          isDisabled && "opacity-50 cursor-not-allowed",
+          className,
         )}
         {...props}
       >
@@ -53,7 +53,7 @@ export const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(
         )}
       </label>
     );
-  }
+  },
 );
 
-FormLabel.displayName = 'FormLabel';
+FormLabel.displayName = "FormLabel";

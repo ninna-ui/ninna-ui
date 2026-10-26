@@ -1,8 +1,8 @@
-import { describe, it, expect, vi, beforeAll, afterAll } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import { Select, SelectItem } from './select';
+import { describe, it, expect, vi, beforeAll, afterAll } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { Select, SelectItem } from "./select";
 
-describe('Select', () => {
+describe("Select", () => {
   const originalScrollIntoView = Element.prototype.scrollIntoView;
 
   beforeAll(() => {
@@ -13,66 +13,67 @@ describe('Select', () => {
     Element.prototype.scrollIntoView = originalScrollIntoView;
   });
 
-  it('renders trigger with placeholder', () => {
+  it("renders trigger with placeholder", () => {
     render(
       <Select placeholder="Pick one">
         <SelectItem value="a">A</SelectItem>
-      </Select>
+      </Select>,
     );
 
-    expect(screen.getByRole('combobox')).toBeInTheDocument();
+    expect(screen.getByRole("combobox")).toBeInTheDocument();
   });
 
-  it('applies invalid data attribute', () => {
+  it("applies invalid data attribute", () => {
     render(
       <Select invalid placeholder="Pick one">
         <SelectItem value="a">A</SelectItem>
-      </Select>
+      </Select>,
     );
-    expect(screen.getByRole('combobox')).toHaveAttribute('data-invalid', 'true');
+    expect(screen.getByRole("combobox")).toHaveAttribute(
+      "data-invalid",
+      "true",
+    );
   });
 
-  it('uses combobox trigger semantics', () => {
+  it("uses combobox trigger semantics", () => {
     render(
       <Select placeholder="Pick one">
         <SelectItem value="a">Option A</SelectItem>
-      </Select>
+      </Select>,
     );
-    const trigger = screen.getByRole('combobox');
-    expect(trigger).toHaveAttribute('aria-expanded', 'false');
-    expect(trigger).toHaveAttribute('aria-autocomplete', 'none');
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+    expect(trigger).toHaveAttribute("aria-autocomplete", "none");
   });
 
-  it('applies default primary focus ring color', () => {
+  it("applies default primary focus ring color", () => {
     render(
       <Select placeholder="Pick one">
         <SelectItem value="a">A</SelectItem>
-      </Select>
+      </Select>,
     );
-    const trigger = screen.getByRole('combobox');
-    expect(trigger.className).toContain('focus:ring-primary/30');
-    expect(trigger.className).toContain('focus:border-primary');
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveClass("focus:ring-primary", "focus:border-primary");
   });
 
-  it('applies custom color focus ring', () => {
+  it("applies custom color focus ring", () => {
     render(
       <Select color="accent" placeholder="Pick one">
         <SelectItem value="a">A</SelectItem>
-      </Select>
+      </Select>,
     );
-    const trigger = screen.getByRole('combobox');
-    expect(trigger.className).toContain('focus:ring-accent/30');
-    expect(trigger.className).toContain('focus:border-accent');
+    const trigger = screen.getByRole("combobox");
+    expect(trigger).toHaveClass("focus:ring-accent", "focus:border-accent");
   });
 
-  it('passes axe accessibility audit', async () => {
+  it("passes axe accessibility audit", async () => {
     const { container } = render(
       <label htmlFor="test-select">
         Choose an option
         <Select id="test-select" placeholder="Pick one">
           <SelectItem value="a">A</SelectItem>
         </Select>
-      </label>
+      </label>,
     );
     await expect(container).toBeAccessible();
   });

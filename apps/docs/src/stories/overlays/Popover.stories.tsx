@@ -1,35 +1,35 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { useState } from 'react';
-import { Popover } from '@ninna-ui/overlays';
-import { Button } from '@ninna-ui/primitives';
-import { Input } from '@ninna-ui/forms';
+import type { Meta, StoryObj } from "@storybook/react";
+import { useState } from "react";
+import { Popover } from "@ninna-ui/overlays";
+import { Button } from "@ninna-ui/primitives";
+import { Input } from "@ninna-ui/forms";
 
-const searchItems = ['Button', 'Checkbox', 'Input', 'Popover', 'Tooltip'];
+const searchItems = ["Button", "Checkbox", "Input", "Popover", "Tooltip"];
 
 const meta: Meta = {
-  title: 'Overlays/Popover',
+  title: "Overlays/Popover",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     open: {
-      control: 'boolean',
-      description: 'Controlled open state',
+      control: "boolean",
+      description: "Controlled open state",
     },
     defaultOpen: {
-      control: 'boolean',
-      description: 'Default open state (uncontrolled)',
-      table: { defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Default open state (uncontrolled)",
+      table: { defaultValue: { summary: "false" } },
     },
     onOpenChange: {
-      action: 'onOpenChange',
-      description: 'Callback when open state changes',
+      action: "onOpenChange",
+      description: "Callback when open state changes",
     },
     modal: {
-      control: 'boolean',
-      description: 'Whether the popover is modal',
-      table: { defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Whether the popover is modal",
+      table: { defaultValue: { summary: "false" } },
     },
   },
 };
@@ -46,7 +46,9 @@ export const Default: Story = {
       <Popover.Content>
         <div className="flex flex-col gap-2">
           <h4 className="font-semibold text-base-content">Popover Title</h4>
-          <p className="text-sm text-base-content/70">This is a basic popover with some content.</p>
+          <p className="text-sm text-base-content/70">
+            This is a basic popover with some content.
+          </p>
         </div>
       </Popover.Content>
     </Popover>
@@ -55,7 +57,7 @@ export const Default: Story = {
 
 export const Placements: Story = {
   render: () => {
-    const placements = ['top', 'right', 'bottom', 'left'] as const;
+    const placements = ["top", "right", "bottom", "left"] as const;
     return (
       <div className="flex flex-wrap gap-4 p-16">
         {placements.map((side) => (
@@ -64,7 +66,9 @@ export const Placements: Story = {
               <Button variant="outline">{side}</Button>
             </Popover.Trigger>
             <Popover.Content side={side}>
-              <p className="text-sm text-base-content/70">Placed on the <strong>{side}</strong>.</p>
+              <p className="text-sm text-base-content/70">
+                Placed on the <strong>{side}</strong>.
+              </p>
               <Popover.Arrow />
             </Popover.Content>
           </Popover>
@@ -81,7 +85,9 @@ export const WithArrow: Story = {
         <Button>With Arrow</Button>
       </Popover.Trigger>
       <Popover.Content>
-        <p className="text-sm text-base-content/70">This popover has an arrow pointer.</p>
+        <p className="text-sm text-base-content/70">
+          This popover has an arrow pointer.
+        </p>
         <Popover.Arrow />
       </Popover.Content>
     </Popover>
@@ -98,7 +104,9 @@ export const WithCloseButton: Story = {
         <Popover.Close />
         <div className="flex flex-col gap-2 pr-6">
           <h4 className="font-semibold text-base-content">Dismissable</h4>
-          <p className="text-sm text-base-content/70">Click the X to close this popover.</p>
+          <p className="text-sm text-base-content/70">
+            Click the X to close this popover.
+          </p>
         </div>
       </Popover.Content>
     </Popover>
@@ -107,7 +115,7 @@ export const WithCloseButton: Story = {
 
 export const Alignment: Story = {
   render: () => {
-    const aligns = ['start', 'center', 'end'] as const;
+    const aligns = ["start", "center", "end"] as const;
     return (
       <div className="flex flex-wrap gap-4">
         {aligns.map((align) => (
@@ -147,8 +155,12 @@ export const RichContent: Story = {
           </div>
           <hr className="border-base-200" />
           <div className="flex gap-4 text-sm text-base-content/70">
-            <span><strong className="text-base-content">12</strong> Posts</span>
-            <span><strong className="text-base-content">340</strong> Followers</span>
+            <span>
+              <strong className="text-base-content">12</strong> Posts
+            </span>
+            <span>
+              <strong className="text-base-content">340</strong> Followers
+            </span>
           </div>
         </div>
       </Popover.Content>
@@ -159,9 +171,9 @@ export const RichContent: Story = {
 export const PreserveInputFocus: Story = {
   render: () => {
     const [open, setOpen] = useState(false);
-    const [query, setQuery] = useState('');
+    const [query, setQuery] = useState("");
     const results = searchItems.filter((item) =>
-      item.toLowerCase().includes(query.toLowerCase())
+      item.toLowerCase().includes(query.toLowerCase()),
     );
 
     return (
@@ -197,7 +209,9 @@ export const PreserveInputFocus: Story = {
                 </button>
               ))
             ) : (
-              <p className="px-2 py-1.5 text-sm text-base-content/70">No results found.</p>
+              <p className="px-2 py-1.5 text-sm text-base-content/70">
+                No results found.
+              </p>
             )}
           </div>
         </Popover.Content>

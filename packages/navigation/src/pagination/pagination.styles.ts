@@ -1,7 +1,7 @@
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva, type VariantProps } from "class-variance-authority";
 
 export const paginationLinkVariants = cva(
-  "relative inline-flex items-center justify-center rounded-md font-medium transition-colors hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 disabled:pointer-events-none disabled:opacity-50 before:absolute before:inset-[-4px] before:content-['']",
+  "relative inline-flex items-center justify-center rounded-md font-medium transition-colors hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 before:absolute before:inset-[-4px] before:content-['']",
   {
     variants: {
       size: {
@@ -10,24 +10,26 @@ export const paginationLinkVariants = cva(
         lg: "h-10 min-w-10 px-3.5 text-base",
       },
       active: {
-        true:  "bg-primary text-primary-content hover:bg-primary/90",
+        true: "bg-primary text-primary-content hover:bg-primary/90",
         false: "",
       },
     },
     defaultVariants: { size: "md", active: false },
-  }
+  },
 );
 
-export type PaginationLinkVariantsProps = VariantProps<typeof paginationLinkVariants>;
+export type PaginationLinkVariantsProps = VariantProps<
+  typeof paginationLinkVariants
+>;
 
 export const paginationStyles = {
-  nav:        "mx-auto flex w-full justify-center",
-  content:    "flex flex-row flex-wrap items-center gap-1",
-  item:       "inline-flex",
-  previous:   "gap-1 pl-2.5 pr-2.5 sm:pr-3",
-  next:       "gap-1 pl-2.5 sm:pl-3 pr-2.5",
+  nav: "mx-auto flex w-full justify-center",
+  content: "flex flex-row flex-wrap items-center gap-1",
+  item: "inline-flex",
+  previous: "gap-1 pl-2.5 pr-2.5 sm:pr-3",
+  next: "gap-1 pl-2.5 sm:pl-3 pr-2.5",
   previousLabel: "hidden sm:inline",
-  nextLabel:     "hidden sm:inline",
+  nextLabel: "hidden sm:inline",
   linkActive: "bg-primary text-primary-content hover:bg-primary/90",
-  ellipsis:   "flex h-9 w-9 items-center justify-center text-base-content/70",
+  ellipsis: "flex h-9 w-9 items-center justify-center text-base-content/70",
 };

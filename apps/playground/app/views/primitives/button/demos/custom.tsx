@@ -1,10 +1,8 @@
-import { Button } from "@ninna-ui/primitives"; 
+import { Button } from "@ninna-ui/primitives";
 
 export default function Custom() {
   return (
     <div className="space-y-8">
-
-
       <section>
         <h3 className="text-lg font-semibold mb-4">Custom Soft Variants</h3>
         <p className="text-sm text-base-content/70 mb-4">
@@ -40,19 +38,19 @@ export default function Custom() {
         <div className="flex flex-wrap gap-2">
           <Button
             variant="outline"
-            className="border-secondary text-secondary hover:bg-secondary hover:text-secondary-content"
+            className="border-secondary text-secondary hover:bg-secondary/10"
           >
             Purple Outline
           </Button>
           <Button
             variant="outline"
-            className="border-warning text-warning hover:bg-warning hover:text-warning-content"
+            className="border-warning text-warning hover:bg-warning/10"
           >
             Orange Outline
           </Button>
           <Button
             variant="outline"
-            className="border-success text-success hover:bg-success hover:text-success-content"
+            className="border-success text-success hover:bg-success/10"
           >
             Teal Outline
           </Button>
@@ -65,21 +63,20 @@ export default function Custom() {
           Use Tailwind gradient utilities for eye-catching buttons
         </p>
         <div className="flex flex-wrap gap-2">
-          <Button className="bg-linear-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white">
+          <Button className="bg-linear-to-r from-purple-700 to-pink-700 hover:from-purple-800 hover:to-pink-800 text-white">
             Purple to Pink
           </Button>
-          <Button className="bg-linear-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white">
+          <Button className="bg-linear-to-r from-blue-700 to-cyan-700 hover:from-blue-800 hover:to-cyan-800 text-white">
             Blue to Cyan
           </Button>
-          <Button className="bg-linear-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white">
+          <Button className="bg-linear-to-r from-orange-700 to-red-700 hover:from-orange-800 hover:to-red-800 text-white">
             Orange to Red
           </Button>
-          <Button className="bg-linear-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white">
+          <Button className="bg-linear-to-r from-green-700 to-emerald-700 hover:from-green-800 hover:to-emerald-800 text-white">
             Green to Emerald
           </Button>
         </div>
       </section>
-
     </div>
   );
 }

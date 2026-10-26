@@ -1,9 +1,15 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Drawer, type DrawerProps, type DrawerContentProps } from '@ninna-ui/overlays';
-import { Button } from '@ninna-ui/primitives';
+import type { Meta, StoryObj } from "@storybook/react";
+import {
+  Drawer,
+  type DrawerProps,
+  type DrawerContentProps,
+} from "@ninna-ui/overlays";
+import { Button } from "@ninna-ui/primitives";
 
-const meta: Meta<DrawerProps & Pick<DrawerContentProps, 'title' | 'description'>> = {
-  title: 'Overlays/Drawer',
+const meta: Meta<
+  DrawerProps & Pick<DrawerContentProps, "title" | "description">
+> = {
+  title: "Overlays/Drawer",
   component: Drawer,
   subcomponents: {
     // Storybook handles these attached components
@@ -15,36 +21,37 @@ const meta: Meta<DrawerProps & Pick<DrawerContentProps, 'title' | 'description'>
     Close: Drawer.Close,
   },
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     open: {
-      control: 'boolean',
-      description: 'Controlled open state',
-      table: { defaultValue: { summary: 'undefined' } },
+      control: "boolean",
+      description: "Controlled open state",
+      table: { defaultValue: { summary: "undefined" } },
     },
     defaultOpen: {
-      control: 'boolean',
-      description: 'Default open state (uncontrolled)',
-      table: { defaultValue: { summary: 'false' } },
+      control: "boolean",
+      description: "Default open state (uncontrolled)",
+      table: { defaultValue: { summary: "false" } },
     },
     onOpenChange: {
-      action: 'onOpenChange',
-      description: 'Callback when open state changes',
+      action: "onOpenChange",
+      description: "Callback when open state changes",
     },
     modal: {
-      control: 'boolean',
-      description: 'Whether the drawer blocks interaction with the rest of the page',
-      table: { defaultValue: { summary: 'true' } },
+      control: "boolean",
+      description:
+        "Whether the drawer blocks interaction with the rest of the page",
+      table: { defaultValue: { summary: "true" } },
     },
     title: {
-      control: 'text',
-      description: 'Accessible title for the drawer (sr-only if no header)',
+      control: "text",
+      description: "Accessible title for the drawer (sr-only if no header)",
     },
     description: {
-      control: 'text',
-      description: 'Accessible description for the drawer (sr-only)',
+      control: "text",
+      description: "Accessible description for the drawer (sr-only)",
     },
   },
 };
@@ -61,7 +68,9 @@ export const Default: Story = {
       <Drawer.Content>
         <Drawer.Header>Drawer Title</Drawer.Header>
         <Drawer.Body>
-          <p className="text-base-content/70">This is the default right-side drawer.</p>
+          <p className="text-base-content/70">
+            This is the default right-side drawer.
+          </p>
         </Drawer.Body>
         <Drawer.Footer>
           <Drawer.Close asChild>
@@ -76,7 +85,7 @@ export const Default: Story = {
 
 export const Placements: Story = {
   render: () => {
-    const placements = ['left', 'right', 'top', 'bottom'] as const;
+    const placements = ["left", "right", "top", "bottom"] as const;
     return (
       <div className="flex flex-wrap gap-2">
         {placements.map((placement) => (
@@ -102,7 +111,7 @@ export const Placements: Story = {
 
 export const Sizes: Story = {
   render: () => {
-    const sizes = ['xs', 'sm', 'md', 'lg', 'xl', 'full'] as const;
+    const sizes = ["xs", "sm", "md", "lg", "xl", "full"] as const;
     return (
       <div className="flex flex-wrap gap-2">
         {sizes.map((size) => (
@@ -115,7 +124,11 @@ export const Sizes: Story = {
               <Drawer.Header>Size: {size}</Drawer.Header>
               <Drawer.Body>
                 <p className="text-base-content/70">
-                  Drawer with <code className="text-primary font-mono">size=&quot;{size}&quot;</code>.
+                  Drawer with{" "}
+                  <code className="text-primary font-mono">
+                    size=&quot;{size}&quot;
+                  </code>
+                  .
                 </p>
               </Drawer.Body>
             </Drawer.Content>
@@ -161,16 +174,44 @@ export const WithForm: Story = {
         <Drawer.Body>
           <div className="flex flex-col gap-4">
             <div>
-              <label htmlFor="name" className="text-sm font-medium text-base-content mb-1 block">Name</label>
-              <input id="name" className="w-full rounded-md border border-base-300 px-3 py-2 text-sm" placeholder="Enter name" />
+              <label
+                htmlFor="name"
+                className="text-sm font-medium text-base-content mb-1 block"
+              >
+                Name
+              </label>
+              <input
+                id="name"
+                className="w-full rounded-md border border-base-300 px-3 py-2 text-sm"
+                placeholder="Enter name"
+              />
             </div>
             <div>
-              <label htmlFor="email" className="text-sm font-medium text-base-content mb-1 block">Email</label>
-              <input id="email" className="w-full rounded-md border border-base-300 px-3 py-2 text-sm" placeholder="Enter email" />
+              <label
+                htmlFor="email"
+                className="text-sm font-medium text-base-content mb-1 block"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                className="w-full rounded-md border border-base-300 px-3 py-2 text-sm"
+                placeholder="Enter email"
+              />
             </div>
             <div>
-              <label htmlFor="bio" className="text-sm font-medium text-base-content mb-1 block">Bio</label>
-              <textarea id="bio" className="w-full rounded-md border border-base-300 px-3 py-2 text-sm" rows={4} placeholder="Tell us about yourself" />
+              <label
+                htmlFor="bio"
+                className="text-sm font-medium text-base-content mb-1 block"
+              >
+                Bio
+              </label>
+              <textarea
+                id="bio"
+                className="w-full rounded-md border border-base-300 px-3 py-2 text-sm"
+                rows={4}
+                placeholder="Tell us about yourself"
+              />
             </div>
           </div>
         </Drawer.Body>
@@ -190,10 +231,15 @@ export const Headless: Story = {
       <Drawer.Trigger asChild>
         <Button>Open Headless Drawer</Button>
       </Drawer.Trigger>
-      <Drawer.Content title="Navigation Menu" description="Main navigation options for the application.">
+      <Drawer.Content
+        title="Navigation Menu"
+        description="Main navigation options for the application."
+      >
         <Drawer.Body>
           <p className="text-base-content/70">
-            This drawer uses the <code className="text-primary font-mono">title</code> prop for accessibility.
+            This drawer uses the{" "}
+            <code className="text-primary font-mono">title</code> prop for
+            accessibility.
           </p>
         </Drawer.Body>
       </Drawer.Content>

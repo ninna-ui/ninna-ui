@@ -90,10 +90,10 @@ export function InstallationView() {
             <Text size="sm" className="text-base-content/70">
               CLI 0.7 includes Vite 8, Next.js 16, React Router 8, and Astro 7
               starters with type-check and production scripts. Check your
-              installed CLI with <Code>npx @ninna-ui/cli@latest --version</Code>.
-              The generated <Code>package.json</Code> lists the exact framework
-              versions and commands. The manual guides below also work with
-              existing applications.
+              installed CLI with <Code>npx @ninna-ui/cli@latest --version</Code>
+              . The generated <Code>package.json</Code> lists the exact
+              framework versions and commands. The manual guides below also work
+              with existing applications.
             </Text>
             <div className="bg-base-50 border border-base-200 rounded-lg p-5 space-y-2">
               <Text

@@ -1,5 +1,10 @@
-import { ComponentHeader, ComponentSection, UsageExample, type ComponentSectionType } from "~/components/docs";
-import { Heading, Text, Badge , Code } from "@ninna-ui/primitives";
+import {
+  ComponentHeader,
+  ComponentSection,
+  UsageExample,
+  type ComponentSectionType,
+} from "~/components/docs";
+import { Heading, Text, Badge, Code } from "@ninna-ui/primitives";
 import { themingMeta } from "./meta";
 
 export const themingSections: ComponentSectionType[] = [
@@ -99,65 +104,135 @@ const CODEBLOCK_SCHEME_CODE = `import { CodeBlock } from "@ninna-ui/code-block";
 {/* Follows the nearest .dark ancestor (default) */}
 <CodeBlock code={myCode} colorScheme="auto" />`;
 
-const CUSTOM_THEME_CODE = `/* ===== Light Theme (default) ===== */
+const CUSTOM_THEME_CODE = `/* Light */
 [data-theme="my-brand"] {
   color-scheme: light;
 
-  /* Primary - your brand color */
-  --color-primary: oklch(0.49 0.27 250);
-  --color-primary-content: oklch(0.93 0.04 250);
+  /* Semantic colors — usable for fills, text, borders and focus rings */
+  --color-primary: oklch(0.4 0.0916 240);
+  --color-primary-content: oklch(0.985 0.005 240);
+  --color-secondary: oklch(0.37 0.0631 195);
+  --color-secondary-content: oklch(0.985 0.005 195);
+  --color-accent: oklch(0.457 0.267 285);
+  --color-accent-content: oklch(0.985 0.005 285);
+  --color-neutral: oklch(0.21 0.04 248);
+  --color-neutral-content: oklch(0.985 0.005 248);
+  --color-success: oklch(0.426 0.1053 155);
+  --color-success-content: oklch(0.985 0.005 155);
+  --color-danger: oklch(0.443 0.1795 25);
+  --color-danger-content: oklch(0.985 0.005 25);
+  --color-warning: oklch(0.443 0.0909 84);
+  --color-warning-content: oklch(0.985 0.005 84);
+  --color-info: oklch(0.434 0.0885 232);
+  --color-info-content: oklch(0.985 0.005 232);
 
-  /* Secondary */
-  --color-secondary: oklch(0.50 0.24 300);
-  --color-secondary-content: oklch(0.93 0.04 300);
+  /* Base surfaces and default text */
+  --color-base-50: oklch(0.985 0.006 235);
+  --color-base-100: oklch(0.970 0.008 235);
+  --color-base-200: oklch(0.940 0.010 235);
+  --color-base-300: oklch(0.900 0.014 235);
+  --color-base-400: oklch(0.810 0.016 235);
+  --color-base-500: oklch(0.690 0.018 235);
+  --color-base-600: oklch(0.550 0.020 235);
+  --color-base-700: oklch(0.430 0.020 235);
+  --color-base-800: oklch(0.310 0.018 235);
+  --color-base-900: oklch(0.200 0.016 235);
+  --color-base-content: oklch(0.200 0.016 235);
 
-  /* Accent */
-  --color-accent: oklch(0.75 0.18 183);
-  --color-accent-content: oklch(0.16 0.04 183);
-
-  /* Neutral */
-  --color-neutral: oklch(0.21 0.03 265);
-  --color-neutral-content: oklch(0.93 0.01 265);
-
-  /* Base surfaces - light (L: 0.98 → 0.20) */
-  --color-base-50:  oklch(0.985 0.006 260);
-  --color-base-100: oklch(0.970 0.008 260);
-  --color-base-200: oklch(0.940 0.010 260);
-  --color-base-300: oklch(0.900 0.014 260);
-  --color-base-content: oklch(0.200 0.014 260);
-  /* ... base-400 through base-900, border colors */
+  /* Control boundaries — decorative separators use base-200 / base-300 */
+  --color-border: oklch(0.608 0.012 235);
+  --color-border-hover: oklch(0.578 0.018 235);
+  --color-border-active: oklch(0.525 0.02 235);
+  --color-border-disabled: oklch(0.900 0.014 235);
 }
 
-/* ===== Dark Theme (explicit class) ===== */
-/* Applies when <html class="dark" data-theme="my-brand"> */
+/* Explicit dark */
 .dark [data-theme="my-brand"],
 [data-theme="my-brand"].dark {
   color-scheme: dark;
 
-  /* Colors lighten in dark mode for contrast */
-  --color-primary: oklch(0.74 0.24 250);
-  --color-primary-content: oklch(0.15 0.03 250);
+  /* Semantic colors — usable for fills, text, borders and focus rings */
+  --color-primary: oklch(0.74 0.1499 240);
+  --color-primary-content: oklch(0.14 0.015 240);
+  --color-secondary: oklch(0.707 0.1206 195);
+  --color-secondary-content: oklch(0.14 0.015 195);
+  --color-accent: oklch(0.735 0.1428 285);
+  --color-accent-content: oklch(0.14 0.015 285);
+  --color-neutral: oklch(0.726 0.04 248);
+  --color-neutral-content: oklch(0.14 0.015 248);
+  --color-success: oklch(0.72 0.1779 155);
+  --color-success-content: oklch(0.14 0.015 155);
+  --color-danger: oklch(0.734 0.1629 25);
+  --color-danger-content: oklch(0.14 0.015 25);
+  --color-warning: oklch(0.86 0.1494 84);
+  --color-warning-content: oklch(0.14 0.015 84);
+  --color-info: oklch(0.74 0.1509 232);
+  --color-info-content: oklch(0.14 0.015 232);
 
-  --color-neutral: oklch(0.70 0.03 265);
-  --color-neutral-content: oklch(0.15 0.01 265);
+  /* Base surfaces and default text */
+  --color-base-50: oklch(0.140 0.014 235);
+  --color-base-100: oklch(0.180 0.016 235);
+  --color-base-200: oklch(0.230 0.018 235);
+  --color-base-300: oklch(0.310 0.020 235);
+  --color-base-400: oklch(0.400 0.020 235);
+  --color-base-500: oklch(0.500 0.020 235);
+  --color-base-600: oklch(0.580 0.020 235);
+  --color-base-700: oklch(0.700 0.018 235);
+  --color-base-800: oklch(0.820 0.016 235);
+  --color-base-900: oklch(0.930 0.012 235);
+  --color-base-content: oklch(0.930 0.012 235);
 
-  /* Base surfaces - dark (L: 0.14 → 0.93) */
-  --color-base-50:  oklch(0.140 0.012 260);
-  --color-base-100: oklch(0.180 0.014 260);
-  --color-base-200: oklch(0.230 0.016 260);
-  --color-base-300: oklch(0.310 0.018 260);
-  --color-base-content: oklch(0.930 0.012 260);
-  /* ... rest of dark overrides */
+  /* Control boundaries — decorative separators use base-200 / base-300 */
+  --color-border: oklch(0.53 0.02 235);
+  --color-border-hover: oklch(0.558 0.02 235);
+  --color-border-active: oklch(0.612 0.02 235);
+  --color-border-disabled: oklch(0.230 0.018 235);
 }
 
-/* ===== Dark Theme (system preference) ===== */
-/* Applies when no .dark/.light class and OS prefers dark */
+/* System dark — keep these tokens identical to explicit dark. */
 @media (prefers-color-scheme: dark) {
   [data-theme="my-brand"]:not(.light):not(.dark) {
     color-scheme: dark;
-    /* ... same dark overrides as above ... */
+
+    /* Semantic colors — usable for fills, text, borders and focus rings */
+    --color-primary: oklch(0.74 0.1499 240);
+    --color-primary-content: oklch(0.14 0.015 240);
+    --color-secondary: oklch(0.707 0.1206 195);
+    --color-secondary-content: oklch(0.14 0.015 195);
+    --color-accent: oklch(0.735 0.1428 285);
+    --color-accent-content: oklch(0.14 0.015 285);
+    --color-neutral: oklch(0.726 0.04 248);
+    --color-neutral-content: oklch(0.14 0.015 248);
+    --color-success: oklch(0.72 0.1779 155);
+    --color-success-content: oklch(0.14 0.015 155);
+    --color-danger: oklch(0.734 0.1629 25);
+    --color-danger-content: oklch(0.14 0.015 25);
+    --color-warning: oklch(0.86 0.1494 84);
+    --color-warning-content: oklch(0.14 0.015 84);
+    --color-info: oklch(0.74 0.1509 232);
+    --color-info-content: oklch(0.14 0.015 232);
+
+    /* Base surfaces and default text */
+    --color-base-50: oklch(0.140 0.014 235);
+    --color-base-100: oklch(0.180 0.016 235);
+    --color-base-200: oklch(0.230 0.018 235);
+    --color-base-300: oklch(0.310 0.020 235);
+    --color-base-400: oklch(0.400 0.020 235);
+    --color-base-500: oklch(0.500 0.020 235);
+    --color-base-600: oklch(0.580 0.020 235);
+    --color-base-700: oklch(0.700 0.018 235);
+    --color-base-800: oklch(0.820 0.016 235);
+    --color-base-900: oklch(0.930 0.012 235);
+    --color-base-content: oklch(0.930 0.012 235);
+
+    /* Control boundaries — decorative separators use base-200 / base-300 */
+    --color-border: oklch(0.53 0.02 235);
+    --color-border-hover: oklch(0.558 0.02 235);
+    --color-border-active: oklch(0.612 0.02 235);
+    --color-border-disabled: oklch(0.230 0.018 235);
   }
-}`;
+}
+`;
 
 export function ThemingView() {
   return (
@@ -172,18 +247,45 @@ export function ThemingView() {
         >
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { name: "default", colors: "Purple / Magenta", desc: "Vibrant electric purple with cool slate surfaces" },
-              { name: "ocean", colors: "Blue / Cyan", desc: "Deep ocean blues with cool undertones" },
-              { name: "sunset", colors: "Orange / Rose", desc: "Warm sunset tones for bold designs" },
-              { name: "forest", colors: "Green / Amber", desc: "Natural greens with earthy accents" },
-              { name: "minimal", colors: "Monochrome", desc: "Near-black primary, low chroma for minimal UIs" },
+              {
+                name: "default",
+                colors: "Purple / Magenta",
+                desc: "Vibrant electric purple with cool slate surfaces",
+              },
+              {
+                name: "ocean",
+                colors: "Blue / Cyan",
+                desc: "Deep ocean blues with cool undertones",
+              },
+              {
+                name: "sunset",
+                colors: "Orange / Rose",
+                desc: "Warm sunset tones for bold designs",
+              },
+              {
+                name: "forest",
+                colors: "Green / Amber",
+                desc: "Natural greens with earthy accents",
+              },
+              {
+                name: "minimal",
+                colors: "Monochrome",
+                desc: "Near-black primary, low chroma for minimal UIs",
+              },
             ].map((theme) => (
-              <div key={theme.name} className="border border-base-200 rounded-lg p-4 bg-base-100">
+              <div
+                key={theme.name}
+                className="border border-base-200 rounded-lg p-4 bg-base-100"
+              >
                 <div className="flex items-center gap-2 mb-2">
                   <Code color="primary">{theme.name}</Code>
-                  <Badge size="sm" variant="soft" color="neutral">{theme.colors}</Badge>
+                  <Badge size="sm" variant="soft" color="neutral">
+                    {theme.colors}
+                  </Badge>
                 </div>
-                <Text size="sm" className="text-base-content/70">{theme.desc}</Text>
+                <Text size="sm" className="text-base-content/70">
+                  {theme.desc}
+                </Text>
               </div>
             ))}
           </div>
@@ -206,13 +308,10 @@ export function ThemingView() {
           </div>
           <div className="mt-4 bg-info/10 border border-info/20 rounded-lg p-4">
             <Text size="sm" className="text-info">
-              <strong>Available themes:</strong>{" "}
-              <Code>default.css</Code>,{" "}
-              <Code>ocean.css</Code>,{" "}
-              <Code>sunset.css</Code>,{" "}
-              <Code>forest.css</Code>,{" "}
-              <Code>minimal.css</Code>{" "}
-              - all can be imported together for per-section theming.
+              <strong>Available themes:</strong> <Code>default.css</Code>,{" "}
+              <Code>ocean.css</Code>, <Code>sunset.css</Code>,{" "}
+              <Code>forest.css</Code>, <Code>minimal.css</Code> - all can be
+              imported together for per-section theming.
             </Text>
           </div>
         </ComponentSection>
@@ -224,36 +323,55 @@ export function ThemingView() {
         >
           <div className="space-y-6">
             <div>
-              <Heading as="h3" size="base" weight="semibold" className="mb-2">How Dark Mode Works</Heading>
+              <Heading as="h3" size="base" weight="semibold" className="mb-2">
+                How Dark Mode Works
+              </Heading>
               <Text size="sm" className="text-base-content/70 mb-3">
-                Every built-in theme includes both light and dark color definitions. The dark mode
-                CSS selector uses <Code>{'.dark [data-theme="default"]'}</Code> or <Code>{'[data-theme="default"].dark'}</Code> to
-                redefine all CSS variables - no <Code>dark:</Code> utility classes needed anywhere.
-                A <Code>data-theme</Code> attribute is always required on <Code>{'<html>'}</Code> (or any ancestor element).
+                Every built-in theme includes both light and dark color
+                definitions. The dark mode CSS selector uses{" "}
+                <Code>{'.dark [data-theme="default"]'}</Code> or{" "}
+                <Code>{'[data-theme="default"].dark'}</Code> to redefine all CSS
+                variables - no <Code>dark:</Code> utility classes needed
+                anywhere. A <Code>data-theme</Code> attribute is always required
+                on <Code>{"<html>"}</Code> (or any ancestor element).
               </Text>
             </div>
 
             <div>
-              <Heading as="h4" size="base" weight="semibold" className="mb-2">System Preference (Auto)</Heading>
+              <Heading as="h4" size="base" weight="semibold" className="mb-2">
+                System Preference (Auto)
+              </Heading>
               <Text size="sm" className="text-base-content/70 mb-3">
-                All themes include a <Code>@media (prefers-color-scheme: dark)</Code> block.
-                When no <Code>class</Code> is set on <Code>{'<html>'}</Code>, dark mode activates automatically based on OS preference.
-                Adding <Code>class="light"</Code> forces light mode and blocks the media query.
+                All themes include a{" "}
+                <Code>@media (prefers-color-scheme: dark)</Code> block. When no{" "}
+                <Code>class</Code> is set on <Code>{"<html>"}</Code>, dark mode
+                activates automatically based on OS preference. Adding{" "}
+                <Code>class="light"</Code> forces light mode and blocks the
+                media query.
               </Text>
             </div>
 
             <div>
-              <Heading as="h4" size="base" weight="semibold" className="mb-2">Class-Based Toggle</Heading>
+              <Heading as="h4" size="base" weight="semibold" className="mb-2">
+                Class-Based Toggle
+              </Heading>
               <Text size="sm" className="text-base-content/70 mb-3">
-                Add the <Code color="primary">dark</Code> class to your root element for manual control.
+                Add the <Code color="primary">dark</Code> class to your root
+                element for manual control.
               </Text>
               <UsageExample code={DARK_MODE_CLASS_CODE} />
             </div>
 
             <div>
-              <Heading as="h4" size="base" weight="semibold" className="mb-2">JavaScript Toggle</Heading>
+              <Heading as="h4" size="base" weight="semibold" className="mb-2">
+                JavaScript Toggle
+              </Heading>
               <UsageExample code={DARK_MODE_JS_CODE} />
-              <Text size="sm" className="mt-3 text-base-content/70">Restore browser preferences after mounting. For SSR, keep server and initial client markup identical, or render the initial preference from a cookie on both sides.</Text>
+              <Text size="sm" className="mt-3 text-base-content/70">
+                Restore browser preferences after mounting. For SSR, keep server
+                and initial client markup identical, or render the initial
+                preference from a cookie on both sides.
+              </Text>
             </div>
           </div>
         </ComponentSection>
@@ -267,29 +385,92 @@ export function ThemingView() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b border-base-300">
-                  <th scope="col" className="text-left py-2 pr-4 font-semibold text-base-content">Variable</th>
-                  <th scope="col" className="text-left py-2 pr-4 font-semibold text-base-content">Tailwind Class</th>
-                  <th scope="col" className="text-left py-2 font-semibold text-base-content">Usage</th>
+                  <th
+                    scope="col"
+                    className="text-left py-2 pr-4 font-semibold text-base-content"
+                  >
+                    Variable
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-left py-2 pr-4 font-semibold text-base-content"
+                  >
+                    Tailwind Class
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-left py-2 font-semibold text-base-content"
+                  >
+                    Usage
+                  </th>
                 </tr>
               </thead>
               <tbody className="text-base-content/70">
                 {[
-                  ["--color-primary", "bg-primary, text-primary", "Main brand color"],
-                  ["--color-primary-content", "text-primary-content", "Text on primary backgrounds"],
-                  ["--color-secondary", "bg-secondary, text-secondary", "Secondary brand color"],
-                  ["--color-accent", "bg-accent, text-accent", "Accent/highlight color"],
-                  ["--color-neutral", "bg-neutral, text-neutral", "Neutral/muted color"],
-                  ["--color-success", "bg-success, text-success", "Success states"],
-                  ["--color-danger", "bg-danger, text-danger", "Error/danger states"],
-                  ["--color-warning", "bg-warning, text-warning", "Warning states"],
-                  ["--color-info", "bg-info, text-info", "Informational states"],
-                  ["--color-base-50 to -900", "bg-base-50 to bg-base-900", "Surface scale (10 steps)"],
-                  ["--color-base-content", "text-base-content", "Default text color"],
+                  [
+                    "--color-primary",
+                    "bg-primary, text-primary",
+                    "Main brand color",
+                  ],
+                  [
+                    "--color-primary-content",
+                    "text-primary-content",
+                    "Text on primary backgrounds",
+                  ],
+                  [
+                    "--color-secondary",
+                    "bg-secondary, text-secondary",
+                    "Secondary brand color",
+                  ],
+                  [
+                    "--color-accent",
+                    "bg-accent, text-accent",
+                    "Accent/highlight color",
+                  ],
+                  [
+                    "--color-neutral",
+                    "bg-neutral, text-neutral",
+                    "Neutral/muted color",
+                  ],
+                  [
+                    "--color-success",
+                    "bg-success, text-success",
+                    "Success states",
+                  ],
+                  [
+                    "--color-danger",
+                    "bg-danger, text-danger",
+                    "Error/danger states",
+                  ],
+                  [
+                    "--color-warning",
+                    "bg-warning, text-warning",
+                    "Warning states",
+                  ],
+                  [
+                    "--color-info",
+                    "bg-info, text-info",
+                    "Informational states",
+                  ],
+                  [
+                    "--color-base-50 to -900",
+                    "bg-base-50 to bg-base-900",
+                    "Surface scale (10 steps)",
+                  ],
+                  [
+                    "--color-base-content",
+                    "text-base-content",
+                    "Default text color",
+                  ],
                   ["--color-border", "border-border", "Default border color"],
                 ].map(([variable, tw, usage]) => (
                   <tr key={variable} className="border-b border-base-200">
-                    <td className="py-2 pr-4"><Code color="primary">{variable}</Code></td>
-                    <td className="py-2 pr-4"><Code>{tw}</Code></td>
+                    <td className="py-2 pr-4">
+                      <Code color="primary">{variable}</Code>
+                    </td>
+                    <td className="py-2 pr-4">
+                      <Code>{tw}</Code>
+                    </td>
                     <td className="py-2">{usage}</td>
                   </tr>
                 ))}
@@ -309,8 +490,9 @@ export function ThemingView() {
           />
           <div className="mt-4 bg-warning/10 border border-warning/20 rounded-lg p-4">
             <Text size="sm" className="text-warning">
-              <strong>Note:</strong> The theme CSS must be imported for each theme you want to use.
-              Each theme defines styles for its own <Code>data-theme</Code> value.
+              <strong>Note:</strong> The theme CSS must be imported for each
+              theme you want to use. Each theme defines styles for its own{" "}
+              <Code>data-theme</Code> value.
             </Text>
           </div>
         </ComponentSection>
@@ -322,8 +504,10 @@ export function ThemingView() {
         >
           <div className="space-y-4">
             <Text className="text-base-content/70 leading-relaxed">
-              Copy any built-in theme and modify the oklch values to match your brand. Each color uses the 
-              <Code>oklch(lightness chroma hue)</Code> format from the CSS Color Level 4 spec.
+              Copy any built-in theme and modify the oklch values to match your
+              brand. Each color uses the
+              <Code>oklch(lightness chroma hue)</Code> format from the CSS Color
+              Level 4 spec.
             </Text>
             <UsageExample
               title="Custom theme template"
@@ -331,8 +515,9 @@ export function ThemingView() {
             />
             <div className="bg-info/10 border border-info/20 rounded-lg p-4">
               <Text size="sm" className="text-info">
-                <strong>Tip:</strong> Use the Tailwind CSS oklch palette as a reference. 
-                Light mode typically uses <Code>-600</Code> shades and dark mode uses <Code>-400</Code> shades for semantic colors.
+                <strong>Tip:</strong> Use the Tailwind CSS oklch palette as a
+                reference. Light mode typically uses <Code>-600</Code> shades
+                and dark mode uses <Code>-400</Code> shades for semantic colors.
               </Text>
             </div>
           </div>
@@ -345,20 +530,27 @@ export function ThemingView() {
         >
           <div className="space-y-6">
             <div>
-              <Heading as="h3" size="base" weight="semibold" className="mb-2">Color Scheme Prop</Heading>
+              <Heading as="h3" size="base" weight="semibold" className="mb-2">
+                Color Scheme Prop
+              </Heading>
               <Text size="sm" className="text-base-content/70 mb-3">
-                Each <Code>CodeBlock</Code> can independently control its light/dark syntax colors via the
-                <Code>colorScheme</Code> prop - useful when embedding code inside a dark hero section on an
-                otherwise light page, or vice versa.
+                Each <Code>CodeBlock</Code> can independently control its
+                light/dark syntax colors via the
+                <Code>colorScheme</Code> prop - useful when embedding code
+                inside a dark hero section on an otherwise light page, or vice
+                versa.
               </Text>
               <UsageExample code={CODEBLOCK_SCHEME_CODE} />
             </div>
 
             <div>
-              <Heading as="h3" size="base" weight="semibold" className="mb-2">Token Color Overrides</Heading>
+              <Heading as="h3" size="base" weight="semibold" className="mb-2">
+                Token Color Overrides
+              </Heading>
               <Text size="sm" className="text-base-content/70 mb-3">
-                All syntax token colors are exposed as CSS custom properties prefixed with <Code>--ninna-cb-</Code>.
-                Override them globally in your CSS or scope overrides to a specific section.
+                All syntax token colors are exposed as CSS custom properties
+                prefixed with <Code>--ninna-cb-</Code>. Override them globally
+                in your CSS or scope overrides to a specific section.
               </Text>
               <UsageExample
                 title="Override token colors in CSS"
@@ -368,24 +560,45 @@ export function ThemingView() {
                 <table className="w-full text-sm border-collapse">
                   <thead>
                     <tr className="border-b border-base-300">
-                      <th scope="col" className="text-left py-2 pr-4 font-semibold text-base-content">Variable</th>
-                      <th scope="col" className="text-left py-2 font-semibold text-base-content">Token</th>
+                      <th
+                        scope="col"
+                        className="text-left py-2 pr-4 font-semibold text-base-content"
+                      >
+                        Variable
+                      </th>
+                      <th
+                        scope="col"
+                        className="text-left py-2 font-semibold text-base-content"
+                      >
+                        Token
+                      </th>
                     </tr>
                   </thead>
                   <tbody className="text-base-content/70">
                     {[
-                      ["--ninna-cb-keyword", "Keywords (import, const, return, …)"],
+                      [
+                        "--ninna-cb-keyword",
+                        "Keywords (import, const, return, …)",
+                      ],
                       ["--ninna-cb-string", "String and template literals"],
                       ["--ninna-cb-comment", "Line and block comments"],
-                      ["--ninna-cb-component", "React component names (PascalCase)"],
+                      [
+                        "--ninna-cb-component",
+                        "React component names (PascalCase)",
+                      ],
                       ["--ninna-cb-tag", "HTML/JSX tag names (lowercase)"],
                       ["--ninna-cb-attr", "JSX / HTML attribute names"],
                       ["--ninna-cb-boolean", "true, false, null, undefined"],
                       ["--ninna-cb-number", "Numeric literals"],
-                      ["--ninna-cb-punctuation", "Brackets, operators, punctuation"],
+                      [
+                        "--ninna-cb-punctuation",
+                        "Brackets, operators, punctuation",
+                      ],
                     ].map(([variable, token]) => (
                       <tr key={variable} className="border-b border-base-200">
-                        <td className="py-2 pr-4"><Code color="primary">{variable}</Code></td>
+                        <td className="py-2 pr-4">
+                          <Code color="primary">{variable}</Code>
+                        </td>
                         <td className="py-2">{token}</td>
                       </tr>
                     ))}
@@ -397,8 +610,8 @@ export function ThemingView() {
             <div className="bg-info/10 border border-info/20 rounded-lg p-4">
               <Text size="sm" className="text-info">
                 <strong>CSS Import:</strong> Add{" "}
-                <Code>@import "@ninna-ui/code-block/styles";</Code>{" "}
-                to your CSS entry point (or it is picked up automatically via{" "}
+                <Code>@import "@ninna-ui/code-block/styles";</Code> to your CSS
+                entry point (or it is picked up automatically via{" "}
                 <Code>@source</Code> scanning built into the theme preset).
               </Text>
             </div>

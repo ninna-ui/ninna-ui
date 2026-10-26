@@ -1,7 +1,7 @@
-import { forwardRef, useId } from 'react';
-import { cn } from '@ninna-ui/utils';
-import { formGroupStyles, formGroupContentVariants } from './form-group.styles';
-import type { FormGroupProps } from './form-group.types';
+import { forwardRef, useId } from "react";
+import { cn } from "@ninna-ui/utils";
+import { formGroupStyles, formGroupContentVariants } from "./form-group.styles";
+import type { FormGroupProps } from "./form-group.types";
 
 /**
  * FormGroup component for grouping related form fields
@@ -23,12 +23,12 @@ export const FormGroup = forwardRef<HTMLFieldSetElement, FormGroupProps>(
       required = false,
       children,
       className,
-      spacing = 'md',
-      direction = 'vertical',
+      spacing = "md",
+      direction = "vertical",
       id,
       ...props
     },
-    ref
+    ref,
   ) => {
     const generatedId = useId();
     const fieldsetId = id || generatedId;
@@ -50,7 +50,7 @@ export const FormGroup = forwardRef<HTMLFieldSetElement, FormGroupProps>(
             {required && <span className="text-danger ml-1">*</span>}
           </legend>
         )}
-        
+
         {description && (
           <p id={descriptionId} className={formGroupStyles.description}>
             {description}
@@ -59,14 +59,14 @@ export const FormGroup = forwardRef<HTMLFieldSetElement, FormGroupProps>(
 
         <div
           className={cn(
-            formGroupContentVariants({ orientation: direction, size: spacing })
+            formGroupContentVariants({ orientation: direction, size: spacing }),
           )}
         >
           {children}
         </div>
       </fieldset>
     );
-  }
+  },
 );
 
-FormGroup.displayName = 'FormGroup';
+FormGroup.displayName = "FormGroup";

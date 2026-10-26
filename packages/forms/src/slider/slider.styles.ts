@@ -1,4 +1,4 @@
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva, type VariantProps } from "class-variance-authority";
 
 export const sliderRootVariants = cva(
   "relative flex touch-none select-none items-center self-stretch",
@@ -28,11 +28,11 @@ export const sliderRootVariants = cva(
       size: "md",
       disabled: false,
     },
-  }
+  },
 );
 
 export const sliderTrackVariants = cva(
-  "relative grow rounded-full bg-base-300 overflow-hidden min-w-0 min-h-0",
+  "relative grow rounded-full bg-border overflow-hidden min-w-0 min-h-0",
   {
     variants: {
       orientation: {
@@ -57,39 +57,36 @@ export const sliderTrackVariants = cva(
       orientation: "horizontal",
       size: "md",
     },
-  }
+  },
 );
 
-export const sliderRangeVariants = cva(
-  "absolute rounded-full",
-  {
-    variants: {
-      variant: {
-        solid: "",
-        soft: "opacity-40",
-      },
-      color: {
-        primary: "bg-primary",
-        secondary: "bg-secondary",
-        accent: "bg-accent",
-        neutral: "bg-neutral",
-        success: "bg-success",
-        danger: "bg-danger",
-        warning: "bg-warning",
-        info: "bg-info",
-      },
-      orientation: {
-        horizontal: "h-full",
-        vertical: "w-full",
-      },
+export const sliderRangeVariants = cva("absolute rounded-full", {
+  variants: {
+    variant: {
+      solid: "",
+      soft: "opacity-40",
     },
-    defaultVariants: {
-      variant: "solid",
-      color: "primary",
-      orientation: "horizontal",
+    color: {
+      primary: "bg-primary",
+      secondary: "bg-secondary",
+      accent: "bg-accent",
+      neutral: "bg-neutral",
+      success: "bg-success",
+      danger: "bg-danger",
+      warning: "bg-warning",
+      info: "bg-info",
     },
-  }
-);
+    orientation: {
+      horizontal: "h-full",
+      vertical: "w-full",
+    },
+  },
+  defaultVariants: {
+    variant: "solid",
+    color: "primary",
+    orientation: "horizontal",
+  },
+});
 
 export const sliderThumbVariants = cva(
   "block rounded-full border-2 bg-base-100 shadow-md transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none before:absolute before:inset-[-8px] before:content-[''] hover:scale-110 active:scale-95",
@@ -125,17 +122,18 @@ export const sliderThumbVariants = cva(
       size: "md",
       orientation: "horizontal",
     },
-  }
+  },
 );
 
 export const sliderStyles = {
-  wrapper: 'flex flex-col gap-2',
-  sliderRow: 'flex items-center gap-3 w-full',
-  label: 'text-sm font-medium text-base-content/80',
-  valueLabel: 'text-sm font-semibold text-base-content tabular-nums min-w-[3rem] text-right',
-  marksContainer: 'absolute inset-0 pointer-events-none',
-  mark: 'absolute w-1.5 h-1.5 rounded-full bg-base-content/20 -translate-x-1/2 -translate-y-1/2',
-  markActive: 'bg-primary ring-1 ring-primary/20',
+  wrapper: "flex flex-col gap-2",
+  sliderRow: "flex items-center gap-3 w-full",
+  label: "text-sm font-medium text-base-content/80",
+  valueLabel:
+    "text-sm font-semibold text-base-content tabular-nums min-w-[3rem] text-right",
+  marksContainer: "absolute inset-0 pointer-events-none",
+  mark: "absolute w-1.5 h-1.5 rounded-full bg-base-content/20 -translate-x-1/2 -translate-y-1/2",
+  markActive: "bg-primary ring-1 ring-primary/20",
 };
 
 export type SliderRootVariantsProps = VariantProps<typeof sliderRootVariants>;

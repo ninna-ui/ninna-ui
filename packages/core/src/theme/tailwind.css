@@ -45,7 +45,7 @@
 
 
 @theme inline {
-  /* Semantic color tokens */
+  /* Semantic color tokens — shared by native background, text and border utilities. */
   --color-neutral: var(--color-neutral);
   --color-neutral-content: var(--color-neutral-content);
   --color-primary: var(--color-primary);

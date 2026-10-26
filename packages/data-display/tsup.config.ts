@@ -1,16 +1,19 @@
-import { defineConfig } from 'tsup';
+import { defineConfig } from "tsup";
+import { markClientEntry } from "../../scripts/mark-client-entry.mjs";
 
 export default defineConfig({
-  entry: ['src/index.ts'],
-  format: ['esm'],
+  // Restore the client directive after the optional Rollup tree-shaking pass.
+  onSuccess: markClientEntry,
+  entry: ["src/index.ts"],
+  format: ["esm"],
   dts: { resolve: true },
   sourcemap: true,
   clean: true,
   treeshake: true,
   splitting: false,
   minify: false,
-  external: ['react', 'react-dom', '@ninna-ui/core', '@ninna-ui/utils'],
+  external: ["react", "react-dom", "@ninna-ui/core", "@ninna-ui/utils"],
   esbuildOptions(options) {
-    options.jsx = 'automatic';
+    options.jsx = "automatic";
   },
 });

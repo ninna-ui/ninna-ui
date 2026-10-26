@@ -31,21 +31,33 @@ export function PropsTable({
           )}
         </div>
       )}
-      
+
       <div className="overflow-x-auto border border-base-300 rounded-lg">
         <table className="w-full">
           <thead>
             <tr className="bg-base-200/50 border-b border-base-300">
-              <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-base-content/80 uppercase tracking-wider">
+              <th
+                scope="col"
+                className="px-4 py-3 text-left text-xs font-semibold text-base-content/80 uppercase tracking-wider"
+              >
                 Prop
               </th>
-              <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-base-content/80 uppercase tracking-wider">
+              <th
+                scope="col"
+                className="px-4 py-3 text-left text-xs font-semibold text-base-content/80 uppercase tracking-wider"
+              >
                 Type
               </th>
-              <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-base-content/80 uppercase tracking-wider">
+              <th
+                scope="col"
+                className="px-4 py-3 text-left text-xs font-semibold text-base-content/80 uppercase tracking-wider"
+              >
                 Default
               </th>
-              <th scope="col" className="px-4 py-3 text-left text-xs font-semibold text-base-content/80 uppercase tracking-wider">
+              <th
+                scope="col"
+                className="px-4 py-3 text-left text-xs font-semibold text-base-content/80 uppercase tracking-wider"
+              >
                 Description
               </th>
             </tr>
@@ -56,7 +68,10 @@ export function PropsTable({
                 key={prop.name}
                 className="hover:bg-base-200/50 transition-colors"
               >
-                <th scope="row" className="px-4 py-3 text-sm text-left font-normal">
+                <th
+                  scope="row"
+                  className="px-4 py-3 text-sm text-left font-normal"
+                >
                   <code className="font-mono font-medium text-primary">
                     {prop.name}
                     {prop.required && (

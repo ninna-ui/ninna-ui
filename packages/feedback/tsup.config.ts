@@ -1,6 +1,9 @@
 import { defineConfig } from "tsup";
+import { markClientEntry } from "../../scripts/mark-client-entry.mjs";
 
 export default defineConfig({
+  // Restore the client directive after the optional Rollup tree-shaking pass.
+  onSuccess: markClientEntry,
   entry: ["src/index.ts"],
   format: ["esm"],
   dts: { resolve: true },

@@ -14,10 +14,19 @@ interface RouteHandle {
 function NinnaLogo() {
   return (
     <div className="flex items-center gap-2">
-     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" className="h-7 w-7 shrink-0" aria-hidden="true">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 32 32"
+        fill="none"
+        className="h-7 w-7 shrink-0"
+        aria-hidden="true"
+      >
         <rect width="32" height="32" rx="8" className="fill-base-content" />
-        <path d="M9 24V8h2.8l8.8 11.2V8H23v16h-2.8L11.4 12.8V24H9z" className="fill-base-100" />
-      </svg> 
+        <path
+          d="M9 24V8h2.8l8.8 11.2V8H23v16h-2.8L11.4 12.8V24H9z"
+          className="fill-base-100"
+        />
+      </svg>
       <span className="text-lg font-semibold tracking-tight text-base-content">
         ninna<span className="text-base-content/70">-ui</span>
       </span>
@@ -25,15 +34,19 @@ function NinnaLogo() {
   );
 }
 
-export default function MainLayout({ children }: { children: React.ReactNode }) {
+export default function MainLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const matches = useMatches();
   const location = useLocation();
-  
-  const sections = matches
-    .find((match) => (match.handle as RouteHandle)?.sections)
-    ?.handle as RouteHandle | undefined;
-  
+
+  const sections = matches.find(
+    (match) => (match.handle as RouteHandle)?.sections,
+  )?.handle as RouteHandle | undefined;
+
   const tocSections = sections?.sections;
 
   const closeSidebar = useCallback(() => setSidebarOpen(false), []);
@@ -107,7 +120,9 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
             <div className="relative flex w-full flex-col bg-base-100">
               {/* Mobile drawer header */}
               <div className="flex h-14 items-center justify-between border-b border-base-200 px-4">
-                <span id="mobile-nav-title" className="sr-only">Mobile navigation</span>
+                <span id="mobile-nav-title" className="sr-only">
+                  Mobile navigation
+                </span>
                 <NinnaLogo />
                 <button
                   type="button"
@@ -120,7 +135,10 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               </div>
 
               {/* Mobile nav content */}
-              <div className="flex-1 overflow-y-auto px-4 py-4" data-sidebar-scroll>
+              <div
+                className="flex-1 overflow-y-auto px-4 py-4"
+                data-sidebar-scroll
+              >
                 <Sidebar />
               </div>
             </div>
@@ -130,7 +148,10 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
 
       {/* ── Desktop sidebar (below topbar) ── */}
       <aside className="hidden lg:fixed lg:inset-y-0 lg:top-14 lg:z-40 lg:flex lg:w-64 lg:flex-col">
-        <div className="flex flex-1 flex-col overflow-y-auto border-r border-base-200 bg-base-100/70 px-4 py-4" data-sidebar-scroll>
+        <div
+          className="flex flex-1 flex-col overflow-y-auto border-r border-base-200 bg-base-100/70 px-4 py-4"
+          data-sidebar-scroll
+        >
           <Sidebar />
         </div>
       </aside>
@@ -143,11 +164,14 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               {children}
             </div>
           </main>
-          
+
           {tocSections && <RightSidebar sections={tocSections} />}
         </div>
 
-        <footer className="border-t border-base-200 bg-base-100 py-6 px-6 sm:px-8 lg:px-10" role="contentinfo">
+        <footer
+          className="border-t border-base-200 bg-base-100 py-6 px-6 sm:px-8 lg:px-10"
+          role="contentinfo"
+        >
           <div className="mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-base-content/70">
             <div className="flex items-center gap-4">
               <span>© {new Date().getFullYear()} Ninna UI</span>
@@ -155,9 +179,33 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
               <span>MIT License</span>
             </div>
             <div className="flex items-center gap-4">
-              <a href="https://ninna-ui.dev" target="_blank" rel="noopener noreferrer" className="hover:text-base-content transition-colors" aria-label="Ninna UI documentation website (opens in new tab)">ninna-ui.dev ↗</a>
-              <a href="https://github.com/ninna-ui/ninna-ui" target="_blank" rel="noopener noreferrer" className="hover:text-base-content transition-colors" aria-label="Ninna UI on GitHub (opens in new tab)">GitHub</a>
-              <a href="https://www.npmjs.com/org/ninna-ui" target="_blank" rel="noopener noreferrer" className="hover:text-base-content transition-colors" aria-label="Ninna UI on npm (opens in new tab)">npm</a>
+              <a
+                href="https://ninna-ui.dev"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-base-content transition-colors"
+                aria-label="Ninna UI documentation website (opens in new tab)"
+              >
+                ninna-ui.dev ↗
+              </a>
+              <a
+                href="https://github.com/ninna-ui/ninna-ui"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-base-content transition-colors"
+                aria-label="Ninna UI on GitHub (opens in new tab)"
+              >
+                GitHub
+              </a>
+              <a
+                href="https://www.npmjs.com/org/ninna-ui"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-base-content transition-colors"
+                aria-label="Ninna UI on npm (opens in new tab)"
+              >
+                npm
+              </a>
             </div>
           </div>
         </footer>

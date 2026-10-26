@@ -20,12 +20,12 @@ The open-source React component library that combines **Chakra-level component q
 
 Most component libraries force a trade-off: **great components** (Chakra, Mantine) or **simple theming** (DaisyUI). Ninna UI eliminates that choice - you get both, with zero configuration overhead.
 
-- **Tailwind CSS v4.1 native** - Pure CSS-first configuration. No `tailwind.config.ts`, no PostCSS plugins, no build-step theming
+- **Tailwind CSS v4.1+ native** - CSS-first configuration with Tailwind's Vite or PostCSS integration; no `tailwind.config.ts` or separate theme compiler
 - **Zero JS runtime theming** - All 5 themes are pure CSS custom properties. Switch themes with a single `@import` - no providers, no context, no hydration cost
-- **oklch color system** - Perceptually uniform, high-chroma colors with automatic light/dark mode and guaranteed WCAG AA contrast
+- **oklch color system** - Semantic CSS colors with automatic light/dark mode and contrast-tested foreground/background combinations
 - **Radix accessibility, zero Radix API leakage** - Complex components (Select, Modal, Tabs, Accordion) are powered by Radix primitives internally. Your code never imports or types against Radix
 - **`data-slot` CSS override API** - 98 named slots across all components for surgical styling without `!important` hacks
-- **React Server Components ready** - Supports SSR and SPA. In Next.js, put interactive Ninna UI imports inside a `'use client'` boundary
+- **SSR and SPA support** - In Next.js, import Ninna UI components inside a focused `'use client'` boundary; server pages can render that wrapper
 - **TypeScript Strict with full JSDoc** - Complete type safety, IntelliSense documentation on every prop, and zero `any` in the public API
 - **Tree-shakeable modular packages** - 12 independently installable packages. Import only what you use - no monolithic bundle
 
@@ -41,7 +41,6 @@ Most component libraries force a trade-off: **great components** (Chakra, Mantin
 | Radix accessibility       |     **Yes**     |    Yes     |    No     |    No     |    No    |
 | `data-slot` CSS targeting |  **98 slots**   |    Yes     |    Yes    |    No     |    No    |
 | Modular npm packages      |   **12 pkgs**   | Copy-paste | 1 package | 1 package | 1 plugin |
-| No `'use client'` needed  |     **Yes**     |    Yes     |    No     |    No     |   N/A    |
 | CLI project scaffolding   | **4 templates** |    Yes     |    No     |    No     |    No    |
 | React 19 support          |     **Yes**     |    Yes     |    Yes    |    Yes    |   N/A    |
 | Framework agnostic        |     **Yes**     |    Yes     |    Yes    |    Yes    |   Yes    |
@@ -111,7 +110,7 @@ Choose from **Vite + React**, **Next.js 16**, **React Router 8**, or **Astro** t
 | Package                                                 | What It Does                                                                                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [`@ninna-ui/core`](./packages/core)                     | Design system foundation - TypeScript tokens, Tailwind class mappings, 5 CSS theme presets with oklch colors and automatic dark mode |
-| [`@ninna-ui/cli`](./packages/cli)                       | Zero-config project scaffolding - 4 framework templates (Vite, Next.js, React Router 8, Astro) with theme selection                 |
+| [`@ninna-ui/cli`](./packages/cli)                       | Zero-config project scaffolding - 4 framework templates (Vite, Next.js, React Router 8, Astro) with theme selection                  |
 | [`@ninna-ui/utils`](./packages/utils)                   | Shared utility functions - `cn()` class merger, `composeRefs`, `createContext`, keyboard constants, SSR helpers                      |
 | [`@ninna-ui/react-internal`](./packages/react-internal) | Radix engine isolation layer - wraps 11 Radix primitives behind clean TypeScript interfaces so Radix never leaks to consumers        |
 
@@ -127,7 +126,7 @@ Switch your entire design system with a single CSS import - no JavaScript config
 @import "@ninna-ui/core/theme/presets/minimal.css"; /* Clean Monochrome */
 ```
 
-Every preset includes **automatic dark mode** via `prefers-color-scheme`, plus manual toggle with a `.dark` class. All colors use the **oklch** color space for perceptually uniform, vibrant palettes with guaranteed WCAG AA contrast.
+Every preset includes **automatic dark mode** via `prefers-color-scheme`, plus manual toggle with a `.dark` class. Colors use the **oklch** color space. Bundled color combinations are contrast-tested; custom palettes and compositions need their own checks.
 
 ## Starter Templates
 
@@ -137,7 +136,7 @@ Production-ready project in seconds - TypeScript strict, all packages pre-instal
 | ------------------------------------------------------- | --------------------- | ----------------- | ---------------------- |
 | [`vite-react`](./packages/cli/templates/vite-react)     | React 19              | Vite 8            | `@tailwindcss/vite`    |
 | [`nextjs`](./packages/cli/templates/nextjs)             | Next.js 16 App Router | Webpack/Turbopack | `@tailwindcss/postcss` |
-| [`react-router`](./packages/cli/templates/react-router) | React Router 8       | Vite 8            | `@tailwindcss/vite`    |
+| [`react-router`](./packages/cli/templates/react-router) | React Router 8        | Vite 8            | `@tailwindcss/vite`    |
 | [`astro`](./packages/cli/templates/astro)               | Astro 7 + React 19    | Vite 8            | `@tailwindcss/vite`    |
 
 ```bash
