@@ -158,9 +158,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         description="Verify the setup by rendering a Ninna UI component."
       >
         <CodeBlock
-          code={`import { Button, Heading, Text } from "@ninna-ui/primitives";
+          code={`// app/components/welcome.tsx
+"use client";
 
-export default function Page() {
+import { Button, Heading, Text } from "@ninna-ui/primitives";
+
+export default function Welcome() {
   return (
     <div className="p-8">
       <Heading as="h1" size="3xl">Hello Ninna UI</Heading>
@@ -168,6 +171,16 @@ export default function Page() {
       <Button color="primary" className="mt-4">Click me</Button>
     </div>
   );
+}`}
+          language="tsx"
+          copyButtonAlwaysVisible
+        />
+        <CodeBlock
+          code={`// app/page.tsx — remains a Server Component
+import Welcome from "./components/welcome";
+
+export default function Page() {
+  return <Welcome />;
 }`}
           language="tsx"
           copyButtonAlwaysVisible
@@ -182,18 +195,18 @@ export default function Page() {
         <div className="space-y-3">
           <Text className="text-base-content/70">
             <strong>
-              Server Components can render imported Ninna UI components
+              Import Ninna UI components inside a client boundary.
             </strong>{" "}
-            - no <Code>{`"use client"`}</Code> directive needed. Only add{" "}
-            <Code>{`"use client"`}</Code> when your component uses React hooks
-            like <Code>useState</Code> or <Code>useEffect</Code>, or defines
-            event handlers. The library supplies its own client boundaries where
-            needed.
+            Put <Code>{`"use client"`}</Code> at the top of a wrapper when it
+            uses hooks, event handlers or browser APIs. Keeping Ninna UI imports
+            there also works with the published 0.7 packages and the CLI
+            starter. A client component can still be rendered on the server and
+            hydrated.
           </Text>
           <Text className="text-base-content/70">
-            You can freely use Ninna UI components in Server Components and only
-            mark the specific components that need client-side state as client
-            components.
+            Keep the root layout and page on the server, then render your client
+            wrapper from them. The CSS theme import remains in the root layout;
+            palette resolution does not require a React provider.
           </Text>
           <div className="bg-success/10 border border-success/20 rounded-lg p-4">
             <Text size="sm" className="text-success">

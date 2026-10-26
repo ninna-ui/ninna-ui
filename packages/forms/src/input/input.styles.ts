@@ -6,7 +6,7 @@ export const inputVariants = cva(
     variants: {
       inputVariant: {
         outline: "",
-        filled: "bg-base-200 border-transparent focus:bg-base-100",
+        filled: "bg-base-200 border-border focus:bg-base-100",
         flushed: "border-x-0 border-t-0 rounded-none border-border",
       },
       color: {
@@ -169,7 +169,7 @@ export const inputVariants = cva(
         inputVariant: "filled",
         invalid: true,
         class:
-          "bg-danger/10 border-transparent focus:ring-2 focus:ring-danger focus:border-danger",
+          "bg-danger/10 border-danger focus:ring-2 focus:ring-danger focus:border-danger",
       },
       {
         inputVariant: "flushed",

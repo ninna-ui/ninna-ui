@@ -9,7 +9,7 @@
 
 `@ninna-ui/core` is the zero-dependency foundation of [Ninna UI](../../README.md). It ships **no React code, no JSX, and no component logic** - only the shared design language that every component package consumes. This is the package that makes one-line theme switching possible.
 
-**Why this matters:** Unlike libraries that bundle theming into a JavaScript runtime (Chakra UI, Mantine), Ninna UI's entire theme system lives in pure CSS custom properties. Your app ships **zero theming JavaScript** - the browser resolves colors and tokens natively, with zero hydration cost.
+Ninna UI's palette lives in CSS custom properties. A CSS import supplies the colors, and the browser resolves light/dark values without a React theme provider. An optional theme switcher still needs consistent server and client initialization.
 
 ## Installation
 
@@ -85,17 +85,19 @@ Every preset includes **automatic dark mode** via `@media (prefers-color-scheme:
 For manual toggle, add the `.dark` or `.light` class to your root element:
 
 ```html
-<!-- Forced dark -->
+<!-- Choose one root configuration. -->
 <html data-theme="default" class="dark">
-  <!-- Forced light (blocks OS preference) -->
-  <html data-theme="default" class="light">
-    <!-- System preference auto (no class) -->
-    <html data-theme="default"></html>
-  </html>
+  ...
+</html>
+<html data-theme="default" class="light">
+  ...
+</html>
+<html data-theme="default">
+  ...
 </html>
 ```
 
-All colors use the **oklch** color space - perceptually uniform, vibrant, and WCAG AA compliant.
+Colors use the **oklch** color space. The bundled foreground/background combinations are contrast-tested; choosing oklch alone does not guarantee accessibility.
 
 ## Design Tokens
 
@@ -193,7 +195,7 @@ core/
 │   │   │   └── base.ts        # Background, text, border, stroke and marker maps
 │   │   └── layout.ts          # Gap, grid, flex and responsive maps
 │   └── theme/
-│       ├── tailwind.css        # Shared @theme + animations + @variant dark
+│       ├── tailwind.css        # Shared @theme + animations + package sources
 │       └── presets/
 │           ├── default.css     # Purple / Magenta
 │           ├── ocean.css       # Blue / Cyan

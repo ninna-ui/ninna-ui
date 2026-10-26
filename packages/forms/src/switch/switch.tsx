@@ -1,20 +1,35 @@
-import { forwardRef, useId } from 'react';
-import { cn } from '@ninna-ui/utils';
-import { useFormControlProps } from '../form-control';
-import { SwitchEngine } from '@ninna-ui/react-internal';
-import { switchStyles, switchRootVariants, switchThumbVariants } from './switch.styles';
-import type { SwitchProps } from './switch.types';
+import { forwardRef, useId } from "react";
+import { cn } from "@ninna-ui/utils";
+import { useFormControlProps } from "../form-control";
+import { SwitchEngine } from "@ninna-ui/react-internal";
+import {
+  switchStyles,
+  switchRootVariants,
+  switchThumbVariants,
+} from "./switch.styles";
+import type { SwitchProps } from "./switch.types";
 
 const LoadingSpinner = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none">
-    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+    <circle
+      className="opacity-25"
+      cx="12"
+      cy="12"
+      r="10"
+      stroke="currentColor"
+      strokeWidth="4"
+    />
+    <path
+      className="opacity-75"
+      fill="currentColor"
+      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+    />
   </svg>
 );
 
 /**
  * Switch component for toggling boolean values
- * 
+ *
  * @example
  * ```tsx
  * <Switch label="Enable notifications" />
@@ -27,9 +42,9 @@ const LoadingSpinner = ({ className }: { className?: string }) => (
 export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
   (
     {
-      size = 'md',
-      color = 'primary',
-      variant = 'solid',
+      size = "md",
+      color = "primary",
+      variant = "solid",
       checked,
       defaultChecked,
       onCheckedChange,
@@ -41,14 +56,14 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
       value,
       label,
       description,
-      labelPosition = 'end',
+      labelPosition = "end",
       trackLabels,
       thumbIcon,
       className,
       id: idProp,
       ...props
     },
-    ref
+    ref,
   ) => {
     const generatedId = useId();
     const formControlProps = useFormControlProps({
@@ -60,7 +75,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
 
     const id = formControlProps.id ?? generatedId;
     const isDisabled = disabled || formControlProps.disabled || loading;
-    const isInvalid = invalid || !!formControlProps['aria-invalid'];
+    const isInvalid = invalid || !!formControlProps["aria-invalid"];
 
     const switchElement = (
       <SwitchEngine.Root
@@ -76,35 +91,51 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
         value={value}
         data-invalid={isInvalid || undefined}
         data-loading={loading || undefined}
+        aria-invalid={isInvalid || undefined}
+        aria-busy={loading || undefined}
+        aria-disabled={isDisabled || undefined}
+        aria-labelledby={formControlProps["aria-labelledby"]}
         className={cn(
-          switchRootVariants({ variant: variant as 'solid' | 'outline', color, size, invalid: isInvalid }),
-          className
+          switchRootVariants({ variant, color, size, invalid: isInvalid }),
+          className,
         )}
-        aria-describedby={cn(
-          description && `${id}-description`,
-          formControlProps['aria-describedby']
-        ) || undefined}
+        aria-describedby={
+          cn(
+            description && `${id}-description`,
+            formControlProps["aria-describedby"],
+          ) || undefined
+        }
         {...props}
       >
         {trackLabels && (
           <>
-            <span className={cn(switchStyles.trackLabel, switchStyles.trackLabelOn)}>
+            <span
+              aria-hidden="true"
+              className={cn(switchStyles.trackLabel, switchStyles.trackLabelOn)}
+            >
               {trackLabels.on}
             </span>
-            <span className={cn(switchStyles.trackLabel, switchStyles.trackLabelOff)}>
+            <span
+              aria-hidden="true"
+              className={cn(
+                switchStyles.trackLabel,
+                switchStyles.trackLabelOff,
+              )}
+            >
               {trackLabels.off}
             </span>
           </>
         )}
         <SwitchEngine.Thumb
           data-slot="thumb"
-          className={cn(
-            switchThumbVariants({ variant: variant as 'solid' | 'soft' | 'outline', color, size })
-          )}
+          aria-hidden="true"
+          className={cn(switchThumbVariants({ variant, color, size }))}
         >
           {loading ? (
             <LoadingSpinner className={switchStyles.spinner} />
-          ) : thumbIcon}
+          ) : (
+            thumbIcon
+          )}
         </SwitchEngine.Thumb>
       </SwitchEngine.Root>
     );
@@ -114,10 +145,14 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
     }
 
     return (
-      <div className={cn(
-        description ? switchStyles.wrapperWithDescription : switchStyles.wrapper,
-        labelPosition === 'start' && switchStyles.wrapperReverse
-      )}>
+      <div
+        className={cn(
+          description
+            ? switchStyles.wrapperWithDescription
+            : switchStyles.wrapper,
+          labelPosition === "start" && switchStyles.wrapperReverse,
+        )}
+      >
         {switchElement}
         <div className={switchStyles.labelWrapper}>
           {label && (
@@ -126,19 +161,21 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(
               className={cn(
                 switchStyles.label,
                 switchStyles.labelSizes[size],
-                isDisabled && switchStyles.labelDisabled
+                isDisabled && switchStyles.labelDisabled,
               )}
             >
               {label}
             </label>
           )}
           {description && (
-            <span id={`${id}-description`} className={switchStyles.description}>{description}</span>
+            <span id={`${id}-description`} className={switchStyles.description}>
+              {description}
+            </span>
           )}
         </div>
       </div>
     );
-  }
+  },
 );
 
-Switch.displayName = 'Switch';
+Switch.displayName = "Switch";

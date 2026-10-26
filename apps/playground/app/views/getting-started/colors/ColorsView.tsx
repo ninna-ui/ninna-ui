@@ -193,7 +193,6 @@ const USAGE_CODE = `/* Semantic colors as Tailwind utilities */
 /* Text colors for inline use */
 <Text className="text-base-content">Default text</Text>
 <Text className="text-base-content/70">Secondary text (70% opacity)</Text>
-<Text className="text-base-content/70">Secondary text (70% opacity)</Text>
 
 /* Base surface scale */
 <div className="bg-base-50">Page background</div>

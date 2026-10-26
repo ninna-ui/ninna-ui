@@ -38,7 +38,7 @@ export const selectTriggerVariants = cva(
       },
     },
     compoundVariants: [
-      // outline + color: colored border at rest + focus ring
+      // outline: neutral identifying boundary, semantic focus ring
       {
         selectVariant: "outline",
         color: "primary",

@@ -32,7 +32,7 @@ That is the entire theme setup. There is **no** `tailwind.config.ts`.
 
 ## The exact token set (from `tailwind.css` `@theme inline`)
 
-Each semantic color is a **pair**: the color + its `-content` (guaranteed AA-contrasting foreground).
+Each semantic color is a **pair**: the color + its `-content` foreground. Bundled pairs are contrast-tested; custom overrides must be measured again. The same semantic value drives native `text-primary`, `bg-primary`, `border-primary` and `ring-primary` utilities. Do not introduce a separate `primary-text` alias.
 
 | Token (utility form)                                         | Use for                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -67,8 +67,8 @@ For soft/tinted variants, use opacity on the same token: `bg-primary/10 text-pri
 ## Surfaces & elevation
 
 - Page background: `bg-base-50`. Card/raised surface: `bg-base-100` / `bg-base-200`.
-- Text hierarchy: `text-base-content` (primary), `text-base-content/70` (muted), `text-base-content/50` (subtle).
-- Borders: `border-base-200` (default), `border-base-300` (stronger). Base scale **auto-inverts** in dark mode, so the same classes work in both themes — do not write `dark:` color overrides for base surfaces.
+- Text hierarchy: `text-base-content` (primary), `text-base-content/70` (secondary). Do not fade readable text further without measuring its rendered contrast.
+- Decorative separators: `border-base-200` / `border-base-300`. Identifying control boundaries: `border-border`, `border-border-hover`, `border-border-active`. Base scale **auto-inverts** in dark mode, so the same classes work in both themes — do not write `dark:` color overrides for base surfaces.
 
 ## Dark mode
 
@@ -102,19 +102,19 @@ When authoring components, add `data-slot` to every part a user might want to ta
 2. Keep `@import "../tailwind.css";` at the top.
 3. Define all tokens under `[data-theme="<name>"]` (light), the `.dark` block, AND the `@media (prefers-color-scheme: dark)` block — the dark values MUST be duplicated in both (pure CSS has no mixins; there is a SYNC comment noting this).
 4. Use **oklch** for every color: `oklch(L C H)` — L = lightness 0–1, C = chroma, H = hue. oklch gives perceptually even scales, so generating accessible steps is predictable.
-5. Verify every `*-content` hits ≥ 4.5:1 against its base color in both light and dark.
+5. Run `pnpm check-theme-contrast`: verify solid/content rest and 90% hover, semantic text on base-50/100/200 and 10–20% tints (≥ 4.5:1), and control boundaries (≥ 3:1). Also review rendered components; jsdom/axe does not measure CSS contrast. Custom compositions need their own checks.
 
 ## oklch quick reference
 
 ```css
---color-primary: oklch(0.49 0.31 275); /* deep electric purple */
---color-primary-content: oklch(0.9 0.06 275); /* light text on it */
+--color-primary: oklch(0.455 0.2859 275); /* bundled light primary */
+--color-primary-content: oklch(0.985 0.005 275); /* content on it */
 /* Lighten for dark mode (raise L, often lower C slightly) */
 ```
 
 ## Why this approach (technical rationale)
 
-- **No JS theme provider** in the bundle: no context re-renders, no SSR theme-flash. Theme switching = swapping a CSS attribute.
+- **No JS theme provider** for palette resolution. Theme switching = swapping a CSS attribute. A switcher still needs consistent server/client initialization; CSS variables alone do not prevent theme flash or hydration bugs in application code.
 - **oklch** (perceptually uniform) for predictable lightness/chroma math across light and dark.
 - **Tokens ship as a versioned package** (update via npm), not copied into the consumer repo.
 - **Deep customization via `data-slot` CSS**, so consumers restyle without editing component source.

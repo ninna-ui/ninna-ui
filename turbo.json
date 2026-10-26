@@ -1,6 +1,6 @@
 {
   "$schema": "https://v2-8-9.turborepo.dev/schema.json",
-  "globalDependencies": ["**/.env"],
+  "globalDependencies": ["**/.env", "scripts/mark-client-entry.mjs"],
   "concurrency": "11",
   "tasks": {
     "build": {

@@ -48,13 +48,13 @@ jobs:
       - name: Verify CSS safelist is up-to-date
         run: |
           node packages/core/scripts/generate-safelist.mjs
-          if git diff --quiet packages/core/src/theme/tailwind.css; then
+          if git diff --quiet -- packages/core/src/theme/safelist.css packages/core/src/theme/tailwind.css; then
             echo "✅ CSS safelist is up-to-date"
           else
             echo "❌ CSS safelist is out-of-date!"
             echo "   Run: node packages/core/scripts/generate-safelist.mjs"
-            echo "   Then commit the updated packages/core/src/theme/tailwind.css"
-            git diff packages/core/src/theme/tailwind.css
+            echo "   Then commit the updated packages/core/src/theme/safelist.css"
+            git diff -- packages/core/src/theme/safelist.css packages/core/src/theme/tailwind.css
             exit 1
           fi
 
@@ -75,6 +75,9 @@ jobs:
 
       - name: Validate exports
         run: pnpm check-exports
+
+      - name: Verify published React client boundaries
+        run: pnpm check-client-boundaries
 
       - name: Validate package (dry run)
         run: pnpm check-pack
