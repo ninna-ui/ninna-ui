@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Check the configured publishing credential before attempting twelve uploads.
-# With no token, npm can use an explicitly configured trusted publisher instead.
-if [[ -n "${NPM_TOKEN:-}" || -n "${NODE_AUTH_TOKEN:-}" ]]; then
-  if ! npm whoami --registry=https://registry.npmjs.org/ >/dev/null; then
-    echo "::error::npm rejected the publishing credential. Refresh the repository NPM_TOKEN secret with a valid credential authorized to publish @ninna-ui packages, then rerun Release. Do not change package versions."
-    exit 1
-  fi
+# npm exchanges the GitHub job identity for a short-lived package credential.
+# Every package must trust ninna-ui/ninna-ui's release.yml workflow on npm.
+if [[ "${GITHUB_ACTIONS:-}" != "true" || -z "${ACTIONS_ID_TOKEN_REQUEST_URL:-}" || -z "${ACTIONS_ID_TOKEN_REQUEST_TOKEN:-}" ]]; then
+  echo "::error::Publishing requires the GitHub Actions OIDC identity. Run the Release workflow with id-token: write and configure each npm package's trusted publisher for ninna-ui/ninna-ui and release.yml."
+  exit 1
 fi
 
 pnpm changeset publish

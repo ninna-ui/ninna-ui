@@ -18,7 +18,7 @@ jobs:
     permissions:
       contents: write # create release commits / tags
       pull-requests: write # create/update the version bump PR
-      id-token: write # npm provenance (OIDC) — required for --provenance publish
+      id-token: write # npm trusted publishing and provenance
 
     steps:
       - name: Checkout
@@ -37,8 +37,6 @@ jobs:
         with:
           node-version-file: .nvmrc
           cache: pnpm
-          registry-url: https://registry.npmjs.org
-          scope: "@ninna-ui"
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -72,10 +70,8 @@ jobs:
           commit: "chore: version packages"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
-          NPM_CONFIG_ALWAYS_AUTH: true
+          NPM_CONFIG_PROVENANCE: true
 
       - name: Notify on Success
         if: ${{ steps.changesets.outputs.published == 'true' }}
