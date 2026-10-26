@@ -2,6 +2,18 @@
 
 Validated on 25 October 2026 with Node.js 24.13.0 and npm 11.6.2 on Windows. Use Node.js 24 LTS for a common runtime across the CLI and all four starters.
 
+## Published 0.7 verification
+
+Rechecked on 26 October 2026 after [Release completed](https://github.com/ninna-ui/ninna-ui/actions/runs/40298825037) using npm Trusted Publishing. All twelve public package versions and npm latest tags were verified at 0.7.0, with corresponding GitHub release records.
+
+- Downloaded the actual published CLI tarball, confirmed `--version` prints 0.7.0, and generated all four starters outside the workspace.
+- All four passed strict peer dependency installation, type checks, and production builds (12 phases). Every app's nine direct Ninna dependencies was verified at exactly 0.7.0.
+- Production browser checks passed for form submission/reset, keyboard tabs, code display, dialog focus containment, Escape dismissal and focus restoration. All four used Forest, had unique element IDs, and showed no hydration warnings or console errors.
+- Starter CodeBlock examples followed the system dark color preference through the configured semantic variables.
+- The published CLI also passed the real interactive regression check through npm exec: omitting the preset prompts for it, Ocean is written to CSS and document markup, and the process exits while stdin remains open.
+
+The earlier 25 October checks below record the pre-release baseline, including development-server and mobile checks. The published-release checks above exercised the actual npm artifact and 0.7 packages in production.
+
 ## Dependency baseline
 
 Versions were checked against the npm registry on 24 October 2026. Framework versions use compatible ranges except React Router, whose framework packages stay on the same exact release.
@@ -46,4 +58,4 @@ node scripts/smoke-cli-templates.mjs --serve
 
 The smoke script writes local results to the ignored `tmp/cli-starters-smoke.json` file and prints the temporary project directory. `--serve` exposes production previews on loopback ports 4311–4314; Ctrl+C stops those servers. Browser interaction and hydration checks are manual. The CLI starters workflow repeats packed generation, strict dependency installation, type checks, and production builds on relevant pull requests.
 
-Only `@ninna-ui/cli` receives a minor Changeset. Private generated apps start at `0.0.0`; the normal release workflow handles the published CLI version.
+The starter update used a minor CLI Changeset. The fixed public package group advanced all twelve packages to 0.7.0 through the normal release PR; generated private apps still start at 0.0.0.

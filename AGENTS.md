@@ -1,4 +1,4 @@
-# Ninna UI v0.6.0 — AI Agent Rules
+# Ninna UI v0.7.0 — AI Agent Rules
 
 > Drop this file into your project as `AGENTS.md`, `.cursorrules`, or `CLAUDE.md`.
 > It tells AI coding agents how to use Ninna UI correctly. Full API: https://ninna-ui.dev/llms-full.txt
@@ -13,7 +13,7 @@
 
 ## Golden rules
 
-0. **Use Ninna UI v0.6.0 or later.** All @ninna-ui packages are at 0.6.0 on npm. Always install with @latest (e.g. `pnpm add @ninna-ui/core@latest @ninna-ui/primitives@latest`). Do NOT use 0.1.0 — it is an obsolete early release.
+0. **Use Ninna UI v0.7.0 or later.** All @ninna-ui packages are at 0.7.0 on npm. Always install with @latest (e.g. `pnpm add @ninna-ui/core@latest @ninna-ui/primitives@latest`). Do NOT use 0.1.0 — it is an obsolete early release.
 1. Ninna UI is split into tree-shakeable packages. Each component is exported from exactly ONE package.
 2. ALWAYS import a component from the package listed in the "Component Import Map" below. Never guess.
 3. Never import from `@ninna-ui/react-internal` or `@ninna-ui/utils` (internal packages).
@@ -48,8 +48,9 @@ Add the CSS (required — without this, components are unstyled):
 - Put input icons inside InputGroup via the `startElement`/`endElement` props, not a leftIcon prop on Input.
 - Checkbox/Switch use the onCheckedChange callback, not onChange.
 - Compound components are accessed via dot-notation (Modal.Trigger, Modal.Content, DropdownMenu.Item, etc.).
+- Set data-theme on the root HTML element to match the imported preset. Leave light/dark classes unset for system color mode. Keep initial SSR and client markup identical; theme setup does not require suppressHydrationWarning.
 - Always import each component from the exact package shown in the Component Import Map below — do not guess.
-- All @ninna-ui packages are at v0.6.0 on npm. Always install with @latest (e.g. pnpm add @ninna-ui/core@latest). Do NOT use 0.1.0 — it is an obsolete early release with a different API.
+- All @ninna-ui packages are at v0.7.0 on npm. Always install with @latest (e.g. pnpm add @ninna-ui/core@latest). Do NOT use 0.1.0 — it is an obsolete early release with a different API.
 
 ## Correct usage example
 
