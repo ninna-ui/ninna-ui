@@ -20,7 +20,7 @@ The open-source React component library that combines **Chakra-level component q
 
 Most component libraries force a trade-off: **great components** (Chakra, Mantine) or **simple theming** (DaisyUI). Ninna UI eliminates that choice - you get both, with zero configuration overhead.
 
-- **Tailwind CSS v4.1 native** - Pure CSS-first configuration. No `tailwind.config.ts`, no PostCSS plugins, no build-step theming
+- **Tailwind CSS v4.1+ native** - CSS-first configuration with Tailwind's Vite or PostCSS integration; no `tailwind.config.ts` or separate theme compiler
 - **Zero JS runtime theming** - All 5 themes are pure CSS custom properties. Switch themes with a single `@import` - no providers, no context, no hydration cost
 - **oklch color system** - Semantic CSS colors with automatic light/dark mode and contrast-tested foreground/background combinations
 - **Radix accessibility, zero Radix API leakage** - Complex components (Select, Modal, Tabs, Accordion) are powered by Radix primitives internally. Your code never imports or types against Radix

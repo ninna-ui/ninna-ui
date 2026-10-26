@@ -19,6 +19,8 @@ pnpm add @ninna-ui/core@latest
 
 ## CSS Setup
 
+Use Tailwind CSS 4.1 or later. The included CSS safelist uses `@source inline()`, introduced in Tailwind 4.1.
+
 Add one of the 5 theme presets to your app's CSS entry point, then set `data-theme` on your root element:
 
 ```css

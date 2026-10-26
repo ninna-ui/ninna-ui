@@ -83,6 +83,14 @@ Custom authors should test those compositions with the same contrast thresholds.
 The presets contain static CSS values; palette-authoring calculations do not ship
 in application code.
 
+A follow-up library audit strengthened the control-boundary check so transparent
+borders cannot silently skip a styled field. All 370 rendered Input examples
+across five presets and light/dark pass: normal text/placeholder minimum 6.165:1,
+and identifying boundary minimum 3.498:1 for the 360 styled examples. This includes
+the corrected filled Input boundary and the bottom border of flushed Inputs.
+See [the React/Tailwind audit](./ui-library-design-audit.md) for package and SSR
+integration evidence and its scope.
+
 ## Release status
 
 This is an unreleased 0.8 draft. Do not publish packages, merge a release PR, or
