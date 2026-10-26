@@ -37,7 +37,7 @@ export default meta;
 type Story = StoryObj<typeof Wrap>;
 
 const Tag = ({ children }: { children: React.ReactNode }) => (
-  <span className="px-3 py-1 bg-primary/10 text-primary-text rounded-full text-sm">
+  <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">
     {children}
   </span>
 );

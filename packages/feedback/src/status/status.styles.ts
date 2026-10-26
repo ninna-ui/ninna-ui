@@ -23,10 +23,10 @@ export const statusIndicatorVariants = cva("rounded-full shrink-0", {
 export const statusLabelVariants = cva("", {
   variants: {
     value: {
-      success: "text-success-text",
-      danger: "text-danger-text",
-      warning: "text-warning-text",
-      info: "text-info-text",
+      success: "text-success",
+      danger: "text-danger",
+      warning: "text-warning",
+      info: "text-info",
     },
     size: {
       sm: "text-xs",

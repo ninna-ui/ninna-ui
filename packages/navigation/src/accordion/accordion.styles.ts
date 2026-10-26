@@ -31,7 +31,7 @@ export type AccordionItemVariantsProps = VariantProps<
 
 export const accordionStyles = {
   trigger:
-    "flex flex-1 items-center justify-between py-4 text-left font-medium transition-all hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-text [&[data-state=open]>svg]:rotate-180",
+    "flex flex-1 items-center justify-between py-4 text-left font-medium transition-all hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-primary [&[data-state=open]>svg]:rotate-180",
   chevron:
     "h-4 w-4 shrink-0 text-base-content/70 transition-transform duration-200",
   content:

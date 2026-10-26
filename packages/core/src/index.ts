@@ -1,12 +1,12 @@
 /**
  * @ninna-ui/core
  * Design system foundation: tokens, class mappings, and CSS theme
- * 
+ *
  * Architecture:
  * - tokens/   : Type definitions (Color, Size, Radius, etc.)
- * - classes/  : Tailwind class mappings (BG_COLORS, SOLID_VARIANTS, etc.)
+ * - classes/  : Shared color and layout Tailwind class mappings
  * - theme/    : Theme presets (default.css, ocean.css, etc.)
- * 
+ *
  * Usage:
  * ```css
  * @import "tailwindcss";
@@ -15,7 +15,7 @@
  */
 
 // Design tokens (types)
-export * from './tokens';
+export * from "./tokens";
 
 // Class mappings
-export * from './classes';
+export * from "./classes";

@@ -6,7 +6,9 @@ export default function UseCases() {
     <div className="flex flex-col gap-6 w-full">
       {/* Form Validation Error */}
       <div className="space-y-2">
-        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">Form Validation</h4>
+        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">
+          Form Validation
+        </h4>
         <Alert
           variant="soft"
           color="danger"
@@ -22,7 +24,9 @@ export default function UseCases() {
 
       {/* Success Message */}
       <div className="space-y-2">
-        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">Success Message</h4>
+        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">
+          Success Message
+        </h4>
         <Alert
           variant="soft"
           color="success"
@@ -34,7 +38,9 @@ export default function UseCases() {
 
       {/* System Notification */}
       <div className="space-y-2">
-        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">System Notification</h4>
+        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">
+          System Notification
+        </h4>
         <Alert
           variant="outline"
           color="info"
@@ -50,14 +56,20 @@ export default function UseCases() {
 
       {/* Warning Banner */}
       <div className="space-y-2">
-        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">Warning Banner</h4>
+        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">
+          Warning Banner
+        </h4>
         <Alert
           variant="solid"
           color="warning"
           title="Browser Not Supported"
           description="You are using an outdated browser. Please update to the latest version for the best experience."
           action={
-            <Button size="sm" className="bg-white/20 hover:bg-white/30 text-white">
+            <Button
+              size="sm"
+              variant="ghost"
+              className="border border-current text-inherit hover:bg-current/10 focus-visible:ring-current"
+            >
               Update Browser
             </Button>
           }
@@ -66,7 +78,9 @@ export default function UseCases() {
 
       {/* Cookie Consent */}
       <div className="space-y-2">
-        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">Cookie Consent</h4>
+        <h4 className="text-xs font-medium text-base-content/70 uppercase tracking-wide">
+          Cookie Consent
+        </h4>
         <Alert
           variant="soft"
           color="neutral"

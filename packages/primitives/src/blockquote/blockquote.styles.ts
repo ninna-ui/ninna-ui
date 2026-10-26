@@ -75,17 +75,17 @@ export const blockquoteVariants = cva(
 export type BlockquoteVariantsProps = VariantProps<typeof blockquoteVariants>;
 
 export const blockquoteStyles = {
-  content: "text-current/80 italic",
-  citation: "mt-2 text-sm text-current/60 not-italic",
+  content: "text-current italic",
+  citation: "mt-2 text-sm text-current not-italic",
   iconWrapper: "absolute -left-3 -top-2 text-4xl opacity-50",
   iconColors: {
-    primary: "text-primary-text/50",
-    secondary: "text-secondary-text/50",
-    accent: "text-accent-text/50",
-    neutral: "text-neutral-text/50",
-    success: "text-success-text/50",
-    danger: "text-danger-text/50",
-    warning: "text-warning-text/50",
-    info: "text-info-text/50",
+    primary: "text-primary/50",
+    secondary: "text-secondary/50",
+    accent: "text-accent/50",
+    neutral: "text-neutral/50",
+    success: "text-success/50",
+    danger: "text-danger/50",
+    warning: "text-warning/50",
+    info: "text-info/50",
   },
 };

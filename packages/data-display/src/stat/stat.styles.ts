@@ -1,12 +1,12 @@
 export const STAT_ICON_COLORS: Record<string, string> = {
-  primary: "bg-primary/10 text-primary-text",
-  secondary: "bg-secondary/10 text-secondary-text",
-  accent: "bg-accent/10 text-accent-text",
-  neutral: "bg-neutral/10 text-neutral-text",
-  success: "bg-success/10 text-success-text",
-  danger: "bg-danger/10 text-danger-text",
-  warning: "bg-warning/10 text-warning-text",
-  info: "bg-info/10 text-info-text",
+  primary: "bg-primary/10 text-primary",
+  secondary: "bg-secondary/10 text-secondary",
+  accent: "bg-accent/10 text-accent",
+  neutral: "bg-neutral/10 text-neutral",
+  success: "bg-success/10 text-success",
+  danger: "bg-danger/10 text-danger",
+  warning: "bg-warning/10 text-warning",
+  info: "bg-info/10 text-info",
 };
 
 export const statStyles = {
@@ -15,11 +15,11 @@ export const statStyles = {
   value: "font-bold tracking-tight text-base-content",
   helpText: "text-xs text-base-content/70",
   trend: "inline-flex items-center gap-1 text-xs font-medium",
-  trendUp: "text-success-text",
-  trendDown: "text-danger-text",
+  trendUp: "text-success",
+  trendDown: "text-danger",
   trendNeutral: "text-base-content/70",
-  trendUpBad: "text-danger-text",
-  trendDownBad: "text-success-text",
+  trendUpBad: "text-danger",
+  trendDownBad: "text-success",
   icon: "flex items-center justify-center rounded-lg p-3",
 };
 

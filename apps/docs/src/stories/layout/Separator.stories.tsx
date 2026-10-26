@@ -54,15 +54,15 @@ export const Vertical: Story = {
 export const InNavigation: Story = {
   render: () => (
     <HStack gap="4" align="center">
-      <a href="/" className="text-base-content/70 hover:text-primary-text">
+      <a href="/" className="text-base-content/70 hover:text-primary">
         Home
       </a>
       <Separator orientation="vertical" className="h-4" />
-      <a href="/" className="text-base-content/70 hover:text-primary-text">
+      <a href="/" className="text-base-content/70 hover:text-primary">
         About
       </a>
       <Separator orientation="vertical" className="h-4" />
-      <a href="/" className="text-base-content/70 hover:text-primary-text">
+      <a href="/" className="text-base-content/70 hover:text-primary">
         Contact
       </a>
     </HStack>

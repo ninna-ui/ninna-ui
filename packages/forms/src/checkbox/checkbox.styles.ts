@@ -5,19 +5,19 @@ export const checkboxVariants = cva(
   {
     variants: {
       variant: {
-        solid: "border-base-300 bg-base-100",
-        soft: "border-transparent bg-base-200",
-        outline: "border-base-300 bg-base-100",
+        solid: "border-border bg-base-100",
+        soft: "border-border bg-base-200",
+        outline: "border-border bg-base-100",
       },
       color: {
-        primary: "peer-focus-visible:ring-primary-text",
-        secondary: "peer-focus-visible:ring-secondary-text",
-        accent: "peer-focus-visible:ring-accent-text",
-        neutral: "peer-focus-visible:ring-neutral-text",
-        success: "peer-focus-visible:ring-success-text",
-        danger: "peer-focus-visible:ring-danger-text",
-        warning: "peer-focus-visible:ring-warning-text",
-        info: "peer-focus-visible:ring-info-text",
+        primary: "peer-focus-visible:ring-primary",
+        secondary: "peer-focus-visible:ring-secondary",
+        accent: "peer-focus-visible:ring-accent",
+        neutral: "peer-focus-visible:ring-neutral",
+        success: "peer-focus-visible:ring-success",
+        danger: "peer-focus-visible:ring-danger",
+        warning: "peer-focus-visible:ring-warning",
+        info: "peer-focus-visible:ring-info",
       },
       size: {
         sm: "w-4 h-4",
@@ -81,49 +81,49 @@ export const checkboxVariants = cva(
         variant: "soft",
         color: "primary",
         class:
-          "peer-checked:bg-primary/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-primary/20 peer-data-[state=indeterminate]:border-transparent text-primary-text",
+          "peer-checked:bg-primary/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-primary/20 peer-data-[state=indeterminate]:border-transparent text-primary",
       },
       {
         variant: "soft",
         color: "secondary",
         class:
-          "peer-checked:bg-secondary/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-secondary/20 peer-data-[state=indeterminate]:border-transparent text-secondary-text",
+          "peer-checked:bg-secondary/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-secondary/20 peer-data-[state=indeterminate]:border-transparent text-secondary",
       },
       {
         variant: "soft",
         color: "accent",
         class:
-          "peer-checked:bg-accent/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-accent/20 peer-data-[state=indeterminate]:border-transparent text-accent-text",
+          "peer-checked:bg-accent/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-accent/20 peer-data-[state=indeterminate]:border-transparent text-accent",
       },
       {
         variant: "soft",
         color: "neutral",
         class:
-          "peer-checked:bg-neutral/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-neutral/20 peer-data-[state=indeterminate]:border-transparent text-neutral-text",
+          "peer-checked:bg-neutral/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-neutral/20 peer-data-[state=indeterminate]:border-transparent text-neutral",
       },
       {
         variant: "soft",
         color: "success",
         class:
-          "peer-checked:bg-success/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-success/20 peer-data-[state=indeterminate]:border-transparent text-success-text",
+          "peer-checked:bg-success/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-success/20 peer-data-[state=indeterminate]:border-transparent text-success",
       },
       {
         variant: "soft",
         color: "danger",
         class:
-          "peer-checked:bg-danger/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-danger/20 peer-data-[state=indeterminate]:border-transparent text-danger-text",
+          "peer-checked:bg-danger/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-danger/20 peer-data-[state=indeterminate]:border-transparent text-danger",
       },
       {
         variant: "soft",
         color: "warning",
         class:
-          "peer-checked:bg-warning/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-warning/20 peer-data-[state=indeterminate]:border-transparent text-warning-text",
+          "peer-checked:bg-warning/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-warning/20 peer-data-[state=indeterminate]:border-transparent text-warning",
       },
       {
         variant: "soft",
         color: "info",
         class:
-          "peer-checked:bg-info/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-info/20 peer-data-[state=indeterminate]:border-transparent text-info-text",
+          "peer-checked:bg-info/20 peer-checked:border-transparent peer-data-[state=indeterminate]:bg-info/20 peer-data-[state=indeterminate]:border-transparent text-info",
       },
 
       // outline variants
@@ -131,49 +131,49 @@ export const checkboxVariants = cva(
         variant: "outline",
         color: "primary",
         class:
-          "peer-checked:border-primary peer-checked:bg-transparent peer-data-[state=indeterminate]:border-primary peer-data-[state=indeterminate]:bg-transparent text-primary-text",
+          "peer-checked:border-primary peer-checked:bg-transparent peer-data-[state=indeterminate]:border-primary peer-data-[state=indeterminate]:bg-transparent text-primary",
       },
       {
         variant: "outline",
         color: "secondary",
         class:
-          "peer-checked:border-secondary peer-checked:bg-transparent peer-data-[state=indeterminate]:border-secondary peer-data-[state=indeterminate]:bg-transparent text-secondary-text",
+          "peer-checked:border-secondary peer-checked:bg-transparent peer-data-[state=indeterminate]:border-secondary peer-data-[state=indeterminate]:bg-transparent text-secondary",
       },
       {
         variant: "outline",
         color: "accent",
         class:
-          "peer-checked:border-accent peer-checked:bg-transparent peer-data-[state=indeterminate]:border-accent peer-data-[state=indeterminate]:bg-transparent text-accent-text",
+          "peer-checked:border-accent peer-checked:bg-transparent peer-data-[state=indeterminate]:border-accent peer-data-[state=indeterminate]:bg-transparent text-accent",
       },
       {
         variant: "outline",
         color: "neutral",
         class:
-          "peer-checked:border-neutral peer-checked:bg-transparent peer-data-[state=indeterminate]:border-neutral peer-data-[state=indeterminate]:bg-transparent text-neutral-text",
+          "peer-checked:border-neutral peer-checked:bg-transparent peer-data-[state=indeterminate]:border-neutral peer-data-[state=indeterminate]:bg-transparent text-neutral",
       },
       {
         variant: "outline",
         color: "success",
         class:
-          "peer-checked:border-success peer-checked:bg-transparent peer-data-[state=indeterminate]:border-success peer-data-[state=indeterminate]:bg-transparent text-success-text",
+          "peer-checked:border-success peer-checked:bg-transparent peer-data-[state=indeterminate]:border-success peer-data-[state=indeterminate]:bg-transparent text-success",
       },
       {
         variant: "outline",
         color: "danger",
         class:
-          "peer-checked:border-danger peer-checked:bg-transparent peer-data-[state=indeterminate]:border-danger peer-data-[state=indeterminate]:bg-transparent text-danger-text",
+          "peer-checked:border-danger peer-checked:bg-transparent peer-data-[state=indeterminate]:border-danger peer-data-[state=indeterminate]:bg-transparent text-danger",
       },
       {
         variant: "outline",
         color: "warning",
         class:
-          "peer-checked:border-warning peer-checked:bg-transparent peer-data-[state=indeterminate]:border-warning peer-data-[state=indeterminate]:bg-transparent text-warning-text",
+          "peer-checked:border-warning peer-checked:bg-transparent peer-data-[state=indeterminate]:border-warning peer-data-[state=indeterminate]:bg-transparent text-warning",
       },
       {
         variant: "outline",
         color: "info",
         class:
-          "peer-checked:border-info peer-checked:bg-transparent peer-data-[state=indeterminate]:border-info peer-data-[state=indeterminate]:bg-transparent text-info-text",
+          "peer-checked:border-info peer-checked:bg-transparent peer-data-[state=indeterminate]:border-info peer-data-[state=indeterminate]:bg-transparent text-info",
       },
     ],
     defaultVariants: {

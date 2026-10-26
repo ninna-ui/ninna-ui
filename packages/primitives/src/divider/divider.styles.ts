@@ -18,14 +18,14 @@ export const dividerVariants = cva("", {
 export type DividerVariantsProps = VariantProps<typeof dividerVariants>;
 
 export const DIVIDER_TEXT_COLORS: Record<Color, string> = {
-  primary: "text-primary-text",
-  secondary: "text-secondary-text",
-  accent: "text-accent-text",
-  neutral: "text-neutral-text",
-  success: "text-success-text",
-  danger: "text-danger-text",
-  warning: "text-warning-text",
-  info: "text-info-text",
+  primary: "text-primary",
+  secondary: "text-secondary",
+  accent: "text-accent",
+  neutral: "text-neutral",
+  success: "text-success",
+  danger: "text-danger",
+  warning: "text-warning",
+  info: "text-info",
 };
 
 export const dividerStyles = {

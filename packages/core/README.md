@@ -124,17 +124,11 @@ import type { Color, Size, Radius, ColorVariant } from "@ninna-ui/core";
 Pre-built maps from design tokens to Tailwind CSS classes - used internally by component `.styles.ts` files:
 
 ```typescript
-import {
-  BG_COLORS,
-  TEXT_COLORS,
-  RADIUS_CLASSES,
-  SOLID_VARIANTS,
-} from "@ninna-ui/core";
+import { BG_COLORS, TEXT_COLORS, BORDER_COLORS } from "@ninna-ui/core";
 
 BG_COLORS.primary; // "bg-primary"
 TEXT_COLORS.danger; // "text-danger"
-RADIUS_CLASSES.lg; // "rounded-lg"
-SOLID_VARIANTS.primary; // Complete solid variant class set for primary
+BORDER_COLORS.primary; // "border-primary"
 ```
 
 ### Available Maps
@@ -142,51 +136,45 @@ SOLID_VARIANTS.primary; // Complete solid variant class set for primary
 **Color maps:**
 
 - `BG_COLORS`, `TEXT_COLORS`, `BORDER_COLORS` - Semantic color classes
-- `SOFT_BG_COLORS`, `MUTED_BG_COLORS`, `MUTED_BORDER_COLORS` - Opacity-based variants
-- `SOLID_VARIANTS`, `SOFT_VARIANTS`, `OUTLINE_VARIANTS`, `GHOST_VARIANTS`, `TEXT_VARIANTS` - Complete variant class sets per color
-- `RING_COLORS`, `STROKE_COLORS`, `MARKER_COLORS`, `HOVER_TEXT_COLORS` - Additional utility maps
+- `STROKE_COLORS`, `MARKER_COLORS` - Semantic SVG stroke and list marker classes
 
-**State maps:**
+**Layout maps:**
 
-- `FOCUS_RING_COLORS`, `FOCUS_BORDER_COLORS`, `INPUT_FOCUS_COLORS`, `FOCUS_VISIBLE_RING_COLORS`
-- `CHECKED_BG_COLORS`, `CHECKED_BORDER_COLORS`
-- `PEER_CHECKED_BG_COLORS`, `PEER_CHECKED_BORDER_COLORS`, `PEER_FOCUS_VISIBLE_RING_COLORS`
+- Gap, grid and flex maps, plus `getResponsiveGridCols`, are exported from `classes/layout`.
 
-**Typography & radius:**
-
-- `TEXT_SIZE_CLASSES`, `TEXT_WEIGHT_CLASSES`
-- `RADIUS_CLASSES`
+Component variant and state class sets live with their component packages. Core
+exposes shared tokens and maps without a second variant framework.
 
 ## CSS Custom Properties
 
-Use three distinct semantic roles:
+Use the native shared color and its matching content color:
 
 - `bg-primary text-primary-content`: content on a solid semantic fill.
-- `text-primary-text`: colored text on base surfaces (`base-50` through `base-200`).
-- `bg-primary/10 text-primary-text`: colored text on a soft tint.
+- `text-primary`: colored text on base surfaces (`base-50` through `base-200`).
+- `bg-primary/10 text-primary`: colored text on a soft tint.
 
-The same roles exist for secondary, accent, neutral and all status colors. Each
-preset supplies an explicit text tone, retaining the fill's hue and chroma while
-adjusting lightness only where contrast requires it. Some tones can reuse the
-fill directly. A raw fill such as `text-warning` is not an accessible text color
-on a pale surface. Keep `-content` for its matching solid fill. Component consumers
-still use the same `color="primary"` prop; the component selects the right role.
+The same pattern applies to secondary, accent, neutral and all status colors.
+`text-primary`, `bg-primary`, `border-primary` and `ring-primary` resolve to the
+same CSS variable. There are no separate text aliases or utility overrides.
+Light palettes use deeper colors; dark palettes use lighter colors. Their
+matching `-content` colors provide contrast on solid fills. Component consumers
+continue to use `color="primary"`.
 
 Run `pnpm check-theme-contrast` to measure all five bundled presets in light and dark
-mode. It checks 4.5:1 for solid/content rest and hover pairs and text tones on base
-surfaces with 0–20% semantic tints. Custom palettes, nested tints, opacity overrides, gradients
+mode. It checks 4.5:1 for solid/content rest and hover pairs and semantic text on
+base surfaces with 0–20% tints, and 3:1 for control boundary tokens. Custom palettes,
+nested tints, opacity overrides, gradients
 and other backgrounds still need contrast checks in their rendered context.
 
-Each theme preset defines solid, content, text, surface and border properties:
+Each theme preset retains the original 31 semantic, content, surface and border properties:
 
-| Category       | Properties                                                                           |
-| -------------- | ------------------------------------------------------------------------------------ |
-| **Semantic**   | `--color-primary`, `--color-secondary`, `--color-accent`, `--color-neutral`          |
-| **Status**     | `--color-success`, `--color-danger`, `--color-warning`, `--color-info`               |
-| **Content**    | `--color-primary-content`, `--color-secondary-content`, `--color-base-content`, etc. |
-| **Text tones** | `--color-primary-text`, `--color-secondary-text`, `--color-success-text`, etc.       |
-| **Surfaces**   | `--color-base-50` through `--color-base-900`                                         |
-| **Borders**    | `--color-base-200`, `--color-base-300`                                               |
+| Category     | Properties                                                                                   |
+| ------------ | -------------------------------------------------------------------------------------------- |
+| **Semantic** | `--color-primary`, `--color-secondary`, `--color-accent`, `--color-neutral`                  |
+| **Status**   | `--color-success`, `--color-danger`, `--color-warning`, `--color-info`                       |
+| **Content**  | `--color-primary-content`, `--color-secondary-content`, `--color-base-content`, etc.         |
+| **Surfaces** | `--color-base-50` through `--color-base-900`                                                 |
+| **Borders**  | `--color-border`, `--color-border-hover`, `--color-border-active`, `--color-border-disabled` |
 
 ## Package Structure
 
@@ -202,11 +190,8 @@ core/
 │   │   └── variants.ts        # ColorVariant, InputVariant
 │   ├── classes/
 │   │   ├── colors/
-│   │   │   ├── base.ts        # BG_COLORS, TEXT_COLORS, BORDER_COLORS
-│   │   │   ├── variants.ts    # SOLID_VARIANTS, SOFT_VARIANTS, etc.
-│   │   │   └── states.ts      # FOCUS_RING_COLORS, CHECKED_BG_COLORS, etc.
-│   │   ├── typography.ts      # TEXT_SIZE_CLASSES, TEXT_WEIGHT_CLASSES
-│   │   └── radius.ts          # RADIUS_CLASSES
+│   │   │   └── base.ts        # Background, text, border, stroke and marker maps
+│   │   └── layout.ts          # Gap, grid, flex and responsive maps
 │   └── theme/
 │       ├── tailwind.css        # Shared @theme + animations + @variant dark
 │       └── presets/

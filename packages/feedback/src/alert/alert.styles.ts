@@ -70,79 +70,79 @@ export const alertVariants = cva(
       {
         variant: "soft",
         color: "primary",
-        class: "bg-primary/10 text-primary-text",
+        class: "bg-primary/10 text-primary",
       },
       {
         variant: "soft",
         color: "secondary",
-        class: "bg-secondary/10 text-secondary-text",
+        class: "bg-secondary/10 text-secondary",
       },
       {
         variant: "soft",
         color: "accent",
-        class: "bg-accent/10 text-accent-text",
+        class: "bg-accent/10 text-accent",
       },
       {
         variant: "soft",
         color: "neutral",
-        class: "bg-neutral/10 text-neutral-text",
+        class: "bg-neutral/10 text-neutral",
       },
       {
         variant: "soft",
         color: "success",
-        class: "bg-success/10 text-success-text",
+        class: "bg-success/10 text-success",
       },
       {
         variant: "soft",
         color: "danger",
-        class: "bg-danger/10 text-danger-text",
+        class: "bg-danger/10 text-danger",
       },
       {
         variant: "soft",
         color: "warning",
-        class: "bg-warning/10 text-warning-text",
+        class: "bg-warning/10 text-warning",
       },
-      { variant: "soft", color: "info", class: "bg-info/10 text-info-text" },
+      { variant: "soft", color: "info", class: "bg-info/10 text-info" },
       // outline
       {
         variant: "outline",
         color: "primary",
-        class: "border border-primary bg-transparent text-primary-text",
+        class: "border border-primary bg-transparent text-primary",
       },
       {
         variant: "outline",
         color: "secondary",
-        class: "border border-secondary bg-transparent text-secondary-text",
+        class: "border border-secondary bg-transparent text-secondary",
       },
       {
         variant: "outline",
         color: "accent",
-        class: "border border-accent bg-transparent text-accent-text",
+        class: "border border-accent bg-transparent text-accent",
       },
       {
         variant: "outline",
         color: "neutral",
-        class: "border border-neutral bg-transparent text-neutral-text",
+        class: "border border-neutral bg-transparent text-neutral",
       },
       {
         variant: "outline",
         color: "success",
-        class: "border border-success bg-transparent text-success-text",
+        class: "border border-success bg-transparent text-success",
       },
       {
         variant: "outline",
         color: "danger",
-        class: "border border-danger bg-transparent text-danger-text",
+        class: "border border-danger bg-transparent text-danger",
       },
       {
         variant: "outline",
         color: "warning",
-        class: "border border-warning bg-transparent text-warning-text",
+        class: "border border-warning bg-transparent text-warning",
       },
       {
         variant: "outline",
         color: "info",
-        class: "border border-info bg-transparent text-info-text",
+        class: "border border-info bg-transparent text-info",
       },
     ],
     defaultVariants: {
@@ -167,8 +167,8 @@ export const alertStyles = {
   iconContainer: "flex-shrink-0 mt-0.5",
   contentContainer: "flex-1 min-w-0",
   title: "font-semibold text-sm",
-  description: "text-sm mt-1 opacity-90",
+  description: "text-sm mt-1",
   actionContainer: "mt-3",
   dismissButton:
-    "flex-shrink-0 ml-auto -mr-1 -mt-1 p-1 rounded-md opacity-70 hover:opacity-100 transition-opacity focus:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2",
+    "flex-shrink-0 ml-auto -mr-1 -mt-1 p-1 rounded-md hover:bg-current/10 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2",
 };

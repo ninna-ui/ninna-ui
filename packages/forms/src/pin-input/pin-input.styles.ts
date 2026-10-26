@@ -20,9 +20,8 @@ export const PIN_INPUT_SIZES: Record<Size, { input: string; gap: string }> = {
 export const pinInputStyles = {
   container: "flex items-center",
   input:
-    "text-center font-medium rounded-md border bg-base-100 text-base-content border-base-300 placeholder:text-base-content/70 focus:outline-none focus:ring-2 focus:ring-primary-text focus:border-primary focus-visible:ring-2 focus-visible:ring-primary-text focus-visible:ring-offset-1 transition-all duration-150 hover:border-base-400",
-  inputDisabled:
-    "opacity-50 cursor-not-allowed bg-base-50 hover:border-base-300",
-  inputInvalid: "border-danger focus:ring-danger-text focus:border-danger",
+    "text-center font-medium rounded-md border bg-base-100 text-base-content border-border placeholder:text-base-content/70 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1 transition-all duration-150 hover:border-border-hover",
+  inputDisabled: "opacity-50 cursor-not-allowed bg-base-50 hover:border-border",
+  inputInvalid: "border-danger focus:ring-danger focus:border-danger",
   separator: "mx-2 text-base-content/70",
 };

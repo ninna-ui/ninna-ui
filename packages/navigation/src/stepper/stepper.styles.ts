@@ -68,42 +68,42 @@ export const stepperIndicatorVariants = cva(
       {
         status: "current",
         color: "primary",
-        class: "border-2 border-primary text-primary-text",
+        class: "border-2 border-primary text-primary",
       },
       {
         status: "current",
         color: "secondary",
-        class: "border-2 border-secondary text-secondary-text",
+        class: "border-2 border-secondary text-secondary",
       },
       {
         status: "current",
         color: "accent",
-        class: "border-2 border-accent text-accent-text",
+        class: "border-2 border-accent text-accent",
       },
       {
         status: "current",
         color: "neutral",
-        class: "border-2 border-neutral text-neutral-text",
+        class: "border-2 border-neutral text-neutral",
       },
       {
         status: "current",
         color: "success",
-        class: "border-2 border-success text-success-text",
+        class: "border-2 border-success text-success",
       },
       {
         status: "current",
         color: "danger",
-        class: "border-2 border-danger text-danger-text",
+        class: "border-2 border-danger text-danger",
       },
       {
         status: "current",
         color: "warning",
-        class: "border-2 border-warning text-warning-text",
+        class: "border-2 border-warning text-warning",
       },
       {
         status: "current",
         color: "info",
-        class: "border-2 border-info text-info-text",
+        class: "border-2 border-info text-info",
       },
     ],
     defaultVariants: { status: "upcoming", size: "md" },
@@ -122,7 +122,7 @@ export const stepperStyles = {
   stepHorizontal: "flex-1 flex-col items-center text-center px-4", // Added padding for better line visibility
   stepVertical: "flex-row items-start gap-4 pb-12 last:pb-0",
   label: "font-semibold text-base-content",
-  description: "text-xs text-base-content/60 mt-0.5",
+  description: "text-xs text-base-content/70 mt-0.5",
   separator: {
     base: "absolute pointer-events-none transition-colors duration-200 z-0 bg-base-200", // Default color
     // Horizontal separator spans the item and handles its own offsets for first/last

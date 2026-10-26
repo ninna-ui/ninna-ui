@@ -24,7 +24,7 @@ export const ErrorMessage = ({
 
           {title && (
             <h2
-              className="text-2xl font-semibold text-primary-text"
+              className="text-2xl font-semibold text-primary"
               data-testid="error-title"
             >
               {title}

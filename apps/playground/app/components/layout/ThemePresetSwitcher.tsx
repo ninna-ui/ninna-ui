@@ -192,7 +192,7 @@ export function ThemePresetSwitcher() {
                 <span className="flex-1">{presetOption.label}</span>
                 {isSelected && (
                   <Check
-                    className="size-3.5 text-primary-text shrink-0"
+                    className="size-3.5 text-primary shrink-0"
                     aria-hidden="true"
                   />
                 )}

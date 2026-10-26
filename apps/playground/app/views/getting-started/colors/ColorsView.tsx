@@ -22,7 +22,7 @@ const SEMANTIC_COLORS = [
     desc: "Main brand color. Used for primary actions, links, and key UI elements.",
     classes: {
       bg: "bg-primary",
-      text: "text-primary-text",
+      text: "text-primary",
       content: "text-primary-content",
     },
   },
@@ -32,7 +32,7 @@ const SEMANTIC_COLORS = [
     desc: "Supporting brand color. Used for secondary actions and accents.",
     classes: {
       bg: "bg-secondary",
-      text: "text-secondary-text",
+      text: "text-secondary",
       content: "text-secondary-content",
     },
   },
@@ -42,7 +42,7 @@ const SEMANTIC_COLORS = [
     desc: "Highlight color for special elements, tags, and decorative UI.",
     classes: {
       bg: "bg-accent",
-      text: "text-accent-text",
+      text: "text-accent",
       content: "text-accent-content",
     },
   },
@@ -52,7 +52,7 @@ const SEMANTIC_COLORS = [
     desc: "Muted color for subtle backgrounds, disabled states, and secondary text.",
     classes: {
       bg: "bg-neutral",
-      text: "text-neutral-text",
+      text: "text-neutral",
       content: "text-neutral-content",
     },
   },
@@ -62,7 +62,7 @@ const SEMANTIC_COLORS = [
     desc: "Positive states - confirmations, completed actions, valid inputs.",
     classes: {
       bg: "bg-success",
-      text: "text-success-text",
+      text: "text-success",
       content: "text-success-content",
     },
   },
@@ -72,7 +72,7 @@ const SEMANTIC_COLORS = [
     desc: "Error and destructive states - validation errors, delete confirmations.",
     classes: {
       bg: "bg-danger",
-      text: "text-danger-text",
+      text: "text-danger",
       content: "text-danger-content",
     },
   },
@@ -82,7 +82,7 @@ const SEMANTIC_COLORS = [
     desc: "Caution states - non-blocking alerts, expiration notices.",
     classes: {
       bg: "bg-warning",
-      text: "text-warning-text",
+      text: "text-warning",
       content: "text-warning-content",
     },
   },
@@ -92,7 +92,7 @@ const SEMANTIC_COLORS = [
     desc: "Informational states - tips, help text, neutral notifications.",
     classes: {
       bg: "bg-info",
-      text: "text-info-text",
+      text: "text-info",
       content: "text-info-content",
     },
   },
@@ -112,91 +112,60 @@ const BASE_SCALE = [
   },
   { name: "base-300", class: "bg-base-300", desc: "Borders, dividers" },
   { name: "base-400", class: "bg-base-400", desc: "Disabled borders" },
-  { name: "base-500", class: "bg-base-500", desc: "Placeholder text" },
-  { name: "base-600", class: "bg-base-600", desc: "Secondary text" },
-  { name: "base-700", class: "bg-base-700", desc: "Heading text" },
-  { name: "base-800", class: "bg-base-800", desc: "Primary text" },
+  { name: "base-500", class: "bg-base-500", desc: "Midtone surface" },
+  { name: "base-600", class: "bg-base-600", desc: "Stronger surface contrast" },
+  { name: "base-700", class: "bg-base-700", desc: "Deep surface contrast" },
+  { name: "base-800", class: "bg-base-800", desc: "High surface contrast" },
   { name: "base-900", class: "bg-base-900", desc: "Darkest surface" },
 ];
 
-const CUSTOM_COLORS_CODE = `/* In your main CSS file - override after the theme import */
+const CUSTOM_COLORS_CODE = `/* Override after importing a complete preset. */
 @import "tailwindcss";
 @import "@ninna-ui/core/theme/presets/default.css";
 
-/* Override primary to your brand color */
+/* The same primary value serves text-primary and bg-primary. */
 [data-theme="default"] {
-  --color-primary: oklch(0.48 0.28 220);         /* brand blue */
-  --color-primary-content: oklch(0.98 0.005 220); /* white text on primary */
-  --color-primary-text: oklch(0.44 0.16 220); /* readable on base surfaces */
-
-  /* Override secondary */
-  --color-secondary: oklch(0.48 0.22 160);        /* brand teal */
-  --color-secondary-content: oklch(0.98 0.005 160);
-  --color-secondary-text: oklch(0.43 0.18 160);
-
-  /* Override base surfaces for a warmer feel */
-  --color-base-50:  oklch(0.985 0.005 80);
-  --color-base-100: oklch(0.970 0.008 80);
-  --color-base-200: oklch(0.940 0.010 80);
+  --color-primary: oklch(0.4 0.0916 240);
+  --color-primary-content: oklch(0.985 0.005 240);
+  --color-secondary: oklch(0.37 0.0631 195);
+  --color-secondary-content: oklch(0.985 0.005 195);
 }
 
-/* Dark mode overrides - both selector forms required */
 .dark [data-theme="default"],
 [data-theme="default"].dark {
-  --color-primary: oklch(0.72 0.22 220);
-  --color-primary-content: oklch(0.12 0.02 220);
-  --color-primary-text: oklch(0.80 0.16 220);
-  --color-secondary: oklch(0.72 0.20 160);
-  --color-secondary-content: oklch(0.14 0.04 160);
-  --color-secondary-text: oklch(0.74 0.20 160);
+  --color-primary: oklch(0.74 0.1499 240);
+  --color-primary-content: oklch(0.14 0.015 240);
+  --color-secondary: oklch(0.707 0.1206 195);
+  --color-secondary-content: oklch(0.14 0.015 195);
+}
+
+/* Include the same overrides for system dark mode. */
+@media (prefers-color-scheme: dark) {
+  [data-theme="default"]:not(.light):not(.dark) {
+    --color-primary: oklch(0.74 0.1499 240);
+    --color-primary-content: oklch(0.14 0.015 240);
+    --color-secondary: oklch(0.707 0.1206 195);
+    --color-secondary-content: oklch(0.14 0.015 195);
+  }
 }`;
 
 const OVERRIDABLE_VARS = [
   { name: "--color-primary", desc: "Main brand color" },
   { name: "--color-primary-content", desc: "Text on primary bg" },
-  {
-    name: "--color-primary-text",
-    desc: "Readable primary text on base surfaces",
-  },
   { name: "--color-secondary", desc: "Supporting brand color" },
   { name: "--color-secondary-content", desc: "Text on secondary bg" },
-  {
-    name: "--color-secondary-text",
-    desc: "Readable secondary text on base surfaces",
-  },
   { name: "--color-accent", desc: "Highlight color" },
   { name: "--color-accent-content", desc: "Text on accent bg" },
-  {
-    name: "--color-accent-text",
-    desc: "Readable accent text on base surfaces",
-  },
   { name: "--color-neutral", desc: "Muted/neutral color" },
   { name: "--color-neutral-content", desc: "Text on neutral bg" },
-  {
-    name: "--color-neutral-text",
-    desc: "Readable neutral text on base surfaces",
-  },
   { name: "--color-success", desc: "Positive state color" },
   { name: "--color-success-content", desc: "Text on success bg" },
-  {
-    name: "--color-success-text",
-    desc: "Readable success text on base surfaces",
-  },
   { name: "--color-danger", desc: "Error/destructive color" },
   { name: "--color-danger-content", desc: "Text on danger bg" },
-  {
-    name: "--color-danger-text",
-    desc: "Readable danger text on base surfaces",
-  },
   { name: "--color-warning", desc: "Caution state color" },
   { name: "--color-warning-content", desc: "Text on warning bg" },
-  {
-    name: "--color-warning-text",
-    desc: "Readable warning text on base surfaces",
-  },
   { name: "--color-info", desc: "Informational color" },
   { name: "--color-info-content", desc: "Text on info bg" },
-  { name: "--color-info-text", desc: "Readable info text on base surfaces" },
   { name: "--color-base-50", desc: "Lightest surface" },
   { name: "--color-base-100", desc: "Card background" },
   { name: "--color-base-200", desc: "Subtle background" },
@@ -218,8 +187,8 @@ const USAGE_CODE = `/* Semantic colors as Tailwind utilities */
 </div>
 
 /* Colored text on base surfaces and soft tints */
-<span className="text-warning-text">Warning message</span>
-<span className="bg-success/10 text-success-text">Saved</span>
+<span className="text-warning">Warning message</span>
+<span className="bg-success/10 text-success">Saved</span>
 
 /* Text colors for inline use */
 <Text className="text-base-content">Default text</Text>
@@ -241,7 +210,7 @@ export function ColorsView() {
         <ComponentSection
           id="semantic"
           title="Semantic Colors"
-          description="8 semantic colors available in every theme. Each color pairs a solid fill with content and a readable text tone."
+          description="8 semantic colors available in every theme. Each color works as text or a fill, with matching content for solid backgrounds."
         >
           <div className="grid grid-cols-1 gap-4">
             {SEMANTIC_COLORS.map((color) => (
@@ -291,7 +260,7 @@ export function ColorsView() {
         <ComponentSection
           id="base-scale"
           title="Base Surface Scale"
-          description="10-step neutral surface scale from lightest to darkest. Automatically inverts in dark mode."
+          description="10-step neutral surface scale that adapts to dark mode. Use base-content for body text and base-content/70 for secondary text."
         >
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
             {BASE_SCALE.map((step) => (
@@ -382,16 +351,14 @@ export function ColorsView() {
         >
           <UsageExample title="Color usage examples" code={USAGE_CODE} />
           <Text size="sm" className="mt-4 text-base-content/70">
-            Use <Code>text-primary-text</Code> (or any semantic color's
-            <Code>-text</Code> tone) for colored text on base surfaces and soft
-            tints. Keep <Code>text-primary-content</Code> on its matching
-            <Code>bg-primary</Code> fill. Raw fills such as{" "}
-            <Code>text-warning</Code>
-            can fail contrast on a light surface. Components choose these roles
-            automatically from their existing color prop. The bundled presets
-            are checked at 4.5:1 on base-50 through base-200 with semantic tints
-            up to 20%. Custom palettes, gradients, nested tints and opacity
-            overrides need their own rendered contrast checks.
+            Native utilities share a color: <Code>text-primary</Code>,
+            <Code>bg-primary</Code>, <Code>border-primary</Code> and
+            <Code>ring-primary</Code> resolve to the same variable. Use
+            <Code>text-primary-content</Code> on a solid <Code>bg-primary</Code>
+            fill. The same pattern works for all eight semantic colors. Bundled
+            palettes are tested on base-50 through base-200, including soft
+            tints up to 20% and solid hover at 90%. Custom palettes, nested
+            tints and opacity overrides need their own contrast checks.
           </Text>
           <div className="mt-4 bg-warning/10 border border-warning/20 rounded-lg p-4">
             <Text size="sm" className="text-base-content/70">
@@ -433,9 +400,9 @@ export function ColorsView() {
               <Text size="sm" className="text-base-content/70">
                 <strong className="text-base-content">Content colors:</strong>{" "}
                 When you change a semantic color, also update its{" "}
-                <Code>-content</Code> counterpart, and check its{" "}
-                <Code>-text</Code> tone, to maintain WCAG AA contrast (minimum
-                4.5:1 ratio for normal text).
+                <Code>-content</Code> counterpart and test solid, soft and hover
+                states to maintain WCAG AA contrast (minimum 4.5:1 ratio for
+                normal text).
               </Text>
             </div>
           </div>

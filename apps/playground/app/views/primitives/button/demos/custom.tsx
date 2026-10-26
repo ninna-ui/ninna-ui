@@ -11,19 +11,19 @@ export default function Custom() {
         <div className="flex flex-wrap gap-2">
           <Button
             variant="soft"
-            className="bg-secondary/10 text-secondary-text hover:bg-secondary/20"
+            className="bg-secondary/10 text-secondary hover:bg-secondary/20"
           >
             Purple Soft
           </Button>
           <Button
             variant="soft"
-            className="bg-warning/10 text-warning-text hover:bg-warning/20"
+            className="bg-warning/10 text-warning hover:bg-warning/20"
           >
             Orange Soft
           </Button>
           <Button
             variant="soft"
-            className="bg-success/10 text-success-text hover:bg-success/20"
+            className="bg-success/10 text-success hover:bg-success/20"
           >
             Teal Soft
           </Button>
@@ -38,19 +38,19 @@ export default function Custom() {
         <div className="flex flex-wrap gap-2">
           <Button
             variant="outline"
-            className="border-secondary text-secondary-text hover:bg-secondary hover:text-secondary-content"
+            className="border-secondary text-secondary hover:bg-secondary/10"
           >
             Purple Outline
           </Button>
           <Button
             variant="outline"
-            className="border-warning text-warning-text hover:bg-warning hover:text-warning-content"
+            className="border-warning text-warning hover:bg-warning/10"
           >
             Orange Outline
           </Button>
           <Button
             variant="outline"
-            className="border-success text-success-text hover:bg-success hover:text-success-content"
+            className="border-success text-success hover:bg-success/10"
           >
             Teal Outline
           </Button>

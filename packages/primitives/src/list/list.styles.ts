@@ -36,25 +36,25 @@ export const LIST_ORDERED_MARKERS: Record<
 };
 
 export const LIST_MARKER_COLORS: Record<Color, string> = {
-  primary: "marker:text-primary-text",
-  secondary: "marker:text-secondary-text",
-  accent: "marker:text-accent-text",
-  neutral: "marker:text-neutral-text",
-  success: "marker:text-success-text",
-  danger: "marker:text-danger-text",
-  warning: "marker:text-warning-text",
-  info: "marker:text-info-text",
+  primary: "marker:text-primary",
+  secondary: "marker:text-secondary",
+  accent: "marker:text-accent",
+  neutral: "marker:text-neutral",
+  success: "marker:text-success",
+  danger: "marker:text-danger",
+  warning: "marker:text-warning",
+  info: "marker:text-info",
 };
 
 export const LIST_ICON_COLORS: Record<Color, string> = {
-  primary: "text-primary-text",
-  secondary: "text-secondary-text",
-  accent: "text-accent-text",
-  neutral: "text-neutral-text",
-  success: "text-success-text",
-  danger: "text-danger-text",
-  warning: "text-warning-text",
-  info: "text-info-text",
+  primary: "text-primary",
+  secondary: "text-secondary",
+  accent: "text-accent",
+  neutral: "text-neutral",
+  success: "text-success",
+  danger: "text-danger",
+  warning: "text-warning",
+  info: "text-info",
 };
 
 export const listStyles = {

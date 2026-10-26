@@ -47,7 +47,7 @@ export const FormGroup = forwardRef<HTMLFieldSetElement, FormGroupProps>(
         {legend && (
           <legend className={formGroupStyles.legend}>
             {legend}
-            {required && <span className="text-danger-text ml-1">*</span>}
+            {required && <span className="text-danger ml-1">*</span>}
           </legend>
         )}
 

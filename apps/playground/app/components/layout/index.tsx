@@ -89,7 +89,7 @@ export default function MainLayout({
             href="https://ninna-ui.dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-0.5 text-[11px] font-medium text-primary-text hover:bg-primary/20 transition-colors"
+            className="hidden sm:inline-flex items-center gap-1 rounded-full bg-primary/10 px-2.5 py-0.5 text-[11px] font-medium text-primary hover:bg-primary/20 transition-colors"
           >
             Dev Playground · docs ↗
           </a>

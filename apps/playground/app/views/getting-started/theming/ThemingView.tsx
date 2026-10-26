@@ -104,73 +104,135 @@ const CODEBLOCK_SCHEME_CODE = `import { CodeBlock } from "@ninna-ui/code-block";
 {/* Follows the nearest .dark ancestor (default) */}
 <CodeBlock code={myCode} colorScheme="auto" />`;
 
-const CUSTOM_THEME_CODE = `/* ===== Light Theme (default) ===== */
+const CUSTOM_THEME_CODE = `/* Light */
 [data-theme="my-brand"] {
   color-scheme: light;
 
-  /* Primary - your brand color */
-  --color-primary: oklch(0.49 0.27 250);
-  --color-primary-content: oklch(0.93 0.04 250);
-  --color-primary-text: oklch(0.43 0.27 250);
+  /* Semantic colors — usable for fills, text, borders and focus rings */
+  --color-primary: oklch(0.4 0.0916 240);
+  --color-primary-content: oklch(0.985 0.005 240);
+  --color-secondary: oklch(0.37 0.0631 195);
+  --color-secondary-content: oklch(0.985 0.005 195);
+  --color-accent: oklch(0.457 0.267 285);
+  --color-accent-content: oklch(0.985 0.005 285);
+  --color-neutral: oklch(0.21 0.04 248);
+  --color-neutral-content: oklch(0.985 0.005 248);
+  --color-success: oklch(0.426 0.1053 155);
+  --color-success-content: oklch(0.985 0.005 155);
+  --color-danger: oklch(0.443 0.1795 25);
+  --color-danger-content: oklch(0.985 0.005 25);
+  --color-warning: oklch(0.443 0.0909 84);
+  --color-warning-content: oklch(0.985 0.005 84);
+  --color-info: oklch(0.434 0.0885 232);
+  --color-info-content: oklch(0.985 0.005 232);
 
-  /* Secondary */
-  --color-secondary: oklch(0.50 0.24 300);
-  --color-secondary-content: oklch(0.93 0.04 300);
-  --color-secondary-text: oklch(0.44 0.24 300);
+  /* Base surfaces and default text */
+  --color-base-50: oklch(0.985 0.006 235);
+  --color-base-100: oklch(0.970 0.008 235);
+  --color-base-200: oklch(0.940 0.010 235);
+  --color-base-300: oklch(0.900 0.014 235);
+  --color-base-400: oklch(0.810 0.016 235);
+  --color-base-500: oklch(0.690 0.018 235);
+  --color-base-600: oklch(0.550 0.020 235);
+  --color-base-700: oklch(0.430 0.020 235);
+  --color-base-800: oklch(0.310 0.018 235);
+  --color-base-900: oklch(0.200 0.016 235);
+  --color-base-content: oklch(0.200 0.016 235);
 
-  /* Accent */
-  --color-accent: oklch(0.75 0.18 183);
-  --color-accent-content: oklch(0.16 0.04 183);
-  --color-accent-text: oklch(0.46 0.18 183);
-
-  /* Neutral */
-  --color-neutral: oklch(0.21 0.03 265);
-  --color-neutral-content: oklch(0.93 0.01 265);
-  --color-neutral-text: var(--color-neutral);
-
-  /* Base surfaces - light (L: 0.98 → 0.20) */
-  --color-base-50:  oklch(0.985 0.006 260);
-  --color-base-100: oklch(0.970 0.008 260);
-  --color-base-200: oklch(0.940 0.010 260);
-  --color-base-300: oklch(0.900 0.014 260);
-  --color-base-content: oklch(0.200 0.014 260);
-  /* ... base-400 through base-900, border colors */
+  /* Control boundaries — decorative separators use base-200 / base-300 */
+  --color-border: oklch(0.608 0.012 235);
+  --color-border-hover: oklch(0.578 0.018 235);
+  --color-border-active: oklch(0.525 0.02 235);
+  --color-border-disabled: oklch(0.900 0.014 235);
 }
 
-/* ===== Dark Theme (explicit class) ===== */
-/* Applies when <html class="dark" data-theme="my-brand"> */
+/* Explicit dark */
 .dark [data-theme="my-brand"],
 [data-theme="my-brand"].dark {
   color-scheme: dark;
 
-  /* Colors lighten in dark mode for contrast */
-  --color-primary: oklch(0.74 0.24 250);
-  --color-primary-content: oklch(0.15 0.03 250);
-  --color-primary-text: var(--color-primary);
-  --color-secondary-text: oklch(0.76 0.24 300);
-  --color-accent-text: oklch(0.78 0.18 183);
+  /* Semantic colors — usable for fills, text, borders and focus rings */
+  --color-primary: oklch(0.74 0.1499 240);
+  --color-primary-content: oklch(0.14 0.015 240);
+  --color-secondary: oklch(0.707 0.1206 195);
+  --color-secondary-content: oklch(0.14 0.015 195);
+  --color-accent: oklch(0.735 0.1428 285);
+  --color-accent-content: oklch(0.14 0.015 285);
+  --color-neutral: oklch(0.726 0.04 248);
+  --color-neutral-content: oklch(0.14 0.015 248);
+  --color-success: oklch(0.72 0.1779 155);
+  --color-success-content: oklch(0.14 0.015 155);
+  --color-danger: oklch(0.734 0.1629 25);
+  --color-danger-content: oklch(0.14 0.015 25);
+  --color-warning: oklch(0.86 0.1494 84);
+  --color-warning-content: oklch(0.14 0.015 84);
+  --color-info: oklch(0.74 0.1509 232);
+  --color-info-content: oklch(0.14 0.015 232);
 
-  --color-neutral: oklch(0.70 0.03 265);
-  --color-neutral-content: oklch(0.15 0.01 265);
-  --color-neutral-text: oklch(0.72 0.03 265);
+  /* Base surfaces and default text */
+  --color-base-50: oklch(0.140 0.014 235);
+  --color-base-100: oklch(0.180 0.016 235);
+  --color-base-200: oklch(0.230 0.018 235);
+  --color-base-300: oklch(0.310 0.020 235);
+  --color-base-400: oklch(0.400 0.020 235);
+  --color-base-500: oklch(0.500 0.020 235);
+  --color-base-600: oklch(0.580 0.020 235);
+  --color-base-700: oklch(0.700 0.018 235);
+  --color-base-800: oklch(0.820 0.016 235);
+  --color-base-900: oklch(0.930 0.012 235);
+  --color-base-content: oklch(0.930 0.012 235);
 
-  /* Base surfaces - dark (L: 0.14 → 0.93) */
-  --color-base-50:  oklch(0.140 0.012 260);
-  --color-base-100: oklch(0.180 0.014 260);
-  --color-base-200: oklch(0.230 0.016 260);
-  --color-base-300: oklch(0.310 0.018 260);
-  --color-base-content: oklch(0.930 0.012 260);
-  /* ... rest of dark overrides */
+  /* Control boundaries — decorative separators use base-200 / base-300 */
+  --color-border: oklch(0.53 0.02 235);
+  --color-border-hover: oklch(0.558 0.02 235);
+  --color-border-active: oklch(0.612 0.02 235);
+  --color-border-disabled: oklch(0.230 0.018 235);
 }
 
-/* ===== Dark Theme (system preference) ===== */
-/* Applies when no .dark/.light class and OS prefers dark */
+/* System dark — keep these tokens identical to explicit dark. */
 @media (prefers-color-scheme: dark) {
   [data-theme="my-brand"]:not(.light):not(.dark) {
     color-scheme: dark;
-    /* ... same dark overrides as above ... */
+
+    /* Semantic colors — usable for fills, text, borders and focus rings */
+    --color-primary: oklch(0.74 0.1499 240);
+    --color-primary-content: oklch(0.14 0.015 240);
+    --color-secondary: oklch(0.707 0.1206 195);
+    --color-secondary-content: oklch(0.14 0.015 195);
+    --color-accent: oklch(0.735 0.1428 285);
+    --color-accent-content: oklch(0.14 0.015 285);
+    --color-neutral: oklch(0.726 0.04 248);
+    --color-neutral-content: oklch(0.14 0.015 248);
+    --color-success: oklch(0.72 0.1779 155);
+    --color-success-content: oklch(0.14 0.015 155);
+    --color-danger: oklch(0.734 0.1629 25);
+    --color-danger-content: oklch(0.14 0.015 25);
+    --color-warning: oklch(0.86 0.1494 84);
+    --color-warning-content: oklch(0.14 0.015 84);
+    --color-info: oklch(0.74 0.1509 232);
+    --color-info-content: oklch(0.14 0.015 232);
+
+    /* Base surfaces and default text */
+    --color-base-50: oklch(0.140 0.014 235);
+    --color-base-100: oklch(0.180 0.016 235);
+    --color-base-200: oklch(0.230 0.018 235);
+    --color-base-300: oklch(0.310 0.020 235);
+    --color-base-400: oklch(0.400 0.020 235);
+    --color-base-500: oklch(0.500 0.020 235);
+    --color-base-600: oklch(0.580 0.020 235);
+    --color-base-700: oklch(0.700 0.018 235);
+    --color-base-800: oklch(0.820 0.016 235);
+    --color-base-900: oklch(0.930 0.012 235);
+    --color-base-content: oklch(0.930 0.012 235);
+
+    /* Control boundaries — decorative separators use base-200 / base-300 */
+    --color-border: oklch(0.53 0.02 235);
+    --color-border-hover: oklch(0.558 0.02 235);
+    --color-border-active: oklch(0.612 0.02 235);
+    --color-border-disabled: oklch(0.230 0.018 235);
   }
-}`;
+}
+`;
 
 export function ThemingView() {
   return (
@@ -245,7 +307,7 @@ export function ThemingView() {
             />
           </div>
           <div className="mt-4 bg-info/10 border border-info/20 rounded-lg p-4">
-            <Text size="sm" className="text-info-text">
+            <Text size="sm" className="text-info">
               <strong>Available themes:</strong> <Code>default.css</Code>,{" "}
               <Code>ocean.css</Code>, <Code>sunset.css</Code>,{" "}
               <Code>forest.css</Code>, <Code>minimal.css</Code> - all can be
@@ -347,7 +409,7 @@ export function ThemingView() {
                 {[
                   [
                     "--color-primary",
-                    "bg-primary, text-primary-text",
+                    "bg-primary, text-primary",
                     "Main brand color",
                   ],
                   [
@@ -357,37 +419,37 @@ export function ThemingView() {
                   ],
                   [
                     "--color-secondary",
-                    "bg-secondary, text-secondary-text",
+                    "bg-secondary, text-secondary",
                     "Secondary brand color",
                   ],
                   [
                     "--color-accent",
-                    "bg-accent, text-accent-text",
+                    "bg-accent, text-accent",
                     "Accent/highlight color",
                   ],
                   [
                     "--color-neutral",
-                    "bg-neutral, text-neutral-text",
+                    "bg-neutral, text-neutral",
                     "Neutral/muted color",
                   ],
                   [
                     "--color-success",
-                    "bg-success, text-success-text",
+                    "bg-success, text-success",
                     "Success states",
                   ],
                   [
                     "--color-danger",
-                    "bg-danger, text-danger-text",
+                    "bg-danger, text-danger",
                     "Error/danger states",
                   ],
                   [
                     "--color-warning",
-                    "bg-warning, text-warning-text",
+                    "bg-warning, text-warning",
                     "Warning states",
                   ],
                   [
                     "--color-info",
-                    "bg-info, text-info-text",
+                    "bg-info, text-info",
                     "Informational states",
                   ],
                   [
@@ -427,7 +489,7 @@ export function ThemingView() {
             code={DATA_THEME_CODE}
           />
           <div className="mt-4 bg-warning/10 border border-warning/20 rounded-lg p-4">
-            <Text size="sm" className="text-warning-text">
+            <Text size="sm" className="text-warning">
               <strong>Note:</strong> The theme CSS must be imported for each
               theme you want to use. Each theme defines styles for its own{" "}
               <Code>data-theme</Code> value.
@@ -452,7 +514,7 @@ export function ThemingView() {
               code={CUSTOM_THEME_CODE}
             />
             <div className="bg-info/10 border border-info/20 rounded-lg p-4">
-              <Text size="sm" className="text-info-text">
+              <Text size="sm" className="text-info">
                 <strong>Tip:</strong> Use the Tailwind CSS oklch palette as a
                 reference. Light mode typically uses <Code>-600</Code> shades
                 and dark mode uses <Code>-400</Code> shades for semantic colors.
@@ -546,7 +608,7 @@ export function ThemingView() {
             </div>
 
             <div className="bg-info/10 border border-info/20 rounded-lg p-4">
-              <Text size="sm" className="text-info-text">
+              <Text size="sm" className="text-info">
                 <strong>CSS Import:</strong> Add{" "}
                 <Code>@import "@ninna-ui/code-block/styles";</Code> to your CSS
                 entry point (or it is picked up automatically via{" "}

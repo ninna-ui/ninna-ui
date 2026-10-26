@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const paginationLinkVariants = cva(
-  "relative inline-flex items-center justify-center rounded-md font-medium transition-colors hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-text disabled:pointer-events-none disabled:opacity-50 before:absolute before:inset-[-4px] before:content-['']",
+  "relative inline-flex items-center justify-center rounded-md font-medium transition-colors hover:bg-base-200 hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50 before:absolute before:inset-[-4px] before:content-['']",
   {
     variants: {
       size: {

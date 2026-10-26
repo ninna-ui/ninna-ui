@@ -158,7 +158,7 @@ export const OnVariousElements: Story = {
       </Tooltip>
       <Tooltip>
         <Tooltip.Trigger asChild>
-          <span className="text-primary-text underline cursor-help">
+          <span className="text-primary underline cursor-help">
             Hover this text
           </span>
         </Tooltip.Trigger>
@@ -166,7 +166,7 @@ export const OnVariousElements: Story = {
       </Tooltip>
       <Tooltip>
         <Tooltip.Trigger asChild>
-          <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center cursor-help text-primary-text font-bold text-sm">
+          <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center cursor-help text-primary font-bold text-sm">
             ?
           </div>
         </Tooltip.Trigger>

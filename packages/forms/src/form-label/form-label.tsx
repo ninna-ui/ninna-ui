@@ -47,7 +47,7 @@ export const FormLabel = forwardRef<HTMLLabelElement, FormLabelProps>(
       >
         {children}
         {isRequired && showRequired && (
-          <span className="ml-0.5 text-danger-text" aria-hidden="true">
+          <span className="ml-0.5 text-danger" aria-hidden="true">
             {requiredIndicator}
           </span>
         )}

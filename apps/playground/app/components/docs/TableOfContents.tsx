@@ -67,7 +67,7 @@ export function TableOfContents({ items, className }: TableOfContentsProps) {
               className={cn(
                 "text-[13px] text-left w-full pl-3 py-1 -ml-px border-l-2 transition-colors hover:text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1",
                 activeId === item.id
-                  ? "text-primary-text border-primary font-medium"
+                  ? "text-primary border-primary font-medium"
                   : "text-base-content/70 border-transparent",
               )}
               aria-current={activeId === item.id ? "location" : undefined}

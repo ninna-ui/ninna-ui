@@ -32,7 +32,7 @@ export type FieldHelperVariantsProps = VariantProps<typeof fieldHelperVariants>;
 export const fieldStyles = {
   container: "w-full",
   labelRow: "flex items-center justify-between mb-2",
-  required: "text-danger-text ml-0.5",
+  required: "text-danger ml-0.5",
   optional: "text-sm text-base-content/70",
-  errorText: "text-sm text-danger-text mt-1.5",
+  errorText: "text-sm text-danger mt-1.5",
 };

@@ -46,7 +46,7 @@ export const Default: Story = {
     <Timeline className="w-[450px]">
       <Timeline.Item>
         <Timeline.Indicator>
-          <CheckCircle2 size={14} className="text-success-text" />
+          <CheckCircle2 size={14} className="text-success" />
         </Timeline.Indicator>
         <Timeline.Connector />
         <Timeline.Content>
@@ -65,7 +65,7 @@ export const Default: Story = {
 
       <Timeline.Item>
         <Timeline.Indicator>
-          <GitPullRequest size={14} className="text-primary-text" />
+          <GitPullRequest size={14} className="text-primary" />
         </Timeline.Indicator>
         <Timeline.Connector />
         <Timeline.Content>
@@ -85,7 +85,7 @@ export const Default: Story = {
 
       <Timeline.Item>
         <Timeline.Indicator>
-          <Zap size={14} className="text-warning-text" />
+          <Zap size={14} className="text-warning" />
         </Timeline.Indicator>
         <Timeline.Connector />
         <Timeline.Content>

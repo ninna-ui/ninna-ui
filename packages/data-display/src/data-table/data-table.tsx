@@ -227,7 +227,7 @@ function DataTableInner<T>(
           aria-live="polite"
         >
           <svg
-            className="animate-spin h-6 w-6 text-primary-text"
+            className="animate-spin h-6 w-6 text-primary"
             viewBox="0 0 24 24"
             fill="none"
             aria-hidden="true"

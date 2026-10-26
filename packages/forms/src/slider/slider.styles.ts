@@ -32,7 +32,7 @@ export const sliderRootVariants = cva(
 );
 
 export const sliderTrackVariants = cva(
-  "relative grow rounded-full bg-base-300 overflow-hidden min-w-0 min-h-0",
+  "relative grow rounded-full bg-border overflow-hidden min-w-0 min-h-0",
   {
     variants: {
       orientation: {
@@ -97,14 +97,14 @@ export const sliderThumbVariants = cva(
         soft: "border-primary",
       },
       color: {
-        primary: "border-primary focus-visible:ring-primary-text",
-        secondary: "border-secondary focus-visible:ring-secondary-text",
-        accent: "border-accent focus-visible:ring-accent-text",
-        neutral: "border-neutral focus-visible:ring-neutral-text",
-        success: "border-success focus-visible:ring-success-text",
-        danger: "border-danger focus-visible:ring-danger-text",
-        warning: "border-warning focus-visible:ring-warning-text",
-        info: "border-info focus-visible:ring-info-text",
+        primary: "border-primary focus-visible:ring-primary",
+        secondary: "border-secondary focus-visible:ring-secondary",
+        accent: "border-accent focus-visible:ring-accent",
+        neutral: "border-neutral focus-visible:ring-neutral",
+        success: "border-success focus-visible:ring-success",
+        danger: "border-danger focus-visible:ring-danger",
+        warning: "border-warning focus-visible:ring-warning",
+        info: "border-info focus-visible:ring-info",
       },
       size: {
         sm: "h-4 w-4",

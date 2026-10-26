@@ -68,83 +68,83 @@ export const toastVariants = cva(
       {
         variant: "soft",
         color: "primary",
-        class: "bg-primary/10 text-primary-text border-primary/20",
+        class: "bg-primary/10 text-primary border-primary/20",
       },
       {
         variant: "soft",
         color: "secondary",
-        class: "bg-secondary/10 text-secondary-text border-secondary/20",
+        class: "bg-secondary/10 text-secondary border-secondary/20",
       },
       {
         variant: "soft",
         color: "accent",
-        class: "bg-accent/10 text-accent-text border-accent/20",
+        class: "bg-accent/10 text-accent border-accent/20",
       },
       {
         variant: "soft",
         color: "neutral",
-        class: "bg-neutral/10 text-neutral-text border-neutral/20",
+        class: "bg-neutral/10 text-neutral border-neutral/20",
       },
       {
         variant: "soft",
         color: "success",
-        class: "bg-success/10 text-success-text border-success/20",
+        class: "bg-success/10 text-success border-success/20",
       },
       {
         variant: "soft",
         color: "danger",
-        class: "bg-danger/10 text-danger-text border-danger/20",
+        class: "bg-danger/10 text-danger border-danger/20",
       },
       {
         variant: "soft",
         color: "warning",
-        class: "bg-warning/10 text-warning-text border-warning/20",
+        class: "bg-warning/10 text-warning border-warning/20",
       },
       {
         variant: "soft",
         color: "info",
-        class: "bg-info/10 text-info-text border-info/20",
+        class: "bg-info/10 text-info border-info/20",
       },
       // outline - transparent bg, colored text and border
       {
         variant: "outline",
         color: "primary",
-        class: "bg-transparent text-primary-text border-primary",
+        class: "bg-transparent text-primary border-primary",
       },
       {
         variant: "outline",
         color: "secondary",
-        class: "bg-transparent text-secondary-text border-secondary",
+        class: "bg-transparent text-secondary border-secondary",
       },
       {
         variant: "outline",
         color: "accent",
-        class: "bg-transparent text-accent-text border-accent",
+        class: "bg-transparent text-accent border-accent",
       },
       {
         variant: "outline",
         color: "neutral",
-        class: "bg-transparent text-neutral-text border-neutral",
+        class: "bg-transparent text-neutral border-neutral",
       },
       {
         variant: "outline",
         color: "success",
-        class: "bg-transparent text-success-text border-success",
+        class: "bg-transparent text-success border-success",
       },
       {
         variant: "outline",
         color: "danger",
-        class: "bg-transparent text-danger-text border-danger",
+        class: "bg-transparent text-danger border-danger",
       },
       {
         variant: "outline",
         color: "warning",
-        class: "bg-transparent text-warning-text border-warning",
+        class: "bg-transparent text-warning border-warning",
       },
       {
         variant: "outline",
         color: "info",
-        class: "bg-transparent text-info-text border-info",
+        class: "bg-transparent text-info border-info",
       },
     ],
     defaultVariants: { variant: "soft", color: "neutral" },
@@ -154,24 +154,24 @@ export const toastVariants = cva(
 export type ToastVariantsProps = VariantProps<typeof toastVariants>;
 
 export const TOAST_ICON_COLORS: Record<Color, string> = {
-  primary: "text-primary-text",
-  secondary: "text-secondary-text",
-  accent: "text-accent-text",
-  neutral: "text-neutral-text",
-  success: "text-success-text",
-  danger: "text-danger-text",
-  warning: "text-warning-text",
-  info: "text-info-text",
+  primary: "text-primary",
+  secondary: "text-secondary",
+  accent: "text-accent",
+  neutral: "text-neutral",
+  success: "text-success",
+  danger: "text-danger",
+  warning: "text-warning",
+  info: "text-info",
 };
 
 export const toastStyles = {
   content: "flex-1 flex flex-col gap-1",
   title: "text-sm font-semibold",
-  description: "text-sm opacity-90",
+  description: "text-sm",
   closeButton:
-    "absolute right-2 top-2 rounded-md p-1 opacity-0 transition-opacity hover:opacity-100 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-text focus-visible:ring-offset-1",
+    "absolute right-2 top-2 rounded-md p-1 opacity-0 transition-opacity hover:opacity-100 group-hover:opacity-100 focus:opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1",
   actionButton:
-    "inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-text",
+    "inline-flex items-center justify-center rounded-md px-3 py-1.5 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary",
   icon: "h-5 w-5 shrink-0",
   loadingIcon: "h-5 w-5 shrink-0 animate-spin",
 };

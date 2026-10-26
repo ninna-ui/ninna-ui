@@ -145,10 +145,10 @@ export const CustomCell: Story = {
           <span
             className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${
               row.status === "Active"
-                ? "bg-success/10 text-success-text"
+                ? "bg-success/10 text-success"
                 : row.status === "Inactive"
-                  ? "bg-danger/10 text-danger-text"
-                  : "bg-warning/10 text-warning-text"
+                  ? "bg-danger/10 text-danger"
+                  : "bg-warning/10 text-warning"
             }`}
           >
             {row.status}

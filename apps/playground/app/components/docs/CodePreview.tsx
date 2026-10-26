@@ -129,9 +129,7 @@ export function CodePreview({
             ) : sourceCode ? (
               <CodeBlock code={sourceCode} showLineNumbers />
             ) : loadError ? (
-              <div className="p-4 text-danger-text text-sm">
-                Error: {loadError}
-              </div>
+              <div className="p-4 text-danger text-sm">Error: {loadError}</div>
             ) : (
               <div className="p-4 text-base-content/70 text-sm">
                 No source code available

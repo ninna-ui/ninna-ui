@@ -166,7 +166,7 @@ export function StylingView() {
             </div>
 
             <div className="bg-info/10 border border-info/20 rounded-lg p-4">
-              <Text size="sm" className="text-info-text">
+              <Text size="sm" className="text-info">
                 <strong>Common slots:</strong> <Code>icon</Code>,{" "}
                 <Code>content</Code>, <Code>title</Code>,{" "}
                 <Code>description</Code>, <Code>indicator</Code>,{" "}

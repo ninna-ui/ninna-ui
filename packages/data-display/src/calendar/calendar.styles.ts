@@ -3,13 +3,13 @@ export const calendarStyles = {
   header: "flex items-center justify-between mb-4",
   headerTitle: "text-sm font-semibold text-base-content",
   navButton:
-    "inline-flex items-center justify-center size-8 rounded-md text-base-content/70 hover:bg-base-200 hover:text-base-content transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-text focus-visible:ring-offset-1",
+    "inline-flex items-center justify-center size-8 rounded-md text-base-content/70 hover:bg-base-200 hover:text-base-content transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1",
   grid: "w-full border-collapse",
   weekday: "h-8 w-8 text-center text-xs font-medium text-base-content/70",
   dayCell: "p-0 text-center",
-  day: 'relative inline-flex items-center justify-center size-9 sm:size-8 rounded-md text-sm cursor-pointer transition-colors hover:bg-base-200 text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-text focus-visible:ring-offset-1 before:absolute before:inset-[-2px] before:content-[""]',
-  dayToday: "border border-primary text-primary-text font-semibold",
+  day: 'relative inline-flex items-center justify-center size-9 sm:size-8 rounded-md text-sm cursor-pointer transition-colors hover:bg-base-200 text-base-content focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-1 before:absolute before:inset-[-2px] before:content-[""]',
+  dayToday: "border border-primary text-primary font-semibold",
   daySelected: "bg-primary text-primary-content hover:bg-primary/90",
-  dayOutside: "text-base-content/30",
+  dayOutside: "text-base-content/70",
   dayDisabled: "text-base-content/20 cursor-not-allowed hover:bg-transparent",
 };

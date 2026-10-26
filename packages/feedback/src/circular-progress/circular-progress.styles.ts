@@ -6,14 +6,14 @@ export const circularProgressVariants = cva(
   {
     variants: {
       color: {
-        primary: "text-primary-text",
-        secondary: "text-secondary-text",
-        accent: "text-accent-text",
-        neutral: "text-neutral-text",
-        success: "text-success-text",
-        danger: "text-danger-text",
-        warning: "text-warning-text",
-        info: "text-info-text",
+        primary: "text-primary",
+        secondary: "text-secondary",
+        accent: "text-accent",
+        neutral: "text-neutral",
+        success: "text-success",
+        danger: "text-danger",
+        warning: "text-warning",
+        info: "text-info",
       },
     },
     defaultVariants: { color: "primary" },
@@ -42,14 +42,14 @@ export const CIRCULAR_PROGRESS_SIZES: Record<
 };
 
 export const CIRCULAR_PROGRESS_STROKE_COLORS: Record<Color, string> = {
-  primary: "stroke-primary-text",
-  secondary: "stroke-secondary-text",
-  accent: "stroke-accent-text",
-  neutral: "stroke-neutral-text",
-  success: "stroke-success-text",
-  danger: "stroke-danger-text",
-  warning: "stroke-warning-text",
-  info: "stroke-info-text",
+  primary: "stroke-primary",
+  secondary: "stroke-secondary",
+  accent: "stroke-accent",
+  neutral: "stroke-neutral",
+  success: "stroke-success",
+  danger: "stroke-danger",
+  warning: "stroke-warning",
+  info: "stroke-info",
 };
 
 export const circularProgressLabelStyles = {

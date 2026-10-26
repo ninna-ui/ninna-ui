@@ -7,7 +7,7 @@ export const inputVariants = cva(
       inputVariant: {
         outline: "",
         filled: "bg-base-200 border-transparent focus:bg-base-100",
-        flushed: "border-x-0 border-t-0 rounded-none border-base-300",
+        flushed: "border-x-0 border-t-0 rounded-none border-border",
       },
       color: {
         primary: "",
@@ -37,90 +37,89 @@ export const inputVariants = cva(
         inputVariant: "outline",
         color: "primary",
         class:
-          "border-base-300 focus:ring-2 focus:ring-primary-text focus:border-primary",
+          "border-border focus:ring-2 focus:ring-primary focus:border-primary",
       },
       {
         inputVariant: "outline",
         color: "secondary",
         class:
-          "border-base-300 focus:ring-2 focus:ring-secondary-text focus:border-secondary",
+          "border-border focus:ring-2 focus:ring-secondary focus:border-secondary",
       },
       {
         inputVariant: "outline",
         color: "accent",
         class:
-          "border-base-300 focus:ring-2 focus:ring-accent-text focus:border-accent",
+          "border-border focus:ring-2 focus:ring-accent focus:border-accent",
       },
       {
         inputVariant: "outline",
         color: "neutral",
         class:
-          "border-base-300 focus:ring-2 focus:ring-neutral-text focus:border-neutral",
+          "border-border focus:ring-2 focus:ring-neutral focus:border-neutral",
       },
       {
         inputVariant: "outline",
         color: "success",
         class:
-          "border-base-300 focus:ring-2 focus:ring-success-text focus:border-success",
+          "border-border focus:ring-2 focus:ring-success focus:border-success",
       },
       {
         inputVariant: "outline",
         color: "danger",
         class:
-          "border-base-300 focus:ring-2 focus:ring-danger-text focus:border-danger",
+          "border-border focus:ring-2 focus:ring-danger focus:border-danger",
       },
       {
         inputVariant: "outline",
         color: "warning",
         class:
-          "border-base-300 focus:ring-2 focus:ring-warning-text focus:border-warning",
+          "border-border focus:ring-2 focus:ring-warning focus:border-warning",
       },
       {
         inputVariant: "outline",
         color: "info",
-        class:
-          "border-base-300 focus:ring-2 focus:ring-info-text focus:border-info",
+        class: "border-border focus:ring-2 focus:ring-info focus:border-info",
       },
       // filled + color focus borders
       {
         inputVariant: "filled",
         color: "primary",
-        class: "focus:ring-2 focus:ring-primary-text focus:border-primary",
+        class: "focus:ring-2 focus:ring-primary focus:border-primary",
       },
       {
         inputVariant: "filled",
         color: "secondary",
-        class: "focus:ring-2 focus:ring-secondary-text focus:border-secondary",
+        class: "focus:ring-2 focus:ring-secondary focus:border-secondary",
       },
       {
         inputVariant: "filled",
         color: "accent",
-        class: "focus:ring-2 focus:ring-accent-text focus:border-accent",
+        class: "focus:ring-2 focus:ring-accent focus:border-accent",
       },
       {
         inputVariant: "filled",
         color: "neutral",
-        class: "focus:ring-2 focus:ring-neutral-text focus:border-neutral",
+        class: "focus:ring-2 focus:ring-neutral focus:border-neutral",
       },
       {
         inputVariant: "filled",
         color: "success",
-        class: "focus:ring-2 focus:ring-success-text focus:border-success",
+        class: "focus:ring-2 focus:ring-success focus:border-success",
       },
       {
         inputVariant: "filled",
         color: "danger",
-        class: "focus:ring-2 focus:ring-danger-text focus:border-danger",
+        class: "focus:ring-2 focus:ring-danger focus:border-danger",
       },
       {
         inputVariant: "filled",
         color: "warning",
-        class: "focus:ring-2 focus:ring-warning-text focus:border-warning",
+        class: "focus:ring-2 focus:ring-warning focus:border-warning",
       },
       {
         inputVariant: "filled",
         color: "info",
-        class: "focus:ring-2 focus:ring-info-text focus:border-info",
+        class: "focus:ring-2 focus:ring-info focus:border-info",
       },
       // flushed + color focus borders
       {
@@ -164,13 +163,13 @@ export const inputVariants = cva(
         inputVariant: "outline",
         invalid: true,
         class:
-          "border-danger focus:ring-2 focus:ring-danger-text focus:border-danger",
+          "border-danger focus:ring-2 focus:ring-danger focus:border-danger",
       },
       {
         inputVariant: "filled",
         invalid: true,
         class:
-          "bg-danger/10 border-transparent focus:ring-2 focus:ring-danger-text focus:border-danger",
+          "bg-danger/10 border-transparent focus:ring-2 focus:ring-danger focus:border-danger",
       },
       {
         inputVariant: "flushed",
@@ -197,10 +196,10 @@ export const inputStyles = {
     "absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded-full text-base-content/70 hover:text-base-content hover:bg-base-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-1 transition-colors duration-150",
   withClearButton: "pr-9",
   counter: "text-xs text-base-content/70 mt-1 text-right",
-  counterError: "text-danger-text",
+  counterError: "text-danger",
   floatingWrapper: "relative pt-4",
   floatingLabel:
-    "absolute left-3 top-1/2 -translate-y-1/2 text-base-content/70 pointer-events-none transition-all duration-200 ease-out peer-focus:top-0 peer-focus:translate-y-0 peer-focus:scale-75 peer-focus:text-primary-text peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:scale-75 origin-left bg-base-100 px-1 -ml-1",
+    "absolute left-3 top-1/2 -translate-y-1/2 text-base-content/70 pointer-events-none transition-all duration-200 ease-out peer-focus:top-0 peer-focus:translate-y-0 peer-focus:scale-75 peer-focus:text-primary peer-[:not(:placeholder-shown)]:top-0 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:scale-75 origin-left bg-base-100 px-1 -ml-1",
   floatingInput: "peer placeholder-transparent",
   floatingLabelSizes: {
     xs: "text-xs",

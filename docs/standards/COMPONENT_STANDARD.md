@@ -509,9 +509,11 @@ The rule checks for test files in:
 
 **Component styles MUST NOT introduce new semantic color meanings.** New semantic colors are added only in `@ninna-ui/core` to ensure consistency across all components.
 
-Use `text-{color}-foreground` on base surfaces and soft tints, and
-`text-{color}-content` on the matching opaque `bg-{color}` fill. Raw semantic fills
-are not interchangeable with text colors. Validate solid hover colors too: fading
+Use `text-{color}` on base surfaces and soft tints, and
+`text-{color}-content` on the matching `bg-{color}` fill. Native text, background,
+border and ring utilities share the same semantic color. Use `border-border`
+for control boundaries and the base scale for decorative separators.
+Validate solid hover colors too: fading
 a near-threshold fill can reduce its content contrast below AA. Validate theme
 changes with `pnpm check-theme-contrast` and rendered browser checks.
 

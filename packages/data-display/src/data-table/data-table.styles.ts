@@ -8,7 +8,7 @@ export const dataTableStyles = {
   rowStriped: "even:bg-base-50",
   head: "h-10 px-3 text-left align-middle font-medium text-base-content/70",
   headSortable:
-    "cursor-pointer select-none hover:text-base-content transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary-text",
+    "cursor-pointer select-none hover:text-base-content transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-primary",
   headCompact: "h-8 px-2 text-xs",
   cell: "p-3 align-middle",
   cellCompact: "p-2 text-xs",

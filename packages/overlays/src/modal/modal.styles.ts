@@ -34,5 +34,5 @@ export const modalStyles = {
   footer:
     "flex flex-wrap items-center justify-end gap-2 px-4 sm:px-6 pt-2 pb-4 sm:pb-6",
   close:
-    "absolute top-3 right-3 inline-flex items-center justify-center rounded-md p-1.5 text-base-content/70 hover:text-base-content hover:bg-base-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-text before:absolute before:inset-[-6px] before:content-[''] min-h-[44px] min-w-[44px]",
+    "absolute top-3 right-3 inline-flex items-center justify-center rounded-md p-1.5 text-base-content/70 hover:text-base-content hover:bg-base-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary before:absolute before:inset-[-6px] before:content-[''] min-h-[44px] min-w-[44px]",
 };

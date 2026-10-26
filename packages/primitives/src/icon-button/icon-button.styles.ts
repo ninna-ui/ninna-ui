@@ -1,7 +1,7 @@
 import { cva, type VariantProps } from "class-variance-authority";
 
 export const iconButtonVariants = cva(
-  "relative isolate inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-text disabled:opacity-50 disabled:pointer-events-none data-[loading=true]:cursor-wait data-[loading=true]:pointer-events-none before:absolute before:inset-[-4px] before:content-['']",
+  "relative isolate inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary disabled:opacity-50 disabled:pointer-events-none data-[loading=true]:cursor-wait data-[loading=true]:pointer-events-none before:absolute before:inset-[-4px] before:content-['']",
   {
     variants: {
       variant: {
@@ -84,173 +84,172 @@ export const iconButtonVariants = cva(
       {
         variant: "soft",
         color: "primary",
-        class: "bg-primary/10 text-primary-text hover:bg-primary/20",
+        class: "bg-primary/10 text-primary hover:bg-primary/20",
       },
       {
         variant: "soft",
         color: "secondary",
-        class: "bg-secondary/10 text-secondary-text hover:bg-secondary/20",
+        class: "bg-secondary/10 text-secondary hover:bg-secondary/20",
       },
       {
         variant: "soft",
         color: "accent",
-        class: "bg-accent/10 text-accent-text hover:bg-accent/20",
+        class: "bg-accent/10 text-accent hover:bg-accent/20",
       },
       {
         variant: "soft",
         color: "neutral",
-        class: "bg-neutral/10 text-neutral-text hover:bg-neutral/20",
+        class: "bg-neutral/10 text-neutral hover:bg-neutral/20",
       },
       {
         variant: "soft",
         color: "success",
-        class: "bg-success/10 text-success-text hover:bg-success/20",
+        class: "bg-success/10 text-success hover:bg-success/20",
       },
       {
         variant: "soft",
         color: "danger",
-        class: "bg-danger/10 text-danger-text hover:bg-danger/20",
+        class: "bg-danger/10 text-danger hover:bg-danger/20",
       },
       {
         variant: "soft",
         color: "warning",
-        class: "bg-warning/10 text-warning-text hover:bg-warning/20",
+        class: "bg-warning/10 text-warning hover:bg-warning/20",
       },
       {
         variant: "soft",
         color: "info",
-        class: "bg-info/10 text-info-text hover:bg-info/20",
+        class: "bg-info/10 text-info hover:bg-info/20",
       },
       // outline
       {
         variant: "outline",
         color: "primary",
         class:
-          "border border-primary bg-transparent text-primary-text hover:bg-primary hover:text-primary-content",
+          "border border-primary bg-transparent text-primary hover:bg-primary/10",
       },
       {
         variant: "outline",
         color: "secondary",
         class:
-          "border border-secondary bg-transparent text-secondary-text hover:bg-secondary hover:text-secondary-content",
+          "border border-secondary bg-transparent text-secondary hover:bg-secondary/10",
       },
       {
         variant: "outline",
         color: "accent",
         class:
-          "border border-accent bg-transparent text-accent-text hover:bg-accent hover:text-accent-content",
+          "border border-accent bg-transparent text-accent hover:bg-accent/10",
       },
       {
         variant: "outline",
         color: "neutral",
         class:
-          "border border-neutral bg-transparent text-neutral-text hover:bg-neutral hover:text-neutral-content",
+          "border border-neutral bg-transparent text-neutral hover:bg-neutral/10",
       },
       {
         variant: "outline",
         color: "success",
         class:
-          "border border-success bg-transparent text-success-text hover:bg-success hover:text-success-content",
+          "border border-success bg-transparent text-success hover:bg-success/10",
       },
       {
         variant: "outline",
         color: "danger",
         class:
-          "border border-danger bg-transparent text-danger-text hover:bg-danger hover:text-danger-content",
+          "border border-danger bg-transparent text-danger hover:bg-danger/10",
       },
       {
         variant: "outline",
         color: "warning",
         class:
-          "border border-warning bg-transparent text-warning-text hover:bg-warning hover:text-warning-content",
+          "border border-warning bg-transparent text-warning hover:bg-warning/10",
       },
       {
         variant: "outline",
         color: "info",
-        class:
-          "border border-info bg-transparent text-info-text hover:bg-info hover:text-info-content",
+        class: "border border-info bg-transparent text-info hover:bg-info/10",
       },
       // ghost
       {
         variant: "ghost",
         color: "primary",
-        class: "text-primary-text hover:bg-primary/10",
+        class: "text-primary hover:bg-primary/10",
       },
       {
         variant: "ghost",
         color: "secondary",
-        class: "text-secondary-text hover:bg-secondary/10",
+        class: "text-secondary hover:bg-secondary/10",
       },
       {
         variant: "ghost",
         color: "accent",
-        class: "text-accent-text hover:bg-accent/10",
+        class: "text-accent hover:bg-accent/10",
       },
       {
         variant: "ghost",
         color: "neutral",
-        class: "text-neutral-text hover:bg-neutral/10",
+        class: "text-neutral hover:bg-neutral/10",
       },
       {
         variant: "ghost",
         color: "success",
-        class: "text-success-text hover:bg-success/10",
+        class: "text-success hover:bg-success/10",
       },
       {
         variant: "ghost",
         color: "danger",
-        class: "text-danger-text hover:bg-danger/10",
+        class: "text-danger hover:bg-danger/10",
       },
       {
         variant: "ghost",
         color: "warning",
-        class: "text-warning-text hover:bg-warning/10",
+        class: "text-warning hover:bg-warning/10",
       },
       {
         variant: "ghost",
         color: "info",
-        class: "text-info-text hover:bg-info/10",
+        class: "text-info hover:bg-info/10",
       },
       // text
       {
         variant: "text",
         color: "primary",
-        class: "text-primary-text hover:underline",
+        class: "text-primary hover:underline",
       },
       {
         variant: "text",
         color: "secondary",
-        class: "text-secondary-text hover:underline",
+        class: "text-secondary hover:underline",
       },
       {
         variant: "text",
         color: "accent",
-        class: "text-accent-text hover:underline",
+        class: "text-accent hover:underline",
       },
       {
         variant: "text",
         color: "neutral",
-        class: "text-neutral-text hover:underline",
+        class: "text-neutral hover:underline",
       },
       {
         variant: "text",
         color: "success",
-        class: "text-success-text hover:underline",
+        class: "text-success hover:underline",
       },
       {
         variant: "text",
         color: "danger",
-        class: "text-danger-text hover:underline",
+        class: "text-danger hover:underline",
       },
       {
         variant: "text",
         color: "warning",
-        class: "text-warning-text hover:underline",
+        class: "text-warning hover:underline",
       },
       {
         variant: "text",
         color: "info",
-        class: "text-info-text hover:underline",
+        class: "text-info hover:underline",
       },
     ],
     defaultVariants: {

@@ -29,14 +29,14 @@ export const tabsListVariants = cva("flex items-center overflow-x-auto", {
 });
 
 export const tabsTriggerVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-text focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap font-medium transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         line: "",
         enclosed:
           "rounded-md px-3 py-1.5 data-[state=active]:bg-base-100 data-[state=active]:shadow-sm data-[state=active]:text-base-content text-base-content/70",
-        soft: "rounded-md px-3 py-1.5 data-[state=active]:bg-primary/10 data-[state=active]:text-primary-text text-base-content/70 hover:bg-base-200/50",
+        soft: "rounded-md px-3 py-1.5 data-[state=active]:bg-primary/10 data-[state=active]:text-primary text-base-content/70 hover:bg-base-200/50",
         outline:
           "rounded-md px-3 py-1.5 border border-transparent data-[state=active]:bg-base-100 data-[state=active]:border-base-200 data-[state=active]:shadow-sm text-base-content/70",
       },
@@ -55,13 +55,13 @@ export const tabsTriggerVariants = cva(
         variant: "line",
         orientation: "horizontal",
         class:
-          "border-b-2 border-transparent px-4 pb-2.5 pt-2 data-[state=active]:border-primary data-[state=active]:text-primary-text hover:text-base-content/80",
+          "border-b-2 border-transparent px-4 pb-2.5 pt-2 data-[state=active]:border-primary data-[state=active]:text-primary hover:text-base-content/80",
       },
       {
         variant: "line",
         orientation: "vertical",
         class:
-          "border-r-2 border-transparent px-4 py-2 data-[state=active]:border-primary data-[state=active]:text-primary-text hover:text-base-content/80",
+          "border-r-2 border-transparent px-4 py-2 data-[state=active]:border-primary data-[state=active]:text-primary hover:text-base-content/80",
       },
     ],
     defaultVariants: { variant: "line", size: "md", orientation: "horizontal" },

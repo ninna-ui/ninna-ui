@@ -6,21 +6,20 @@ export const selectTriggerVariants = cva(
     variants: {
       selectVariant: {
         outline:
-          "rounded-md border border-base-300 bg-base-100 disabled:bg-base-50",
-        filled:
-          "rounded-md border border-transparent bg-base-200 focus:bg-base-100",
+          "rounded-md border border-border bg-base-100 disabled:bg-base-50",
+        filled: "rounded-md border border-border bg-base-200 focus:bg-base-100",
         flushed:
-          "rounded-none border-x-0 border-t-0 border-b-2 border-base-300 bg-transparent px-0",
+          "rounded-none border-x-0 border-t-0 border-b-2 border-border bg-transparent px-0",
       },
       color: {
-        primary: "text-primary-text",
-        secondary: "text-secondary-text",
-        accent: "text-accent-text",
-        neutral: "text-neutral-text",
-        success: "text-success-text",
-        danger: "text-danger-text",
-        warning: "text-warning-text",
-        info: "text-info-text",
+        primary: "text-primary",
+        secondary: "text-secondary",
+        accent: "text-accent",
+        neutral: "text-neutral",
+        success: "text-success",
+        danger: "text-danger",
+        warning: "text-warning",
+        info: "text-info",
       },
       size: {
         xs: "h-7 px-2 text-xs",
@@ -44,152 +43,151 @@ export const selectTriggerVariants = cva(
         selectVariant: "outline",
         color: "primary",
         class:
-          "border-primary/40 focus:ring-2 focus:ring-primary-text focus:border-primary",
+          "border-border focus:ring-2 focus:ring-primary focus:border-primary",
       },
       {
         selectVariant: "outline",
         color: "secondary",
         class:
-          "border-secondary/40 focus:ring-2 focus:ring-secondary-text focus:border-secondary",
+          "border-border focus:ring-2 focus:ring-secondary focus:border-secondary",
       },
       {
         selectVariant: "outline",
         color: "accent",
         class:
-          "border-accent/40 focus:ring-2 focus:ring-accent-text focus:border-accent",
+          "border-border focus:ring-2 focus:ring-accent focus:border-accent",
       },
       {
         selectVariant: "outline",
         color: "neutral",
         class:
-          "border-neutral/40 focus:ring-2 focus:ring-neutral-text focus:border-neutral",
+          "border-border focus:ring-2 focus:ring-neutral focus:border-neutral",
       },
       {
         selectVariant: "outline",
         color: "success",
         class:
-          "border-success/40 focus:ring-2 focus:ring-success-text focus:border-success",
+          "border-border focus:ring-2 focus:ring-success focus:border-success",
       },
       {
         selectVariant: "outline",
         color: "danger",
         class:
-          "border-danger/40 focus:ring-2 focus:ring-danger-text focus:border-danger",
+          "border-border focus:ring-2 focus:ring-danger focus:border-danger",
       },
       {
         selectVariant: "outline",
         color: "warning",
         class:
-          "border-warning/40 focus:ring-2 focus:ring-warning-text focus:border-warning",
+          "border-border focus:ring-2 focus:ring-warning focus:border-warning",
       },
       {
         selectVariant: "outline",
         color: "info",
-        class:
-          "border-info/40 focus:ring-2 focus:ring-info-text focus:border-info",
+        class: "border-border focus:ring-2 focus:ring-info focus:border-info",
       },
       // filled + color: tinted bg at rest + focus ring
       {
         selectVariant: "filled",
         color: "primary",
         class:
-          "bg-primary/10 focus:bg-base-100 focus:ring-2 focus:ring-primary-text focus:border-primary",
+          "bg-primary/10 focus:bg-base-100 focus:ring-2 focus:ring-primary focus:border-primary",
       },
       {
         selectVariant: "filled",
         color: "secondary",
         class:
-          "bg-secondary/10 focus:bg-base-100 focus:ring-2 focus:ring-secondary-text focus:border-secondary",
+          "bg-secondary/10 focus:bg-base-100 focus:ring-2 focus:ring-secondary focus:border-secondary",
       },
       {
         selectVariant: "filled",
         color: "accent",
         class:
-          "bg-accent/10 focus:bg-base-100 focus:ring-2 focus:ring-accent-text focus:border-accent",
+          "bg-accent/10 focus:bg-base-100 focus:ring-2 focus:ring-accent focus:border-accent",
       },
       {
         selectVariant: "filled",
         color: "neutral",
         class:
-          "bg-neutral/10 focus:bg-base-100 focus:ring-2 focus:ring-neutral-text focus:border-neutral",
+          "bg-neutral/10 focus:bg-base-100 focus:ring-2 focus:ring-neutral focus:border-neutral",
       },
       {
         selectVariant: "filled",
         color: "success",
         class:
-          "bg-success/10 focus:bg-base-100 focus:ring-2 focus:ring-success-text focus:border-success",
+          "bg-success/10 focus:bg-base-100 focus:ring-2 focus:ring-success focus:border-success",
       },
       {
         selectVariant: "filled",
         color: "danger",
         class:
-          "bg-danger/10 focus:bg-base-100 focus:ring-2 focus:ring-danger-text focus:border-danger",
+          "bg-danger/10 focus:bg-base-100 focus:ring-2 focus:ring-danger focus:border-danger",
       },
       {
         selectVariant: "filled",
         color: "warning",
         class:
-          "bg-warning/10 focus:bg-base-100 focus:ring-2 focus:ring-warning-text focus:border-warning",
+          "bg-warning/10 focus:bg-base-100 focus:ring-2 focus:ring-warning focus:border-warning",
       },
       {
         selectVariant: "filled",
         color: "info",
         class:
-          "bg-info/10 focus:bg-base-100 focus:ring-2 focus:ring-info-text focus:border-info",
+          "bg-info/10 focus:bg-base-100 focus:ring-2 focus:ring-info focus:border-info",
       },
       // flushed + color: colored bottom border at rest + focus
       {
         selectVariant: "flushed",
         color: "primary",
-        class: "border-primary/40 focus:border-primary",
+        class: "border-border focus:border-primary",
       },
       {
         selectVariant: "flushed",
         color: "secondary",
-        class: "border-secondary/40 focus:border-secondary",
+        class: "border-border focus:border-secondary",
       },
       {
         selectVariant: "flushed",
         color: "accent",
-        class: "border-accent/40 focus:border-accent",
+        class: "border-border focus:border-accent",
       },
       {
         selectVariant: "flushed",
         color: "neutral",
-        class: "border-neutral/40 focus:border-neutral",
+        class: "border-border focus:border-neutral",
       },
       {
         selectVariant: "flushed",
         color: "success",
-        class: "border-success/40 focus:border-success",
+        class: "border-border focus:border-success",
       },
       {
         selectVariant: "flushed",
         color: "danger",
-        class: "border-danger/40 focus:border-danger",
+        class: "border-border focus:border-danger",
       },
       {
         selectVariant: "flushed",
         color: "warning",
-        class: "border-warning/40 focus:border-warning",
+        class: "border-border focus:border-warning",
       },
       {
         selectVariant: "flushed",
         color: "info",
-        class: "border-info/40 focus:border-info",
+        class: "border-border focus:border-info",
       },
       // invalid states (override color)
       {
         selectVariant: "outline",
         invalid: true,
         class:
-          "border-danger focus:ring-2 focus:ring-danger-text focus:border-danger",
+          "border-danger focus:ring-2 focus:ring-danger focus:border-danger",
       },
       {
         selectVariant: "filled",
         invalid: true,
         class:
-          "bg-danger/10 border-danger focus:ring-2 focus:ring-danger-text focus:border-danger",
+          "bg-danger/10 border-danger focus:ring-2 focus:ring-danger focus:border-danger",
       },
       {
         selectVariant: "flushed",

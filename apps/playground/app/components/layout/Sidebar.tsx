@@ -194,14 +194,14 @@ export function Sidebar() {
                               className={cn(
                                 "group flex items-center justify-between gap-x-3 rounded-md px-2 py-1.5 text-[13px] transition-colors",
                                 isActive
-                                  ? "bg-primary/10 text-primary-text font-medium"
+                                  ? "bg-primary/10 text-primary font-medium"
                                   : "text-base-content/70 hover:bg-base-200 hover:text-base-content",
                               )}
                               aria-current={isActive ? "page" : undefined}
                             >
                               <span>{item.name}</span>
                               {item.badge && (
-                                <span className="rounded-full bg-primary/8 px-1.5 py-0.5 text-[10px] font-medium text-primary-text">
+                                <span className="rounded-full bg-primary/8 px-1.5 py-0.5 text-[10px] font-medium text-primary">
                                   {item.badge}
                                 </span>
                               )}

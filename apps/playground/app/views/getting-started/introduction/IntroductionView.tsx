@@ -80,7 +80,7 @@ function WhySection() {
               as="h3"
               size="sm"
               weight="semibold"
-              className="text-primary-text mb-2"
+              className="text-primary mb-2"
             >
               {item.title}
             </Heading>

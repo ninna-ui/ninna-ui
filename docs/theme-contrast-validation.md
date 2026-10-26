@@ -1,81 +1,99 @@
-# Semantic color contrast regression
+# Shared semantic colors: design and validation
 
-The reported Button page failure was reproduced from computed styles on the
-production website. It affects the library's reuse of fill tokens as text colors;
-the website's preview surface is not the root cause.
+Ninna uses the native Tailwind color model. Each semantic color has two roles:
 
-Default light measurements before the fix (normal text, minimum 4.5:1):
+| Token           | Use                                                       |
+| --------------- | --------------------------------------------------------- |
+| primary         | Text, fills, borders and focus rings using the same value |
+| primary-content | Text and icons on a solid primary fill                    |
 
-| Color   | Solid | Soft | Outline / ghost / text |
-| ------- | ----: | ---: | ---------------------: |
-| Accent  |  9.44 | 1.73 |                   1.86 |
-| Info    |  8.43 | 1.98 |                   2.15 |
-| Success |  8.90 | 1.88 |                   2.04 |
-| Warning | 10.80 | 1.47 |                   1.54 |
-| Danger  |  6.69 | 2.47 |                   2.74 |
+The pattern applies to all eight semantic colors. Component props remain
+color="primary". There is no separate semantic text token, custom utility
+override, runtime color calculation, extra theme package or expanded color scale.
+Each of the five CSS presets retains the original 31 variables.
 
-The existing solid fill/content pairs pass in all five presets. Their 90%-opacity
-hover backgrounds fail in four cases: Forest dark secondary, Ocean light accent,
-Ocean dark secondary and Sunset light primary. Their fill lightness is now tuned
-to pass with the existing 90%-opacity hover behavior. Hue and chroma are retained.
+## Why this model
 
-## Changes
+Tailwind maps its color namespace to text, background and other color utilities.
+Keeping that mapping predictable makes custom markup and theme overrides easier.
+The existing color/content pairing is also familiar from daisyUI; shadcn uses
+the name foreground for the equivalent content-on-fill role.
 
-- Keep established solid palettes and their matching `-content` API, with the four
-  small fill-lightness corrections described above.
-- Add explicit `-text` tones to each preset. Preserve the semantic hue and chroma
-  and adjust lightness only when the rendered contrast requires it. Reuse the fill
-  directly when it passes. Use these tones for text/icons and focus rings on base
-  surfaces and tints; keep vivid decorative outline borders.
-- Avoid a blanket blend with neutral text, which unnecessarily muted already
-  readable colors. No runtime color calculation or new theme package is needed.
-- Update first-party examples and CLI starter text to demonstrate the new roles.
-- Use darker stops in the custom Button gradient demonstration, which previously
-  combined bright fills with white text independently of the core palette.
+Radix uses different scale steps for solid backgrounds and readable text, which
+allows more vivid fills. That is a valid alternative, but exposing a full scale
+or another text role would add API here. Ninna instead constrains its bundled
+palettes so one semantic value works in the documented text and fill contexts.
+This is a deliberate product choice rather than a universal rule for all systems.
 
-## Validation
+The visual tradeoff is explicit: light-mode status fills are deeper green,
+gold, teal and red shades; dark-mode colors are lighter. Their hue families are
+preserved, with chroma limited to the sRGB gamut. Solid content is light in light
+mode and dark in dark mode. No neutral blend is applied to semantic colors.
 
-`pnpm check-theme-contrast` evaluates 1,040 color pairs from the shipped CSS:
-five presets × two modes × eight semantic colors × (one solid/content pair +
-three hover surfaces + three base surfaces × three tint strengths). All pass
-4.5:1; the minimum across this matrix is 4.509:1. System-dark token blocks are
-also checked against explicit dark. The check rejects raw semantic fill colors
-used as text in public component source, guarding the original regression.
+## Reproduced problem
 
-Browser measurements of all 400 standard Button examples (five variants × eight
-colors × five presets × two modes) pass, with minimum 5.039:1. Measurements use
-computed colors and composite transparent backgrounds through the DOM ancestry.
-Keyboard focus was checked on the outline variant with the new readable ring.
+The original production Button page reused bright fill colors as text. In the
+Default light preset, soft Warning measured 1.47:1, Accent 1.73:1, Success 1.88:1,
+Info 1.98:1 and Danger 2.47:1. The preview background was not the root cause.
+Four original solid hover combinations also fell below AA after opacity reduced
+their contrast. Palette values now account for hover as well as the resting fill.
 
-The numeric check converts wide-gamut colors to sRGB with gamut mapping before
-WCAG luminance calculations and alpha compositing. It runs in CI because jsdom
-accessibility tests do not verify rendered CSS contrast.
+Descriptions and example captions also faded already-colored text. The relevant
+Card, Alert and Toast text now inherits its parent's full foreground color;
+typography supplies hierarchy. The first-party Alert action uses inherited
+content instead of hard-coded white. Enabled calendar/stepper labels retain
+readable contrast; disabled controls remain visually distinct and exempt.
 
-This is a regression check for the documented base-50, base-100 and base-200
-surfaces and semantic tints up to 20%. It does not certify arbitrary custom
-palettes, nested backgrounds, opacity overrides, gradients or every possible
-component composition. These need checks in their actual rendered context.
+Form controls use the existing border roles for identifying boundaries, while
+decorative dividers keep the base scale. Switch checked text and thumb colors
+follow their variant; ON/OFF track labels now follow the root checked state.
+Thumb movement animates independently of the color pairing. Links retain full
+foreground contrast on hover, and outline buttons keep their foreground with a
+soft hover tint rather than inverting text and background through a transition.
 
-## Naming and scope
+## Regression checks
 
-The public component API stays `color="primary"`. Custom markup uses three clear
-roles: `bg-primary` for a fill, `text-primary-content` on that fill, and
-`text-primary-text` for readable colored text on base surfaces or soft tints.
-The existing `-content` name remains compatible. We do not overload `-foreground`
-to mean colored text on a base surface: shadcn uses it for content on the matching
-solid fill, the role already covered by Ninna's `-content`.
+Run pnpm check-theme-contrast. It checks every bundled preset in light and dark:
 
-Radix also separates solid fill tones from text tones. A full 12-step scale would
-add more API than this fix needs. Five CSS presets already ship as individually
-importable files in core, and the CLI already defaults to the Default preset.
-A separate theme package would add release and dependency work without improving
-that import model. Custom themes can override their text tones directly; custom
-palette authors must check all three roles in light and dark modes.
+- Color/content pairs on solid fills and 90%-opacity hover fills.
+- The same semantic color used as text on base-50, base-100 and base-200,
+  including 10% soft backgrounds and 20% hover/highlight backgrounds.
+- Default body text, 70%-opacity secondary text and 3:1 control boundaries.
+- Semantic colors inside sRGB, the 31-variable schema, native utility mappings,
+  and identical explicit/system-dark token blocks.
 
-These changes are staged for the future 0.8 release. They are not published and
-the production website remains on 0.7.0 until the user approves a later release.
+The current 1,200 checks pass: minimum normal-text contrast 4.801:1 and control
+boundary contrast 3.201:1. The 400 standard Button examples across all five presets
+and both modes pass in-browser, with minimum 6.081:1. Another 360 Alert and Card
+text nodes pass in Default light/dark with minimum 6.099:1. Browser measurements
+use computed styles, alpha compositing and inherited opacity, rather than
+assuming that a jsdom accessibility audit checks rendered CSS contrast.
 
-Reference: [WCAG 2.1 text contrast](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html)
-and [non-text contrast](https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html).
-Design references: [Radix color use cases](https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale)
-and [shadcn token conventions](https://ui.shadcn.com/docs/theming).
+Additional rendered checks passed: 364 Switch instances/states across all five
+presets (minimum indicator contrast 3.206:1 and visible-label contrast 7.592:1),
+74 Input and 68 Checkbox instances across Default light/dark (minimum text
+6.175:1 and boundary/indicator contrast 3.505:1), 84 Link text nodes (7.089:1),
+and 56 Blockquote text/citation nodes (7.516:1). Checkbox label clicks and Switch
+keyboard toggling were checked, including ON/OFF visibility and focus. The
+unstyled Input example supplies its own readable placeholder styles explicitly.
+
+These checks cover the documented surfaces and state combinations, not arbitrary
+opacity overrides, nested tints, image/gradient backgrounds or custom palettes.
+Custom authors should test those compositions with the same contrast thresholds.
+The presets contain static CSS values; palette-authoring calculations do not ship
+in application code.
+
+## Release status
+
+This is an unreleased 0.8 draft. Do not publish packages, merge a release PR, or
+deploy the website migration until the user asks for the later combined release.
+The documentation site must consume the matching published palette version then.
+
+## Primary references
+
+- [Tailwind theme namespaces](https://tailwindcss.com/docs/theme#theme-variable-namespaces)
+- [daisyUI semantic color/content pairs](https://daisyui.com/docs/colors/)
+- [shadcn token conventions](https://ui.shadcn.com/docs/theming)
+- [Radix scale use cases](https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale)
+- [WCAG text contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
+- [WCAG non-text contrast](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)

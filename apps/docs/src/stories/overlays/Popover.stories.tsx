@@ -145,7 +145,7 @@ export const RichContent: Story = {
       <Popover.Content>
         <div className="flex flex-col gap-3 w-64">
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary-text font-bold">
+            <div className="h-10 w-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold">
               JD
             </div>
             <div>

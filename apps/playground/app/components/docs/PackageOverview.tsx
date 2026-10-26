@@ -32,7 +32,7 @@ function CopyButton({ text }: { text: string }) {
       aria-label={copied ? "Copied" : "Copy to clipboard"}
     >
       {copied ? (
-        <Check className="size-3.5 text-success-text" />
+        <Check className="size-3.5 text-success" />
       ) : (
         <Copy className="size-3.5" />
       )}
@@ -89,11 +89,11 @@ export function PackageOverview({
         </div>
         <Text size="xs" className="text-base-content/70">
           Requires{" "}
-          <code className="font-mono text-primary-text">@ninna-ui/core</code>{" "}
+          <code className="font-mono text-primary">@ninna-ui/core</code>{" "}
           (auto-installed) +{" "}
           <Link
             to="/getting-started/installation"
-            className="text-primary-text hover:underline"
+            className="text-primary hover:underline"
           >
             CSS setup
           </Link>
@@ -113,7 +113,7 @@ export function PackageOverview({
                 key={feature}
                 className="flex items-start gap-2 text-sm text-base-content/70"
               >
-                <span className="text-success-text mt-0.5">✓</span>
+                <span className="text-success mt-0.5">✓</span>
                 {feature}
               </li>
             ))}
@@ -137,12 +137,12 @@ export function PackageOverview({
                 <Text
                   size="sm"
                   weight="semibold"
-                  className="text-base-content group-hover:text-primary-text transition-colors"
+                  className="text-base-content group-hover:text-primary transition-colors"
                 >
                   {comp.name}
                 </Text>
                 <ArrowRight
-                  className="size-3.5 text-base-content/30 group-hover:text-primary-text transition-colors"
+                  className="size-3.5 text-base-content/30 group-hover:text-primary transition-colors"
                   aria-hidden="true"
                 />
               </div>

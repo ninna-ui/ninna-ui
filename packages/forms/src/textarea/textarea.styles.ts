@@ -28,6 +28,6 @@ export const textareaStyles = {
   wrapper: "relative w-full",
   unstyled: "border-0 bg-transparent focus:ring-0 p-0",
   counter: "text-xs text-base-content/70 mt-1 text-right",
-  counterError: "text-danger-text",
+  counterError: "text-danger",
   autoResize: "overflow-hidden resize-none",
 };

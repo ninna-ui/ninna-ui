@@ -125,7 +125,7 @@ export const Sizes: Story = {
               <Drawer.Body>
                 <p className="text-base-content/70">
                   Drawer with{" "}
-                  <code className="text-primary-text font-mono">
+                  <code className="text-primary font-mono">
                     size=&quot;{size}&quot;
                   </code>
                   .
@@ -238,7 +238,7 @@ export const Headless: Story = {
         <Drawer.Body>
           <p className="text-base-content/70">
             This drawer uses the{" "}
-            <code className="text-primary-text font-mono">title</code> prop for
+            <code className="text-primary font-mono">title</code> prop for
             accessibility.
           </p>
         </Drawer.Body>

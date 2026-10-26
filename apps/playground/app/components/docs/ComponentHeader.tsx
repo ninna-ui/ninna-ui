@@ -29,7 +29,7 @@ function CopyButton({ text }: { text: string }) {
       aria-label={copied ? "Copied" : "Copy to clipboard"}
     >
       {copied ? (
-        <Check className="size-3.5 text-success-text" />
+        <Check className="size-3.5 text-success" />
       ) : (
         <Copy className="size-3.5" />
       )}

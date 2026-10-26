@@ -3,9 +3,9 @@ import { cva, type VariantProps } from "class-variance-authority";
 export const formMessageVariants = cva("", {
   variants: {
     type: {
-      error: "text-danger-text",
-      success: "text-success-text",
-      warning: "text-warning-text",
+      error: "text-danger",
+      success: "text-success",
+      warning: "text-warning",
       hint: "text-base-content/70",
     },
     size: {

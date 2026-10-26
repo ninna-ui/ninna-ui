@@ -10,24 +10,23 @@ const colors = ['primary', 'secondary', 'accent', 'neutral', 'success', 'danger'
 const surfaces = ['base-50', 'base-100', 'base-200'];
 const failures = [];
 let checks = 0;
-let minimum = Infinity;
+const minimum = { text: Infinity, control: Infinity };
 
-// Guard the original regression too: correct text tokens are ineffective if a
-// component accidentally uses a vivid fill as its text color again.
-function checkComponentRoles(directory) {
+// Guard against reintroducing unsupported aliases. Decorative icons and disabled
+// controls may legitimately use opacity, so assess text opacity in rendered context.
+function checkStyleFiles(directory) {
   for (const entry of readdirSync(directory, { withFileTypes: true })) {
     const file = new URL(entry.name + (entry.isDirectory() ? '/' : ''), directory);
     if (entry.isDirectory()) {
-      if (entry.name !== '__tests__') checkComponentRoles(file);
-    } else if (/\.(ts|tsx)$/.test(entry.name) && !entry.name.includes('.test.')) {
-      const rawText = readFileSync(file, 'utf8').match(/\btext-(primary|secondary|accent|neutral|success|danger|warning|info)(?![\w-])/g);
-      assert.equal(rawText, null, `${file.pathname}: use a text tone or matching solid-content role, not ${rawText}`);
+      if (entry.name !== '__tests__') checkStyleFiles(file);
+    } else if (entry.name.endsWith('.styles.ts')) {
+      const source = readFileSync(file, 'utf8');
+      assert.doesNotMatch(source, /\b(?:text|bg|border|ring|stroke|fill)-(?:primary|secondary|accent|neutral|success|danger|warning|info)-text\b/, `${file.pathname}: use native color utilities`);
     }
   }
 }
-
-for (const name of ['core', 'primitives', 'feedback', 'forms', 'navigation', 'overlays', 'data-display']) {
-  checkComponentRoles(new URL(`../packages/${name}/src/`, import.meta.url));
+for (const name of ['primitives', 'forms', 'feedback', 'overlays', 'navigation', 'data-display']) {
+  checkStyleFiles(new URL(`../packages/${name}/src/`, import.meta.url));
 }
 
 function srgb(color) {
@@ -43,7 +42,8 @@ function composite(foreground, background, alpha) {
 function check(label, foreground, background, threshold = 4.5) {
   const ratio = srgb(foreground).contrastWCAG21(srgb(background));
   checks++;
-  minimum = Math.min(minimum, ratio);
+  const kind = threshold === 3 ? 'control' : 'text';
+  minimum[kind] = Math.min(minimum[kind], ratio);
   if (ratio < threshold) failures.push(`${label}: ${ratio.toFixed(3)}:1 (requires ${threshold}:1)`);
 }
 
@@ -59,13 +59,15 @@ for (const file of readdirSync(new URL('presets/', theme)).filter(file => file.e
 
   for (const [index, mode] of tokens.slice(0, 2).entries()) {
     const label = `${file}/${index ? 'dark' : 'light'}`;
+    assert.equal(Object.keys(mode).length, 31, `${label}: keep the original small token schema`);
+    assert.ok(!Object.keys(mode).some(token => token.endsWith('-text')), 'No separate semantic text API');
     for (const color of colors) {
       check(`${label}/${color}/solid`, mode[`${color}-content`], mode[color]);
-      assert.ok(bridge.includes(`--color-${color}-text: var(--color-${color}-text, var(--color-${color}));`), `Missing text utility for ${color}`);
-      const tone = mode[`${color}-text`];
-      assert.ok(tone, `Missing preset text tone for ${color}`);
-      const alias = tone.match(/^var\(--color-([\w-]+)\)$/);
-      const foreground = alias ? mode[alias[1]] : tone;
+      assert.ok(bridge.includes(`--color-${color}: var(--color-${color});`), `Native color mapping missing for ${color}`);
+      const foreground = mode[color];
+      for (const token of [color, color + '-content']) {
+        assert.ok(new Color(mode[token]).to('srgb').coords.every(v => v >= -0.0001 && v <= 1.0001), `${label}/${token}: outside sRGB gamut`);
+      }
       for (const surface of surfaces) {
         check(`${label}/${color}/${surface}/solid-hover`, mode[`${color}-content`], composite(mode[color], mode[surface], 0.9));
         // Transparent text/outline, soft/ghost rest and hover, stronger highlights.
@@ -74,8 +76,16 @@ for (const file of readdirSync(new URL('presets/', theme)).filter(file => file.e
         }
       }
     }
+    for (const surface of surfaces) {
+      check(`${label}/${surface}/body`, mode['base-content'], mode[surface]);
+      check(`${label}/${surface}/secondary-text`, composite(mode['base-content'], mode[surface], 0.7), mode[surface]);
+      for (const border of ['border', 'border-hover', 'border-active']) {
+        check(`${label}/${surface}/${border}`, mode[border], mode[surface], 3);
+      }
+    }
+    check(`${label}/switch-thumb-icon`, mode['base-content'], mode.border, 3);
   }
 }
 
 assert.deepEqual(failures, [], `Theme contrast failures:\n${failures.join('\n')}`);
-console.log(`Theme contrast: ${checks} pairs passed WCAG AA (minimum ${minimum.toFixed(3)}:1).`);
+console.log(`Theme contrast: ${checks} checks passed; text minimum ${minimum.text.toFixed(3)}:1; control boundary minimum ${minimum.control.toFixed(3)}:1.`);

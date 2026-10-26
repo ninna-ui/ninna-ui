@@ -5,19 +5,19 @@ export const radioItemVariants = cva(
   {
     variants: {
       variant: {
-        solid: "border-base-300 bg-base-100",
-        soft: "border-transparent bg-base-200",
-        outline: "border-base-300 bg-base-100",
+        solid: "border-border bg-base-100",
+        soft: "border-border bg-base-200",
+        outline: "border-border bg-base-100",
       },
       color: {
-        primary: "focus-visible:ring-primary-text",
-        secondary: "focus-visible:ring-secondary-text",
-        accent: "focus-visible:ring-accent-text",
-        neutral: "focus-visible:ring-neutral-text",
-        success: "focus-visible:ring-success-text",
-        danger: "focus-visible:ring-danger-text",
-        warning: "focus-visible:ring-warning-text",
-        info: "focus-visible:ring-info-text",
+        primary: "focus-visible:ring-primary",
+        secondary: "focus-visible:ring-secondary",
+        accent: "focus-visible:ring-accent",
+        neutral: "focus-visible:ring-neutral",
+        success: "focus-visible:ring-success",
+        danger: "focus-visible:ring-danger",
+        warning: "focus-visible:ring-warning",
+        info: "focus-visible:ring-info",
       },
       size: {
         sm: "h-4 w-4",
@@ -85,49 +85,49 @@ export const radioItemVariants = cva(
         variant: "soft",
         color: "primary",
         class:
-          "data-[state=checked]:bg-primary/20 data-[state=checked]:border-transparent data-[state=checked]:text-primary-text",
+          "data-[state=checked]:bg-primary/20 data-[state=checked]:border-transparent data-[state=checked]:text-primary",
       },
       {
         variant: "soft",
         color: "secondary",
         class:
-          "data-[state=checked]:bg-secondary/20 data-[state=checked]:border-transparent data-[state=checked]:text-secondary-text",
+          "data-[state=checked]:bg-secondary/20 data-[state=checked]:border-transparent data-[state=checked]:text-secondary",
       },
       {
         variant: "soft",
         color: "accent",
         class:
-          "data-[state=checked]:bg-accent/20 data-[state=checked]:border-transparent data-[state=checked]:text-accent-text",
+          "data-[state=checked]:bg-accent/20 data-[state=checked]:border-transparent data-[state=checked]:text-accent",
       },
       {
         variant: "soft",
         color: "neutral",
         class:
-          "data-[state=checked]:bg-neutral/20 data-[state=checked]:border-transparent data-[state=checked]:text-neutral-text",
+          "data-[state=checked]:bg-neutral/20 data-[state=checked]:border-transparent data-[state=checked]:text-neutral",
       },
       {
         variant: "soft",
         color: "success",
         class:
-          "data-[state=checked]:bg-success/20 data-[state=checked]:border-transparent data-[state=checked]:text-success-text",
+          "data-[state=checked]:bg-success/20 data-[state=checked]:border-transparent data-[state=checked]:text-success",
       },
       {
         variant: "soft",
         color: "danger",
         class:
-          "data-[state=checked]:bg-danger/20 data-[state=checked]:border-transparent data-[state=checked]:text-danger-text",
+          "data-[state=checked]:bg-danger/20 data-[state=checked]:border-transparent data-[state=checked]:text-danger",
       },
       {
         variant: "soft",
         color: "warning",
         class:
-          "data-[state=checked]:bg-warning/20 data-[state=checked]:border-transparent data-[state=checked]:text-warning-text",
+          "data-[state=checked]:bg-warning/20 data-[state=checked]:border-transparent data-[state=checked]:text-warning",
       },
       {
         variant: "soft",
         color: "info",
         class:
-          "data-[state=checked]:bg-info/20 data-[state=checked]:border-transparent data-[state=checked]:text-info-text",
+          "data-[state=checked]:bg-info/20 data-[state=checked]:border-transparent data-[state=checked]:text-info",
       },
 
       // outline variants
@@ -135,49 +135,49 @@ export const radioItemVariants = cva(
         variant: "outline",
         color: "primary",
         class:
-          "data-[state=checked]:border-primary data-[state=checked]:text-primary-text",
+          "data-[state=checked]:border-primary data-[state=checked]:text-primary",
       },
       {
         variant: "outline",
         color: "secondary",
         class:
-          "data-[state=checked]:border-secondary data-[state=checked]:text-secondary-text",
+          "data-[state=checked]:border-secondary data-[state=checked]:text-secondary",
       },
       {
         variant: "outline",
         color: "accent",
         class:
-          "data-[state=checked]:border-accent data-[state=checked]:text-accent-text",
+          "data-[state=checked]:border-accent data-[state=checked]:text-accent",
       },
       {
         variant: "outline",
         color: "neutral",
         class:
-          "data-[state=checked]:border-neutral data-[state=checked]:text-neutral-text",
+          "data-[state=checked]:border-neutral data-[state=checked]:text-neutral",
       },
       {
         variant: "outline",
         color: "success",
         class:
-          "data-[state=checked]:border-success data-[state=checked]:text-success-text",
+          "data-[state=checked]:border-success data-[state=checked]:text-success",
       },
       {
         variant: "outline",
         color: "danger",
         class:
-          "data-[state=checked]:border-danger data-[state=checked]:text-danger-text",
+          "data-[state=checked]:border-danger data-[state=checked]:text-danger",
       },
       {
         variant: "outline",
         color: "warning",
         class:
-          "data-[state=checked]:border-warning data-[state=checked]:text-warning-text",
+          "data-[state=checked]:border-warning data-[state=checked]:text-warning",
       },
       {
         variant: "outline",
         color: "info",
         class:
-          "data-[state=checked]:border-info data-[state=checked]:text-info-text",
+          "data-[state=checked]:border-info data-[state=checked]:text-info",
       },
     ],
     defaultVariants: {
@@ -257,16 +257,16 @@ export const radioGroupStyles = {
 };
 
 export const radioCardStyles = {
-  card: "relative flex flex-col p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:border-base-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed",
-  cardDefault: "border-base-200 bg-base-100",
+  card: "relative flex flex-col p-4 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:border-border-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed",
+  cardDefault: "border-border bg-base-100",
   cardSelected: "border-primary bg-primary/10",
   cardInvalid: "border-danger",
   indicator:
-    "absolute top-3 right-3 w-5 h-5 rounded-full border-2 flex items-center justify-center border-base-300",
+    "absolute top-3 right-3 w-5 h-5 rounded-full border-2 flex items-center justify-center border-border",
   indicatorSelected: "border-primary bg-primary",
   indicatorDot: "w-2 h-2 rounded-full bg-base-100",
   icon: "w-8 h-8 text-base-content/80 mb-2",
-  iconSelected: "text-primary-text",
+  iconSelected: "text-primary",
   title: "font-medium text-base-content",
   description: "text-sm text-base-content/70 mt-1",
 };

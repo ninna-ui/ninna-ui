@@ -87,7 +87,7 @@ export const Sizes: Story = {
               <Modal.Body>
                 <p className="text-base-content/70">
                   This modal uses{" "}
-                  <code className="text-primary-text font-mono">
+                  <code className="text-primary font-mono">
                     size=&quot;{size}&quot;
                   </code>
                   .
@@ -357,7 +357,7 @@ export const Headless: Story = {
         <Modal.Body>
           <p className="text-base-content/70">
             This modal has no header but remains accessible via the{" "}
-            <code className="text-primary-text font-mono">title</code> prop.
+            <code className="text-primary font-mono">title</code> prop.
           </p>
         </Modal.Body>
         <Modal.Footer>

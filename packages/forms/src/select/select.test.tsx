@@ -53,10 +53,7 @@ describe("Select", () => {
       </Select>,
     );
     const trigger = screen.getByRole("combobox");
-    expect(trigger).toHaveClass(
-      "focus:ring-primary-text",
-      "focus:border-primary",
-    );
+    expect(trigger).toHaveClass("focus:ring-primary", "focus:border-primary");
   });
 
   it("applies custom color focus ring", () => {
@@ -66,10 +63,7 @@ describe("Select", () => {
       </Select>,
     );
     const trigger = screen.getByRole("combobox");
-    expect(trigger).toHaveClass(
-      "focus:ring-accent-text",
-      "focus:border-accent",
-    );
+    expect(trigger).toHaveClass("focus:ring-accent", "focus:border-accent");
   });
 
   it("passes axe accessibility audit", async () => {

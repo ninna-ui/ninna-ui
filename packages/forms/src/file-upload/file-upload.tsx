@@ -76,7 +76,7 @@ export function FileUploadItem({
           aria-label={`Remove ${file.name}`}
         >
           <svg
-            className="w-5 h-5 text-neutral-text/50"
+            className="w-5 h-5 text-neutral/50"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -275,7 +275,7 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
         {label && (
           <label htmlFor={generatedId} className={fileUploadStyles.label}>
             {label}
-            {required && <span className="text-danger-text ml-1">*</span>}
+            {required && <span className="text-danger ml-1">*</span>}
           </label>
         )}
 

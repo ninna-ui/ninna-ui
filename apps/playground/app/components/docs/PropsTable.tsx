@@ -72,10 +72,10 @@ export function PropsTable({
                   scope="row"
                   className="px-4 py-3 text-sm text-left font-normal"
                 >
-                  <code className="font-mono font-medium text-primary-text">
+                  <code className="font-mono font-medium text-primary">
                     {prop.name}
                     {prop.required && (
-                      <span className="text-danger-text ml-1">*</span>
+                      <span className="text-danger ml-1">*</span>
                     )}
                   </code>
                 </th>
