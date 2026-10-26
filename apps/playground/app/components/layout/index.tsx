@@ -138,7 +138,7 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       {/* ── Main content area ── */}
       <div className="pt-14 lg:pl-64 flex flex-col min-h-screen">
         <div className="lg:flex flex-1">
-          <main id="main-content" className="flex-1 py-8" tabIndex={-1}>
+          <main id="main-content" className="min-w-0 flex-1 py-8" tabIndex={-1}>
             <div className="mx-auto max-w-5xl px-6 sm:px-8 lg:px-10">
               {children}
             </div>

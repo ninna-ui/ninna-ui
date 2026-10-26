@@ -1,3 +1,4 @@
+import corePackage from "@ninna-ui/core/package.json";
 import type { Meta, StoryObj } from "@storybook/react";
 import { Alert } from "@ninna-ui/feedback";
 import { Button } from "@ninna-ui/primitives";
@@ -138,7 +139,7 @@ export const WithCustomIcons: Story = {
 export const Dismissible: Story = {
   args: {
     title: "Update Available",
-    description: "Version 0.6.0 is now live with enhanced Storybook support.",
+    description: `Version ${corePackage.version} is now live with enhanced Storybook support.`,
     variant: "soft",
     color: "info",
     dismissible: true,

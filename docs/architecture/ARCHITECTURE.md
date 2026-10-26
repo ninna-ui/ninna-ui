@@ -1,12 +1,12 @@
 # Ninna UI Architecture
 
-> **Complete system architecture for the Ninna UI monorepo** - 12 packages, 67 components, Tailwind CSS v4 theme system, Radix isolation layer, canonical component patterns, and build infrastructure. This is the definitive technical reference for understanding how everything fits together.
+> **Complete system architecture for the Ninna UI monorepo** - 12 packages, 69 components, Tailwind CSS v4 theme system, Radix isolation layer, canonical component patterns, and build infrastructure. This is the definitive technical reference for understanding how everything fits together.
 >
-> **Version:** 0.6.0 · **Last Updated:** June 2026 · **Audit Status:** Full monorepo audit completed
+> **Version:** 0.7.0 · **Last Updated:** October 2026 · **Audit Status:** Full monorepo audit completed
 
 ## Design Philosophy
 
-Chakra/Mantine-level component quality combined with DaisyUI-simple theming. 100% WCAG 2.1 AA accessibility. Radix primitives powering complex interactive components via an internal engine isolation layer. Zero `'use client'` directives - every component works in React Server Components. Zero `dark:` prefixes in component styles - all theming via CSS custom properties with automatic dark mode.
+Chakra/Mantine-level component quality combined with DaisyUI-simple theming. 100% WCAG 2.1 AA accessibility. Radix primitives powering complex interactive components via an internal engine isolation layer. The library supports SSR and SPA rendering; Next.js applications must place interactive imports behind a `'use client'` boundary. Zero `dark:` prefixes in component styles - all theming via CSS custom properties with automatic dark mode.
 
 ### Core Principles
 
@@ -283,5 +283,5 @@ CodeBlock with regex-based TSX/CSS/bash syntax highlighting, copy-to-clipboard, 
 
 - Root `vitest.config.ts` includes both `packages/**/__tests__/**/*.test.{ts,tsx}` and `packages/**/src/**/*.test.{ts,tsx}`
 - Setup: `@testing-library/jest-dom/vitest` + `@sa11y/vitest` matchers
-- **51 test files, 708 tests** - all packages covered including layout, navigation, data-display, code-block, overlays
+- **70 test files, 1,063 tests** - all packages covered including layout, navigation, data-display, code-block, overlays
 - Coverage: v8 provider, excludes stories/tests/index files

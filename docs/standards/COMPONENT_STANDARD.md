@@ -2,7 +2,7 @@
 
 > **The definitive guide to building Ninna UI components** - canonical 4-file pattern, props design, `data-slot` API, `forwardRef` conventions, style organization, export strategy, and accessibility requirements. This is the source of truth for all component implementation decisions.
 >
-> **Version:** 0.6.0 · **Last Updated:** April 2026
+> **Version:** 0.7.0 · **Last Updated:** October 2026
 
 ---
 

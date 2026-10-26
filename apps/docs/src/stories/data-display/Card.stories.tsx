@@ -1,3 +1,4 @@
+import corePackage from "@ninna-ui/core/package.json";
 import type { Meta, StoryObj } from '@storybook/react';
 import { Card } from '@ninna-ui/data-display';
 import { Button, Badge, Avatar } from '@ninna-ui/primitives';
@@ -154,7 +155,7 @@ export const SocialPost: Story = {
           and the performance is top-notch. Can't wait to ship this to production. 🚀
         </p>
         <div className="aspect-video rounded-lg bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center text-white font-bold text-2xl shadow-inner">
-          Ninna UI 0.6.0
+          Ninna UI {corePackage.version}
         </div>
       </Card.Body>
       <Card.Footer className="gap-4 pt-2">

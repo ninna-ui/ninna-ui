@@ -20,6 +20,10 @@ const navigation: NavCategory[] = [
     items: [
       { name: "Introduction", href: "/" },
       { name: "Installation", href: "/getting-started/installation" },
+      { name: "Vite", href: "/getting-started/vite" },
+      { name: "Next.js", href: "/getting-started/nextjs" },
+      { name: "React Router", href: "/getting-started/react-router" },
+      { name: "Astro", href: "/getting-started/astro" },
       { name: "Theming", href: "/getting-started/theming" },
       { name: "Styling", href: "/getting-started/styling" },
       { name: "Colors", href: "/getting-started/colors" },
