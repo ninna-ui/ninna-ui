@@ -18,7 +18,7 @@ Require successful build, lint, type checks, tests, packed starter installs/buil
 
 ## Publish and verify
 
-Merging the release PR triggers Release on main. Its Changesets publish step uses the configured npm credential and GitHub Actions provenance permissions. Keep credentials in repository secrets; do not copy them into local files or logs.
+Merging the release PR triggers Release on main. Its Changesets publish step uses GitHub Actions OIDC trusted publishing and provenance. Each of the twelve public packages must authorize the GitHub repository ninna-ui/ninna-ui and workflow filename release.yml in its npm Trusted Publisher settings, with npm publish allowed. No environment name is used by this workflow. New connections require a first successful publish within two days to validate them. The workflow must not supply an expired NPM_TOKEN or a generated empty auth-token configuration that interferes with OIDC authentication.
 
 Confirm the publish job succeeds and each of the twelve public packages has the intended version and npm latest tag: core, utils, react-internal, primitives, feedback, layout, forms, overlays, navigation, data-display, code-block, and cli.
 
