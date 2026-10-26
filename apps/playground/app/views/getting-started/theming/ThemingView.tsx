@@ -51,9 +51,11 @@ function setTheme(mode) {
   localStorage.setItem('theme', mode);
 }
 
-// Restore on page load (run before React hydrates to avoid flash)
-const saved = localStorage.getItem('theme') || 'system';
-setTheme(saved);`;
+// Call after mounting, or from browser-only event handlers.
+function restoreTheme() {
+  const saved = localStorage.getItem('theme') || 'system';
+  setTheme(saved);
+}`;
 
 const DATA_THEME_CODE = `<!-- Per-section theming with data-theme attribute -->
 <div data-theme="default">
@@ -251,6 +253,7 @@ export function ThemingView() {
             <div>
               <Heading as="h4" size="base" weight="semibold" className="mb-2">JavaScript Toggle</Heading>
               <UsageExample code={DARK_MODE_JS_CODE} />
+              <Text size="sm" className="mt-3 text-base-content/70">Restore browser preferences after mounting. For SSR, keep server and initial client markup identical, or render the initial preference from a cookie on both sides.</Text>
             </div>
           </div>
         </ComponentSection>

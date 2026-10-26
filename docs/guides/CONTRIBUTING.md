@@ -2,7 +2,7 @@
 
 > **Everything you need to contribute to the Ninna UI monorepo** - from your first PR to publishing packages on npm. Fork, build, add components, ship.
 >
-> **Version:** 0.6.0 · **Last Updated:** April 2026
+> **Version:** 0.7.0 · **Last Updated:** October 2026
 
 ---
 
@@ -105,7 +105,7 @@ pnpm changeset
 - **Release Workflow** automatically:
   - Creates a "Version Packages" PR
   - Updates all package versions
-  - Updates internal dependencies (`workspace:*` → `^0.6.0`)
+  - Updates internal dependencies (`workspace:*` → `^0.7.0`)
 
 **When Version PR is merged:**
 

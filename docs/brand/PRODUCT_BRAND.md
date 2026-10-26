@@ -2,7 +2,7 @@
 
 > **Product identity, competitive positioning, and brand guidelines** - defines what Ninna UI is, who it's for, and how it stands apart from shadcn/ui, Chakra UI, Mantine, and DaisyUI.
 >
-> **Version:** 0.6.0 · **Last Updated:** April 2026
+> **Version:** 0.7.0 · **Last Updated:** October 2026
 
 ---
 
@@ -207,7 +207,7 @@ Each component view has:
 - `pnpm typecheck` - Zero TypeScript errors (`tsc --noEmit`)
 - `pnpm vitest run` - All tests pass
 - Zero `dark:` prefixes in component styles
-- Zero `'use client'` directives in library code
+- SSR-compatible components; Next.js applications provide a client boundary for interactions
 - Zero `@radix-ui/*` imports outside `react-internal`
 - Zero hardcoded Tailwind palette colors in component styles
 

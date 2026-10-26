@@ -1,206 +1,29 @@
-# Publishing Ninna UI Packages
+# Publishing Ninna UI
 
-> **Complete npm publishing workflow for the Ninna UI monorepo** - Changesets-based version management, automated CI/CD publishing, fixed versioning across all 12 packages, and emergency rollback procedures.
->
-> **Version:** 0.6.0 · **Last Updated:** April 2026
+> Current release: 0.7.0. Use Node.js 24 LTS and pnpm 10.28.2 for repository validation.
 
----
+## Prepare a change
 
-## Overview
+Start from current main on a dedicated branch. Public package changes require a Changeset listing only affected public packages with an accurate patch, minor, or major summary. Apps and private tooling do not need release entries. Do not edit public package versions manually.
 
-Ninna UI uses Changesets for version management and publishing to npm. This guide covers the complete publishing workflow.
+Run relevant tests, type checks, lint, builds, package export checks, and CLI starter checks before merging. Public packages use a fixed Changesets version group; a minor CLI release can advance all twelve packages together.
 
-## Prerequisites
+## Validate the release candidate
 
-- **Node.js**: >=20.0.0
-- **pnpm**: >=10.0.0
-- **npm token**: Configured in `.npmrc`
-- **GitHub access**: For changelog generation
+After source PRs merge, the Release workflow builds and tests main, then creates or updates chore: version packages. Changesets consumes pending entries, updates manifests and changelogs, and resolves internal workspace dependency versions for publishing.
 
-## Publishing Workflow
+Check the exact current release PR head. Bot commits can leave normal PR workflows awaiting approval or without new runs. Approve standard runs where required, or explicitly dispatch CI and CLI starters against changeset-release/main. Both workflows support workflow_dispatch. Verify their recorded commit matches the current candidate; an earlier passing run is insufficient.
 
-### 1. Create Changeset
+Require successful build, lint, type checks, tests, packed starter installs/builds, package checks, CodeQL, and deployment checks before merging the release PR.
 
-```bash
-pnpm changeset
-```
+## Publish and verify
 
-**Important:** When prompted for packages, **exclude private packages**:
+Merging the release PR triggers Release on main. Its Changesets publish step uses the configured npm credential and GitHub Actions provenance permissions. Keep credentials in repository secrets; do not copy them into local files or logs.
 
-#### ✅ Public Packages (Include)
+Confirm the publish job succeeds and each of the twelve public packages has the intended version and npm latest tag: core, utils, react-internal, primitives, feedback, layout, forms, overlays, navigation, data-display, code-block, and cli.
 
-- @ninna-ui/core
-- @ninna-ui/utils
-- @ninna-ui/react-internal
-- @ninna-ui/primitives
-- @ninna-ui/cli
-- @ninna-ui/code-block
-- @ninna-ui/data-display
-- @ninna-ui/feedback
-- @ninna-ui/forms
-- @ninna-ui/layout
-- @ninna-ui/navigation
-- @ninna-ui/overlays
+Test the actual published CLI in an isolated directory, including all four framework starters, dependency installation, type checking, production builds, theme behavior, and browser hydration/interactions. See [CLI starter validation](../cli-starter-validation.md).
 
-#### ❌ Private Packages (Exclude)
+Only after npm verification, update ninna-ui-web dependencies, installation guides, changelog, and generated SEO/AI references. Version labels follow the installed core package. Validate and merge its PR, then verify the live deployment.
 
-- @ninna-ui/eslint-config
-- @ninna-ui/test-config
-- @ninna-ui/tsconfig
-
-**Why?** Private packages are:
-
-- Only used in development (`devDependencies`)
-- Not published to npm (`private: true`)
-- Internal workspace tools (linting, testing, TypeScript configs)
-
-### 2. Choose Version Type
-
-- **minor**: New features (use for initial releases)
-- **patch**: Bug fixes
-- **major**: Breaking changes
-
-For first releases, use **minor** (0.0.0 → 0.1.0).
-
-### 3. Add Summary
-
-Describe the changes:
-
-```
-Initial release of Ninna UI packages with core components and design tokens
-```
-
-### 4. Update Versions
-
-```bash
-# Must be on main branch
-pnpm version-packages
-```
-
-This:
-
-- Updates all package versions
-- Updates `workspace:*` dependencies to actual versions
-- Generates CHANGELOG.md
-
-### 5. Build and Publish
-
-```bash
-pnpm release
-```
-
-This runs:
-
-```bash
-pnpm build && changeset publish
-```
-
-## Version Strategy
-
-### Fixed Packages
-
-All public packages are versioned together (defined in `.changeset/config.json`):
-
-```json
-"fixed": [
-  ["@ninna-ui/core", "@ninna-ui/primitives", "@ninna-ui/cli", ...]
-]
-```
-
-### Internal Dependencies
-
-Changeset automatically updates internal dependencies:
-
-```json
-// Before
-"@ninna-ui/core": "workspace:*"
-
-// After version-packages
-"@ninna-ui/core": "^0.6.0"
-```
-
-## Troubleshooting
-
-### Changeset Shows Private Packages
-
-Manually deselect them using **spacebar** when prompted:
-
-```
-Which packages would you like to include?
-[ ] @ninna-ui/utils          # Press space to deselect
-[ ] @ninna-ui/react-internal # Press space to deselect
-[*] @ninna-ui/core           # Keep selected
-```
-
-### Build Failures
-
-Ensure all packages build: `pnpm build`
-
-- All tests pass: `pnpm vitest run`
-
-Fix any build errors before publishing.
-
-### npm Authentication
-
-Check your `.npmrc`:
-
-```ini
-//registry.npmjs.org/:_authToken=${NPM_TOKEN}
-```
-
-Or set environment variable:
-
-```bash
-export NPM_TOKEN=your_token
-```
-
-## Post-Publish
-
-1. **GitHub Release**: Changeset creates GitHub releases automatically
-2. **Changelog**: Updated in CHANGELOG.md
-3. **npm Registry**: Packages available at npmjs.com
-
-## Verification
-
-```bash
-# Check published packages
-npm view @ninna-ui/core
-npm view @ninna-ui/primitives
-
-# Install fresh copy
-npm install @ninna-ui/core@latest
-```
-
-## Emergency Rollback
-
-If something goes wrong:
-
-1. **Unpublish** (within 72 hours):
-
-```bash
-npm unpublish @ninna-ui/core@0.6.0
-```
-
-2. **Republish** fixed version:
-
-```bash
-pnpm changeset  # Create emergency changeset
-pnpm version-packages
-pnpm release
-```
-
-## Best Practices
-
-- **Test thoroughly** before publishing
-- **Use semantic versioning** correctly
-- **Document breaking changes** in changeset summary
-- **Monitor npm downloads** after release
-- **Keep GitHub releases** in sync with npm
-
----
-
-For more information, see:
-
-- [Changesets Documentation](https://github.com/changesets/changesets)
-- [npm Publishing Guide](https://docs.npmjs.com/packages-and-modules/publishing-packages)
-- [Contributing Guide](./CONTRIBUTING.md)
+If publishing fails, inspect the failing step and registry state before retrying. Published versions cannot be overwritten; Changesets skips versions already present. Fix the underlying problem through a focused PR and rerun the authorized workflow rather than changing versions or unpublishing packages to hide the failure.

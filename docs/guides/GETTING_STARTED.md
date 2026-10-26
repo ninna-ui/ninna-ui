@@ -1,12 +1,28 @@
-# Getting Started with Ninna UI v0.6.0
+# Getting Started with Ninna UI v0.7.0
 
 > **From zero to a fully themed React app in under 2 minutes.** Install a package, import one CSS file, and start building with 69 accessible, production-ready components.
 >
-> **Current version: 0.6.0** — All `@ninna-ui/*` packages are at v0.6.0 on npm. Always install with `@latest` (e.g. `pnpm add @ninna-ui/core@latest`). Do NOT use 0.1.0 — it is an obsolete early release with a different API.
+> **Current version: 0.7.0** — All `@ninna-ui/*` packages are at v0.7.0 on npm. Always install with `@latest` (e.g. `pnpm add @ninna-ui/core@latest`). Do NOT use 0.1.0 — it is an obsolete early release with a different API.
 
 **Full documentation with live demos:** [ninna-ui.dev](https://ninna-ui.dev) - interactive component reference, framework guides, and API documentation.
 
 ---
+
+## Start with the CLI
+
+Use Node.js 24 LTS. The CLI supports Vite 8, Next.js 16, React Router 8, and Astro 7.
+
+```bash
+npx @ninna-ui/cli@latest init my-app --template vite-react --preset ocean
+cd my-app
+npm run typecheck
+npm run build
+npm run dev
+```
+
+Omit `--template` for an interactive framework prompt. Other templates are `nextjs`, `react-router`, and `astro`; presets are `default`, `ocean`, `sunset`, `forest`, and `minimal`. The CLI installs dependencies unless you pass `--skip-install`.
+
+For an existing application, follow the [Vite](https://ninna-ui.dev/getting-started/vite), [Next.js](https://ninna-ui.dev/getting-started/nextjs), [React Router](https://ninna-ui.dev/getting-started/react-router), or [Astro](https://ninna-ui.dev/getting-started/astro) manual guide. Keep server and initial client output identical: browser preferences belong in client effects, Next.js interactions need a client boundary, and Astro interactions need a React island such as `client:load`.
 
 ## Installation
 
@@ -156,7 +172,7 @@ Target specific component parts for styling:
 - **React:** >=19.0.0
 - **React DOM:** >=19.0.0
 - **Tailwind CSS:** >=4.0.0
-- **Node.js:** >=20.0.0
+- **Node.js:** 24 LTS recommended for the CLI and all four starters; the CLI minimum is 22.12. Framework minimums can be higher (see the framework guides).
 
 ---
 

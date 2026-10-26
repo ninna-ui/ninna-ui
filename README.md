@@ -1,8 +1,8 @@
-# Ninna UI v0.6.0
+# Ninna UI v0.7.0
 
 **Full React UI library with zero runtime styling and native Tailwind CSS v4 support.**
 
-> **Current version: 0.6.0** — All `@ninna-ui/*` packages are at v0.6.0 on npm. Always install with `@latest` (e.g. `pnpm add @ninna-ui/core@latest`). Do NOT use 0.1.0 — it is an obsolete early release with a different API.
+> **Current version: 0.7.0** — All `@ninna-ui/*` packages are at v0.7.0 on npm. Always install with `@latest` (e.g. `pnpm add @ninna-ui/core@latest`). Do NOT use 0.1.0 — it is an obsolete early release with a different API.
 
 The open-source React component library that combines **Chakra-level component quality** with **DaisyUI-simple theming** - 69 accessible, production-ready components, 5 built-in theme presets, and zero JavaScript theming overhead. One CSS import. Instant design system.
 
@@ -25,7 +25,7 @@ Most component libraries force a trade-off: **great components** (Chakra, Mantin
 - **oklch color system** - Perceptually uniform, high-chroma colors with automatic light/dark mode and guaranteed WCAG AA contrast
 - **Radix accessibility, zero Radix API leakage** - Complex components (Select, Modal, Tabs, Accordion) are powered by Radix primitives internally. Your code never imports or types against Radix
 - **`data-slot` CSS override API** - 98 named slots across all components for surgical styling without `!important` hacks
-- **React Server Components ready** - Zero `'use client'` directives. Every component works in RSC, SSR, and SPA out of the box
+- **React Server Components ready** - Supports SSR and SPA. In Next.js, put interactive Ninna UI imports inside a `'use client'` boundary
 - **TypeScript Strict with full JSDoc** - Complete type safety, IntelliSense documentation on every prop, and zero `any` in the public API
 - **Tree-shakeable modular packages** - 12 independently installable packages. Import only what you use - no monolithic bundle
 
@@ -89,7 +89,7 @@ export function App() {
 npx @ninna-ui/cli init my-app
 ```
 
-Choose from **Vite + React**, **Next.js 15**, **React Router v7**, or **Astro** templates - pre-configured with your preferred theme preset, TypeScript strict mode, and all Ninna UI packages.
+Choose from **Vite + React**, **Next.js 16**, **React Router 8**, or **Astro** templates - pre-configured with your preferred theme preset, TypeScript strict mode, and all Ninna UI packages.
 
 ## Packages
 
@@ -111,7 +111,7 @@ Choose from **Vite + React**, **Next.js 15**, **React Router v7**, or **Astro** 
 | Package                                                 | What It Does                                                                                                                         |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | [`@ninna-ui/core`](./packages/core)                     | Design system foundation - TypeScript tokens, Tailwind class mappings, 5 CSS theme presets with oklch colors and automatic dark mode |
-| [`@ninna-ui/cli`](./packages/cli)                       | Zero-config project scaffolding - 4 framework templates (Vite, Next.js, React Router v7, Astro) with theme selection                 |
+| [`@ninna-ui/cli`](./packages/cli)                       | Zero-config project scaffolding - 4 framework templates (Vite, Next.js, React Router 8, Astro) with theme selection                 |
 | [`@ninna-ui/utils`](./packages/utils)                   | Shared utility functions - `cn()` class merger, `composeRefs`, `createContext`, keyboard constants, SSR helpers                      |
 | [`@ninna-ui/react-internal`](./packages/react-internal) | Radix engine isolation layer - wraps 11 Radix primitives behind clean TypeScript interfaces so Radix never leaks to consumers        |
 
@@ -135,10 +135,10 @@ Production-ready project in seconds - TypeScript strict, all packages pre-instal
 
 | Template                                                | Framework             | Bundler           | CSS Integration        |
 | ------------------------------------------------------- | --------------------- | ----------------- | ---------------------- |
-| [`vite-react`](./packages/cli/templates/vite-react)     | React 19              | Vite 7            | `@tailwindcss/vite`    |
-| [`nextjs`](./packages/cli/templates/nextjs)             | Next.js 15 App Router | Webpack/Turbopack | `@tailwindcss/postcss` |
-| [`react-router`](./packages/cli/templates/react-router) | React Router v7       | Vite 7            | `@tailwindcss/vite`    |
-| [`astro`](./packages/cli/templates/astro)               | Astro 5 + React 19    | Vite 7            | `@tailwindcss/vite`    |
+| [`vite-react`](./packages/cli/templates/vite-react)     | React 19              | Vite 8            | `@tailwindcss/vite`    |
+| [`nextjs`](./packages/cli/templates/nextjs)             | Next.js 16 App Router | Webpack/Turbopack | `@tailwindcss/postcss` |
+| [`react-router`](./packages/cli/templates/react-router) | React Router 8       | Vite 8            | `@tailwindcss/vite`    |
+| [`astro`](./packages/cli/templates/astro)               | Astro 7 + React 19    | Vite 8            | `@tailwindcss/vite`    |
 
 ```bash
 npx @ninna-ui/cli init my-app -t nextjs --preset ocean
@@ -154,7 +154,7 @@ their own application runtime requirements.
 pnpm install           # Install all dependencies
 pnpm dev               # Start all dev watchers
 pnpm build             # Build all 12 packages
-pnpm test              # Run 700+ tests across 51 test files
+pnpm test              # Run 1,063 tests across 70 test files
 pnpm lint              # Lint + typecheck all packages
 pnpm --filter @ninna-ui/playground dev   # Developer sandbox at localhost:3000
 pnpm --filter @ninna-ui/docs dev         # Storybook at localhost:6006
@@ -178,7 +178,7 @@ ninna-ui/
 │   ├── navigation/        # 5 navigation components (2 Radix + 3 custom)
 │   ├── data-display/      # 7 data display components with semantic HTML
 │   ├── code-block/        # Lightweight syntax highlighter (regex, no Prism/Shiki)
-│   └── cli/               # Project scaffolding with 4 framework templates (Vite, Next.js, React Router v7, Astro)
+│   └── cli/               # Project scaffolding with 4 framework templates (Vite, Next.js, React Router 8, Astro)
 ├── apps/
 │   ├── playground/        # React Router v7 developer sandbox (SPA mode)
 │   └── docs/              # Storybook 10 - interactive component stories
@@ -196,7 +196,7 @@ ninna-ui/
 - **[Contributing Guide](./docs/guides/CONTRIBUTING.md)** - Development workflow, package boundaries, PR process, component checklist
 - **[Component Standards](./docs/standards/COMPONENT_STANDARD.md)** - File structure, props design, accessibility, testing requirements
 - **[Accessibility Standards](./docs/standards/ACCESSIBILITY.md)** - WCAG 2.1 AA compliance, ARIA patterns, keyboard navigation
-- **[Testing Strategy](./docs/standards/TESTING_STRATEGY.md)** - 700+ tests, @sa11y/vitest integration, priority-based coverage
+- **[Testing Strategy](./docs/standards/TESTING_STRATEGY.md)** - 1,063 tests, @sa11y/vitest integration, priority-based coverage
 - **[Development Rules](./docs/guides/DEVELOPMENT_RULES.md)** - Naming conventions, Tailwind CSS rules, Radix isolation, data attributes
 
 ## License

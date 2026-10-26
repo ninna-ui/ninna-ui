@@ -1,8 +1,8 @@
 # Ninna UI Testing Strategy
 
-> **700+ automated tests across 51 test files** - priority-based coverage, @sa11y/vitest accessibility audits, co-located test files, and clear guidelines on what to test and what to skip. This document defines the testing philosophy and requirements for every Ninna UI component.
+> **1,063 automated tests across 70 test files** - priority-based coverage, @sa11y/vitest accessibility audits, co-located test files, and clear guidelines on what to test and what to skip. This document defines the testing philosophy and requirements for every Ninna UI component.
 >
-> **Version:** 0.6.0 · **Last Updated:** April 2026
+> **Version:** 0.7.0 · **Last Updated:** October 2026
 
 ---
 

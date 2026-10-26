@@ -1,90 +1,15 @@
-# Version Constant Management
+# Version labels
 
-> **Centralized version management for the Ninna UI monorepo** - a single TypeScript constant controls the version number across all documentation, component pages, and meta files. Update one file, and every reference stays in sync.
+The playground and documentation website read the installed core package version:
 
-## Overview
+```ts
+import corePackage from "@ninna-ui/core/package.json";
 
-Instead of manually updating version numbers across dozens of files, Ninna UI uses a centralized version constant that can be imported wherever a version reference is needed - component headers, meta files, getting started views, and more.
-
-## Central Version
-
-The current version is defined in a single file:
-
-```typescript
-// apps/playground/app/constants/version.ts
-export const NINNA_UI_VERSION = "0.6.0" as const;
+export const NINNA_UI_VERSION = corePackage.version;
 ```
 
-## How to Use
+Each app exposes this through its local `app/constants/version.ts`. Import that constant in component metadata and current-release labels. Storybook release examples also read core metadata. The website SEO generator derives its version the same way.
 
-### In Meta Files
+Changesets owns public package versions. Do not edit version constants or public package versions by hand to announce a release. Merge the validated Changesets release PR, verify npm publication, then update website dependencies and regenerate SEO and AI reference assets. The playground workspace dependency follows the versioned core package automatically.
 
-```typescript
-import { NINNA_UI_VERSION } from "~/constants/version";
-
-export const componentMeta: ComponentMeta = {
-  title: "Button",
-  description: "Button component description",
-  category: "Primitives",
-  version: NINNA_UI_VERSION, // Uses centralized version
-  status: "stable",
-};
-```
-
-### In Getting Started Views
-
-```typescript
-import { NINNA_UI_VERSION } from "~/constants/version";
-
-const installationMeta = {
-  title: "Installation",
-  description: "Installation guide",
-  category: "Getting Started",
-  version: NINNA_UI_VERSION, // Uses centralized version
-  status: "stable" as const,
-};
-```
-
-## How to Update Versions
-
-1. Update the version in `apps/playground/app/constants/version.ts`
-2. Update the version in `ninna-ui-web/app/constants/version.ts` (separate repo) - both
-   constants must be bumped together on each release
-3. The change will automatically be reflected wherever the constant is imported
-
-## Files Using the Constant
-
-### Playground App
-- `apps/playground/app/constants/version.ts` - Central version constant
-- All `meta.ts` files in `apps/playground/app/views/*/`
-- Getting started views in `apps/playground/app/views/getting-started/`
-
-### Web Docs
-- `ninna-ui-web/app/constants/version.ts` - exports the same `NINNA_UI_VERSION` constant
-- Used in getting started views and component documentation
-- Must be bumped together with the playground constant on each release
-
-## Benefits
-
-- ✅ **Single Source of Truth**: One file controls the version
-- ✅ **Type Safety**: TypeScript ensures correct usage
-- ✅ **Simple**: No complex generation scripts needed
-- ✅ **Flexible**: Easy to import and use anywhere
-- ✅ **Maintainable**: Easy to audit and update
-
-## Implementation Notes
-
-- The constant is defined locally in each app (`apps/playground` and `ninna-ui-web`);
-  it is NOT exported from any published package
-- TypeScript provides type safety with the `as const` assertion
-- No build-time generation required - it's just an import
-
-## Migration Path
-
-To migrate existing files:
-
-1. Add the import: `import { NINNA_UI_VERSION } from "~/constants/version";`
-2. Replace hardcoded version with: `version: NINNA_UI_VERSION,`
-3. Remove the old hardcoded version string
-
-This approach keeps things simple while providing centralized version management.
+Historical changelog entries and articles keep their original versions. Private application package versions are not public Ninna UI release labels.

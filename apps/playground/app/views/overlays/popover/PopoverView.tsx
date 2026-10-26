@@ -187,7 +187,7 @@ export function PopoverView() {
               <li>Prevent <Code>onOpenAutoFocus</Code> to keep focus on the current element</li>
               <li>Escape key dismisses the popover</li>
               <li>Clicking outside the popover dismisses it</li>
-              <li>Arrow keys navigate focusable elements within the popover</li>
+              <li>Tab and Shift+Tab navigate focusable elements within the popover</li>
             </ul>
           </div>
         </ComponentSection>
